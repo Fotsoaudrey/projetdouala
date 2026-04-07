@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Éveil à la Foi – Pastorale de l'Enfance</title>
+  <style>
+    /* --- STYLE DE BASE (CONSERVÉ) --- */
+    body { font-family: "Segoe UI", sans-serif; margin: 0; padding: 0; background: #fdfdfd; color: #333; line-height: 1.6; }
+    
+    header { background: linear-gradient(135deg, #045286, #0072a8); color: white; padding: 20px; text-align: center; }
+    
+    nav { background: #ffffff; padding: 10px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); position: sticky; top: 0; z-index: 10; }
+    nav ul { margin: 0; padding: 0; display: flex; list-style: none; justify-content: center; flex-wrap: wrap; }
+    nav li { margin: 10px 15px; }
+    nav a { color: #004a7c; font-weight: bold; text-decoration: none; transition: 0.3s; }
+
+    /* --- STYLE ÉVEIL À LA FOI --- */
+    .hero-eveil {
+      background: linear-gradient(rgba(255,255,255,0.7), rgba(255,255,255,0.7)), url('https://images.unsplash.com/photo-1489710437720-ebb67ec84dd2?q=80&w=1400');
+      background-size: cover; background-position: center;
+      padding: 60px 20px; text-align: center;
+    }
+    .hero-eveil h2 { color: #045286; font-size: 2.5em; margin-bottom: 10px; }
+
+    .section-container { max-width: 1100px; margin: 40px auto; padding: 0 20px; }
+
+    /* Grille de 06 éléments */
+    .activite-grid {
+      display: grid; 
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 25px; 
+      margin-top: 40px;
+    }
+
+    .activite-card {
+      background: #fff; padding: 30px; border-radius: 25px;
+      text-align: center; border: 2px dashed #0072a8;
+      transition: 0.3s ease; display: flex; flex-direction: column; justify-content: center;
+    }
+    .activite-card:hover { border-style: solid; background: #f0faff; transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.05); }
+
+    .icon-box { font-size: 2.5em; margin-bottom: 15px; display: block; }
+    .activite-card h3 { color: #045286; margin: 10px 0; font-size: 1.2em; }
+    .activite-card p { font-size: 0.95em; color: #555; }
+
+    .info-parent {
+      background: #7cfc00; color: #045286; padding: 30px;
+      border-radius: 20px; margin: 50px 0;
+      box-shadow: 0 10px 20px rgba(124, 252, 0, 0.2);
+      text-align: center;
+    }
+
+    .verset {
+      text-align: center; font-style: italic; padding: 30px;
+      background: #045286; color: white; border-radius: 50px 5px 50px 5px;
+      margin-bottom: 40px;
+    }
+
+    footer { background: #01395c; color: white; padding: 30px; text-align: center; margin-top: 50px; }
+  </style>
+</head>
+<body>
+
+<header>
+  <marquee><h1>Aumônerie Diocésaine Jeunesse & Enfance – Douala</h1></marquee>
+</header>
+
+<nav>
+  <ul>
+    <li><a href="index.html">Accueil</a></li>
+    <li><a href="index.html#apropos">À propos</a></li>
+    <li><a href="index.html#enfance">Enfance</a></li>
+    <li><a href="index.html#jeunesse">Jeunesse</a></li>
+    <li><a href="index.html#actus">Actualités</a></li>
+  </ul>
+</nav>
+
+<section class="hero-eveil">
+  <h2>L'Éveil à la Foi (3-7 ans)</h2>
+  <p>Faire ses premiers pas avec Jésus dans la joie et la curiosité.</p>
+</section>
+
+<div class="section-container">
+  
+  <div class="verset">
+    "Laissez les petits enfants venir à moi..." <br><strong>— Marc 10, 14</strong>
+  </div>
+
+  <div class="activite-grid">
+    <div class="activite-card">
+      <span class="icon-box">📖</span>
+      <h3>Récits Bibliques</h3>
+      <p>Découvrir les grandes figures de la Bible à travers des histoires adaptées et captivantes.</p>
+    </div>
+
+    <div class="activite-card">
+      <span class="icon-box">🎨</span>
+      <h3>Expression Créative</h3>
+      <p>Coloriages, gommettes et petits bricolages pour illustrer les merveilles de la Création.</p>
+    </div>
+
+    <div class="activite-card">
+      <span class="icon-box">🎵</span>
+      <h3>Chants Joyeux</h3>
+      <p>Apprendre des refrains rythmés et gestués pour louer Dieu avec tout son corps.</p>
+    </div>
+
+    <div class="activite-card">
+      <span class="icon-box">🙏</span>
+      <h3>Premières Prières</h3>
+      <p>Apprendre des mots simples pour dire merci, pardon et s'il te plaît au Seigneur.</p>
+    </div>
+
+    <div class="activite-card">
+      <span class="icon-box">🕊️</span>
+      <h3>Célébrations</h3>
+      <p>Participer à de courts temps liturgiques adaptés au rythme et à l'attention des petits.</p>
+    </div>
+
+    <div class="activite-card">
+      <span class="icon-box">🤝</span>
+      <h3>Vivre Ensemble</h3>
+      <p>Apprendre le partage, le respect et l'amitié au sein du groupe de l'éveil.</p>
+    </div>
+  </div>
+
+  <div class="info-parent">
+    <h4>💡 Accompagner votre enfant</h4>
+    <p>Le rôle des parents est essentiel. N'hésitez pas à demander les feuillets de liaison pour continuer l'éveil à la maison à travers de petites histoires du soir.</p>
+  </div>
+
+  <center>
+    <a href="index.html" style="color: #045286; font-weight: bold; text-decoration: none;">← Retourner à l'accueil</a>
+  </center>
+</div>
+
+<footer>
+  <p>© BIG DATA CENTER AI By <a href="https://www.youtube.com/@DominiqueSavio_Cyber-Ap%C3%B4tre3.0">Dominique Savio - Cyber Apôtre 3.0 </a></br>Aumônerie Diocésaine Jeunesse & Enfance – Douala</p>
+</footer>
+
+</body>
+</html>
