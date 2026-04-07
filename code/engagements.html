@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Engagements & Missions – Aumônerie Douala</title>
+  <style>
+    body { font-family: "Segoe UI", sans-serif; margin: 0; padding: 0; background: #f4f7f9; color: #2c3e50; line-height: 1.6; }
+
+    /* --- NAVIGATION --- */
+    header { background: #045286; color: white; padding: 15px; text-align: center; border-bottom: 3px solid #7cfc00; }
+    nav { background: #ffffff; padding: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); position: sticky; top: 0; z-index: 10; }
+    nav ul { margin: 0; padding: 0; display: flex; list-style: none; justify-content: center; flex-wrap: wrap; }
+    nav li { margin: 0 15px; }
+    nav a { color: #045286; font-weight: 600; text-decoration: none; font-size: 0.85em; text-transform: uppercase; }
+
+    /* --- CONTENU --- */
+    .container { max-width: 1200px; margin: 40px auto; padding: 0 20px; }
+    
+    .intro-mission { text-align: center; margin-bottom: 50px; }
+    .intro-mission h1 { color: #045286; font-size: 2.2em; text-transform: uppercase; margin-bottom: 15px; }
+    .intro-mission p { font-size: 1.1em; color: #555; max-width: 900px; margin: auto; }
+
+    /* --- GRILLE DES MISSIONS (6 ÉLÉMENTS) --- */
+    .mission-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr); /* 3 colonnes sur desktop */
+      gap: 25px;
+      margin-top: 40px;
+    }
+
+    .mission-card {
+      background: white;
+      border-radius: 4px; /* Plus carré pour le côté sérieux */
+      overflow: hidden;
+      border: 1px solid #e0e6ed;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+      transition: 0.3s ease;
+      display: flex;
+      flex-direction: column;
+    }
+    .mission-card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.1); border-color: #7cfc00; }
+
+    .mission-header {
+      background: #045286;
+      color: white;
+      padding: 15px;
+      text-align: center;
+      font-weight: bold;
+      font-size: 0.9em;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .mission-body { padding: 20px; flex-grow: 1; }
+    .mission-body h3 { color: #045286; margin-top: 0; font-size: 1.1em; border-bottom: 2px solid #7cfc00; display: inline-block; padding-bottom: 3px; margin-bottom: 12px; }
+    .mission-body p { font-size: 0.9em; color: #444; margin-bottom: 15px; }
+
+    .mission-list { list-style: none; padding: 0; margin: 0; }
+    .mission-list li { 
+      padding-left: 20px; 
+      position: relative; 
+      margin-bottom: 8px; 
+      font-size: 0.85em; 
+      color: #666;
+    }
+    .mission-list li::before { 
+      content: "▪"; 
+      position: absolute; 
+      left: 0; 
+      color: #045286; 
+    }
+
+    /* --- APPEL À L'ACTION --- */
+    .action-banner {
+      background: #045286;
+      color: white;
+      padding: 35px;
+      text-align: center;
+      margin-top: 60px;
+      border-left: 10px solid #7cfc00;
+    }
+    .btn-contact {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 10px 25px;
+      background: #7cfc00;
+      color: #045286;
+      text-decoration: none;
+      font-weight: bold;
+      text-transform: uppercase;
+      font-size: 0.9em;
+    }
+
+    footer { background: #045286; color: white; padding: 30px; text-align: center; margin-top: 50px; font-size: 0.9em; }
+
+    /* RESPONSIVE */
+    @media (max-width: 1024px) { .mission-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 700px) { .mission-grid { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+
+<header>
+  <marquee scrollamount="4">ARCHIDIOCÈSE DE DOUALA – NOS 06 ENGAGEMENTS MAJEURS POUR LA JEUNESSE</marquee>
+</header>
+
+<nav>
+  <ul>
+    <li><a href="index.html">Accueil</a></li>
+    <li><a href="zones.html">Zones & Paroisses</a></li>
+    <li><a href="actus.html">Actualités</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<div class="container">
+  
+  <div class="intro-mission">
+    <h1>Missions & Engagements</h1>
+    <p>Une action pastorale structurée autour de six piliers pour répondre aux défis contemporains des jeunes et des enfants.</p>
+  </div>
+
+  <div class="mission-grid">
+    
+    <div class="mission-card">
+      <div class="mission-header">1. Éducation & Valeurs</div>
+      <div class="mission-body">
+        <h3>Formation Éthique</h3>
+        <p>Inculquer les principes chrétiens pour forger des citoyens intègres au service du Cameroun.</p>
+        <ul class="mission-list">
+          <li>Conférences sur l'éthique sociale.</li>
+          <li>Accompagnement spirituel scolaire.</li>
+          <li>Promotion de l'intégrité.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="mission-card">
+      <div class="mission-header">2. Charité Active</div>
+      <div class="mission-body">
+        <h3>Solidarité Chrétienne</h3>
+        <p>Éduquer les jeunes au don de soi à travers des actions concrètes envers les plus démunis.</p>
+        <ul class="mission-list">
+          <li>Aumône et collectes diocésaines.</li>
+          <li>Visites aux détenus et malades.</li>
+          <li>Soutien aux enfants de la rue.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="mission-card">
+      <div class="mission-header">3. Écologie Intégrale</div>
+      <div class="mission-body">
+        <h3>Sauvegarde du Créé</h3>
+        <p>Sensibiliser les jeunes à la protection de l'environnement selon l'esprit de Laudato Si.</p>
+        <ul class="mission-list">
+          <li>Journées paroissiales de salubrité.</li>
+          <li>Gestion responsable des ressources.</li>
+          <li>Éducation au respect de la nature.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="mission-card">
+      <div class="mission-header">4. Culture & Talents</div>
+      <div class="mission-body">
+        <h3>Art & Évangélisation</h3>
+        <p>Valoriser les dons artistiques comme vecteurs de transmission de la foi.</p>
+        <ul class="mission-list">
+          <li>Festivals de chorales de jeunes.</li>
+          <li>Théâtre et poésie sacrée.</li>
+          <li>Ateliers de créativité chrétienne.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="mission-card">
+      <div class="mission-header">5. Pastorale Familiale</div>
+      <div class="mission-body">
+        <h3>Lien Intergénérationnel</h3>
+        <p>Renforcer le dialogue entre les jeunes et leurs parents au sein de la cellule familiale.</p>
+        <ul class="mission-list">
+          <li>Journées familles-jeunesse.</li>
+          <li>Éducation à la vie et à l'amour.</li>
+          <li>Médiation parents-enfants.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="mission-card">
+      <div class="mission-header">6. Mission Numérique</div>
+      <div class="mission-body">
+        <h3>Présence Digitale</h3>
+        <p>Évangéliser le continent numérique et promouvoir une utilisation saine des réseaux sociaux.</p>
+        <ul class="mission-list">
+          <li>Web-évangélisation.</li>
+          <li>Lutte contre la cybercriminalité.</li>
+          <li>Communication diocésaine en ligne.</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="action-banner">
+    <h2>S'engager pour la Mission</h2>
+    <p>Chaque talent compte pour bâtir une jeunesse forte et ancrée dans le Christ.</p>
+    <a href="#" class="btn-contact">Devenir volontaire diocésain</a>
+  </div>
+
+  <center style="margin-top: 40px;">
+    <a href="index.html" style="color: #045286; font-weight: bold; text-decoration: none;">← Retourner à l'accueil</a>
+  </center>
+</div>
+
+<footer>
+  <p>© BIG DATA CENTER AI By <a href="https://www.youtube.com/@DominiqueSavio_Cyber-Ap%C3%B4tre3.0">Dominique Savio - Cyber Apôtre 3.0 </a></br>Aumônerie Diocésaine Jeunesse & Enfance – Douala</p>
+</footer>
+
+</body>
+</html>
