@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pèlerinages Diocésains – Archidiocèse de Douala</title>
+  <style>
+    :root {
+      --gold: #c5a021;
+      --deep-blue: #033c63;
+      --platinum: #f8f9fa;
+      --white: #ffffff;
+      --text-large: 1.25rem;
+    }
+
+    body { 
+      font-family: "Georgia", serif; 
+      margin: 0; padding: 0; 
+      background: var(--platinum); 
+      color: #222; 
+      font-size: var(--text-large);
+      line-height: 1.7;
+    }
+
+    /* --- HEADER --- */
+    header { 
+      background: var(--deep-blue);
+      color: white; 
+      padding: 15px 0; 
+      text-align: center; 
+      border-bottom: 3px solid var(--gold);
+    }
+    header h1 { margin: 0; font-size: 1.4em; letter-spacing: 3px; text-transform: uppercase; color: var(--gold); }
+
+    .container { max-width: 1100px; margin: 40px auto; padding: 0 25px; }
+
+    /* --- LAYOUT --- */
+    .pilgrim-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: start; }
+    .poster-box img { width: 100%; border-radius: 8px; box-shadow: 0 10px 30px rgba(0,0,0,0.15); }
+
+    .destination-card {
+      background: white; padding: 25px; border-radius: 8px; 
+      margin-bottom: 20px; border-left: 6px solid var(--gold);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    }
+    .dest-title { font-size: 1.5em; color: var(--deep-blue); font-weight: bold; display: block; }
+    .dest-date { color: var(--gold); font-weight: bold; }
+
+    /* --- BOUTON D'INSCRIPTION --- */
+    .btn-register {
+      display: block;
+      width: 100%;
+      background: var(--gold);
+      color: white;
+      text-align: center;
+      padding: 20px;
+      font-size: 1.3em;
+      font-weight: bold;
+      text-decoration: none;
+      border-radius: 8px;
+      margin-top: 20px;
+      box-shadow: 0 4px 15px rgba(197, 160, 33, 0.4);
+      transition: 0.3s;
+      border: none;
+      cursor: pointer;
+      text-transform: uppercase;
+    }
+    .btn-register:hover { background: var(--deep-blue); transform: translateY(-3px); }
+
+    /* --- MODAL (FORMULAIRE) --- */
+    .modal {
+      display: none; position: fixed; z-index: 2000; left: 0; top: 0;
+      width: 100%; height: 100%; background: rgba(0,0,0,0.8);
+    }
+    .modal-content {
+      background: white; margin: 5% auto; padding: 30px; border-radius: 12px;
+      max-width: 500px; position: relative;
+    }
+    .close { position: absolute; right: 20px; top: 10px; font-size: 30px; cursor: pointer; }
+    
+    .form-group { margin-bottom: 15px; }
+    .form-group label { display: block; margin-bottom: 5px; font-size: 0.9em; font-weight: bold; }
+    .form-group input, .form-group select { width: 100%; padding: 12px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; }
+
+    /* --- RETOUR --- */
+    .bottom-nav { text-align: center; margin: 60px 0; }
+    .btn-back {
+      text-decoration: none; background: #333; color: white; 
+      padding: 12px 35px; border-radius: 50px; font-size: 0.9em;
+    }
+
+    footer { padding: 40px; background: #1a1a1a; color: #bbb; text-align: center; font-size: 0.9em; }
+
+    @media (max-width: 850px) { .pilgrim-grid { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Archidiocèse de Douala</h1>
+</header>
+
+<div class="container">
+  <div class="pilgrim-grid">
+    <div class="poster-box">
+      <img src="../image/Screenshot 2026-02-06 173106.png" alt="Affiche Pèlerinages">
+    </div>
+
+    <div class="info-side">
+      <h2 style="color: var(--deep-blue);">Pèlerinages 2026</h2>
+      <p>Rejoignez-nous pour ces moments de grâce sous le patronage de <strong>Mgr Samuel KLEDA</strong>.</p>
+
+      <div class="destination-card">
+        <span class="dest-title">MARIENBERG - EDÉA</span>
+        <span class="dest-date">Samedi 07 Mars 2026</span>
+      </div>
+
+      <div class="destination-card">
+        <span class="dest-title">TURQUIE</span>
+        <span class="dest-date">Du 14 au 25 Septembre 2026</span>
+      </div>
+
+      <p style="font-size: 0.9em; color: #666;">Contact inscription : <strong>+237 692 575 767</strong></p>
+      
+      <button class="btn-register" onclick="document.getElementById('regModal').style.display='block'">
+        S'inscrire maintenant
+      </button>
+    </div>
+  </div>
+
+  <div class="bottom-nav">
+    <a href="index.html" class="btn-back">← Retour à l'accueil</a>
+  </div>
+</div>
+
+<div id="regModal" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="document.getElementById('regModal').style.display='none'">&times;</span>
+    <h3 style="color: var(--deep-blue); margin-top: 0;">Formulaire d'inscription</h3>
+    <form onsubmit="alert('Votre demande a été envoyée. Le secrétariat vous contactera.'); return false;">
+      <div class="form-group">
+        <label>Nom et Prénom</label>
+        <input type="text" required placeholder="Ex: Jean Dupont">
+      </div>
+      <div class="form-group">
+        <label>Téléphone (WhatsApp)</label>
+        <input type="tel" required placeholder="+237 ...">
+      </div>
+      <div class="form-group">
+        <label>Destination choisie</label>
+        <select>
+          <option>Marienberg (07 Mars)</option>
+          <option>Turquie (14-25 Septembre)</option>
+        </select>
+      </div>
+      <button type="submit" class="btn-register" style="font-size: 1em; padding: 15px;">Envoyer mon inscription</button>
+    </form>
+  </div>
+</div>
+
+<footer>
+  <p><strong>Archidiocèse de Douala</strong><br>© 2026 — Service des Pèlerinages</p>
+</footer>
+
+<script>
+// Fermer le modal si on clique en dehors
+window.onclick = function(event) {
+  var modal = document.getElementById('regModal');
+  if (event.target == modal) { modal.style.display = "none"; }
+}
+</script>
+
+</body>
+</html>
