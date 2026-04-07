@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jubilé de Platine & d'Émeraude – Archidiocèse de Douala</title>
+  <style>
+    :root {
+      --gold: #c5a021;
+      --deep-blue: #033c63;
+      --platinum: #f8f9fa;
+      --white: #ffffff;
+      --text-large: 1.2rem;
+    }
+
+    body { 
+      font-family: "Georgia", serif; 
+      margin: 0; padding: 0; 
+      background: #fdfdfd; 
+      color: #222; 
+      font-size: var(--text-large); /* Augmentation de la taille de base */
+    }
+
+    /* --- HEADER ÉLÉGANT ET FIN --- */
+    header { 
+      background: var(--deep-blue);
+      color: white; 
+      padding: 12px 0; 
+      text-align: center; 
+      border-bottom: 2px solid var(--gold);
+      box-shadow: 0 2px 15px rgba(0,0,0,0.2);
+    }
+    header h1 { 
+      margin: 0; font-size: 1.4em; letter-spacing: 4px; font-weight: 300; 
+      text-transform: uppercase; color: var(--gold);
+      font-family: "Cinzel", serif;
+    }
+
+    /* --- HERO SECTION --- */
+    .hero-banner {
+      text-align: center; padding: 60px 20px;
+      background: linear-gradient(rgba(255,255,255,0.92), rgba(255,255,255,0.92)), url('https://images.unsplash.com/photo-1515023115689-1db9b3a45d0d?q=80&w=1400');
+      background-size: cover; border-bottom: 1px solid #eee;
+    }
+    .jubilee-title { font-size: 3em; color: var(--deep-blue); margin: 15px 0; font-weight: 800; }
+    .jubilee-subtitle { font-size: 1.3em; letter-spacing: 5px; color: var(--gold); text-transform: uppercase; font-weight: bold; }
+
+    /* --- CONTENU --- */
+    .container { max-width: 1100px; margin: 40px auto; padding: 0 25px; }
+
+    .main-grid {
+      display: grid; grid-template-columns: 1fr 1.1fr; gap: 40px; align-items: start;
+      background: white; border-radius: 8px; overflow: hidden;
+      box-shadow: 0 15px 40px rgba(0,0,0,0.06);
+    }
+
+    .image-frame img { width: 100%; height: auto; display: block; border-bottom: 5px solid var(--gold); }
+    
+    .content-frame { padding: 40px; }
+    .bishop-name { font-size: 2.2em; color: var(--deep-blue); margin: 0; font-family: "Cinzel", serif; }
+    .bishop-title { color: #555; font-style: italic; margin-bottom: 25px; display: block; font-size: 1.1em; }
+
+    /* --- BADGES (AGRANDIS) --- */
+    .badges { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin: 30px 0; }
+    .badge-card {
+      padding: 25px 15px; border: 2px solid #e0c56e;
+      text-align: center; background: #fffcf2; border-radius: 4px;
+    }
+    .badge-card strong { display: block; font-size: 2em; color: var(--gold); margin-bottom: 5px; }
+    .badge-card span { font-size: 0.85em; text-transform: uppercase; letter-spacing: 1px; font-weight: bold; color: var(--deep-blue); line-height: 1.3; }
+
+    /* --- LOGISTIQUE (PLUS LISIBLE) --- */
+    .info-bar {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      background: var(--deep-blue); color: white; padding: 25px;
+      border-radius: 6px; text-align: center; margin-top: 30px;
+    }
+    .info-bar div small { display: block; font-size: 0.8em; opacity: 0.8; margin-bottom: 8px; text-transform: uppercase; }
+    .info-bar div b { font-size: 1.2em; color: var(--gold); }
+
+    /* --- LIVE & RETOUR --- */
+    .live-section { text-align: center; margin-top: 40px; font-size: 1.1em; color: #444; border-top: 1px solid #eee; padding-top: 30px; }
+    .live-icons { margin-top: 10px; font-weight: bold; color: var(--deep-blue); font-size: 1.2em; }
+
+    .bottom-nav { text-align: center; margin: 60px 0; }
+    .btn-back {
+      text-decoration: none; background: var(--deep-blue); color: white; 
+      padding: 15px 40px; border-radius: 50px; font-weight: bold;
+      transition: 0.3s; border: 2px solid var(--deep-blue); display: inline-block;
+    }
+    .btn-back:hover { background: transparent; color: var(--deep-blue); transform: translateY(-3px); }
+
+    footer { 
+      padding: 50px; background: #1a1a1a; 
+      color: #bbb; text-align: center; font-size: 0.9em; 
+    }
+
+    @media (max-width: 900px) {
+      .main-grid { grid-template-columns: 1fr; }
+      .info-bar { grid-template-columns: 1fr; gap: 20px; }
+      .jubilee-title { font-size: 2.2em; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Archidiocèse de Douala</h1>
+</header>
+
+<section class="hero-banner">
+  <div class="jubilee-subtitle">1955 — Jubilé de Platine — 2025</div>
+  <div class="jubilee-title">70 Ans de Grâces</div>
+</section>
+
+<div class="container">
+  <div class="main-grid">
+    <div class="image-frame">
+      <img src="../image/jubile.jpg" alt="Mgr Samuel KLEDA">
+    </div>
+    
+    <div class="content-frame">
+      <h2 class="bishop-name">Mgr Samuel KLEDA</h2>
+      <span class="bishop-title">Archevêque Métropolitain de Douala</span>
+      
+      <p>Un moment historique pour notre communauté diocésaine. Nous célébrons sept décennies de foi et les anniversaires d'ordination de notre Archevêque.</p>
+
+      <div class="badges">
+        <div class="badge-card">
+          <strong>25 ANS</strong>
+          <span>Jubilé d'Argent <br>(Épiscopat)</span>
+        </div>
+        <div class="badge-card">
+          <strong>40 ANS</strong>
+          <span>Jubilé d'Émeraude <br>(Sacerdoce)</span>
+        </div>
+      </div>
+
+      <div class="info-bar">
+        <div>
+          <small>DATE</small>
+          <b>Samedi 14 Mars 2026</b>
+        </div>
+        <div>
+          <small>HEURE</small>
+          <b>10H00</b>
+        </div>
+        <div>
+          <small>LIEU</small>
+          <b>Cathédrale Sts Pierre & Paul</b>
+        </div>
+      </div>
+
+      <div class="live-section">
+        Célébration diffusée en direct par :
+        <div class="live-icons">Radio Veritas 96.9 MHZ | Télévision Veritas</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="bottom-nav">
+    <a href="index.html" class="btn-back">← Retour à l'accueil du portail</a>
+  </div>
+</div>
+
+<footer>
+  <p>© BIG DATA CENTER AI By <a href="https://www.youtube.com/@DominiqueSavio_Cyber-Ap%C3%B4tre3.0">Dominique Savio - Cyber Apôtre 3.0 </a></br>Aumônerie Diocésaine Jeunesse & Enfance – Douala</p>
+</footer>
+
+</body>
+</html>
