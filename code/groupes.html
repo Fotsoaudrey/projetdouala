@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Catéchèse & Groupes – Aumônerie Douala</title>
+  <style>
+    /* --- STYLE DE BASE (CONSERVÉ) --- */
+    body { font-family: "Segoe UI", sans-serif; margin: 0; padding: 0; background: #eef2f7; color: #333; }
+    
+    header { background: linear-gradient(135deg, #045286, #0072a8); color: white; padding: 20px; text-align: center; }
+    
+    nav { background: #ffffff; padding: 10px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); position: sticky; top: 0; z-index: 10; }
+    nav ul { margin: 0; padding: 0; display: flex; list-style: none; justify-content: center; flex-wrap: wrap; }
+    nav li { margin: 10px 15px; }
+    nav a { color: #004a7c; font-weight: bold; text-decoration: none; transition: 0.3s; }
+
+    /* --- STYLE SPECIFIQUE CATECHESE --- */
+    .container { max-width: 1100px; margin: 40px auto; padding: 0 20px; }
+
+    .section-title { 
+      text-align: center; color: #045286; margin-bottom: 30px; 
+      border-bottom: 4px solid #7cfc00; display: table; margin: 0 auto 30px; padding-bottom: 5px;
+    }
+
+    /* Blocs de Catéchèse */
+    .cate-section { background: white; padding: 40px; border-radius: 20px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); margin-bottom: 50px; }
+    
+    .cate-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
+    
+    .cate-card {
+      background: #f9fbff; padding: 25px; border-radius: 15px; border-top: 5px solid #0072a8;
+      transition: 0.3s;
+    }
+    .cate-card:hover { transform: translateY(-5px); background: #fff; box-shadow: 0 8px 15px rgba(0,0,0,0.1); }
+    .cate-card h3 { color: #0072a8; margin-top: 0; font-size: 1.1em; }
+    .age-badge { background: #7cfc00; color: #045286; padding: 2px 10px; border-radius: 10px; font-size: 0.8em; font-weight: bold; }
+
+    /* Groupes & Mouvements */
+    .groupes-section { display: grid; grid-template-columns: repeat(auto-fit, minmax(450px, 1fr)); gap: 30px; }
+    
+    .groupe-box {
+      background: linear-gradient(135deg, #045286, #0072a8); color: white;
+      padding: 30px; border-radius: 20px; position: relative; overflow: hidden;
+    }
+    .groupe-box h2 { margin-top: 0; color: #7cfc00; }
+    .groupe-list { list-style: none; padding: 0; }
+    .groupe-list li { 
+      padding: 10px 0; border-bottom: 1px solid rgba(255,255,255,0.1); 
+      display: flex; align-items: center;
+    }
+    .groupe-list li::before { content: "◈"; margin-right: 10px; color: #7cfc00; }
+
+    footer { background: #01395c; color: white; padding: 30px; text-align: center; margin-top: 50px; }
+
+    @media (max-width: 600px) { .groupes-section { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+
+<header>
+  <marquee><h1>Aumônerie Diocésaine Jeunesse & Enfance – Douala</h1></marquee>
+</header>
+
+<nav>
+  <ul>
+    <li><a href="index.html">Accueil</a></li>
+    <li><a href="index.html#apropos">À propos</a></li>
+    <li><a href="index.html#enfance">Enfance</a></li>
+    <li><a href="index.html#jeunesse">Jeunesse</a></li>
+    <li><a href="index.html#actus">Actualités</a></li>
+  </ul>
+</nav>
+
+<div class="container">
+  
+  <div class="cate-section">
+    <h2 class="section-title">Le Parcours de Catéchèse</h2>
+    <p style="text-align: center; margin-bottom: 40px;">Une progression adaptée à l'âge de l'enfant pour le préparer aux sacrements et à la vie chrétienne.</p>
+    
+    <div class="cate-grid">
+      <div class="cate-card">
+        <span class="age-badge">8 - 9 ans</span>
+        <h3>Année de Base</h3>
+        <p>Premiers pas dans la connaissance de Jésus et de la communauté chrétienne.</p>
+      </div>
+      <div class="cate-card">
+        <span class="age-badge">9 - 10 ans</span>
+        <h3>Première Communion</h3>
+        <p>Préparation au sacrement de l'Eucharistie et à la réconciliation.</p>
+      </div>
+      <div class="cate-card">
+        <span class="age-badge">11 - 12 ans</span>
+        <h3>Persévérance</h3>
+        <p>Approfondissement de la foi et initiation à la vie de prière plus intense.</p>
+      </div>
+      <div class="cate-card">
+        <span class="age-badge">13 ans +</span>
+        <h3>Profession de Foi</h3>
+        <p>Étape solennelle où le jeune confirme personnellement les promesses de son baptême.</p>
+      </div>
+      <div class="cate-card">
+        <span class="age-badge">13 ans +</span>
+        <h3>Profession de Foi</h3>
+        <p>Étape solennelle où le jeune confirme personnellement les promesses de son baptême.</p>
+      </div>
+      <div class="cate-card">
+        <span class="age-badge">13 ans +</span>
+        <h3>Profession de Foi</h3>
+        <p>Étape solennelle où le jeune confirme personnellement les promesses de son baptême.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="groupes-section">
+    
+    <div class="groupe-box">
+      <h2>Mouvements d'Enfance</h2>
+      <p>Pour vivre sa foi par l'action et la fraternité :</p>
+      <ul class="groupe-list">
+        <li>Copains du Monde / ACE</li>
+        <li>Les Coeurs Vaillants et Âmes Vaillantes (CVAV)</li>
+        <li>Scoutisme (Louveteaux)</li>
+        <li>Enfance Missionnaire</li>
+      </ul>
+    </div>
+
+    <div class="groupe-box" style="background: white; color: #333; border: 2px solid #045286;">
+      <h2 style="color: #045286;">Groupes de Service</h2>
+      <p>Servir Dieu et la communauté dès le plus jeune âge :</p>
+      <ul class="groupe-list">
+        <li>Enfants de Chœur (Servants de Messe)</li>
+        <li>Petits Chanteurs (Chorales d'enfants)</li>
+        <li>Lecteurs de la Parole</li>
+        <li>Danse Liturgique</li>
+      </ul>
+    </div>
+
+  </div>
+
+  <div style="background: #7cfc00; padding: 20px; border-radius: 15px; margin-top: 40px; text-align: center; color: #045286; font-weight: bold;">
+    📢 Pour toute inscription, rapprochez-vous du bureau de l'Aumônerie de votre Paroisse ou de votre Zone.
+  </div>
+
+  <center style="margin-top: 40px;">
+    <a href="index.html" style="color: #045286; font-weight: bold; text-decoration: none;">← Retourner à l'accueil</a>
+  </center>
+</div>
+
+<footer>
+  <p>© BIG DATA CENTER AI By <a href="https://www.youtube.com/@DominiqueSavio_Cyber-Ap%C3%B4tre3.0">Dominique Savio - Cyber Apôtre 3.0 </a></br>Aumônerie Diocésaine Jeunesse & Enfance – Douala</p>
+</footer>
+
+</body>
+</html>
