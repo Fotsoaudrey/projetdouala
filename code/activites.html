@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Engagements & Projets – Aumônerie Douala</title>
+  <style>
+    /* --- STYLE DE BASE (CONSERVÉ) --- */
+    body { font-family: "Segoe UI", sans-serif; margin: 0; padding: 0; background: #eef2f7; color: #333; }
+    
+    header { background: linear-gradient(135deg, #045286, #0072a8); color: white; padding: 20px; text-align: center; }
+    
+    nav { background: #ffffff; padding: 10px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); position: sticky; top: 0; z-index: 10; }
+    nav ul { margin: 0; padding: 0; display: flex; list-style: none; justify-content: center; flex-wrap: wrap; }
+    nav li { margin: 10px 15px; }
+    nav a { color: #004a7c; font-weight: bold; text-decoration: none; transition: 0.3s; }
+
+    /* --- SECTION PROJETS --- */
+    .hero-projets {
+      background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=1400');
+      background-size: cover; background-position: center;
+      color: white; padding: 80px 20px; text-align: center;
+    }
+
+    .container { max-width: 1200px; margin: 40px auto; padding: 0 20px; }
+
+    .intro-text { text-align: center; max-width: 800px; margin: 0 auto 50px; }
+    .intro-text h2 { color: #045286; font-size: 2.2em; }
+
+    /* Grille de 06 Projets/Engagements */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 30px;
+    }
+
+    .project-card {
+      background: white;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+      transition: 0.3s ease;
+      display: flex;
+      flex-direction: column;
+    }
+    .project-card:hover { transform: translateY(-10px); box-shadow: 0 15px 30px rgba(0,0,0,0.1); }
+
+    .project-img {
+      height: 200px;
+      background-color: #0072a8;
+      background-size: cover;
+      background-position: center;
+      position: relative;
+    }
+
+    .project-status {
+      position: absolute; top: 15px; right: 15px;
+      background: #7cfc00; color: #045286;
+      padding: 5px 12px; border-radius: 20px;
+      font-size: 0.8em; font-weight: bold;
+    }
+
+    .project-content { padding: 25px; flex-grow: 1; }
+    .project-content h3 { color: #045286; margin-top: 0; margin-bottom: 10px; }
+    .project-content p { color: #666; font-size: 0.95em; line-height: 1.5; }
+
+    /* Barre de progression (Optionnel pour faire "Projet") */
+    .progress-bar {
+      height: 8px; background: #eee; border-radius: 4px; margin-top: 15px;
+    }
+    .progress-fill {
+      height: 100%; background: #0072a8; border-radius: 4px;
+    }
+
+    /* Section Appel au volontariat */
+    .volunteer-banner {
+      background: #045286; color: white;
+      padding: 40px; border-radius: 20px;
+      text-align: center; margin-top: 60px;
+    }
+    .btn-action {
+      display: inline-block; background: #7cfc00; color: #045286;
+      padding: 15px 30px; border-radius: 50px; text-decoration: none;
+      font-weight: bold; margin-top: 20px; transition: 0.3s;
+    }
+    .btn-action:hover { background: #fff; transform: scale(1.05); }
+
+    footer { background: #01395c; color: white; padding: 30px; text-align: center; margin-top: 50px; }
+  </style>
+</head>
+<body>
+
+<header>
+  <marquee><h1>Aumônerie Diocésaine Jeunesse & Enfance – Douala</h1></marquee>
+</header>
+
+<nav>
+  <ul>
+    <li><a href="index.html">Accueil</a></li>
+    <li><a href="index.html#apropos">À propos</a></li>
+    <li><a href="index.html#enfance">Enfance</a></li>
+    <li><a href="index.html#jeunesse">Jeunesse</a></li>
+    <li><a href="index.html#actus">Actualités</a></li>
+  </ul>
+</nav>
+
+<section class="hero-projets">
+  <h1>Engagements & Impact Social</h1>
+  <p>Parce que notre foi s'exprime par nos œuvres au service des autres.</p>
+</section>
+
+<div class="container">
+  
+  <div class="intro-text">
+    <h2>Nos Projets Phares</h2>
+    <p>La jeunesse de l'Archidiocèse de Douala se mobilise pour le développement spirituel, social et environnemental de notre cité.</p>
+  </div>
+
+  <div class="projects-grid">
+    
+    <div class="project-card">
+      <div class="project-img" style="background-image: url('https://images.unsplash.com/photo-1593113598332-cd288d649433?q=80&w=800');">
+        <span class="project-status">En cours</span>
+      </div>
+      <div class="project-content">
+        <h3>Solidarité Carême</h3>
+        <p>Collecte de denrées et de vêtements pour les orphelinats et les familles démunies des zones périphériques de Douala.</p>
+        <div class="progress-bar"><div class="progress-fill" style="width: 75%;"></div></div>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-img" style="background-image: url('https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?q=80&w=800');">
+        <span class="project-status">Annuels</span>
+      </div>
+      <div class="project-content">
+        <h3>Eco-Paroisse</h3>
+        <p>Campagne de salubrité et de reboisement dans les paroisses pour répondre à l'appel de "Laudato Si" sur la sauvegarde de notre maison commune.</p>
+        <div class="progress-bar"><div class="progress-fill" style="width: 100%;"></div></div>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-img" style="background-image: url('https://images.unsplash.com/photo-1509062522246-3755977927d7?q=80&w=800');">
+        <span class="project-status">Nouveau</span>
+      </div>
+      <div class="project-content">
+        <h3>Soutien Scolaire Gratuit</h3>
+        <p>Les étudiants de l'aumônerie offrent des cours de répétition aux élèves en classe d'examen (BEPC, BAC) dans les zones rurales.</p>
+        <div class="progress-bar"><div class="progress-fill" style="width: 40%;"></div></div>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-img" style="background-image: url('https://images.unsplash.com/photo-1516533076085-503d245844a4?q=80&w=800');">
+        <span class="project-status">Permanent</span>
+      </div>
+      <div class="project-content">
+        <h3>Visite aux Malades</h3>
+        <p>Une présence régulière des jeunes dans les hôpitaux pour apporter réconfort, prière et écoute aux personnes souffrantes.</p>
+        <div class="progress-bar"><div class="progress-fill" style="width: 90%;"></div></div>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-img" style="background-image: url('https://images.unsplash.com/photo-1526628953301-3e589a6a8b74?q=80&w=800');">
+        <span class="project-status">Synode</span>
+      </div>
+      <div class="project-content">
+        <h3>Forum Jeunesse & Emploi</h3>
+        <p>Mise en relation des jeunes diplômés avec des chefs d'entreprises chrétiens pour faciliter l'insertion professionnelle.</p>
+        <div class="progress-bar"><div class="progress-fill" style="width: 60%;"></div></div>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-img" style="background-image: url('https://images.unsplash.com/photo-1523240795612-9a054b0db644?q=80&w=800');">
+        <span class="project-status">En préparation</span>
+      </div>
+      <div class="project-content">
+        <h3>Village de la Nuit des Jeunes</h3>
+        <p>Installation d'un espace d'exposition pour valoriser le savoir-faire et les talents des jeunes entrepreneurs catholiques.</p>
+        <div class="progress-bar"><div class="progress-fill" style="width: 20%;"></div></div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="volunteer-banner">
+    <h2>Un projet te tient à cœur ?</h2>
+    <p>Rejoins l'un des comités de projet ou propose une initiative pour ta zone pastorale.</p>
+    <a href="https://bit.ly/NDJ2026" class="btn-action">Je m'engage maintenant</a>
+  </div>
+
+  <center style="margin-top: 40px;">
+    <a href="index.html" style="color: #045286; font-weight: bold; text-decoration: none;">← Retour à l'accueil</a>
+  </center>
+</div>
+
+<footer>
+  <p>© BIG DATA CENTER AI By <a href="https://www.youtube.com/@DominiqueSavio_Cyber-Ap%C3%B4tre3.0">Dominique Savio - Cyber Apôtre 3.0 </a></br>Aumônerie Diocésaine Jeunesse & Enfance – Douala</p>
+</footer>
+
+</body>
+</html>
