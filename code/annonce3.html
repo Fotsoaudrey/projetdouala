@@ -1,296 +1,862 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Temps Liturgique – Archidiocèse de Douala</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Temps Liturgique – Carême | Archidiocèse de Douala</title>
+    <meta name="description" content="Découvrez les temps forts de l'année chrétienne : Carême, Avent, Noël, Pâques. Méditations, prières et activités liturgiques dans l'Archidiocèse de Douala.">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
     <style>
-        :root {
-            --primary: #045286;
-            --accent: #e67e22;
-            --bg-light: #f4f7f9;
-            --white: #ffffff;
-            --shadow: 0 10px 30px rgba(0,0,0,0.1);
-        }
-
-        header { 
-            background: var(--primary); 
-            color: white; 
-            padding: 15px 0; 
-            text-align: center; 
-            border-bottom: 3px solid var(--secondary);
-            width: 100%;
-        }
-
-        header marquee {
-            font-weight: bold;
-            text-transform: uppercase;
-            font-size: 14px;
-        }
-
-        nav { 
-            background: var(--white); 
-            padding: 15px 0; 
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1); 
-            position: sticky; 
-            top: 0; 
-            z-index: 1000; 
-            width: 100%;
-        }
-
-        nav ul { 
-            margin: 0; 
-            padding: 0; 
-            display: flex; 
-            list-style: none; 
-            justify-content: center; 
-            gap: 30px;
-        }
-
-        nav li {
-            display: inline;
-        }
-
-        nav a { 
-            color: var(--primary); 
-            font-weight: 700; 
-            text-decoration: none; 
-            font-size: 0.9rem; 
-            text-transform: uppercase;
-            transition: color 0.3s;
-        }
-
-        nav a:hover {
-            color: var(--accent);
-        }
-        body {
+        * {
             margin: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            background-color: var(--bg-light);
-            color: #333;
+            padding: 0;
+            box-sizing: border-box;
         }
-
-        /* --- CARROUSEL --- */
-        .carousel-container {
-            width: 100%;
-            max-width: 1000px;
-            height: 450px;
-            margin: 40px auto;
-            overflow: hidden;
-            border-radius: 20px;
-            box-shadow: var(--shadow);
-            border: 4px solid var(--white);
+        
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background: #f5f7fb;
+            color: #1a2c3e;
+            line-height: 1.5;
+            scroll-behavior: smooth;
+            transition: background 0.3s ease, color 0.3s ease;
         }
-
-        .slides {
+        /* MODE SOMBRE */
+        
+        body.dark-mode {
+            background: #0f1724;
+            color: #e2e8f0;
+        }
+        
+        body.dark-mode header,
+        body.dark-mode .appel-section,
+        body.dark-mode footer {
+            background: linear-gradient(135deg, #020617, #0f1724);
+        }
+        
+        body.dark-mode nav {
+            background: #1e293b;
+        }
+        
+        body.dark-mode nav a {
+            color: #e2e8f0;
+        }
+        
+        body.dark-mode .card {
+            background: #1e293b;
+            border-color: #334155;
+        }
+        
+        body.dark-mode .card p {
+            color: #94a3b8;
+        }
+        
+        body.dark-mode .countdown-box {
+            background: #1e293b;
+            border-color: #334155;
+        }
+        
+        body.dark-mode .countdown-number {
+            background: #0f1724;
+        }
+        
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 32px;
+        }
+        /* CONTROLES (mode sombre + langue) */
+        
+        .controls-bar {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1001;
             display: flex;
-            width: 300%;
-            height: 100%;
-            animation: slide 15s infinite ease-in-out;
+            gap: 12px;
         }
-
-        .slides img {
-            width: 33.33%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        @keyframes slide {
-            0% { transform: translateX(0); }
-            30% { transform: translateX(0); }
-            33% { transform: translateX(-33.33%); }
-            63% { transform: translateX(-33.33%); }
-            66% { transform: translateX(-66.66%); }
-            96% { transform: translateX(-66.66%); }
-            100% { transform: translateX(0); }
-        }
-
-        /* --- SECTION TITRE --- */
-        .section-intro {
-            padding: 60px 20px;
-            text-align: center;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .section-intro h2 {
-            color: var(--primary);
-            font-size: 2.2rem;
-            margin-bottom: 20px;
-            position: relative;
-            display: inline-block;
-        }
-
-        .section-intro h2::after {
-            content: "";
-            width: 80px;
-            height: 4px;
-            background: #7cfc00;
-            display: block;
-            margin: 10px auto 0;
-            border-radius: 2px;
-        }
-
-        /* --- CARTES LITURGIQUES --- */
-        .temps {
-            background: #edf2f7;
-            padding: 80px 20px;
-            text-align: center;
-        }
-
-        .temps h2 {
-            margin-bottom: 50px;
-            font-size: 2rem;
-            color: var(--primary);
-        }
-
-        .cards-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 25px;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .card {
-            background: var(--white);
-            padding: 40px 25px;
-            border-radius: 15px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-            transition: all 0.3s ease;
-            border-top: 5px solid var(--primary);
-        }
-
-        .card:hover {
-            transform: translateY(-10px);
-            box-shadow: var(--shadow);
-            border-top-color: var(--accent);
-        }
-
-        .card h3 {
-            color: var(--primary);
-            font-size: 1.5rem;
-            margin-bottom: 15px;
-        }
-
-        .card p {
-            font-size: 0.95rem;
-            color: #666;
-        }
-
-        /* --- APPEL À L'ACTION --- */
-        .appel {
-            padding: 80px 20px;
-            text-align: center;
-            background: var(--primary);
-            color: white;
-            clip-path: ellipse(150% 100% at 50% 100%); /* Petit effet de courbe */
-        }
-
-        .appel h2 {
-            font-size: 2.5rem;
-            margin-bottom: 15px;
-        }
-
-        .appel p {
-            font-size: 1.2rem;
-            margin-bottom: 30px;
-            opacity: 0.9;
-        }
-
-        .appel button {
-            padding: 15px 40px;
+        
+        .ctrl-btn {
+            background: rgba(255, 255, 255, 0.95);
             border: none;
-            background: var(--accent);
-            color: white;
-            font-size: 18px;
-            font-weight: bold;
-            border-radius: 50px;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
             cursor: pointer;
-            transition: transform 0.2s, background 0.3s;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            font-size: 1.2rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            transition: 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
-
-        .appel button:hover {
-            background: #d35400;
+        
+        body.dark-mode .ctrl-btn {
+            background: #2d3748;
+            color: #e2e8f0;
+        }
+        
+        .ctrl-btn:hover {
             transform: scale(1.05);
         }
-
+        /* HEADER */
+        
+        header {
+            background: linear-gradient(135deg, #0a2e4a, #045286);
+            color: white;
+            padding: 20px 0;
+            border-bottom: 3px solid #2ecc71;
+            transition: background 0.3s;
+            text-align: center;
+        }
+        
+        header h1 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+        
+        header p {
+            font-size: 0.85rem;
+            opacity: 0.85;
+        }
+        
+        @media (min-width: 768px) {
+            header h1 {
+                font-size: 1.9rem;
+            }
+        }
+        /* NAVIGATION */
+        
+        nav {
+            background: white;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.05);
+            position: sticky;
+            top: 0;
+            z-index: 99;
+            transition: background 0.3s;
+        }
+        
+        .nav-links {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 12px;
+            list-style: none;
+            padding: 14px 16px;
+        }
+        
+        .nav-links a {
+            padding: 10px 24px;
+            font-weight: 600;
+            color: #1a2c3e;
+            text-decoration: none;
+            border-radius: 40px;
+            transition: all 0.25s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        body.dark-mode .nav-links a {
+            color: #e2e8f0;
+        }
+        
+        .nav-links a i {
+            color: #2ecc71;
+        }
+        
+        .nav-links a:hover {
+            background: #045286;
+            color: white;
+        }
+        
+        .nav-links a:hover i {
+            color: white;
+        }
+        /* CARROUSEL */
+        
+        .carousel-section {
+            padding: 50px 0 30px;
+        }
+        
+        .carousel-container {
+            position: relative;
+            max-width: 1100px;
+            margin: 0 auto;
+            border-radius: 28px;
+            overflow: hidden;
+            box-shadow: 0 20px 35px rgba(0, 0, 0, 0.15);
+        }
+        
+        .carousel-slides {
+            display: flex;
+            transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        
+        .carousel-slide {
+            min-width: 100%;
+            position: relative;
+        }
+        
+        .carousel-slide img {
+            width: 100%;
+            height: 450px;
+            object-fit: cover;
+        }
+        
+        .carousel-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent);
+            color: white;
+            padding: 40px 30px 20px;
+            text-align: center;
+        }
+        
+        .carousel-caption h3 {
+            font-size: 1.8rem;
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 600;
+        }
+        
+        .carousel-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(4px);
+            border: none;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.3rem;
+            color: white;
+            transition: all 0.3s;
+            z-index: 10;
+        }
+        
+        .carousel-btn:hover {
+            background: #2ecc71;
+            transform: translateY(-50%) scale(1.1);
+        }
+        
+        .carousel-prev {
+            left: 20px;
+        }
+        
+        .carousel-next {
+            right: 20px;
+        }
+        
+        .carousel-dots {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-top: 20px;
+        }
+        
+        .carousel-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: #cbd5e1;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .carousel-dot.active {
+            width: 28px;
+            border-radius: 20px;
+            background: #2ecc71;
+        }
+        /* SECTION INTRO */
+        
+        .section-intro {
+            text-align: center;
+            padding: 60px 0 40px;
+        }
+        
+        .section-intro h2 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: #045286;
+            margin-bottom: 20px;
+        }
+        
+        body.dark-mode .section-intro h2 {
+            color: #2ecc71;
+        }
+        
+        .section-intro p {
+            max-width: 700px;
+            margin: 0 auto;
+            color: #64748b;
+            font-size: 1.1rem;
+        }
+        
+        body.dark-mode .section-intro p {
+            color: #94a3b8;
+        }
+        /* COMPTEUR CARÊME */
+        
+        .countdown-section {
+            background: linear-gradient(135deg, #045286, #0072a8);
+            padding: 50px 0;
+            margin: 40px 0;
+            border-radius: 28px;
+            text-align: center;
+            color: white;
+        }
+        
+        body.dark-mode .countdown-section {
+            background: linear-gradient(135deg, #020617, #0f1724);
+            border: 1px solid #2ecc71;
+        }
+        
+        .countdown-section h3 {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            font-family: 'Cormorant Garamond', serif;
+        }
+        
+        .countdown-box {
+            display: inline-flex;
+            gap: 30px;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px 40px;
+            border-radius: 60px;
+            backdrop-filter: blur(4px);
+        }
+        
+        .countdown-item {
+            text-align: center;
+        }
+        
+        .countdown-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            background: rgba(0, 0, 0, 0.3);
+            padding: 10px 20px;
+            border-radius: 20px;
+            min-width: 80px;
+        }
+        
+        .countdown-label {
+            font-size: 0.8rem;
+            margin-top: 8px;
+            opacity: 0.8;
+        }
+        /* CARTES TEMPS LITURGIQUES */
+        
+        .temps-section {
+            padding: 60px 0;
+        }
+        
+        .temps-section h2 {
+            text-align: center;
+            font-size: 2rem;
+            color: #045286;
+            margin-bottom: 50px;
+        }
+        
+        body.dark-mode .temps-section h2 {
+            color: #2ecc71;
+        }
+        
+        .cards-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 30px;
+        }
+        
+        .card {
+            background: white;
+            border-radius: 24px;
+            padding: 32px 24px;
+            text-align: center;
+            transition: all 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+            border: 1px solid #e9edf2;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+        }
+        
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 35px rgba(0, 0, 0, 0.12);
+            border-color: #2ecc71;
+        }
+        
+        .card-icon {
+            width: 70px;
+            height: 70px;
+            background: #2ecc71;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+        }
+        
+        .card-icon i {
+            font-size: 2rem;
+            color: #022b44;
+        }
+        
+        .card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 12px;
+            color: #045286;
+        }
+        
+        body.dark-mode .card h3 {
+            color: #2ecc71;
+        }
+        
+        .card p {
+            color: #64748b;
+            line-height: 1.6;
+        }
+        
+        body.dark-mode .card p {
+            color: #94a3b8;
+        }
+        /* SECTION APPEL À L'ACTION */
+        
+        .appel-section {
+            background: linear-gradient(135deg, #045286, #0072a8);
+            padding: 80px 0;
+            text-align: center;
+            color: white;
+            margin-top: 40px;
+        }
+        
+        .appel-section h2 {
+            font-size: 2.2rem;
+            margin-bottom: 16px;
+        }
+        
+        .appel-section p {
+            max-width: 600px;
+            margin: 0 auto 30px;
+            opacity: 0.9;
+        }
+        
+        .appel-btn {
+            background: #2ecc71;
+            color: #022b44;
+            padding: 14px 36px;
+            border: none;
+            border-radius: 50px;
+            font-weight: 800;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .appel-btn:hover {
+            background: white;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+        /* FOOTER */
+        
+        footer {
+            background: #022b44;
+            color: white;
+            padding: 40px 0;
+            text-align: center;
+            transition: background 0.3s;
+        }
+        
+        footer a {
+            color: #2ecc71;
+            text-decoration: none;
+        }
+        
         @media (max-width: 768px) {
-            .carousel-container { height: 250px; }
-            .appel h2 { font-size: 1.8rem; }
+            .carousel-slide img {
+                height: 280px;
+            }
+            .carousel-caption h3 {
+                font-size: 1.2rem;
+            }
+            .countdown-box {
+                flex-wrap: wrap;
+                gap: 15px;
+                padding: 15px 25px;
+            }
+            .countdown-number {
+                font-size: 1.5rem;
+                min-width: 60px;
+                padding: 8px 12px;
+            }
+            .container {
+                padding: 0 20px;
+            }
+            .section-intro h2 {
+                font-size: 1.8rem;
+            }
+            .appel-section h2 {
+                font-size: 1.6rem;
+            }
         }
     </style>
 </head>
+
 <body>
-    <header>
-    <marquee scrollamount="4">ARCHIDIOCÈSE DE DOUALA – REPERTOIRE OFFICIEL DES ZONES ET PAROISSES</marquee>
-</header>
 
-<nav>
-    <ul>
-        <li><a href="index.html">Accueil</a></li>
-        <li><a href="index.html#jeunesse">Jeunesse</a></li>
-        <li><a href="formations.html">Formations</a></li>
-        <li><a href="engagements.html">Projets</a></li>
-    </ul>
-</nav>
-
-<div class="carousel-container">
-    <div class="slides">
-        <img src="../image/2.jpeg" alt="Image 1">
-        <img src="../image/3.jpeg" alt="Image 2">
-        <img src="../image/4.jpeg" alt="Image 3">
+    <!-- CONTROLES -->
+    <div class="controls-bar">
+        <button class="ctrl-btn" id="darkModeToggle"><i class="fas fa-moon"></i></button>
+        <button class="ctrl-btn" id="langToggle"><i class="fas fa-globe"></i></button>
     </div>
-</div>
 
-    <section class="section-intro">
-        <h2>⛪ Temps actuel : Le Carême</h2>
-        <p>
-            Le Carême est un temps de conversion, de prière et de partage. 
-            Durant quarante jours, nous marchons à la suite du Christ vers la lumière de la Résurrection. 
-            C'est une opportunité unique de purifier nos cœurs.
-        </p>
+    <!-- HEADER -->
+    <header>
+        <div class="container">
+            <h1 data-key="headerTitle">ARCHIDIOCÈSE DE DOUALA</h1>
+            <p data-key="headerSub">Temps liturgique – Chemin de Carême</p>
+        </div>
+    </header>
+
+    <!-- NAVIGATION -->
+    <nav>
+        <div class="container">
+            <ul class="nav-links">
+                <li><a href="index.html"><i class="fas fa-home"></i> <span data-key="nav1">Accueil</span></a></li>
+                <li><a href="index.html#jeunesse"><i class="fas fa-users"></i> <span data-key="nav2">Jeunesse</span></a></li>
+                <li><a href="formations.html"><i class="fas fa-graduation-cap"></i> <span data-key="nav3">Formations</span></a></li>
+                <li><a href="engagements.html"><i class="fas fa-project-diagram"></i> <span data-key="nav4">Projets</span></a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- CARROUSEL -->
+    <section class="carousel-section">
+        <div class="container">
+            <div class="carousel-container">
+                <div class="carousel-slides" id="carouselSlides">
+                    <div class="carousel-slide">
+                        <img src="2.jpeg" alt="Carême" onerror="this.src='https://images.unsplash.com/photo-1504051771394-dd2f66b2e08f?w=1100&h=450&fit=crop'">
+                        <div class="carousel-caption">
+                            <h3 data-key="slide1Title">Temps de Carême</h3>
+                        </div>
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="3.jpeg" alt="Prière" onerror="this.src='https://images.unsplash.com/photo-1438232992991-995b7058bbb3?w=1100&h=450&fit=crop'">
+                        <div class="carousel-caption">
+                            <h3 data-key="slide2Title">Prière et Pénitence</h3>
+                        </div>
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="4.jpeg" alt="Résurrection" onerror="this.src='https://images.unsplash.com/photo-1445251836269-d158eaa028a6?w=1100&h=450&fit=crop'">
+                        <div class="carousel-caption">
+                            <h3 data-key="slide3Title">Vers Pâques</h3>
+                        </div>
+                    </div>
+                </div>
+                <button class="carousel-btn carousel-prev" id="prevSlide"><i class="fas fa-chevron-left"></i></button>
+                <button class="carousel-btn carousel-next" id="nextSlide"><i class="fas fa-chevron-right"></i></button>
+            </div>
+            <div class="carousel-dots" id="carouselDots"></div>
+        </div>
     </section>
 
-    <section class="temps">
-        <h2>Les temps forts de l’année chrétienne</h2>
-        <div class="cards-container">
-            <div class="card">
-                <h3>Avent</h3>
-                <p>Temps d’attente joyeuse et de préparation intérieure avant la célébration de la naissance du Sauveur.</p>
-            </div>
+    <!-- SECTION INTRO -->
+    <section class="section-intro">
+        <div class="container">
+            <h2 data-key="introTitle">⛪ Temps actuel : Le Carême</h2>
+            <p data-key="introDesc">
+                Le Carême est un temps de conversion, de prière et de partage. Durant quarante jours, nous marchons à la suite du Christ vers la lumière de la Résurrection. C'est une opportunité unique de purifier nos cœurs.
+            </p>
+        </div>
+    </section>
 
-            <div class="card">
-                <h3>Noël</h3>
-                <p>La Parole s'est faite chair ! Nous célébrons Dieu qui vient habiter parmi les hommes.</p>
-            </div>
-
-            <div class="card">
-                <h3>Carême</h3>
-                <p>40 jours de désert spirituel pour se recentrer sur l'essentiel : Dieu et nos frères.</p>
-            </div>
-
-            <div class="card">
-                <h3>Pâques</h3>
-                <p>Le sommet de notre foi. La victoire éclatante de la Vie sur la mort et le péché.</p>
+    <!-- COMPTEUR CARÊME -->
+    <section class="countdown-section">
+        <div class="container">
+            <h3 data-key="countdownTitle">📅 Jours avant Pâques</h3>
+            <div class="countdown-box">
+                <div class="countdown-item">
+                    <div class="countdown-number" id="daysLeft">0</div>
+                    <div class="countdown-label" data-key="daysLabel">Jours</div>
+                </div>
             </div>
         </div>
     </section>
 
-    <section class="appel">
-        <h2>Marchons ensemble dans la foi</h2>
-        <p>
-            Vivons chaque temps liturgique comme une opportunité de croissance 
-            spirituelle et de communion fraternelle au sein de notre Archidiocèse.
-        </p>
-        <button>Découvrir nos activités</button>
+    <!-- CARTES TEMPS LITURGIQUES -->
+    <section class="temps-section">
+        <div class="container">
+            <h2 data-key="cardsTitle">Les temps forts de l'année chrétienne</h2>
+            <div class="cards-container">
+                <div class="card">
+                    <div class="card-icon"><i class="fas fa-crown"></i></div>
+                    <h3 data-key="card1Title">Avent</h3>
+                    <p data-key="card1Desc">Temps d'attente joyeuse et de préparation intérieure avant la célébration de la naissance du Sauveur.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon"><i class="fas fa-star-of-life"></i></div>
+                    <h3 data-key="card2Title">Noël</h3>
+                    <p data-key="card2Desc">La Parole s'est faite chair ! Nous célébrons Dieu qui vient habiter parmi les hommes.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon"><i class="fas fa-cross"></i></div>
+                    <h3 data-key="card3Title">Carême</h3>
+                    <p data-key="card3Desc">40 jours de désert spirituel pour se recentrer sur l'essentiel : Dieu et nos frères.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon"><i class="fas fa-church"></i></div>
+                    <h3 data-key="card4Title">Pâques</h3>
+                    <p data-key="card4Desc">Le sommet de notre foi. La victoire éclatante de la Vie sur la mort et le péché.</p>
+                </div>
+            </div>
+        </div>
     </section>
-    
+
+    <!-- SECTION APPEL À L'ACTION -->
+    <section class="appel-section">
+        <div class="container">
+            <h2 data-key="appelTitle">Marchons ensemble dans la foi</h2>
+            <p data-key="appelDesc">
+                Vivons chaque temps liturgique comme une opportunité de croissance spirituelle et de communion fraternelle au sein de notre Archidiocèse.
+            </p>
+            <button class="appel-btn" id="discoverBtn"><i class="fas fa-calendar-alt"></i> <span data-key="appelBtn">Découvrir nos activités</span></button>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
     <footer>
-  <p>© BIG DATA CENTER AI By <a href="https://www.youtube.com/@DominiqueSavio_Cyber-Ap%C3%B4tre3.0">Dominique Savio - Cyber Apôtre 3.0 </a></br>Aumônerie Diocésaine Jeunesse & Enfance – Douala</p>
-</footer>
+        <div class="container">
+            <p>© BIG DATA CENTER AI — <a href="https://www.youtube.com/@DominiqueSavio_Cyber-Ap%C3%B4tre3.0" target="_blank">Dominique Savio - Cyber Apôtre 3.0</a></p>
+            <p data-key="footerText">Aumônerie Diocésaine Jeunesse & Enfance – Douala</p>
+        </div>
+    </footer>
+
+    <script>
+        // ========== CARROUSEL ==========
+        const slides = document.getElementById('carouselSlides');
+        const slidesCount = document.querySelectorAll('.carousel-slide').length;
+        let currentIndex = 0;
+        let autoInterval;
+
+        function updateCarousel() {
+            slides.style.transform = `translateX(-${currentIndex * 100}%)`;
+            updateDots();
+        }
+
+        function nextSlide() {
+            currentIndex = (currentIndex + 1) % slidesCount;
+            updateCarousel();
+            resetAutoScroll();
+        }
+
+        function prevSlide() {
+            currentIndex = (currentIndex - 1 + slidesCount) % slidesCount;
+            updateCarousel();
+            resetAutoScroll();
+        }
+
+        function updateDots() {
+            const dots = document.querySelectorAll('.carousel-dot');
+            dots.forEach((dot, i) => {
+                dot.classList.toggle('active', i === currentIndex);
+            });
+        }
+
+        function createDots() {
+            const dotsContainer = document.getElementById('carouselDots');
+            dotsContainer.innerHTML = '';
+            for (let i = 0; i < slidesCount; i++) {
+                const dot = document.createElement('div');
+                dot.className = `carousel-dot ${i === currentIndex ? 'active' : ''}`;
+                dot.addEventListener('click', () => {
+                    currentIndex = i;
+                    updateCarousel();
+                    resetAutoScroll();
+                });
+                dotsContainer.appendChild(dot);
+            }
+        }
+
+        function startAutoScroll() {
+            autoInterval = setInterval(() => {
+                nextSlide();
+            }, 5000);
+        }
+
+        function resetAutoScroll() {
+            clearInterval(autoInterval);
+            startAutoScroll();
+        }
+
+        function stopAutoScroll() {
+            clearInterval(autoInterval);
+        }
+
+        document.getElementById('prevSlide').addEventListener('click', prevSlide);
+        document.getElementById('nextSlide').addEventListener('click', nextSlide);
+        const carouselContainer = document.querySelector('.carousel-container');
+        carouselContainer.addEventListener('mouseenter', stopAutoScroll);
+        carouselContainer.addEventListener('mouseleave', startAutoScroll);
+
+        // ========== COMPTEUR CARÊME ==========
+        function getEasterDate(year) {
+            // Algorithme de Computus (calcul de Pâques)
+            const a = year % 19;
+            const b = Math.floor(year / 100);
+            const c = year % 100;
+            const d = Math.floor(b / 4);
+            const e = b % 4;
+            const f = Math.floor((b + 8) / 25);
+            const g = Math.floor((b - f + 1) / 3);
+            const h = (19 * a + b - d - g + 15) % 30;
+            const i = Math.floor(c / 4);
+            const k = c % 4;
+            const l = (32 + 2 * e + 2 * i - h - k) % 7;
+            const m = Math.floor((a + 11 * h + 22 * l) / 451);
+            const month = Math.floor((h + l - 7 * m + 114) / 31);
+            const day = ((h + l - 7 * m + 114) % 31) + 1;
+            return new Date(year, month - 1, day);
+        }
+
+        function updateCountdown() {
+            const today = new Date();
+            const currentYear = today.getFullYear();
+            let easter = getEasterDate(currentYear);
+            if (today > easter) {
+                easter = getEasterDate(currentYear + 1);
+            }
+            const diffTime = easter - today;
+            const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+            document.getElementById('daysLeft').textContent = diffDays > 0 ? diffDays : 0;
+        }
+
+        updateCountdown();
+
+        // ========== BOUTON DÉCOUVRIR ==========
+        document.getElementById('discoverBtn').addEventListener('click', () => {
+            alert('📅 Consultez le programme des activités dans votre paroisse !');
+        });
+
+        // ========== MULTILINGUE ==========
+        let currentLang = localStorage.getItem('lang') || 'fr';
+
+        const translations = {
+            fr: {
+                headerTitle: "ARCHIDIOCÈSE DE DOUALA",
+                headerSub: "Temps liturgique – Chemin de Carême",
+                nav1: "Accueil",
+                nav2: "Jeunesse",
+                nav3: "Formations",
+                nav4: "Projets",
+                slide1Title: "Temps de Carême",
+                slide2Title: "Prière et Pénitence",
+                slide3Title: "Vers Pâques",
+                introTitle: "⛪ Temps actuel : Le Carême",
+                introDesc: "Le Carême est un temps de conversion, de prière et de partage. Durant quarante jours, nous marchons à la suite du Christ vers la lumière de la Résurrection. C'est une opportunité unique de purifier nos cœurs.",
+                countdownTitle: "📅 Jours avant Pâques",
+                daysLabel: "Jours",
+                cardsTitle: "Les temps forts de l'année chrétienne",
+                card1Title: "Avent",
+                card1Desc: "Temps d'attente joyeuse et de préparation intérieure avant la célébration de la naissance du Sauveur.",
+                card2Title: "Noël",
+                card2Desc: "La Parole s'est faite chair ! Nous célébrons Dieu qui vient habiter parmi les hommes.",
+                card3Title: "Carême",
+                card3Desc: "40 jours de désert spirituel pour se recentrer sur l'essentiel : Dieu et nos frères.",
+                card4Title: "Pâques",
+                card4Desc: "Le sommet de notre foi. La victoire éclatante de la Vie sur la mort et le péché.",
+                appelTitle: "Marchons ensemble dans la foi",
+                appelDesc: "Vivons chaque temps liturgique comme une opportunité de croissance spirituelle et de communion fraternelle au sein de notre Archidiocèse.",
+                appelBtn: "Découvrir nos activités",
+                footerText: "Aumônerie Diocésaine Jeunesse & Enfance – Douala"
+            },
+            en: {
+                headerTitle: "ARCHDIOCESE OF DOUALA",
+                headerSub: "Liturgical Time – Lenten Journey",
+                nav1: "Home",
+                nav2: "Youth",
+                nav3: "Trainings",
+                nav4: "Projects",
+                slide1Title: "Lenten Season",
+                slide2Title: "Prayer and Penance",
+                slide3Title: "Towards Easter",
+                introTitle: "⛪ Current Time: Lent",
+                introDesc: "Lent is a time of conversion, prayer and sharing. For forty days, we follow Christ towards the light of the Resurrection. It is a unique opportunity to purify our hearts.",
+                countdownTitle: "📅 Days until Easter",
+                daysLabel: "Days",
+                cardsTitle: "Highlights of the Christian Year",
+                card1Title: "Advent",
+                card1Desc: "A time of joyful waiting and inner preparation before the celebration of the Savior's birth.",
+                card2Title: "Christmas",
+                card2Desc: "The Word became flesh! We celebrate God who comes to dwell among men.",
+                card3Title: "Lent",
+                card3Desc: "40 days of spiritual desert to refocus on the essentials: God and our brothers and sisters.",
+                card4Title: "Easter",
+                card4Desc: "The summit of our faith. The glorious victory of Life over death and sin.",
+                appelTitle: "Let us walk together in faith",
+                appelDesc: "Let us live each liturgical season as an opportunity for spiritual growth and fraternal communion within our Archdiocese.",
+                appelBtn: "Discover our activities",
+                footerText: "Diocesan Youth & Children's Chaplaincy – Douala"
+            }
+        };
+
+        function updateLanguage() {
+            const t = translations[currentLang];
+            document.querySelectorAll('[data-key]').forEach(el => {
+                const key = el.getAttribute('data-key');
+                if (t[key]) {
+                    if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
+                        el.placeholder = t[key];
+                    } else {
+                        el.textContent = t[key];
+                    }
+                }
+            });
+            localStorage.setItem('lang', currentLang);
+        }
+
+        document.getElementById('langToggle').addEventListener('click', () => {
+            currentLang = currentLang === 'fr' ? 'en' : 'fr';
+            updateLanguage();
+        });
+
+        // ========== MODE SOMBRE ==========
+        function initDarkMode() {
+            const darkMode = localStorage.getItem('darkMode') === 'true';
+            if (darkMode) document.body.classList.add('dark-mode');
+            const toggleBtn = document.getElementById('darkModeToggle');
+            toggleBtn.addEventListener('click', () => {
+                document.body.classList.toggle('dark-mode');
+                localStorage.setItem('darkMode', document.body.classList.contains('dark-mode'));
+                const icon = toggleBtn.querySelector('i');
+                icon.className = document.body.classList.contains('dark-mode') ? 'fas fa-sun' : 'fas fa-moon';
+            });
+            const icon = toggleBtn.querySelector('i');
+            icon.className = darkMode ? 'fas fa-sun' : 'fas fa-moon';
+        }
+
+        // ========== INITIALISATION ==========
+        createDots();
+        startAutoScroll();
+        initDarkMode();
+        updateLanguage();
+    </script>
 
 </body>
+
 </html>
