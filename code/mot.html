@@ -1,160 +1,608 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Message de l'Aumônier – Jeunesse Diocésaine Douala</title>
-  <style>
-    :root {
-      --deep-blue: #033c63;
-      --gold: #c5a021;
-      --platinum: #f4f7f9;
-      --white: #ffffff;
-      --text-size: 1.25rem;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Message de l'Aumônier | Aumônerie Diocésaine Douala</title>
+    <meta name="description" content="Message de l'Abbé Christopher GEH KUM, Aumônier Diocésain des Jeunes et de l'Enfance de Douala – Thème de l'année pastorale : Formation intégrale des jeunes et emploi.">
 
-    body { 
-      font-family: "Georgia", serif; 
-      margin: 0; padding: 0; 
-      background: var(--platinum); 
-      color: #333; 
-      font-size: var(--text-size);
-      line-height: 1.8;
-    }
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-    /* --- HEADER --- */
-    header { 
-      background: var(--deep-blue);
-      color: white; 
-      padding: 20px 0; 
-      text-align: center; 
-      border-bottom: 4px solid var(--gold);
-      position: sticky; top: 0; z-index: 1000;
-    }
-    header h1 { 
-      margin: 0; font-size: 1.4em; letter-spacing: 3px; 
-      text-transform: uppercase; color: var(--gold);
-      font-family: "Cinzel", serif;
-    }
+    <!-- Font Awesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
-    .container { max-width: 900px; margin: 40px auto; padding: 0 25px; }
-
-    /* --- BANNIÈRE THÈME --- */
-    .theme-banner {
-      background: var(--white);
-      padding: 40px;
-      text-align: center;
-      border-radius: 12px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-      margin-bottom: 50px;
-      border: 1px solid #eee;
-    }
-    .theme-label { font-size: 0.9em; color: var(--gold); font-weight: bold; text-transform: uppercase; letter-spacing: 2px; }
-    .theme-title { font-size: 2.2em; color: var(--deep-blue); margin: 15px 0; font-weight: 800; line-height: 1.2; }
-
-    /* --- SECTION MESSAGE --- */
-    .message-card {
-      background: var(--white);
-      padding: 50px;
-      border-radius: 12px;
-      box-shadow: 0 15px 40px rgba(0,0,0,0.05);
-      position: relative;
-    }
-    .message-card::before {
-      content: "“";
-      position: absolute;
-      top: 20px; left: 30px;
-      font-size: 8em;
-      color: var(--platinum);
-      font-family: serif;
-      z-index: 0;
-    }
-    .message-content { position: relative; z-index: 1; }
-    
-    .aumonier-intro {
-      display: flex; align-items: center; gap: 20px; margin-bottom: 30px;
-    }
-    .aumonier-photo {
-      width: 80px; height: 80px; background: var(--deep-blue); border-radius: 50%;
-      display: flex; align-items: center; justify-content: center; color: var(--gold);
-      font-weight: bold; border: 2px solid var(--gold);
-    }
-
-    .signature {
-      margin-top: 40px;
-      padding-top: 20px;
-      border-top: 1px solid #eee;
-      text-align: right;
-      font-style: italic;
-    }
-
-    /* --- ACTIONS / RETOUR --- */
-    .bottom-nav { text-align: center; margin: 60px 0; }
-    .btn-back {
-      text-decoration: none; background: var(--deep-blue); color: white; 
-      padding: 15px 40px; border-radius: 50px; font-weight: bold;
-      transition: 0.3s; border: 2px solid var(--deep-blue); display: inline-block;
-    }
-    .btn-back:hover { background: transparent; color: var(--deep-blue); transform: translateY(-3px); }
-
-    footer { 
-      background: #1a1a1a; color: #999; text-align: center; 
-      padding: 50px; margin-top: 80px; font-size: 0.9em; 
-    }
-
-    @media (max-width: 600px) {
-      .theme-title { font-size: 1.6em; }
-      .message-card { padding: 30px 20px; }
-    }
-  </style>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background: #f5f7fb;
+            color: #1a2c3e;
+            line-height: 1.5;
+            scroll-behavior: smooth;
+            transition: background 0.3s ease, color 0.3s ease;
+        }
+        /* MODE SOMBRE */
+        
+        body.dark-mode {
+            background: #0f1724;
+            color: #e2e8f0;
+        }
+        
+        body.dark-mode header,
+        body.dark-mode footer {
+            background: linear-gradient(135deg, #020617, #0f1724);
+        }
+        
+        body.dark-mode nav {
+            background: #1e293b;
+        }
+        
+        body.dark-mode nav a {
+            color: #e2e8f0;
+        }
+        
+        body.dark-mode .theme-banner,
+        body.dark-mode .message-card {
+            background: #1e293b;
+            border-color: #334155;
+        }
+        
+        body.dark-mode .message-card::before {
+            color: #2d3748;
+        }
+        
+        body.dark-mode .aumonier-photo {
+            background: #0f1724;
+            border-color: #2ecc71;
+            color: #2ecc71;
+        }
+        
+        body.dark-mode .btn-back {
+            background: #2ecc71;
+            color: #022b44;
+            border-color: #2ecc71;
+        }
+        
+        body.dark-mode .btn-back:hover {
+            background: transparent;
+            color: #2ecc71;
+        }
+        
+        body.dark-mode .signature {
+            border-top-color: #334155;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 32px;
+        }
+        /* CONTROLES */
+        
+        .controls-bar {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1001;
+            display: flex;
+            gap: 12px;
+        }
+        
+        .ctrl-btn {
+            background: rgba(255, 255, 255, 0.95);
+            border: none;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.2rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            transition: 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        body.dark-mode .ctrl-btn {
+            background: #2d3748;
+            color: #e2e8f0;
+        }
+        
+        .ctrl-btn:hover {
+            transform: scale(1.05);
+        }
+        /* HEADER */
+        
+        header {
+            background: linear-gradient(135deg, #033c63, #045286);
+            color: white;
+            padding: 20px 0;
+            border-bottom: 4px solid #2ecc71;
+            transition: background 0.3s;
+            text-align: center;
+        }
+        
+        header h1 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #2ecc71;
+        }
+        
+        header p {
+            font-size: 0.85rem;
+            opacity: 0.85;
+        }
+        
+        @media (min-width: 768px) {
+            header h1 {
+                font-size: 1.9rem;
+            }
+        }
+        /* NAVIGATION */
+        
+        nav {
+            background: white;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.05);
+            position: sticky;
+            top: 0;
+            z-index: 99;
+            transition: background 0.3s;
+        }
+        
+        .nav-links {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 12px;
+            list-style: none;
+            padding: 14px 16px;
+        }
+        
+        .nav-links a {
+            padding: 10px 24px;
+            font-weight: 600;
+            color: #1a2c3e;
+            text-decoration: none;
+            border-radius: 40px;
+            transition: all 0.25s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        body.dark-mode .nav-links a {
+            color: #e2e8f0;
+        }
+        
+        .nav-links a i {
+            color: #2ecc71;
+        }
+        
+        .nav-links a:hover {
+            background: #045286;
+            color: white;
+        }
+        
+        .nav-links a:hover i {
+            color: white;
+        }
+        /* BANNIÈRE THÈME */
+        
+        .theme-banner {
+            background: white;
+            padding: 50px 40px;
+            text-align: center;
+            border-radius: 28px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            margin: 50px 0;
+            border: 1px solid #e9edf2;
+            transition: all 0.3s;
+        }
+        
+        .theme-label {
+            font-size: 0.85rem;
+            color: #2ecc71;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+        }
+        
+        .theme-title {
+            font-size: 2.2rem;
+            color: #045286;
+            margin: 20px 0 0;
+            font-weight: 800;
+            line-height: 1.3;
+            font-family: 'Cormorant Garamond', serif;
+        }
+        
+        body.dark-mode .theme-title {
+            color: #2ecc71;
+        }
+        /* CARTE MESSAGE */
+        
+        .message-card {
+            background: white;
+            padding: 50px;
+            border-radius: 28px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.05);
+            position: relative;
+            transition: all 0.3s;
+            margin-bottom: 50px;
+        }
+        
+        .message-card::before {
+            content: "“";
+            position: absolute;
+            top: 30px;
+            left: 35px;
+            font-size: 8rem;
+            color: #eef2ff;
+            font-family: serif;
+            z-index: 0;
+            pointer-events: none;
+        }
+        
+        body.dark-mode .message-card::before {
+            color: #2d3748;
+        }
+        
+        .message-content {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .message-content p {
+            font-size: 1.1rem;
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+            color: #334155;
+        }
+        
+        body.dark-mode .message-content p {
+            color: #cbd5e1;
+        }
+        /* PROFIL AUMÔNIER */
+        
+        .aumonier-intro {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+            margin-bottom: 40px;
+        }
+        
+        .aumonier-photo {
+            width: 90px;
+            height: 90px;
+            background: linear-gradient(135deg, #033c63, #045286);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #2ecc71;
+            font-weight: 800;
+            font-size: 1.8rem;
+            border: 3px solid #2ecc71;
+            transition: 0.3s;
+        }
+        
+        .aumonier-photo img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+        
+        .aumonier-info {
+            flex: 1;
+        }
+        
+        .aumonier-info strong {
+            font-size: 1.3rem;
+            color: #045286;
+            display: block;
+            margin-bottom: 5px;
+        }
+        
+        body.dark-mode .aumonier-info strong {
+            color: #2ecc71;
+        }
+        
+        .aumonier-info span {
+            font-size: 0.9rem;
+            color: #64748b;
+        }
+        
+        body.dark-mode .aumonier-info span {
+            color: #94a3b8;
+        }
+        /* SIGNATURE */
+        
+        .signature {
+            margin-top: 40px;
+            padding-top: 25px;
+            border-top: 1px solid #e9edf2;
+            text-align: right;
+            font-style: italic;
+            font-size: 1rem;
+        }
+        
+        .signature strong {
+            color: #045286;
+        }
+        
+        body.dark-mode .signature strong {
+            color: #2ecc71;
+        }
+        /* BOUTON RETOUR */
+        
+        .bottom-nav {
+            text-align: center;
+            margin: 40px 0 60px;
+        }
+        
+        .btn-back {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            background: #045286;
+            color: white;
+            padding: 14px 36px;
+            border-radius: 50px;
+            font-weight: 700;
+            transition: all 0.3s;
+            border: 2px solid #045286;
+        }
+        
+        .btn-back:hover {
+            background: transparent;
+            color: #045286;
+            transform: translateX(-5px);
+        }
+        
+        body.dark-mode .btn-back {
+            background: #2ecc71;
+            color: #022b44;
+            border-color: #2ecc71;
+        }
+        
+        body.dark-mode .btn-back:hover {
+            background: transparent;
+            color: #2ecc71;
+        }
+        /* FOOTER */
+        
+        footer {
+            background: #033c63;
+            color: white;
+            padding: 40px 0;
+            text-align: center;
+            transition: background 0.3s;
+        }
+        
+        footer a {
+            color: #2ecc71;
+            text-decoration: none;
+        }
+        
+        footer a:hover {
+            color: white;
+        }
+        
+        @media (max-width: 768px) {
+            .theme-title {
+                font-size: 1.6rem;
+            }
+            .message-card {
+                padding: 30px 25px;
+            }
+            .message-card::before {
+                font-size: 5rem;
+                top: 20px;
+                left: 20px;
+            }
+            .aumonier-intro {
+                flex-direction: column;
+                text-align: center;
+            }
+            .signature {
+                text-align: center;
+            }
+            .container {
+                padding: 0 20px;
+            }
+        }
+    </style>
 </head>
+
 <body>
 
-<header>
-  <h1>Archidiocèse de Douala</h1>
-</header>
-
-<div class="container">
-  
-  <div class="theme-banner">
-    <div class="theme-label">Thème de l'Année Pastorale</div>
-    <h2 class="theme-title">Formation intégrale des jeunes et emploi dans la société</h2>
-  </div>
-
-  <article class="message-card">
-    <div class="message-content">
-      <div class="aumonier-intro">
-        <div class="aumonier-photo">ADJ</div>
-        <div>
-          <strong>Abbé Christopher GEH KUM</strong><br>
-          <span style="font-size: 0.8em; color: #666;">Aumônier Diocésain des Jeunes et de l'Enfance</span>
-        </div>
-      </div>
-
-      <p>Chers jeunes de l'Archidiocèse de Douala,</p>
-
-      <p>En cette année consacrée à votre <strong>formation intégrale</strong>, l'Église vous appelle à ne pas être de simples spectateurs, mais les bâtisseurs d'une société nouvelle. La formation que nous prônons n'est pas seulement intellectuelle ; elle touche votre cœur, votre âme et vos mains.</p>
-
-      <p>Le défi de l'<strong>emploi</strong> est au cœur de nos prières et de nos actions. Dans un monde qui change, votre foi doit devenir un moteur d'innovation et d'intégrité professionnelle. Soyez des chrétiens compétents, des citoyens honnêtes et des entrepreneurs guidés par l'Évangile.</p>
-      
-      <p>Rappelez-vous que chaque talent que vous développez est une offrande pour la gloire de Dieu et le service de vos frères.</p>
-
-      <div class="signature">
-        Que le Seigneur bénisse votre cheminement,<br>
-        <strong>Votre Aumônier.</strong>
-      </div>
+    <!-- CONTROLES -->
+    <div class="controls-bar">
+        <button class="ctrl-btn" id="darkModeToggle"><i class="fas fa-moon"></i></button>
+        <button class="ctrl-btn" id="langToggle"><i class="fas fa-globe"></i></button>
     </div>
-  </article>
 
-  <div class="bottom-nav">
-    <a href="index.html" class="btn-back">← Retour à l'accueil du portail</a>
-  </div>
+    <!-- HEADER -->
+    <header>
+        <div class="container">
+            <h1 data-key="headerTitle">ARCHIDIOCÈSE DE DOUALA</h1>
+            <p data-key="headerSub">Message de l'Aumônier Diocésain</p>
+        </div>
+    </header>
 
-</div>
+    <!-- NAVIGATION -->
+    <nav>
+        <div class="container">
+            <ul class="nav-links">
+                <li><a href="index.html"><i class="fas fa-home"></i> <span data-key="nav1">Accueil</span></a></li>
+                <li><a href="index.html#apropos"><i class="fas fa-church"></i> <span data-key="nav2">À propos</span></a></li>
+                <li><a href="index.html#jeunesse"><i class="fas fa-users"></i> <span data-key="nav3">Jeunesse</span></a></li>
+                <li><a href="annonce3.html"><i class="fas fa-cross"></i> <span data-key="nav4">Carême</span></a></li>
+            </ul>
+        </div>
+    </nav>
 
-<footer>
-  <p>© BIG DATA CENTER AI By <a href="https://www.youtube.com/@DominiqueSavio_Cyber-Ap%C3%B4tre3.0">Dominique Savio - Cyber Apôtre 3.0 </a></br>Aumônerie Diocésaine Jeunesse & Enfance – Douala</p>
-</footer>
+    <!-- BANNIÈRE THÈME -->
+    <div class="container">
+        <div class="theme-banner">
+            <div class="theme-label" data-key="themeLabel">Thème de l'Année Pastorale</div>
+            <h2 class="theme-title" data-key="themeTitle">Formation intégrale des jeunes et emploi dans la société</h2>
+        </div>
+    </div>
+
+    <!-- CARTE MESSAGE -->
+    <div class="container">
+        <article class="message-card">
+            <div class="message-content">
+                <div class="aumonier-intro">
+                    <div class="aumonier-photo">
+                        <img src="aumonier.jpg" alt="Abbé Christopher GEH KUM" onerror="this.src='https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=90&h=90&fit=crop'">
+                    </div>
+                    <div class="aumonier-info">
+                        <strong data-key="aumonierName">Abbé Christopher GEH KUM</strong>
+                        <span data-key="aumonierTitle">Aumônier Diocésain des Jeunes et de l'Enfance</span>
+                    </div>
+                </div>
+
+                <p data-key="messageP1">Chers jeunes de l'Archidiocèse de Douala,</p>
+
+                <p data-key="messageP2">En cette année consacrée à votre <strong>formation intégrale</strong>, l'Église vous appelle à ne pas être de simples spectateurs, mais les bâtisseurs d'une société nouvelle. La formation que nous prônons n'est pas seulement intellectuelle
+                    ; elle touche votre cœur, votre âme et vos mains.</p>
+
+                <p data-key="messageP3">Le défi de l'<strong>emploi</strong> est au cœur de nos prières et de nos actions. Dans un monde qui change, votre foi doit devenir un moteur d'innovation et d'intégrité professionnelle. Soyez des chrétiens compétents, des citoyens honnêtes
+                    et des entrepreneurs guidés par l'Évangile.</p>
+
+                <p data-key="messageP4">Rappelez-vous que chaque talent que vous développez est une offrande pour la gloire de Dieu et le service de vos frères.</p>
+
+                <div class="signature">
+                    <span data-key="signatureText">Que le Seigneur bénisse votre cheminement,</span><br>
+                    <strong data-key="signatureName">Votre Aumônier.</strong>
+                </div>
+            </div>
+        </article>
+    </div>
+
+    <!-- BOUTON RETOUR -->
+    <div class="container">
+        <div class="bottom-nav">
+            <a href="index.html" class="btn-back">
+                <i class="fas fa-arrow-left"></i> <span data-key="backBtn">Retour à l'accueil du portail</span>
+            </a>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <p>© BIG DATA CENTER AI — <a href="https://www.youtube.com/@DominiqueSavio_Cyber-Ap%C3%B4tre3.0" target="_blank">Dominique Savio - Cyber Apôtre 3.0</a></p>
+            <p data-key="footerText">Aumônerie Diocésaine Jeunesse & Enfance – Douala</p>
+        </div>
+    </footer>
+
+    <script>
+        // ========== MULTILINGUE ==========
+        let currentLang = localStorage.getItem('lang') || 'fr';
+
+        const translations = {
+            fr: {
+                headerTitle: "ARCHIDIOCÈSE DE DOUALA",
+                headerSub: "Message de l'Aumônier Diocésain",
+                nav1: "Accueil",
+                nav2: "À propos",
+                nav3: "Jeunesse",
+                nav4: "Carême",
+                themeLabel: "Thème de l'Année Pastorale",
+                themeTitle: "Formation intégrale des jeunes et emploi dans la société",
+                aumonierName: "Abbé Christopher GEH KUM",
+                aumonierTitle: "Aumônier Diocésain des Jeunes et de l'Enfance",
+                messageP1: "Chers jeunes de l'Archidiocèse de Douala,",
+                messageP2: "En cette année consacrée à votre <strong>formation intégrale</strong>, l'Église vous appelle à ne pas être de simples spectateurs, mais les bâtisseurs d'une société nouvelle. La formation que nous prônons n'est pas seulement intellectuelle ; elle touche votre cœur, votre âme et vos mains.",
+                messageP3: "Le défi de l'<strong>emploi</strong> est au cœur de nos prières et de nos actions. Dans un monde qui change, votre foi doit devenir un moteur d'innovation et d'intégrité professionnelle. Soyez des chrétiens compétents, des citoyens honnêtes et des entrepreneurs guidés par l'Évangile.",
+                messageP4: "Rappelez-vous que chaque talent que vous développez est une offrande pour la gloire de Dieu et le service de vos frères.",
+                signatureText: "Que le Seigneur bénisse votre cheminement,",
+                signatureName: "Votre Aumônier.",
+                backBtn: "Retour à l'accueil du portail",
+                footerText: "Aumônerie Diocésaine Jeunesse & Enfance – Douala"
+            },
+            en: {
+                headerTitle: "ARCHDIOCESE OF DOUALA",
+                headerSub: "Message from the Diocesan Chaplain",
+                nav1: "Home",
+                nav2: "About",
+                nav3: "Youth",
+                nav4: "Lent",
+                themeLabel: "Pastoral Year Theme",
+                themeTitle: "Integral youth training and employment in society",
+                aumonierName: "Father Christopher GEH KUM",
+                aumonierTitle: "Diocesan Chaplain for Youth and Children",
+                messageP1: "Dear young people of the Archdiocese of Douala,",
+                messageP2: "In this year dedicated to your <strong>integral formation</strong>, the Church calls you not to be mere spectators, but the builders of a new society. The formation we advocate is not only intellectual; it touches your heart, your soul and your hands.",
+                messageP3: "The challenge of <strong>employment</strong> is at the heart of our prayers and actions. In a changing world, your faith must become an engine of innovation and professional integrity. Be competent Christians, honest citizens and entrepreneurs guided by the Gospel.",
+                messageP4: "Remember that every talent you develop is an offering for the glory of God and the service of your brothers and sisters.",
+                signatureText: "May the Lord bless your journey,",
+                signatureName: "Your Chaplain.",
+                backBtn: "Back to homepage",
+                footerText: "Diocesan Youth & Children's Chaplaincy – Douala"
+            }
+        };
+
+        function updateLanguage() {
+            const t = translations[currentLang];
+            document.querySelectorAll('[data-key]').forEach(el => {
+                const key = el.getAttribute('data-key');
+                if (t[key]) {
+                    if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
+                        el.placeholder = t[key];
+                    } else {
+                        // Pour les éléments avec du HTML, on utilise innerHTML
+                        if (key === 'messageP2' || key === 'messageP3') {
+                            el.innerHTML = t[key];
+                        } else {
+                            el.textContent = t[key];
+                        }
+                    }
+                }
+            });
+            localStorage.setItem('lang', currentLang);
+        }
+
+        document.getElementById('langToggle').addEventListener('click', () => {
+            currentLang = currentLang === 'fr' ? 'en' : 'fr';
+            updateLanguage();
+        });
+
+        // ========== MODE SOMBRE ==========
+        function initDarkMode() {
+            const darkMode = localStorage.getItem('darkMode') === 'true';
+            if (darkMode) document.body.classList.add('dark-mode');
+            const toggleBtn = document.getElementById('darkModeToggle');
+            toggleBtn.addEventListener('click', () => {
+                document.body.classList.toggle('dark-mode');
+                localStorage.setItem('darkMode', document.body.classList.contains('dark-mode'));
+                const icon = toggleBtn.querySelector('i');
+                icon.className = document.body.classList.contains('dark-mode') ? 'fas fa-sun' : 'fas fa-moon';
+            });
+            const icon = toggleBtn.querySelector('i');
+            icon.className = darkMode ? 'fas fa-sun' : 'fas fa-moon';
+        }
+
+        // ========== INITIALISATION ==========
+        initDarkMode();
+        updateLanguage();
+    </script>
 
 </body>
+
 </html>
