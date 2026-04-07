@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Zones & Paroisses – Aumônerie Douala</title>
+  <style>
+    body { font-family: "Segoe UI", sans-serif; margin: 0; padding: 0; background: #f4f7f9; color: #2c3e50; line-height: 1.5; }
+
+    /* --- NAVIGATION --- */
+    header { background: #045286; color: white; padding: 15px; text-align: center; border-bottom: 3px solid #7cfc00; }
+    nav { background: #ffffff; padding: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); position: sticky; top: 0; z-index: 10; }
+    nav ul { margin: 0; padding: 0; display: flex; list-style: none; justify-content: center; flex-wrap: wrap; }
+    nav li { margin: 0 15px; }
+    nav a { color: #045286; font-weight: 600; text-decoration: none; font-size: 0.85em; text-transform: uppercase; }
+
+    /* --- CONTENU --- */
+    .container { max-width: 1200px; margin: 40px auto; padding: 0 20px; }
+    .header-zone { text-align: center; margin-bottom: 40px; }
+    .header-zone h1 { color: #045286; font-size: 2em; text-transform: uppercase; letter-spacing: 1px; }
+
+    /* --- TABLEAU PASTORAL --- */
+    .table-header {
+      display: grid;
+      grid-template-columns: 60px 180px 1fr 200px 150px;
+      background: #045286; color: white;
+      padding: 15px 0; font-weight: bold; font-size: 3 em;
+      text-transform: uppercase; border-radius: 8px 8px 0 0;
+      text-align: center;
+    }
+
+    .zone-row {
+      display: grid;
+      grid-template-columns: 60px 180px 1fr 200px 150px;
+      background: white; border-bottom: 1px solid #e0e6ed;
+      transition: 0.2s; align-items: stretch;
+    }
+    .zone-row:hover { background: #fcfdfe; }
+
+    .z-cell { padding: 15px; display: flex; align-items: center; justify-content: center; border-right: 1px solid #f0f0f0; }
+    .z-left { justify-content: flex-start; text-align: left; }
+    
+    .z-num { font-weight: bold; color: #045286; }
+    .z-name { font-weight: 700; color: #0072a8; }
+    .z-paroisses { font-size: 0.9em; color: #555; line-height: 1.4; }
+    .z-priest { font-style: italic; font-size: 0.9em; text-align: center; }
+    
+    .color-box {
+      width: 100%; padding: 8px; border-radius: 4px;
+      text-align: center; font-weight: bold; font-size: 0.75em;
+      text-transform: uppercase; border: 1px solid rgba(0,0,0,0.05);
+    }
+
+    /* --- RESPONSIVE --- */
+    @media (max-width: 950px) {
+      .table-header { display: none; }
+      .zone-row { 
+        grid-template-columns: 1fr; 
+        margin-bottom: 20px; border: 1px solid #e0e6ed; border-radius: 8px; 
+      }
+      .z-cell { border-right: none; border-bottom: 1px solid #f0f0f0; padding: 10px 20px; }
+      .z-num { background: #045286; color: white; }
+      .z-name { background: #f8fbff; }
+      .z-paroisses::before { content: "Paroisses : "; font-weight: bold; color: #045286; }
+      .z-priest::before { content: "Aumônier : "; font-weight: bold; color: #045286; }
+    }
+
+    footer { background: #045286; color: white; padding: 30px; text-align: center; margin-top: 50px; }
+  </style>
+</head>
+<body>
+
+<header>
+  <marquee scrollamount="4">ARCHIDIOCÈSE DE DOUALA – REPERTOIRE OFFICIEL DES ZONES ET PAROISSES</marquee>
+</header>
+
+<nav>
+  <ul>
+    <li><a href="index.html">Accueil</a></li>
+    <li><a href="index.html#jeunesse">Jeunesse</a></li>
+    <li><a href="formations.html">Formations</a></li>
+    <li><a href="engagements.html">Projets</a></li>
+  </ul>
+</nav>
+
+<div class="container">
+  <div class="header-zone">
+    <h1>Cartographie Pastorale</h1>
+    <p>Organisation par zones, paroisses rattachées et codes vestimentaires synodaux.</p>
+  </div>
+
+  <div class="table-header">
+    <div>#</div>
+    <div>Zone</div>
+    <div>Paroisses Rattachées</div>
+    <div>Aumônier</div>
+    <div>Dress Color</div>
+  </div>
+
+  <div class="zone-row">
+    <div class="z-cell z-num">01</div>
+    <div class="z-cell z-name">Wouri I</div>
+    <div class="z-cell z-left z-paroisses">Cathédrale Sts Pierre & Paul, Paroisse Holy Trinity, Paroisse Notre Dame du Mont Carmel, Paroisse St Dominique Savio de Bonapriso, Paroisse Ste Anne de Nkongmondo, Paroisse St André de Manoka, Paroisse St Ignace d'Antioche de Youpouè, Paroisse St Barnabé de Bois de Singe</div>
+    <div class="z-cell z-priest">Abbé Alain NIBILE</div>
+    <div class="z-cell"><div class="color-box" style="background: #ffffff; color: #000;">Blanc / Or</div></div>
+  </div>
+
+  <div class="zone-row">
+    <div class="z-cell z-num">02</div>
+    <div class="z-cell z-name">Wouri II</div>
+    <div class="z-cell z-left z-paroisses">Paroisse Notre Dame des Victoires de New-Bell I, Paroisse St Paul de Nylon, Paroisse Sacré-Coeur de New-Bell II, Paroisse Notre Dame des Setps Douleurs de New-Bell III, Paroisse St Luc de New-Bell</div>
+    <div class="z-cell z-priest">Abbé Guy Calvin MONKOM MBEM</div>
+    <div class="z-cell"><div class="color-box" style="background: #ff0000; color: #fff;">Rouge</div></div>
+  </div>
+
+  <div class="zone-row">
+    <div class="z-cell z-num">03</div>
+    <div class="z-cell z-name">Wouri III</div>
+    <div class="z-cell z-left z-paroisses">Paroisse St Sacrement de Ndogbong, Paroisse Christ-Roi de la Cité-Sic, Paroisse St Esprit de Bepanda, Paroisse St Charles Lwanga de Makèpè Yonyong, Paroisse St Mathias de Petit WAouri Bonamousongo, Paroisse Universitaire St Thomas d'Aquin</div>
+    <div class="z-cell z-priest">Abbé Jules Constantin LEP MBELECK</div>
+    <div class="z-cell"><div class="color-box" style="background: #0000ff; color: #fff;">Bleu Royal</div></div>
+  </div>
+
+  <div class="zone-row">
+    <div class="z-cell z-num">04</div>
+    <div class="z-cell z-name">Wouri IV</div>
+    <div class="z-cell z-left z-paroisses">Paroisse Ste Monique de Makèpè, Paoisse St Jean de Deido, Paroisse St Ambroise de Sable Bonamoussadi, Paroisse Notre Dame de l'Annonciation de Bonamoussadi, Centre Spirituel de Bonamoussadi, Paroisse St François d'Assise de Kotto, Paroisse Christ Sauveur de Banguè, Paroisse St Barthelemy de Logbessou, Paroisse St Basile le Grand de Logpom, Paroisse Ste Marie Madeleine de Logpom Plateau, Paroisse Ste Marthe de Lendi</div>
+    <div class="z-cell z-priest">Abbé Marius DJOMAHA</div>
+    <div class="z-cell"><div class="color-box" style="background: #ffff00; color: #000;">Jaune</div></div>
+  </div>
+
+  <div class="zone-row">
+    <div class="z-cell z-num">05</div>
+    <div class="z-cell z-name">Wouri V</div>
+    <div class="z-cell z-left z-paroisses">Paroisse St Pie X de PK 14, Paroisse St Victor de Sodikombo, PAroisse St Thomas de PK 10, Paroisse Ste Thérèse de l'Enfant Jésus de Mbengue City, Paroisse Epiphanie de PK 21, Paroisse St Benoit de Dallas et Nsape, Paroisse St Etienne de Mandjab, Paroisse St Samuel de Ngondjo, Paroisse St Athanase de PK 17 - PK 18, Paroisse St Luc de PAPAS, Paroisse Ste Cecile de Moutongo, Paroisse St Paul VI de Bonamoutongo </div>
+    <div class="z-cell z-priest">Abbé Mesaac MBE NKAMBA</div>
+    <div class="z-cell"><div class="color-box" style="background: #008000; color: #fff;">Vert</div></div>
+  </div>
+
+  <div class="zone-row">
+    <div class="z-cell z-num">06</div>
+    <div class="z-cell z-name">Wouri VI</div>
+    <div class="z-cell z-left z-paroisses">Paroisse Pentecôte de Nez Town Aéroport, Paroisse St François Xavier de Oyack, Paroisse Ste Tinité de Bilonguè, Paroisse St Thadée de Bobongo, Paroisse Toussaint de Soboum, Paroisse St Agnès de Madagascar, Paroisse Ste Agathe de Bois de Singe</div>
+    <div class="z-cell z-priest">Abbé Pierre Lionnel SEMPEY</div>
+    <div class="z-cell"><div class="color-box" style="background: #ffa500; color: #fff;">Orange</div></div>
+  </div>
+
+  <div class="zone-row">
+    <div class="z-cell z-num">07</div>
+    <div class="z-cell z-name">Wouri VII</div>
+    <div class="z-cell z-left z-paroisses">Paroisse Sacré - Coeur de Ndogpassi II, Paroisse St Jacques de Logbaba Plateau, Paroisse Ste Famille de la Zone de Recasement de Ndogpassi III, Paroisse Marie Reine des Apôtres de Ndogpassi II, Paroisse St Augustin de Yanka, Paroisse St Clément de Nyalla Kambo</div>
+    <div class="z-cell z-priest">Abbé Christian PAM TCHAMENI</div>
+    <div class="z-cell"><div class="color-box" style="background: #800080; color: #fff;">Violet</div></div>
+  </div>
+
+  <div class="zone-row">
+    <div class="z-cell z-num">08</div>
+    <div class="z-cell z-name">Wouri VIII</div>
+    <div class="z-cell z-left z-paroisses">Paroisse St Louis de Bonaberi, Paroisse Notre Dame de l'Amour de Ngwele, Paroisse St Grégoire de Ndobo, Paroisse St Joseph de Bonamdalè, Paroisse St Pierre de Grand Hangar, Paroisse Notre Dame du Rosaire de Mabanda, Paroisse St Gabriel Archange de Mpanjo, Paroisse St Philippe du Quartier Bilingue, Paroisse St Thimothée de SODIKO Ville, Communauté de la maison de Bonabérie, Paroisse St Bonaventure de Towoh, Communauté St Jean Baptiste de Japoma, Paroisse St Raphael Archange de Bojongo, Paroisse St Kisito de Sodiko Village, Paroisse Ste Cathérine de Minkwèlè, Paroisse Coeur Immaculé de Marie de Ndobo</div>
+    <div class="z-cell z-priest">Abbé Merlin TABEULA</div>
+    <div class="z-cell"><div class="color-box" style="background: #800080; color: #fff;">Violet</div></div>
+  </div>
+
+  <div class="zone-row">
+    <div class="z-cell z-num">09</div>
+    <div class="z-cell z-name">Wouri IX</div>
+    <div class="z-cell z-left z-paroisses">Paroisse St Marc de la Cité des Palmiers, Paroisse St Simon de Kondi, Paroisse St Michel de Nyalla, Paroisse St Jean Marie Vianney de Beedi, Paroisse St Mathieu de Ndog - Mbéé, Paroisse Notre Dame de Lourdes de Japoma, Paroisse St Corneille de Nkolmbong, Paroisse St Hyppolite de de la Cité Chirac, Paroisse St Cyprien de Maetur Ngodi Bakoko, Paroisse St Justin de Yassa, Paroisse St Bernard de Nkembe, Paroisse St Jean XXIII de Pahianga et Cocotier</div>
+    <div class="z-cell z-priest">Abbé Giresse Valère NOPIEGUE</div>
+    <div class="z-cell"><div class="color-box" style="background: #800080; color: #fff;">Violet</div></div>
+  </div>
+
+  <div class="zone-row">
+    <div class="z-cell z-num">10</div>
+    <div class="z-cell z-name">Wouri X</div>
+    <div class="z-cell z-left z-paroisses">Paroisse Jésus le Bon Pasteur de Boko, ParoisseSt Jude de Ngodi Bakoko, Paroisse Jésus Libérateur, Centre Xavier, Paroisse St Jean Paul II de Yansoki, Centre de Formation Spirituelle St Vincent de PAul de Ngodi Bakoko, Paroisse St Guido Maria Conforti, Paroisse St Irenée de Mbanga Pongo, Paroisse St Joseph de Boko, Paroisse St Jean Baptiste de Mbwang Bakoko</div>
+    <div class="z-cell z-priest">Abbé Anicet LAMBA</div>
+    <div class="z-cell"><div class="color-box" style="background: #800080; color: #fff;">Violet</div></div>
+  </div>
+
+  <center style="margin-top: 40px;">
+    <a href="index.html" style="color: #045286; font-weight: bold; text-decoration: none;">← Retourner à l'accueil principal</a>
+  </center>
+</div>
+
+<footer>
+  <p>© BIG DATA CENTER AI By <a href="https://www.youtube.com/@DominiqueSavio_Cyber-Ap%C3%B4tre3.0">Dominique Savio - Cyber Apôtre 3.0 </a></br>Aumônerie Diocésaine Jeunesse & Enfance – Douala</p>
+</footer>
+
+</body>
+</html>
