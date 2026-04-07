@@ -1,174 +1,821 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Pèlerinages Diocésains – Archidiocèse de Douala</title>
-  <style>
-    :root {
-      --gold: #c5a021;
-      --deep-blue: #033c63;
-      --platinum: #f8f9fa;
-      --white: #ffffff;
-      --text-large: 1.25rem;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Pèlerinages Diocésains | Archidiocèse de Douala</title>
+    <meta name="description" content="Participez aux pèlerinages diocésains 2026 : Marienberg (Edéa) le 7 mars et Turquie (14-25 septembre). Inscrivez-vous dès maintenant pour ces moments de grâce spirituelle.">
 
-    body { 
-      font-family: "Georgia", serif; 
-      margin: 0; padding: 0; 
-      background: var(--platinum); 
-      color: #222; 
-      font-size: var(--text-large);
-      line-height: 1.7;
-    }
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-    /* --- HEADER --- */
-    header { 
-      background: var(--deep-blue);
-      color: white; 
-      padding: 15px 0; 
-      text-align: center; 
-      border-bottom: 3px solid var(--gold);
-    }
-    header h1 { margin: 0; font-size: 1.4em; letter-spacing: 3px; text-transform: uppercase; color: var(--gold); }
+    <!-- Font Awesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
-    .container { max-width: 1100px; margin: 40px auto; padding: 0 25px; }
-
-    /* --- LAYOUT --- */
-    .pilgrim-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: start; }
-    .poster-box img { width: 100%; border-radius: 8px; box-shadow: 0 10px 30px rgba(0,0,0,0.15); }
-
-    .destination-card {
-      background: white; padding: 25px; border-radius: 8px; 
-      margin-bottom: 20px; border-left: 6px solid var(--gold);
-      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-    }
-    .dest-title { font-size: 1.5em; color: var(--deep-blue); font-weight: bold; display: block; }
-    .dest-date { color: var(--gold); font-weight: bold; }
-
-    /* --- BOUTON D'INSCRIPTION --- */
-    .btn-register {
-      display: block;
-      width: 100%;
-      background: var(--gold);
-      color: white;
-      text-align: center;
-      padding: 20px;
-      font-size: 1.3em;
-      font-weight: bold;
-      text-decoration: none;
-      border-radius: 8px;
-      margin-top: 20px;
-      box-shadow: 0 4px 15px rgba(197, 160, 33, 0.4);
-      transition: 0.3s;
-      border: none;
-      cursor: pointer;
-      text-transform: uppercase;
-    }
-    .btn-register:hover { background: var(--deep-blue); transform: translateY(-3px); }
-
-    /* --- MODAL (FORMULAIRE) --- */
-    .modal {
-      display: none; position: fixed; z-index: 2000; left: 0; top: 0;
-      width: 100%; height: 100%; background: rgba(0,0,0,0.8);
-    }
-    .modal-content {
-      background: white; margin: 5% auto; padding: 30px; border-radius: 12px;
-      max-width: 500px; position: relative;
-    }
-    .close { position: absolute; right: 20px; top: 10px; font-size: 30px; cursor: pointer; }
-    
-    .form-group { margin-bottom: 15px; }
-    .form-group label { display: block; margin-bottom: 5px; font-size: 0.9em; font-weight: bold; }
-    .form-group input, .form-group select { width: 100%; padding: 12px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; }
-
-    /* --- RETOUR --- */
-    .bottom-nav { text-align: center; margin: 60px 0; }
-    .btn-back {
-      text-decoration: none; background: #333; color: white; 
-      padding: 12px 35px; border-radius: 50px; font-size: 0.9em;
-    }
-
-    footer { padding: 40px; background: #1a1a1a; color: #bbb; text-align: center; font-size: 0.9em; }
-
-    @media (max-width: 850px) { .pilgrim-grid { grid-template-columns: 1fr; } }
-  </style>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background: #f5f7fb;
+            color: #1a2c3e;
+            line-height: 1.5;
+            scroll-behavior: smooth;
+            transition: background 0.3s ease, color 0.3s ease;
+        }
+        /* MODE SOMBRE */
+        
+        body.dark-mode {
+            background: #0f1724;
+            color: #e2e8f0;
+        }
+        
+        body.dark-mode header,
+        body.dark-mode .hero-section,
+        body.dark-mode footer {
+            background: linear-gradient(135deg, #020617, #0f1724);
+        }
+        
+        body.dark-mode nav {
+            background: #1e293b;
+        }
+        
+        body.dark-mode nav a {
+            color: #e2e8f0;
+        }
+        
+        body.dark-mode .destination-card,
+        body.dark-mode .modal-content {
+            background: #1e293b;
+            border-color: #334155;
+        }
+        
+        body.dark-mode .destination-card p {
+            color: #94a3b8;
+        }
+        
+        body.dark-mode .modal-content h3 {
+            color: #2ecc71;
+        }
+        
+        body.dark-mode .form-group input,
+        body.dark-mode .form-group select {
+            background: #0f1724;
+            border-color: #334155;
+            color: #e2e8f0;
+        }
+        
+        body.dark-mode .btn-back {
+            background: #2ecc71;
+            color: #022b44;
+        }
+        
+        body.dark-mode .btn-back:hover {
+            background: white;
+            color: #022b44;
+        }
+        
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 32px;
+        }
+        /* CONTROLES */
+        
+        .controls-bar {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1001;
+            display: flex;
+            gap: 12px;
+        }
+        
+        .ctrl-btn {
+            background: rgba(255, 255, 255, 0.95);
+            border: none;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.2rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            transition: 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        body.dark-mode .ctrl-btn {
+            background: #2d3748;
+            color: #e2e8f0;
+        }
+        
+        .ctrl-btn:hover {
+            transform: scale(1.05);
+        }
+        /* HEADER */
+        
+        header {
+            background: linear-gradient(135deg, #0a2e4a, #045286);
+            color: white;
+            padding: 20px 0;
+            border-bottom: 3px solid #c5a021;
+            transition: background 0.3s;
+            text-align: center;
+        }
+        
+        header h1 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #c5a021;
+        }
+        
+        header p {
+            font-size: 0.85rem;
+            opacity: 0.85;
+        }
+        
+        @media (min-width: 768px) {
+            header h1 {
+                font-size: 1.9rem;
+            }
+        }
+        /* NAVIGATION */
+        
+        nav {
+            background: white;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.05);
+            position: sticky;
+            top: 0;
+            z-index: 99;
+            transition: background 0.3s;
+        }
+        
+        .nav-links {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 12px;
+            list-style: none;
+            padding: 14px 16px;
+        }
+        
+        .nav-links a {
+            padding: 10px 24px;
+            font-weight: 600;
+            color: #1a2c3e;
+            text-decoration: none;
+            border-radius: 40px;
+            transition: all 0.25s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        body.dark-mode .nav-links a {
+            color: #e2e8f0;
+        }
+        
+        .nav-links a i {
+            color: #c5a021;
+        }
+        
+        .nav-links a:hover {
+            background: #045286;
+            color: white;
+        }
+        
+        .nav-links a:hover i {
+            color: white;
+        }
+        /* HERO */
+        
+        .hero-section {
+            background: linear-gradient(135deg, #045286, #0072a8);
+            color: white;
+            padding: 60px 0;
+            text-align: center;
+            clip-path: polygon(0 0, 100% 0, 100% 90%, 0% 100%);
+        }
+        
+        .hero-section h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 16px;
+            font-family: 'Cormorant Garamond', serif;
+        }
+        
+        .hero-section p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        /* MAIN GRID */
+        
+        .pilgrim-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            margin: 60px 0;
+        }
+        
+        .poster-box {
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 20px 35px rgba(0, 0, 0, 0.15);
+            transition: transform 0.3s;
+        }
+        
+        .poster-box:hover {
+            transform: translateY(-5px);
+        }
+        
+        .poster-box img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        /* DESTINATIONS */
+        
+        .info-side h2 {
+            font-size: 2rem;
+            color: #045286;
+            margin-bottom: 16px;
+        }
+        
+        body.dark-mode .info-side h2 {
+            color: #c5a021;
+        }
+        
+        .info-side>p {
+            color: #64748b;
+            margin-bottom: 30px;
+        }
+        
+        body.dark-mode .info-side>p {
+            color: #94a3b8;
+        }
+        
+        .destination-card {
+            background: white;
+            padding: 28px;
+            border-radius: 20px;
+            margin-bottom: 20px;
+            border-left: 6px solid #c5a021;
+            transition: all 0.3s;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        }
+        
+        .destination-card:hover {
+            transform: translateX(8px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        .dest-title {
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: #045286;
+            display: block;
+            margin-bottom: 8px;
+        }
+        
+        body.dark-mode .dest-title {
+            color: #c5a021;
+        }
+        
+        .dest-date {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: #c5a021;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+        
+        .dest-date i {
+            font-size: 0.9rem;
+        }
+        
+        .destination-card p {
+            color: #64748b;
+            font-size: 0.9rem;
+            margin-top: 10px;
+        }
+        
+        body.dark-mode .destination-card p {
+            color: #94a3b8;
+        }
+        
+        .spots-left {
+            display: inline-block;
+            background: #eef2ff;
+            padding: 4px 12px;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: #045286;
+            margin-top: 12px;
+        }
+        
+        body.dark-mode .spots-left {
+            background: #2d3748;
+            color: #c5a021;
+        }
+        /* BOUTON INSCRIPTION */
+        
+        .btn-register {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            width: 100%;
+            background: #c5a021;
+            color: white;
+            text-align: center;
+            padding: 16px 24px;
+            font-size: 1.1rem;
+            font-weight: 800;
+            text-decoration: none;
+            border-radius: 60px;
+            margin-top: 25px;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .btn-register:hover {
+            background: #045286;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+        
+        .contact-info {
+            margin-top: 20px;
+            text-align: center;
+            font-size: 0.85rem;
+            color: #64748b;
+        }
+        
+        body.dark-mode .contact-info {
+            color: #94a3b8;
+        }
+        /* MODAL */
+        
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(4px);
+        }
+        
+        .modal-content {
+            background: white;
+            margin: 5% auto;
+            padding: 35px;
+            border-radius: 28px;
+            max-width: 500px;
+            position: relative;
+            animation: modalFadeIn 0.3s ease;
+        }
+        
+        @keyframes modalFadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .close {
+            position: absolute;
+            right: 20px;
+            top: 15px;
+            font-size: 28px;
+            cursor: pointer;
+            transition: 0.2s;
+            color: #64748b;
+        }
+        
+        .close:hover {
+            color: #c5a021;
+        }
+        
+        .modal-content h3 {
+            color: #045286;
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #1a2c3e;
+        }
+        
+        body.dark-mode .form-group label {
+            color: #e2e8f0;
+        }
+        
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 14px 16px;
+            border: 2px solid #e2e8f0;
+            border-radius: 12px;
+            font-family: inherit;
+            font-size: 1rem;
+            transition: all 0.3s;
+        }
+        
+        .form-group input:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: #c5a021;
+            box-shadow: 0 0 0 3px rgba(197, 160, 33, 0.2);
+        }
+        
+        .modal-btn {
+            background: #c5a021;
+            color: white;
+            padding: 14px;
+            border: none;
+            border-radius: 50px;
+            font-weight: 800;
+            font-size: 1rem;
+            cursor: pointer;
+            width: 100%;
+            transition: 0.3s;
+        }
+        
+        .modal-btn:hover {
+            background: #045286;
+            transform: translateY(-2px);
+        }
+        /* BOUTON RETOUR */
+        
+        .bottom-nav {
+            text-align: center;
+            margin: 40px 0 60px;
+        }
+        
+        .btn-back {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: #045286;
+            color: white;
+            padding: 12px 32px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        
+        .btn-back:hover {
+            background: #c5a021;
+            transform: translateX(-5px);
+        }
+        /* FOOTER */
+        
+        footer {
+            background: #022b44;
+            color: white;
+            padding: 40px 0;
+            text-align: center;
+            transition: background 0.3s;
+        }
+        
+        footer a {
+            color: #c5a021;
+            text-decoration: none;
+        }
+        
+        footer a:hover {
+            color: white;
+        }
+        
+        @media (max-width: 768px) {
+            .pilgrim-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+            .hero-section h1 {
+                font-size: 1.8rem;
+            }
+            .info-side h2 {
+                font-size: 1.6rem;
+            }
+            .dest-title {
+                font-size: 1.2rem;
+            }
+            .modal-content {
+                margin: 20% 20px;
+                padding: 25px;
+            }
+            .container {
+                padding: 0 20px;
+            }
+        }
+    </style>
 </head>
+
 <body>
 
-<header>
-  <h1>Archidiocèse de Douala</h1>
-</header>
-
-<div class="container">
-  <div class="pilgrim-grid">
-    <div class="poster-box">
-      <img src="../image/Screenshot 2026-02-06 173106.png" alt="Affiche Pèlerinages">
+    <!-- CONTROLES -->
+    <div class="controls-bar">
+        <button class="ctrl-btn" id="darkModeToggle"><i class="fas fa-moon"></i></button>
+        <button class="ctrl-btn" id="langToggle"><i class="fas fa-globe"></i></button>
     </div>
 
-    <div class="info-side">
-      <h2 style="color: var(--deep-blue);">Pèlerinages 2026</h2>
-      <p>Rejoignez-nous pour ces moments de grâce sous le patronage de <strong>Mgr Samuel KLEDA</strong>.</p>
+    <!-- HEADER -->
+    <header>
+        <div class="container">
+            <h1 data-key="headerTitle">ARCHIDIOCÈSE DE DOUALA</h1>
+            <p data-key="headerSub">Service des Pèlerinages</p>
+        </div>
+    </header>
 
-      <div class="destination-card">
-        <span class="dest-title">MARIENBERG - EDÉA</span>
-        <span class="dest-date">Samedi 07 Mars 2026</span>
-      </div>
+    <!-- NAVIGATION -->
+    <nav>
+        <div class="container">
+            <ul class="nav-links">
+                <li><a href="index.html"><i class="fas fa-home"></i> <span data-key="nav1">Accueil</span></a></li>
+                <li><a href="index.html#apropos"><i class="fas fa-church"></i> <span data-key="nav2">À propos</span></a></li>
+                <li><a href="index.html#jeunesse"><i class="fas fa-users"></i> <span data-key="nav3">Jeunesse</span></a></li>
+                <li><a href="annonce3.html"><i class="fas fa-cross"></i> <span data-key="nav4">Carême</span></a></li>
+            </ul>
+        </div>
+    </nav>
 
-      <div class="destination-card">
-        <span class="dest-title">TURQUIE</span>
-        <span class="dest-date">Du 14 au 25 Septembre 2026</span>
-      </div>
+    <!-- HERO -->
+    <section class="hero-section">
+        <div class="container">
+            <h1 data-key="heroTitle">Pèlerinages 2026</h1>
+            <p data-key="heroSubtitle">Sous le patronage de Mgr Samuel KLEDA</p>
+        </div>
+    </section>
 
-      <p style="font-size: 0.9em; color: #666;">Contact inscription : <strong>+237 692 575 767</strong></p>
-      
-      <button class="btn-register" onclick="document.getElementById('regModal').style.display='block'">
-        S'inscrire maintenant
+    <!-- CONTENU PRINCIPAL -->
+    <div class="container">
+        <div class="pilgrim-grid">
+            <div class="poster-box">
+                <img src="Screenshot 2026-02-06 173106.png" alt="Affiche Pèlerinages" onerror="this.src='https://images.unsplash.com/photo-1445251836269-d158eaa028a6?w=600&fit=crop'">
+            </div>
+
+            <div class="info-side">
+                <h2 data-key="sectionTitle">Pèlerinages 2026</h2>
+                <p data-key="sectionDesc">Rejoignez-nous pour ces moments de grâce spirituelle et de découverte.</p>
+
+                <div class="destination-card">
+                    <span class="dest-title" data-key="dest1Title">MARIENBERG - EDÉA</span>
+                    <span class="dest-date"><i class="fas fa-calendar-alt"></i> <span data-key="dest1Date">Samedi 07 Mars 2026</span></span>
+                    <p data-key="dest1Desc">Sanctuaire marial de Marienberg, un lieu de recueillement et de prière au cœur de la forêt camerounaise.</p>
+                    <span class="spots-left" id="spotsMarienberg"><i class="fas fa-users"></i> <span data-key="spots">Places disponibles</span> : <span id="spotsCount1">120</span></span>
+                </div>
+
+                <div class="destination-card">
+                    <span class="dest-title" data-key="dest2Title">TURQUIE</span>
+                    <span class="dest-date"><i class="fas fa-calendar-alt"></i> <span data-key="dest2Date">Du 14 au 25 Septembre 2026</span></span>
+                    <p data-key="dest2Desc">Sur les traces des premiers chrétiens : Éphèse, Cappadoce, Constantinople. Un voyage spirituel inoubliable.</p>
+                    <span class="spots-left" id="spotsTurquie"><i class="fas fa-users"></i> <span data-key="spots">Places disponibles</span> : <span id="spotsCount2">45</span></span>
+                </div>
+
+                <div class="contact-info">
+                    <i class="fas fa-phone-alt"></i> <span data-key="contactLabel">Contact inscription</span> : <strong>+237 692 575 767</strong>
+                </div>
+
+                <button class="btn-register" id="openModalBtn">
+        <i class="fas fa-user-plus"></i> <span data-key="registerBtn">S'inscrire maintenant</span>
       </button>
+            </div>
+        </div>
+
+        <div class="bottom-nav">
+            <a href="index.html" class="btn-back">
+                <i class="fas fa-arrow-left"></i> <span data-key="backBtn">Retour à l'accueil</span>
+            </a>
+        </div>
     </div>
-  </div>
 
-  <div class="bottom-nav">
-    <a href="index.html" class="btn-back">← Retour à l'accueil</a>
-  </div>
-</div>
-
-<div id="regModal" class="modal">
-  <div class="modal-content">
-    <span class="close" onclick="document.getElementById('regModal').style.display='none'">&times;</span>
-    <h3 style="color: var(--deep-blue); margin-top: 0;">Formulaire d'inscription</h3>
-    <form onsubmit="alert('Votre demande a été envoyée. Le secrétariat vous contactera.'); return false;">
-      <div class="form-group">
-        <label>Nom et Prénom</label>
-        <input type="text" required placeholder="Ex: Jean Dupont">
-      </div>
-      <div class="form-group">
-        <label>Téléphone (WhatsApp)</label>
-        <input type="tel" required placeholder="+237 ...">
-      </div>
-      <div class="form-group">
-        <label>Destination choisie</label>
-        <select>
-          <option>Marienberg (07 Mars)</option>
-          <option>Turquie (14-25 Septembre)</option>
+    <!-- MODAL D'INSCRIPTION -->
+    <div id="regModal" class="modal">
+        <div class="modal-content">
+            <span class="close" id="closeModalBtn">&times;</span>
+            <h3 data-key="modalTitle">Formulaire d'inscription</h3>
+            <form id="inscriptionForm">
+                <div class="form-group">
+                    <label data-key="nameLabel">Nom et Prénom</label>
+                    <input type="text" id="fullName" required placeholder="Ex: Jean Dupont">
+                </div>
+                <div class="form-group">
+                    <label data-key="phoneLabel">Téléphone (WhatsApp)</label>
+                    <input type="tel" id="phone" required placeholder="+237 ...">
+                </div>
+                <div class="form-group">
+                    <label data-key="destinationLabel">Destination choisie</label>
+                    <select id="destination">
+          <option value="Marienberg">Marienberg (07 Mars 2026)</option>
+          <option value="Turquie">Turquie (14-25 Septembre 2026)</option>
         </select>
-      </div>
-      <button type="submit" class="btn-register" style="font-size: 1em; padding: 15px;">Envoyer mon inscription</button>
-    </form>
-  </div>
-</div>
+                </div>
+                <button type="submit" class="modal-btn"><i class="fas fa-paper-plane"></i> <span data-key="submitBtn">Envoyer mon inscription</span></button>
+            </form>
+        </div>
+    </div>
 
-<footer>
-  <p><strong>Archidiocèse de Douala</strong><br>© 2026 — Service des Pèlerinages</p>
-</footer>
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <p>© BIG DATA CENTER AI — <a href="https://www.youtube.com/@DominiqueSavio_Cyber-Ap%C3%B4tre3.0" target="_blank">Dominique Savio - Cyber Apôtre 3.0</a></p>
+            <p data-key="footerText">Aumônerie Diocésaine Jeunesse & Enfance – Douala</p>
+        </div>
+    </footer>
 
-<script>
-// Fermer le modal si on clique en dehors
-window.onclick = function(event) {
-  var modal = document.getElementById('regModal');
-  if (event.target == modal) { modal.style.display = "none"; }
-}
-</script>
+    <script>
+        // ========== COMPTEUR DE PLACES ==========
+        let spots = {
+            Marienberg: 120,
+            Turquie: 45
+        };
+
+        function updateSpotsDisplay() {
+            document.getElementById('spotsCount1').textContent = spots.Marienberg;
+            document.getElementById('spotsCount2').textContent = spots.Turquie;
+        }
+
+        // ========== MODAL ==========
+        const modal = document.getElementById('regModal');
+        const openBtn = document.getElementById('openModalBtn');
+        const closeBtn = document.getElementById('closeModalBtn');
+
+        openBtn.addEventListener('click', () => {
+            modal.style.display = 'block';
+        });
+
+        closeBtn.addEventListener('click', () => {
+            modal.style.display = 'none';
+        });
+
+        window.addEventListener('click', (event) => {
+            if (event.target === modal) {
+                modal.style.display = 'none';
+            }
+        });
+
+        // ========== FORMULAIRE ==========
+        const form = document.getElementById('inscriptionForm');
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const name = document.getElementById('fullName').value;
+            const destination = document.getElementById('destination').value;
+            const destinationKey = destination === 'Marienberg (07 Mars 2026)' ? 'Marienberg' : 'Turquie';
+
+            if (spots[destinationKey] > 0) {
+                spots[destinationKey]--;
+                updateSpotsDisplay();
+                alert(`Merci ${name} ! Votre inscription pour ${destination} a été enregistrée. Le secrétariat vous contactera sous peu.`);
+                form.reset();
+                modal.style.display = 'none';
+            } else {
+                alert(`Désolé, il n'y a plus de places disponibles pour ${destination}. Veuillez choisir une autre destination.`);
+            }
+        });
+
+        // ========== MULTILINGUE ==========
+        let currentLang = localStorage.getItem('lang') || 'fr';
+
+        const translations = {
+            fr: {
+                headerTitle: "ARCHIDIOCÈSE DE DOUALA",
+                headerSub: "Service des Pèlerinages",
+                nav1: "Accueil",
+                nav2: "À propos",
+                nav3: "Jeunesse",
+                nav4: "Carême",
+                heroTitle: "Pèlerinages 2026",
+                heroSubtitle: "Sous le patronage de Mgr Samuel KLEDA",
+                sectionTitle: "Pèlerinages 2026",
+                sectionDesc: "Rejoignez-nous pour ces moments de grâce spirituelle et de découverte.",
+                dest1Title: "MARIENBERG - EDÉA",
+                dest1Date: "Samedi 07 Mars 2026",
+                dest1Desc: "Sanctuaire marial de Marienberg, un lieu de recueillement et de prière au cœur de la forêt camerounaise.",
+                dest2Title: "TURQUIE",
+                dest2Date: "Du 14 au 25 Septembre 2026",
+                dest2Desc: "Sur les traces des premiers chrétiens : Éphèse, Cappadoce, Constantinople. Un voyage spirituel inoubliable.",
+                spots: "Places disponibles",
+                contactLabel: "Contact inscription",
+                registerBtn: "S'inscrire maintenant",
+                backBtn: "Retour à l'accueil",
+                modalTitle: "Formulaire d'inscription",
+                nameLabel: "Nom et Prénom",
+                phoneLabel: "Téléphone (WhatsApp)",
+                destinationLabel: "Destination choisie",
+                submitBtn: "Envoyer mon inscription",
+                footerText: "Aumônerie Diocésaine Jeunesse & Enfance – Douala"
+            },
+            en: {
+                headerTitle: "ARCHDIOCESE OF DOUALA",
+                headerSub: "Pilgrimage Service",
+                nav1: "Home",
+                nav2: "About",
+                nav3: "Youth",
+                nav4: "Lent",
+                heroTitle: "Pilgrimages 2026",
+                heroSubtitle: "Under the patronage of Mgr Samuel KLEDA",
+                sectionTitle: "Pilgrimages 2026",
+                sectionDesc: "Join us for these moments of spiritual grace and discovery.",
+                dest1Title: "MARIENBERG - EDÉA",
+                dest1Date: "Saturday, March 7, 2026",
+                dest1Desc: "Marienberg Marian shrine, a place of contemplation and prayer in the heart of the Cameroonian forest.",
+                dest2Title: "TURKEY",
+                dest2Date: "September 14-25, 2026",
+                dest2Desc: "In the footsteps of the first Christians: Ephesus, Cappadocia, Constantinople. An unforgettable spiritual journey.",
+                spots: "Spots available",
+                contactLabel: "Registration contact",
+                registerBtn: "Register now",
+                backBtn: "Back to homepage",
+                modalTitle: "Registration form",
+                nameLabel: "Full name",
+                phoneLabel: "Phone number (WhatsApp)",
+                destinationLabel: "Chosen destination",
+                submitBtn: "Send my registration",
+                footerText: "Diocesan Youth & Children's Chaplaincy – Douala"
+            }
+        };
+
+        function updateLanguage() {
+            const t = translations[currentLang];
+            document.querySelectorAll('[data-key]').forEach(el => {
+                const key = el.getAttribute('data-key');
+                if (t[key]) {
+                    if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA' || el.tagName === 'SELECT') {
+                        if (el.placeholder) el.placeholder = t[key];
+                        else if (el.tagName === 'SELECT') {
+                            // Pour les options, on ne modifie pas
+                        }
+                    } else {
+                        el.textContent = t[key];
+                    }
+                }
+            });
+            // Mettre à jour les labels des options du select
+            const selectOptions = document.querySelectorAll('#destination option');
+            if (selectOptions.length >= 2) {
+                selectOptions[0].textContent = currentLang === 'fr' ? 'Marienberg (07 Mars 2026)' : 'Marienberg (March 7, 2026)';
+                selectOptions[1].textContent = currentLang === 'fr' ? 'Turquie (14-25 Septembre 2026)' : 'Turkey (September 14-25, 2026)';
+            }
+            localStorage.setItem('lang', currentLang);
+        }
+
+        document.getElementById('langToggle').addEventListener('click', () => {
+            currentLang = currentLang === 'fr' ? 'en' : 'fr';
+            updateLanguage();
+        });
+
+        // ========== MODE SOMBRE ==========
+        function initDarkMode() {
+            const darkMode = localStorage.getItem('darkMode') === 'true';
+            if (darkMode) document.body.classList.add('dark-mode');
+            const toggleBtn = document.getElementById('darkModeToggle');
+            toggleBtn.addEventListener('click', () => {
+                document.body.classList.toggle('dark-mode');
+                localStorage.setItem('darkMode', document.body.classList.contains('dark-mode'));
+                const icon = toggleBtn.querySelector('i');
+                icon.className = document.body.classList.contains('dark-mode') ? 'fas fa-sun' : 'fas fa-moon';
+            });
+            const icon = toggleBtn.querySelector('i');
+            icon.className = darkMode ? 'fas fa-sun' : 'fas fa-moon';
+        }
+
+        // ========== INITIALISATION ==========
+        updateSpotsDisplay();
+        initDarkMode();
+        updateLanguage();
+    </script>
 
 </body>
+
 </html>
