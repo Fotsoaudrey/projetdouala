@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Carlo Acutis : Modèle pour la Jeunesse de Douala</title>
+  <style>
+    :root {
+      --deep-blue: #033c63;
+      --gold: #c5a021;
+      --sky-blue: #e3f2fd;
+      --text-large: 1.25rem;
+    }
+
+    body { 
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif; 
+      margin: 0; padding: 0; 
+      background: #fdfdfd; 
+      color: #333; 
+      font-size: var(--text-large);
+      line-height: 1.8;
+    }
+
+    /* --- HEADER FIN ET PRESTIGIEUX --- */
+    header { 
+      background: var(--deep-blue);
+      color: white; 
+      padding: 15px 0; 
+      text-align: center; 
+      border-bottom: 3px solid var(--gold);
+      position: sticky; top: 0; z-index: 1000;
+    }
+    header h1 { 
+      margin: 0; font-size: 1.3em; letter-spacing: 3px; 
+      text-transform: uppercase; color: var(--gold);
+    }
+
+    .container { max-width: 1000px; margin: 40px auto; padding: 0 25px; }
+
+    /* --- SECTION CARROUSEL OPTIMISÉE --- */
+    .carousel-container {
+      position: relative;
+      width: 100%;
+      height: 500px; /* Hauteur fixe pour l'élégance */
+      overflow: hidden;
+      border-radius: 12px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+      margin-bottom: 50px;
+      background: #000; /* Fond noir pour éviter les bords blancs si l'image charge mal */
+    }
+    .carousel-slide {
+      display: flex;
+      width: 300%; 
+      height: 100%;
+      animation: slide 15s infinite ease-in-out;
+    }
+    .carousel-slide img {
+      width: 33.333%;
+      height: 100%;
+      /* L'astuce pour adapter la taille sans déformer : */
+      object-fit: cover; 
+      object-position: center;
+    }
+    @keyframes slide {
+      0% { transform: translateX(0); }
+      30% { transform: translateX(0); }
+      33% { transform: translateX(-33.333%); }
+      63% { transform: translateX(-33.333%); }
+      66% { transform: translateX(-66.666%); }
+      96% { transform: translateX(-66.666%); }
+      100% { transform: translateX(0); }
+    }
+
+    /* --- TEXTE SPIRITUALITÉ --- */
+    .intro-section { text-align: center; margin-bottom: 60px; }
+    .intro-section h2 { color: var(--deep-blue); font-size: 2.5em; margin-bottom: 20px; }
+    
+    .quote-box {
+      background: var(--sky-blue);
+      border-left: 8px solid var(--deep-blue);
+      padding: 30px;
+      font-style: italic;
+      margin: 40px 0;
+      border-radius: 0 12px 12px 0;
+      font-size: 1.1em;
+    }
+
+    /* --- MISSIONS --- */
+    .mission-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin: 50px 0;
+    }
+    .mission-card {
+      background: white; padding: 30px; border: 1px solid #eee; border-radius: 12px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+      transition: 0.3s;
+    }
+    .mission-card:hover { transform: translateY(-5px); border-color: var(--gold); }
+    .mission-card h3 { color: var(--gold); margin-top: 0; font-size: 1.4em; }
+
+    /* --- BOUTONS --- */
+    .btn-container { text-align: center; margin-top: 50px; }
+    
+    .btn-research {
+      display: inline-block;
+      background: var(--gold);
+      color: #fff;
+      padding: 18px 45px;
+      text-decoration: none;
+      font-weight: bold;
+      border-radius: 50px;
+      font-size: 1.1em;
+      box-shadow: 0 4px 15px rgba(197, 160, 33, 0.4);
+      transition: 0.3s;
+      text-transform: uppercase;
+    }
+    .btn-research:hover { background: var(--deep-blue); transform: scale(1.05); }
+
+    .btn-back {
+      display: inline-block;
+      margin-top: 40px;
+      text-decoration: none;
+      background: #f0f0f0;
+      color: #333;
+      padding: 12px 30px;
+      border-radius: 30px;
+      font-size: 0.9em;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+    .btn-back:hover { background: #333; color: #fff; }
+
+    footer { 
+      background: #1a1a1a; color: #999; text-align: center; 
+      padding: 50px; margin-top: 80px; font-size: 0.9em; 
+    }
+
+    /* --- RESPONSIVE --- */
+    @media (max-width: 768px) {
+      .mission-grid { grid-template-columns: 1fr; }
+      .carousel-container { height: 350px; } /* Plus petit sur mobile */
+      .intro-section h2 { font-size: 1.8em; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Spiritualité & Jeunesse</h1>
+</header>
+
+<div class="container">
+  
+  <div class="intro-section">
+    <h2>Le Bienheureux Carlo Acutis</h2>
+    <p>Le "Cyber-apôtre" de l'Eucharistie nous montre que la sainteté est accessible à tous les jeunes de l'Archidiocèse de Douala, même à l'ère du numérique.</p>
+  </div>
+
+  <div class="carousel-container">
+    <div class="carousel-slide">
+      <img src="../image/WhatsApp Image 2026-02-06 at 13.06.47.jpeg" alt="Carlo Acutis - Foi">
+      <img src="../image/WhatsApp Image 2026-02-06 at 13.06.48.jpeg" alt="Carlo Acutis - Sourire">
+      <img src="../image/WhatsApp Image 2026-02-06 at 13.06.58.jpeg" alt="Carlo Acutis - Jeunesse">
+    </div>
+  </div>
+
+  <div class="quote-box">
+    "Tous naissent comme des originaux, mais beaucoup meurent comme des photocopies." 
+    <br><small>— Bienheureux Carlo Acutis</small>
+  </div>
+
+  <div class="mission-grid">
+    <div class="mission-card">
+      <h3>L'Eucharistie : Mon autoroute pour le Ciel</h3>
+      <p>Comme Carlo, les jeunes de Douala sont appelés à mettre la messe au centre de leur vie pour transformer notre cité par l'amour du Christ.</p>
+    </div>
+    <div class="mission-card">
+      <h3>Le Numérique pour Dieu</h3>
+      <p>Utiliser les réseaux sociaux non pour le vice ou la distraction vide, mais pour évangéliser nos quartiers, nos écoles et nos réseaux.</p>
+    </div>
+  </div>
+
+  <div class="btn-container">
+    <p style="margin-bottom: 25px;">Découvrez l'intégralité de nos travaux de recherche sur sa vie :</p>
+    <a href="https://evenium.events/carlo-acutis-par-dominique-savio" class="btn-research" target="_blank">Consulter nos recherches détaillées →</a>
+  </div>
+
+  <div class="btn-container" style="margin-top: 80px;">
+    <a href="index.html" class="btn-back">← Retour à la page d'accueil</a>
+  </div>
+
+</div>
+
+<footer>
+  <p>© BIG DATA CENTER AI By <a href="https://www.youtube.com/@DominiqueSavio_Cyber-Ap%C3%B4tre3.0">Dominique Savio - Cyber Apôtre 3.0 </a></br>Aumônerie Diocésaine Jeunesse & Enfance – Douala</p>
+</footer>
+
+</body>
+</html>
