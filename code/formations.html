@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Formation & Leadership – Aumônerie Douala</title>
+  <style>
+    /* --- STYLE DE BASE (CONSERVÉ) --- */
+    body { font-family: "Segoe UI", sans-serif; margin: 0; padding: 0; background: #f4f7f9; color: #333; line-height: 1.6; }
+    
+    header { background: linear-gradient(135deg, #045286, #0072a8); color: white; padding: 20px; text-align: center; }
+    
+    nav { background: #ffffff; padding: 10px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); position: sticky; top: 0; z-index: 10; }
+    nav ul { margin: 0; padding: 0; display: flex; list-style: none; justify-content: center; flex-wrap: wrap; }
+    nav li { margin: 10px 15px; }
+    nav a { color: #004a7c; font-weight: bold; text-decoration: none; transition: 0.3s; }
+
+    /* --- SECTION FORMATION & EMPLOI --- */
+    .banner-theme {
+      background: #7cfc00; color: #045286;
+      padding: 15px; text-align: center; font-weight: 800;
+      text-transform: uppercase; font-size: 0.85em; letter-spacing: 1px;
+    }
+
+    .hero-formation {
+      background: linear-gradient(rgba(4, 82, 134, 0.85), rgba(4, 82, 134, 0.85)), url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=1400');
+      background-size: cover; background-position: center;
+      color: white; padding: 60px 20px; text-align: center;
+    }
+
+    .container { max-width: 1200px; margin: 40px auto; padding: 0 20px; }
+
+    .synode-badge {
+      background: #0072a8; color: white; padding: 8px 20px;
+      border-radius: 50px; display: inline-block; margin-bottom: 20px;
+      font-weight: bold; border: 2px solid #7cfc00; font-size: 0.9em;
+    }
+
+    /* Grille de 06 éléments */
+    .grid-formation {
+      display: grid; 
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 25px; 
+      margin-top: 40px;
+    }
+
+    .formation-card {
+      background: white; border-radius: 15px; padding: 30px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+      border-left: 6px solid #045286; transition: 0.3s;
+      display: flex; flex-direction: column;
+    }
+    .formation-card:hover { transform: translateY(-5px); border-left-color: #7cfc00; }
+
+    .formation-card h3 { color: #045286; margin-top: 0; display: flex; align-items: center; gap: 12px; font-size: 1.2em; }
+    
+    .icon-circle {
+      background: #f0f4f8; width: 45px; height: 45px; 
+      display: flex; align-items: center; justify-content: center;
+      border-radius: 50%; font-size: 1.3em; flex-shrink: 0;
+    }
+
+    /* Section Emploi */
+    .emploi-box {
+      background: white; border-radius: 20px; overflow: hidden;
+      display: flex; flex-wrap: wrap; margin-top: 60px;
+      box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+    }
+    .emploi-content { flex: 1.2; padding: 45px; min-width: 320px; }
+    .emploi-image { 
+      flex: 0.8; min-width: 320px; 
+      background: url('https://images.unsplash.com/photo-1521737711867-e3b97375f902?q=80&w=800') center/cover;
+    }
+
+    .tag {
+      background: #045286; color: white; padding: 5px 15px;
+      border-radius: 5px; font-size: 0.8em; font-weight: bold;
+    }
+
+    footer { background: #01395c; color: white; padding: 30px; text-align: center; margin-top: 50px; }
+  </style>
+</head>
+<body>
+
+<div class="banner-theme">
+  ✨ Thème : Formation intégrale des jeunes et emploi dans la société
+</div>
+
+<header>
+  <marquee><h1>Aumônerie Diocésaine Jeunesse & Enfance – Douala</h1></marquee>
+</header>
+
+<nav>
+  <ul>
+    <li><a href="index.html">Accueil</a></li>
+    <li><a href="index.html#apropos">À propos</a></li>
+    <li><a href="index.html#enfance">Enfance</a></li>
+    <li><a href="index.html#jeunesse">Jeunesse</a></li>
+    <li><a href="index.html#actus">Actualités</a></li>
+  </ul>
+</nav>
+
+<section class="hero-formation">
+  <div class="synode-badge">DEUXIEME ANNÉE DU SYNODE</div>
+  <h1>Leadership & Excellence</h1>
+  <p>Une formation intégrale pour briller dans l'Église et impacter la société.</p>
+</section>
+
+<div class="container">
+  
+  <div class="grid-formation">
+    <div class="formation-card">
+      <h3><div class="icon-circle">⚖️</div> Doctrine Sociale</h3>
+      <p>Étudier les principes de l'Église sur le travail, la justice et le bien commun pour agir en citoyen éclairé.</p>
+    </div>
+
+    <div class="formation-card">
+      <h3><div class="icon-circle">🚀</div> Entrepreneuriat</h3>
+      <p>De l'idée au projet : outils pratiques pour créer des activités génératrices de revenus et d'emplois.</p>
+    </div>
+
+    <div class="formation-card">
+      <h3><div class="icon-circle">🎤</div> Art Oratoire</h3>
+      <p>Développer son charisme et sa capacité de persuasion pour porter la voix des jeunes avec assurance.</p>
+    </div>
+
+    <div class="formation-card">
+      <h3><div class="icon-circle">🛡️</div> Éthique Professionnelle</h3>
+      <p>Apprendre à concilier foi et carrière, en luttant contre la corruption et en prônant l'intégrité au travail.</p>
+    </div>
+
+    <div class="formation-card">
+      <h3><div class="icon-circle">💻</div> Compétences Digitales</h3>
+      <p>Maîtriser les outils numériques pour booster son employabilité et évangéliser sur les réseaux sociaux.</p>
+    </div>
+
+    <div class="formation-card">
+      <h3><div class="icon-circle">🌍</div> Engagement Civique</h3>
+      <p>Comprendre son rôle dans la nation pour participer activement au développement du Cameroun.</p>
+    </div>
+  </div>
+
+  <div class="emploi-box">
+    <div class="emploi-content">
+      <span class="tag">SYNODALITÉ & EMPLOI</span>
+      <h2 style="color: #045286; margin-top: 15px;">L'Insertion au Cœur du Synode</h2>
+      <p>En cette deuxième année synodale, l'Aumônerie de Douala accompagne chaque jeune vers l'autonomie. Notre formation ne s'arrête pas à la prière, elle prépare à la vie active.</p>
+      <ul style="padding-left: 20px;">
+        <li>Accompagnement personnalisé à la recherche d'emploi.</li>
+        <li>Réseautage avec des entrepreneurs et cadres chrétiens.</li>
+        <li>Mentorat pour le montage de projets innovants.</li>
+      </ul>
+      <button style="background: #7cfc00; border: none; padding: 12px 30px; border-radius: 50px; font-weight: bold; cursor: pointer; margin-top: 15px; color: #045286; transition: 0.3s;">
+        S'inscrire à une session
+      </button>
+    </div>
+    <div class="emploi-image"></div>
+  </div>
+
+  <center style="margin-top: 50px;">
+    <a href="index.html" style="color: #045286; font-weight: bold; text-decoration: none;">← Retourner à l'accueil</a>
+  </center>
+</div>
+
+<footer>
+  <p>© BIG DATA CENTER AI By <a href="https://www.youtube.com/@DominiqueSavio_Cyber-Ap%C3%B4tre3.0">Dominique Savio - Cyber Apôtre 3.0 </a></br>Aumônerie Diocésaine Jeunesse & Enfance – Douala</p>
+</footer>
+
+</body>
+</html>
