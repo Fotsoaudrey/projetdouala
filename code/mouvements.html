@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mouvements Jeunes – Aumônerie Douala</title>
+  <style>
+    /* --- STYLE DE BASE (CONSERVÉ) --- */
+    body { font-family: "Segoe UI", sans-serif; margin: 0; padding: 0; background: #f0f4f8; color: #333; }
+    
+    header { background: linear-gradient(135deg, #045286, #0072a8); color: white; padding: 20px; text-align: center; }
+    
+    nav { background: #ffffff; padding: 10px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); position: sticky; top: 0; z-index: 10; }
+    nav ul { margin: 0; padding: 0; display: flex; list-style: none; justify-content: center; flex-wrap: wrap; }
+    nav li { margin: 10px 15px; }
+    nav a { color: #004a7c; font-weight: bold; text-decoration: none; transition: 0.3s; }
+
+    /* --- PORTAIL JEUNESSE --- */
+    .hero-jeunes {
+      background: linear-gradient(45deg, rgba(4, 82, 134, 0.9), rgba(0, 114, 168, 0.8)), url('https://images.unsplash.com/photo-1523240795612-9a054b0db644?q=80&w=1400');
+      background-size: cover; background-position: center;
+      color: white; padding: 60px 20px; text-align: center;
+      clip-path: polygon(0 0, 100% 0, 100% 90%, 0% 100%); /* Design dynamique coupé */
+    }
+
+    .container { max-width: 1200px; margin: 30px auto; padding: 0 20px; }
+
+    .section-intro { text-align: center; margin-bottom: 40px; }
+    .section-intro h2 { color: #045286; font-size: 2.2em; text-transform: uppercase; letter-spacing: 1px; }
+
+    /* Grille des mouvements */
+    .grid-jeunes {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 25px;
+    }
+
+    .card-jeune {
+      background: white;
+      border-radius: 20px;
+      padding: 30px;
+      text-align: center;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+      transition: all 0.4s ease;
+      border-top: 6px solid #7cfc00; /* Rappel du vert fluo */
+      position: relative;
+    }
+
+    .card-jeune:hover {
+      transform: translateY(-10px) rotate(1deg);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+      border-top-color: #0072a8;
+    }
+
+    .card-jeune .emoji { font-size: 3.5em; margin-bottom: 15px; display: block; }
+    .card-jeune h3 { color: #045286; margin-bottom: 15px; font-size: 1.4em; }
+    .card-jeune p { color: #666; font-size: 0.95em; margin-bottom: 20px; }
+
+    /* Badge catégorie */
+    .badge {
+      display: inline-block;
+      padding: 5px 15px;
+      border-radius: 50px;
+      font-size: 0.8em;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+    .badge-spirituel { background: #e3f2fd; color: #0072a8; }
+    .badge-action { background: #f1f8e9; color: #388e3c; }
+
+    .btn-rejoindre {
+      background: #045286;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 0.9em;
+      transition: 0.3s;
+    }
+    .btn-rejoindre:hover { background: #7cfc00; color: #045286; }
+
+    /* Footer spécial appel à l'action */
+    .cta-zone {
+      background: #045286; color: white;
+      padding: 40px; border-radius: 20px;
+      text-align: center; margin-top: 60px;
+    }
+
+    footer { background: #01395c; color: white; padding: 30px; text-align: center; margin-top: 50px; }
+  </style>
+</head>
+<body>
+
+<header>
+  <marquee><h1>Aumônerie Diocésaine Jeunesse & Enfance – Douala</h1></marquee>
+</header>
+
+<nav>
+  <ul>
+    <li><a href="index.html">Accueil</a></li>
+    <li><a href="index.html#apropos">À propos</a></li>
+    <li><a href="index.html#enfance">Enfance</a></li>
+    <li><a href="index.html#jeunesse">Jeunesse</a></li>
+    <li><a href="index.html#actus">Actualités</a></li>
+  </ul>
+</nav>
+
+<section class="hero-jeunes">
+  <h1>Génération En Feu 🔥</h1>
+  <p>Trouve ton mouvement, vis ta passion, sers le Seigneur.</p>
+</section>
+
+<div class="container">
+  
+  <div class="section-intro">
+    <h2>Mouvements & Communautés</h2>
+    <p>Peu importe ton talent ou ton tempérament, il y a une place pour toi dans l'Archidiocèse.</p>
+  </div>
+
+  <div class="grid-jeunes">
+    
+    <div class="card-jeune">
+      <span class="badge badge-action">Action Catholique</span>
+      <span class="emoji">🎓</span>
+      <h3>J.E.C.</h3>
+      <p>La Jeunesse Étudiante Catholique. "Voir, Juger, Agir" dans le milieu scolaire et universitaire.</p>
+      <a href="#" class="btn-rejoindre">En savoir plus</a>
+    </div>
+
+    <div class="card-jeune">
+      <span class="badge badge-action">Formation & Nature</span>
+      <span class="emoji">⚜️</span>
+      <h3>Scouts du Cameroun</h3>
+      <p>Apprendre le leadership, la survie et le service communautaire à travers la loi scoute.</p>
+      <a href="#" class="btn-rejoindre">En savoir plus</a>
+    </div>
+
+    <div class="card-jeune">
+      <span class="badge badge-spirituel">Spiritualité</span>
+      <span class="emoji">🕊️</span>
+      <h3>Jeunes du Renouveau</h3>
+      <p>Vivre l'expérience de la Pentecôte par la louange, l'adoration et l'exercice des charismes.</p>
+      <a href="#" class="btn-rejoindre">En savoir plus</a>
+    </div>
+
+    <div class="card-jeune">
+      <span class="badge badge-spirituel">Dévotion</span>
+      <span class="emoji">🌹</span>
+      <h3>Légion de Marie</h3>
+      <p>Se mettre à l'école de la Vierge Marie pour une vie de prière et d'apostolat de proximité.</p>
+      <a href="#" class="btn-rejoindre">En savoir plus</a>
+    </div>
+
+    <div class="card-jeune">
+      <span class="badge badge-action">Service social</span>
+      <span class="emoji">💙</span>
+      <h3>Jeunesse Mariale Vicentienne</h3>
+      <p>Vivre la charité envers les pauvres en suivant l'exemple de Saint Vincent de Paul.</p>
+      <a href="#" class="btn-rejoindre">En savoir plus</a>
+    </div>
+
+    <div class="card-jeune">
+      <span class="badge badge-action">Art & Liturgie</span>
+      <span class="emoji">🎤</span>
+      <h3>Chorales de Jeunes</h3>
+      <p>Mettre sa voix au service de la liturgie pour animer les célébrations dans la joie.</p>
+      <a href="#" class="btn-rejoindre">En savoir plus</a>
+    </div>
+
+    <div class="card-jeune">
+      <span class="badge badge-action">Art & Liturgie</span>
+      <span class="emoji">🎤</span>
+      <h3>Chorales de Jeunes</h3>
+      <p>Mettre sa voix au service de la liturgie pour animer les célébrations dans la joie.</p>
+      <a href="#" class="btn-rejoindre">En savoir plus</a>
+    </div>
+
+    <div class="card-jeune">
+      <span class="badge badge-action">Art & Liturgie</span>
+      <span class="emoji">🎤</span>
+      <h3>Chorales de Jeunes</h3>
+      <p>Mettre sa voix au service de la liturgie pour animer les célébrations dans la joie.</p>
+      <a href="#" class="btn-rejoindre">En savoir plus</a>
+    </div>
+
+    <div class="card-jeune">
+      <span class="badge badge-action">Art & Liturgie</span>
+      <span class="emoji">🎤</span>
+      <h3>Chorales de Jeunes</h3>
+      <p>Mettre sa voix au service de la liturgie pour animer les célébrations dans la joie.</p>
+      <a href="#" class="btn-rejoindre">En savoir plus</a>
+    </div>
+
+  </div>
+
+  <div class="cta-zone">
+    <h2>Tu ne sais pas quoi choisir ?</h2>
+    <p>Viens discuter avec l'équipe de l'Aumônerie pour trouver le mouvement qui correspond à ton charisme.</p>
+    <a href="https://bit.ly/NDJ2026" class="btn-rejoindre" style="background: #7cfc00; color: #045286; padding: 15px 30px; font-size: 1.1em;">Contacte-nous via WhatsApp</a>
+  </div>
+
+  <center style="margin-top: 40px;">
+    <a href="index.html" style="color: #045286; font-weight: bold; text-decoration: none;">← Retour à l'accueil</a>
+  </center>
+</div>
+
+<footer>
+  <p>© BIG DATA CENTER AI By <a href="https://www.youtube.com/@DominiqueSavio_Cyber-Ap%C3%B4tre3.0">Dominique Savio - Cyber Apôtre 3.0 </a></br>Aumônerie Diocésaine Jeunesse & Enfance – Douala</p>
+</footer>
+
+</body>
+</html>
