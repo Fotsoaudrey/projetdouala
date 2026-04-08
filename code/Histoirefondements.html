@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Histoire & Fondements | Aumônerie Douala</title>
+    <meta name="description" content="Découvrez l'histoire et les fondements spirituels de l'Aumônerie Diocésaine de Douala : de sa création à aujourd'hui, ses valeurs et ses missions.">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <!-- AOS Scroll Animation -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+         :root {
+            --primary: #045286;
+            --primary-dark: #022b44;
+            --accent: #2ecc71;
+            --accent-dark: #27ae60;
+            --light: #f5f7fb;
+            --dark: #0f1724;
+            --gray: #64748b;
+            --white: #ffffff;
+            --shadow-sm: 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 10px 25px -5px rgba(0, 0, 0, 0.08);
+            --shadow-lg: 0 20px 35px -10px rgba(0, 0, 0, 0.15);
+            --radius-lg: 2rem;
+            --radius-md: 1.5rem;
+            --radius-sm: 1rem;
+            --transition: all 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--light);
+            color: #1a2c3e;
+            line-height: 1.5;
+            transition: background 0.3s, color 0.3s;
+        }
+        /* MODE SOMBRE */
+        
+        body.dark-mode {
+            background: var(--dark);
+            color: var(--light);
+        }
+        
+        body.dark-mode .intro-box,
+        body.dark-mode .timeline-item .content,
+        body.dark-mode .fondement-card {
+            background: #1e293b;
+            color: var(--light);
+        }
+        
+        body.dark-mode .intro-box p {
+            color: #94a3b8;
+        }
+        
+        body.dark-mode .timeline::before {
+            background: var(--accent);
+        }
+        
+        body.dark-mode .fondement-card {
+            border-color: rgba(46, 204, 113, 0.3);
+        }
+        
+        body.dark-mode .fondement-card h4 {
+            color: var(--accent);
+        }
+        /* Contrôles */
+        
+        .controls-bar {
+            position: fixed;
+            top: 1.5rem;
+            right: 1.5rem;
+            z-index: 1001;
+            display: flex;
+            gap: 0.75rem;
+        }
+        
+        .ctrl-btn {
+            background: rgba(255, 255, 255, 0.95);
+            border: none;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.2rem;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: var(--shadow-sm);
+        }
+        
+        body.dark-mode .ctrl-btn {
+            background: #1e293b;
+            color: var(--light);
+        }
+        
+        .ctrl-btn:hover {
+            transform: scale(1.05);
+        }
+        /* Header */
+        
+        header {
+            background: linear-gradient(135deg, #0a2e4a, var(--primary));
+            color: white;
+            padding: 1.5rem 0;
+            border-bottom: 3px solid var(--accent);
+            text-align: center;
+        }
+        
+        header h1 {
+            font-size: 1.6rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            color: var(--accent);
+        }
+        
+        @media (min-width: 768px) {
+            header h1 {
+                font-size: 2rem;
+            }
+        }
+        /* Navigation */
+        
+        nav {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(8px);
+            position: sticky;
+            top: 0;
+            z-index: 99;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+        
+        body.dark-mode nav {
+            background: rgba(15, 23, 36, 0.95);
+        }
+        
+        .nav-links {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            list-style: none;
+            padding: 0.75rem 1rem;
+        }
+        
+        .nav-links a {
+            padding: 0.6rem 1.2rem;
+            font-weight: 600;
+            text-decoration: none;
+            border-radius: 2rem;
+            transition: 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--dark);
+        }
+        
+        body.dark-mode .nav-links a {
+            color: var(--light);
+        }
+        
+        .nav-links a i {
+            color: var(--accent);
+        }
+        
+        .nav-links a:hover {
+            background: var(--primary);
+            color: white;
+        }
+        
+        .nav-links a:hover i {
+            color: white;
+        }
+        /* Container */
+        
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        /* Intro box */
+        
+        .intro-box {
+            background: var(--white);
+            padding: 3rem;
+            border-radius: var(--radius-md);
+            text-align: center;
+            box-shadow: var(--shadow-md);
+            margin: 3rem 0;
+            border-top: 5px solid var(--accent);
+        }
+        
+        .intro-box h2 {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+        
+        body.dark-mode .intro-box h2 {
+            color: var(--accent);
+        }
+        
+        .intro-box p {
+            color: var(--gray);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        /* Timeline */
+        
+        .timeline {
+            position: relative;
+            padding: 2rem 0;
+            margin: 2rem 0;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            width: 4px;
+            height: 100%;
+            background: var(--primary);
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+        
+        .timeline-item {
+            margin-bottom: 3rem;
+            position: relative;
+            width: 50%;
+            padding: 0 2rem;
+        }
+        
+        .left {
+            left: 0;
+            text-align: right;
+        }
+        
+        .right {
+            left: 50%;
+            text-align: left;
+        }
+        
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: var(--accent);
+            border: 4px solid var(--primary);
+            border-radius: 50%;
+            top: 1.5rem;
+            z-index: 1;
+            transition: var(--transition);
+        }
+        
+        .timeline-item:hover::after {
+            transform: scale(1.3);
+            background: var(--primary);
+            border-color: var(--accent);
+        }
+        
+        .left::after {
+            right: -14px;
+        }
+        
+        .right::after {
+            left: -14px;
+        }
+        
+        .timeline-item .content {
+            background: var(--white);
+            padding: 1.5rem;
+            border-radius: var(--radius-sm);
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+        }
+        
+        .timeline-item .content:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .timeline-item .content i {
+            font-size: 2rem;
+            color: var(--accent);
+            margin-bottom: 1rem;
+        }
+        
+        .timeline-item .content .date {
+            font-weight: 700;
+            color: var(--accent);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+        
+        .timeline-item .content h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.75rem;
+            color: var(--primary);
+        }
+        
+        body.dark-mode .timeline-item .content h3 {
+            color: var(--accent);
+        }
+        
+        .timeline-item .content p {
+            color: var(--gray);
+            font-size: 0.95rem;
+        }
+        /* Section fondements */
+        
+        .fondements {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+            padding: 3rem;
+            border-radius: var(--radius-lg);
+            margin: 3rem 0;
+            text-align: center;
+        }
+        
+        .fondements h2 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+        
+        .fondements>p {
+            opacity: 0.9;
+            margin-bottom: 2rem;
+        }
+        
+        .grid-fondements {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+        
+        .fondement-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(4px);
+            padding: 1.5rem;
+            border-radius: var(--radius-sm);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: var(--transition);
+        }
+        
+        .fondement-card:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.2);
+        }
+        
+        .fondement-card i {
+            font-size: 2rem;
+            color: var(--accent);
+            margin-bottom: 1rem;
+        }
+        
+        .fondement-card h4 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .fondement-card p {
+            font-size: 0.85rem;
+            opacity: 0.9;
+        }
+        /* Back link */
+        
+        .back-link {
+            text-align: center;
+            margin: 2rem 0;
+        }
+        
+        .btn-back {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--primary);
+            color: white;
+            padding: 0.7rem 2rem;
+            border-radius: 2rem;
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+        
+        .btn-back:hover {
+            background: var(--accent);
+            color: var(--primary);
+            transform: translateX(-5px);
+        }
+        /* Footer */
+        
+        footer {
+            background: var(--primary-dark);
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 2rem;
+        }
+        
+        footer a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 1rem;
+            }
+            .timeline::before {
+                left: 30px;
+            }
+            .timeline-item {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 1rem;
+                text-align: left;
+            }
+            .left,
+            .right {
+                left: 0;
+            }
+            .timeline-item::after {
+                left: 16px;
+                right: auto;
+            }
+            .intro-box h2 {
+                font-size: 1.5rem;
+            }
+            .fondements h2 {
+                font-size: 1.4rem;
+            }
+            .fondements {
+                padding: 2rem;
+            }
+            .grid-fondements {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="controls-bar">
+        <button class="ctrl-btn" id="darkModeToggle" aria-label="Mode sombre"><i class="fas fa-moon"></i></button>
+        <button class="ctrl-btn" id="langToggle" aria-label="Changer de langue"><i class="fas fa-globe"></i></button>
+    </div>
+
+    <!-- HEADER -->
+    <header>
+        <div class="container">
+            <h1 data-key="headerTitle">Aumônerie Diocésaine Jeunesse & Enfance</h1>
+            <p data-key="headerSub">Douala – Cameroun</p>
+        </div>
+    </header>
+
+    <!-- NAVIGATION (identique aux autres pages) -->
+    <nav>
+        <div class="container">
+            <ul class="nav-links">
+                <li><a href="index.html"><i class="fas fa-home"></i> <span data-key="nav1">Accueil</span></a></li>
+                <li><a href="index.html#apropos"><i class="fas fa-church"></i> <span data-key="nav2">À propos</span></a></li>
+                <li><a href="index.html#enfance"><i class="fas fa-child"></i> <span data-key="nav3">Enfance</span></a></li>
+                <li><a href="index.html#jeunesse"><i class="fas fa-users"></i> <span data-key="nav4">Jeunesse</span></a></li>
+                <li><a href="index.html#actus"><i class="fas fa-newspaper"></i> <span data-key="nav5">Actualités</span></a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- CONTENU PRINCIPAL -->
+    <div class="container">
+        <!-- Intro -->
+        <div class="intro-box" data-aos="fade-up">
+            <h2 data-key="introTitle">Histoire et fondement</h2>
+            <p data-key="introDesc">Depuis sa création, l'Aumônerie de Douala s'est donnée pour mission de bâtir une jeunesse forte dans la foi et engagée dans la cité. Découvrez le chemin parcouru.</p>
+        </div>
+
+        <!-- Timeline -->
+        <div class="timeline" data-aos="fade-up">
+            <div class="timeline-item left">
+                <div class="content">
+                    <i class="fas fa-church"></i>
+                    <span class="date" data-key="date1">Les Débuts</span>
+                    <h3 data-key="title1">L'Éveil de la Pastorale</h3>
+                    <p data-key="desc1">Organisation des premiers rassemblements de jeunes au niveau diocésain pour structurer les mouvements d'action catholique.</p>
+                </div>
+            </div>
+
+            <div class="timeline-item right">
+                <div class="content">
+                    <i class="fas fa-map-marked-alt"></i>
+                    <span class="date" data-key="date2">Expansion</span>
+                    <h3 data-key="title2">Structuration en Zones</h3>
+                    <p data-key="desc2">Découpage de l'Archidiocèse en zones pastorales pour être plus proche des réalités de chaque quartier de Douala.</p>
+                </div>
+            </div>
+
+            <div class="timeline-item left">
+                <div class="content">
+                    <i class="fas fa-laptop-code"></i>
+                    <span class="date" data-key="date3">Aujourd'hui</span>
+                    <h3 data-key="title3">Ère Digitale & Innovation</h3>
+                    <p data-key="desc3">Lancement de nouvelles initiatives comme la "Nuit des Jeunes" et l'intégration des outils numériques pour l'évangélisation.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Fondements -->
+        <div class="fondements" data-aos="fade-up">
+            <h2 data-key="fondTitle">Nos Fondements Spirituels</h2>
+            <p data-key="fondDesc">Ce qui guide chacune de nos actions au quotidien :</p>
+            <div class="grid-fondements">
+                <div class="fondement-card">
+                    <i class="fas fa-bible"></i>
+                    <h4 data-key="fond1Title">La Parole</h4>
+                    <p data-key="fond1Desc">Source de toute sagesse et guide de nos projets.</p>
+                </div>
+                <div class="fondement-card">
+                    <i class="fas fa-hands-helping"></i>
+                    <h4 data-key="fond2Title">Le Service</h4>
+                    <p data-key="fond2Desc">Se donner gratuitement pour le bien de la communauté.</p>
+                </div>
+                <div class="fondement-card">
+                    <i class="fas fa-handshake"></i>
+                    <h4 data-key="fond3Title">La Fraternité</h4>
+                    <p data-key="fond3Desc">Unir les jeunes au-delà des différences sociales.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Retour accueil -->
+        <div class="back-link">
+            <a href="index.html" class="btn-back"><i class="fas fa-arrow-left"></i> <span data-key="backBtn">Revenir à l'accueil</span></a>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <p>© BIG DATA CENTER AI — <a href="https://www.youtube.com/@DominiqueSavio_Cyber-Ap%C3%B4tre3.0" target="_blank">Dominique Savio - Cyber Apôtre 3.0</a></p>
+            <p data-key="footerText">Aumônerie Diocésaine Jeunesse & Enfance – Douala</p>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 800,
+            once: true
+        });
+
+        // Mode sombre
+        function initDarkMode() {
+            const darkMode = localStorage.getItem('darkMode') === 'true';
+            if (darkMode) document.body.classList.add('dark-mode');
+            const toggleBtn = document.getElementById('darkModeToggle');
+            toggleBtn.addEventListener('click', () => {
+                document.body.classList.toggle('dark-mode');
+                localStorage.setItem('darkMode', document.body.classList.contains('dark-mode'));
+                const icon = toggleBtn.querySelector('i');
+                icon.className = document.body.classList.contains('dark-mode') ? 'fas fa-sun' : 'fas fa-moon';
+            });
+            const icon = toggleBtn.querySelector('i');
+            icon.className = darkMode ? 'fas fa-sun' : 'fas fa-moon';
+        }
+
+        // ========== MULTILINGUE ==========
+        let currentLang = localStorage.getItem('lang') || 'fr';
+
+        const translations = {
+            fr: {
+                headerTitle: "Aumônerie Diocésaine Jeunesse & Enfance",
+                headerSub: "Douala – Cameroun",
+                nav1: "Accueil",
+                nav2: "À propos",
+                nav3: "Enfance",
+                nav4: "Jeunesse",
+                nav5: "Actualités",
+                introTitle: "Histoire et fondement",
+                introDesc: "Depuis sa création, l'Aumônerie de Douala s'est donnée pour mission de bâtir une jeunesse forte dans la foi et engagée dans la cité. Découvrez le chemin parcouru.",
+                date1: "Les Débuts",
+                title1: "L'Éveil de la Pastorale",
+                desc1: "Organisation des premiers rassemblements de jeunes au niveau diocésain pour structurer les mouvements d'action catholique.",
+                date2: "Expansion",
+                title2: "Structuration en Zones",
+                desc2: "Découpage de l'Archidiocèse en zones pastorales pour être plus proche des réalités de chaque quartier de Douala.",
+                date3: "Aujourd'hui",
+                title3: "Ère Digitale & Innovation",
+                desc3: "Lancement de nouvelles initiatives comme la 'Nuit des Jeunes' et l'intégration des outils numériques pour l'évangélisation.",
+                fondTitle: "Nos Fondements Spirituels",
+                fondDesc: "Ce qui guide chacune de nos actions au quotidien :",
+                fond1Title: "La Parole",
+                fond1Desc: "Source de toute sagesse et guide de nos projets.",
+                fond2Title: "Le Service",
+                fond2Desc: "Se donner gratuitement pour le bien de la communauté.",
+                fond3Title: "La Fraternité",
+                fond3Desc: "Unir les jeunes au-delà des différences sociales.",
+                backBtn: "Revenir à l'accueil",
+                footerText: "Aumônerie Diocésaine Jeunesse & Enfance – Douala"
+            },
+            en: {
+                headerTitle: "Diocesan Youth & Children's Chaplaincy",
+                headerSub: "Douala – Cameroon",
+                nav1: "Home",
+                nav2: "About",
+                nav3: "Childhood",
+                nav4: "Youth",
+                nav5: "News",
+                introTitle: "History & Foundation",
+                introDesc: "Since its creation, the Douala Chaplaincy has set itself the mission of building a youth strong in faith and committed to the city. Discover the journey.",
+                date1: "The Beginnings",
+                title1: "The Awakening of Pastoral Care",
+                desc1: "Organization of the first youth gatherings at the diocesan level to structure Catholic action movements.",
+                date2: "Expansion",
+                title2: "Zonal Structuring",
+                desc2: "Division of the Archdiocese into pastoral zones to be closer to the realities of each district of Douala.",
+                date3: "Today",
+                title3: "Digital Era & Innovation",
+                desc3: "Launch of new initiatives such as 'Youth Night' and the integration of digital tools for evangelization.",
+                fondTitle: "Our Spiritual Foundations",
+                fondDesc: "What guides each of our daily actions:",
+                fond1Title: "The Word",
+                fond1Desc: "Source of all wisdom and guide for our projects.",
+                fond2Title: "Service",
+                fond2Desc: "Giving freely for the good of the community.",
+                fond3Title: "Fraternity",
+                fond3Desc: "Uniting young people beyond social differences.",
+                backBtn: "Back to home",
+                footerText: "Diocesan Youth & Children's Chaplaincy – Douala"
+            }
+        };
+
+        function updateLanguage() {
+            const t = translations[currentLang];
+            document.querySelectorAll('[data-key]').forEach(el => {
+                const key = el.getAttribute('data-key');
+                if (t[key]) {
+                    el.textContent = t[key];
+                }
+            });
+            localStorage.setItem('lang', currentLang);
+        }
+
+        document.getElementById('langToggle').addEventListener('click', () => {
+            currentLang = currentLang === 'fr' ? 'en' : 'fr';
+            updateLanguage();
+        });
+
+        initDarkMode();
+        updateLanguage();
+    </script>
+</body>
+
+</html>
