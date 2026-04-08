@@ -1,155 +1,729 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Catéchèse & Groupes – Aumônerie Douala</title>
-  <style>
-    /* --- STYLE DE BASE (CONSERVÉ) --- */
-    body { font-family: "Segoe UI", sans-serif; margin: 0; padding: 0; background: #eef2f7; color: #333; }
-    
-    header { background: linear-gradient(135deg, #045286, #0072a8); color: white; padding: 20px; text-align: center; }
-    
-    nav { background: #ffffff; padding: 10px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); position: sticky; top: 0; z-index: 10; }
-    nav ul { margin: 0; padding: 0; display: flex; list-style: none; justify-content: center; flex-wrap: wrap; }
-    nav li { margin: 10px 15px; }
-    nav a { color: #004a7c; font-weight: bold; text-decoration: none; transition: 0.3s; }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Catéchèse & Groupes | Aumônerie Diocésaine Douala</title>
+    <meta name="description" content="Découvrez le parcours de catéchèse pour les enfants et les groupes de jeunes de l'Aumônerie Diocésaine de Douala : éveil à la foi, première communion, profession de foi, mouvements d'enfance et groupes de service.">
 
-    /* --- STYLE SPECIFIQUE CATECHESE --- */
-    .container { max-width: 1100px; margin: 40px auto; padding: 0 20px; }
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
 
-    .section-title { 
-      text-align: center; color: #045286; margin-bottom: 30px; 
-      border-bottom: 4px solid #7cfc00; display: table; margin: 0 auto 30px; padding-bottom: 5px;
-    }
+    <!-- Font Awesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
-    /* Blocs de Catéchèse */
-    .cate-section { background: white; padding: 40px; border-radius: 20px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); margin-bottom: 50px; }
-    
-    .cate-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
-    
-    .cate-card {
-      background: #f9fbff; padding: 25px; border-radius: 15px; border-top: 5px solid #0072a8;
-      transition: 0.3s;
-    }
-    .cate-card:hover { transform: translateY(-5px); background: #fff; box-shadow: 0 8px 15px rgba(0,0,0,0.1); }
-    .cate-card h3 { color: #0072a8; margin-top: 0; font-size: 1.1em; }
-    .age-badge { background: #7cfc00; color: #045286; padding: 2px 10px; border-radius: 10px; font-size: 0.8em; font-weight: bold; }
-
-    /* Groupes & Mouvements */
-    .groupes-section { display: grid; grid-template-columns: repeat(auto-fit, minmax(450px, 1fr)); gap: 30px; }
-    
-    .groupe-box {
-      background: linear-gradient(135deg, #045286, #0072a8); color: white;
-      padding: 30px; border-radius: 20px; position: relative; overflow: hidden;
-    }
-    .groupe-box h2 { margin-top: 0; color: #7cfc00; }
-    .groupe-list { list-style: none; padding: 0; }
-    .groupe-list li { 
-      padding: 10px 0; border-bottom: 1px solid rgba(255,255,255,0.1); 
-      display: flex; align-items: center;
-    }
-    .groupe-list li::before { content: "◈"; margin-right: 10px; color: #7cfc00; }
-
-    footer { background: #01395c; color: white; padding: 30px; text-align: center; margin-top: 50px; }
-
-    @media (max-width: 600px) { .groupes-section { grid-template-columns: 1fr; } }
-  </style>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+         :root {
+            --primary-bg: #045286;
+            --primary-dark: #022b44;
+            --accent: #2ecc71;
+            --accent-dark: #27ae60;
+            --accent-light: rgba(46, 204, 113, 0.15);
+            --text-dark: #1e293b;
+            --gray-500: #64748b;
+            --gray-300: #cbd5e1;
+            --white: #ffffff;
+            --shadow-sm: 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 10px 25px -5px rgba(0, 0, 0, 0.08);
+            --radius-lg: 28px;
+            --radius-md: 20px;
+            --radius-sm: 12px;
+            --transition: all 0.25s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #f5f7fb;
+            color: var(--text-dark);
+            line-height: 1.5;
+            scroll-behavior: smooth;
+            transition: background 0.3s ease, color 0.3s ease;
+        }
+        /* MODE SOMBRE */
+        
+        body.dark-mode {
+            --text-dark: #e2e8f0;
+            background: #0f1724;
+        }
+        
+        body.dark-mode header,
+        body.dark-mode .cate-section,
+        body.dark-mode .info-banner,
+        body.dark-mode footer {
+            background: linear-gradient(135deg, #020617, #0f1724);
+        }
+        
+        body.dark-mode nav {
+            background: #1e293b;
+        }
+        
+        body.dark-mode nav a {
+            color: #e2e8f0;
+        }
+        
+        body.dark-mode .cate-card {
+            background: #1e293b;
+            border-top-color: var(--accent);
+        }
+        
+        body.dark-mode .cate-card p {
+            color: #94a3b8;
+        }
+        
+        body.dark-mode .groupe-box {
+            background: #1e293b;
+            color: #e2e8f0;
+        }
+        
+        body.dark-mode .groupe-box h2 {
+            color: var(--accent);
+        }
+        
+        body.dark-mode .groupe-box.white-bg {
+            background: #0f1724;
+            border-color: var(--accent);
+            color: #e2e8f0;
+        }
+        
+        body.dark-mode .groupe-box.white-bg h2 {
+            color: var(--accent);
+        }
+        
+        body.dark-mode .groupe-list li {
+            border-bottom-color: #334155;
+        }
+        
+        body.dark-mode .info-banner {
+            background: var(--accent-dark);
+            color: #022b44;
+        }
+        
+        body.dark-mode .btn-back {
+            background: var(--accent);
+            color: #022b44;
+            border-color: var(--accent);
+        }
+        
+        body.dark-mode .btn-back:hover {
+            background: transparent;
+            color: var(--accent);
+        }
+        
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 32px;
+        }
+        /* CONTROLES */
+        
+        .controls-bar {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1001;
+            display: flex;
+            gap: 12px;
+        }
+        
+        .ctrl-btn {
+            background: rgba(255, 255, 255, 0.95);
+            border: none;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.2rem;
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .ctrl-btn:focus-visible {
+            outline: 2px solid var(--accent);
+            outline-offset: 2px;
+        }
+        
+        body.dark-mode .ctrl-btn {
+            background: #2d3748;
+            color: #e2e8f0;
+        }
+        
+        .ctrl-btn:hover {
+            transform: scale(1.05);
+        }
+        /* HEADER */
+        
+        header {
+            background: linear-gradient(135deg, #0a2e4a, var(--primary-bg));
+            color: white;
+            padding: 24px 0;
+            border-bottom: 3px solid var(--accent);
+            transition: background 0.3s;
+            text-align: center;
+        }
+        
+        header h1 {
+            font-size: 1.6rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--accent);
+        }
+        
+        header p {
+            font-size: 0.9rem;
+            opacity: 0.85;
+            margin-top: 8px;
+        }
+        
+        @media (min-width: 768px) {
+            header h1 {
+                font-size: 2rem;
+            }
+        }
+        /* NAVIGATION */
+        
+        nav {
+            background: white;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            position: sticky;
+            top: 0;
+            z-index: 99;
+            transition: background 0.3s;
+        }
+        
+        .nav-links {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 8px;
+            list-style: none;
+            padding: 12px 16px;
+        }
+        
+        .nav-links a {
+            padding: 10px 20px;
+            font-weight: 600;
+            color: var(--text-dark);
+            text-decoration: none;
+            border-radius: 40px;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.9rem;
+        }
+        
+        .nav-links a i {
+            color: var(--accent);
+        }
+        
+        .nav-links a:hover,
+        .nav-links a:focus-visible {
+            background: var(--primary-bg);
+            color: white;
+            outline: none;
+        }
+        
+        .nav-links a:hover i,
+        .nav-links a:focus-visible i {
+            color: white;
+        }
+        /* SECTION TITRE */
+        
+        .section-title {
+            text-align: center;
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--primary-bg);
+            margin-bottom: 16px;
+        }
+        
+        .section-subtitle {
+            text-align: center;
+            color: var(--gray-500);
+            max-width: 700px;
+            margin: 0 auto 40px;
+            font-size: 1rem;
+        }
+        /* PARCOURS CATÉCHÈSE */
+        
+        .cate-section {
+            background: white;
+            border-radius: var(--radius-lg);
+            padding: 48px;
+            margin: 60px 0;
+            box-shadow: var(--shadow-md);
+        }
+        
+        .cate-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 28px;
+        }
+        
+        .cate-card {
+            background: #f8fafc;
+            padding: 28px;
+            border-radius: var(--radius-md);
+            border-top: 5px solid var(--accent);
+            transition: var(--transition);
+        }
+        
+        .cate-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-md);
+        }
+        
+        .age-badge {
+            display: inline-block;
+            background: var(--accent);
+            color: #022b44;
+            padding: 4px 12px;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            margin-bottom: 16px;
+        }
+        
+        .cate-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 12px;
+            color: var(--primary-bg);
+        }
+        
+        .cate-card p {
+            color: var(--gray-500);
+            line-height: 1.6;
+            font-size: 0.9rem;
+        }
+        /* GROUPES (deux colonnes) */
+        
+        .groupes-section {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 32px;
+            margin: 60px 0;
+        }
+        
+        .groupe-box {
+            background: linear-gradient(135deg, var(--primary-bg), #0072a8);
+            color: white;
+            padding: 36px;
+            border-radius: var(--radius-lg);
+            transition: var(--transition);
+        }
+        
+        .groupe-box:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-md);
+        }
+        
+        .groupe-box h2 {
+            font-size: 1.6rem;
+            margin-bottom: 16px;
+            color: var(--accent);
+        }
+        
+        .groupe-box p {
+            margin-bottom: 20px;
+            opacity: 0.9;
+            font-size: 0.95rem;
+        }
+        
+        .groupe-list {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .groupe-list li {
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 0.95rem;
+        }
+        
+        .groupe-list li i {
+            width: 24px;
+            color: var(--accent);
+        }
+        
+        .groupe-box.white-bg {
+            background: white;
+            color: var(--text-dark);
+            border: 2px solid var(--accent);
+        }
+        
+        .groupe-box.white-bg h2 {
+            color: var(--primary-bg);
+        }
+        
+        .groupe-box.white-bg .groupe-list li {
+            border-bottom-color: var(--gray-300);
+        }
+        
+        .groupe-box.white-bg .groupe-list li i {
+            color: var(--accent);
+        }
+        /* BANNIÈRE INFO */
+        
+        .info-banner {
+            background: var(--accent);
+            color: #022b44;
+            padding: 28px;
+            border-radius: var(--radius-md);
+            text-align: center;
+            margin: 40px 0;
+            font-weight: 600;
+            font-size: 1rem;
+        }
+        
+        .info-banner i {
+            margin-right: 10px;
+            font-size: 1.2rem;
+        }
+        /* LIEN RETOUR */
+        
+        .back-link {
+            text-align: center;
+            margin: 40px 0;
+        }
+        
+        .btn-back {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            background: var(--primary-bg);
+            color: white;
+            padding: 12px 32px;
+            border-radius: 60px;
+            font-weight: 600;
+            transition: var(--transition);
+            border: 2px solid var(--primary-bg);
+        }
+        
+        .btn-back:hover,
+        .btn-back:focus-visible {
+            background: transparent;
+            color: var(--primary-bg);
+            transform: translateX(-5px);
+            outline: none;
+        }
+        /* FOOTER */
+        
+        footer {
+            background: var(--primary-dark);
+            color: white;
+            padding: 40px 0;
+            text-align: center;
+            transition: background 0.3s;
+            margin-top: 40px;
+        }
+        
+        footer a {
+            color: var(--accent);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        
+        footer a:hover {
+            color: white;
+        }
+        
+        @media (max-width: 1024px) {
+            .groupes-section {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 20px;
+            }
+            .cate-section {
+                padding: 32px 20px;
+            }
+            .section-title {
+                font-size: 1.5rem;
+            }
+            .groupe-box {
+                padding: 24px;
+            }
+            .groupe-box h2 {
+                font-size: 1.3rem;
+            }
+            .nav-links a {
+                padding: 6px 14px;
+                font-size: 0.8rem;
+            }
+            .controls-bar {
+                top: 12px;
+                right: 12px;
+            }
+            .ctrl-btn {
+                width: 38px;
+                height: 38px;
+                font-size: 1rem;
+            }
+        }
+    </style>
 </head>
+
 <body>
 
-<header>
-  <marquee><h1>Aumônerie Diocésaine Jeunesse & Enfance – Douala</h1></marquee>
-</header>
-
-<nav>
-  <ul>
-    <li><a href="index.html">Accueil</a></li>
-    <li><a href="index.html#apropos">À propos</a></li>
-    <li><a href="index.html#enfance">Enfance</a></li>
-    <li><a href="index.html#jeunesse">Jeunesse</a></li>
-    <li><a href="index.html#actus">Actualités</a></li>
-  </ul>
-</nav>
-
-<div class="container">
-  
-  <div class="cate-section">
-    <h2 class="section-title">Le Parcours de Catéchèse</h2>
-    <p style="text-align: center; margin-bottom: 40px;">Une progression adaptée à l'âge de l'enfant pour le préparer aux sacrements et à la vie chrétienne.</p>
-    
-    <div class="cate-grid">
-      <div class="cate-card">
-        <span class="age-badge">8 - 9 ans</span>
-        <h3>Année de Base</h3>
-        <p>Premiers pas dans la connaissance de Jésus et de la communauté chrétienne.</p>
-      </div>
-      <div class="cate-card">
-        <span class="age-badge">9 - 10 ans</span>
-        <h3>Première Communion</h3>
-        <p>Préparation au sacrement de l'Eucharistie et à la réconciliation.</p>
-      </div>
-      <div class="cate-card">
-        <span class="age-badge">11 - 12 ans</span>
-        <h3>Persévérance</h3>
-        <p>Approfondissement de la foi et initiation à la vie de prière plus intense.</p>
-      </div>
-      <div class="cate-card">
-        <span class="age-badge">13 ans +</span>
-        <h3>Profession de Foi</h3>
-        <p>Étape solennelle où le jeune confirme personnellement les promesses de son baptême.</p>
-      </div>
-      <div class="cate-card">
-        <span class="age-badge">13 ans +</span>
-        <h3>Profession de Foi</h3>
-        <p>Étape solennelle où le jeune confirme personnellement les promesses de son baptême.</p>
-      </div>
-      <div class="cate-card">
-        <span class="age-badge">13 ans +</span>
-        <h3>Profession de Foi</h3>
-        <p>Étape solennelle où le jeune confirme personnellement les promesses de son baptême.</p>
-      </div>
-    </div>
-  </div>
-
-  <div class="groupes-section">
-    
-    <div class="groupe-box">
-      <h2>Mouvements d'Enfance</h2>
-      <p>Pour vivre sa foi par l'action et la fraternité :</p>
-      <ul class="groupe-list">
-        <li>Copains du Monde / ACE</li>
-        <li>Les Coeurs Vaillants et Âmes Vaillantes (CVAV)</li>
-        <li>Scoutisme (Louveteaux)</li>
-        <li>Enfance Missionnaire</li>
-      </ul>
+    <!-- CONTROLES -->
+    <div class="controls-bar">
+        <button class="ctrl-btn" id="darkModeToggle" aria-label="Mode sombre"><i class="fas fa-moon"></i></button>
+        <button class="ctrl-btn" id="langToggle" aria-label="Changer de langue"><i class="fas fa-globe"></i></button>
     </div>
 
-    <div class="groupe-box" style="background: white; color: #333; border: 2px solid #045286;">
-      <h2 style="color: #045286;">Groupes de Service</h2>
-      <p>Servir Dieu et la communauté dès le plus jeune âge :</p>
-      <ul class="groupe-list">
-        <li>Enfants de Chœur (Servants de Messe)</li>
-        <li>Petits Chanteurs (Chorales d'enfants)</li>
-        <li>Lecteurs de la Parole</li>
-        <li>Danse Liturgique</li>
-      </ul>
+    <!-- HEADER -->
+    <header>
+        <div class="container">
+            <h1 data-key="headerTitle">Aumônerie Diocésaine Jeunesse & Enfance</h1>
+            <p data-key="headerSub">Douala – Cameroun</p>
+        </div>
+    </header>
+
+    <!-- NAVIGATION -->
+    <nav>
+        <div class="container">
+            <ul class="nav-links">
+                <li><a href="index.html"><i class="fas fa-home"></i> <span data-key="nav1">Accueil</span></a></li>
+                <li><a href="index.html#apropos"><i class="fas fa-church"></i> <span data-key="nav2">À propos</span></a></li>
+                <li><a href="index.html#enfance"><i class="fas fa-child"></i> <span data-key="nav3">Enfance</span></a></li>
+                <li><a href="index.html#jeunesse"><i class="fas fa-users"></i> <span data-key="nav4">Jeunesse</span></a></li>
+                <li><a href="index.html#actus"><i class="fas fa-newspaper"></i> <span data-key="nav5">Actualités</span></a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- CONTENU PRINCIPAL -->
+    <div class="container">
+
+        <!-- PARCOURS CATÉCHÈSE -->
+        <div class="cate-section">
+            <h2 class="section-title" data-key="cateTitle">Le Parcours de Catéchèse</h2>
+            <p class="section-subtitle" data-key="cateSubtitle">Une progression adaptée à l'âge de l'enfant pour le préparer aux sacrements et à la vie chrétienne.</p>
+
+            <div class="cate-grid">
+                <div class="cate-card">
+                    <span class="age-badge" data-key="age1">6 - 7 ans</span>
+                    <h3 data-key="cate1Title">Éveil à la foi</h3>
+                    <p data-key="cate1Desc">Découverte de l'amour de Dieu à travers des récits bibliques, des chants et des activités ludiques. Premiers pas dans la communauté chrétienne.</p>
+                </div>
+                <div class="cate-card">
+                    <span class="age-badge" data-key="age2">8 - 9 ans</span>
+                    <h3 data-key="cate2Title">Année de Base</h3>
+                    <p data-key="cate2Desc">Apprentissage des prières fondamentales, découverte des sacrements et initiation à la vie de prière personnelle.</p>
+                </div>
+                <div class="cate-card">
+                    <span class="age-badge" data-key="age3">9 - 10 ans</span>
+                    <h3 data-key="cate3Title">Première Communion</h3>
+                    <p data-key="cate3Desc">Préparation au sacrement de l'Eucharistie et à la réconciliation. Accompagnement vers la rencontre personnelle avec Jésus.</p>
+                </div>
+                <div class="cate-card">
+                    <span class="age-badge" data-key="age4">11 - 12 ans</span>
+                    <h3 data-key="cate4Title">Persévérance</h3>
+                    <p data-key="cate4Desc">Approfondissement de la foi, étude du Catéchisme et initiation à la vie de prière intense (rosaire, adoration).</p>
+                </div>
+                <div class="cate-card">
+                    <span class="age-badge" data-key="age5">13 ans et +</span>
+                    <h3 data-key="cate5Title">Profession de Foi</h3>
+                    <p data-key="cate5Desc">Étape solennelle où le jeune confirme personnellement les promesses de son baptême. Engagement actif dans la paroisse.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- GROUPES D'ENFANCE ET DE SERVICE -->
+        <div class="groupes-section">
+            <div class="groupe-box">
+                <h2 data-key="mouvTitle">Mouvements d'Enfance</h2>
+                <p data-key="mouvDesc">Pour vivre sa foi par l'action, le jeu et la fraternité :</p>
+                <ul class="groupe-list">
+                    <li><i class="fas fa-globe-africa"></i> <span data-key="mouv1">Copains du Monde / ACE – Action Catholique des Enfants</span></li>
+                    <li><i class="fas fa-heart"></i> <span data-key="mouv2">Les Cœurs Vaillants et Âmes Vaillantes (CVAV)</span></li>
+                    <li><i class="fas fa-campground"></i> <span data-key="mouv3">Scoutisme (Louveteaux)</span></li>
+                    <li><i class="fas fa-hands-helping"></i> <span data-key="mouv4">Enfance Missionnaire</span></li>
+                    <li><i class="fas fa-church"></i> <span data-key="mouv5">Jeunes Amis de Jésus (JEA)</span></li>
+                </ul>
+            </div>
+
+            <div class="groupe-box white-bg">
+                <h2 data-key="serviceTitle">Groupes de Service</h2>
+                <p data-key="serviceDesc">Servir Dieu et la communauté dès le plus jeune âge :</p>
+                <ul class="groupe-list">
+                    <li><i class="fas fa-vest"></i> <span data-key="service1">Enfants de Chœur (Servants de Messe)</span></li>
+                    <li><i class="fas fa-music"></i> <span data-key="service2">Petits Chanteurs (Chorales d'enfants)</span></li>
+                    <li><i class="fas fa-book-open"></i> <span data-key="service3">Lecteurs de la Parole (enfants)</span></li>
+                    <li><i class="fas fa-dove"></i> <span data-key="service4">Danse Liturgique pour enfants</span></li>
+                    <li><i class="fas fa-torah"></i> <span data-key="service5">Accueil et décoration liturgique</span></li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- BANNIÈRE INFO -->
+        <div class="info-banner">
+            <i class="fas fa-bullhorn"></i> <span data-key="infoText">Pour toute inscription, rapprochez-vous du bureau de l'Aumônerie de votre Paroisse ou de votre Zone.</span>
+        </div>
+
+        <!-- LIEN RETOUR -->
+        <div class="back-link">
+            <a href="index.html" class="btn-back">
+                <i class="fas fa-arrow-left"></i> <span data-key="backBtn">Retourner à l'accueil</span>
+            </a>
+        </div>
     </div>
 
-  </div>
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <p>© BIG DATA CENTER AI — <a href="https://www.youtube.com/@DominiqueSavio_Cyber-Ap%C3%B4tre3.0" target="_blank">Dominique Savio - Cyber Apôtre 3.0</a></p>
+            <p data-key="footerText">Aumônerie Diocésaine Jeunesse & Enfance – Douala</p>
+        </div>
+    </footer>
 
-  <div style="background: #7cfc00; padding: 20px; border-radius: 15px; margin-top: 40px; text-align: center; color: #045286; font-weight: bold;">
-    📢 Pour toute inscription, rapprochez-vous du bureau de l'Aumônerie de votre Paroisse ou de votre Zone.
-  </div>
+    <script>
+        // ========== MULTILINGUE ==========
+        let currentLang = localStorage.getItem('lang') || 'fr';
 
-  <center style="margin-top: 40px;">
-    <a href="index.html" style="color: #045286; font-weight: bold; text-decoration: none;">← Retourner à l'accueil</a>
-  </center>
-</div>
+        const translations = {
+            fr: {
+                headerTitle: "Aumônerie Diocésaine Jeunesse & Enfance",
+                headerSub: "Douala – Cameroun",
+                nav1: "Accueil",
+                nav2: "À propos",
+                nav3: "Enfance",
+                nav4: "Jeunesse",
+                nav5: "Actualités",
+                cateTitle: "Le Parcours de Catéchèse",
+                cateSubtitle: "Une progression adaptée à l'âge de l'enfant pour le préparer aux sacrements et à la vie chrétienne.",
+                age1: "6 - 7 ans",
+                age2: "8 - 9 ans",
+                age3: "9 - 10 ans",
+                age4: "11 - 12 ans",
+                age5: "13 ans et +",
+                cate1Title: "Éveil à la foi",
+                cate1Desc: "Découverte de l'amour de Dieu à travers des récits bibliques, des chants et des activités ludiques. Premiers pas dans la communauté chrétienne.",
+                cate2Title: "Année de Base",
+                cate2Desc: "Apprentissage des prières fondamentales, découverte des sacrements et initiation à la vie de prière personnelle.",
+                cate3Title: "Première Communion",
+                cate3Desc: "Préparation au sacrement de l'Eucharistie et à la réconciliation. Accompagnement vers la rencontre personnelle avec Jésus.",
+                cate4Title: "Persévérance",
+                cate4Desc: "Approfondissement de la foi, étude du Catéchisme et initiation à la vie de prière intense (rosaire, adoration).",
+                cate5Title: "Profession de Foi",
+                cate5Desc: "Étape solennelle où le jeune confirme personnellement les promesses de son baptême. Engagement actif dans la paroisse.",
+                mouvTitle: "Mouvements d'Enfance",
+                mouvDesc: "Pour vivre sa foi par l'action, le jeu et la fraternité :",
+                mouv1: "Copains du Monde / ACE – Action Catholique des Enfants",
+                mouv2: "Les Cœurs Vaillants et Âmes Vaillantes (CVAV)",
+                mouv3: "Scoutisme (Louveteaux)",
+                mouv4: "Enfance Missionnaire",
+                mouv5: "Jeunes Amis de Jésus (JEA)",
+                serviceTitle: "Groupes de Service",
+                serviceDesc: "Servir Dieu et la communauté dès le plus jeune âge :",
+                service1: "Enfants de Chœur (Servants de Messe)",
+                service2: "Petits Chanteurs (Chorales d'enfants)",
+                service3: "Lecteurs de la Parole (enfants)",
+                service4: "Danse Liturgique pour enfants",
+                service5: "Accueil et décoration liturgique",
+                infoText: "Pour toute inscription, rapprochez-vous du bureau de l'Aumônerie de votre Paroisse ou de votre Zone.",
+                backBtn: "Retourner à l'accueil",
+                footerText: "Aumônerie Diocésaine Jeunesse & Enfance – Douala"
+            },
+            en: {
+                headerTitle: "Diocesan Youth & Children's Chaplaincy",
+                headerSub: "Douala – Cameroon",
+                nav1: "Home",
+                nav2: "About",
+                nav3: "Childhood",
+                nav4: "Youth",
+                nav5: "News",
+                cateTitle: "The Catechesis Pathway",
+                cateSubtitle: "A progression adapted to the child's age to prepare them for the sacraments and Christian life.",
+                age1: "6 - 7 years",
+                age2: "8 - 9 years",
+                age3: "9 - 10 years",
+                age4: "11 - 12 years",
+                age5: "13 years +",
+                cate1Title: "Awakening to Faith",
+                cate1Desc: "Discovering God's love through Bible stories, songs and fun activities. First steps in the Christian community.",
+                cate2Title: "Foundation Year",
+                cate2Desc: "Learning fundamental prayers, discovering the sacraments and initiating personal prayer life.",
+                cate3Title: "First Communion",
+                cate3Desc: "Preparation for the sacrament of the Eucharist and reconciliation. Accompaniment towards a personal encounter with Jesus.",
+                cate4Title: "Perseverance",
+                cate4Desc: "Deepening faith, studying the Catechism and initiation into intense prayer life (rosary, adoration).",
+                cate5Title: "Profession of Faith",
+                cate5Desc: "Solemn step where the young person personally confirms the promises of their baptism. Active commitment in the parish.",
+                mouvTitle: "Children's Movements",
+                mouvDesc: "Living faith through action, play and fraternity:",
+                mouv1: "Friends of the World / ACE – Children's Catholic Action",
+                mouv2: "Valiant Hearts and Valiant Souls (CVAV)",
+                mouv3: "Scouting (Cub Scouts)",
+                mouv4: "Missionary Childhood",
+                mouv5: "Young Friends of Jesus (YFJ)",
+                serviceTitle: "Service Groups",
+                serviceDesc: "Serving God and the community from an early age:",
+                service1: "Altar Servers",
+                service2: "Little Singers (Children's Choirs)",
+                service3: "Child Readers of the Word",
+                service4: "Liturgical Dance for Children",
+                service5: "Welcome and liturgical decoration",
+                infoText: "For registration, contact the Chaplaincy office of your Parish or Zone.",
+                backBtn: "Back to home",
+                footerText: "Diocesan Youth & Children's Chaplaincy – Douala"
+            }
+        };
 
-<footer>
-  <p>© BIG DATA CENTER AI By <a href="https://www.youtube.com/@DominiqueSavio_Cyber-Ap%C3%B4tre3.0">Dominique Savio - Cyber Apôtre 3.0 </a></br>Aumônerie Diocésaine Jeunesse & Enfance – Douala</p>
-</footer>
+        function updateLanguage() {
+            const t = translations[currentLang];
+            document.querySelectorAll('[data-key]').forEach(el => {
+                const key = el.getAttribute('data-key');
+                if (t[key]) {
+                    el.textContent = t[key];
+                }
+            });
+            localStorage.setItem('lang', currentLang);
+        }
+
+        document.getElementById('langToggle').addEventListener('click', () => {
+            currentLang = currentLang === 'fr' ? 'en' : 'fr';
+            updateLanguage();
+        });
+
+        // ========== MODE SOMBRE ==========
+        function initDarkMode() {
+            const darkMode = localStorage.getItem('darkMode') === 'true';
+            if (darkMode) document.body.classList.add('dark-mode');
+            const toggleBtn = document.getElementById('darkModeToggle');
+            toggleBtn.addEventListener('click', () => {
+                document.body.classList.toggle('dark-mode');
+                localStorage.setItem('darkMode', document.body.classList.contains('dark-mode'));
+                const icon = toggleBtn.querySelector('i');
+                icon.className = document.body.classList.contains('dark-mode') ? 'fas fa-sun' : 'fas fa-moon';
+            });
+            const icon = toggleBtn.querySelector('i');
+            icon.className = darkMode ? 'fas fa-sun' : 'fas fa-moon';
+        }
+
+        // ========== INITIALISATION ==========
+        initDarkMode();
+        updateLanguage();
+    </script>
 
 </body>
+
 </html>
