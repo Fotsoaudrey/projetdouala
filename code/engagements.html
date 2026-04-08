@@ -4,11 +4,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>Engagements & Missions | Aumônerie Diocésaine Douala</title>
-    <meta name="description" content="Découvrez les 6 engagements majeurs de l'Aumônerie Diocésaine de Douala : Éducation, Charité, Écologie, Culture, Pastorale familiale, Mission numérique.">
+    <title>Jubilé de Platine & d'Émeraude | Archidiocèse de Douala</title>
+    <meta name="description" content="Célébration des 70 ans de l'Archidiocèse de Douala (Jubilé de Platine) et des jubilés d'argent (25 ans) et d'émeraude (40 ans) de Mgr Samuel KLEDA – Samedi 14 mars 2026.">
 
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&display=swap" rel="stylesheet">
 
     <!-- Font Awesome 6 -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
@@ -19,24 +20,45 @@
             padding: 0;
             box-sizing: border-box;
         }
+        /* Variables pour la cohérence */
+        
+         :root {
+            --primary-bg: #045286;
+            --primary-dark: #022b44;
+            --accent: #2ecc71;
+            --accent-dark: #27ae60;
+            --accent-light: rgba(46, 204, 113, 0.15);
+            --text-dark: #1e293b;
+            --text-light: #f8fafc;
+            --gray-500: #64748b;
+            --gray-300: #cbd5e1;
+            --white: #ffffff;
+            --shadow-sm: 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 10px 25px -5px rgba(0, 0, 0, 0.08);
+            --shadow-lg: 0 20px 40px -12px rgba(0, 0, 0, 0.15);
+            --radius-lg: 28px;
+            --radius-md: 20px;
+            --radius-sm: 12px;
+            --transition: all 0.25s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+        }
         
         body {
-            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-family: 'Inter', sans-serif;
             background: #f5f7fb;
-            color: #1a2c3e;
+            color: var(--text-dark);
             line-height: 1.5;
             scroll-behavior: smooth;
             transition: background 0.3s ease, color 0.3s ease;
         }
-        /* MODE SOMBRE */
+        /* MODE SOMBRE (respect des contrastes WCAG) */
         
         body.dark-mode {
+            --text-dark: #e2e8f0;
             background: #0f1724;
-            color: #e2e8f0;
         }
         
         body.dark-mode header,
-        body.dark-mode .action-banner,
+        body.dark-mode .hero-banner,
         body.dark-mode footer {
             background: linear-gradient(135deg, #020617, #0f1724);
         }
@@ -45,46 +67,51 @@
             background: #1e293b;
         }
         
-        body.dark-mode nav a {
+        body.dark-mode .main-grid {
+            background: #1e293b;
+        }
+        
+        body.dark-mode .badge-card {
+            background: #0f1724;
+            border-color: var(--accent);
+        }
+        
+        body.dark-mode .badge-card span {
             color: #e2e8f0;
         }
         
-        body.dark-mode .mission-card {
-            background: #1e293b;
-            border-color: #334155;
-        }
-        
-        body.dark-mode .mission-header {
+        body.dark-mode .info-bar {
             background: #0f1724;
-            color: #2ecc71;
-            border-bottom-color: #2ecc71;
+            border: 1px solid var(--accent);
         }
         
-        body.dark-mode .mission-body p,
-        body.dark-mode .mission-list li {
+        body.dark-mode .live-section {
+            border-top-color: #334155;
             color: #94a3b8;
         }
         
-        body.dark-mode .mission-body h3 {
-            color: #2ecc71;
-            border-bottom-color: #2ecc71;
+        body.dark-mode .bishop-name {
+            color: var(--accent);
         }
         
-        body.dark-mode .mission-list li::before {
-            color: #2ecc71;
+        body.dark-mode .bishop-title {
+            color: #94a3b8;
         }
         
-        body.dark-mode .btn-contact {
-            background: #2ecc71;
+        body.dark-mode .btn-back {
+            background: var(--accent);
             color: #022b44;
+            border-color: var(--accent);
         }
         
-        body.dark-mode .btn-contact:hover {
-            background: white;
+        body.dark-mode .btn-back:hover {
+            background: transparent;
+            color: var(--accent);
         }
         
-        body.dark-mode .back-link a {
-            color: #2ecc71;
+        body.dark-mode .content-frame p,
+        body.dark-mode .jubilee-desc {
+            color: #94a3b8;
         }
         
         .container {
@@ -92,7 +119,7 @@
             margin: 0 auto;
             padding: 0 32px;
         }
-        /* CONTROLES */
+        /* CONTROLES (accessibilité : focus visible) */
         
         .controls-bar {
             position: fixed;
@@ -111,11 +138,16 @@
             border-radius: 50%;
             cursor: pointer;
             font-size: 1.2rem;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-            transition: 0.2s;
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
             display: flex;
             align-items: center;
             justify-content: center;
+        }
+        
+        .ctrl-btn:focus-visible {
+            outline: 2px solid var(--accent);
+            outline-offset: 2px;
         }
         
         body.dark-mode .ctrl-btn {
@@ -129,35 +161,38 @@
         /* HEADER */
         
         header {
-            background: linear-gradient(135deg, #0a2e4a, #045286);
+            background: linear-gradient(135deg, #0a2e4a, var(--primary-bg));
             color: white;
-            padding: 20px 0;
-            border-bottom: 3px solid #2ecc71;
+            padding: 24px 0;
+            border-bottom: 3px solid var(--accent);
             transition: background 0.3s;
             text-align: center;
         }
         
         header h1 {
-            font-size: 1.5rem;
+            font-size: 1.6rem;
             font-weight: 700;
             text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--accent);
         }
         
         header p {
-            font-size: 0.85rem;
+            font-size: 0.9rem;
             opacity: 0.85;
+            margin-top: 8px;
         }
         
         @media (min-width: 768px) {
             header h1 {
-                font-size: 1.9rem;
+                font-size: 2rem;
             }
         }
-        /* NAVIGATION */
+        /* NAVIGATION (sticky avec ombre légère) */
         
         nav {
             background: white;
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.05);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
             position: sticky;
             top: 0;
             z-index: 99;
@@ -168,251 +203,361 @@
             display: flex;
             justify-content: center;
             flex-wrap: wrap;
-            gap: 12px;
+            gap: 8px;
             list-style: none;
-            padding: 14px 16px;
+            padding: 12px 16px;
         }
         
         .nav-links a {
-            padding: 10px 24px;
+            padding: 10px 20px;
             font-weight: 600;
-            color: #1a2c3e;
+            color: var(--text-dark);
             text-decoration: none;
             border-radius: 40px;
-            transition: all 0.25s;
+            transition: var(--transition);
             display: flex;
             align-items: center;
             gap: 8px;
-        }
-        
-        body.dark-mode .nav-links a {
-            color: #e2e8f0;
+            font-size: 0.9rem;
         }
         
         .nav-links a i {
-            color: #2ecc71;
+            color: var(--accent);
         }
         
-        .nav-links a:hover {
-            background: #045286;
+        .nav-links a:hover,
+        .nav-links a:focus-visible {
+            background: var(--primary-bg);
+            color: white;
+            outline: none;
+        }
+        
+        .nav-links a:hover i,
+        .nav-links a:focus-visible i {
             color: white;
         }
+        /* HERO BANNER (espacement aéré) */
         
-        .nav-links a:hover i {
-            color: white;
-        }
-        /* SECTION INTRO */
-        
-        .intro-mission {
+        .hero-banner {
+            background: linear-gradient(135deg, #f8fafc, #ffffff);
             text-align: center;
-            padding: 50px 0 30px;
+            padding: 64px 0;
+            border-bottom: 1px solid var(--gray-300);
         }
         
-        .intro-mission h1 {
+        .jubilee-subtitle {
+            font-size: 0.85rem;
+            letter-spacing: 4px;
+            color: var(--accent);
+            text-transform: uppercase;
+            font-weight: 600;
+            margin-bottom: 16px;
+        }
+        
+        .jubilee-title {
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--primary-bg);
+            margin-bottom: 20px;
+            font-family: 'Cormorant Garamond', serif;
+            line-height: 1.2;
+        }
+        
+        .jubilee-desc {
+            max-width: 600px;
+            margin: 0 auto;
+            color: var(--gray-500);
+            font-size: 1rem;
+        }
+        /* MAIN GRID (meilleure hiérarchie) */
+        
+        .main-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.1fr;
+            gap: 48px;
+            background: white;
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+            margin: 64px 0;
+        }
+        
+        .image-frame {
+            min-height: 100%;
+        }
+        
+        .image-frame img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.4s ease;
+        }
+        
+        .image-frame:hover img {
+            transform: scale(1.02);
+        }
+        
+        .content-frame {
+            padding: 40px 40px 40px 0;
+        }
+        
+        .bishop-name {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--primary-bg);
+            margin-bottom: 8px;
+            font-family: 'Cormorant Garamond', serif;
+        }
+        
+        .bishop-title {
+            color: var(--gray-500);
+            font-style: italic;
+            margin-bottom: 24px;
+            display: block;
+            font-size: 0.95rem;
+        }
+        
+        .content-frame p {
+            color: #475569;
+            margin-bottom: 28px;
+            line-height: 1.7;
+            font-size: 1rem;
+        }
+        /* BADGES (UX : feedback au survol, lisibilité) */
+        
+        .badges {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+            margin: 32px 0;
+        }
+        
+        .badge-card {
+            padding: 28px 16px;
+            border: 2px solid var(--accent);
+            text-align: center;
+            background: var(--white);
+            border-radius: var(--radius-md);
+            transition: var(--transition);
+            cursor: default;
+        }
+        
+        .badge-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-md);
+            border-color: var(--primary-bg);
+        }
+        
+        .badge-card strong {
+            display: block;
             font-size: 2.2rem;
             font-weight: 800;
-            color: #045286;
-            margin-bottom: 16px;
+            color: var(--accent);
+            margin-bottom: 12px;
         }
         
-        body.dark-mode .intro-mission h1 {
-            color: #2ecc71;
-        }
-        
-        .intro-mission p {
-            max-width: 700px;
-            margin: 0 auto;
-            color: #64748b;
-            font-size: 1.05rem;
-        }
-        
-        body.dark-mode .intro-mission p {
-            color: #94a3b8;
-        }
-        /* GRILLE MISSIONS */
-        
-        .mission-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 30px;
-            margin: 40px 0;
-        }
-        
-        .mission-card {
-            background: white;
-            border-radius: 20px;
-            overflow: hidden;
-            transition: all 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-            border: 1px solid #e9edf2;
-        }
-        
-        .mission-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 20px 35px rgba(0, 0, 0, 0.12);
-            border-color: #2ecc71;
-        }
-        
-        .mission-header {
-            background: #045286;
-            color: white;
-            padding: 18px;
-            text-align: center;
-            font-weight: 800;
-            font-size: 0.9rem;
+        .badge-card span {
+            font-size: 0.85rem;
             text-transform: uppercase;
             letter-spacing: 1px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-        }
-        
-        .mission-header i {
-            font-size: 1.2rem;
-        }
-        
-        .mission-body {
-            padding: 24px;
-        }
-        
-        .mission-body h3 {
-            color: #045286;
-            font-size: 1.2rem;
-            margin-bottom: 12px;
-            border-bottom: 2px solid #2ecc71;
-            display: inline-block;
-            padding-bottom: 4px;
-        }
-        
-        .mission-body p {
-            color: #475569;
-            font-size: 0.9rem;
-            margin-bottom: 16px;
-            line-height: 1.6;
-        }
-        
-        .mission-list {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-        
-        .mission-list li {
-            padding-left: 20px;
-            position: relative;
-            margin-bottom: 8px;
-            font-size: 0.85rem;
-            color: #64748b;
-        }
-        
-        .mission-list li::before {
-            content: "▹";
-            position: absolute;
-            left: 0;
-            color: #2ecc71;
-            font-size: 0.8rem;
-        }
-        /* BANNIÈRE ACTION */
-        
-        .action-banner {
-            background: linear-gradient(135deg, #045286, #0072a8);
-            border-radius: 28px;
-            padding: 50px;
-            text-align: center;
-            color: white;
-            margin: 50px 0;
-        }
-        
-        .action-banner h2 {
-            font-size: 1.8rem;
-            margin-bottom: 16px;
-        }
-        
-        .action-banner p {
-            opacity: 0.9;
-            margin-bottom: 25px;
-        }
-        
-        .btn-contact {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            background: #2ecc71;
-            color: #022b44;
-            padding: 14px 32px;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 800;
-            transition: all 0.3s;
-        }
-        
-        .btn-contact:hover {
-            background: white;
-            transform: translateY(-3px);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
-        }
-        /* LIEN RETOUR */
-        
-        .back-link {
-            text-align: center;
-            margin: 40px 0;
-        }
-        
-        .back-link a {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            color: #045286;
             font-weight: 600;
-            text-decoration: none;
-            transition: 0.3s;
+            color: var(--primary-bg);
+            line-height: 1.4;
+        }
+        /* INFO BAR (données clés) */
+        
+        .info-bar {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            background: var(--primary-bg);
+            color: white;
+            padding: 24px;
+            border-radius: var(--radius-md);
+            text-align: center;
+            margin-top: 32px;
+            transition: background 0.3s;
         }
         
-        .back-link a:hover {
+        .info-bar div small {
+            display: block;
+            font-size: 0.7rem;
+            opacity: 0.8;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .info-bar div b {
+            font-size: 1.1rem;
+            color: var(--accent);
+            font-weight: 700;
+        }
+        /* COMPTEUR (mise en avant) */
+        
+        .countdown-card {
+            background: var(--accent);
+            color: #022b44;
+            border-radius: var(--radius-md);
+            padding: 24px;
+            text-align: center;
+            margin-top: 20px;
+            transition: var(--transition);
+        }
+        
+        .countdown-card small {
+            display: block;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .countdown-number {
+            font-size: 2rem;
+            font-weight: 800;
+            line-height: 1.2;
+        }
+        /* LIVE SECTION */
+        
+        .live-section {
+            text-align: center;
+            margin-top: 32px;
+            padding-top: 24px;
+            border-top: 1px solid var(--gray-300);
+            font-size: 0.85rem;
+            color: var(--gray-500);
+        }
+        
+        .live-icons {
+            margin-top: 12px;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 24px;
+            font-weight: 700;
+            color: var(--primary-bg);
+        }
+        
+        .live-icons i {
+            margin-right: 8px;
+            color: var(--accent);
+        }
+        /* BOUTON RETOUR (UX : feedback au clic) */
+        
+        .bottom-nav {
+            text-align: center;
+            margin: 48px 0 64px;
+        }
+        
+        .btn-back {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            background: var(--primary-bg);
+            color: white;
+            padding: 14px 36px;
+            border-radius: 60px;
+            font-weight: 700;
+            transition: var(--transition);
+            border: 2px solid var(--primary-bg);
+        }
+        
+        .btn-back:hover,
+        .btn-back:focus-visible {
+            background: transparent;
+            color: var(--primary-bg);
             transform: translateX(-5px);
+            outline: none;
+        }
+        
+        body.dark-mode .btn-back:hover {
+            color: var(--accent);
+            border-color: var(--accent);
         }
         /* FOOTER */
         
         footer {
-            background: #022b44;
+            background: var(--primary-dark);
             color: white;
             padding: 40px 0;
             text-align: center;
             transition: background 0.3s;
-            margin-top: 40px;
         }
         
         footer a {
-            color: #2ecc71;
+            color: var(--accent);
             text-decoration: none;
+            transition: var(--transition);
         }
         
         footer a:hover {
             color: white;
         }
+        /* RESPONSIVE (UX : adaptatif) */
         
         @media (max-width: 1024px) {
-            .mission-grid {
-                grid-template-columns: repeat(2, 1fr);
+            .main-grid {
+                grid-template-columns: 1fr;
+                gap: 0;
+            }
+            .content-frame {
+                padding: 32px;
+            }
+            .image-frame img {
+                max-height: 400px;
+                width: 100%;
+                object-fit: cover;
             }
         }
         
         @media (max-width: 768px) {
-            .mission-grid {
-                grid-template-columns: 1fr;
-            }
-            .intro-mission h1 {
-                font-size: 1.8rem;
-            }
-            .action-banner {
-                padding: 30px 20px;
-            }
-            .action-banner h2 {
-                font-size: 1.4rem;
-            }
             .container {
                 padding: 0 20px;
+            }
+            .jubilee-title {
+                font-size: 2rem;
+            }
+            .hero-banner {
+                padding: 48px 0;
+            }
+            .badges {
+                grid-template-columns: 1fr;
+                gap: 16px;
+            }
+            .info-bar {
+                grid-template-columns: 1fr;
+                gap: 16px;
+            }
+            .countdown-number {
+                font-size: 1.6rem;
+            }
+            .nav-links a {
+                padding: 6px 14px;
+                font-size: 0.8rem;
+            }
+            .controls-bar {
+                top: 12px;
+                right: 12px;
+            }
+            .ctrl-btn {
+                width: 38px;
+                height: 38px;
+                font-size: 1rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .jubilee-title {
+                font-size: 1.6rem;
+            }
+            .bishop-name {
+                font-size: 1.6rem;
+            }
+            .badge-card strong {
+                font-size: 1.8rem;
             }
         }
     </style>
@@ -422,15 +567,15 @@
 
     <!-- CONTROLES -->
     <div class="controls-bar">
-        <button class="ctrl-btn" id="darkModeToggle"><i class="fas fa-moon"></i></button>
-        <button class="ctrl-btn" id="langToggle"><i class="fas fa-globe"></i></button>
+        <button class="ctrl-btn" id="darkModeToggle" aria-label="Mode sombre"><i class="fas fa-moon"></i></button>
+        <button class="ctrl-btn" id="langToggle" aria-label="Changer de langue"><i class="fas fa-globe"></i></button>
     </div>
 
     <!-- HEADER -->
     <header>
         <div class="container">
-            <h1 data-key="headerTitle">Aumônerie Diocésaine Jeunesse & Enfance</h1>
-            <p data-key="headerSub">Douala – Cameroun</p>
+            <h1 data-key="headerTitle">ARCHIDIOCÈSE DE DOUALA</h1>
+            <p data-key="headerSub">Jubilé de Platine & d'Émeraude</p>
         </div>
     </header>
 
@@ -439,241 +584,158 @@
         <div class="container">
             <ul class="nav-links">
                 <li><a href="index.html"><i class="fas fa-home"></i> <span data-key="nav1">Accueil</span></a></li>
-                <li><a href="annonce2.html"><i class="fas fa-map-marker-alt"></i> <span data-key="nav2">Zones & Paroisses</span></a></li>
-                <li><a href="index.html#actus"><i class="fas fa-newspaper"></i> <span data-key="nav3">Actualités</span></a></li>
-                <li><a href="#contact"><i class="fas fa-envelope"></i> <span data-key="nav4">Contact</span></a></li>
+                <li><a href="index.html#apropos"><i class="fas fa-church"></i> <span data-key="nav2">À propos</span></a></li>
+                <li><a href="index.html#jeunesse"><i class="fas fa-users"></i> <span data-key="nav3">Jeunesse</span></a></li>
+                <li><a href="annonce3.html"><i class="fas fa-cross"></i> <span data-key="nav4">Carême</span></a></li>
             </ul>
         </div>
     </nav>
 
-    <!-- INTRODUCTION -->
-    <div class="container">
-        <div class="intro-mission">
-            <h1 data-key="introTitle">Missions & Engagements</h1>
-            <p data-key="introDesc">Une action pastorale structurée autour de six piliers pour répondre aux défis contemporains des jeunes et des enfants.</p>
+    <!-- HERO BANNER -->
+    <section class="hero-banner">
+        <div class="container">
+            <div class="jubilee-subtitle" data-key="heroSubtitle">1955 — Jubilé de Platine — 2025</div>
+            <div class="jubilee-title" data-key="heroTitle">70 Ans de Grâces</div>
+            <p class="jubilee-desc" data-key="heroDesc">Célébration des 70 ans de l'Archidiocèse de Douala et des jubilés de Mgr Samuel KLEDA.</p>
         </div>
-    </div>
+    </section>
 
-    <!-- GRILLE DES 6 MISSIONS -->
+    <!-- MAIN CONTENT -->
     <div class="container">
-        <div class="mission-grid">
+        <div class="main-grid">
+            <div class="image-frame">
+                <img src="../image/Mgr.png" alt="Mgr Samuel KLEDA" loading="lazy">
+            </div>
+            <div class="content-frame">
+                <h2 class="bishop-name" data-key="bishopName">Mgr Samuel KLEDA</h2>
+                <span class="bishop-title" data-key="bishopTitle">Archevêque Métropolitain de Douala</span>
+                <p data-key="desc1">Un moment historique pour notre communauté diocésaine. Nous célébrons sept décennies de foi et les anniversaires d'ordination de notre Archevêque.</p>
 
-            <div class="mission-card">
-                <div class="mission-header"><i class="fas fa-graduation-cap"></i> <span data-key="mission1Header">1. Éducation & Valeurs</span></div>
-                <div class="mission-body">
-                    <h3 data-key="mission1Title">Formation Éthique</h3>
-                    <p data-key="mission1Desc">Inculquer les principes chrétiens pour forger des citoyens intègres au service du Cameroun.</p>
-                    <ul class="mission-list">
-                        <li data-key="mission1Li1">Conférences sur l'éthique sociale.</li>
-                        <li data-key="mission1Li2">Accompagnement spirituel scolaire.</li>
-                        <li data-key="mission1Li3">Promotion de l'intégrité.</li>
-                    </ul>
+                <div class="badges">
+                    <div class="badge-card">
+                        <strong>25 ANS</strong>
+                        <span data-key="badge1">Jubilé d'Argent<br>(Épiscopat)</span>
+                    </div>
+                    <div class="badge-card">
+                        <strong>40 ANS</strong>
+                        <span data-key="badge2">Jubilé d'Émeraude<br>(Sacerdoce)</span>
+                    </div>
+                </div>
+
+                <div class="info-bar">
+                    <div>
+                        <small data-key="infoDate">DATE</small>
+                        <b data-key="infoDateValue">Samedi 14 Mars 2026</b>
+                    </div>
+                    <div>
+                        <small data-key="infoTime">HEURE</small>
+                        <b>10H00</b>
+                    </div>
+                    <div>
+                        <small data-key="infoPlace">LIEU</small>
+                        <b data-key="infoPlaceValue">Cathédrale Sts Pierre & Paul</b>
+                    </div>
+                </div>
+
+                <!-- COMPTEUR AVANT LE JUBILÉ -->
+                <div class="countdown-card">
+                    <small data-key="countdownLabel">Jours avant la célébration</small>
+                    <div class="countdown-number" id="countdownDays">0</div>
+                </div>
+
+                <div class="live-section">
+                    <span data-key="liveText">Célébration diffusée en direct par :</span>
+                    <div class="live-icons">
+                        <i class="fas fa-broadcast-tower"></i> <span data-key="liveRadio">Radio Veritas 96.9 MHZ</span>
+                        <i class="fas fa-tv"></i> <span data-key="liveTV">Télévision Veritas</span>
+                    </div>
                 </div>
             </div>
-
-            <div class="mission-card">
-                <div class="mission-header"><i class="fas fa-hand-holding-heart"></i> <span data-key="mission2Header">2. Charité Active</span></div>
-                <div class="mission-body">
-                    <h3 data-key="mission2Title">Solidarité Chrétienne</h3>
-                    <p data-key="mission2Desc">Éduquer les jeunes au don de soi à travers des actions concrètes envers les plus démunis.</p>
-                    <ul class="mission-list">
-                        <li data-key="mission2Li1">Aumône et collectes diocésaines.</li>
-                        <li data-key="mission2Li2">Visites aux détenus et malades.</li>
-                        <li data-key="mission2Li3">Soutien aux enfants de la rue.</li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="mission-card">
-                <div class="mission-header"><i class="fas fa-leaf"></i> <span data-key="mission3Header">3. Écologie Intégrale</span></div>
-                <div class="mission-body">
-                    <h3 data-key="mission3Title">Sauvegarde du Créé</h3>
-                    <p data-key="mission3Desc">Sensibiliser les jeunes à la protection de l'environnement selon l'esprit de Laudato Si.</p>
-                    <ul class="mission-list">
-                        <li data-key="mission3Li1">Journées paroissiales de salubrité.</li>
-                        <li data-key="mission3Li2">Gestion responsable des ressources.</li>
-                        <li data-key="mission3Li3">Éducation au respect de la nature.</li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="mission-card">
-                <div class="mission-header"><i class="fas fa-palette"></i> <span data-key="mission4Header">4. Culture & Talents</span></div>
-                <div class="mission-body">
-                    <h3 data-key="mission4Title">Art & Évangélisation</h3>
-                    <p data-key="mission4Desc">Valoriser les dons artistiques comme vecteurs de transmission de la foi.</p>
-                    <ul class="mission-list">
-                        <li data-key="mission4Li1">Festivals de chorales de jeunes.</li>
-                        <li data-key="mission4Li2">Théâtre et poésie sacrée.</li>
-                        <li data-key="mission4Li3">Ateliers de créativité chrétienne.</li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="mission-card">
-                <div class="mission-header"><i class="fas fa-home"></i> <span data-key="mission5Header">5. Pastorale Familiale</span></div>
-                <div class="mission-body">
-                    <h3 data-key="mission5Title">Lien Intergénérationnel</h3>
-                    <p data-key="mission5Desc">Renforcer le dialogue entre les jeunes et leurs parents au sein de la cellule familiale.</p>
-                    <ul class="mission-list">
-                        <li data-key="mission5Li1">Journées familles-jeunesse.</li>
-                        <li data-key="mission5Li2">Éducation à la vie et à l'amour.</li>
-                        <li data-key="mission5Li3">Médiation parents-enfants.</li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="mission-card">
-                <div class="mission-header"><i class="fas fa-laptop-code"></i> <span data-key="mission6Header">6. Mission Numérique</span></div>
-                <div class="mission-body">
-                    <h3 data-key="mission6Title">Présence Digitale</h3>
-                    <p data-key="mission6Desc">Évangéliser le continent numérique et promouvoir une utilisation saine des réseaux sociaux.</p>
-                    <ul class="mission-list">
-                        <li data-key="mission6Li1">Web-évangélisation.</li>
-                        <li data-key="mission6Li2">Lutte contre la cybercriminalité.</li>
-                        <li data-key="mission6Li3">Communication diocésaine en ligne.</li>
-                    </ul>
-                </div>
-            </div>
-
         </div>
-    </div>
 
-    <!-- BANNIÈRE APPEL À L'ACTION -->
-    <div class="container">
-        <div class="action-banner" id="contact">
-            <h2 data-key="bannerTitle">S'engager pour la Mission</h2>
-            <p data-key="bannerDesc">Chaque talent compte pour bâtir une jeunesse forte et ancrée dans le Christ.</p>
-            <a href="#" class="btn-contact" id="volunteerBtn"><i class="fas fa-user-plus"></i> <span data-key="bannerBtn">Devenir volontaire diocésain</span></a>
-        </div>
-    </div>
-
-    <!-- LIEN RETOUR -->
-    <div class="container">
-        <div class="back-link">
-            <a href="index.html"><i class="fas fa-arrow-left"></i> <span data-key="backLink">Retourner à l'accueil</span></a>
+        <div class="bottom-nav">
+            <a href="index.html" class="btn-back">
+                <i class="fas fa-arrow-left"></i> <span data-key="backBtn">Retour à l'accueil du portail</span>
+            </a>
         </div>
     </div>
 
     <!-- FOOTER -->
     <footer>
         <div class="container">
-            <p>© BIG DATA CENTER AI — <a href="https://www.youtube.com/@DominiqueSavio_Cyber-Ap%C3%B4tre3.0" target="_blank">Dominique Savio - Cyber Apôtre 3.0</a></p>
+            <p>&copy; BIG DATA CENTER AI — <a href="https://www.youtube.com/@DominiqueSavio_Cyber-Ap%C3%B4tre3.0" target="_blank">Dominique Savio - Cyber Apôtre 3.0</a></p>
             <p data-key="footerText">Aumônerie Diocésaine Jeunesse & Enfance – Douala</p>
         </div>
     </footer>
 
     <script>
-        // ========== BOUTON VOLONTAIRE ==========
-        document.getElementById('volunteerBtn').addEventListener('click', (e) => {
-            e.preventDefault();
-            alert('Merci pour votre engagement ! Un responsable vous contactera prochainement.');
-        });
+        // ========== COMPTEUR JUSQU'AU 14 MARS 2026 ==========
+        function updateCountdown() {
+            const targetDate = new Date(2026, 2, 14); // 14 Mars 2026 (mois 2 = Mars)
+            const today = new Date();
+            today.setHours(0, 0, 0, 0);
+            const diffTime = targetDate - today;
+            const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+            document.getElementById('countdownDays').textContent = diffDays > 0 ? diffDays : 0;
+        }
+        updateCountdown();
 
-        // ========== MULTILINGUE ==========
+        // ========== MULTILINGUE (UX : persistance) ==========
         let currentLang = localStorage.getItem('lang') || 'fr';
 
         const translations = {
             fr: {
-                headerTitle: "Aumônerie Diocésaine Jeunesse & Enfance",
-                headerSub: "Douala – Cameroun",
+                headerTitle: "ARCHIDIOCÈSE DE DOUALA",
+                headerSub: "Jubilé de Platine & d'Émeraude",
                 nav1: "Accueil",
-                nav2: "Zones & Paroisses",
-                nav3: "Actualités",
-                nav4: "Contact",
-                introTitle: "Missions & Engagements",
-                introDesc: "Une action pastorale structurée autour de six piliers pour répondre aux défis contemporains des jeunes et des enfants.",
-                mission1Header: "1. Éducation & Valeurs",
-                mission1Title: "Formation Éthique",
-                mission1Desc: "Inculquer les principes chrétiens pour forger des citoyens intègres au service du Cameroun.",
-                mission1Li1: "Conférences sur l'éthique sociale.",
-                mission1Li2: "Accompagnement spirituel scolaire.",
-                mission1Li3: "Promotion de l'intégrité.",
-                mission2Header: "2. Charité Active",
-                mission2Title: "Solidarité Chrétienne",
-                mission2Desc: "Éduquer les jeunes au don de soi à travers des actions concrètes envers les plus démunis.",
-                mission2Li1: "Aumône et collectes diocésaines.",
-                mission2Li2: "Visites aux détenus et malades.",
-                mission2Li3: "Soutien aux enfants de la rue.",
-                mission3Header: "3. Écologie Intégrale",
-                mission3Title: "Sauvegarde du Créé",
-                mission3Desc: "Sensibiliser les jeunes à la protection de l'environnement selon l'esprit de Laudato Si.",
-                mission3Li1: "Journées paroissiales de salubrité.",
-                mission3Li2: "Gestion responsable des ressources.",
-                mission3Li3: "Éducation au respect de la nature.",
-                mission4Header: "4. Culture & Talents",
-                mission4Title: "Art & Évangélisation",
-                mission4Desc: "Valoriser les dons artistiques comme vecteurs de transmission de la foi.",
-                mission4Li1: "Festivals de chorales de jeunes.",
-                mission4Li2: "Théâtre et poésie sacrée.",
-                mission4Li3: "Ateliers de créativité chrétienne.",
-                mission5Header: "5. Pastorale Familiale",
-                mission5Title: "Lien Intergénérationnel",
-                mission5Desc: "Renforcer le dialogue entre les jeunes et leurs parents au sein de la cellule familiale.",
-                mission5Li1: "Journées familles-jeunesse.",
-                mission5Li2: "Éducation à la vie et à l'amour.",
-                mission5Li3: "Médiation parents-enfants.",
-                mission6Header: "6. Mission Numérique",
-                mission6Title: "Présence Digitale",
-                mission6Desc: "Évangéliser le continent numérique et promouvoir une utilisation saine des réseaux sociaux.",
-                mission6Li1: "Web-évangélisation.",
-                mission6Li2: "Lutte contre la cybercriminalité.",
-                mission6Li3: "Communication diocésaine en ligne.",
-                bannerTitle: "S'engager pour la Mission",
-                bannerDesc: "Chaque talent compte pour bâtir une jeunesse forte et ancrée dans le Christ.",
-                bannerBtn: "Devenir volontaire diocésain",
-                backLink: "Retourner à l'accueil",
+                nav2: "À propos",
+                nav3: "Jeunesse",
+                nav4: "Carême",
+                heroSubtitle: "1955 — Jubilé de Platine — 2025",
+                heroTitle: "70 Ans de Grâces",
+                heroDesc: "Célébration des 70 ans de l'Archidiocèse de Douala et des jubilés de Mgr Samuel KLEDA.",
+                bishopName: "Mgr Samuel KLEDA",
+                bishopTitle: "Archevêque Métropolitain de Douala",
+                desc1: "Un moment historique pour notre communauté diocésaine. Nous célébrons sept décennies de foi et les anniversaires d'ordination de notre Archevêque.",
+                badge1: "Jubilé d'Argent<br>(Épiscopat)",
+                badge2: "Jubilé d'Émeraude<br>(Sacerdoce)",
+                infoDate: "DATE",
+                infoDateValue: "Samedi 14 Mars 2026",
+                infoTime: "HEURE",
+                infoPlace: "LIEU",
+                infoPlaceValue: "Cathédrale Sts Pierre & Paul",
+                countdownLabel: "Jours avant la célébration",
+                liveText: "Célébration diffusée en direct par :",
+                liveRadio: "Radio Veritas 96.9 MHZ",
+                liveTV: "Télévision Veritas",
+                backBtn: "Retour à l'accueil du portail",
                 footerText: "Aumônerie Diocésaine Jeunesse & Enfance – Douala"
             },
             en: {
-                headerTitle: "Diocesan Youth & Children's Chaplaincy",
-                headerSub: "Douala – Cameroon",
+                headerTitle: "ARCHDIOCESE OF DOUALA",
+                headerSub: "Platinum & Emerald Jubilee",
                 nav1: "Home",
-                nav2: "Zones & Parishes",
-                nav3: "News",
-                nav4: "Contact",
-                introTitle: "Missions & Commitments",
-                introDesc: "A pastoral action structured around six pillars to address contemporary challenges of youth and children.",
-                mission1Header: "1. Education & Values",
-                mission1Title: "Ethical Formation",
-                mission1Desc: "Instill Christian principles to forge upright citizens serving Cameroon.",
-                mission1Li1: "Social ethics conferences.",
-                mission1Li2: "School spiritual accompaniment.",
-                mission1Li3: "Promotion of integrity.",
-                mission2Header: "2. Active Charity",
-                mission2Title: "Christian Solidarity",
-                mission2Desc: "Educate young people in self-giving through concrete actions towards the most disadvantaged.",
-                mission2Li1: "Alms and diocesan collections.",
-                mission2Li2: "Visits to prisoners and the sick.",
-                mission2Li3: "Support for street children.",
-                mission3Header: "3. Integral Ecology",
-                mission3Title: "Care for Creation",
-                mission3Desc: "Raise young people's awareness of environmental protection in the spirit of Laudato Si.",
-                mission3Li1: "Parish cleanliness days.",
-                mission3Li2: "Responsible resource management.",
-                mission3Li3: "Education on respect for nature.",
-                mission4Header: "4. Culture & Talents",
-                mission4Title: "Art & Evangelization",
-                mission4Desc: "Value artistic gifts as vectors of faith transmission.",
-                mission4Li1: "Youth choir festivals.",
-                mission4Li2: "Sacred theater and poetry.",
-                mission4Li3: "Christian creativity workshops.",
-                mission5Header: "5. Family Ministry",
-                mission5Title: "Intergenerational Link",
-                mission5Desc: "Strengthen dialogue between young people and their parents within the family unit.",
-                mission5Li1: "Family-youth days.",
-                mission5Li2: "Education on life and love.",
-                mission5Li3: "Parent-child mediation.",
-                mission6Header: "6. Digital Mission",
-                mission6Title: "Digital Presence",
-                mission6Desc: "Evangelize the digital continent and promote healthy use of social networks.",
-                mission6Li1: "Web evangelization.",
-                mission6Li2: "Fight against cybercrime.",
-                mission6Li3: "Online diocesan communication.",
-                bannerTitle: "Commit to the Mission",
-                bannerDesc: "Every talent counts to build a strong youth rooted in Christ.",
-                bannerBtn: "Become a diocesan volunteer",
-                backLink: "Back to homepage",
+                nav2: "About",
+                nav3: "Youth",
+                nav4: "Lent",
+                heroSubtitle: "1955 — Platinum Jubilee — 2025",
+                heroTitle: "70 Years of Grace",
+                heroDesc: "Celebration of the 70th anniversary of the Archdiocese of Douala and the jubilees of Mgr Samuel KLEDA.",
+                bishopName: "Mgr Samuel KLEDA",
+                bishopTitle: "Metropolitan Archbishop of Douala",
+                desc1: "A historic moment for our diocesan community. We celebrate seven decades of faith and the ordination anniversaries of our Archbishop.",
+                badge1: "Silver Jubilee<br>(Episcopate)",
+                badge2: "Emerald Jubilee<br>(Priesthood)",
+                infoDate: "DATE",
+                infoDateValue: "Saturday, March 14, 2026",
+                infoTime: "TIME",
+                infoPlace: "VENUE",
+                infoPlaceValue: "Sts Peter & Paul Cathedral",
+                countdownLabel: "Days until the celebration",
+                liveText: "Celebration broadcast live on:",
+                liveRadio: "Radio Veritas 96.9 MHZ",
+                liveTV: "Television Veritas",
+                backBtn: "Back to homepage",
                 footerText: "Diocesan Youth & Children's Chaplaincy – Douala"
             }
         };
@@ -683,7 +745,11 @@
             document.querySelectorAll('[data-key]').forEach(el => {
                 const key = el.getAttribute('data-key');
                 if (t[key]) {
-                    el.textContent = t[key];
+                    if (key === 'badge1' || key === 'badge2') {
+                        el.innerHTML = t[key];
+                    } else {
+                        el.textContent = t[key];
+                    }
                 }
             });
             localStorage.setItem('lang', currentLang);
@@ -694,7 +760,7 @@
             updateLanguage();
         });
 
-        // ========== MODE SOMBRE ==========
+        // ========== MODE SOMBRE (UX : mémorisation) ==========
         function initDarkMode() {
             const darkMode = localStorage.getItem('darkMode') === 'true';
             if (darkMode) document.body.classList.add('dark-mode');
