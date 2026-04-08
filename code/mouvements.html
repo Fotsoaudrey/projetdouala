@@ -1,213 +1,922 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Mouvements Jeunes – Aumônerie Douala</title>
-  <style>
-    /* --- STYLE DE BASE (CONSERVÉ) --- */
-    body { font-family: "Segoe UI", sans-serif; margin: 0; padding: 0; background: #f0f4f8; color: #333; }
-    
-    header { background: linear-gradient(135deg, #045286, #0072a8); color: white; padding: 20px; text-align: center; }
-    
-    nav { background: #ffffff; padding: 10px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); position: sticky; top: 0; z-index: 10; }
-    nav ul { margin: 0; padding: 0; display: flex; list-style: none; justify-content: center; flex-wrap: wrap; }
-    nav li { margin: 10px 15px; }
-    nav a { color: #004a7c; font-weight: bold; text-decoration: none; transition: 0.3s; }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Mouvements & Communautés | Aumônerie Diocésaine Douala</title>
+    <meta name="description" content="Découvrez les mouvements et communautés de l'Aumônerie Diocésaine de Douala : JEC, Scouts, Renouveau, Légion de Marie, Chorales et plus encore.">
 
-    /* --- PORTAIL JEUNESSE --- */
-    .hero-jeunes {
-      background: linear-gradient(45deg, rgba(4, 82, 134, 0.9), rgba(0, 114, 168, 0.8)), url('https://images.unsplash.com/photo-1523240795612-9a054b0db644?q=80&w=1400');
-      background-size: cover; background-position: center;
-      color: white; padding: 60px 20px; text-align: center;
-      clip-path: polygon(0 0, 100% 0, 100% 90%, 0% 100%); /* Design dynamique coupé */
-    }
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
-    .container { max-width: 1200px; margin: 30px auto; padding: 0 20px; }
+    <!-- Font Awesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
-    .section-intro { text-align: center; margin-bottom: 40px; }
-    .section-intro h2 { color: #045286; font-size: 2.2em; text-transform: uppercase; letter-spacing: 1px; }
-
-    /* Grille des mouvements */
-    .grid-jeunes {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 25px;
-    }
-
-    .card-jeune {
-      background: white;
-      border-radius: 20px;
-      padding: 30px;
-      text-align: center;
-      box-shadow: 0 10px 20px rgba(0,0,0,0.05);
-      transition: all 0.4s ease;
-      border-top: 6px solid #7cfc00; /* Rappel du vert fluo */
-      position: relative;
-    }
-
-    .card-jeune:hover {
-      transform: translateY(-10px) rotate(1deg);
-      box-shadow: 0 20px 40px rgba(0,0,0,0.1);
-      border-top-color: #0072a8;
-    }
-
-    .card-jeune .emoji { font-size: 3.5em; margin-bottom: 15px; display: block; }
-    .card-jeune h3 { color: #045286; margin-bottom: 15px; font-size: 1.4em; }
-    .card-jeune p { color: #666; font-size: 0.95em; margin-bottom: 20px; }
-
-    /* Badge catégorie */
-    .badge {
-      display: inline-block;
-      padding: 5px 15px;
-      border-radius: 50px;
-      font-size: 0.8em;
-      font-weight: bold;
-      margin-bottom: 10px;
-    }
-    .badge-spirituel { background: #e3f2fd; color: #0072a8; }
-    .badge-action { background: #f1f8e9; color: #388e3c; }
-
-    .btn-rejoindre {
-      background: #045286;
-      color: white;
-      padding: 10px 20px;
-      border-radius: 50px;
-      text-decoration: none;
-      font-weight: bold;
-      font-size: 0.9em;
-      transition: 0.3s;
-    }
-    .btn-rejoindre:hover { background: #7cfc00; color: #045286; }
-
-    /* Footer spécial appel à l'action */
-    .cta-zone {
-      background: #045286; color: white;
-      padding: 40px; border-radius: 20px;
-      text-align: center; margin-top: 60px;
-    }
-
-    footer { background: #01395c; color: white; padding: 30px; text-align: center; margin-top: 50px; }
-  </style>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background: #f5f7fb;
+            color: #1a2c3e;
+            line-height: 1.5;
+            scroll-behavior: smooth;
+            transition: background 0.3s ease, color 0.3s ease;
+        }
+        /* MODE SOMBRE */
+        
+        body.dark-mode {
+            background: #0f1724;
+            color: #e2e8f0;
+        }
+        
+        body.dark-mode header,
+        body.dark-mode .hero-jeunes,
+        body.dark-mode .cta-zone,
+        body.dark-mode footer {
+            background: linear-gradient(135deg, #020617, #0f1724);
+        }
+        
+        body.dark-mode nav {
+            background: #1e293b;
+        }
+        
+        body.dark-mode nav a {
+            color: #e2e8f0;
+        }
+        
+        body.dark-mode .card-jeune {
+            background: #1e293b;
+            border-color: #334155;
+        }
+        
+        body.dark-mode .card-jeune p {
+            color: #94a3b8;
+        }
+        
+        body.dark-mode .badge-spirituel {
+            background: #2d3748;
+            color: #2ecc71;
+        }
+        
+        body.dark-mode .badge-action {
+            background: #2d3748;
+            color: #2ecc71;
+        }
+        
+        body.dark-mode .filter-btn {
+            background: #1e293b;
+            color: #e2e8f0;
+            border-color: #334155;
+        }
+        
+        body.dark-mode .filter-btn.active {
+            background: #2ecc71;
+            color: #022b44;
+        }
+        
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 32px;
+        }
+        /* CONTROLES */
+        
+        .controls-bar {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1001;
+            display: flex;
+            gap: 12px;
+        }
+        
+        .ctrl-btn {
+            background: rgba(255, 255, 255, 0.95);
+            border: none;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.2rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            transition: 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        body.dark-mode .ctrl-btn {
+            background: #2d3748;
+            color: #e2e8f0;
+        }
+        
+        .ctrl-btn:hover {
+            transform: scale(1.05);
+        }
+        /* HEADER */
+        
+        header {
+            background: linear-gradient(135deg, #0a2e4a, #045286);
+            color: white;
+            padding: 20px 0;
+            border-bottom: 3px solid #2ecc71;
+            transition: background 0.3s;
+            text-align: center;
+        }
+        
+        header h1 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+        
+        header p {
+            font-size: 0.85rem;
+            opacity: 0.85;
+        }
+        
+        @media (min-width: 768px) {
+            header h1 {
+                font-size: 1.9rem;
+            }
+        }
+        /* NAVIGATION */
+        
+        nav {
+            background: white;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.05);
+            position: sticky;
+            top: 0;
+            z-index: 99;
+            transition: background 0.3s;
+        }
+        
+        .nav-links {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 12px;
+            list-style: none;
+            padding: 14px 16px;
+        }
+        
+        .nav-links a {
+            padding: 10px 24px;
+            font-weight: 600;
+            color: #1a2c3e;
+            text-decoration: none;
+            border-radius: 40px;
+            transition: all 0.25s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        body.dark-mode .nav-links a {
+            color: #e2e8f0;
+        }
+        
+        .nav-links a i {
+            color: #2ecc71;
+        }
+        
+        .nav-links a:hover {
+            background: #045286;
+            color: white;
+        }
+        
+        .nav-links a:hover i {
+            color: white;
+        }
+        /* HERO */
+        
+        .hero-jeunes {
+            background: linear-gradient(135deg, #045286, #0072a8);
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+            clip-path: polygon(0 0, 100% 0, 100% 90%, 0% 100%);
+        }
+        
+        .hero-jeunes h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 16px;
+        }
+        
+        .hero-jeunes p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+        /* FILTRES */
+        
+        .filters-section {
+            padding: 40px 0 20px;
+        }
+        
+        .filters-container {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+        
+        .filter-btn {
+            background: white;
+            border: 2px solid #e2e8f0;
+            padding: 10px 28px;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-family: inherit;
+            font-size: 0.9rem;
+        }
+        
+        .filter-btn:hover {
+            border-color: #2ecc71;
+            transform: translateY(-2px);
+        }
+        
+        .filter-btn.active {
+            background: #045286;
+            color: white;
+            border-color: #045286;
+        }
+        
+        body.dark-mode .filter-btn.active {
+            background: #2ecc71;
+            color: #022b44;
+            border-color: #2ecc71;
+        }
+        /* CARROUSEL MOUVEMENTS */
+        
+        .carousel-section {
+            padding: 20px 0 60px;
+        }
+        
+        .carousel-container {
+            position: relative;
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 60px;
+        }
+        
+        .carousel-track {
+            overflow: hidden;
+            border-radius: 24px;
+        }
+        
+        .carousel-slides {
+            display: flex;
+            transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            gap: 28px;
+        }
+        
+        .card-jeune {
+            flex: 0 0 calc(33.333% - 19px);
+            min-width: calc(33.333% - 19px);
+            background: white;
+            border-radius: 24px;
+            padding: 32px 24px;
+            text-align: center;
+            transition: all 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+            border: 1px solid #e9edf2;
+        }
+        
+        .card-jeune:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 40px rgba(0, 0, 0, 0.12);
+            border-color: #2ecc71;
+        }
+        
+        .badge {
+            display: inline-block;
+            padding: 6px 16px;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            margin-bottom: 16px;
+        }
+        
+        .badge-spirituel {
+            background: #eef2ff;
+            color: #045286;
+        }
+        
+        .badge-action {
+            background: #f1f8e9;
+            color: #2ecc71;
+        }
+        
+        .badge-art {
+            background: #fef3c7;
+            color: #d97706;
+        }
+        
+        body.dark-mode .badge-spirituel,
+        body.dark-mode .badge-action,
+        body.dark-mode .badge-art {
+            background: #2d3748;
+        }
+        
+        .card-icon {
+            width: 70px;
+            height: 70px;
+            background: #2ecc71;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+        }
+        
+        .card-icon i {
+            font-size: 2rem;
+            color: #022b44;
+        }
+        
+        .card-jeune h3 {
+            font-size: 1.3rem;
+            margin-bottom: 12px;
+            color: #045286;
+        }
+        
+        body.dark-mode .card-jeune h3 {
+            color: #2ecc71;
+        }
+        
+        .card-jeune p {
+            color: #64748b;
+            font-size: 0.9rem;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+        
+        body.dark-mode .card-jeune p {
+            color: #94a3b8;
+        }
+        
+        .btn-rejoindre {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: #045286;
+            color: white;
+            padding: 10px 24px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.85rem;
+            transition: all 0.3s;
+        }
+        
+        .btn-rejoindre:hover {
+            background: #2ecc71;
+            color: #022b44;
+            transform: translateY(-2px);
+        }
+        /* FLÈCHES CARROUSEL */
+        
+        .carousel-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 44px;
+            height: 44px;
+            background: white;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.2rem;
+            color: #045286;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            transition: all 0.3s;
+            z-index: 10;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        body.dark-mode .carousel-arrow {
+            background: #1e293b;
+            color: #2ecc71;
+        }
+        
+        .carousel-arrow:hover {
+            background: #2ecc71;
+            color: white;
+            transform: translateY(-50%) scale(1.1);
+        }
+        
+        .carousel-arrow-left {
+            left: 0;
+        }
+        
+        .carousel-arrow-right {
+            right: 0;
+        }
+        /* DOTS */
+        
+        .carousel-dots {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-top: 30px;
+        }
+        
+        .dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: #cbd5e1;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .dot.active {
+            width: 28px;
+            border-radius: 20px;
+            background: #2ecc71;
+        }
+        /* CTA ZONE */
+        
+        .cta-zone {
+            background: linear-gradient(135deg, #045286, #0072a8);
+            border-radius: 28px;
+            padding: 50px;
+            text-align: center;
+            color: white;
+            margin: 40px 0;
+        }
+        
+        .cta-zone h2 {
+            font-size: 1.8rem;
+            margin-bottom: 16px;
+        }
+        
+        .cta-zone p {
+            margin-bottom: 25px;
+            opacity: 0.9;
+        }
+        
+        .cta-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: #2ecc71;
+            color: #022b44;
+            padding: 14px 32px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 800;
+            transition: all 0.3s;
+        }
+        
+        .cta-btn:hover {
+            background: white;
+            transform: translateY(-3px);
+        }
+        /* LIEN RETOUR */
+        
+        .back-link {
+            text-align: center;
+            margin: 40px 0;
+        }
+        
+        .back-link a {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            color: #045286;
+            font-weight: 600;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+        
+        body.dark-mode .back-link a {
+            color: #2ecc71;
+        }
+        
+        .back-link a:hover {
+            transform: translateX(-5px);
+        }
+        /* FOOTER */
+        
+        footer {
+            background: #022b44;
+            color: white;
+            padding: 40px 0;
+            text-align: center;
+            transition: background 0.3s;
+        }
+        
+        footer a {
+            color: #2ecc71;
+            text-decoration: none;
+        }
+        
+        @media (max-width: 1024px) {
+            .card-jeune {
+                flex: 0 0 calc(50% - 14px);
+                min-width: calc(50% - 14px);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .card-jeune {
+                flex: 0 0 100%;
+                min-width: 100%;
+            }
+            .carousel-container {
+                padding: 0 40px;
+            }
+            .carousel-arrow {
+                width: 36px;
+                height: 36px;
+                font-size: 1rem;
+            }
+            .hero-jeunes h1 {
+                font-size: 1.8rem;
+            }
+            .cta-zone {
+                padding: 30px 20px;
+            }
+            .container {
+                padding: 0 20px;
+            }
+        }
+    </style>
 </head>
+
 <body>
 
-<header>
-  <marquee><h1>Aumônerie Diocésaine Jeunesse & Enfance – Douala</h1></marquee>
-</header>
-
-<nav>
-  <ul>
-    <li><a href="index.html">Accueil</a></li>
-    <li><a href="index.html#apropos">À propos</a></li>
-    <li><a href="index.html#enfance">Enfance</a></li>
-    <li><a href="index.html#jeunesse">Jeunesse</a></li>
-    <li><a href="index.html#actus">Actualités</a></li>
-  </ul>
-</nav>
-
-<section class="hero-jeunes">
-  <h1>Génération En Feu 🔥</h1>
-  <p>Trouve ton mouvement, vis ta passion, sers le Seigneur.</p>
-</section>
-
-<div class="container">
-  
-  <div class="section-intro">
-    <h2>Mouvements & Communautés</h2>
-    <p>Peu importe ton talent ou ton tempérament, il y a une place pour toi dans l'Archidiocèse.</p>
-  </div>
-
-  <div class="grid-jeunes">
-    
-    <div class="card-jeune">
-      <span class="badge badge-action">Action Catholique</span>
-      <span class="emoji">🎓</span>
-      <h3>J.E.C.</h3>
-      <p>La Jeunesse Étudiante Catholique. "Voir, Juger, Agir" dans le milieu scolaire et universitaire.</p>
-      <a href="#" class="btn-rejoindre">En savoir plus</a>
+    <!-- CONTROLES -->
+    <div class="controls-bar">
+        <button class="ctrl-btn" id="darkModeToggle"><i class="fas fa-moon"></i></button>
+        <button class="ctrl-btn" id="langToggle"><i class="fas fa-globe"></i></button>
     </div>
 
-    <div class="card-jeune">
-      <span class="badge badge-action">Formation & Nature</span>
-      <span class="emoji">⚜️</span>
-      <h3>Scouts du Cameroun</h3>
-      <p>Apprendre le leadership, la survie et le service communautaire à travers la loi scoute.</p>
-      <a href="#" class="btn-rejoindre">En savoir plus</a>
+    <!-- HEADER -->
+    <header>
+        <div class="container">
+            <h1 data-key="headerTitle">Aumônerie Diocésaine Jeunesse & Enfance</h1>
+            <p data-key="headerSub">Douala – Cameroun</p>
+        </div>
+    </header>
+
+    <!-- NAVIGATION -->
+    <nav>
+        <div class="container">
+            <ul class="nav-links">
+                <li><a href="index.html"><i class="fas fa-home"></i> <span data-key="nav1">Accueil</span></a></li>
+                <li><a href="index.html#apropos"><i class="fas fa-church"></i> <span data-key="nav2">À propos</span></a></li>
+                <li><a href="index.html#enfance"><i class="fas fa-child"></i> <span data-key="nav3">Enfance</span></a></li>
+                <li><a href="index.html#jeunesse"><i class="fas fa-users"></i> <span data-key="nav4">Jeunesse</span></a></li>
+                <li><a href="index.html#actus"><i class="fas fa-newspaper"></i> <span data-key="nav5">Actualités</span></a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero-jeunes">
+        <div class="container">
+            <h1 data-key="heroTitle">Génération En Feu</h1>
+            <p data-key="heroSubtitle">Trouve ton mouvement, vis ta passion, sers le Seigneur.</p>
+        </div>
+    </section>
+
+    <!-- FILTRES -->
+    <section class="filters-section">
+        <div class="container">
+            <div class="filters-container">
+                <button class="filter-btn active" data-filter="all" data-key="filterAll">Tous</button>
+                <button class="filter-btn" data-filter="spirituel" data-key="filterSpiritual">Spirituel</button>
+                <button class="filter-btn" data-filter="action" data-key="filterAction">Action</button>
+                <button class="filter-btn" data-filter="art" data-key="filterArt">Art & Liturgie</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- CARROUSEL MOUVEMENTS -->
+    <section class="carousel-section">
+        <div class="container">
+            <div class="carousel-container">
+                <button class="carousel-arrow carousel-arrow-left" id="prevBtn"><i class="fas fa-chevron-left"></i></button>
+                <div class="carousel-track">
+                    <div class="carousel-slides" id="carouselSlides"></div>
+                </div>
+                <button class="carousel-arrow carousel-arrow-right" id="nextBtn"><i class="fas fa-chevron-right"></i></button>
+            </div>
+            <div class="carousel-dots" id="carouselDots"></div>
+        </div>
+    </section>
+
+    <!-- CTA ZONE -->
+    <div class="container">
+        <div class="cta-zone">
+            <h2 data-key="ctaTitle">Tu ne sais pas quoi choisir ?</h2>
+            <p data-key="ctaDesc">Viens discuter avec l'équipe de l'Aumônerie pour trouver le mouvement qui correspond à ton charisme.</p>
+            <a href="https://bit.ly/NDJ2026" class="cta-btn" target="_blank">
+                <i class="fab fa-whatsapp"></i> <span data-key="ctaBtn">Contacte-nous via WhatsApp</span>
+            </a>
+        </div>
     </div>
 
-    <div class="card-jeune">
-      <span class="badge badge-spirituel">Spiritualité</span>
-      <span class="emoji">🕊️</span>
-      <h3>Jeunes du Renouveau</h3>
-      <p>Vivre l'expérience de la Pentecôte par la louange, l'adoration et l'exercice des charismes.</p>
-      <a href="#" class="btn-rejoindre">En savoir plus</a>
+    <!-- LIEN RETOUR -->
+    <div class="container">
+        <div class="back-link">
+            <a href="index.html"><i class="fas fa-arrow-left"></i> <span data-key="backBtn">Retour à l'accueil</span></a>
+        </div>
     </div>
 
-    <div class="card-jeune">
-      <span class="badge badge-spirituel">Dévotion</span>
-      <span class="emoji">🌹</span>
-      <h3>Légion de Marie</h3>
-      <p>Se mettre à l'école de la Vierge Marie pour une vie de prière et d'apostolat de proximité.</p>
-      <a href="#" class="btn-rejoindre">En savoir plus</a>
-    </div>
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <p>© BIG DATA CENTER AI — <a href="https://www.youtube.com/@DominiqueSavio_Cyber-Ap%C3%B4tre3.0" target="_blank">Dominique Savio - Cyber Apôtre 3.0</a></p>
+            <p data-key="footerText">Aumônerie Diocésaine Jeunesse & Enfance – Douala</p>
+        </div>
+    </footer>
 
-    <div class="card-jeune">
-      <span class="badge badge-action">Service social</span>
-      <span class="emoji">💙</span>
-      <h3>Jeunesse Mariale Vicentienne</h3>
-      <p>Vivre la charité envers les pauvres en suivant l'exemple de Saint Vincent de Paul.</p>
-      <a href="#" class="btn-rejoindre">En savoir plus</a>
-    </div>
+    <script>
+        // ========== DONNÉES DES MOUVEMENTS ==========
+        const mouvements = [{
+            name: "J.E.C.",
+            category: "action",
+            icon: "fas fa-graduation-cap",
+            desc: "Jeunesse Étudiante Catholique. 'Voir, Juger, Agir' dans le milieu scolaire et universitaire.",
+            badge: "Action Catholique"
+        }, {
+            name: "Scouts du Cameroun",
+            category: "action",
+            icon: "fas fa-campground",
+            desc: "Apprendre le leadership, la survie et le service communautaire à travers la loi scoute.",
+            badge: "Formation & Nature"
+        }, {
+            name: "Jeunes du Renouveau",
+            category: "spirituel",
+            icon: "fas fa-dove",
+            desc: "Vivre l'expérience de la Pentecôte par la louange, l'adoration et l'exercice des charismes.",
+            badge: "Spiritualité"
+        }, {
+            name: "Légion de Marie",
+            category: "spirituel",
+            icon: "fas fa-rose",
+            desc: "Se mettre à l'école de la Vierge Marie pour une vie de prière et d'apostolat de proximité.",
+            badge: "Dévotion"
+        }, {
+            name: "Jeunesse Mariale Vicentienne",
+            category: "action",
+            icon: "fas fa-hand-holding-heart",
+            desc: "Vivre la charité envers les pauvres en suivant l'exemple de Saint Vincent de Paul.",
+            badge: "Service social"
+        }, {
+            name: "Chorales de Jeunes",
+            category: "art",
+            icon: "fas fa-music",
+            desc: "Mettre sa voix au service de la liturgie pour animer les célébrations dans la joie.",
+            badge: "Art & Liturgie"
+        }, {
+            name: "Communauté de l'Emmanuel",
+            category: "spirituel",
+            icon: "fas fa-pray",
+            desc: "Vivre une spiritualité d'adoration, de louange et de service auprès des plus pauvres.",
+            badge: "Communauté"
+        }, {
+            name: "Action Catholique Ouvrière",
+            category: "action",
+            icon: "fas fa-briefcase",
+            desc: "Pour les jeunes travailleurs, former des leaders chrétiens dans le monde du travail.",
+            badge: "Action Catholique"
+        }];
 
-    <div class="card-jeune">
-      <span class="badge badge-action">Art & Liturgie</span>
-      <span class="emoji">🎤</span>
-      <h3>Chorales de Jeunes</h3>
-      <p>Mettre sa voix au service de la liturgie pour animer les célébrations dans la joie.</p>
-      <a href="#" class="btn-rejoindre">En savoir plus</a>
-    </div>
+        let currentFilter = "all";
+        let filteredMouvements = [...mouvements];
+        let currentIndex = 0;
+        let itemsPerPage = 3;
+        let autoInterval;
 
-    <div class="card-jeune">
-      <span class="badge badge-action">Art & Liturgie</span>
-      <span class="emoji">🎤</span>
-      <h3>Chorales de Jeunes</h3>
-      <p>Mettre sa voix au service de la liturgie pour animer les célébrations dans la joie.</p>
-      <a href="#" class="btn-rejoindre">En savoir plus</a>
-    </div>
+        // Éléments DOM
+        const slidesContainer = document.getElementById("carouselSlides");
+        const dotsContainer = document.getElementById("carouselDots");
 
-    <div class="card-jeune">
-      <span class="badge badge-action">Art & Liturgie</span>
-      <span class="emoji">🎤</span>
-      <h3>Chorales de Jeunes</h3>
-      <p>Mettre sa voix au service de la liturgie pour animer les célébrations dans la joie.</p>
-      <a href="#" class="btn-rejoindre">En savoir plus</a>
-    </div>
+        function updateItemsPerPage() {
+            if (window.innerWidth < 768) itemsPerPage = 1;
+            else if (window.innerWidth < 1024) itemsPerPage = 2;
+            else itemsPerPage = 3;
+        }
 
-    <div class="card-jeune">
-      <span class="badge badge-action">Art & Liturgie</span>
-      <span class="emoji">🎤</span>
-      <h3>Chorales de Jeunes</h3>
-      <p>Mettre sa voix au service de la liturgie pour animer les célébrations dans la joie.</p>
-      <a href="#" class="btn-rejoindre">En savoir plus</a>
-    </div>
+        function getBadgeClass(category) {
+            switch (category) {
+                case "spirituel":
+                    return "badge-spirituel";
+                case "action":
+                    return "badge-action";
+                case "art":
+                    return "badge-art";
+                default:
+                    return "badge-spirituel";
+            }
+        }
 
-  </div>
+        function renderCarousel() {
+            updateItemsPerPage();
+            const totalPages = Math.ceil(filteredMouvements.length / itemsPerPage);
+            const start = currentIndex * itemsPerPage;
+            const visibleItems = filteredMouvements.slice(start, start + itemsPerPage);
 
-  <div class="cta-zone">
-    <h2>Tu ne sais pas quoi choisir ?</h2>
-    <p>Viens discuter avec l'équipe de l'Aumônerie pour trouver le mouvement qui correspond à ton charisme.</p>
-    <a href="https://bit.ly/NDJ2026" class="btn-rejoindre" style="background: #7cfc00; color: #045286; padding: 15px 30px; font-size: 1.1em;">Contacte-nous via WhatsApp</a>
-  </div>
+            slidesContainer.innerHTML = "";
+            visibleItems.forEach(mvt => {
+                const card = document.createElement("div");
+                card.className = "card-jeune";
+                card.innerHTML = `
+        <span class="badge ${getBadgeClass(mvt.category)}">${mvt.badge}</span>
+        <div class="card-icon"><i class="${mvt.icon}"></i></div>
+        <h3>${mvt.name}</h3>
+        <p>${mvt.desc}</p>
+        <a href="#" class="btn-rejoindre">En savoir plus <i class="fas fa-arrow-right"></i></a>
+      `;
+                slidesContainer.appendChild(card);
+            });
 
-  <center style="margin-top: 40px;">
-    <a href="index.html" style="color: #045286; font-weight: bold; text-decoration: none;">← Retour à l'accueil</a>
-  </center>
-</div>
+            // Mettre à jour les dots
+            dotsContainer.innerHTML = "";
+            for (let i = 0; i < totalPages; i++) {
+                const dot = document.createElement("div");
+                dot.className = `dot ${i === currentIndex ? "active" : ""}`;
+                dot.addEventListener("click", () => goToPage(i));
+                dotsContainer.appendChild(dot);
+            }
+        }
 
-<footer>
-  <p>© BIG DATA CENTER AI By <a href="https://www.youtube.com/@DominiqueSavio_Cyber-Ap%C3%B4tre3.0">Dominique Savio - Cyber Apôtre 3.0 </a></br>Aumônerie Diocésaine Jeunesse & Enfance – Douala</p>
-</footer>
+        function goToPage(pageIndex) {
+            const totalPages = Math.ceil(filteredMouvements.length / itemsPerPage);
+            currentIndex = Math.min(Math.max(0, pageIndex), totalPages - 1);
+            renderCarousel();
+            resetAutoScroll();
+        }
+
+        function nextPage() {
+            const totalPages = Math.ceil(filteredMouvements.length / itemsPerPage);
+            currentIndex = (currentIndex + 1) % totalPages;
+            renderCarousel();
+            resetAutoScroll();
+        }
+
+        function prevPage() {
+            const totalPages = Math.ceil(filteredMouvements.length / itemsPerPage);
+            currentIndex = (currentIndex - 1 + totalPages) % totalPages;
+            renderCarousel();
+            resetAutoScroll();
+        }
+
+        function startAutoScroll() {
+            autoInterval = setInterval(() => {
+                nextPage();
+            }, 5000);
+        }
+
+        function resetAutoScroll() {
+            clearInterval(autoInterval);
+            startAutoScroll();
+        }
+
+        function stopAutoScroll() {
+            clearInterval(autoInterval);
+        }
+
+        // Filtres
+        function applyFilter(filter) {
+            currentFilter = filter;
+            if (filter === "all") {
+                filteredMouvements = [...mouvements];
+            } else {
+                filteredMouvements = mouvements.filter(m => m.category === filter);
+            }
+            currentIndex = 0;
+            renderCarousel();
+            resetAutoScroll();
+        }
+
+        // Événements
+        document.getElementById("prevBtn").addEventListener("click", prevPage);
+        document.getElementById("nextBtn").addEventListener("click", nextPage);
+
+        const carouselContainer = document.querySelector(".carousel-container");
+        carouselContainer.addEventListener("mouseenter", stopAutoScroll);
+        carouselContainer.addEventListener("mouseleave", startAutoScroll);
+
+        // Filtres
+        document.querySelectorAll(".filter-btn").forEach(btn => {
+            btn.addEventListener("click", () => {
+                document.querySelectorAll(".filter-btn").forEach(b => b.classList.remove("active"));
+                btn.classList.add("active");
+                applyFilter(btn.dataset.filter);
+            });
+        });
+
+        window.addEventListener("resize", () => {
+            const oldIndex = currentIndex;
+            renderCarousel();
+            currentIndex = Math.min(oldIndex, Math.ceil(filteredMouvements.length / itemsPerPage) - 1);
+            renderCarousel();
+        });
+
+        // ========== MULTILINGUE ==========
+        let currentLang = localStorage.getItem('lang') || 'fr';
+
+        const translations = {
+            fr: {
+                headerTitle: "Aumônerie Diocésaine Jeunesse & Enfance",
+                headerSub: "Douala – Cameroun",
+                nav1: "Accueil",
+                nav2: "À propos",
+                nav3: "Enfance",
+                nav4: "Jeunesse",
+                nav5: "Actualités",
+                heroTitle: "Génération En Feu",
+                heroSubtitle: "Trouve ton mouvement, vis ta passion, sers le Seigneur.",
+                filterAll: "Tous",
+                filterSpiritual: "Spirituel",
+                filterAction: "Action",
+                filterArt: "Art & Liturgie",
+                ctaTitle: "Tu ne sais pas quoi choisir ?",
+                ctaDesc: "Viens discuter avec l'équipe de l'Aumônerie pour trouver le mouvement qui correspond à ton charisme.",
+                ctaBtn: "Contacte-nous via WhatsApp",
+                backBtn: "Retour à l'accueil",
+                footerText: "Aumônerie Diocésaine Jeunesse & Enfance – Douala"
+            },
+            en: {
+                headerTitle: "Diocesan Youth & Children's Chaplaincy",
+                headerSub: "Douala – Cameroon",
+                nav1: "Home",
+                nav2: "About",
+                nav3: "Childhood",
+                nav4: "Youth",
+                nav5: "News",
+                heroTitle: "Generation On Fire",
+                heroSubtitle: "Find your movement, live your passion, serve the Lord.",
+                filterAll: "All",
+                filterSpiritual: "Spiritual",
+                filterAction: "Action",
+                filterArt: "Art & Liturgy",
+                ctaTitle: "Don't know what to choose?",
+                ctaDesc: "Come talk to the Chaplaincy team to find the movement that matches your charism.",
+                ctaBtn: "Contact us via WhatsApp",
+                backBtn: "Back to homepage",
+                footerText: "Diocesan Youth & Children's Chaplaincy – Douala"
+            }
+        };
+
+        function updateLanguage() {
+            const t = translations[currentLang];
+            document.querySelectorAll('[data-key]').forEach(el => {
+                const key = el.getAttribute('data-key');
+                if (t[key]) {
+                    if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
+                        el.placeholder = t[key];
+                    } else {
+                        el.textContent = t[key];
+                    }
+                }
+            });
+            localStorage.setItem('lang', currentLang);
+        }
+
+        document.getElementById('langToggle').addEventListener('click', () => {
+            currentLang = currentLang === 'fr' ? 'en' : 'fr';
+            updateLanguage();
+        });
+
+        // ========== MODE SOMBRE ==========
+        function initDarkMode() {
+            const darkMode = localStorage.getItem('darkMode') === 'true';
+            if (darkMode) document.body.classList.add('dark-mode');
+            const toggleBtn = document.getElementById('darkModeToggle');
+            toggleBtn.addEventListener('click', () => {
+                document.body.classList.toggle('dark-mode');
+                localStorage.setItem('darkMode', document.body.classList.contains('dark-mode'));
+                const icon = toggleBtn.querySelector('i');
+                icon.className = document.body.classList.contains('dark-mode') ? 'fas fa-sun' : 'fas fa-moon';
+            });
+            const icon = toggleBtn.querySelector('i');
+            icon.className = darkMode ? 'fas fa-sun' : 'fas fa-moon';
+        }
+
+        // ========== INITIALISATION ==========
+        renderCarousel();
+        startAutoScroll();
+        initDarkMode();
+        updateLanguage();
+    </script>
 
 </body>
+
 </html>
