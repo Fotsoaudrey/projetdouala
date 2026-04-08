@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Éveil à la Foi | Pastorale de l'Enfance – Douala</title>
+    <meta name="description" content="Éveil à la foi pour les enfants de 3 à 7 ans : récits bibliques, chants, prières, célébrations. Accompagnement parental.">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <!-- AOS Scroll Animation -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+         :root {
+            --primary: #045286;
+            --primary-dark: #022b44;
+            --accent: #2ecc71;
+            --accent-dark: #27ae60;
+            --light: #f8fafc;
+            --dark: #0f1724;
+            --gray: #64748b;
+            --white: #ffffff;
+            --shadow: 0 20px 35px -10px rgba(0, 0, 0, 0.1);
+            --radius-lg: 2rem;
+            --radius-md: 1.5rem;
+            --transition: all 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--light);
+            color: var(--dark);
+            line-height: 1.5;
+            transition: background 0.3s, color 0.3s;
+        }
+        
+        body.dark-mode {
+            background: var(--dark);
+            color: var(--light);
+        }
+        /* Conteneur */
+        
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        /* Mode sombre pour cartes */
+        
+        body.dark-mode .activite-card,
+        body.dark-mode .info-parent,
+        body.dark-mode .verset,
+        body.dark-mode .modal-content {
+            background: #1e293b;
+            color: #e2e8f0;
+            border-color: var(--accent);
+        }
+        
+        body.dark-mode .activite-card p,
+        body.dark-mode .info-parent p {
+            color: #94a3b8;
+        }
+        
+        body.dark-mode .modal-content .close {
+            color: #fff;
+        }
+        /* Contrôles */
+        
+        .controls-bar {
+            position: fixed;
+            top: 1.5rem;
+            right: 1.5rem;
+            z-index: 1001;
+            display: flex;
+            gap: 0.75rem;
+        }
+        
+        .ctrl-btn {
+            background: rgba(255, 255, 255, 0.95);
+            border: none;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.2rem;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        
+        body.dark-mode .ctrl-btn {
+            background: #1e293b;
+            color: var(--light);
+        }
+        
+        .ctrl-btn:hover {
+            transform: scale(1.05);
+        }
+        /* Header */
+        
+        header {
+            background: linear-gradient(135deg, #0a2e4a, var(--primary));
+            color: white;
+            padding: 1.5rem 0;
+            border-bottom: 3px solid var(--accent);
+            text-align: center;
+        }
+        
+        header h1 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            color: var(--accent);
+        }
+        
+        @media (min-width: 768px) {
+            header h1 {
+                font-size: 2.2rem;
+            }
+        }
+        /* Navigation */
+        
+        nav {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(8px);
+            position: sticky;
+            top: 0;
+            z-index: 99;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+        
+        body.dark-mode nav {
+            background: rgba(15, 23, 36, 0.95);
+        }
+        
+        .nav-links {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            padding: 0.75rem 1rem;
+            list-style: none;
+        }
+        
+        .nav-links a {
+            padding: 0.6rem 1.2rem;
+            font-weight: 600;
+            text-decoration: none;
+            border-radius: 2rem;
+            transition: 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--dark);
+        }
+        
+        body.dark-mode .nav-links a {
+            color: var(--light);
+        }
+        
+        .nav-links a i {
+            color: var(--accent);
+        }
+        
+        .nav-links a:hover {
+            background: var(--primary);
+            color: white;
+        }
+        
+        .nav-links a:hover i {
+            color: white;
+        }
+        /* Hero */
+        
+        .hero-eveil {
+            background: linear-gradient(rgba(255, 255, 255, 0.85), rgba(255, 255, 255, 0.85)), url('https://images.unsplash.com/photo-1489710437720-ebb67ec84dd2?q=80&w=1400');
+            background-size: cover;
+            background-position: center;
+            text-align: center;
+            padding: 4rem 2rem;
+        }
+        
+        body.dark-mode .hero-eveil {
+            background: linear-gradient(rgba(15, 23, 36, 0.9), rgba(15, 23, 36, 0.9)), url('https://images.unsplash.com/photo-1489710437720-ebb67ec84dd2?q=80&w=1400');
+        }
+        
+        .hero-eveil h2 {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+        
+        body.dark-mode .hero-eveil h2 {
+            color: var(--accent);
+        }
+        
+        .hero-eveil p {
+            color: var(--gray);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        /* Verset */
+        
+        .verset {
+            text-align: center;
+            background: var(--primary);
+            color: white;
+            padding: 2rem;
+            border-radius: 3rem 1rem 3rem 1rem;
+            margin: 2rem 0;
+            font-style: italic;
+        }
+        
+        body.dark-mode .verset {
+            background: #1e293b;
+            color: var(--accent);
+        }
+        /* Grille activités */
+        
+        .activite-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+        
+        .activite-card {
+            background: var(--white);
+            border-radius: var(--radius-md);
+            padding: 2rem;
+            text-align: center;
+            border: 2px dashed var(--primary);
+            transition: var(--transition);
+            cursor: pointer;
+        }
+        
+        .activite-card:hover {
+            border-style: solid;
+            border-color: var(--accent);
+            transform: translateY(-8px);
+            box-shadow: var(--shadow);
+        }
+        
+        .activite-card i {
+            font-size: 2.5rem;
+            color: var(--accent);
+            margin-bottom: 1rem;
+        }
+        
+        .activite-card h3 {
+            color: var(--primary);
+            margin-bottom: 0.75rem;
+        }
+        
+        body.dark-mode .activite-card h3 {
+            color: var(--accent);
+        }
+        
+        .activite-card p {
+            color: var(--gray);
+            font-size: 0.9rem;
+            margin-bottom: 1.2rem;
+        }
+        
+        .btn-more {
+            background: transparent;
+            border: 1px solid var(--accent);
+            color: var(--primary);
+            padding: 0.4rem 1rem;
+            border-radius: 2rem;
+            font-size: 0.8rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        
+        .btn-more:hover {
+            background: var(--accent);
+            color: #022b44;
+        }
+        /* Info parents */
+        
+        .info-parent {
+            background: var(--accent);
+            color: #022b44;
+            padding: 2rem;
+            border-radius: var(--radius-md);
+            text-align: center;
+            margin: 2rem 0;
+        }
+        
+        .info-parent i {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+        /* Modal */
+        
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(4px);
+        }
+        
+        .modal-content {
+            background: white;
+            margin: 10% auto;
+            padding: 2rem;
+            border-radius: var(--radius-lg);
+            max-width: 500px;
+            position: relative;
+            animation: fadeInUp 0.3s ease;
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .modal-content .close {
+            position: absolute;
+            right: 1.2rem;
+            top: 1rem;
+            font-size: 1.8rem;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        
+        .modal-content .close:hover {
+            color: var(--accent);
+        }
+        
+        .modal-content h3 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+        
+        .modal-content p {
+            color: var(--gray);
+            line-height: 1.6;
+        }
+        /* Back link */
+        
+        .back-link {
+            text-align: center;
+            margin: 2rem 0;
+        }
+        
+        .btn-back {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--primary);
+            color: white;
+            padding: 0.7rem 2rem;
+            border-radius: 2rem;
+            text-decoration: none;
+            font-weight: 600;
+            transition: 0.2s;
+        }
+        
+        .btn-back:hover {
+            background: var(--accent);
+            transform: translateX(-5px);
+        }
+        
+        footer {
+            background: var(--primary-dark);
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 3rem;
+        }
+        
+        footer a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 1rem;
+            }
+            .hero-eveil h2 {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="controls-bar">
+        <button class="ctrl-btn" id="darkModeToggle" aria-label="Mode sombre"><i class="fas fa-moon"></i></button>
+        <button class="ctrl-btn" id="langToggle" aria-label="Changer de langue"><i class="fas fa-globe"></i></button>
+    </div>
+
+    <header>
+        <div class="container">
+            <h1 data-key="headerTitle">Aumônerie Diocésaine Jeunesse & Enfance</h1>
+            <p data-key="headerSub">Douala – Cameroun</p>
+        </div>
+    </header>
+
+    <nav>
+        <div class="container">
+            <ul class="nav-links">
+                <li><a href="index.html"><i class="fas fa-home"></i> <span data-key="nav1">Accueil</span></a></li>
+                <li><a href="index.html#apropos"><i class="fas fa-church"></i> <span data-key="nav2">À propos</span></a></li>
+                <li><a href="index.html#enfance"><i class="fas fa-child"></i> <span data-key="nav3">Enfance</span></a></li>
+                <li><a href="index.html#jeunesse"><i class="fas fa-users"></i> <span data-key="nav4">Jeunesse</span></a></li>
+                <li><a href="index.html#actus"><i class="fas fa-newspaper"></i> <span data-key="nav5">Actualités</span></a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="hero-eveil">
+        <div class="container">
+            <h2 data-key="heroTitle">L'Éveil à la Foi (3-7 ans)</h2>
+            <p data-key="heroDesc">Faire ses premiers pas avec Jésus dans la joie et la curiosité.</p>
+        </div>
+    </section>
+
+    <div class="container">
+        <div class="verset" data-aos="fade-up">
+            <i class="fas fa-quote-left"></i> <span data-key="versetText">"Laissez les petits enfants venir à moi..."</span> <br>
+            <strong data-key="versetRef">— Marc 10, 14</strong>
+        </div>
+
+        <div class="activite-grid" data-aos="fade-up">
+            <!-- 6 cartes avec leurs données -->
+            <div class="activite-card" data-id="0">
+                <i class="fas fa-book-open"></i>
+                <h3 data-key="act1Title">Récits Bibliques</h3>
+                <p data-key="act1Desc">Découvrir les grandes figures de la Bible à travers des histoires adaptées et captivantes.</p>
+                <button class="btn-more" data-key="btnMore">En savoir plus</button>
+            </div>
+            <div class="activite-card" data-id="1">
+                <i class="fas fa-palette"></i>
+                <h3 data-key="act2Title">Expression Créative</h3>
+                <p data-key="act2Desc">Coloriages, gommettes et petits bricolages pour illustrer les merveilles de la Création.</p>
+                <button class="btn-more" data-key="btnMore">En savoir plus</button>
+            </div>
+            <div class="activite-card" data-id="2">
+                <i class="fas fa-music"></i>
+                <h3 data-key="act3Title">Chants Joyeux</h3>
+                <p data-key="act3Desc">Apprendre des refrains rythmés et gestués pour louer Dieu avec tout son corps.</p>
+                <button class="btn-more" data-key="btnMore">En savoir plus</button>
+            </div>
+            <div class="activite-card" data-id="3">
+                <i class="fas fa-hands-praying"></i>
+                <h3 data-key="act4Title">Premières Prières</h3>
+                <p data-key="act4Desc">Apprendre des mots simples pour dire merci, pardon et s'il te plaît au Seigneur.</p>
+                <button class="btn-more" data-key="btnMore">En savoir plus</button>
+            </div>
+            <div class="activite-card" data-id="4">
+                <i class="fas fa-church"></i>
+                <h3 data-key="act5Title">Célébrations</h3>
+                <p data-key="act5Desc">Participer à de courts temps liturgiques adaptés au rythme et à l'attention des petits.</p>
+                <button class="btn-more" data-key="btnMore">En savoir plus</button>
+            </div>
+            <div class="activite-card" data-id="5">
+                <i class="fas fa-handshake"></i>
+                <h3 data-key="act6Title">Vivre Ensemble</h3>
+                <p data-key="act6Desc">Apprendre le partage, le respect et l'amitié au sein du groupe de l'éveil.</p>
+                <button class="btn-more" data-key="btnMore">En savoir plus</button>
+            </div>
+        </div>
+
+        <div class="info-parent" data-aos="fade-up">
+            <i class="fas fa-heart"></i>
+            <h4 data-key="parentTitle"> <i class="far fa-lightbulb"></i> Accompagner votre enfant</h4>
+            <p data-key="parentDesc">Le rôle des parents est essentiel. N'hésitez pas à demander les feuillets de liaison pour continuer l'éveil à la maison à travers de petites histoires du soir.</p>
+        </div>
+
+        <div class="back-link">
+            <a href="index.html" class="btn-back"><i class="fas fa-arrow-left"></i> <span data-key="backBtn">Retourner à l'accueil</span></a>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close" id="closeModal">&times;</span>
+            <h3 id="modalTitle"></h3>
+            <p id="modalDesc"></p>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>© BIG DATA CENTER AI — <a href="https://www.youtube.com/@DominiqueSavio_Cyber-Ap%C3%B4tre3.0" target="_blank">Dominique Savio - Cyber Apôtre 3.0</a></p>
+            <p data-key="footerText">Aumônerie Diocésaine Jeunesse & Enfance – Douala</p>
+        </div>
+    </footer>
+
+    <script>
+        AOS.init({
+            duration: 800,
+            once: true
+        });
+
+        // Détails des activités pour le modal (français et anglais)
+        const details = {
+            fr: [
+                "Les récits bibliques sont présentés sous forme d'histoires animées, de marionnettes et de petits films. Chaque rencontre permet à l'enfant de découvrir un personnage ou un événement clé (Noé, David, Jonas, la Nativité...) avec des mots simples et des images joyeuses.",
+                "L'expression créative permet à l'enfant de s'approprier la Parole de Dieu par le dessin, le collage, la pâte à modeler ou la peinture. Chaque activité manuelle est en lien avec la leçon du jour (création du monde, arc-en-ciel, bon pasteur...).",
+                "Les chants joyeux sont accompagnés de gestes et de mouvements corporels pour aider la mémorisation et l'éveil corporel. Ils créent une ambiance de fête et de communion au sein du groupe.",
+                "Les premières prières sont très courtes et rythmées : prières du matin, du soir, actions de grâces. L'enfant apprend à parler à Dieu comme à un ami, à lui dire merci, pardon et à lui confier ses petits soucis.",
+                "Des célébrations adaptées sont organisées tout au long de l'année : messes des familles, temps d'adoration silencieux, processions avec des bougies. L'enfant découvre la liturgie à son niveau.",
+                "Le vivre ensemble est au cœur de la pastorale : jeux coopératifs, partage du goûter, écoute des autres, résolution pacifique des petits conflits. On apprend la fraternité chrétienne dès le plus jeune âge."
+            ],
+            en: [
+                "Bible stories are told through animated tales, puppets and short films. Each session helps the child discover a key figure or event (Noah, David, Jonah, the Nativity...) with simple words and joyful images.",
+                "Creative expression allows the child to appropriate God's Word through drawing, collage, modeling clay or painting. Each craft activity is linked to the day's lesson (creation, rainbow, Good Shepherd...).",
+                "Joyful songs are accompanied by gestures and body movements to aid memorization and physical awakening. They create a festive atmosphere of communion within the group.",
+                "First prayers are very short and rhythmic: morning prayers, evening prayers, thanksgiving. The child learns to speak to God as a friend, to say thank you, sorry and to share his little worries.",
+                "Adapted celebrations are organized throughout the year: family masses, silent adoration times, candlelight processions. The child discovers liturgy at his own level.",
+                "Living together is at the heart of the ministry: cooperative games, snack sharing, listening to others, peaceful resolution of small conflicts. Christian fraternity is learned from an early age."
+            ]
+        };
+
+        // Gestion du modal
+        const modal = document.getElementById('modal');
+        const modalTitle = document.getElementById('modalTitle');
+        const modalDesc = document.getElementById('modalDesc');
+        const closeModal = document.getElementById('closeModal');
+
+        let currentLang = localStorage.getItem('lang') || 'fr';
+
+        function openModal(index) {
+            const titlesFr = ["Récits Bibliques", "Expression Créative", "Chants Joyeux", "Premières Prières", "Célébrations", "Vivre Ensemble"];
+            const titlesEn = ["Bible Stories", "Creative Expression", "Joyful Songs", "First Prayers", "Celebrations", "Living Together"];
+            const titles = currentLang === 'fr' ? titlesFr : titlesEn;
+            modalTitle.textContent = titles[index];
+            modalDesc.textContent = details[currentLang][index];
+            modal.style.display = 'block';
+        }
+
+        document.querySelectorAll('.btn-more').forEach((btn, idx) => {
+            btn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                openModal(idx);
+            });
+        });
+
+        closeModal.addEventListener('click', () => {
+            modal.style.display = 'none';
+        });
+        window.addEventListener('click', (e) => {
+            if (e.target === modal) modal.style.display = 'none';
+        });
+
+        // Multilingue
+        const translations = {
+            fr: {
+                headerTitle: "Aumônerie Diocésaine Jeunesse & Enfance",
+                headerSub: "Douala – Cameroun",
+                nav1: "Accueil",
+                nav2: "À propos",
+                nav3: "Enfance",
+                nav4: "Jeunesse",
+                nav5: "Actualités",
+                heroTitle: "L'Éveil à la Foi (3-7 ans)",
+                heroDesc: "Faire ses premiers pas avec Jésus dans la joie et la curiosité.",
+                versetText: "Laissez les petits enfants venir à moi...",
+                versetRef: "— Marc 10, 14",
+                act1Title: "Récits Bibliques",
+                act1Desc: "Découvrir les grandes figures de la Bible à travers des histoires adaptées et captivantes.",
+                act2Title: "Expression Créative",
+                act2Desc: "Coloriages, gommettes et petits bricolages pour illustrer les merveilles de la Création.",
+                act3Title: "Chants Joyeux",
+                act3Desc: "Apprendre des refrains rythmés et gestués pour louer Dieu avec tout son corps.",
+                act4Title: "Premières Prières",
+                act4Desc: "Apprendre des mots simples pour dire merci, pardon et s'il te plaît au Seigneur.",
+                act5Title: "Célébrations",
+                act5Desc: "Participer à de courts temps liturgiques adaptés au rythme et à l'attention des petits.",
+                act6Title: "Vivre Ensemble",
+                act6Desc: "Apprendre le partage, le respect et l'amitié au sein du groupe de l'éveil.",
+                btnMore: "En savoir plus",
+                parentTitle: "💡 Accompagner votre enfant",
+                parentDesc: "Le rôle des parents est essentiel. N'hésitez pas à demander les feuillets de liaison pour continuer l'éveil à la maison à travers de petites histoires du soir.",
+                backBtn: "Retourner à l'accueil",
+                footerText: "Aumônerie Diocésaine Jeunesse & Enfance – Douala"
+            },
+            en: {
+                headerTitle: "Diocesan Youth & Children's Chaplaincy",
+                headerSub: "Douala – Cameroon",
+                nav1: "Home",
+                nav2: "About",
+                nav3: "Childhood",
+                nav4: "Youth",
+                nav5: "News",
+                heroTitle: "Awakening to Faith (3-7 years)",
+                heroDesc: "Take your first steps with Jesus in joy and curiosity.",
+                versetText: "Let the little children come to me...",
+                versetRef: "— Mark 10:14",
+                act1Title: "Bible Stories",
+                act1Desc: "Discover the great figures of the Bible through adapted and captivating stories.",
+                act2Title: "Creative Expression",
+                act2Desc: "Coloring, stickers and small crafts to illustrate the wonders of Creation.",
+                act3Title: "Joyful Songs",
+                act3Desc: "Learn rhythmic and gestural refrains to praise God with all your body.",
+                act4Title: "First Prayers",
+                act4Desc: "Learn simple words to say thank you, sorry and please to the Lord.",
+                act5Title: "Celebrations",
+                act5Desc: "Participate in short liturgical times adapted to the rhythm and attention of the little ones.",
+                act6Title: "Living Together",
+                act6Desc: "Learn sharing, respect and friendship within the awakening group.",
+                btnMore: "Learn more",
+                parentTitle: "💡 Supporting your child",
+                parentDesc: "The role of parents is essential. Ask for the handouts to continue the awakening at home with little bedtime stories.",
+                backBtn: "Back to home",
+                footerText: "Diocesan Youth & Children's Chaplaincy – Douala"
+            }
+        };
+
+        function updateLanguage() {
+            const t = translations[currentLang];
+            document.querySelectorAll('[data-key]').forEach(el => {
+                const key = el.getAttribute('data-key');
+                if (t[key]) {
+                    el.textContent = t[key];
+                }
+            });
+            localStorage.setItem('lang', currentLang);
+        }
+
+        document.getElementById('langToggle').addEventListener('click', () => {
+            currentLang = currentLang === 'fr' ? 'en' : 'fr';
+            updateLanguage();
+            // Recharger les textes des cartes (car les data-key sont déjà mis à jour)
+            // Forcer la mise à jour des descriptions du modal aussi via la variable details
+        });
+
+        // Dark mode
+        function initDarkMode() {
+            const darkMode = localStorage.getItem('darkMode') === 'true';
+            if (darkMode) document.body.classList.add('dark-mode');
+            const toggleBtn = document.getElementById('darkModeToggle');
+            toggleBtn.addEventListener('click', () => {
+                document.body.classList.toggle('dark-mode');
+                localStorage.setItem('darkMode', document.body.classList.contains('dark-mode'));
+                const icon = toggleBtn.querySelector('i');
+                icon.className = document.body.classList.contains('dark-mode') ? 'fas fa-sun' : 'fas fa-moon';
+            });
+            const icon = toggleBtn.querySelector('i');
+            icon.className = darkMode ? 'fas fa-sun' : 'fas fa-moon';
+        }
+
+        initDarkMode();
+        updateLanguage();
+    </script>
+</body>
+
+</html>
