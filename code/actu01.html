@@ -1,236 +1,774 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Nuit des Jeunes - Douala (Thème Bleu)</title>
-  <style>
-    :root {
-      --bleu-profond: #063970;
-      --bleu-header: #066a92;
-      --bleu-clair: #abdbe3;
-      --accent-jaune: #ffcc00;
-      --fond: #f0f7f9;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Nuit des Jeunes avec Jésus-Christ | Aumônerie Douala</title>
+    <meta name="description" content="24e Nuit des Jeunes de l'Archidiocèse de Douala - Du 6 au 7 Février 2026 à la Cathédrale Sts Pierre & Paul. Veillée de prière, louange, enseignements et adoration.">
 
-    body {
-      margin: 0;
-      background-color: var(--fond);
-      color: #333;
-      font-family: system-ui, -apple-system, sans-serif;
-    }
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
 
-    /* --- HEADER --- */
-    header {
-      background: #063970;
-      padding: 15px 20px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      color: white;
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-    }
-    nav a {
-      margin-left: 15px;
-      color: white;
-      text-decoration: none;
-      font-weight: 500;
-      transition: color 0.3s;
-    }
-    nav a:hover { color: var(--accent-jaune); }
+    <!-- Font Awesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
-    .overlay {
-      font-size: clamp(18px, 4vw, 32px);
-      font-weight: bold;
-      margin: 0;
-      text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-    }
+    <!-- Swiper JS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
-    /* --- BANNIERE --- */
-    .banniere-evenement {
-      max-width: 1100px;
-      margin: 30px auto;
-      border-radius: 15px;
-      overflow: hidden;
-      box-shadow: 0 10px 30px rgba(6, 57, 112, 0.2);
-    }
-    .banniere-evenement img { width: 100%; display: block; }
+    <!-- AOS Scroll Animation -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
-    /* --- TITRES --- */
-    .section-title {
-      text-align: center;
-      color: var(--bleu-profond);
-      font-size: 2.2em;
-      margin: 40px 0 60px;
-      position: relative;
-    }
-    .section-title::after {
-      content: '';
-      display: block;
-      width: 50px;
-      height: 4px;
-      background: var(--bleu-header);
-      margin: 10px auto;
-    }
-
-    /* --- SECTION INFOS (LES 3 BOITES) --- */
-    .info-container {
-      display: flex;
-      gap: 25px;
-      padding: 20px;
-      flex-wrap: wrap;
-      justify-content: center;
-      max-width: 1200px;
-      margin: auto;
-    }
-
-    .card {
-      background: var(--bleu-profond);
-      color: white;
-      width: 280px;
-      padding: 50px 20px 30px;
-      border-radius: 15px;
-      text-align: center;
-      position: relative;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
-    }
-
-    .icon-wrapper {
-      position: absolute;
-      top: -35px;
-      left: 50%;
-      transform: translateX(-50%);
-
-    }
-
-    /* Icônes CSS */
-    .icon-date {
-      background: white; width: 70px; height: 70px; border-radius: 10px;
-      display: flex; flex-direction: column; border: 3px solid var(--bleu-header); overflow: hidden;
-    }
-    .cal-top { background: var(--bleu-header); height: 18px; }
-    .cal-day { color: var(--bleu-profond); font-size: 26px; font-weight: bold; line-height: 48px; }
-
-    .icon-time {
-      background: var(--accent-jaune); width: 70px; height: 70px; border-radius: 50%;
-      border: 4px solid white; position: relative;
-    }
-    .hand { position: absolute; background: var(--bleu-profond); left: 50%; bottom: 50%; transform-origin: bottom; border-radius: 2px;}
-    .hour { width: 4px; height: 16px; transform: rotate(90deg); }
-    .minute { width: 3px; height: 24px; }
-
-    .icon-location {
-      background: #ff4d4d; width: 60px; height: 60px; border-radius: 50% 50% 50% 0;
-      transform: rotate(-45deg); border: 4px solid white; display: flex; align-items: center; justify-content: center;
-    }
-    .pin-dot { width: 16px; height: 16px; background: white; border-radius: 50%; }
-
-    .map-link {
-      display: inline-block; margin-top: 15px; color: var(--bleu-clair);
-      text-decoration: none; border: 1px solid var(--bleu-clair);
-      padding: 8px 15px; border-radius: 20px; transition: 0.3s;
-    }
-    .map-link:hover { background: var(--bleu-clair); color: var(--bleu-profond); }
-
-    /* --- PROGRAMME HORIZONTAL --- */
-    .programme-container { padding: 40px 0; background: white; }
-    .timeline-horizontal {
-      display: flex; overflow-x: auto; padding: 40px 20px; gap: 0;
-      scroll-snap-type: x mandatory; scrollbar-width: none;
-    }
-    .timeline-step { flex: 0 0 260px; position: relative; text-align: center; scroll-snap-align: center; }
-    .timeline-step::before {
-      content: ''; position: absolute; top: 25px; left: 0; right: 0; height: 3px; background: var(--bleu-clair); z-index: 1;
-    }
-    .timeline-step::after {
-      content: ''; position: absolute; top: 17px; left: 50%; transform: translateX(-50%);
-      width: 16px; height: 16px; background: white; border: 3px solid var(--bleu-header); border-radius: 50%; z-index: 2;
-    }
-    .step-content {
-      margin-top: 50px; background: var(--fond); padding: 20px; border-radius: 12px;
-      margin: 50px 10px 0; border-bottom: 4px solid var(--bleu-header); transition: 0.3s;
-    }
-    .step-content:hover { transform: translateY(-5px); background: #e2eff2; }
-    .step-content span { font-size: 2em; display: block; margin-bottom: 5px; }
-    .step-content h4 { color: var(--bleu-profond); margin: 0; }
-
-    /* --- APPEL A L'ACTION --- */
-    .appel {
-      text-align: center; background: var(--bleu-profond); color: white; padding: 60px 20px;
-    }
-    .btn {
-      display: inline-block; margin-top: 25px; padding: 18px 40px;
-      background: var(--accent-jaune); color: var(--bleu-profond);
-      text-decoration: none; font-weight: bold; border-radius: 50px;
-      box-shadow: 0 4px 15px rgba(255, 204, 0, 0.4); transition: 0.3s;
-    }
-    .btn:hover { transform: scale(1.05); background: white; }
-
-    footer { text-align: center; padding: 20px; background: #1a1a1a; color: #888; font-size: 0.9em; }
-  </style>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+         :root {
+            --primary: #045286;
+            --primary-dark: #022b44;
+            --accent: #2ecc71;
+            --accent-dark: #27ae60;
+            --light: #f5f7fb;
+            --dark: #0f1724;
+            --gray: #64748b;
+            --white: #ffffff;
+            --shadow-sm: 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 10px 25px -5px rgba(0, 0, 0, 0.08);
+            --shadow-lg: 0 20px 35px -10px rgba(0, 0, 0, 0.15);
+            --radius-lg: 2rem;
+            --radius-md: 1.5rem;
+            --radius-sm: 1rem;
+            --transition: all 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--light);
+            color: #1a2c3e;
+            line-height: 1.5;
+            transition: background 0.3s, color 0.3s;
+        }
+        /* MODE SOMBRE */
+        
+        body.dark-mode {
+            background: var(--dark);
+            color: var(--light);
+        }
+        
+        body.dark-mode .card,
+        body.dark-mode .programme-container,
+        body.dark-mode .appel {
+            background: #1e293b;
+        }
+        
+        body.dark-mode .card h3,
+        body.dark-mode .card p {
+            color: var(--light);
+        }
+        
+        body.dark-mode .programme-swiper-slide {
+            background: #0f1724;
+            border-color: var(--accent);
+        }
+        
+        body.dark-mode .programme-swiper-slide h4 {
+            color: var(--accent);
+        }
+        
+        body.dark-mode .programme-swiper-slide p {
+            color: #94a3b8;
+        }
+        
+        body.dark-mode .btn {
+            background: var(--accent);
+            color: var(--primary);
+        }
+        
+        body.dark-mode .btn:hover {
+            background: white;
+        }
+        /* Contrôles */
+        
+        .controls-bar {
+            position: fixed;
+            top: 1.5rem;
+            right: 1.5rem;
+            z-index: 1001;
+            display: flex;
+            gap: 0.75rem;
+        }
+        
+        .ctrl-btn {
+            background: rgba(255, 255, 255, 0.95);
+            border: none;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.2rem;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: var(--shadow-sm);
+        }
+        
+        body.dark-mode .ctrl-btn {
+            background: #1e293b;
+            color: var(--light);
+        }
+        
+        .ctrl-btn:hover {
+            transform: scale(1.05);
+        }
+        /* Header */
+        
+        header {
+            background: linear-gradient(135deg, #0a2e4a, var(--primary));
+            color: white;
+            padding: 1.5rem 0;
+            border-bottom: 3px solid var(--accent);
+            text-align: center;
+        }
+        
+        header h1 {
+            font-size: 1.6rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            color: var(--accent);
+        }
+        
+        @media (min-width: 768px) {
+            header h1 {
+                font-size: 2rem;
+            }
+        }
+        /* Navigation */
+        
+        nav {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(8px);
+            position: sticky;
+            top: 0;
+            z-index: 99;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+        
+        body.dark-mode nav {
+            background: rgba(15, 23, 36, 0.95);
+        }
+        
+        .nav-links {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            list-style: none;
+            padding: 0.75rem 1rem;
+        }
+        
+        .nav-links a {
+            padding: 0.6rem 1.2rem;
+            font-weight: 600;
+            text-decoration: none;
+            border-radius: 2rem;
+            transition: 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--dark);
+        }
+        
+        body.dark-mode .nav-links a {
+            color: var(--light);
+        }
+        
+        .nav-links a i {
+            color: var(--accent);
+        }
+        
+        .nav-links a:hover {
+            background: var(--primary);
+            color: white;
+        }
+        
+        .nav-links a:hover i {
+            color: white;
+        }
+        /* Carrousel principal */
+        
+        .carousel-section {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+        
+        .hero-swiper {
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .hero-swiper .swiper-slide img {
+            width: 100%;
+            height: 500px;
+            object-fit: cover;
+        }
+        
+        .hero-swiper .swiper-pagination-bullet-active {
+            background: var(--accent);
+        }
+        
+        .hero-swiper .swiper-button-next,
+        .hero-swiper .swiper-button-prev {
+            color: var(--accent);
+        }
+        /* Section titres */
+        
+        .section-title {
+            text-align: center;
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--primary);
+            margin: 3rem 0 2rem;
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: var(--accent);
+            margin: 0.5rem auto 0;
+            border-radius: 2px;
+        }
+        
+        body.dark-mode .section-title {
+            color: var(--accent);
+        }
+        /* Cartes infos */
+        
+        .info-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+        
+        .card {
+            background: var(--primary);
+            color: white;
+            width: 280px;
+            padding: 2rem 1.5rem;
+            border-radius: var(--radius-md);
+            text-align: center;
+            transition: var(--transition);
+            box-shadow: var(--shadow-md);
+        }
+        
+        .card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .card i {
+            font-size: 2.5rem;
+            color: var(--accent);
+            margin-bottom: 1rem;
+        }
+        
+        .card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .card p {
+            font-size: 0.9rem;
+            opacity: 0.9;
+            margin-bottom: 1rem;
+        }
+        
+        .map-link {
+            display: inline-block;
+            margin-top: 0.5rem;
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.85rem;
+            transition: 0.2s;
+        }
+        
+        .map-link:hover {
+            text-decoration: underline;
+        }
+        /* ========== CARROUSEL PROFESSIONNEL POUR LE PARCOURS ========== */
+        
+        .programme-container {
+            background: white;
+            padding: 2rem 0 3rem;
+            margin: 2rem 0;
+        }
+        
+        .programme-swiper {
+            padding: 2rem 1rem 3rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .programme-swiper-slide {
+            background: var(--light);
+            border-radius: var(--radius-md);
+            padding: 2rem 1.5rem;
+            text-align: center;
+            transition: var(--transition);
+            border-bottom: 4px solid var(--accent);
+            box-shadow: var(--shadow-sm);
+            height: auto;
+        }
+        
+        .programme-swiper-slide:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .programme-swiper-slide i {
+            font-size: 2.5rem;
+            color: var(--accent);
+            margin-bottom: 1rem;
+        }
+        
+        .programme-swiper-slide h4 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: var(--primary);
+        }
+        
+        .programme-swiper-slide p {
+            font-size: 0.85rem;
+            color: var(--gray);
+        }
+        
+        .programme-swiper .swiper-pagination-bullet-active {
+            background: var(--accent);
+        }
+        
+        .programme-swiper .swiper-button-next,
+        .programme-swiper .swiper-button-prev {
+            color: var(--accent);
+            background: rgba(255, 255, 255, 0.8);
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            box-shadow: var(--shadow-sm);
+        }
+        
+        .programme-swiper .swiper-button-next:after,
+        .programme-swiper .swiper-button-prev:after {
+            font-size: 1.2rem;
+        }
+        /* Appel à l'action */
+        
+        .appel {
+            text-align: center;
+            background: var(--primary);
+            color: white;
+            padding: 3rem 1rem;
+            margin: 2rem 0;
+        }
+        
+        .appel h2 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+        
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--accent);
+            color: var(--primary);
+            padding: 1rem 2rem;
+            border-radius: 3rem;
+            text-decoration: none;
+            font-weight: 700;
+            transition: var(--transition);
+        }
+        
+        .btn:hover {
+            transform: scale(1.05);
+            background: white;
+        }
+        /* Back link */
+        
+        .back-link {
+            text-align: center;
+            margin: 2rem 0;
+        }
+        
+        .btn-back {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--primary);
+            color: white;
+            padding: 0.7rem 2rem;
+            border-radius: 2rem;
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+        
+        .btn-back:hover {
+            background: var(--accent);
+            color: var(--primary);
+            transform: translateX(-5px);
+        }
+        /* Footer */
+        
+        footer {
+            background: var(--primary-dark);
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 2rem;
+        }
+        
+        footer a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+        
+        @media (max-width: 768px) {
+            .hero-swiper .swiper-slide img {
+                height: 250px;
+            }
+            .section-title {
+                font-size: 1.5rem;
+            }
+            .appel h2 {
+                font-size: 1.4rem;
+            }
+            .programme-swiper-slide {
+                padding: 1.5rem;
+            }
+        }
+    </style>
 </head>
+
 <body>
 
-  <header>
-    <h1 class="overlay">Nuit des Jeunes avec Jésus-Christ</h1>
+    <div class="controls-bar">
+        <button class="ctrl-btn" id="darkModeToggle" aria-label="Mode sombre"><i class="fas fa-moon"></i></button>
+        <button class="ctrl-btn" id="langToggle" aria-label="Changer de langue"><i class="fas fa-globe"></i></button>
+    </div>
+
+    <!-- HEADER -->
+    <header>
+        <div class="container">
+            <h1 data-key="headerTitle">Nuit des Jeunes avec Jésus-Christ</h1>
+            <p data-key="headerSub">Aumônerie Diocésaine Jeunesse & Enfance – Douala</p>
+        </div>
+    </header>
+
+    <!-- NAVIGATION (identique aux autres pages) -->
     <nav>
-      <a href="#">Accueil</a>
-      <a href="#infos">Infos</a>
-      <a href="#programme">Programme</a>
-      <a href="Index.html">Menu</a>
+        <div class="container">
+            <ul class="nav-links">
+                <li><a href="index.html"><i class="fas fa-home"></i> <span data-key="nav1">Accueil</span></a></li>
+                <li><a href="index.html#apropos"><i class="fas fa-church"></i> <span data-key="nav2">À propos</span></a></li>
+                <li><a href="index.html#enfance"><i class="fas fa-child"></i> <span data-key="nav3">Enfance</span></a></li>
+                <li><a href="index.html#jeunesse"><i class="fas fa-users"></i> <span data-key="nav4">Jeunesse</span></a></li>
+                <li><a href="index.html#actus"><i class="fas fa-newspaper"></i> <span data-key="nav5">Actualités</span></a></li>
+            </ul>
+        </div>
     </nav>
-  </header>
 
-  <section class="banniere-evenement">
-    <img src="../image/WhatsApp Image 2026-02-01 at 08.22.20.jpeg" alt="24e Nuit des Jeunes">
-  </section>
-
-  <section id="infos">
-    <h2 class="section-title">Informations</h2>
-    <div class="info-container">
-      <div class="card"> 
-        <div class="icon-wrapper"><div class="icon-date"><span class="cal-top"></span><span class="cal-day">06</span></div></div>
-        <h3>Date</h3>
-        <p>Du Vendredi 06 au<br>Samedi 07 Février 2026</p>
-      </div>
-      <div class="card">
-        <div class="icon-wrapper"><div class="icon-time"><div class="hand hour"></div><div class="hand minute"></div></div></div>
-        <h3>Heure</h3>
-        <p>De 17h00 jusqu'au matin (6h00)</p>
-      </div>
-      <div class="card">
-        <div class="icon-wrapper"><div class="icon-location"><div class="pin-dot"></div></div></div>
-        <h3>Lieu</h3>
-        <p>Cathédrale Ss Pierre & Paul</br> Bonadibong, Douala - Cameroun</p>
-        <a href="https://maps.app.goo.gl/qDDuMot7t61JChbD7" class="map-link">📍 Ouvrir l'itinéraire</a>
-      </div>
+    <!-- Carrousel principal -->
+    <div class="carousel-section">
+        <div class="swiper hero-swiper">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide"><img src="https://images.unsplash.com/photo-1523580495863-d7d7b9e8a617?w=1200&h=500&fit=crop" alt="Nuit des Jeunes - Louange"></div>
+                <div class="swiper-slide"><img src="https://images.unsplash.com/photo-1445251836269-d158eaa028a6?w=1200&h=500&fit=crop" alt="Nuit des Jeunes - Prière"></div>
+                <div class="swiper-slide"><img src="https://images.unsplash.com/photo-1511632765486-a01980e01a18?w=1200&h=500&fit=crop" alt="Nuit des Jeunes - Adoration"></div>
+            </div>
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-pagination"></div>
+        </div>
     </div>
-  </section>
 
-  <section id="programme" class="programme-container">
-    <h2 class="section-title">Le Parcours de la Nuit</h2>
-    <div class="timeline-horizontal">
-      <div class="timeline-step"><div class="step-content"><span>🔥</span><h4>Parade</h4><p>Ouverture culturelle</p></div></div>
-      <div class="timeline-step"><div class="step-content"><span>📖</span><h4>Chapelet</h4><p>Prière fervente</p></div></div>
-      <div class="timeline-step"><div class="step-content"><span>🙏</span><h4>Enseignement</h4><p>Parole de vie</p></div></div>
-      <div class="timeline-step"><div class="step-content"><span>🎤</span><h4>Confession</h4><p>Cœur à cœur</p></div></div>
-      <div class="timeline-step"><div class="step-content"><span>🤝</span><h4>Messe</h4><p>Communion</p></div></div>
-      <div class="timeline-step"><div class="step-content"><span>🕊️</span><h4>Adoration</h4><p>Face au Seigneur</p></div></div>
-      <div class="timeline-step"><div class="step-content"><span>🎬</span><h4>Théâtre</h4><p>Évangélisation</p></div></div>
+    <!-- Section Informations -->
+    <section id="infos">
+        <h2 class="section-title" data-key="infoTitle">Informations</h2>
+        <div class="info-container" data-aos="fade-up">
+            <div class="card">
+                <i class="fas fa-calendar-alt"></i>
+                <h3 data-key="dateTitle">Date</h3>
+                <p data-key="dateText">Du Vendredi 06 au<br>Samedi 07 Février 2026</p>
+            </div>
+            <div class="card">
+                <i class="fas fa-clock"></i>
+                <h3 data-key="timeTitle">Heure</h3>
+                <p data-key="timeText">De 17h00 jusqu'au matin (6h00)</p>
+            </div>
+            <div class="card">
+                <i class="fas fa-map-marker-alt"></i>
+                <h3 data-key="locationTitle">Lieu</h3>
+                <p data-key="locationText">Cathédrale Sts Pierre & Paul<br>Bonadibong, Douala - Cameroun</p>
+                <a href="https://maps.app.goo.gl/qDDuMot7t61JChbD7" class="map-link" target="_blank"><i class="fas fa-directions"></i> <span data-key="mapLink">Ouvrir l'itinéraire</span></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Programme - Carrousel professionnel -->
+    <section id="programme" class="programme-container">
+        <h2 class="section-title" data-key="programmeTitle">Le Parcours de la Nuit</h2>
+        <div class="swiper programme-swiper" data-aos="fade-up">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide programme-swiper-slide">
+                    <i class="fas fa-fire"></i>
+                    <h4 data-key="step1Title">Parade</h4>
+                    <p data-key="step1Desc">Ouverture culturelle spectaculaire avec les groupes de jeunes</p>
+                </div>
+                <div class="swiper-slide programme-swiper-slide">
+                    <i class="fas fa-rosary"></i>
+                    <h4 data-key="step2Title">Chapelet</h4>
+                    <p data-key="step2Desc">Prière fervente et méditation des mystères lumineux</p>
+                </div>
+                <div class="swiper-slide programme-swiper-slide">
+                    <i class="fas fa-bible"></i>
+                    <h4 data-key="step3Title">Enseignement</h4>
+                    <p data-key="step3Desc">Parole de vie et témoignages inspirants</p>
+                </div>
+                <div class="swiper-slide programme-swiper-slide">
+                    <i class="fas fa-microphone-alt"></i>
+                    <h4 data-key="step4Title">Confession</h4>
+                    <p data-key="step4Desc">Sacrement de réconciliation : cœur à cœur avec le Seigneur</p>
+                </div>
+                <div class="swiper-slide programme-swiper-slide">
+                    <i class="fas fa-church"></i>
+                    <h4 data-key="step5Title">Messe</h4>
+                    <p data-key="step5Desc">Eucharistie solennelle présidée par Mgr l'Archevêque</p>
+                </div>
+                <div class="swiper-slide programme-swiper-slide">
+                    <i class="fas fa-praying-hands"></i>
+                    <h4 data-key="step6Title">Adoration</h4>
+                    <p data-key="step6Desc">Face au Saint-Sacrement, nuit d'intimité avec le Christ</p>
+                </div>
+                <div class="swiper-slide programme-swiper-slide">
+                    <i class="fas fa-mask"></i>
+                    <h4 data-key="step7Title">Théâtre</h4>
+                    <p data-key="step7Desc">Pièce de théâtre évangélisatrice et messages forts</p>
+                </div>
+            </div>
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-pagination"></div>
+        </div>
+    </section>
+
+    <!-- Appel à l'action -->
+    <section class="appel" data-aos="fade-up">
+        <h2 data-key="ctaTitle"> Viens vivre une nuit de transformation </h2>
+        <a href="https://bit.ly/NDJ2026" class="btn"><i class="fas fa-ticket-alt"></i> <span data-key="ctaBtn">Je m'inscris aux activités</span></a>
+    </section>
+
+    <!-- Retour accueil -->
+    <div class="back-link">
+        <a href="index.html" class="btn-back"><i class="fas fa-arrow-left"></i> <span data-key="backBtn">Retour à l'accueil</span></a>
     </div>
-  </section>
 
-  <section class="appel">
-    <h2>Viens vivre une nuit de transformation</h2>
-    <a href="https://bit.ly/NDJ2026" class="btn">Inscivez-vous aux activités</a>
-  </section>
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <p>© BIG DATA CENTER AI — <a href="https://www.youtube.com/@DominiqueSavio_Cyber-Ap%C3%B4tre3.0" target="_blank">Dominique Savio - Cyber Apôtre 3.0</a></p>
+            <p data-key="footerText">Aumônerie Diocésaine Jeunesse & Enfance – Douala</p>
+        </div>
+    </footer>
 
-  <footer>
-  <p>© BIG DATA CENTER AI By <a href="https://www.youtube.com/@DominiqueSavio_Cyber-Ap%C3%B4tre3.0">Dominique Savio - Cyber Apôtre 3.0 </a></br>Aumônerie Diocésaine Jeunesse & Enfance – Douala</p>
-</footer>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 800,
+            once: true
+        });
 
+        // Carrousel principal
+        const heroSwiper = new Swiper('.hero-swiper', {
+            loop: true,
+            autoplay: {
+                delay: 4000,
+                disableOnInteraction: false
+            },
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true
+            },
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev'
+            },
+            effect: 'slide',
+            speed: 800
+        });
+
+        // Carrousel professionnel du programme
+        const programmeSwiper = new Swiper('.programme-swiper', {
+            loop: true,
+            autoplay: {
+                delay: 4500,
+                disableOnInteraction: false
+            },
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true
+            },
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev'
+            },
+            effect: 'slide',
+            speed: 700,
+            breakpoints: {
+                320: {
+                    slidesPerView: 1,
+                    spaceBetween: 20
+                },
+                640: {
+                    slidesPerView: 2,
+                    spaceBetween: 25
+                },
+                1024: {
+                    slidesPerView: 3,
+                    spaceBetween: 30
+                }
+            }
+        });
+
+        // Mode sombre
+        function initDarkMode() {
+            const darkMode = localStorage.getItem('darkMode') === 'true';
+            if (darkMode) document.body.classList.add('dark-mode');
+            const toggleBtn = document.getElementById('darkModeToggle');
+            toggleBtn.addEventListener('click', () => {
+                document.body.classList.toggle('dark-mode');
+                localStorage.setItem('darkMode', document.body.classList.contains('dark-mode'));
+                const icon = toggleBtn.querySelector('i');
+                icon.className = document.body.classList.contains('dark-mode') ? 'fas fa-sun' : 'fas fa-moon';
+            });
+            const icon = toggleBtn.querySelector('i');
+            icon.className = darkMode ? 'fas fa-sun' : 'fas fa-moon';
+        }
+
+        // ========== MULTILINGUE ==========
+        let currentLang = localStorage.getItem('lang') || 'fr';
+
+        const translations = {
+            fr: {
+                headerTitle: "Nuit des Jeunes avec Jésus-Christ",
+                headerSub: "Aumônerie Diocésaine Jeunesse & Enfance – Douala",
+                nav1: "Accueil",
+                nav2: "À propos",
+                nav3: "Enfance",
+                nav4: "Jeunesse",
+                nav5: "Actualités",
+                infoTitle: "Informations",
+                dateTitle: "Date",
+                dateText: "Du Vendredi 06 au\nSamedi 07 Février 2026",
+                timeTitle: "Heure",
+                timeText: "De 17h00 jusqu'au matin (6h00)",
+                locationTitle: "Lieu",
+                locationText: "Cathédrale Sts Pierre & Paul\nBonadibong, Douala - Cameroun",
+                mapLink: "Ouvrir l'itinéraire",
+                programmeTitle: "Le Parcours de la Nuit",
+                step1Title: "Parade",
+                step1Desc: "Ouverture culturelle spectaculaire avec les groupes de jeunes",
+                step2Title: "Chapelet",
+                step2Desc: "Prière fervente et méditation des mystères lumineux",
+                step3Title: "Enseignement",
+                step3Desc: "Parole de vie et témoignages inspirants",
+                step4Title: "Confession",
+                step4Desc: "Sacrement de réconciliation : cœur à cœur avec le Seigneur",
+                step5Title: "Messe",
+                step5Desc: "Eucharistie solennelle présidée par Mgr l'Archevêque",
+                step6Title: "Adoration",
+                step6Desc: "Face au Saint-Sacrement, nuit d'intimité avec le Christ",
+                step7Title: "Théâtre",
+                step7Desc: "Pièce de théâtre évangélisatrice et messages forts",
+                ctaTitle: " Viens vivre une nuit de transformation ",
+                ctaBtn: "Je m'inscris aux activités",
+                backBtn: "Retour à l'accueil",
+                footerText: "Aumônerie Diocésaine Jeunesse & Enfance – Douala"
+            },
+            en: {
+                headerTitle: "Youth Night with Jesus Christ",
+                headerSub: "Diocesan Youth & Children's Chaplaincy – Douala",
+                nav1: "Home",
+                nav2: "About",
+                nav3: "Childhood",
+                nav4: "Youth",
+                nav5: "News",
+                infoTitle: "Information",
+                dateTitle: "Date",
+                dateText: "From Friday 06 to\nSaturday 07 February 2026",
+                timeTitle: "Time",
+                timeText: "From 5:00 PM until morning (6:00 AM)",
+                locationTitle: "Location",
+                locationText: "Sts Peter & Paul Cathedral\nBonadibong, Douala - Cameroon",
+                mapLink: "Open route",
+                programmeTitle: "The Night Journey",
+                step1Title: "Parade",
+                step1Desc: "Spectacular cultural opening with youth groups",
+                step2Title: "Rosary",
+                step2Desc: "Fervent prayer and meditation on the luminous mysteries",
+                step3Title: "Teaching",
+                step3Desc: "Word of life and inspiring testimonies",
+                step4Title: "Confession",
+                step4Desc: "Sacrament of reconciliation: heart to heart with the Lord",
+                step5Title: "Mass",
+                step5Desc: "Solemn Eucharist presided by the Archbishop",
+                step6Title: "Adoration",
+                step6Desc: "Before the Blessed Sacrament, night of intimacy with Christ",
+                step7Title: "Theater",
+                step7Desc: "Evangelizing theater piece and powerful messages",
+                ctaTitle: "✨ Come and experience a night of transformation ✨",
+                ctaBtn: "Register for activities",
+                backBtn: "Back to home",
+                footerText: "Diocesan Youth & Children's Chaplaincy – Douala"
+            }
+        };
+
+        function updateLanguage() {
+            const t = translations[currentLang];
+            document.querySelectorAll('[data-key]').forEach(el => {
+                const key = el.getAttribute('data-key');
+                if (t[key]) {
+                    if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
+                        el.placeholder = t[key];
+                    } else {
+                        el.textContent = t[key];
+                    }
+                }
+            });
+            localStorage.setItem('lang', currentLang);
+        }
+
+        document.getElementById('langToggle').addEventListener('click', () => {
+            currentLang = currentLang === 'fr' ? 'en' : 'fr';
+            updateLanguage();
+        });
+
+        initDarkMode();
+        updateLanguage();
+    </script>
 </body>
+
 </html>
