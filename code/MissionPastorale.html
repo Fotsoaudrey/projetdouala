@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Mission Pastorale | Aumônerie Diocésaine Douala</title>
+    <meta name="description" content="Découvrez la mission pastorale de l'Aumônerie Diocésaine des Jeunes de Douala : évangélisation, accompagnement, formation et communion des jeunes.">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background: #f5f7fb;
+            color: #1a2c3e;
+            line-height: 1.5;
+            scroll-behavior: smooth;
+            transition: background 0.3s ease, color 0.3s ease;
+        }
+        /* MODE SOMBRE */
+        
+        body.dark-mode {
+            background: #0f1724;
+            color: #e2e8f0;
+        }
+        
+        body.dark-mode header,
+        body.dark-mode .hero-mission,
+        body.dark-mode .citation,
+        body.dark-mode footer {
+            background: linear-gradient(135deg, #020617, #0f1724);
+        }
+        
+        body.dark-mode nav {
+            background: #1e293b;
+        }
+        
+        body.dark-mode nav a {
+            color: #e2e8f0;
+        }
+        
+        body.dark-mode .mission-card {
+            background: #1e293b;
+        }
+        
+        body.dark-mode .mission-item {
+            background: #0f1724;
+            border-left-color: #2ecc71;
+        }
+        
+        body.dark-mode .mission-item p {
+            color: #94a3b8;
+        }
+        
+        body.dark-mode .btn-retour {
+            background: #2ecc71;
+            color: #022b44;
+        }
+        
+        body.dark-mode .btn-retour:hover {
+            background: white;
+            color: #022b44;
+        }
+        
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 32px;
+        }
+        /* CONTROLES */
+        
+        .controls-bar {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1001;
+            display: flex;
+            gap: 12px;
+        }
+        
+        .ctrl-btn {
+            background: rgba(255, 255, 255, 0.95);
+            border: none;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.2rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            transition: 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        body.dark-mode .ctrl-btn {
+            background: #2d3748;
+            color: #e2e8f0;
+        }
+        
+        .ctrl-btn:hover {
+            transform: scale(1.05);
+        }
+        /* HEADER */
+        
+        header {
+            background: linear-gradient(135deg, #0a2e4a, #045286);
+            color: white;
+            padding: 20px 0;
+            border-bottom: 3px solid #2ecc71;
+            transition: background 0.3s;
+            text-align: center;
+        }
+        
+        header h1 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+        
+        header p {
+            font-size: 0.85rem;
+            opacity: 0.85;
+        }
+        
+        @media (min-width: 768px) {
+            header h1 {
+                font-size: 1.9rem;
+            }
+        }
+        /* NAVIGATION */
+        
+        nav {
+            background: white;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.05);
+            position: sticky;
+            top: 0;
+            z-index: 99;
+            transition: background 0.3s;
+        }
+        
+        .nav-links {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 12px;
+            list-style: none;
+            padding: 14px 16px;
+        }
+        
+        .nav-links a {
+            padding: 10px 24px;
+            font-weight: 600;
+            color: #1a2c3e;
+            text-decoration: none;
+            border-radius: 40px;
+            transition: all 0.25s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        body.dark-mode .nav-links a {
+            color: #e2e8f0;
+        }
+        
+        .nav-links a i {
+            color: #2ecc71;
+        }
+        
+        .nav-links a:hover {
+            background: #045286;
+            color: white;
+        }
+        
+        .nav-links a:hover i {
+            color: white;
+        }
+        /* HERO */
+        
+        .hero-mission {
+            background: linear-gradient(135deg, #045286, #0072a8);
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+            clip-path: polygon(0 0, 100% 0, 100% 90%, 0% 100%);
+        }
+        
+        .hero-mission h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 16px;
+            font-family: 'Cormorant Garamond', serif;
+        }
+        
+        .hero-mission p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        /* CARTE MISSION */
+        
+        .mission-wrapper {
+            margin-top: -50px;
+            position: relative;
+            z-index: 10;
+        }
+        
+        .mission-card {
+            background: white;
+            border-radius: 28px;
+            padding: 50px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s;
+        }
+        
+        .section-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #045286;
+            margin-bottom: 20px;
+            border-left: 5px solid #2ecc71;
+            padding-left: 20px;
+        }
+        
+        body.dark-mode .section-title {
+            color: #2ecc71;
+        }
+        
+        .mission-description {
+            color: #64748b;
+            margin-bottom: 40px;
+            font-size: 1.05rem;
+            line-height: 1.7;
+        }
+        
+        body.dark-mode .mission-description {
+            color: #94a3b8;
+        }
+        /* GRILLE MISSIONS */
+        
+        .mission-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 30px;
+            margin: 40px 0;
+        }
+        
+        .mission-item {
+            background: #f8fafc;
+            padding: 30px 25px;
+            border-radius: 20px;
+            border-left: 5px solid #2ecc71;
+            transition: all 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+        }
+        
+        .mission-item:hover {
+            transform: translateX(8px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        .mission-icon {
+            width: 55px;
+            height: 55px;
+            background: #2ecc71;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+        
+        .mission-icon i {
+            font-size: 1.5rem;
+            color: #022b44;
+        }
+        
+        .mission-item h3 {
+            font-size: 1.3rem;
+            margin-bottom: 12px;
+            color: #045286;
+        }
+        
+        body.dark-mode .mission-item h3 {
+            color: #2ecc71;
+        }
+        
+        .mission-item p {
+            color: #64748b;
+            line-height: 1.6;
+        }
+        
+        body.dark-mode .mission-item p {
+            color: #94a3b8;
+        }
+        /* CITATION */
+        
+        .citation {
+            background: linear-gradient(135deg, #045286, #0072a8);
+            padding: 40px;
+            border-radius: 24px;
+            text-align: center;
+            margin: 40px 0;
+            color: white;
+        }
+        
+        .citation p {
+            font-size: 1.3rem;
+            font-style: italic;
+            font-family: 'Cormorant Garamond', serif;
+            line-height: 1.6;
+        }
+        
+        .citation small {
+            display: block;
+            margin-top: 15px;
+            opacity: 0.8;
+            font-style: normal;
+        }
+        /* BOUTON RETOUR */
+        
+        .back-container {
+            text-align: center;
+            margin-top: 30px;
+        }
+        
+        .btn-retour {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: #045286;
+            color: white;
+            padding: 14px 32px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            transition: all 0.3s;
+        }
+        
+        .btn-retour:hover {
+            background: #2ecc71;
+            color: #022b44;
+            transform: translateX(-5px);
+        }
+        /* FOOTER */
+        
+        footer {
+            background: #022b44;
+            color: white;
+            padding: 40px 0;
+            text-align: center;
+            transition: background 0.3s;
+            margin-top: 60px;
+        }
+        
+        footer a {
+            color: #2ecc71;
+            text-decoration: none;
+        }
+        
+        footer a:hover {
+            color: white;
+        }
+        
+        @media (max-width: 768px) {
+            .hero-mission h1 {
+                font-size: 1.8rem;
+            }
+            .mission-card {
+                padding: 30px 20px;
+            }
+            .section-title {
+                font-size: 1.4rem;
+            }
+            .citation p {
+                font-size: 1rem;
+            }
+            .container {
+                padding: 0 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- CONTROLES -->
+    <div class="controls-bar">
+        <button class="ctrl-btn" id="darkModeToggle"><i class="fas fa-moon"></i></button>
+        <button class="ctrl-btn" id="langToggle"><i class="fas fa-globe"></i></button>
+    </div>
+
+    <!-- HEADER -->
+    <header>
+        <div class="container">
+            <h1 data-key="headerTitle">Aumônerie Diocésaine Jeunesse & Enfance</h1>
+            <p data-key="headerSub">Douala – Cameroun</p>
+        </div>
+    </header>
+
+    <!-- NAVIGATION -->
+    <nav>
+        <div class="container">
+            <ul class="nav-links">
+                <li><a href="index.html"><i class="fas fa-home"></i> <span data-key="nav1">Accueil</span></a></li>
+                <li><a href="index.html#apropos"><i class="fas fa-church"></i> <span data-key="nav2">À propos</span></a></li>
+                <li><a href="index.html#enfance"><i class="fas fa-child"></i> <span data-key="nav3">Enfance</span></a></li>
+                <li><a href="index.html#jeunesse"><i class="fas fa-users"></i> <span data-key="nav4">Jeunesse</span></a></li>
+                <li><a href="index.html#actus"><i class="fas fa-newspaper"></i> <span data-key="nav5">Actualités</span></a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero-mission">
+        <div class="container">
+            <h1 data-key="heroTitle">Notre Mission Pastorale</h1>
+            <p data-key="heroSubtitle">Accompagner la jeunesse de Douala sur le chemin de la Foi et de l'Engagement.</p>
+        </div>
+    </section>
+
+    <!-- CARTE MISSION -->
+    <div class="container mission-wrapper">
+        <div class="mission-card">
+            <h2 class="section-title" data-key="missionTitle">Porter l'Évangile au cœur de la Jeunesse</h2>
+            <p class="mission-description" data-key="missionDesc">
+                La mission de l'Aumônerie Diocésaine des Jeunes de Douala est de susciter une rencontre personnelle avec le Christ. Nous œuvrons pour que chaque enfant et chaque jeune devienne un acteur responsable et joyeux.
+            </p>
+
+            <!-- GRILLE DES 4 MISSIONS -->
+            <div class="mission-grid">
+                <div class="mission-item">
+                    <div class="mission-icon"><i class="fas fa-bible"></i></div>
+                    <h3 data-key="mission1Title">1. Évangélisation</h3>
+                    <p data-key="mission1Desc">Proposer la Parole de Dieu de manière dynamique et adaptée aux réalités des jeunes dans les paroisses.</p>
+                </div>
+                <div class="mission-item">
+                    <div class="mission-icon"><i class="fas fa-head-side-heart"></i></div>
+                    <h3 data-key="mission2Title">2. Accompagnement</h3>
+                    <p data-key="mission2Desc">Offrir une écoute spirituelle pour aider les jeunes à discerner leur vocation et construire leur avenir.</p>
+                </div>
+                <div class="mission-item">
+                    <div class="mission-icon"><i class="fas fa-chalkboard-user"></i></div>
+                    <h3 data-key="mission3Title">3. Formation</h3>
+                    <p data-key="mission3Desc">Développer le leadership chrétien et renforcer les capacités morales, civiques et spirituelles.</p>
+                </div>
+                <div class="mission-item">
+                    <div class="mission-icon"><i class="fas fa-handshake"></i></div>
+                    <h3 data-key="mission4Title">4. Communion</h3>
+                    <p data-key="mission4Desc">Créer des liens fraternels entre les différentes zones pastorales et mouvements de l'Archidiocèse.</p>
+                </div>
+            </div>
+
+            <!-- CITATION -->
+            <div class="citation">
+                <p data-key="citationText">"L'Église est Jeune, l'Église est Vivante." <br> "L'Église est Vivante parce qu'Elle est Jeune."</p>
+                <small data-key="citationAuthor">— Parole de l'Aumônerie Diocésaine</small>
+            </div>
+
+            <!-- BOUTON RETOUR -->
+            <div class="back-container">
+                <a href="index.html" class="btn-retour">
+                    <i class="fas fa-arrow-left"></i> <span data-key="backBtn">Retour à l'accueil</span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <p>© BIG DATA CENTER AI — <a href="https://www.youtube.com/@DominiqueSavio_Cyber-Ap%C3%B4tre3.0" target="_blank">Dominique Savio - Cyber Apôtre 3.0</a></p>
+            <p data-key="footerText">Aumônerie Diocésaine Jeunesse & Enfance – Douala</p>
+        </div>
+    </footer>
+
+    <script>
+        // ========== MULTILINGUE ==========
+        let currentLang = localStorage.getItem('lang') || 'fr';
+
+        const translations = {
+            fr: {
+                headerTitle: "Aumônerie Diocésaine Jeunesse & Enfance",
+                headerSub: "Douala – Cameroun",
+                nav1: "Accueil",
+                nav2: "À propos",
+                nav3: "Enfance",
+                nav4: "Jeunesse",
+                nav5: "Actualités",
+                heroTitle: "Notre Mission Pastorale",
+                heroSubtitle: "Accompagner la jeunesse de Douala sur le chemin de la Foi et de l'Engagement.",
+                missionTitle: "Porter l'Évangile au cœur de la Jeunesse",
+                missionDesc: "La mission de l'Aumônerie Diocésaine des Jeunes de Douala est de susciter une rencontre personnelle avec le Christ. Nous œuvrons pour que chaque enfant et chaque jeune devienne un acteur responsable et joyeux.",
+                mission1Title: "1. Évangélisation",
+                mission1Desc: "Proposer la Parole de Dieu de manière dynamique et adaptée aux réalités des jeunes dans les paroisses.",
+                mission2Title: "2. Accompagnement",
+                mission2Desc: "Offrir une écoute spirituelle pour aider les jeunes à discerner leur vocation et construire leur avenir.",
+                mission3Title: "3. Formation",
+                mission3Desc: "Développer le leadership chrétien et renforcer les capacités morales, civiques et spirituelles.",
+                mission4Title: "4. Communion",
+                mission4Desc: "Créer des liens fraternels entre les différentes zones pastorales et mouvements de l'Archidiocèse.",
+                citationText: "\"L'Église est Jeune, l'Église est Vivante.\" \"L'Église est Vivante parce qu'Elle est Jeune.\"",
+                citationAuthor: "— Parole de l'Aumônerie Diocésaine",
+                backBtn: "Retour à l'accueil",
+                footerText: "Aumônerie Diocésaine Jeunesse & Enfance – Douala"
+            },
+            en: {
+                headerTitle: "Diocesan Youth & Children's Chaplaincy",
+                headerSub: "Douala – Cameroon",
+                nav1: "Home",
+                nav2: "About",
+                nav3: "Childhood",
+                nav4: "Youth",
+                nav5: "News",
+                heroTitle: "Our Pastoral Mission",
+                heroSubtitle: "Guiding the youth of Douala on the path of Faith and Commitment.",
+                missionTitle: "Bringing the Gospel to the Heart of Youth",
+                missionDesc: "The mission of the Diocesan Youth Chaplaincy of Douala is to foster a personal encounter with Christ. We work so that every child and young person becomes a responsible and joyful actor.",
+                mission1Title: "1. Evangelization",
+                mission1Desc: "Propose the Word of God in a dynamic way adapted to the realities of young people in parishes.",
+                mission2Title: "2. Accompaniment",
+                mission2Desc: "Offer spiritual listening to help young people discern their vocation and build their future.",
+                mission3Title: "3. Formation",
+                mission3Desc: "Develop Christian leadership and strengthen moral, civic and spiritual capacities.",
+                mission4Title: "4. Communion",
+                mission4Desc: "Create fraternal bonds between the different pastoral zones and movements of the Archdiocese.",
+                citationText: "\"The Church is Young, the Church is Alive.\" \"The Church is Alive because She is Young.\"",
+                citationAuthor: "— Word of the Diocesan Chaplaincy",
+                backBtn: "Back to homepage",
+                footerText: "Diocesan Youth & Children's Chaplaincy – Douala"
+            }
+        };
+
+        function updateLanguage() {
+            const t = translations[currentLang];
+            document.querySelectorAll('[data-key]').forEach(el => {
+                const key = el.getAttribute('data-key');
+                if (t[key]) {
+                    if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
+                        el.placeholder = t[key];
+                    } else {
+                        el.textContent = t[key];
+                    }
+                }
+            });
+            localStorage.setItem('lang', currentLang);
+        }
+
+        document.getElementById('langToggle').addEventListener('click', () => {
+            currentLang = currentLang === 'fr' ? 'en' : 'fr';
+            updateLanguage();
+        });
+
+        // ========== MODE SOMBRE ==========
+        function initDarkMode() {
+            const darkMode = localStorage.getItem('darkMode') === 'true';
+            if (darkMode) document.body.classList.add('dark-mode');
+            const toggleBtn = document.getElementById('darkModeToggle');
+            toggleBtn.addEventListener('click', () => {
+                document.body.classList.toggle('dark-mode');
+                localStorage.setItem('darkMode', document.body.classList.contains('dark-mode'));
+                const icon = toggleBtn.querySelector('i');
+                icon.className = document.body.classList.contains('dark-mode') ? 'fas fa-sun' : 'fas fa-moon';
+            });
+            const icon = toggleBtn.querySelector('i');
+            icon.className = darkMode ? 'fas fa-sun' : 'fas fa-moon';
+        }
+
+        // ========== INITIALISATION ==========
+        initDarkMode();
+        updateLanguage();
+    </script>
+
+</body>
+
+</html>
