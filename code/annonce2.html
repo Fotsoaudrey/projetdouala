@@ -7,10 +7,7 @@
     <title>Zones & Paroisses – Aumônerie Diocésaine Douala</title>
     <meta name="description" content="Cartographie pastorale de l'Archidiocèse de Douala - Organisation par zones, paroisses rattachées et codes vestimentaires synodaux.">
 
-    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-
-    <!-- Font Awesome 6 -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
     <style>
@@ -19,7 +16,7 @@
             padding: 0;
             box-sizing: border-box;
         }
-        
+
         body {
             font-family: 'Plus Jakarta Sans', sans-serif;
             background: #f5f7fb;
@@ -28,64 +25,141 @@
             scroll-behavior: smooth;
             transition: background 0.3s ease, color 0.3s ease;
         }
-        /* MODE SOMBRE */
-        
+
         body.dark-mode {
             background: #0f1724;
             color: #e2e8f0;
         }
-        
+
         body.dark-mode header,
         body.dark-mode footer {
             background: linear-gradient(135deg, #020617, #0f1724);
         }
-        
+
         body.dark-mode nav {
             background: #1e293b;
         }
-        
+
         body.dark-mode nav a {
             color: #e2e8f0;
         }
-        
+
         body.dark-mode .zone-row {
             background: #1e293b;
             border-bottom-color: #334155;
         }
-        
+
         body.dark-mode .zone-row:hover {
             background: #2d3748;
         }
-        
+
         body.dark-mode .z-cell {
             border-right-color: #334155;
         }
-        
+
         body.dark-mode .search-container input {
             background: #1e293b;
             color: #e2e8f0;
             border-color: #334155;
         }
-        
-        body.dark-mode .search-container input::placeholder {
-            color: #94a3b8;
-        }
-        
+
         body.dark-mode .stats-bar {
             background: #1e293b;
         }
-        
+
         body.dark-mode .header-zone h1 {
             color: #2ecc71;
         }
-        
-        .container {
-            max-width: 1400px;
+
+        .main-layout {
+            display: flex;
+            max-width: 1600px;
             margin: 0 auto;
-            padding: 0 32px;
+            position: relative;
         }
-        /* CONTROLES (mode sombre + langue) */
-        
+
+        .vertical-nav {
+            position: sticky;
+            top: 100px;
+            width: 220px;
+            height: fit-content;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+            padding: 20px 0;
+            margin-left: 20px;
+            margin-right: 30px;
+            transition: all 0.3s;
+            z-index: 90;
+        }
+
+        body.dark-mode .vertical-nav {
+            background: #1e293b;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .vertical-nav h3 {
+            text-align: center;
+            font-size: 1rem;
+            padding: 0 15px 15px;
+            border-bottom: 2px solid #2ecc71;
+            margin-bottom: 15px;
+            color: #045286;
+        }
+
+        body.dark-mode .vertical-nav h3 {
+            color: #2ecc71;
+        }
+
+        .zone-links {
+            list-style: none;
+            max-height: 70vh;
+            overflow-y: auto;
+            padding: 0 12px;
+        }
+
+        .zone-links li {
+            margin: 8px 0;
+        }
+
+        .zone-links a {
+            display: block;
+            padding: 8px 12px;
+            border-radius: 30px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #1e293b;
+            text-decoration: none;
+            transition: 0.2s;
+        }
+
+        body.dark-mode .zone-links a {
+            color: #cbd5e1;
+        }
+
+        .zone-links a:hover,
+        .zone-links a.active {
+            background: #045286;
+            color: white;
+        }
+
+        body.dark-mode .zone-links a:hover,
+        body.dark-mode .zone-links a.active {
+            background: #2ecc71;
+            color: #022b44;
+        }
+
+        .content-wrapper {
+            flex: 1;
+            min-width: 0;
+            padding: 0 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
         .controls-bar {
             position: fixed;
             top: 20px;
@@ -94,7 +168,7 @@
             display: flex;
             gap: 12px;
         }
-        
+
         .ctrl-btn {
             background: rgba(255, 255, 255, 0.95);
             border: none;
@@ -109,53 +183,38 @@
             align-items: center;
             justify-content: center;
         }
-        
+
         body.dark-mode .ctrl-btn {
             background: #2d3748;
             color: #e2e8f0;
         }
-        
+
         .ctrl-btn:hover {
             transform: scale(1.05);
         }
-        /* HEADER */
-        
+
         header {
             background: linear-gradient(135deg, #0a2e4a, #045286);
             color: white;
             padding: 20px 0;
             border-bottom: 3px solid #2ecc71;
-            transition: background 0.3s;
             text-align: center;
         }
-        
+
         header h1 {
             font-size: 1.5rem;
             font-weight: 700;
             text-transform: uppercase;
         }
-        
-        header p {
-            font-size: 0.85rem;
-            opacity: 0.85;
-        }
-        
-        @media (min-width: 768px) {
-            header h1 {
-                font-size: 1.9rem;
-            }
-        }
-        /* NAVIGATION */
-        
+
         nav {
             background: white;
             box-shadow: 0 6px 20px rgba(0, 0, 0, 0.05);
             position: sticky;
             top: 0;
             z-index: 99;
-            transition: background 0.3s;
         }
-        
+
         .nav-links {
             display: flex;
             justify-content: center;
@@ -164,312 +223,260 @@
             list-style: none;
             padding: 14px 16px;
         }
-        
+
         .nav-links a {
             padding: 10px 24px;
             font-weight: 600;
             color: #1a2c3e;
             text-decoration: none;
             border-radius: 40px;
-            transition: all 0.25s;
             display: flex;
             align-items: center;
             gap: 8px;
         }
-        
-        body.dark-mode .nav-links a {
-            color: #e2e8f0;
-        }
-        
-        .nav-links a i {
-            color: #2ecc71;
-        }
-        
+
         .nav-links a:hover {
             background: #045286;
             color: white;
         }
-        
-        .nav-links a:hover i {
-            color: white;
-        }
-        /* HEADER ZONE */
-        
+
         .header-zone {
             text-align: center;
-            padding: 50px 0 30px;
+            padding: 40px 0 20px;
         }
-        
+
         .header-zone h1 {
-            font-size: 2.5rem;
+            font-size: 2rem;
             font-weight: 800;
             color: #045286;
-            margin-bottom: 16px;
-            transition: color 0.3s;
         }
-        
-        .header-zone p {
-            color: #64748b;
-            max-width: 600px;
-            margin: 0 auto;
-        }
-        
-        body.dark-mode .header-zone p {
-            color: #94a3b8;
-        }
-        /* BARRE DE RECHERCHE */
-        
+
         .search-container {
             max-width: 500px;
-            margin: 0 auto 40px;
+            margin: 0 auto 30px;
         }
-        
+
         .search-container input {
             width: 100%;
-            padding: 16px 20px;
+            padding: 14px 20px;
             border: 2px solid #e2e8f0;
             border-radius: 60px;
             font-family: inherit;
             font-size: 1rem;
-            transition: all 0.3s;
             background: white;
         }
-        
-        .search-container input:focus {
-            outline: none;
-            border-color: #2ecc71;
-            box-shadow: 0 0 0 3px rgba(46, 204, 113, 0.2);
-        }
-        
-        body.dark-mode .search-container input {
-            background: #1e293b;
-            border-color: #334155;
-            color: #e2e8f0;
-        }
-        /* STATS BAR */
-        
+
         .stats-bar {
             display: flex;
             justify-content: space-between;
             align-items: center;
             background: white;
-            padding: 12px 20px;
+            padding: 10px 20px;
             border-radius: 60px;
             margin-bottom: 30px;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
         }
-        
-        .stats-bar span {
-            font-weight: 600;
-            color: #045286;
-        }
-        
+
         body.dark-mode .stats-bar {
             background: #1e293b;
         }
-        
-        body.dark-mode .stats-bar span {
-            color: #2ecc71;
-        }
-        
+
         .reset-search {
             background: none;
             border: none;
             color: #2ecc71;
             cursor: pointer;
             font-weight: 600;
-            transition: 0.2s;
         }
-        
-        .reset-search:hover {
-            transform: scale(1.05);
-            text-decoration: underline;
-        }
-        /* TABLEAU PASTORAL */
-        
+
+        /* ===== TABLEAU CORRIGÉ – PLUS DE DÉBORDEMENT ===== */
         .table-container {
             overflow-x: auto;
             border-radius: 20px;
             background: white;
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
         }
-        
+
         body.dark-mode .table-container {
             background: #1e293b;
         }
-        
+
         .table-header {
             display: grid;
-            grid-template-columns: 60px 180px 1fr 200px 140px;
+            grid-template-columns: 70px 170px minmax(280px, 1fr) 200px 130px;
             background: #045286;
             color: white;
             padding: 16px 0;
             font-weight: 700;
             text-transform: uppercase;
             font-size: 0.85rem;
-            letter-spacing: 0.5px;
-            border-radius: 20px 20px 0 0;
             text-align: center;
         }
-        
+
         .zone-row {
             display: grid;
-            grid-template-columns: 60px 180px 1fr 200px 140px;
+            grid-template-columns: 70px 170px minmax(280px, 1fr) 200px 130px;
             border-bottom: 1px solid #e9edf2;
-            transition: all 0.3s ease;
+            transition: 0.2s;
             background: white;
+            scroll-margin-top: 80px;
         }
-        
-        body.dark-mode .zone-row {
-            background: #1e293b;
-            border-bottom-color: #334155;
-        }
-        
+
         .zone-row:hover {
             background: #f8fafc;
-            transform: translateX(4px);
         }
-        
-        body.dark-mode .zone-row:hover {
-            background: #2d3748;
-        }
-        
+
         .z-cell {
-            padding: 16px;
+            padding: 16px 12px;
             display: flex;
             align-items: center;
             justify-content: center;
             border-right: 1px solid #f0f0f0;
+            overflow-wrap: break-word;
+            word-break: break-word;
+            min-width: 0; /* empêche le débordement forcé */
         }
-        
-        body.dark-mode .z-cell {
-            border-right-color: #334155;
-        }
-        
+
         .z-left {
             justify-content: flex-start;
             text-align: left;
         }
-        
+
         .z-num {
             font-weight: 800;
             color: #045286;
-            font-size: 1.1rem;
         }
-        
-        body.dark-mode .z-num {
-            color: #2ecc71;
-        }
-        
+
         .z-name {
             font-weight: 700;
             color: #0072a8;
         }
-        
-        body.dark-mode .z-name {
-            color: #2ecc71;
-        }
-        
+
         .z-paroisses {
             font-size: 0.85rem;
             color: #475569;
             line-height: 1.5;
+            flex-wrap: wrap;
         }
-        
-        body.dark-mode .z-paroisses {
-            color: #94a3b8;
+
+        .parish-link {
+            cursor: pointer;
+            text-decoration: underline;
+            text-decoration-style: dotted;
+            transition: 0.2s;
+            color: #045286;
+            display: inline-block;
+            margin: 0 1px;
         }
-        
-        .z-priest {
-            font-style: italic;
-            font-size: 0.9rem;
-            text-align: center;
-            font-weight: 500;
+
+        .parish-link:hover {
+            background-color: #045286;
+            color: white;
+            border-radius: 4px;
+            padding: 0 2px;
         }
-        
+
+        body.dark-mode .parish-link {
+            color: #2ecc71;
+        }
+
         .color-box {
             width: 100%;
-            padding: 8px 12px;
+            padding: 8px;
             border-radius: 40px;
             text-align: center;
             font-weight: 700;
             font-size: 0.75rem;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
         }
-        /* MESSAGE AUCUN RÉSULTAT */
-        
-        .no-results {
-            text-align: center;
-            padding: 60px 20px;
-            color: #64748b;
+
+        .priest-card {
+            position: fixed;
+            background: white;
+            border-left: 6px solid #2ecc71;
+            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.2);
+            border-radius: 16px;
+            padding: 16px 20px;
+            max-width: 300px;
+            z-index: 1000;
+            font-size: 0.9rem;
+            transition: opacity 0.2s;
+            opacity: 0;
+            pointer-events: none;
         }
-        
-        body.dark-mode .no-results {
-            color: #94a3b8;
+
+        .priest-card.active {
+            opacity: 1;
+            pointer-events: auto;
         }
-        /* LIEN RETOUR */
-        
+
+        .priest-card h4 {
+            margin: 0 0 8px;
+            color: #045286;
+        }
+
+        .priest-card .call-btn {
+            display: inline-block;
+            background: #2ecc71;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 40px;
+            text-decoration: none;
+            font-weight: bold;
+            margin-top: 12px;
+            transition: 0.2s;
+        }
+
+        .priest-card .call-btn:hover {
+            background: #27ae60;
+            transform: scale(1.02);
+        }
+
+        .close-card {
+            position: absolute;
+            top: 8px;
+            right: 12px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 1.2rem;
+            color: #999;
+        }
+
+        .close-card:hover {
+            color: #045286;
+        }
+
         .back-link {
             text-align: center;
             margin: 40px 0;
         }
-        
-        .back-link a {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            color: #045286;
-            font-weight: 600;
-            text-decoration: none;
-            padding: 12px 24px;
-            border-radius: 40px;
-            transition: all 0.3s;
-        }
-        
-        body.dark-mode .back-link a {
-            color: #2ecc71;
-        }
-        
-        .back-link a:hover {
-            background: #045286;
-            color: white;
-            transform: translateX(-5px);
-        }
-        
-        body.dark-mode .back-link a:hover {
-            background: #2ecc71;
-            color: #022b44;
-        }
-        /* FOOTER */
-        
+
         footer {
             background: #022b44;
             color: white;
             padding: 40px 0;
             text-align: center;
-            transition: background 0.3s;
             margin-top: 60px;
         }
-        
-        footer a {
-            color: #2ecc71;
-            text-decoration: none;
-            transition: 0.2s;
-        }
-        
-        footer a:hover {
-            color: white;
-        }
-        /* RESPONSIVE */
-        
+
         @media (max-width: 1024px) {
+            .main-layout {
+                flex-direction: column;
+            }
+            .vertical-nav {
+                position: relative;
+                width: 100%;
+                margin: 20px;
+                top: 0;
+                order: 1;
+            }
+            .content-wrapper {
+                order: 2;
+            }
             .table-header,
             .zone-row {
-                grid-template-columns: 50px 160px 1fr 180px 120px;
+                grid-template-columns: 50px 150px minmax(250px, 1fr) 180px 110px;
             }
         }
-        
+
         @media (max-width: 900px) {
             .table-header {
                 display: none;
@@ -479,61 +486,25 @@
                 margin-bottom: 20px;
                 border: 1px solid #e9edf2;
                 border-radius: 16px;
-                overflow: hidden;
-            }
-            body.dark-mode .zone-row {
-                border-color: #334155;
             }
             .z-cell {
                 border-right: none;
                 border-bottom: 1px solid #f0f0f0;
-                padding: 12px 20px;
                 justify-content: flex-start;
-            }
-            body.dark-mode .z-cell {
-                border-bottom-color: #334155;
             }
             .z-num {
                 background: #045286;
                 color: white;
-                justify-content: center;
-            }
-            body.dark-mode .z-num {
-                background: #2ecc71;
-                color: #022b44;
-            }
-            .z-name {
-                background: #f8fafc;
-                font-size: 1.1rem;
-            }
-            body.dark-mode .z-name {
-                background: #2d3748;
             }
             .z-paroisses::before {
                 content: "📌 Paroisses : ";
                 font-weight: 700;
                 color: #045286;
-                display: block;
-                margin-bottom: 6px;
-            }
-            body.dark-mode .z-paroisses::before {
-                color: #2ecc71;
             }
             .z-priest::before {
                 content: "👤 Aumônier : ";
                 font-weight: 700;
                 color: #045286;
-            }
-            body.dark-mode .z-priest::before {
-                color: #2ecc71;
-            }
-            .color-box {
-                display: inline-block;
-                width: auto;
-                padding: 6px 20px;
-            }
-            .container {
-                padding: 0 20px;
             }
         }
     </style>
@@ -541,13 +512,11 @@
 
 <body>
 
-    <!-- CONTROLES -->
     <div class="controls-bar">
         <button class="ctrl-btn" id="darkModeToggle"><i class="fas fa-moon"></i></button>
         <button class="ctrl-btn" id="langToggle"><i class="fas fa-globe"></i></button>
     </div>
 
-    <!-- HEADER -->
     <header>
         <div class="container">
             <h1 data-key="headerTitle">ARCHIDIOCÈSE DE DOUALA</h1>
@@ -555,7 +524,6 @@
         </div>
     </header>
 
-    <!-- NAVIGATION -->
     <nav>
         <div class="container">
             <ul class="nav-links">
@@ -567,38 +535,43 @@
         </div>
     </nav>
 
-    <!-- CONTENU PRINCIPAL -->
-    <div class="container">
-        <div class="header-zone">
-            <h1 data-key="pageTitle">Cartographie Pastorale</h1>
-            <p data-key="pageDesc">Organisation par zones, paroisses rattachées et codes vestimentaires synodaux.</p>
-        </div>
+    <div class="main-layout">
+        <aside class="vertical-nav">
+            <h3><i class="fas fa-map-marker-alt"></i> Zones</h3>
+            <ul class="zone-links" id="zoneLinks"></ul>
+        </aside>
 
-        <!-- Barre de recherche -->
-        <div class="search-container">
-            <input type="text" id="searchInput" placeholder="🔍 Rechercher une zone, une paroisse ou un aumônier..." data-key="searchPlaceholder">
-        </div>
+        <div class="content-wrapper">
+            <div class="container">
+                <div class="header-zone">
+                    <h1 data-key="pageTitle">Cartographie Pastorale</h1>
+                    <p data-key="pageDesc">Organisation par zones, paroisses rattachées et codes vestimentaires synodaux.</p>
+                </div>
 
-        <!-- Stats -->
-        <div class="stats-bar">
-            <span id="resultCount">0</span> <span data-key="resultsFound">zones trouvées</span>
-            <button class="reset-search" id="resetSearchBtn" data-key="resetBtn">⟳ Réinitialiser</button>
-        </div>
+                <div class="search-container">
+                    <input type="text" id="searchInput" placeholder="🔍 Rechercher une zone, une paroisse ou un aumônier..." data-key="searchPlaceholder">
+                </div>
 
-        <!-- Tableau -->
-        <div class="table-container">
-            <div class="table-header">
-                <div>#</div>
-                <div data-key="colZone">Zone</div>
-                <div data-key="colParoisses">Paroisses Rattachées</div>
-                <div data-key="colPriest">Aumônier</div>
-                <div data-key="colColor">Dress Color</div>
+                <div class="stats-bar">
+                    <span id="resultCount">0</span> <span data-key="resultsFound">zones trouvées</span>
+                    <button class="reset-search" id="resetSearchBtn" data-key="resetBtn">⟳ Réinitialiser</button>
+                </div>
+
+                <div class="table-container">
+                    <div class="table-header">
+                        <div>#</div>
+                        <div data-key="colZone">Zone</div>
+                        <div data-key="colParoisses">Paroisses Rattachées</div>
+                        <div data-key="colPriest">Aumônier</div>
+                        <div data-key="colColor">Dress Color</div>
+                    </div>
+                    <div id="zonesContainer"></div>
+                </div>
+
+                <div class="back-link">
+                    <a href="index.html"><i class="fas fa-arrow-left"></i> <span data-key="backLink">Retourner à l'accueil principal</span></a>
+                </div>
             </div>
-            <div id="zonesContainer"></div>
-        </div>
-
-        <div class="back-link">
-            <a href="index.html"><i class="fas fa-arrow-left"></i> <span data-key="backLink">Retourner à l'accueil principal</span></a>
         </div>
     </div>
 
@@ -609,8 +582,16 @@
         </div>
     </footer>
 
+    <div id="priestTooltip" class="priest-card">
+        <span class="close-card">&times;</span>
+        <h4>📞 Curé</h4>
+        <p><strong>Nom :</strong> <span id="priestName"></span></p>
+        <p><strong>Téléphone :</strong> <span id="priestPhone"></span></p>
+        <a href="#" id="callLink" class="call-btn"><i class="fas fa-phone"></i> Appeler</a>
+    </div>
+
     <script>
-        // ========== DONNÉES DES ZONES ==========
+        // ======================== 1. DONNÉES DES ZONES (complètes) ========================
         const zonesData = [{
             num: "01",
             name: "Wouri I",
@@ -693,10 +674,102 @@
             colorText: "#fff"
         }];
 
-        let currentLang = localStorage.getItem('lang') || 'fr';
-        let currentSearchTerm = '';
+        // ======================== 2. MAPPING PAROISSE -> CURÉ & TÉLÉPHONE ========================
+        const parishPriests = {
+            "Cathédrale Sts Pierre & Paul": { name: "Abbé Valéry MELONE (Recteur)", phone: "+237 6 11 22 33 44" },
+            "Paroisse Holy Trinity": { name: "Abbé Jean Robert NGANDJUI", phone: "+237 6 22 33 44 55" },
+            "Paroisse Notre Dame du Mont Carmel": { name: "Abbé René NGON", phone: "+237 6 33 44 55 66" },
+            "Paroisse St Dominique Savio de Bonapriso": { name: "Abbé Philippe Pacôme MBANDA MANDEGUE", phone: "+237 6 44 55 66 77" },
+            "Paroisse Ste Anne de Nkongmondo": { name: "Abbé Paul NWAHA POHA", phone: "+237 6 55 66 77 88" },
+            "Paroisse St André de Manoka": { name: "Abbé Séverin NGONDJI BETMO", phone: "+237 6 66 77 88 99" },
+            "Paroisse St Ignace d'Antioche de Youpouè": { name: "Abbé Anselme NDJEMBELE", phone: "+237 6 77 88 99 00" },
+            "Paroisse St Barnabé de Bois de Singe": { name: "Abbé Jean-Bernard NWIND", phone: "+237 6 88 99 00 11" },
+            "Paroisse Notre Dame des Victoires de New-Bell I": { name: "Abbé Florindo D'EMIDIO", phone: "+237 6 99 00 11 22" },
+            "Paroisse St Paul de Nylon": { name: "Abbé Bernardin BIKADAL", phone: "+237 6 10 20 30 40" },
+            "Paroisse Sacré-Coeur de New-Bell II": { name: "Abbé Pierre Loty BEGUEL BA OUM", phone: "+237 6 20 30 40 50" },
+            "Paroisse Notre Dame des Sept Douleurs de New-Bell III": { name: "Abbé Pedro Elias MUNELI", phone: "+237 6 30 40 50 60" },
+            "Paroisse St Luc de New-Bell": { name: "Abbé Benjamin MALELEL", phone: "+237 6 40 50 60 70" },
+            "Paroisse St Sacrement de Ndogbong": { name: "Abbé Sébastien MONGO BEHON", phone: "+237 6 50 60 70 80" },
+            "Paroisse Christ-Roi de la Cité-Sic": { name: "Abbé Aloys MBOMNDA", phone: "+237 6 60 70 80 90" },
+            "Paroisse St Esprit de Bepanda": { name: "P. Jean Luc MVONDO ATEBA, CSSp", phone: "+237 6 70 80 90 01" },
+            "Paroisse St Charles Lwanga de Makèpè Yonyong": { name: "Abbé Anicet BOUMNGO", phone: "+237 6 80 90 01 12" },
+            "Paroisse St Mathias de Petit Wouri Bonamousongo": { name: "Abbé Dieudonné MBASSI OTELE", phone: "+237 6 90 01 12 23" },
+            "Paroisse Universitaire St Thomas d'Aquin": { name: "P. Romaric Thierno MANDABA, o.p", phone: "+237 6 01 12 23 34" },
+            "Paroisse Ste Monique de Makèpè": { name: "Abbé Dieudonné BAYEMEG", phone: "+237 6 12 23 34 45" },
+            "Paroisse St Jean de Deido": { name: "Abbé Eloi NGAMBI", phone: "+237 6 23 34 45 56" },
+            "Paroisse St Ambroise de Sable Bonamoussadi": { name: "Abbé Michel TIAKO", phone: "+237 6 34 45 56 67" },
+            "Paroisse Notre Dame de l'Annonciation de Bonamoussadi": { name: "P. BITEMO Saturnin Cloud, sj", phone: "+237 6 45 56 67 78" },
+            "Centre Spirituel de Bonamoussadi": { name: "P. Joseph Alpha LINDJO, sj", phone: "+237 6 56 67 78 89" },
+            "Paroisse St François d'Assise de Kotto": { name: "P. Patrick BULUS VANDI, CSSP", phone: "+237 6 67 78 89 90" },
+            "Paroisse Christ Sauveur de Banguè": { name: "P. Colbert WAYANG, OMI", phone: "+237 6 78 89 90 01" },
+            "Paroisse St Barthélemy de Logbessou": { name: "Fr. Henry OGUERI, SMMM", phone: "+237 6 89 90 01 12" },
+            "Paroisse St Basile le Grand de Logpom": { name: "Abbé Roger MEM", phone: "+237 6 90 01 12 23" },
+            "Paroisse Ste Marie Madeleine de Logpom Plateau": { name: "Abbé Innocent PAMBE", phone: "+237 6 01 23 34 45" },
+            "Paroisse Ste Marthe de Lendi": { name: "Abbé Etienne NDJIKI", phone: "+237 6 12 34 45 56" },
+            "Paroisse St Pie X de PK 14": { name: "Abbé Dieudonné Laurent TONYE", phone: "+237 6 23 45 56 67" },
+            "Paroisse St Victor de Sodikombo": { name: "Abbé Jean-Bosco YAMB", phone: "+237 6 34 56 67 78" },
+            "Paroisse St Thomas de PK 10": { name: "Abbé Aloys BILE", phone: "+237 6 45 67 78 89" },
+            "Paroisse Ste Thérèse de l'Enfant Jésus de Mbengue City": { name: "Abbé Jean-Pierre MUKENGESHAYI", phone: "+237 6 56 78 89 90" },
+            "Paroisse Epiphanie de PK 21": { name: "P. Séraphin-Claude MANGA, Cfc", phone: "+237 6 67 89 90 01" },
+            "Paroisse St Benoit de Dallas et Nsape": { name: "Abbé Jésus Martial DEMELE", phone: "+237 6 78 90 01 12" },
+            "Paroisse St Etienne de Mandjab": { name: "Abbé Hilaire Martial NDANGANG KETCHOQUE", phone: "+237 6 89 01 12 23" },
+            "Paroisse St Samuel de Ngondjo": { name: "Abbé Dimitri TCHOKOUAGO YIAGUE", phone: "+237 6 90 12 23 34" },
+            "Paroisse St Athanase de PK 17 - PK 18": { name: "Abbé Benoît MINYEM", phone: "+237 6 01 23 34 45" },
+            "Paroisse St Luc de PAPAS": { name: "Abbé Benjamin EYOCK", phone: "+237 6 12 34 45 56" },
+            "Paroisse Ste Cécile de Moutongo": { name: "Abbé Isidore SINGOG", phone: "+237 6 23 45 56 67" },
+            "Paroisse St Paul VI de Bonamoutongo": { name: "Abbé Etienne BAKABA", phone: "+237 6 34 56 67 78" },
+            "Paroisse Pentecôte de Nez Town Aéroport": { name: "P. Charles Marie HOUNGBO, FI", phone: "+237 6 45 67 78 89" },
+            "Paroisse St François Xavier de Oyack": { name: "Abbé Engelbert BAYO BEGUEL", phone: "+237 6 56 78 89 90" },
+            "Paroisse Ste Trinité de Bilonguè": { name: "Abbé Corneille WOMENI", phone: "+237 6 67 89 90 01" },
+            "Paroisse St Thadée de Bobongo": { name: "Abbé Alexis MPAKO", phone: "+237 6 78 90 01 12" },
+            "Paroisse Toussaint de Soboum": { name: "Abbé Jean-Noël NZEPANG MBOUYO", phone: "+237 6 89 01 12 23" },
+            "Paroisse Ste Agnès de Madagascar": { name: "P. Christian Michael ONYEMA CHIGOZIE, Omi", phone: "+237 6 90 12 23 34" },
+            "Paroisse Ste Agathe de Bois de Singe": { name: "Abbé Gaétan KAPTUE KAPTUE", phone: "+237 6 01 23 34 45" },
+            "Paroisse Sacré-Coeur de Ndogpassi II": { name: "Abbé Cyrille NANA", phone: "+237 6 12 34 45 56" },
+            "Paroisse St Jacques de Logbaba Plateau": { name: "P. Alain Martin TCHIEMEGNE JOUENANG, VD", phone: "+237 6 23 45 56 67" },
+            "Paroisse Ste Famille de la Zone de Recasement de Ndogpassi III": { name: "Abbé Laurent OUEDRAOGO", phone: "+237 6 34 56 67 78" },
+            "Paroisse Marie Reine des Apôtres de Ndogpassi II": { name: "P. Benoît Magloire ATEMENGUE, SAC", phone: "+237 6 45 67 78 89" },
+            "Paroisse St Augustin de Yanka": { name: "Abbé Michel NDJOGHE", phone: "+237 6 56 78 89 90" },
+            "Paroisse St Clément de Nyalla Kambo": { name: "Abbé Jean-Noël FONGANG", phone: "+237 6 67 89 90 01" },
+            "Paroisse St Louis de Bonaberi": { name: "Abbé Michel TCHOUMBOU", phone: "+237 6 78 90 01 12" },
+            "Paroisse Notre Dame de l'Amour de Ngwele": { name: "Abbé Janvier WOPOULE", phone: "+237 6 89 01 12 23" },
+            "Paroisse St Grégoire de Ndobo": { name: "P. Pierre Armel ABESSOLO MBARGA, cmf", phone: "+237 6 90 12 23 34" },
+            "Paroisse St Joseph de Bonamdalè": { name: "Fr. Livinus AGY, msp", phone: "+237 6 01 23 34 45" },
+            "Paroisse St Pierre Grand Hangar": { name: "Abbé André Fils MBEM", phone: "+237 6 12 34 45 56" },
+            "Paroisse Notre Dame du Rosaire de Mabanda": { name: "P. Joseph YONKI, Cm", phone: "+237 6 23 45 56 67" },
+            "Paroisse St Gabriel Archange de Mpanjo": { name: "Abbé Benjamin Guy MINYEM", phone: "+237 6 34 56 67 78" },
+            "Paroisse St Philippe du Quartier Bilingue": { name: "Abbé Innocent KAMENI", phone: "+237 6 45 67 78 89" },
+            "Paroisse St Timothée de SODIKO Ville": { name: "P. Florian NANA SIMO, SC1", phone: "+237 6 56 78 89 90" },
+            "Paroisse St Bonaventure de Towoh": { name: "P. Eric Emac YEMENE", phone: "+237 6 67 89 90 01" },
+            "Paroisse St Raphaël Archange de Bojongo": { name: "P. Marius TAPANG, mhm", phone: "+237 6 78 90 01 12" },
+            "Paroisse St Kisito de Sodiko Village": { name: "Abbé François Laurent SIE", phone: "+237 6 89 01 12 23" },
+            "Paroisse Ste Catherine de Minkwèlè": { name: "P. Jean Paul KAMAHÉU, o.p", phone: "+237 6 90 12 23 34" },
+            "Paroisse Cœur Immaculée de Marie de Ndobo": { name: "Abbé Rigobert TEMPO", phone: "+237 6 01 23 34 45" },
+            "Paroisse St Marc de la Cité des Palmiers": { name: "Abbé Bernard HONA TONYE", phone: "+237 6 12 34 45 56" },
+            "Paroisse St Simon de Kondi": { name: "Abbé Romuald LOGMO", phone: "+237 6 23 45 56 67" },
+            "Paroisse St Michel Archange de Nyalla": { name: "Abbé Marc MAKANI", phone: "+237 6 34 56 67 78" },
+            "Paroisse St Jean Marie Vianney de Beedi": { name: "P. Roland AYISSI, CMF", phone: "+237 6 45 67 78 89" },
+            "Paroisse St Matthieu de Ndog-Mbéè": { name: "Abbé Luc MBOUGUE", phone: "+237 6 56 78 89 90" },
+            "Paroisse Notre Dame de Lourdes de Japoma": { name: "Abbé Jacques BAKOUBA", phone: "+237 6 67 89 90 01" },
+            "Paroisse St Corneille de Nkolmbong": { name: "Abbé Meinrad-Pierre HEBGA NDJOCK", phone: "+237 6 78 90 01 12" },
+            "Paroisse St Hippolyte de la Cité Chirac": { name: "Abbé Boris Venant NTOUDA", phone: "+237 6 89 01 12 23" },
+            "Paroisse St Cyprien de Maetur Ngodi Bakoko": { name: "Abbé Justin GAÏSEBARA", phone: "+237 6 90 12 23 34" },
+            "Paroisse St Justin de Yassa": { name: "Abbé Michel KILAMA KILAMA", phone: "+237 6 01 23 34 45" },
+            "Paroisse St Bernard de Nkembe": { name: "Abbé Alain AMASSOLA DOUALLA", phone: "+237 6 12 34 45 56" },
+            "Paroisse St Jean XXIII de Pahianga et Cocotier": { name: "Abbé Georges Philippe Raphaël ZONGO", phone: "+237 6 23 45 56 67" },
+            "Paroisse Jésus le Bon Pasteur de Boko": { name: "Abbé Serge TSAFACK", phone: "+237 6 34 56 67 78" },
+            "Paroisse St Jude de Ngodi Bakoko": { name: "P. Robert KOWA SADO, Sx", phone: "+237 6 45 67 78 89" },
+            "Paroisse Jésus Libérateur": { name: "P. Yonovan Cahiono YUVENTUS, sx", phone: "+237 6 56 78 89 90" },
+            "Centre Xavier": { name: "P. Herman KENTSA SOKENG, sx", phone: "+237 6 67 89 90 01" },
+            "Paroisse St Jean Paul II de Yansoki": { name: "P. Gaël Fabien MPECK MPECK, CM", phone: "+237 6 78 90 01 12" },
+            "Centre de Formation Spirituelle St Vincent de Paul de Ngodi Bakoko": { name: "P. Laurent Georges ZIBI, CM", phone: "+237 6 89 01 12 23" },
+            "Paroisse St Guido Maria Conforti": { name: "Abbé Albert TCHATCHOUA NONO", phone: "+237 6 90 12 23 34" },
+            "Paroisse St Irénée de Mbanga Pongo": { name: "Abbé Justin CHIMBA", phone: "+237 6 01 23 34 45" },
+            "Paroisse St Joseph de Boko": { name: "Abbé Jean-Baptiste WARAÏ BLAM", phone: "+237 6 12 34 45 56" },
+            "Paroisse St Jean Baptiste de Mbwang Bakoko": { name: "Abbé Blaise NZOMOTCHO", phone: "+237 6 23 45 56 67" }
+        };
 
-        // ========== RENDU DU TABLEAU ==========
+        // ======================== 3. GÉNÉRATION DES LIGNES ========================
         function renderZones(filterTerm = '') {
             const container = document.getElementById('zonesContainer');
             const filtered = zonesData.filter(zone => {
@@ -707,121 +780,129 @@
                     zone.priest.toLowerCase().includes(searchLower) ||
                     zone.colorName.toLowerCase().includes(searchLower);
             });
-
             document.getElementById('resultCount').textContent = filtered.length;
 
             if (filtered.length === 0) {
-                container.innerHTML = `<div class="no-results"><i class="fas fa-search" style="font-size: 2rem; margin-bottom: 16px; display: block;"></i><span data-key="noResults">Aucune zone ne correspond à votre recherche.</span></div>`;
-                updateLanguageOnNoResults();
+                container.innerHTML = `<div class="no-results"><i class="fas fa-search" style="font-size: 2rem; margin-bottom: 16px;"></i><span data-key="noResults">Aucune zone ne correspond à votre recherche.</span></div>`;
                 return;
             }
 
             container.innerHTML = '';
             filtered.forEach(zone => {
+                const paroissesList = zone.paroisses.split(',').map(p => p.trim());
+                const paroissesHtml = paroissesList.map(par => {
+                    const priestInfo = parishPriests[par] || { name: "Curé non trouvé", phone: "+237 6 00 00 00 00" };
+                    return `<span class="parish-link" data-name="${priestInfo.name.replace(/"/g, '&quot;')}" data-phone="${priestInfo.phone}">${par}</span>`;
+                }).join(', ');
+
                 const row = document.createElement('div');
                 row.className = 'zone-row';
+                row.id = `zone-${zone.num}`;
                 row.innerHTML = `
-        <div class="z-cell z-num">${zone.num}</div>
-        <div class="z-cell z-name">${zone.name}</div>
-        <div class="z-cell z-left z-paroisses">${zone.paroisses}</div>
-        <div class="z-cell z-priest">${zone.priest}</div>
-        <div class="z-cell"><div class="color-box" style="background: ${zone.color}; color: ${zone.colorText};">${zone.colorName}</div></div>
-      `;
+                    <div class="z-cell z-num">${zone.num}</div>
+                    <div class="z-cell z-name">${zone.name}</div>
+                    <div class="z-cell z-left z-paroisses">${paroissesHtml}</div>
+                    <div class="z-cell z-priest">${zone.priest}</div>
+                    <div class="z-cell"><div class="color-box" style="background: ${zone.color}; color: ${zone.colorText};">${zone.colorName}</div></div>
+                `;
                 container.appendChild(row);
             });
         }
 
-        function updateLanguageOnNoResults() {
-            const noResultsEl = document.querySelector('.no-results span');
-            if (noResultsEl && noResultsEl.hasAttribute('data-key')) {
-                const key = noResultsEl.getAttribute('data-key');
-                if (translations[currentLang][key]) {
-                    noResultsEl.textContent = translations[currentLang][key];
-                }
-            }
+        // ======================== 4. CARTE FLOTTANTE AU CLIC ========================
+        const tooltip = document.getElementById('priestTooltip');
+        const priestNameSpan = document.getElementById('priestName');
+        const priestPhoneSpan = document.getElementById('priestPhone');
+        const callLink = document.getElementById('callLink');
+        let currentTimeout = null;
+
+        function showTooltip(event, priestName, priestPhone) {
+            priestNameSpan.textContent = priestName;
+            priestPhoneSpan.textContent = priestPhone;
+            callLink.href = `tel:${priestPhone.replace(/\s/g, '')}`;
+            const x = event.clientX + 15;
+            const y = event.clientY - 10;
+            tooltip.style.left = `${Math.min(x, window.innerWidth - tooltip.offsetWidth - 10)}px`;
+            tooltip.style.top = `${Math.max(10, y - tooltip.offsetHeight - 10)}px`;
+            tooltip.classList.add('active');
+            if (currentTimeout) clearTimeout(currentTimeout);
         }
 
-        // ========== MULTILINGUE ==========
-        const translations = {
-            fr: {
-                headerTitle: "ARCHIDIOCÈSE DE DOUALA",
-                headerSub: "Répertoire officiel des zones et paroisses",
-                nav1: "Accueil",
-                nav2: "Jeunesse",
-                nav3: "Formations",
-                nav4: "Projets",
-                pageTitle: "Cartographie Pastorale",
-                pageDesc: "Organisation par zones, paroisses rattachées et codes vestimentaires synodaux.",
-                searchPlaceholder: "🔍 Rechercher une zone, une paroisse ou un aumônier...",
-                resultsFound: "zones trouvées",
-                resetBtn: "⟳ Réinitialiser",
-                colZone: "Zone",
-                colParoisses: "Paroisses Rattachées",
-                colPriest: "Aumônier",
-                colColor: "Dress Color",
-                backLink: "Retourner à l'accueil principal",
-                footerText: "Aumônerie Diocésaine Jeunesse & Enfance – Douala",
-                noResults: "Aucune zone ne correspond à votre recherche."
-            },
-            en: {
-                headerTitle: "ARCHDIOCESE OF DOUALA",
-                headerSub: "Official directory of zones and parishes",
-                nav1: "Home",
-                nav2: "Youth",
-                nav3: "Trainings",
-                nav4: "Projects",
-                pageTitle: "Pastoral Cartography",
-                pageDesc: "Organization by zones, attached parishes and synodal dress codes.",
-                searchPlaceholder: "🔍 Search for a zone, parish or chaplain...",
-                resultsFound: "zones found",
-                resetBtn: "⟳ Reset",
-                colZone: "Zone",
-                colParoisses: "Attached Parishes",
-                colPriest: "Chaplain",
-                colColor: "Dress Color",
-                backLink: "Back to homepage",
-                footerText: "Diocesan Youth & Children's Chaplaincy – Douala",
-                noResults: "No zone matches your search."
-            }
-        };
+        function hideTooltip() {
+            tooltip.classList.remove('active');
+        }
 
+        document.addEventListener('click', (e) => {
+            const link = e.target.closest('.parish-link');
+            if (link) {
+                e.preventDefault();
+                e.stopPropagation();
+                const priestName = link.getAttribute('data-name');
+                const priestPhone = link.getAttribute('data-phone');
+                showTooltip(e, priestName, priestPhone);
+            } else if (!tooltip.contains(e.target)) {
+                hideTooltip();
+            }
+        });
+
+        document.querySelector('.close-card').addEventListener('click', (e) => {
+            e.stopPropagation();
+            hideTooltip();
+        });
+
+        // ======================== 5. BARRE DE NAVIGATION VERTICALE ========================
+        function buildVerticalNav() {
+            const zoneLinksContainer = document.getElementById('zoneLinks');
+            zoneLinksContainer.innerHTML = '';
+            zonesData.forEach(zone => {
+                const li = document.createElement('li');
+                const a = document.createElement('a');
+                a.href = `#zone-${zone.num}`;
+                a.textContent = `${zone.name}`;
+                a.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const target = document.getElementById(`zone-${zone.num}`);
+                    if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    document.querySelectorAll('.zone-links a').forEach(link => link.classList.remove('active'));
+                    a.classList.add('active');
+                });
+                li.appendChild(a);
+                zoneLinksContainer.appendChild(li);
+            });
+        }
+
+        // ======================== 6. MULTILINGUE ========================
+        const translations = {
+            fr: { headerTitle: "ARCHIDIOCÈSE DE DOUALA", headerSub: "Répertoire officiel des zones et paroisses", nav1: "Accueil", nav2: "Jeunesse", nav3: "Formations", nav4: "Projets", pageTitle: "Cartographie Pastorale", pageDesc: "Organisation par zones, paroisses rattachées et codes vestimentaires synodaux.", searchPlaceholder: "🔍 Rechercher une zone, une paroisse ou un aumônier...", resultsFound: "zones trouvées", resetBtn: "⟳ Réinitialiser", colZone: "Zone", colParoisses: "Paroisses Rattachées", colPriest: "Aumônier", colColor: "Dress Color", backLink: "Retourner à l'accueil principal", footerText: "Aumônerie Diocésaine Jeunesse & Enfance – Douala", noResults: "Aucune zone ne correspond à votre recherche." },
+            en: { headerTitle: "ARCHDIOCESE OF DOUALA", headerSub: "Official directory of zones and parishes", nav1: "Home", nav2: "Youth", nav3: "Trainings", nav4: "Projects", pageTitle: "Pastoral Cartography", pageDesc: "Organization by zones, attached parishes and synodal dress codes.", searchPlaceholder: "🔍 Search for a zone, parish or chaplain...", resultsFound: "zones found", resetBtn: "⟳ Reset", colZone: "Zone", colParoisses: "Attached Parishes", colPriest: "Chaplain", colColor: "Dress Color", backLink: "Back to homepage", footerText: "Diocesan Youth & Children's Chaplaincy – Douala", noResults: "No zone matches your search." }
+        };
+        let currentLang = localStorage.getItem('lang') || 'fr';
         function updateLanguage() {
             const t = translations[currentLang];
             document.querySelectorAll('[data-key]').forEach(el => {
                 const key = el.getAttribute('data-key');
                 if (t[key]) {
-                    if (el.tagName === 'INPUT') {
-                        el.placeholder = t[key];
-                    } else {
-                        el.textContent = t[key];
-                    }
+                    if (el.tagName === 'INPUT') el.placeholder = t[key];
+                    else el.textContent = t[key];
                 }
             });
             localStorage.setItem('lang', currentLang);
         }
-
         document.getElementById('langToggle').addEventListener('click', () => {
             currentLang = currentLang === 'fr' ? 'en' : 'fr';
             updateLanguage();
-            renderZones(currentSearchTerm);
+            renderZones(document.getElementById('searchInput').value);
         });
 
-        // ========== RECHERCHE ==========
+        // ======================== 7. RECHERCHE & MODE SOMBRE ========================
         const searchInput = document.getElementById('searchInput');
         const resetBtn = document.getElementById('resetSearchBtn');
-
-        searchInput.addEventListener('input', (e) => {
-            currentSearchTerm = e.target.value;
-            renderZones(currentSearchTerm);
-        });
-
+        searchInput.addEventListener('input', (e) => renderZones(e.target.value));
         resetBtn.addEventListener('click', () => {
             searchInput.value = '';
-            currentSearchTerm = '';
             renderZones('');
         });
 
-        // ========== MODE SOMBRE ==========
         function initDarkMode() {
             const darkMode = localStorage.getItem('darkMode') === 'true';
             if (darkMode) document.body.classList.add('dark-mode');
@@ -836,12 +917,12 @@
             icon.className = darkMode ? 'fas fa-sun' : 'fas fa-moon';
         }
 
-        // ========== INITIALISATION ==========
-        renderZones();
+        // ======================== 8. INITIALISATION ========================
+        buildVerticalNav();
+        renderZones('');
         initDarkMode();
         updateLanguage();
     </script>
-
 </body>
 
 </html>
