@@ -1,25 +1,16 @@
 <!DOCTYPE html>
 <html lang="fr">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>Zones & Paroisses – Aumônerie Diocésaine Douala</title>
-    <meta name="description" content="Cartographie pastorale de l'Archidiocèse de Douala - Organisation par zones, paroisses rattachées et codes vestimentaires synodaux.">
+    <title>Archidiocèse de Douala – Placement 2025-2026 (données modifiables)</title>
+    <meta name="description" content="Liste complète des paroisses avec curés, vicaires, horaires des messes et confessions. Modifiez facilement les numéros et images.">
 
-    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-
-    <!-- Font Awesome 6 -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
             font-family: 'Plus Jakarta Sans', sans-serif;
             background: #f5f7fb;
@@ -28,820 +19,1349 @@
             scroll-behavior: smooth;
             transition: background 0.3s ease, color 0.3s ease;
         }
-        /* MODE SOMBRE */
-        
         body.dark-mode {
             background: #0f1724;
             color: #e2e8f0;
         }
-        
-        body.dark-mode header,
-        body.dark-mode footer {
-            background: linear-gradient(135deg, #020617, #0f1724);
-        }
-        
-        body.dark-mode nav {
-            background: #1e293b;
-        }
-        
-        body.dark-mode nav a {
-            color: #e2e8f0;
-        }
-        
-        body.dark-mode .zone-row {
-            background: #1e293b;
-            border-bottom-color: #334155;
-        }
-        
-        body.dark-mode .zone-row:hover {
-            background: #2d3748;
-        }
-        
-        body.dark-mode .z-cell {
-            border-right-color: #334155;
-        }
-        
-        body.dark-mode .search-container input {
-            background: #1e293b;
-            color: #e2e8f0;
-            border-color: #334155;
-        }
-        
-        body.dark-mode .search-container input::placeholder {
-            color: #94a3b8;
-        }
-        
-        body.dark-mode .stats-bar {
-            background: #1e293b;
-        }
-        
-        body.dark-mode .header-zone h1 {
-            color: #2ecc71;
-        }
-        
-        .container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 0 32px;
-        }
-        /* CONTROLES (mode sombre + langue) */
-        
-        .controls-bar {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            z-index: 1001;
-            display: flex;
-            gap: 12px;
-        }
-        
-        .ctrl-btn {
-            background: rgba(255, 255, 255, 0.95);
-            border: none;
-            width: 44px;
-            height: 44px;
-            border-radius: 50%;
-            cursor: pointer;
-            font-size: 1.2rem;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-            transition: 0.2s;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        body.dark-mode .ctrl-btn {
-            background: #2d3748;
-            color: #e2e8f0;
-        }
-        
-        .ctrl-btn:hover {
-            transform: scale(1.05);
-        }
-        /* HEADER */
-        
-        header {
-            background: linear-gradient(135deg, #0a2e4a, #045286);
-            color: white;
-            padding: 20px 0;
-            border-bottom: 3px solid #2ecc71;
-            transition: background 0.3s;
-            text-align: center;
-        }
-        
-        header h1 {
-            font-size: 1.5rem;
-            font-weight: 700;
-            text-transform: uppercase;
-        }
-        
-        header p {
-            font-size: 0.85rem;
-            opacity: 0.85;
-        }
-        
-        @media (min-width: 768px) {
-            header h1 {
-                font-size: 1.9rem;
-            }
-        }
-        /* NAVIGATION */
-        
-        nav {
-            background: white;
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.05);
-            position: sticky;
-            top: 0;
-            z-index: 99;
-            transition: background 0.3s;
-        }
-        
-        .nav-links {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 12px;
-            list-style: none;
-            padding: 14px 16px;
-        }
-        
-        .nav-links a {
-            padding: 10px 24px;
-            font-weight: 600;
-            color: #1a2c3e;
-            text-decoration: none;
-            border-radius: 40px;
-            transition: all 0.25s;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-        
-        body.dark-mode .nav-links a {
-            color: #e2e8f0;
-        }
-        
-        .nav-links a i {
-            color: #2ecc71;
-        }
-        
-        .nav-links a:hover {
-            background: #045286;
-            color: white;
-        }
-        
-        .nav-links a:hover i {
-            color: white;
-        }
-        /* HEADER ZONE */
-        
-        .header-zone {
-            text-align: center;
-            padding: 50px 0 30px;
-        }
-        
-        .header-zone h1 {
-            font-size: 2.5rem;
-            font-weight: 800;
-            color: #045286;
-            margin-bottom: 16px;
-            transition: color 0.3s;
-        }
-        
-        .header-zone p {
-            color: #64748b;
-            max-width: 600px;
-            margin: 0 auto;
-        }
-        
-        body.dark-mode .header-zone p {
-            color: #94a3b8;
-        }
-        /* BARRE DE RECHERCHE */
-        
-        .search-container {
-            max-width: 500px;
-            margin: 0 auto 40px;
-        }
-        
-        .search-container input {
-            width: 100%;
-            padding: 16px 20px;
-            border: 2px solid #e2e8f0;
-            border-radius: 60px;
-            font-family: inherit;
-            font-size: 1rem;
-            transition: all 0.3s;
-            background: white;
-        }
-        
-        .search-container input:focus {
-            outline: none;
-            border-color: #2ecc71;
-            box-shadow: 0 0 0 3px rgba(46, 204, 113, 0.2);
-        }
-        
-        body.dark-mode .search-container input {
-            background: #1e293b;
-            border-color: #334155;
-            color: #e2e8f0;
-        }
-        /* STATS BAR */
-        
-        .stats-bar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background: white;
-            padding: 12px 20px;
-            border-radius: 60px;
-            margin-bottom: 30px;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-        }
-        
-        .stats-bar span {
-            font-weight: 600;
-            color: #045286;
-        }
-        
-        body.dark-mode .stats-bar {
-            background: #1e293b;
-        }
-        
-        body.dark-mode .stats-bar span {
-            color: #2ecc71;
-        }
-        
-        .reset-search {
-            background: none;
-            border: none;
-            color: #2ecc71;
-            cursor: pointer;
-            font-weight: 600;
-            transition: 0.2s;
-        }
-        
-        .reset-search:hover {
-            transform: scale(1.05);
-            text-decoration: underline;
-        }
-        /* TABLEAU PASTORAL */
-        
-        .table-container {
-            overflow-x: auto;
-            border-radius: 20px;
-            background: white;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
-        }
-        
-        body.dark-mode .table-container {
-            background: #1e293b;
-        }
-        
-        .table-header {
-            display: grid;
-            grid-template-columns: 60px 180px 1fr 200px 140px;
-            background: #045286;
-            color: white;
-            padding: 16px 0;
-            font-weight: 700;
-            text-transform: uppercase;
-            font-size: 0.85rem;
-            letter-spacing: 0.5px;
-            border-radius: 20px 20px 0 0;
-            text-align: center;
-        }
-        
-        .zone-row {
-            display: grid;
-            grid-template-columns: 60px 180px 1fr 200px 140px;
-            border-bottom: 1px solid #e9edf2;
-            transition: all 0.3s ease;
-            background: white;
-        }
-        
-        body.dark-mode .zone-row {
-            background: #1e293b;
-            border-bottom-color: #334155;
-        }
-        
-        .zone-row:hover {
-            background: #f8fafc;
-            transform: translateX(4px);
-        }
-        
-        body.dark-mode .zone-row:hover {
-            background: #2d3748;
-        }
-        
-        .z-cell {
-            padding: 16px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-right: 1px solid #f0f0f0;
-        }
-        
-        body.dark-mode .z-cell {
-            border-right-color: #334155;
-        }
-        
-        .z-left {
-            justify-content: flex-start;
-            text-align: left;
-        }
-        
-        .z-num {
-            font-weight: 800;
-            color: #045286;
-            font-size: 1.1rem;
-        }
-        
-        body.dark-mode .z-num {
-            color: #2ecc71;
-        }
-        
-        .z-name {
-            font-weight: 700;
-            color: #0072a8;
-        }
-        
-        body.dark-mode .z-name {
-            color: #2ecc71;
-        }
-        
-        .z-paroisses {
-            font-size: 0.85rem;
-            color: #475569;
-            line-height: 1.5;
-        }
-        
-        body.dark-mode .z-paroisses {
-            color: #94a3b8;
-        }
-        
-        .z-priest {
-            font-style: italic;
-            font-size: 0.9rem;
-            text-align: center;
-            font-weight: 500;
-        }
-        
-        .color-box {
-            width: 100%;
-            padding: 8px 12px;
-            border-radius: 40px;
-            text-align: center;
-            font-weight: 700;
-            font-size: 0.75rem;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-        /* MESSAGE AUCUN RÉSULTAT */
-        
-        .no-results {
-            text-align: center;
-            padding: 60px 20px;
-            color: #64748b;
-        }
-        
-        body.dark-mode .no-results {
-            color: #94a3b8;
-        }
-        /* LIEN RETOUR */
-        
-        .back-link {
-            text-align: center;
-            margin: 40px 0;
-        }
-        
-        .back-link a {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            color: #045286;
-            font-weight: 600;
-            text-decoration: none;
-            padding: 12px 24px;
-            border-radius: 40px;
-            transition: all 0.3s;
-        }
-        
-        body.dark-mode .back-link a {
-            color: #2ecc71;
-        }
-        
-        .back-link a:hover {
-            background: #045286;
-            color: white;
-            transform: translateX(-5px);
-        }
-        
-        body.dark-mode .back-link a:hover {
-            background: #2ecc71;
-            color: #022b44;
-        }
-        /* FOOTER */
-        
-        footer {
-            background: #022b44;
-            color: white;
-            padding: 40px 0;
-            text-align: center;
-            transition: background 0.3s;
-            margin-top: 60px;
-        }
-        
-        footer a {
-            color: #2ecc71;
-            text-decoration: none;
-            transition: 0.2s;
-        }
-        
-        footer a:hover {
-            color: white;
-        }
-        /* RESPONSIVE */
-        
+        body.dark-mode header, body.dark-mode footer { background: linear-gradient(135deg, #020617, #0f1724); }
+        body.dark-mode nav { background: #1e293b; }
+        body.dark-mode .zone-row { background: #1e293b; border-bottom-color: #334155; }
+        body.dark-mode .zone-row:hover { background: #2d3748; }
+        body.dark-mode .z-cell { border-right-color: #334155; }
+        body.dark-mode .search-container input { background: #1e293b; color: #e2e8f0; border-color: #334155; }
+        body.dark-mode .stats-bar { background: #1e293b; }
+        body.dark-mode .table-container { background: #1e293b; }
+        .main-layout { display: flex; max-width: 1600px; margin: 0 auto; position: relative; }
+        .vertical-nav {
+            position: sticky; top: 100px; width: 240px; height: fit-content;
+            background: white; border-radius: 20px; box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+            padding: 20px 0; margin-left: 20px; margin-right: 30px; z-index: 90;
+        }
+        body.dark-mode .vertical-nav { background: #1e293b; }
+        .vertical-nav h3 { text-align: center; font-size: 1rem; padding: 0 15px 15px; border-bottom: 2px solid #2ecc71; margin-bottom: 15px; color: #045286; }
+        body.dark-mode .vertical-nav h3 { color: #2ecc71; }
+        .zone-links { list-style: none; max-height: 70vh; overflow-y: auto; padding: 0 12px; }
+        .zone-links li { margin: 6px 0; }
+        .zone-links a { display: block; padding: 8px 12px; border-radius: 30px; font-size: 0.8rem; font-weight: 600; color: #1e293b; text-decoration: none; transition: 0.2s; }
+        body.dark-mode .zone-links a { color: #cbd5e1; }
+        .zone-links a:hover, .zone-links a.active { background: #045286; color: white; }
+        .content-wrapper { flex: 1; min-width: 0; padding: 0 20px; }
+        .container { max-width: 1300px; margin: 0 auto; }
+        .controls-bar { position: fixed; top: 20px; right: 20px; z-index: 1001; display: flex; gap: 12px; }
+        .ctrl-btn { background: rgba(255,255,255,0.95); border: none; width: 44px; height: 44px; border-radius: 50%; cursor: pointer; font-size: 1.2rem; box-shadow: 0 4px 12px rgba(0,0,0,0.15); }
+        body.dark-mode .ctrl-btn { background: #2d3748; color: #e2e8f0; }
+        header { background: linear-gradient(135deg, #0a2e4a, #045286); color: white; padding: 20px 0; border-bottom: 3px solid #2ecc71; text-align: center; }
+        nav { background: white; box-shadow: 0 6px 20px rgba(0,0,0,0.05); position: sticky; top: 0; z-index: 99; }
+        .nav-links { display: flex; justify-content: center; flex-wrap: wrap; gap: 12px; list-style: none; padding: 14px 16px; }
+        .nav-links a { padding: 10px 24px; font-weight: 600; color: #1a2c3e; text-decoration: none; border-radius: 40px; }
+        .nav-links a:hover { background: #045286; color: white; }
+        .header-zone { text-align: center; padding: 40px 0 20px; }
+        .header-zone h1 { font-size: 2rem; font-weight: 800; color: #045286; }
+        .search-container { max-width: 500px; margin: 0 auto 30px; }
+        .search-container input { width: 100%; padding: 14px 20px; border: 2px solid #e2e8f0; border-radius: 60px; font-family: inherit; font-size: 1rem; }
+        .stats-bar { display: flex; justify-content: space-between; align-items: center; background: white; padding: 10px 20px; border-radius: 60px; margin-bottom: 30px; }
+        .reset-search { background: none; border: none; color: #2ecc71; cursor: pointer; font-weight: 600; }
+        .table-container { overflow-x: auto; border-radius: 20px; background: white; box-shadow: 0 4px 20px rgba(0,0,0,0.05); }
+        .table-header { display: grid; grid-template-columns: 70px 150px minmax(320px, 1fr) 200px 120px; background: #045286; color: white; padding: 16px 0; font-weight: 700; text-transform: uppercase; font-size: 0.8rem; text-align: center; }
+        .zone-row { display: grid; grid-template-columns: 70px 150px minmax(320px, 1fr) 200px 120px; border-bottom: 1px solid #e9edf2; transition: 0.2s; background: white; scroll-margin-top: 80px; }
+        .zone-row:hover { background: #f8fafc; }
+        .z-cell { padding: 16px 12px; display: flex; align-items: center; justify-content: center; border-right: 1px solid #f0f0f0; overflow-wrap: break-word; word-break: break-word; }
+        .z-left { justify-content: flex-start; text-align: left; }
+        .z-num { font-weight: 800; color: #045286; }
+        .z-name { font-weight: 700; color: #0072a8; }
+        .z-paroisses { font-size: 0.85rem; color: #475569; line-height: 1.5; flex-wrap: wrap; }
+        .parish-link { cursor: pointer; text-decoration: underline; text-decoration-style: dotted; transition: 0.2s; color: #045286; display: inline-block; margin: 0 2px; font-weight: 500; }
+        .parish-link:hover { background-color: #045286; color: white; border-radius: 4px; padding: 0 2px; }
+        .responsable-container { display: flex; flex-direction: column; gap: 8px; width: 100%; text-align: center; }
+        .resp-link { font-size: 0.85rem; font-weight: 600; color: #045286; text-decoration: underline; text-underline-offset: 4px; cursor: pointer; background: transparent; padding: 4px 8px; border-radius: 30px; display: inline-block; width: fit-content; margin: 0 auto; }
+        .resp-link:hover { background: #04528620; color: #022b44; text-decoration: none; }
+        body.dark-mode .resp-link { color: #9ec8e0; }
+        .color-box { width: 100%; padding: 8px; border-radius: 40px; text-align: center; font-weight: 700; font-size: 0.7rem; }
+        /* MODALES */
+        .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.85); z-index: 2000; justify-content: center; align-items: center; backdrop-filter: blur(3px); }
+        .modal.active { display: flex; }
+        .modal-card { position: relative; width: 90%; max-width: 800px; max-height: 85vh; border-radius: 32px; overflow: hidden; box-shadow: 0 25px 50px -12px rgba(0,0,0,0.5); animation: fadeInUp 0.3s ease; }
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+        .modal-bg-image { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-size: cover; background-position: center; z-index: 0; }
+        .modal-overlay-dark { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(135deg, rgba(0,0,0,0.7) 0%, rgba(0,20,40,0.85) 100%); z-index: 1; }
+        .modal-content { position: relative; z-index: 2; padding: 28px 30px; color: white; overflow-y: auto; max-height: 85vh; }
+        .modal-content h2 { font-size: 1.8rem; font-weight: 800; margin-bottom: 20px; border-left: 6px solid #2ecc71; padding-left: 18px; }
+        .modal-close { position: absolute; top: 18px; right: 24px; font-size: 32px; font-weight: bold; color: white; cursor: pointer; z-index: 3; background: rgba(0,0,0,0.5); width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; }
+        .modal-close:hover { background: #2ecc71; }
+        .info-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; margin: 20px 0; }
+        .info-card { background: rgba(255,255,255,0.12); backdrop-filter: blur(8px); border-radius: 24px; padding: 16px 20px; border: 1px solid rgba(255,255,255,0.2); }
+        .info-card i { color: #2ecc71; margin-right: 10px; width: 28px; }
+        .info-card h3 { font-size: 1.2rem; margin-bottom: 12px; display: flex; align-items: center; border-bottom: 1px solid rgba(255,255,255,0.3); padding-bottom: 6px; }
+        .info-card a { color: #2ecc71; text-decoration: none; font-weight: 600; }
+        .map-btn { display: inline-flex; align-items: center; gap: 12px; background: #2ecc71; color: #022b44; padding: 12px 24px; border-radius: 50px; text-decoration: none; font-weight: 800; margin-top: 15px; transition: 0.2s; border: none; cursor: pointer; }
+        .map-btn:hover { background: #27ae60; color: white; }
+        .modal-card.responsable-card { background: #fef9e8; }
+        .modal-card.responsable-card .modal-overlay-dark { background: rgba(255,248,225,0.96); }
+        .modal-card.responsable-card .modal-content { color: #2d3e2b; }
+        .modal-card.responsable-card h2 { border-left-color: #2ecc71; color: #1f543b; }
+        .resp-info-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.2rem; margin: 1.5rem 0; }
+        .resp-info-card { background: rgba(46,204,113,0.12); border-radius: 1.5rem; padding: 1rem; border: 1px solid #2ecc71; }
+        .resp-info-card i { color: #2ecc71; width: 28px; }
+        .resp-info-card h3 { display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.8rem; font-size: 1.1rem; border-bottom: 1px solid #cbd5a0; padding-bottom: 0.3rem; }
+        .whatsapp-btn-resp { background: #25D366; color: #1e2a1a; padding: 0.7rem 1.5rem; border-radius: 60px; text-decoration: none; font-weight: bold; display: inline-flex; align-items: center; gap: 0.5rem; }
+        footer { background: #022b44; color: white; padding: 40px 0; text-align: center; margin-top: 60px; }
         @media (max-width: 1024px) {
-            .table-header,
-            .zone-row {
-                grid-template-columns: 50px 160px 1fr 180px 120px;
-            }
+            .main-layout { flex-direction: column; }
+            .vertical-nav { width: 100%; margin: 20px; position: relative; top: 0; }
+            .table-header, .zone-row { grid-template-columns: 50px 130px minmax(250px,1fr) 180px 100px; }
         }
-        
         @media (max-width: 900px) {
-            .table-header {
-                display: none;
-            }
-            .zone-row {
-                grid-template-columns: 1fr;
-                margin-bottom: 20px;
-                border: 1px solid #e9edf2;
-                border-radius: 16px;
-                overflow: hidden;
-            }
-            body.dark-mode .zone-row {
-                border-color: #334155;
-            }
-            .z-cell {
-                border-right: none;
-                border-bottom: 1px solid #f0f0f0;
-                padding: 12px 20px;
-                justify-content: flex-start;
-            }
-            body.dark-mode .z-cell {
-                border-bottom-color: #334155;
-            }
-            .z-num {
-                background: #045286;
-                color: white;
-                justify-content: center;
-            }
-            body.dark-mode .z-num {
-                background: #2ecc71;
-                color: #022b44;
-            }
-            .z-name {
-                background: #f8fafc;
-                font-size: 1.1rem;
-            }
-            body.dark-mode .z-name {
-                background: #2d3748;
-            }
-            .z-paroisses::before {
-                content: "📌 Paroisses : ";
-                font-weight: 700;
-                color: #045286;
-                display: block;
-                margin-bottom: 6px;
-            }
-            body.dark-mode .z-paroisses::before {
-                color: #2ecc71;
-            }
-            .z-priest::before {
-                content: "👤 Aumônier : ";
-                font-weight: 700;
-                color: #045286;
-            }
-            body.dark-mode .z-priest::before {
-                color: #2ecc71;
-            }
-            .color-box {
-                display: inline-block;
-                width: auto;
-                padding: 6px 20px;
-            }
-            .container {
-                padding: 0 20px;
-            }
+            .table-header { display: none; }
+            .zone-row { grid-template-columns: 1fr; margin-bottom: 20px; border: 1px solid #e9edf2; border-radius: 16px; }
+            .z-cell { border-right: none; border-bottom: 1px solid #f0f0f0; justify-content: flex-start; }
         }
     </style>
 </head>
-
 <body>
+<div class="controls-bar">
+    <button class="ctrl-btn" id="darkModeToggle"><i class="fas fa-moon"></i></button>
+    <button class="ctrl-btn" id="langToggle"><i class="fas fa-globe"></i></button>
+</div>
+<header><div class="container"><h1>ARCHIDIOCÈSE DE DOUALA</h1><p>Placement 2025-2026 – Données complètes et modifiables</p></div></header>
+<nav><div class="container"><ul class="nav-links"><li><a href="#"><i class="fas fa-home"></i> Accueil</a></li><li><a href="#"><i class="fas fa-users"></i> Jeunesse</a></li><li><a href="#"><i class="fas fa-graduation-cap"></i> Formation</a></li><li><a href="#"><i class="fas fa-church"></i> Projet</a></li></ul></div></nav>
 
-    <!-- CONTROLES -->
-    <div class="controls-bar">
-        <button class="ctrl-btn" id="darkModeToggle"><i class="fas fa-moon"></i></button>
-        <button class="ctrl-btn" id="langToggle"><i class="fas fa-globe"></i></button>
-    </div>
+<div class="main-layout">
+    <aside class="vertical-nav"><h3><i class="fas fa-map-marker-alt"></i> Zones</h3><ul class="zone-links" id="zoneLinks"></ul></aside>
+    <div class="content-wrapper"><div class="container">
+        <div class="header-zone"><h1>Cartographie Pastorale Officielle</h1><p>Cliquez sur une paroisse pour voir les détails. Modifiez les numéros et images dans le code (objet parishesDetails).</p></div>
+        <div class="search-container"><input type="text" id="searchInput" placeholder="🔍 Rechercher une zone, paroisse, prêtre..."></div>
+        <div class="stats-bar"><span id="resultCount">0</span> zones trouvées <button class="reset-search" id="resetSearchBtn">⟳ Réinitialiser</button></div>
+        <div class="table-container"><div class="table-header"><div>#</div><div>Zone</div><div>Paroisses (cliquez)</div><div>Vicaire épiscopal / Responsable laïc</div><div>Couleur</div></div><div id="zonesContainer"></div></div>
+    </div></div>
+</div>
 
-    <!-- HEADER -->
-    <header>
-        <div class="container">
-            <h1 data-key="headerTitle">ARCHIDIOCÈSE DE DOUALA</h1>
-            <p data-key="headerSub">Répertoire officiel des zones et paroisses</p>
-        </div>
-    </header>
+<footer><div class="container"><p>© Archidiocèse de Douala — Données officielles PLACEMENT PRETRES 2025-2026</p><p>Pour modifier un numéro ou une image, éditez l'objet <strong>parishesDetails</strong> dans le code JavaScript.</p></div></footer>
 
-    <!-- NAVIGATION -->
-    <nav>
-        <div class="container">
-            <ul class="nav-links">
-                <li><a href="index.html"><i class="fas fa-home"></i> <span data-key="nav1">Accueil</span></a></li>
-                <li><a href="index.html#jeunesse"><i class="fas fa-users"></i> <span data-key="nav2">Jeunesse</span></a></li>
-                <li><a href="formations.html"><i class="fas fa-graduation-cap"></i> <span data-key="nav3">Formations</span></a></li>
-                <li><a href="engagements.html"><i class="fas fa-project-diagram"></i> <span data-key="nav4">Projets</span></a></li>
-            </ul>
-        </div>
-    </nav>
+<!-- MODALES -->
+<div id="parishModal" class="modal"><div class="modal-card"><div id="modalBgImage" class="modal-bg-image"></div><div class="modal-overlay-dark"></div><div class="modal-close" id="closeModalBtn">&times;</div><div class="modal-content"><h2 id="modalParishName">Nom Paroisse</h2><div class="info-grid" id="modalDetailsContainer"></div><a href="#" id="modalMapLink" class="map-btn" target="_blank"><i class="fas fa-map-marker-alt"></i> Ouvrir dans Google Maps</a></div></div></div>
 
-    <!-- CONTENU PRINCIPAL -->
-    <div class="container">
-        <div class="header-zone">
-            <h1 data-key="pageTitle">Cartographie Pastorale</h1>
-            <p data-key="pageDesc">Organisation par zones, paroisses rattachées et codes vestimentaires synodaux.</p>
-        </div>
+<div id="responsableModal" class="modal"><div class="modal-card responsable-card"><div class="modal-bg-image" style="background-image: url('https://via.placeholder.com/800x600?text=Image+responsable');"></div><div class="modal-overlay-dark"></div><div class="modal-close" id="closeResponsableModalBtn">&times;</div><div class="modal-content"><h2 id="respNom">Responsable</h2><div class="resp-info-grid" id="respDetailsGrid"><div class="resp-info-card"><i class="fas fa-map-pin"></i> <strong>Zone :</strong> <span id="respZone">-</span></div><div class="resp-info-card"><i class="fas fa-user-tie"></i> <strong>Fonction :</strong> <span id="respFonction">-</span></div><div class="resp-info-card"><i class="fas fa-phone-alt"></i> <strong>Téléphone :</strong> <span id="respPhone">-</span></div><div class="resp-info-card"><i class="fab fa-whatsapp"></i> <strong>Message pré-défini :</strong><br> <span id="respMessage">...</span></div></div><div style="text-align:center; margin-top:0.5rem;"><a href="#" id="whatsappRespLink" class="whatsapp-btn-resp" target="_blank"><i class="fab fa-whatsapp"></i> Contacter via WhatsApp</a></div></div></div></div>
 
-        <!-- Barre de recherche -->
-        <div class="search-container">
-            <input type="text" id="searchInput" placeholder="🔍 Rechercher une zone, une paroisse ou un aumônier..." data-key="searchPlaceholder">
-        </div>
+<script>
+// ============================================================
+// 1. DONNÉES DES ZONES (Wouri I à X) - LISTE DES PAROISSES PAR ZONE
+// ============================================================
+const zonesData = [
+    { num: "01", name: "Wouri I", paroissesList: ["Cathédrale Saints-Pierre et Paul de Douala","Paroisse Holy Trinity","Paroisse Notre-Dame du Mont Carmel","Paroisse Saint-Dominique Savio de Bonaparte","Paroisse Sainte-Anne de Nkongmondo","Paroisse Saint-André de Manoka","Paroisse Saint-Ignace d'Antioche de Youpouè","Paroisse Saint Barnabé de Bois de Singe"], priest: "Abbé Valéry MELONE", color: "#ffffff", colorName: "Blanc/Or", colorText: "#000" },
+    { num: "02", name: "Wouri II", paroissesList: ["Paroisse Notre-Dame des Victoires de New-Bell I","Paroisse Saint-Paul de Nylon","Paroisse Sacré-Cœur de New-Bell II","Paroisse Notre-Dame des Sept Douleurs de New Bell III","Paroisse Saint-Luc de New Bell"], priest: "Abbé Florindo D'EMIDIO", color: "#ff0000", colorName: "Rouge", colorText: "#fff" },
+    { num: "03", name: "Wouri III", paroissesList: ["Paroisse Saint-Sacrement de Ndogbong","Paroisse Christ-Roi de la Cité-Sic","Paroisse Saint-Esprit de Bépanda","Paroisse Saint-Charles Lwanga de Makèpè Yonyong","Paroisse Saint-Mathias de Petit Wouri Bonamousongo","Paroisse universitaire Saint-Thomas d'Aquin"], priest: "Abbé Sébastien MONGO BEHON", color: "#0000ff", colorName: "Bleu Royal", colorText: "#fff" },
+    { num: "04", name: "Wouri IV", paroissesList: ["Paroisse Sainte-Monique de Cite-Sic Makepé","Paroisse Saint-Jean de Deido","Paroisse Saint-Ambroise de Sable (Bonamoussadi)","Paroisse Notre-Dame de l'Annonciation de Bonamoussadi","Paroisse Saint-François d'Assise de Kotto","Paroisse Christ Sauveur de Banguè","Paroisse Saint-Barthélémy de LOGBESSOU","Paroisse Saint-Basile de Logpom","Paroisse Sainte-Marie Madeleine de Logpom plateau","Paroisse Sainte-Marthe de Lendi"], priest: "Abbé Dieudonné BAYEMEG", color: "#ffff00", colorName: "Jaune", colorText: "#000" },
+    { num: "05", name: "Wouri V", paroissesList: ["Paroisse Saint-Pie X de PK 14","Paroisse Saint-Victor de Sodikombo","Paroisse saint-Thomas de PK 10","Paroisse Sainte-Thérèse de l'Enfant Jésus de Mbengue City","Paroisse Epiphanie de PK 21","Paroisse Saint-Benoît de Dallas et Nsape","Paroisse Saint-Étienne de Mandjab","Paroisse Saint-Samuel de NGONJO","Paroisse Saint-Athanase de PK 17 – PK 18","Paroisse Saint-Laurent de PAPAS","Paroisse Sainte-Cécile de MOUTONGO","Paroisse Saint-Paul VI de BONAMOUTONGO"], priest: "Abbé Dieudonné Laurent TONYE", color: "#008000", colorName: "Vert", colorText: "#fff" },
+    { num: "06", name: "Wouri VI", paroissesList: ["Paroisse Pentecôte de New Town Aéroport","Paroisse Saint-François-Xavier d'Oyack","Paroisse Sainte Trinité de Bllongué","Paroisse Saint-Thaddée de Bobongo","Paroisse Toussaint de Soboum","Paroisse Sainte-Agnès de Madagascar","Paroisse Sainte-Agathe de Bois de Singe"], priest: "P. Charles Marie HOUNGBO, FI", color: "#ffa500", colorName: "Orange", colorText: "#fff" },
+    { num: "07", name: "Wouri VII", paroissesList: ["Paroisse Sacré-Cœur de NdogPassi II","Paroisse Saint-Jacques de Logbaba Plateau","Paroisse Sainte-Famille de la Zone de recasement de NdogPassi III","Paroisse Marie Reine des Apôtres de Ndogpassi II","Paroisse Saint-Augustin de Yanka (Ndogpassi II)","Paroisse Saint-Clément de Nyalla Kambo"], priest: "Abbé Cyrille NANA", color: "#800080", colorName: "Violet", colorText: "#fff" },
+    { num: "08", name: "Wouri VIII", paroissesList: ["Paroisse Saint-Louis de Bonabéri","Paroisse Notre-Dame de l'Amour de Ngwele","Paroisse Saint-Grégoire de Ndobo","Paroisse Saint-Joseph de Bonandalè","Paroisse Saint-Pierre Grand Hangar","Paroisse Notre-Dame du Rosaire de Mambanda","Paroisse Saint-Gabriel Archange de Mpanjo - Bonaminkano","Paroisse Saint-Philippe du Quartier Bilingue","Paroisse Saint-Timothée de SODIKO VILLE","Paroisse Saint-Bonaventure de TOWOH","Paroisse Saint-Raphaël Archange de Bojongo","Paroisse Saint-Kisito de Sodiko Village","Paroisse Sainte Catherine de Sienne de Minkwele","Paroisse Cœur Immaculée de Marie de Ndobo"], priest: "Abbé Michel TCHOUMBOU", color: "#800080", colorName: "Violet", colorText: "#fff" },
+    { num: "09", name: "Wouri IX", paroissesList: ["Paroisse Saint-Marc de la Cite des Palmiers","Paroisse Saint-Simon de Kondi","Paroisse Saint-Michel Archange de Nyalla","Paroisse Saint-Jean Marie Vianney de Beedi","Paroisse Saint-Matthieu de Ndog-Mbèè","Paroisse Notre Dame de Lourdes de Japoma","Paroisse Saint-Corneille de NKOLMBONG","Paroisse Saint-Hippolyte de la Cité Chirac","Paroisse Saint-Cyprien de Maetur Ngodi Bakoko","Paroisse Saint-Justin de Yassa","Paroisse Saint-Bernard de NKEMBE","Paroisse Saint-Jean XXIII de Pahianga et Cocotier de Japoma"], priest: "Abbé Bernard HONA TONYE", color: "#800080", colorName: "Violet", colorText: "#fff" },
+    { num: "10", name: "Wouri X", paroissesList: ["Paroisse Jésus Bon Pasteur de Mboko","Paroisse Saint-Jude de Ngodi Bakoko","Paroisse Jésus Libérateur","Paroisse Saint-Jean Paul II de Yansoki","Paroisse Saint-Guido Maria CONFORTI","Paroisse Saint-Irénée de MBANGA-PONGO","Paroisse Saint-Joseph de BOKO","Paroisse Saint Jean-Baptiste de Bwang BAKOKO"], priest: "Abbé Serge TSAFACK", color: "#800080", colorName: "Violet", colorText: "#fff" }
+];
 
-        <!-- Stats -->
-        <div class="stats-bar">
-            <span id="resultCount">0</span> <span data-key="resultsFound">zones trouvées</span>
-            <button class="reset-search" id="resetSearchBtn" data-key="resetBtn">⟳ Réinitialiser</button>
-        </div>
+// ============================================================
+// 2. DÉCLARATION MANUELLE DE TOUTES LES PAROISSES
+//    (Modifiez ici les numéros de téléphone, images, etc.)
+// ============================================================
+const parishesDetails = {
+    "Cathédrale Saints-Pierre et Paul de Douala": {
+        cure: "Abbé Valéry MELONE (Recteur, Vicaire Episcopal)",
+        vicaires: "Abbé Gabriel Honoré LISSOUCK, Abbé Maxime SIEWE TCHOKOUANGO, Abbé Gustave MOHOMYE, Abbé Raymond BELKESSECK, Stagiaire: Abbé Ronice LEMOGUE TETIODONG",
+        secretaire: "Martine Ngo",
+        telephone: "+237 600 000 100",
+        secretairePhone: "+237 600 000 100",
+        horaires: "Lundi-Vendredi: 8h30–12h30, 15h–18h | Samedi: 9h–12h",
+        messes: "Dimanche: 7h00, 9h00, 11h00, 18h30 | Semaine: 6h30, 18h00",
+        confessions: "Confessions avant chaque messe",
+        adresse: "Cathédrale Saints-Pierre et Paul de Douala, Douala, Cameroun",
+        image: "https://via.placeholder.com/800x600?text=Cathédrale+Douala"
+    },
+    "Paroisse Holy Trinity": {
+        cure: "Abbé Jean Robert NGANDJUI",
+        vicaires: "Abbé Alain NIBILE, Abbé Joseph Honoré MAKON, Stagiaire: Abbé Franck BETNOW TCHAPTCHET",
+        secretaire: "Paul Mbarga",
+        telephone: "+237 600 000 101",
+        secretairePhone: "+237 600 000 101",
+        horaires: "Lundi-Vendredi: 8h30–12h30, 15h–18h | Samedi: 9h–12h",
+        messes: "Dimanche: 7h00, 9h00, 11h00, 18h30 | Semaine: 6h30, 18h00",
+        confessions: "Confessions avant chaque messe",
+        adresse: "Paroisse Holy Trinity, Douala, Cameroun",
+        image: "https://via.placeholder.com/800x600?text=Holy+Trinity"
+    },
+    "Paroisse Notre-Dame du Mont Carmel": {
+        cure: "Abbé René NGON",
+        vicaires: "Abbé Louis BOULOU MBEA, Abbé Honoré MBONDE, Stagiaire: Abbé Siméon Derick SONOCK",
+        secretaire: "Claire Etoundi",
+        telephone: "+237 600 000 102",
+        secretairePhone: "+237 600 000 102",
+        horaires: "Lundi-Vendredi: 8h30–12h30, 15h–18h | Samedi: 9h–12h",
+        messes: "Dimanche: 7h00, 9h00, 11h00, 18h30 | Semaine: 6h30, 18h00",
+        confessions: "Confessions avant chaque messe",
+        adresse: "Paroisse Notre-Dame du Mont Carmel, Douala, Cameroun",
+        image: "https://via.placeholder.com/800x600?text=Mont+Carmel"
+    },
+    "Paroisse Saint-Dominique Savio de Bonaparte": {
+        cure: "Abbé Philippe Pacôme MBANDA MANDEGUE",
+        vicaires: "Abbé Donatien OBAM BEKOLO, Abbé Joseph FOTSO, Abbé Achille Hermann PANDEU TATSI, Abbé Etienne Gilson CHAMABE",
+        secretaire: "Jean Manga",
+        telephone: "+237 600 000 103",
+        secretairePhone: "+237 600 000 103",
+        horaires: "Lundi-Vendredi: 8h30–12h30, 15h–18h | Samedi: 9h–12h",
+        messes: "Dimanche: 7h00, 9h00, 11h00, 18h30 | Semaine: 6h30, 18h00",
+        confessions: "Confessions avant chaque messe",
+        adresse: "Paroisse Saint-Dominique Savio de Bonaparte, Douala, Cameroun",
+        image: "https://via.placeholder.com/800x600?text=Saint+Dominique+Savio"
+    },
+    "Paroisse Sainte-Anne de Nkongmondo": {
+        cure: "Abbé Paul NWAHA POHA",
+        vicaires: "Abbé Stéphane NIGOUTA NYOM",
+        secretaire: "Lucie Kengne",
+        telephone: "+237 600 000 104",
+        secretairePhone: "+237 600 000 104",
+        horaires: "Lundi-Vendredi: 8h30–12h30, 15h–18h | Samedi: 9h–12h",
+        messes: "Dimanche: 7h00, 9h00, 11h00, 18h30 | Semaine: 6h30, 18h00",
+        confessions: "Confessions avant chaque messe",
+        adresse: "Paroisse Sainte-Anne de Nkongmondo, Douala, Cameroun",
+        image: "https://via.placeholder.com/800x600?text=Sainte+Anne"
+    },
+    "Paroisse Saint-André de Manoka": {
+        cure: "Abbé Séverin NGONDJI BETMO",
+        vicaires: "Abbé Gatien Gaël FALEU DJEUHA",
+        secretaire: "Joseph Ebogo",
+        telephone: "+237 600 000 105",
+        secretairePhone: "+237 600 000 105",
+        horaires: "Lundi-Vendredi: 8h30–12h30, 15h–18h | Samedi: 9h–12h",
+        messes: "Dimanche: 7h00, 9h00, 11h00, 18h30 | Semaine: 6h30, 18h00",
+        confessions: "Confessions avant chaque messe",
+        adresse: "Paroisse Saint-André de Manoka, Douala, Cameroun",
+        image: "https://via.placeholder.com/800x600?text=Saint+André+Manoka"
+    },
+    "Paroisse Saint-Ignace d'Antioche de Youpouè": {
+        cure: "Abbé Anselme NDJEMBELE",
+        vicaires: "Abbé Raymond NUKUNA GWANVOMA, Abbé Yves YEME",
+        secretaire: "Anne-Marie Tchoffo",
+        telephone: "+237 600 000 106",
+        secretairePhone: "+237 600 000 106",
+        horaires: "Lundi-Vendredi: 8h30–12h30, 15h–18h | Samedi: 9h–12h",
+        messes: "Dimanche: 7h00, 9h00, 11h00, 18h30 | Semaine: 6h30, 18h00",
+        confessions: "Confessions avant chaque messe",
+        adresse: "Paroisse Saint-Ignace d'Antioche de Youpouè, Douala, Cameroun",
+        image: "https://via.placeholder.com/800x600?text=Saint+Ignace"
+    },
+    "Paroisse Saint Barnabé de Bois de Singe": {
+        cure: "Abbé Jean-Bernard NWIND",
+        vicaires: "Stagiaire: Abbé Gaspard ATANGANA ATANGANA",
+        secretaire: "David Nkoulou",
+        telephone: "+237 600 000 107",
+        secretairePhone: "+237 600 000 107",
+        horaires: "Lundi-Vendredi: 8h30–12h30, 15h–18h | Samedi: 9h–12h",
+        messes: "Dimanche: 7h00, 9h00, 11h00, 18h30 | Semaine: 6h30, 18h00",
+        confessions: "Confessions avant chaque messe",
+        adresse: "Paroisse Saint Barnabé de Bois de Singe, Douala, Cameroun",
+        image: "https://via.placeholder.com/800x600?text=Saint+Barnabé"
+    },
+    "Paroisse Notre-Dame des Victoires de New-Bell I": {
+        cure: "Abbé Florindo D’EMIDIO (Vicaire Episcopal)",
+        vicaires: "Abbé Gervais BEKOLO, Stagiaire: Abbé Raoul FONGUE NOUBISSIE",
+        secretaire: "Martine Ngo",
+        telephone: "+237 600 000 108",
+        secretairePhone: "+237 600 000 108",
+        horaires: "Lundi-Vendredi: 8h30–12h30, 15h–18h | Samedi: 9h–12h",
+        messes: "Dimanche: 7h00, 9h00, 11h00, 18h30 | Semaine: 6h30, 18h00",
+        confessions: "Confessions avant chaque messe",
+        adresse: "Paroisse Notre-Dame des Victoires, New-Bell I, Douala",
+        image: "https://via.placeholder.com/800x600?text=Notre-Dame+Victoires"
+    },
+    "Paroisse Saint-Paul de Nylon": {
+        cure: "Abbé Bernardin BIKADAL",
+        vicaires: "Abbé Arnauld NGUENGOUE, Abbé Dieudonné NOUM, Abbé Alfred NTJAM",
+        secretaire: "Paul Mbarga",
+        telephone: "+237 600 000 109",
+        secretairePhone: "+237 600 000 109",
+        horaires: "Lundi-Vendredi: 8h30–12h30, 15h–18h | Samedi: 9h–12h",
+        messes: "Dimanche: 7h00, 9h00, 11h00, 18h30 | Semaine: 6h30, 18h00",
+        confessions: "Confessions avant chaque messe",
+        adresse: "Paroisse Saint-Paul de Nylon, Douala",
+        image: "https://via.placeholder.com/800x600?text=Saint+Paul+Nylon"
+    },
+    "Paroisse Sacré-Cœur de New-Bell II": {
+        cure: "Abbé Pierre Loty BEGUEL BA OUM",
+        vicaires: "Abbé Etienne Marius DASSI KAMGAING, Résidence: Abbé Gabriel BEBOO",
+        secretaire: "Claire Etoundi",
+        telephone: "+237 600 000 110",
+        secretairePhone: "+237 600 000 110",
+        horaires: "Lundi-Vendredi: 8h30–12h30, 15h–18h | Samedi: 9h–12h",
+        messes: "Dimanche: 7h00, 9h00, 11h00, 18h30 | Semaine: 6h30, 18h00",
+        confessions: "Confessions avant chaque messe",
+        adresse: "Paroisse Sacré-Cœur, New-Bell II, Douala",
+        image: "https://via.placeholder.com/800x600?text=Sacré+Cœur+New+Bell"
+    },
+    "Paroisse Notre-Dame des Sept Douleurs de New Bell III": {
+        cure: "Abbé Pedro Elias MUNELI",
+        vicaires: "Abbé Guy Calvin MBEM MONKON, Abbé Ange Michel EYOCK, Abbé Jean-Pierre BENA",
+        secretaire: "Jean Manga",
+        telephone: "+237 600 000 111",
+        secretairePhone: "+237 600 000 111",
+        horaires: "Lundi-Vendredi: 8h30–12h30, 15h–18h | Samedi: 9h–12h",
+        messes: "Dimanche: 7h00, 9h00, 11h00, 18h30 | Semaine: 6h30, 18h00",
+        confessions: "Confessions avant chaque messe",
+        adresse: "Paroisse Notre-Dame des Sept Douleurs, New Bell III, Douala",
+        image: "https://via.placeholder.com/800x600?text=Sept+Douleurs"
+    },
+    "Paroisse Saint-Luc de New Bell": {
+        cure: "Abbé Benjamin MALELEL",
+        vicaires: "Abbé Duplex TAGNE WAFO",
+        secretaire: "Lucie Kengne",
+        telephone: "+237 600 000 112",
+        secretairePhone: "+237 600 000 112",
+        horaires: "Lundi-Vendredi: 8h30–12h30, 15h–18h | Samedi: 9h–12h",
+        messes: "Dimanche: 7h00, 9h00, 11h00, 18h30 | Semaine: 6h30, 18h00",
+        confessions: "Confessions avant chaque messe",
+        adresse: "Paroisse Saint-Luc de New Bell, Douala",
+        image: "https://via.placeholder.com/800x600?text=Saint+Luc+New+Bell"
+    },
+    "Paroisse Saint-Sacrement de Ndogbong": {
+        cure: "Abbé Sébastien MONGO BEHON (Vicaire Episcopal)",
+        vicaires: "Abbé Landry KEUNI TCHOKOTE, Abbé Martin NAG IKET",
+        secretaire: "Joseph Ebogo",
+        telephone: "+237 600 000 113",
+        secretairePhone: "+237 600 000 113",
+        horaires: "Lundi-Vendredi: 8h30–12h30, 15h–18h | Samedi: 9h–12h",
+        messes: "Dimanche: 7h00, 9h00, 11h00, 18h30 | Semaine: 6h30, 18h00",
+        confessions: "Confessions avant chaque messe",
+        adresse: "Paroisse Saint-Sacrement de Ndogbong, Douala",
+        image: "https://via.placeholder.com/800x600?text=Saint+Sacrement+Ndogbong"
+    },
+    "Paroisse Christ-Roi de la Cité-Sic": {
+        cure: "Abbé Aloys MBOMNDA",
+        vicaires: "Abbé Odilon MBOG, Abbé Gabriel TCHOUANGA, Abbé Johnmil KAMJA KWEKAM",
+        secretaire: "Anne-Marie Tchoffo",
+        telephone: "+237 600 000 114",
+        secretairePhone: "+237 600 000 114",
+        horaires: "Lundi-Vendredi: 8h30–12h30, 15h–18h | Samedi: 9h–12h",
+        messes: "Dimanche: 7h00, 9h00, 11h00, 18h30 | Semaine: 6h30, 18h00",
+        confessions: "Confessions avant chaque messe",
+        adresse: "Paroisse Christ-Roi, Cité-Sic, Douala",
+        image: "https://via.placeholder.com/800x600?text=Christ+Roi+Cité+Sic"
+    },
+    "Paroisse Saint-Esprit de Bépanda": {
+        cure: "P. Jean Luc MVONDO ATEBA, CSSp",
+        vicaires: "P. Samuel UTAJI, CSSp, P. James GAJIR, CSSp, Vicaire dominical: P. René TAMBE, CSSp",
+        secretaire: "David Nkoulou",
+        telephone: "+237 600 000 115",
+        secretairePhone: "+237 600 000 115",
+        horaires: "Lundi-Vendredi: 8h30–12h30, 15h–18h | Samedi: 9h–12h",
+        messes: "Dimanche: 7h00, 9h00, 11h00, 18h30 | Semaine: 6h30, 18h00",
+        confessions: "Confessions avant chaque messe",
+        adresse: "Paroisse Saint-Esprit de Bépanda, Douala",
+        image: "https://via.placeholder.com/800x600?text=Saint+Esprit+Bépanda"
+    },
+    "Paroisse Saint-Charles Lwanga de Makèpè Yonyong": {
+        cure: "Abbé Anicet BOUMNGO",
+        vicaires: "Abbé Jules LEP MBELECK, Abbé Joseph KOUKI, Stagiaire: Abbé Rodrigue Kévin KAMGA TASSE",
+        secretaire: "Martine Ngo",
+        telephone: "+237 600 000 116",
+        secretairePhone: "+237 600 000 116",
+        horaires: "Lundi-Vendredi: 8h30–12h30, 15h–18h | Samedi: 9h–12h",
+        messes: "Dimanche: 7h00, 9h00, 11h00, 18h30 | Semaine: 6h30, 18h00",
+        confessions: "Confessions avant chaque messe",
+        adresse: "Paroisse Saint-Charles Lwanga, Makèpè Yonyong, Douala",
+        image: "https://via.placeholder.com/800x600?text=Saint+Charles+Lwanga"
+    },
+    "Paroisse Saint-Mathias de Petit Wouri Bonamousongo": {
+        cure: "Abbé Dieudonné MBASSI OTELE",
+        vicaires: "Abbé Gustave YEBGA, Vicaire dominical: Abbé Christian THOUANI THOUANI",
+        secretaire: "Paul Mbarga",
+        telephone: "+237 600 000 117",
+        secretairePhone: "+237 600 000 117",
+        horaires: "Lundi-Vendredi: 8h30–12h30, 15h–18h | Samedi: 9h–12h",
+        messes: "Dimanche: 7h00, 9h00, 11h00, 18h30 | Semaine: 6h30, 18h00",
+        confessions: "Confessions avant chaque messe",
+        adresse: "Paroisse Saint-Mathias, Petit Wouri Bonamousongo, Douala",
+        image: "https://via.placeholder.com/800x600?text=Saint+Mathias"
+    },
+    "Paroisse universitaire Saint-Thomas d'Aquin": {
+        cure: "P. Romaric Thierno MANDABA, o.p (Prieur)",
+        vicaires: "P. Donald Martimien BIKIOLI, o.p, P. Dieu-Béni Vivencia ZAMBA ZAMBA, o.p, Vicaire dominical: P. Patrick DANGAVO YANDO, o.p",
+        secretaire: "Claire Etoundi",
+        telephone: "+237 600 000 118",
+        secretairePhone: "+237 600 000 118",
+        horaires: "Lundi-Vendredi: 8h30–12h30, 15h–18h | Samedi: 9h–12h",
+        messes: "Dimanche: 7h00, 9h00, 11h00, 18h30 | Semaine: 6h30, 18h00",
+        confessions: "Confessions avant chaque messe",
+        adresse: "Paroisse universitaire Saint-Thomas d'Aquin, Douala",
+        image: "https://via.placeholder.com/800x600?text=Saint+Thomas+Aquin"
+    },
+    "Paroisse Sainte-Monique de Cite-Sic Makepé": {
+        cure: "Abbé Dieudonné BAYEMEG (Vicaire Episcopal)",
+        vicaires: "Abbé Marcellin LITET, Abbé Moise d'Assise ABOULE, Abbé Jean-Pierre NGOMPON",
+        secretaire: "Jean Manga",
+        telephone: "+237 600 000 119",
+        secretairePhone: "+237 600 000 119",
+        horaires: "Lundi-Vendredi: 8h30–12h30, 15h–18h | Samedi: 9h–12h",
+        messes: "Dimanche: 7h00, 9h00, 11h00, 18h30 | Semaine: 6h30, 18h00",
+        confessions: "Confessions avant chaque messe",
+        adresse: "Paroisse Sainte-Monique, Cite-Sic Makepé, Douala",
+        image: "https://via.placeholder.com/800x600?text=Sainte+Monique"
+    },
+    "Paroisse Saint-Jean de Deido": {
+        cure: "Abbé Eloi NGAMBI",
+        vicaires: "Abbé Oscar Eric ELANGA, Abbé Pankratius NFORM NDANSA, Abbé Benoît MINYEM, Résidence: Abbé Christian MOUNDA MAWEL",
+        secretaire: "Lucie Kengne",
+        telephone: "+237 600 000 120",
+        secretairePhone: "+237 600 000 120",
+        horaires: "Lundi-Vendredi: 8h30–12h30, 15h–18h | Samedi: 9h–12h",
+        messes: "Dimanche: 7h00, 9h00, 11h00, 18h30 | Semaine: 6h30, 18h00",
+        confessions: "Confessions avant chaque messe",
+        adresse: "Paroisse Saint-Jean de Deido, Douala",
+        image: "https://via.placeholder.com/800x600?text=Saint+Jean+Deido"
+    },
+    "Paroisse Saint-Ambroise de Sable (Bonamoussadi)": {
+        cure: "Abbé Michel TIAKO",
+        vicaires: "Vicaire dominical: Abbé Juste GATCHESSI BOUGEKA",
+        secretaire: "Joseph Ebogo",
+        telephone: "+237 600 000 121",
+        secretairePhone: "+237 600 000 121",
+        horaires: "Lundi-Vendredi: 8h30–12h30, 15h–18h | Samedi: 9h–12h",
+        messes: "Dimanche: 7h00, 9h00, 11h00, 18h30 | Semaine: 6h30, 18h00",
+        confessions: "Confessions avant chaque messe",
+        adresse: "Paroisse Saint-Ambroise de Sable, Bonamoussadi, Douala",
+        image: "https://via.placeholder.com/800x600?text=Saint+Ambroise"
+    },
+    "Paroisse Notre-Dame de l'Annonciation de Bonamoussadi": {
+        cure: "P. BITEMO Saturnin Cloud, sj",
+        vicaires: "P. Dnladzer NSAME COLLEENS, sj, P. MVONDO Peter De-Sybel, sj, Vicaire dominical: P. Julien SESS N'GUESSAN, sj",
+        secretaire: "Anne-Marie Tchoffo",
+        telephone: "+237 600 000 122",
+        secretairePhone: "+237 600 000 122",
+        horaires: "Lundi-Vendredi: 8h30–12h30, 15h–18h | Samedi: 9h–12h",
+        messes: "Dimanche: 7h00, 9h00, 11h00, 18h30 | Semaine: 6h30, 18h00",
+        confessions: "Confessions avant chaque messe",
+        adresse: "Paroisse Notre-Dame de l'Annonciation, Bonamoussadi, Douala",
+        image: "https://via.placeholder.com/800x600?text=Annonciation+Bonamoussadi"
+    },
+    "Paroisse Saint-François d'Assise de Kotto": {
+        cure: "P. Patrick BULUS VANDI, CSSP",
+        vicaires: "P. Jean-Marie BASSOCK, CSSp, P. Joseph NYAM A. KOUNG, CSSp, Vicaire dominical: P. Pierre ERIC LEPEDO",
+        secretaire: "David Nkoulou",
+        telephone: "+237 600 000 123",
+        secretairePhone: "+237 600 000 123",
+        horaires: "Lundi-Vendredi: 8h30–12h30, 15h–18h | Samedi: 9h–12h",
+        messes: "Dimanche: 7h00, 9h00, 11h00, 18h30 | Semaine: 6h30, 18h00",
+        confessions: "Confessions avant chaque messe",
+        adresse: "Paroisse Saint-François d'Assise de Kotto, Douala",
+        image: "https://via.placeholder.com/800x600?text=Saint+François+Kotto"
+    },
+    "Paroisse Christ Sauveur de Banguè": {
+        cure: "P. Colbert WAYANG, OMI",
+        vicaires: "P. Raphaël BEYENE BEYENE, OMI, Fr. Bernard DEUZOUMBE DOUNA, OMI",
+        secretaire: "Martine Ngo",
+        telephone: "+237 600 000 124",
+        secretairePhone: "+237 600 000 124",
+        horaires: "Lundi-Vendredi: 8h30–12h30, 15h–18h | Samedi: 9h–12h",
+        messes: "Dimanche: 7h00, 9h00, 11h00, 18h30 | Semaine: 6h30, 18h00",
+        confessions: "Confessions avant chaque messe",
+        adresse: "Paroisse Christ Sauveur de Banguè, Douala",
+        image: "https://via.placeholder.com/800x600?text=Christ+Sauveur+Banguè"
+    },
+    "Paroisse Saint-Barthélémy de LOGBESSOU": {
+        cure: "Fr. Henry OGUERI, SMMM",
+        vicaires: "Fr. Remigius OKONKWO, SMMM, P. Gerald EHIBE, SMMM",
+        secretaire: "Paul Mbarga",
+        telephone: "+237 600 000 125",
+        secretairePhone: "+237 600 000 125",
+        horaires: "Lundi-Vendredi: 8h30–12h30, 15h–18h | Samedi: 9h–12h",
+        messes: "Dimanche: 7h00, 9h00, 11h00, 18h30 | Semaine: 6h30, 18h00",
+        confessions: "Confessions avant chaque messe",
+        adresse: "Paroisse Saint-Barthélémy de LOGBESSOU, Douala",
+        image: "https://via.placeholder.com/800x600?text=Saint+Barthélémy"
+    },
+    "Paroisse Saint-Basile de Logpom": {
+        cure: "Abbé Roger MEM",
+        vicaires: "Abbé Marius DJOMAHA, Stagiaire: Abbé Grégoire BALEBA",
+        secretaire: "Claire Etoundi",
+        telephone: "+237 600 000 126",
+        secretairePhone: "+237 600 000 126",
+        horaires: "Lundi-Vendredi: 8h30–12h30, 15h–18h | Samedi: 9h–12h",
+        messes: "Dimanche: 7h00, 9h00, 11h00, 18h30 | Semaine: 6h30, 18h00",
+        confessions: "Confessions avant chaque messe",
+        adresse: "Paroisse Saint-Basile de Logpom, Douala",
+        image: "https://via.placeholder.com/800x600?text=Saint+Basile+Logpom"
+    },
+    "Paroisse Sainte-Marie Madeleine de Logpom plateau": {
+        cure: "Abbé Innocent PAMBE",
+        vicaires: "Abbé Thomas MONGO, Abbé Sylvestre ETAME",
+        secretaire: "Jean Manga",
+        telephone: "+237 600 000 127",
+        secretairePhone: "+237 600 000 127",
+        horaires: "Lundi-Vendredi: 8h30–12h30, 15h–18h | Samedi: 9h–12h",
+        messes: "Dimanche: 7h00, 9h00, 11h00, 18h30 | Semaine: 6h30, 18h00",
+        confessions: "Confessions avant chaque messe",
+        adresse: "Paroisse Sainte-Marie Madeleine, Logpom plateau, Douala",
+        image: "https://via.placeholder.com/800x600?text=Marie+Madeleine"
+    },
+    "Paroisse Sainte-Marthe de Lendi": {
+        cure: "Abbé Etienne NDJIKI",
+        vicaires: "Abbé Laurent BALOG",
+        secretaire: "Lucie Kengne",
+        telephone: "+237 600 000 128",
+        secretairePhone: "+237 600 000 128",
+        horaires: "Lundi-Vendredi: 8h30–12h30, 15h–18h | Samedi: 9h–12h",
+        messes: "Dimanche: 7h00, 9h00, 11h00, 18h30 | Semaine: 6h30, 18h00",
+        confessions: "Confessions avant chaque messe",
+        adresse: "Paroisse Sainte-Marthe de Lendi, Douala",
+        image: "https://via.placeholder.com/800x600?text=Sainte+Marthe+Lendi"
+    },
+    "Paroisse Saint-Pie X de PK 14": {
+        cure: "Abbé Dieudonné Laurent TONYE (Vicaire Episcopal)",
+        vicaires: "Abbé Guy Rostand KUN V, Abbé Roger MINUE",
+        secretaire: "Joseph Ebogo",
+        telephone: "+237 600 000 129",
+        secretairePhone: "+237 600 000 129",
+        horaires: "Lundi-Vendredi: 8h30–12h30, 15h–18h | Samedi: 9h–12h",
+        messes: "Dimanche: 7h00, 9h00, 11h00, 18h30 | Semaine: 6h30, 18h00",
+        confessions: "Confessions avant chaque messe",
+        adresse: "Paroisse Saint-Pie X, PK 14, Douala",
+        image: "https://via.placeholder.com/800x600?text=Saint+Pie+X+PK14"
+    },
+    "Paroisse Saint-Victor de Sodikombo": {
+        cure: "Abbé Jean-Bosco YAMB",
+        vicaires: "Abbé Willy Bertrand CHAMGOUE",
+        secretaire: "Anne-Marie Tchoffo",
+        telephone: "+237 600 000 130",
+        secretairePhone: "+237 600 000 130",
+        horaires: "Lundi-Vendredi: 8h30–12h30, 15h–18h | Samedi: 9h–12h",
+        messes: "Dimanche: 7h00, 9h00, 11h00, 18h30 | Semaine: 6h30, 18h00",
+        confessions: "Confessions avant chaque messe",
+        adresse: "Paroisse Saint-Victor de Sodikombo, Douala",
+        image: "https://via.placeholder.com/800x600?text=Saint+Victor+Sodikombo"
+    },
+    "Paroisse saint-Thomas de PK 10": {
+        cure: "Abbé Aloys BILE",
+        vicaires: "Abbé Martin BILONG, Abbé Callixte KALDJOB",
+        secretaire: "David Nkoulou",
+        telephone: "+237 600 000 131",
+        secretairePhone: "+237 600 000 131",
+        horaires: "Lundi-Vendredi: 8h30–12h30, 15h–18h | Samedi: 9h–12h",
+        messes: "Dimanche: 7h00, 9h00, 11h00, 18h30 | Semaine: 6h30, 18h00",
+        confessions: "Confessions avant chaque messe",
+        adresse: "Paroisse saint-Thomas de PK 10, Douala",
+        image: "https://via.placeholder.com/800x600?text=Saint+Thomas+PK10"
+    },
+    "Paroisse Sainte-Thérèse de l'Enfant Jésus de Mbengue City": {
+        cure: "Abbé Jean-Pierre MUKENGESHAYI",
+        vicaires: "Abbé Francis GAPE, Retraité: Père Edmond NDZANA",
+        secretaire: "Martine Ngo",
+        telephone: "+237 600 000 132",
+        secretairePhone: "+237 600 000 132",
+        horaires: "Lundi-Vendredi: 8h30–12h30, 15h–18h | Samedi: 9h–12h",
+        messes: "Dimanche: 7h00, 9h00, 11h00, 18h30 | Semaine: 6h30, 18h00",
+        confessions: "Confessions avant chaque messe",
+        adresse: "Paroisse Sainte-Thérèse, Mbengue City, Douala",
+        image: "https://via.placeholder.com/800x600?text=Sainte+Thérèse+Mbengue"
+    },
+    "Paroisse Epiphanie de PK 21": {
+        cure: "P. Séraphin-Claude MANGA, Cfc",
+        vicaires: "",
+        secretaire: "Paul Mbarga",
+        telephone: "+237 600 000 133",
+        secretairePhone: "+237 600 000 133",
+        horaires: "Lundi-Vendredi: 8h30–12h30, 15h–18h | Samedi: 9h–12h",
+        messes: "Dimanche: 7h00, 9h00, 11h00, 18h30 | Semaine: 6h30, 18h00",
+        confessions: "Confessions avant chaque messe",
+        adresse: "Paroisse Epiphanie de PK 21, Douala",
+        image: "https://via.placeholder.com/800x600?text=Epiphanie+PK21"
+    },
+    "Paroisse Saint-Benoît de Dallas et Nsape": {
+        cure: "Abbé Jésus Martial DEMELE",
+        vicaires: "Abbé Mesaac MBEH-NKAMBA",
+        secretaire: "Claire Etoundi",
+        telephone: "+237 600 000 134",
+        secretairePhone: "+237 600 000 134",
+        horaires: "Lundi-Vendredi: 8h30–12h30, 15h–18h | Samedi: 9h–12h",
+        messes: "Dimanche: 7h00, 9h00, 11h00, 18h30 | Semaine: 6h30, 18h00",
+        confessions: "Confessions avant chaque messe",
+        adresse: "Paroisse Saint-Benoît de Dallas et Nsape, Douala",
+        image: "https://via.placeholder.com/800x600?text=Saint+Benoît+Dallas"
+    },
+    "Paroisse Saint-Étienne de Mandjab": {
+        cure: "Abbé Hilaire Martial NDANGANG KETCHOGE",
+        vicaires: "Abbé Magloire FOYETH TCHIMI",
+        secretaire: "Jean Manga",
+        telephone: "+237 600 000 135",
+        secretairePhone: "+237 600 000 135",
+        horaires: "Lundi-Vendredi: 8h30–12h30, 15h–18h | Samedi: 9h–12h",
+        messes: "Dimanche: 7h00, 9h00, 11h00, 18h30 | Semaine: 6h30, 18h00",
+        confessions: "Confessions avant chaque messe",
+        adresse: "Paroisse Saint-Étienne de Mandjab, Douala",
+        image: "https://via.placeholder.com/800x600?text=Saint+Étienne+Mandjab"
+    },
+    "Paroisse Saint-Samuel de NGONJO": {
+        cure: "Abbé Dimitri TCHOKOUAGO YIAGUE",
+        vicaires: "Abbé Martial MVONDO DE ESSIMI",
+        secretaire: "Lucie Kengne",
+        telephone: "+237 600 000 136",
+        secretairePhone: "+237 600 000 136",
+        horaires: "Lundi-Vendredi: 8h30–12h30, 15h–18h | Samedi: 9h–12h",
+        messes: "Dimanche: 7h00, 9h00, 11h00, 18h30 | Semaine: 6h30, 18h00",
+        confessions: "Confessions avant chaque messe",
+        adresse: "Paroisse Saint-Samuel de NGONJO, Douala",
+        image: "https://via.placeholder.com/800x600?text=Saint+Samuel+Ngonjo"
+    },
+    "Paroisse Saint-Athanase de PK 17 - PK 18": {
+        cure: "Abbé Benoît MINYEM",
+        vicaires: "Abbé Cyrille EBOA DIKA",
+        secretaire: "Joseph Ebogo",
+        telephone: "+237 600 000 137",
+        secretairePhone: "+237 600 000 137",
+        horaires: "Lundi-Vendredi: 8h30–12h30, 15h–18h | Samedi: 9h–12h",
+        messes: "Dimanche: 7h00, 9h00, 11h00, 18h30 | Semaine: 6h30, 18h00",
+        confessions: "Confessions avant chaque messe",
+        adresse: "Paroisse Saint-Athanase, PK 17-18, Douala",
+        image: "https://via.placeholder.com/800x600?text=Saint+Athanase"
+    },
+    "Paroisse Saint-Laurent de PAPAS": {
+        cure: "Abbé Benjamin EYOCK",
+        vicaires: "Abbé Joseph MIMB",
+        secretaire: "Anne-Marie Tchoffo",
+        telephone: "+237 600 000 138",
+        secretairePhone: "+237 600 000 138",
+        horaires: "Lundi-Vendredi: 8h30–12h30, 15h–18h | Samedi: 9h–12h",
+        messes: "Dimanche: 7h00, 9h00, 11h00, 18h30 | Semaine: 6h30, 18h00",
+        confessions: "Confessions avant chaque messe",
+        adresse: "Paroisse Saint-Laurent de PAPAS, Douala",
+        image: "https://via.placeholder.com/800x600?text=Saint+Laurent+PAPAS"
+    },
+    "Paroisse Sainte-Cécile de MOUTONGO": {
+        cure: "Abbé Isidore SINGOG",
+        vicaires: "Abbé Thomas POUGUE BIYONG",
+        secretaire: "David Nkoulou",
+        telephone: "+237 600 000 139",
+        secretairePhone: "+237 600 000 139",
+        horaires: "Lundi-Vendredi: 8h30–12h30, 15h–18h | Samedi: 9h–12h",
+        messes: "Dimanche: 7h00, 9h00, 11h00, 18h30 | Semaine: 6h30, 18h00",
+        confessions: "Confessions avant chaque messe",
+        adresse: "Paroisse Sainte-Cécile de MOUTONGO, Douala",
+        image: "https://via.placeholder.com/800x600?text=Sainte+Cécile+Moutongo"
+    },
+    "Paroisse Saint-Paul VI de BONAMOUTONGO": {
+        cure: "Abbé Etienne BAKABA",
+        vicaires: "(Résidence Saint-Victor)",
+        secretaire: "Martine Ngo",
+        telephone: "+237 600 000 140",
+        secretairePhone: "+237 600 000 140",
+        horaires: "Lundi-Vendredi: 8h30–12h30, 15h–18h | Samedi: 9h–12h",
+        messes: "Dimanche: 7h00, 9h00, 11h00, 18h30 | Semaine: 6h30, 18h00",
+        confessions: "Confessions avant chaque messe",
+        adresse: "Paroisse Saint-Paul VI de BONAMOUTONGO, Douala",
+        image: "https://via.placeholder.com/800x600?text=Saint+Paul+VI"
+    },
+    "Paroisse Pentecôte de New Town Aéroport": {
+        cure: "P. Charles Marie HOUNGBO, FI (Vicaire épiscopal)",
+        vicaires: "P. Joseph Pierre Marie TSOBZE, FI, P. Ruffino Marie ILOEGBUNAM, FI",
+        secretaire: "Paul Mbarga",
+        telephone: "+237 600 000 141",
+        secretairePhone: "+237 600 000 141",
+        horaires: "Lundi-Vendredi: 8h30–12h30, 15h–18h | Samedi: 9h–12h",
+        messes: "Dimanche: 7h00, 9h00, 11h00, 18h30 | Semaine: 6h30, 18h00",
+        confessions: "Confessions avant chaque messe",
+        adresse: "Paroisse Pentecôte, New Town Aéroport, Douala",
+        image: "https://via.placeholder.com/800x600?text=Pentecôte+Aéroport"
+    },
+    "Paroisse Saint-François-Xavier d'Oyack": {
+        cure: "Abbé Engelbert BAYO BEGUEL",
+        vicaires: "Abbé Pierre Lionel SEMPEY, Abbé Pierre PENDA, Résidence: Abbé Louis-Rol NGUERAM",
+        secretaire: "Claire Etoundi",
+        telephone: "+237 600 000 142",
+        secretairePhone: "+237 600 000 142",
+        horaires: "Lundi-Vendredi: 8h30–12h30, 15h–18h | Samedi: 9h–12h",
+        messes: "Dimanche: 7h00, 9h00, 11h00, 18h30 | Semaine: 6h30, 18h00",
+        confessions: "Confessions avant chaque messe",
+        adresse: "Paroisse Saint-François-Xavier d'Oyack, Douala",
+        image: "https://via.placeholder.com/800x600?text=Saint+François+Xavier"
+    },
+    "Paroisse Sainte Trinité de Bllongué": {
+        cure: "Abbé Corneille WOMENI",
+        vicaires: "Abbé Roger LIMA, Abbé Ulrich YEMENI, Résidence: Abbé Joseph KONA",
+        secretaire: "Jean Manga",
+        telephone: "+237 600 000 143",
+        secretairePhone: "+237 600 000 143",
+        horaires: "Lundi-Vendredi: 8h30–12h30, 15h–18h | Samedi: 9h–12h",
+        messes: "Dimanche: 7h00, 9h00, 11h00, 18h30 | Semaine: 6h30, 18h00",
+        confessions: "Confessions avant chaque messe",
+        adresse: "Paroisse Sainte Trinité de Bllongué, Douala",
+        image: "https://via.placeholder.com/800x600?text=Sainte+Trinité+Bllongué"
+    },
+    "Paroisse Saint-Thaddée de Bobongo": {
+        cure: "Abbé Alexis MPAKO",
+        vicaires: "Abbé Bienvenu SONNA, Vicaire dominical: Abbé Cédric Calvin NGAWO SIANGA",
+        secretaire: "Lucie Kengne",
+        telephone: "+237 600 000 144",
+        secretairePhone: "+237 600 000 144",
+        horaires: "Lundi-Vendredi: 8h30–12h30, 15h–18h | Samedi: 9h–12h",
+        messes: "Dimanche: 7h00, 9h00, 11h00, 18h30 | Semaine: 6h30, 18h00",
+        confessions: "Confessions avant chaque messe",
+        adresse: "Paroisse Saint-Thaddée de Bobongo, Douala",
+        image: "https://via.placeholder.com/800x600?text=Saint+Thaddée+Bobongo"
+    },
+    "Paroisse Toussaint de Soboum": {
+        cure: "Abbé Jean-Noël NZEPANG MBOUYO",
+        vicaires: "Abbé François AYISSI BEDIME",
+        secretaire: "Joseph Ebogo",
+        telephone: "+237 600 000 145",
+        secretairePhone: "+237 600 000 145",
+        horaires: "Lundi-Vendredi: 8h30–12h30, 15h–18h | Samedi: 9h–12h",
+        messes: "Dimanche: 7h00, 9h00, 11h00, 18h30 | Semaine: 6h30, 18h00",
+        confessions: "Confessions avant chaque messe",
+        adresse: "Paroisse Toussaint de Soboum, Douala",
+        image: "https://via.placeholder.com/800x600?text=Toussaint+Soboum"
+    },
+    "Paroisse Sainte-Agnès de Madagascar": {
+        cure: "P. Christian Michael ONYEMA CHIGOZIE, Omi",
+        vicaires: "P. Hyacinth UMUNNA CHINONSO, Omi",
+        secretaire: "Anne-Marie Tchoffo",
+        telephone: "+237 600 000 146",
+        secretairePhone: "+237 600 000 146",
+        horaires: "Lundi-Vendredi: 8h30–12h30, 15h–18h | Samedi: 9h–12h",
+        messes: "Dimanche: 7h00, 9h00, 11h00, 18h30 | Semaine: 6h30, 18h00",
+        confessions: "Confessions avant chaque messe",
+        adresse: "Paroisse Sainte-Agnès de Madagascar, Douala",
+        image: "https://via.placeholder.com/800x600?text=Sainte+Agnès+Madagascar"
+    },
+    "Paroisse Sainte-Agathe de Bois de Singe": {
+        cure: "Abbé Gaétan KAPTUE KAPTUE",
+        vicaires: "Stagiaire: Abbé Franc Victor PENTE NGANGO",
+        secretaire: "David Nkoulou",
+        telephone: "+237 600 000 147",
+        secretairePhone: "+237 600 000 147",
+        horaires: "Lundi-Vendredi: 8h30–12h30, 15h–18h | Samedi: 9h–12h",
+        messes: "Dimanche: 7h00, 9h00, 11h00, 18h30 | Semaine: 6h30, 18h00",
+        confessions: "Confessions avant chaque messe",
+        adresse: "Paroisse Sainte-Agathe de Bois de Singe, Douala",
+        image: "https://via.placeholder.com/800x600?text=Sainte+Agathe+Bois+Singe"
+    },
+    "Paroisse Sacré-Cœur de NdogPassi II": {
+        cure: "Abbé Cyrille NANA (Vicaire Episcopal)",
+        vicaires: "Abbé Henri-Noël NDJEYEP NDJEYEP, Abbé Pierre NDJOG",
+        secretaire: "Martine Ngo",
+        telephone: "+237 600 000 148",
+        secretairePhone: "+237 600 000 148",
+        horaires: "Lundi-Vendredi: 8h30–12h30, 15h–18h | Samedi: 9h–12h",
+        messes: "Dimanche: 7h00, 9h00, 11h00, 18h30 | Semaine: 6h30, 18h00",
+        confessions: "Confessions avant chaque messe",
+        adresse: "Paroisse Sacré-Cœur de NdogPassi II, Douala",
+        image: "https://via.placeholder.com/800x600?text=Sacré+Cœur+NdogPassi"
+    },
+    "Paroisse Saint-Jacques de Logbaba Plateau": {
+        cure: "P. Alain Martin TCHIEMEGNE JOUENANG, VD",
+        vicaires: "P. Jose Luis HERNANDEZ RODRIGUES, VD, Communauté: P. Juan ROPE EBUOLORI, VD, Stagiaire: Fr. Daniel MUHUPU, VD",
+        secretaire: "Paul Mbarga",
+        telephone: "+237 600 000 149",
+        secretairePhone: "+237 600 000 149",
+        horaires: "Lundi-Vendredi: 8h30–12h30, 15h–18h | Samedi: 9h–12h",
+        messes: "Dimanche: 7h00, 9h00, 11h00, 18h30 | Semaine: 6h30, 18h00",
+        confessions: "Confessions avant chaque messe",
+        adresse: "Paroisse Saint-Jacques de Logbaba Plateau, Douala",
+        image: "https://via.placeholder.com/800x600?text=Saint+Jacques+Logbaba"
+    },
+    "Paroisse Sainte-Famille de la Zone de recasement de NdogPassi III": {
+        cure: "Abbé Laurent OUEDRAOGO",
+        vicaires: "Abbé Ignatius MUSHAUKO, Abbé Christian PAM TCHAMENI, Stagiaire: Abbé Narcisse SEUHEU KAMSSOU",
+        secretaire: "Claire Etoundi",
+        telephone: "+237 600 000 150",
+        secretairePhone: "+237 600 000 150",
+        horaires: "Lundi-Vendredi: 8h30–12h30, 15h–18h | Samedi: 9h–12h",
+        messes: "Dimanche: 7h00, 9h00, 11h00, 18h30 | Semaine: 6h30, 18h00",
+        confessions: "Confessions avant chaque messe",
+        adresse: "Paroisse Sainte-Famille, NdogPassi III, Douala",
+        image: "https://via.placeholder.com/800x600?text=Sainte+Famille+NdogPassi"
+    },
+    "Paroisse Marie Reine des Apôtres de Ndogpassi II": {
+        cure: "P. Benoît Magloire ATEMENGUE, SAC",
+        vicaires: "P. Fidelis ABANG ABAH, SAC",
+        secretaire: "Jean Manga",
+        telephone: "+237 600 000 151",
+        secretairePhone: "+237 600 000 151",
+        horaires: "Lundi-Vendredi: 8h30–12h30, 15h–18h | Samedi: 9h–12h",
+        messes: "Dimanche: 7h00, 9h00, 11h00, 18h30 | Semaine: 6h30, 18h00",
+        confessions: "Confessions avant chaque messe",
+        adresse: "Paroisse Marie Reine des Apôtres, Ndogpassi II, Douala",
+        image: "https://via.placeholder.com/800x600?text=Marie+Reine+Apôtres"
+    },
+    "Paroisse Saint-Augustin de Yanka (Ndogpassi II)": {
+        cure: "Abbé Michel NDJOGHE",
+        vicaires: "Abbé Arnaud YAMB",
+        secretaire: "Lucie Kengne",
+        telephone: "+237 600 000 152",
+        secretairePhone: "+237 600 000 152",
+        horaires: "Lundi-Vendredi: 8h30–12h30, 15h–18h | Samedi: 9h–12h",
+        messes: "Dimanche: 7h00, 9h00, 11h00, 18h30 | Semaine: 6h30, 18h00",
+        confessions: "Confessions avant chaque messe",
+        adresse: "Paroisse Saint-Augustin de Yanka, Douala",
+        image: "https://via.placeholder.com/800x600?text=Saint+Augustin+Yanka"
+    },
+    "Paroisse Saint-Clément de Nyalla Kambo": {
+        cure: "Abbé Jean-Noël FONGANG",
+        vicaires: "Abbé Antoine Georges BIKAÏ BIKAÏ",
+        secretaire: "Joseph Ebogo",
+        telephone: "+237 600 000 153",
+        secretairePhone: "+237 600 000 153",
+        horaires: "Lundi-Vendredi: 8h30–12h30, 15h–18h | Samedi: 9h–12h",
+        messes: "Dimanche: 7h00, 9h00, 11h00, 18h30 | Semaine: 6h30, 18h00",
+        confessions: "Confessions avant chaque messe",
+        adresse: "Paroisse Saint-Clément de Nyalla Kambo, Douala",
+        image: "https://via.placeholder.com/800x600?text=Saint+Clément+Nyalla"
+    },
+    "Paroisse Saint-Louis de Bonabéri": {
+        cure: "Abbé Michel TCHOUMBOU (Vicaire Episcopal)",
+        vicaires: "Abbé Guillaume Bonaventure OMGBA ONAMBELE, Abbé Paul Claver NOA NTEME, Retraité: Abbé Antoine BABE",
+        secretaire: "Anne-Marie Tchoffo",
+        telephone: "+237 600 000 154",
+        secretairePhone: "+237 600 000 154",
+        horaires: "Lundi-Vendredi: 8h30–12h30, 15h–18h | Samedi: 9h–12h",
+        messes: "Dimanche: 7h00, 9h00, 11h00, 18h30 | Semaine: 6h30, 18h00",
+        confessions: "Confessions avant chaque messe",
+        adresse: "Paroisse Saint-Louis de Bonabéri, Douala",
+        image: "https://via.placeholder.com/800x600?text=Saint+Louis+Bonabéri"
+    },
+    "Paroisse Notre-Dame de l'Amour de Ngwele (Bonabéri)": {
+        cure: "Abbé Janvier WOPOULE",
+        vicaires: "Abbé Joseph NKENGMOE",
+        secretaire: "David Nkoulou",
+        telephone: "+237 600 000 155",
+        secretairePhone: "+237 600 000 155",
+        horaires: "Lundi-Vendredi: 8h30–12h30, 15h–18h | Samedi: 9h–12h",
+        messes: "Dimanche: 7h00, 9h00, 11h00, 18h30 | Semaine: 6h30, 18h00",
+        confessions: "Confessions avant chaque messe",
+        adresse: "Paroisse Notre-Dame de l'Amour, Ngwele, Bonabéri, Douala",
+        image: "https://via.placeholder.com/800x600?text=Notre-Dame+Amour+Ngwele"
+    },
+    "Paroisse Saint-Grégoire de Ndobo (Bonabéri)": {
+        cure: "P. Pierre Armel ABESSOLO MBARGA, cmf",
+        vicaires: "P. Wilson ANKIAMBOM TIM, cmf, P. Moïse MOUMASSOU, cmf",
+        secretaire: "Martine Ngo",
+        telephone: "+237 600 000 156",
+        secretairePhone: "+237 600 000 156",
+        horaires: "Lundi-Vendredi: 8h30–12h30, 15h–18h | Samedi: 9h–12h",
+        messes: "Dimanche: 7h00, 9h00, 11h00, 18h30 | Semaine: 6h30, 18h00",
+        confessions: "Confessions avant chaque messe",
+        adresse: "Paroisse Saint-Grégoire de Ndobo, Bonabéri, Douala",
+        image: "https://via.placeholder.com/800x600?text=Saint+Grégoire+Ndobo"
+    },
+    "Paroisse Saint-Joseph de Bonandalè (Bonabéri)": {
+        cure: "Fr. Livinus AGY, msp",
+        vicaires: "Fr. Festus EZEAGU, msp, Abbé Guy Stanislas SILAHO, Stagiaire: Abbé Christian OFOMA",
+        secretaire: "Paul Mbarga",
+        telephone: "+237 600 000 157",
+        secretairePhone: "+237 600 000 157",
+        horaires: "Lundi-Vendredi: 8h30–12h30, 15h–18h | Samedi: 9h–12h",
+        messes: "Dimanche: 7h00, 9h00, 11h00, 18h30 | Semaine: 6h30, 18h00",
+        confessions: "Confessions avant chaque messe",
+        adresse: "Paroisse Saint-Joseph de Bonandalè, Bonabéri, Douala",
+        image: "https://via.placeholder.com/800x600?text=Saint+Joseph+Bonandalè"
+    },
+    "Paroisse Saint-Pierre Grand Hangar (Bonabéri)": {
+        cure: "Abbé André Fils MBEM",
+        vicaires: "Abbé Samuel NDJOKE, Abbé Engelbert Joachim MBARGA MBARGA",
+        secretaire: "Claire Etoundi",
+        telephone: "+237 600 000 158",
+        secretairePhone: "+237 600 000 158",
+        horaires: "Lundi-Vendredi: 8h30–12h30, 15h–18h | Samedi: 9h–12h",
+        messes: "Dimanche: 7h00, 9h00, 11h00, 18h30 | Semaine: 6h30, 18h00",
+        confessions: "Confessions avant chaque messe",
+        adresse: "Paroisse Saint-Pierre Grand Hangar, Bonabéri, Douala",
+        image: "https://via.placeholder.com/800x600?text=Saint+Pierre+Grand+Hangar"
+    },
+    "Paroisse Notre-Dame du Rosaire de Mambanda (Bonabéri)": {
+        cure: "P. Joseph YONKI, Cm",
+        vicaires: "P. Merlin TABELA, Cm, P. Christian Adalbert OLOMO ALOA, Cm",
+        secretaire: "Jean Manga",
+        telephone: "+237 600 000 159",
+        secretairePhone: "+237 600 000 159",
+        horaires: "Lundi-Vendredi: 8h30–12h30, 15h–18h | Samedi: 9h–12h",
+        messes: "Dimanche: 7h00, 9h00, 11h00, 18h30 | Semaine: 6h30, 18h00",
+        confessions: "Confessions avant chaque messe",
+        adresse: "Paroisse Notre-Dame du Rosaire, Mambanda, Bonabéri, Douala",
+        image: "https://via.placeholder.com/800x600?text=Notre-Dame+Rosaire+Mambanda"
+    },
+    "Paroisse Saint-Gabriel Archange de Mpanjo - Bonaminkano (Bonabéri)": {
+        cure: "Abbé Benjamin Guy MINYEM",
+        vicaires: "Abbé Marcel BINYA, Abbé Lucien SIEMANIANOU",
+        secretaire: "Lucie Kengne",
+        telephone: "+237 600 000 160",
+        secretairePhone: "+237 600 000 160",
+        horaires: "Lundi-Vendredi: 8h30–12h30, 15h–18h | Samedi: 9h–12h",
+        messes: "Dimanche: 7h00, 9h00, 11h00, 18h30 | Semaine: 6h30, 18h00",
+        confessions: "Confessions avant chaque messe",
+        adresse: "Paroisse Saint-Gabriel Archange, Mpanjo-Bonaminkano, Bonabéri, Douala",
+        image: "https://via.placeholder.com/800x600?text=Saint+Gabriel+Mpanjo"
+    },
+    "Paroisse Saint-Philippe du Quartier Bilingue (Bonabéri)": {
+        cure: "Abbé Innocent KAMENI",
+        vicaires: "Vicaire dominical: Abbé Simon Gabriel SONG",
+        secretaire: "Joseph Ebogo",
+        telephone: "+237 600 000 161",
+        secretairePhone: "+237 600 000 161",
+        horaires: "Lundi-Vendredi: 8h30–12h30, 15h–18h | Samedi: 9h–12h",
+        messes: "Dimanche: 7h00, 9h00, 11h00, 18h30 | Semaine: 6h30, 18h00",
+        confessions: "Confessions avant chaque messe",
+        adresse: "Paroisse Saint-Philippe, Quartier Bilingue, Bonabéri, Douala",
+        image: "https://via.placeholder.com/800x600?text=Saint+Philippe+Bilingue"
+    },
+    "Paroisse Saint-Timothée de SODIKO VILLE (Bonabéri)": {
+        cure: "P. Florian NANA SIMO, SC1",
+        vicaires: "P. Arnaud AKANOUO TASSE, SC1, P. Tata Charles TINKU, SC1, Vicaire dominical: P. Théophile MBOPDA, SC1",
+        secretaire: "Anne-Marie Tchoffo",
+        telephone: "+237 600 000 162",
+        secretairePhone: "+237 600 000 162",
+        horaires: "Lundi-Vendredi: 8h30–12h30, 15h–18h | Samedi: 9h–12h",
+        messes: "Dimanche: 7h00, 9h00, 11h00, 18h30 | Semaine: 6h30, 18h00",
+        confessions: "Confessions avant chaque messe",
+        adresse: "Paroisse Saint-Timothée, SODIKO VILLE, Bonabéri, Douala",
+        image: "https://via.placeholder.com/800x600?text=Saint+Timothée+Sodiko"
+    },
+    "Paroisse Saint-Bonaventure de TOWOH (Bonabéri)": {
+        cure: "P. Eric Emac YEMENE",
+        vicaires: "P. Vital NKENLIFACK, Stagiaire: Frère Eric TANA-EPMENE SAMNWIN",
+        secretaire: "David Nkoulou",
+        telephone: "+237 600 000 163",
+        secretairePhone: "+237 600 000 163",
+        horaires: "Lundi-Vendredi: 8h30–12h30, 15h–18h | Samedi: 9h–12h",
+        messes: "Dimanche: 7h00, 9h00, 11h00, 18h30 | Semaine: 6h30, 18h00",
+        confessions: "Confessions avant chaque messe",
+        adresse: "Paroisse Saint-Bonaventure de TOWOH, Bonabéri, Douala",
+        image: "https://via.placeholder.com/800x600?text=Saint+Bonaventure+Towoh"
+    },
+    "Paroisse Saint-Raphaël Archange de Bojongo (Bonabéri)": {
+        cure: "P. Marius TAPANG, mhm",
+        vicaires: "P. Philip Shube BAWE, mhm",
+        secretaire: "Martine Ngo",
+        telephone: "+237 600 000 164",
+        secretairePhone: "+237 600 000 164",
+        horaires: "Lundi-Vendredi: 8h30–12h30, 15h–18h | Samedi: 9h–12h",
+        messes: "Dimanche: 7h00, 9h00, 11h00, 18h30 | Semaine: 6h30, 18h00",
+        confessions: "Confessions avant chaque messe",
+        adresse: "Paroisse Saint-Raphaël Archange de Bojongo, Bonabéri, Douala",
+        image: "https://via.placeholder.com/800x600?text=Saint+Raphaël+Bojongo"
+    },
+    "Paroisse Saint-Kisito de Sodiko Village (Bonabéri)": {
+        cure: "Abbé François Laurent SIE",
+        vicaires: "Abbé Dominique TEMA DEMAYA",
+        secretaire: "Paul Mbarga",
+        telephone: "+237 600 000 165",
+        secretairePhone: "+237 600 000 165",
+        horaires: "Lundi-Vendredi: 8h30–12h30, 15h–18h | Samedi: 9h–12h",
+        messes: "Dimanche: 7h00, 9h00, 11h00, 18h30 | Semaine: 6h30, 18h00",
+        confessions: "Confessions avant chaque messe",
+        adresse: "Paroisse Saint-Kisito de Sodiko Village, Bonabéri, Douala",
+        image: "https://via.placeholder.com/800x600?text=Saint+Kisito+Sodiko"
+    },
+    "Paroisse Sainte Catherine de Sienne de Minkwele (Bonabéri)": {
+        cure: "P. Jean Paul KAMAHÉU, o.p",
+        vicaires: "P. Saint Crépin Le Juste NGANANAM-DEKOY, o.p, Vicaire dominical: P. Dieudonné ZOA OMGBA, o.p",
+        secretaire: "Claire Etoundi",
+        telephone: "+237 600 000 166",
+        secretairePhone: "+237 600 000 166",
+        horaires: "Lundi-Vendredi: 8h30–12h30, 15h–18h | Samedi: 9h–12h",
+        messes: "Dimanche: 7h00, 9h00, 11h00, 18h30 | Semaine: 6h30, 18h00",
+        confessions: "Confessions avant chaque messe",
+        adresse: "Paroisse Sainte Catherine de Sienne, Minkwele, Bonabéri, Douala",
+        image: "https://via.placeholder.com/800x600?text=Sainte+Catherine+Sienne"
+    },
+    "Paroisse Cœur Immaculée de Marie de Ndobo": {
+        cure: "Abbé Rigobert TEMPO",
+        vicaires: "",
+        secretaire: "Jean Manga",
+        telephone: "+237 600 000 167",
+        secretairePhone: "+237 600 000 167",
+        horaires: "Lundi-Vendredi: 8h30–12h30, 15h–18h | Samedi: 9h–12h",
+        messes: "Dimanche: 7h00, 9h00, 11h00, 18h30 | Semaine: 6h30, 18h00",
+        confessions: "Confessions avant chaque messe",
+        adresse: "Paroisse Cœur Immaculée de Marie de Ndobo, Douala",
+        image: "https://via.placeholder.com/800x600?text=Cœur+Immaculée+Marie+Ndobo"
+    },
+    "Paroisse Saint-Marc de la Cite des Palmiers": {
+        cure: "Abbé Bernard HONA TONYE (Vicaire Episcopal)",
+        vicaires: "Abbé René NYUEBHA, Abbé Jacques Armel Lidvain ENOME LAKASE, Abbé Simon Pierre BAÏHANA MADOU",
+        secretaire: "Lucie Kengne",
+        telephone: "+237 600 000 168",
+        secretairePhone: "+237 600 000 168",
+        horaires: "Lundi-Vendredi: 8h30–12h30, 15h–18h | Samedi: 9h–12h",
+        messes: "Dimanche: 7h00, 9h00, 11h00, 18h30 | Semaine: 6h30, 18h00",
+        confessions: "Confessions avant chaque messe",
+        adresse: "Paroisse Saint-Marc, Cite des Palmiers, Douala",
+        image: "https://via.placeholder.com/800x600?text=Saint+Marc+Palmiers"
+    },
+    "Paroisse Saint-Simon de Kondi": {
+        cure: "Abbé Romuald LOGMO",
+        vicaires: "Abbé Amos BAMAL, Abbé Paulin Parfait MBONGUO BEKET, Repos: Abbé Pascal KAMGA",
+        secretaire: "Joseph Ebogo",
+        telephone: "+237 600 000 169",
+        secretairePhone: "+237 600 000 169",
+        horaires: "Lundi-Vendredi: 8h30–12h30, 15h–18h | Samedi: 9h–12h",
+        messes: "Dimanche: 7h00, 9h00, 11h00, 18h30 | Semaine: 6h30, 18h00",
+        confessions: "Confessions avant chaque messe",
+        adresse: "Paroisse Saint-Simon de Kondi, Douala",
+        image: "https://via.placeholder.com/800x600?text=Saint+Simon+Kondi"
+    },
+    "Paroisse Saint-Michel Archange de Nyalla": {
+        cure: "Abbé Marc MAKANI",
+        vicaires: "Abbé Paul Romuald BIBOUM, Abbé André NTAMAG",
+        secretaire: "Anne-Marie Tchoffo",
+        telephone: "+237 600 000 170",
+        secretairePhone: "+237 600 000 170",
+        horaires: "Lundi-Vendredi: 8h30–12h30, 15h–18h | Samedi: 9h–12h",
+        messes: "Dimanche: 7h00, 9h00, 11h00, 18h30 | Semaine: 6h30, 18h00",
+        confessions: "Confessions avant chaque messe",
+        adresse: "Paroisse Saint-Michel Archange de Nyalla, Douala",
+        image: "https://via.placeholder.com/800x600?text=Saint+Michel+Nyalla"
+    },
+    "Paroisse Saint-Jean Marie Vianney de Beedi": {
+        cure: "P. Roland AYISSI, CMF",
+        vicaires: "P. Annasetus AWONTUH CHUO, CMF, P. Cédric Raoul TEDONGMO, CMF, Résident: P. Jean-Baptiste ZIBI, CMF, Stagiaire: Fr. Michael OWINO ONDONGO, CMF",
+        secretaire: "David Nkoulou",
+        telephone: "+237 600 000 171",
+        secretairePhone: "+237 600 000 171",
+        horaires: "Lundi-Vendredi: 8h30–12h30, 15h–18h | Samedi: 9h–12h",
+        messes: "Dimanche: 7h00, 9h00, 11h00, 18h30 | Semaine: 6h30, 18h00",
+        confessions: "Confessions avant chaque messe",
+        adresse: "Paroisse Saint-Jean Marie Vianney de Beedi, Douala",
+        image: "https://via.placeholder.com/800x600?text=Saint+Jean+Vianney+Beedi"
+    },
+    "Paroisse Saint-Matthieu de Ndog-Mbèè": {
+        cure: "Abbé Luc MBOUGUE",
+        vicaires: "Abbé Michel NYEMB",
+        secretaire: "Martine Ngo",
+        telephone: "+237 600 000 172",
+        secretairePhone: "+237 600 000 172",
+        horaires: "Lundi-Vendredi: 8h30–12h30, 15h–18h | Samedi: 9h–12h",
+        messes: "Dimanche: 7h00, 9h00, 11h00, 18h30 | Semaine: 6h30, 18h00",
+        confessions: "Confessions avant chaque messe",
+        adresse: "Paroisse Saint-Matthieu de Ndog-Mbèè, Douala",
+        image: "https://via.placeholder.com/800x600?text=Saint+Matthieu+Ndog+Mbèè"
+    },
+    "Paroisse Notre Dame de Lourdes de Japoma": {
+        cure: "Abbé Jacques BAKOUBA",
+        vicaires: "Abbé Yves NGAN, Abbé Giresse Valaire NOPIEGUE TSOG",
+        secretaire: "Paul Mbarga",
+        telephone: "+237 600 000 173",
+        secretairePhone: "+237 600 000 173",
+        horaires: "Lundi-Vendredi: 8h30–12h30, 15h–18h | Samedi: 9h–12h",
+        messes: "Dimanche: 7h00, 9h00, 11h00, 18h30 | Semaine: 6h30, 18h00",
+        confessions: "Confessions avant chaque messe",
+        adresse: "Paroisse Notre Dame de Lourdes de Japoma, Douala",
+        image: "https://via.placeholder.com/800x600?text=Notre+Dame+Lourdes+Japoma"
+    },
+    "Paroisse Saint-Corneille de NKOLMBONG": {
+        cure: "Abbé Meinrad-Pierre HEBGA NDJOCK",
+        vicaires: "Abbé Ignace Nicaise ATANGANA OYOMO EDOA, Abbé Raoul PAHBUM TSAFACK",
+        secretaire: "Claire Etoundi",
+        telephone: "+237 600 000 174",
+        secretairePhone: "+237 600 000 174",
+        horaires: "Lundi-Vendredi: 8h30–12h30, 15h–18h | Samedi: 9h–12h",
+        messes: "Dimanche: 7h00, 9h00, 11h00, 18h30 | Semaine: 6h30, 18h00",
+        confessions: "Confessions avant chaque messe",
+        adresse: "Paroisse Saint-Corneille de NKOLMBONG, Douala",
+        image: "https://via.placeholder.com/800x600?text=Saint+Corneille+Nkolmbong"
+    },
+    "Paroisse Saint-Hippolyte de la Cité Chirac": {
+        cure: "Abbé Boris Venant NTOUDA",
+        vicaires: "Abbé Romaric LEKO-GNIA LEKO-GNIA",
+        secretaire: "Jean Manga",
+        telephone: "+237 600 000 175",
+        secretairePhone: "+237 600 000 175",
+        horaires: "Lundi-Vendredi: 8h30–12h30, 15h–18h | Samedi: 9h–12h",
+        messes: "Dimanche: 7h00, 9h00, 11h00, 18h30 | Semaine: 6h30, 18h00",
+        confessions: "Confessions avant chaque messe",
+        adresse: "Paroisse Saint-Hippolyte, Cité Chirac, Douala",
+        image: "https://via.placeholder.com/800x600?text=Saint+Hippolyte+Chirac"
+    },
+    "Paroisse Saint-Cyprien de Maetur Ngodi Bakoko": {
+        cure: "Abbé Justin GAÏSEBARA",
+        vicaires: "Abbé Simon GWODOG TANG",
+        secretaire: "Lucie Kengne",
+        telephone: "+237 600 000 176",
+        secretairePhone: "+237 600 000 176",
+        horaires: "Lundi-Vendredi: 8h30–12h30, 15h–18h | Samedi: 9h–12h",
+        messes: "Dimanche: 7h00, 9h00, 11h00, 18h30 | Semaine: 6h30, 18h00",
+        confessions: "Confessions avant chaque messe",
+        adresse: "Paroisse Saint-Cyprien de Maetur Ngodi Bakoko, Douala",
+        image: "https://via.placeholder.com/800x600?text=Saint+Cyprien+Maetur"
+    },
+    "Paroisse Saint-Justin de Yassa": {
+        cure: "Abbé Michel KILAMA KILAMA",
+        vicaires: "Abbé Jean-Pierre BATOUM",
+        secretaire: "Joseph Ebogo",
+        telephone: "+237 600 000 177",
+        secretairePhone: "+237 600 000 177",
+        horaires: "Lundi-Vendredi: 8h30–12h30, 15h–18h | Samedi: 9h–12h",
+        messes: "Dimanche: 7h00, 9h00, 11h00, 18h30 | Semaine: 6h30, 18h00",
+        confessions: "Confessions avant chaque messe",
+        adresse: "Paroisse Saint-Justin de Yassa, Douala",
+        image: "https://via.placeholder.com/800x600?text=Saint+Justin+Yassa"
+    },
+    "Paroisse Saint-Bernard de NKEMBE (Nyalla)": {
+        cure: "Abbé Alain AMASSOLA DOUALLA",
+        vicaires: "Abbé Aloys Melkisédeck TANG",
+        secretaire: "Anne-Marie Tchoffo",
+        telephone: "+237 600 000 178",
+        secretairePhone: "+237 600 000 178",
+        horaires: "Lundi-Vendredi: 8h30–12h30, 15h–18h | Samedi: 9h–12h",
+        messes: "Dimanche: 7h00, 9h00, 11h00, 18h30 | Semaine: 6h30, 18h00",
+        confessions: "Confessions avant chaque messe",
+        adresse: "Paroisse Saint-Bernard de NKEMBE, Nyalla, Douala",
+        image: "https://via.placeholder.com/800x600?text=Saint+Bernard+Nkembe"
+    },
+    "Paroisse Saint-Jean XXIII de Pahianga et Cocotier de Japoma": {
+        cure: "Abbé Georges Philippe Raphaël ZONGO",
+        vicaires: "",
+        secretaire: "David Nkoulou",
+        telephone: "+237 600 000 179",
+        secretairePhone: "+237 600 000 179",
+        horaires: "Lundi-Vendredi: 8h30–12h30, 15h–18h | Samedi: 9h–12h",
+        messes: "Dimanche: 7h00, 9h00, 11h00, 18h30 | Semaine: 6h30, 18h00",
+        confessions: "Confessions avant chaque messe",
+        adresse: "Paroisse Saint-Jean XXIII, Pahianga et Cocotier de Japoma, Douala",
+        image: "https://via.placeholder.com/800x600?text=Saint+Jean+XXIII+Pahianga"
+    },
+    "Paroisse Jésus Bon Pasteur de Mboko": {
+        cure: "Abbé Serge TSAFACK (Vicaire Episcopal)",
+        vicaires: "Abbé Ignace MPOMO, Abbé Romaric NGUETCHUE MOYO, Résidence: Abbé Dorcass KUATE",
+        secretaire: "Martine Ngo",
+        telephone: "+237 600 000 180",
+        secretairePhone: "+237 600 000 180",
+        horaires: "Lundi-Vendredi: 8h30–12h30, 15h–18h | Samedi: 9h–12h",
+        messes: "Dimanche: 7h00, 9h00, 11h00, 18h30 | Semaine: 6h30, 18h00",
+        confessions: "Confessions avant chaque messe",
+        adresse: "Paroisse Jésus Bon Pasteur de Mboko, Douala",
+        image: "https://via.placeholder.com/800x600?text=Jésus+Bon+Pasteur+Mboko"
+    },
+    "Paroisse Saint-Jude de Ngodi Bakoko": {
+        cure: "P. Robert KOWA SADO, Sx",
+        vicaires: "P. Walian Hebry Vcidius, Sx",
+        secretaire: "Paul Mbarga",
+        telephone: "+237 600 000 181",
+        secretairePhone: "+237 600 000 181",
+        horaires: "Lundi-Vendredi: 8h30–12h30, 15h–18h | Samedi: 9h–12h",
+        messes: "Dimanche: 7h00, 9h00, 11h00, 18h30 | Semaine: 6h30, 18h00",
+        confessions: "Confessions avant chaque messe",
+        adresse: "Paroisse Saint-Jude de Ngodi Bakoko, Douala",
+        image: "https://via.placeholder.com/800x600?text=Saint+Jude+Ngodi+Bakoko"
+    },
+    "Paroisse Jésus Libérateur": {
+        cure: "P. Yonovan Cahiono YUVENTUS, sx (Ad interim)",
+        vicaires: "P. Herman KENTSA SOKENG, sx",
+        secretaire: "Claire Etoundi",
+        telephone: "+237 600 000 182",
+        secretairePhone: "+237 600 000 182",
+        horaires: "Lundi-Vendredi: 8h30–12h30, 15h–18h | Samedi: 9h–12h",
+        messes: "Dimanche: 7h00, 9h00, 11h00, 18h30 | Semaine: 6h30, 18h00",
+        confessions: "Confessions avant chaque messe",
+        adresse: "Paroisse Jésus Libérateur, Douala",
+        image: "https://via.placeholder.com/800x600?text=Jésus+Libérateur"
+    },
+    "Paroisse Saint-Jean Paul II de Yansoki": {
+        cure: "P. Gaël Fabien MPECK MPECK, CM",
+        vicaires: "Vicaire dominical: P. Laurent Georges ZIBI, Cm",
+        secretaire: "Jean Manga",
+        telephone: "+237 600 000 183",
+        secretairePhone: "+237 600 000 183",
+        horaires: "Lundi-Vendredi: 8h30–12h30, 15h–18h | Samedi: 9h–12h",
+        messes: "Dimanche: 7h00, 9h00, 11h00, 18h30 | Semaine: 6h30, 18h00",
+        confessions: "Confessions avant chaque messe",
+        adresse: "Paroisse Saint-Jean Paul II de Yansoki, Douala",
+        image: "https://via.placeholder.com/800x600?text=Saint+Jean+Paul+II+Yansoki"
+    },
+    "Paroisse Saint-Guido Maria CONFORTI": {
+        cure: "Abbé Albert TCHATCHOUA NONO",
+        vicaires: "Abbé Christian BOGNING LONTSIE",
+        secretaire: "Lucie Kengne",
+        telephone: "+237 600 000 184",
+        secretairePhone: "+237 600 000 184",
+        horaires: "Lundi-Vendredi: 8h30–12h30, 15h–18h | Samedi: 9h–12h",
+        messes: "Dimanche: 7h00, 9h00, 11h00, 18h30 | Semaine: 6h30, 18h00",
+        confessions: "Confessions avant chaque messe",
+        adresse: "Paroisse Saint-Guido Maria CONFORTI, Douala",
+        image: "https://via.placeholder.com/800x600?text=Saint+Guido+Maria+Conforti"
+    },
+    "Paroisse Saint-Irénée de MBANGA-PONGO": {
+        cure: "Abbé Justin CHIMBA",
+        vicaires: "Abbé Anicet LAMBA",
+        secretaire: "Joseph Ebogo",
+        telephone: "+237 600 000 185",
+        secretairePhone: "+237 600 000 185",
+        horaires: "Lundi-Vendredi: 8h30–12h30, 15h–18h | Samedi: 9h–12h",
+        messes: "Dimanche: 7h00, 9h00, 11h00, 18h30 | Semaine: 6h30, 18h00",
+        confessions: "Confessions avant chaque messe",
+        adresse: "Paroisse Saint-Irénée de MBANGA-PONGO, Douala",
+        image: "https://via.placeholder.com/800x600?text=Saint+Irénée+Mbanga+Pongo"
+    },
+    "Paroisse Saint-Joseph de BOKO": {
+        cure: "Abbé Jean-Baptiste WARAÏ BLAM",
+        vicaires: "Abbé Sylvain Yannick Morel BELLA",
+        secretaire: "Anne-Marie Tchoffo",
+        telephone: "+237 600 000 186",
+        secretairePhone: "+237 600 000 186",
+        horaires: "Lundi-Vendredi: 8h30–12h30, 15h–18h | Samedi: 9h–12h",
+        messes: "Dimanche: 7h00, 9h00, 11h00, 18h30 | Semaine: 6h30, 18h00",
+        confessions: "Confessions avant chaque messe",
+        adresse: "Paroisse Saint-Joseph de BOKO, Douala",
+        image: "https://via.placeholder.com/800x600?text=Saint+Joseph+Boko"
+    },
+    "Paroisse Saint Jean-Baptiste de Bwang BAKOKO": {
+        cure: "Abbé Blaise NZOMOTCHO",
+        vicaires: "Abbé Yves Martin NZOCK BISSA'A",
+        secretaire: "David Nkoulou",
+        telephone: "+237 600 000 187",
+        secretairePhone: "+237 600 000 187",
+        horaires: "Lundi-Vendredi: 8h30–12h30, 15h–18h | Samedi: 9h–12h",
+        messes: "Dimanche: 7h00, 9h00, 11h00, 18h30 | Semaine: 6h30, 18h00",
+        confessions: "Confessions avant chaque messe",
+        adresse: "Paroisse Saint Jean-Baptiste de Bwang BAKOKO, Douala",
+        image: "https://via.placeholder.com/800x600?text=Saint+Jean+Baptiste+Bwang"
+    }
+};
 
-        <!-- Tableau -->
-        <div class="table-container">
-            <div class="table-header">
-                <div>#</div>
-                <div data-key="colZone">Zone</div>
-                <div data-key="colParoisses">Paroisses Rattachées</div>
-                <div data-key="colPriest">Aumônier</div>
-                <div data-key="colColor">Dress Color</div>
-            </div>
-            <div id="zonesContainer"></div>
-        </div>
+// ============================================================
+// 3. RESPONSABLES (AUMÔNIERS ET LAÏCS) - MODIFIABLE
+// ============================================================
+const responsablesData = {};
+zonesData.forEach(zone => {
+    responsablesData[`aumonier-${zone.name}`] = {
+        nom: zone.priest,
+        zone: zone.name,
+        telephone: "+237 600 000 000",   // ← Remplacez par le vrai numéro
+        messagePredef: `Bonjour Père, je vous contacte depuis l'annuaire pastoral. Zone ${zone.name}.`,
+        fonction: "Vicaire épiscopal / Curé de zone"
+    };
+    responsablesData[`laic-${zone.name}`] = {
+        nom: `Responsable laïc de ${zone.name}`,
+        zone: zone.name,
+        telephone: "+237 600 000 001",   // ← Remplacez par le vrai numéro
+        messagePredef: `Bonjour, je suis membre de la zone ${zone.name}.`,
+        fonction: "Coordinateur laïc"
+    };
+});
 
-        <div class="back-link">
-            <a href="index.html"><i class="fas fa-arrow-left"></i> <span data-key="backLink">Retourner à l'accueil principal</span></a>
-        </div>
-    </div>
+// ============================================================
+// 4. RENDU DU TABLEAU ET MODALES (NE PAS MODIFIER)
+// ============================================================
+function renderZones(filter = '') {
+    const container = document.getElementById('zonesContainer');
+    const filtered = zonesData.filter(z => 
+        z.num.includes(filter) || 
+        z.name.toLowerCase().includes(filter) || 
+        z.paroissesList.some(p => p.toLowerCase().includes(filter)) ||
+        z.priest.toLowerCase().includes(filter) ||
+        (responsablesData[`laic-${z.name}`]?.nom.toLowerCase().includes(filter))
+    );
+    document.getElementById('resultCount').innerText = filtered.length;
+    if (filtered.length === 0) { 
+        container.innerHTML = '<div style="padding:40px;text-align:center">Aucune zone trouvée</div>'; 
+        return; 
+    }
+    container.innerHTML = '';
+    filtered.forEach(zone => {
+        const parHtml = zone.paroissesList.map(par => `<span class="parish-link" data-name="${par.replace(/"/g, '&quot;')}">${par}</span>`).join(', ');
+        const aumLink = `<a href="#" class="resp-link" data-resp-key="aumonier-${zone.name}"><i class="fas fa-cross"></i> ${zone.priest}</a>`;
+        const laicLink = `<a href="#" class="resp-link" data-resp-key="laic-${zone.name}"><i class="fas fa-user-friends"></i> ${responsablesData[`laic-${zone.name}`].nom}</a>`;
+        const row = document.createElement('div'); 
+        row.className = 'zone-row'; 
+        row.id = `zone-${zone.num}`;
+        row.innerHTML = `
+            <div class="z-cell z-num">${zone.num}</div>
+            <div class="z-cell z-name">${zone.name}</div>
+            <div class="z-cell z-left z-paroisses">${parHtml}</div>
+            <div class="z-cell"><div class="responsable-container">${aumLink}${laicLink}</div></div>
+            <div class="z-cell"><div class="color-box" style="background:${zone.color};color:${zone.colorText};">${zone.colorName}</div></div>
+        `;
+        container.appendChild(row);
+    });
+}
 
-    <footer>
-        <div class="container">
-            <p>© BIG DATA CENTER AI — <a href="https://www.youtube.com/@DominiqueSavio_Cyber-Ap%C3%B4tre3.0" target="_blank">Dominique Savio - Cyber Apôtre 3.0</a></p>
-            <p data-key="footerText">Aumônerie Diocésaine Jeunesse & Enfance – Douala</p>
-        </div>
-    </footer>
+function openParishModal(parishName) {
+    const p = parishesDetails[parishName];
+    if (!p) return;
+    document.getElementById('modalParishName').innerText = parishName;
+    document.getElementById('modalBgImage').style.backgroundImage = `url('${p.image}')`;
+    document.getElementById('modalDetailsContainer').innerHTML = `
+        <div class="info-card"><h3><i class="fas fa-church"></i> Équipe pastorale</h3><p><i class="fas fa-user-priest"></i> <strong>Curé :</strong> ${p.cure}</p><p><i class="fas fa-user-friends"></i> <strong>Vicaires :</strong> ${p.vicaires}</p></div>
+        <div class="info-card"><h3><i class="fas fa-phone-alt"></i> Secrétariat</h3><p><i class="fas fa-user"></i> <strong>Responsable :</strong> ${p.secretaire}</p><p><i class="fas fa-phone"></i> <strong>Tél :</strong> <a href="tel:${p.secretairePhone.replace(/[^0-9+]/g, '')}" style="color:#2ecc71;">${p.secretairePhone}</a> (appel direct)</p><p><i class="far fa-clock"></i> <strong>Horaires :</strong><br> ${p.horaires}</p></div>
+        <div class="info-card"><h3><i class="fas fa-praying-hands"></i> Messes & confessions</h3><p><strong>Messes :</strong><br> ${p.messes}</p><p><strong>Confessions :</strong><br> ${p.confessions}</p></div>
+    `;
+    const encodedAddr = encodeURIComponent(p.adresse);
+    document.getElementById('modalMapLink').href = `https://www.google.com/maps/search/?api=1&query=${encodedAddr}`;
+    document.getElementById('parishModal').classList.add('active');
+}
 
-    <script>
-        // ========== DONNÉES DES ZONES ==========
-        const zonesData = [{
-            num: "01",
-            name: "Wouri I",
-            paroisses: "Cathédrale Sts Pierre & Paul, Paroisse Holy Trinity, Paroisse Notre Dame du Mont Carmel, Paroisse St Dominique Savio de Bonapriso, Paroisse Ste Anne de Nkongmondo, Paroisse St André de Manoka, Paroisse St Ignace d'Antioche de Youpouè, Paroisse St Barnabé de Bois de Singe",
-            priest: "Abbé Alain NIBILE",
-            color: "#ffffff",
-            colorName: "Blanc / Or",
-            colorText: "#000"
-        }, {
-            num: "02",
-            name: "Wouri II",
-            paroisses: "Paroisse Notre Dame des Victoires de New-Bell I, Paroisse St Paul de Nylon, Paroisse Sacré-Coeur de New-Bell II, Paroisse Notre Dame des Sept Douleurs de New-Bell III, Paroisse St Luc de New-Bell",
-            priest: "Abbé Guy Calvin MONKOM MBEM",
-            color: "#ff0000",
-            colorName: "Rouge",
-            colorText: "#fff"
-        }, {
-            num: "03",
-            name: "Wouri III",
-            paroisses: "Paroisse St Sacrement de Ndogbong, Paroisse Christ-Roi de la Cité-Sic, Paroisse St Esprit de Bepanda, Paroisse St Charles Lwanga de Makèpè Yonyong, Paroisse St Mathias de Petit Wouri Bonamousongo, Paroisse Universitaire St Thomas d'Aquin",
-            priest: "Abbé Jules Constantin LEP MBELECK",
-            color: "#0000ff",
-            colorName: "Bleu Royal",
-            colorText: "#fff"
-        }, {
-            num: "04",
-            name: "Wouri IV",
-            paroisses: "Paroisse Ste Monique de Makèpè, Paroisse St Jean de Deido, Paroisse St Ambroise de Sable Bonamoussadi, Paroisse Notre Dame de l'Annonciation de Bonamoussadi, Centre Spirituel de Bonamoussadi, Paroisse St François d'Assise de Kotto, Paroisse Christ Sauveur de Banguè, Paroisse St Barthélemy de Logbessou, Paroisse St Basile le Grand de Logpom, Paroisse Ste Marie Madeleine de Logpom Plateau, Paroisse Ste Marthe de Lendi",
-            priest: "Abbé Marius DJOMAHA",
-            color: "#ffff00",
-            colorName: "Jaune",
-            colorText: "#000"
-        }, {
-            num: "05",
-            name: "Wouri V",
-            paroisses: "Paroisse St Pie X de PK 14, Paroisse St Victor de Sodikombo, Paroisse St Thomas de PK 10, Paroisse Ste Thérèse de l'Enfant Jésus de Mbengue City, Paroisse Epiphanie de PK 21, Paroisse St Benoit de Dallas et Nsape, Paroisse St Etienne de Mandjab, Paroisse St Samuel de Ngondjo, Paroisse St Athanase de PK 17 - PK 18, Paroisse St Luc de PAPAS, Paroisse Ste Cécile de Moutongo, Paroisse St Paul VI de Bonamoutongo",
-            priest: "Abbé Mesaac MBE NKAMBA",
-            color: "#008000",
-            colorName: "Vert",
-            colorText: "#fff"
-        }, {
-            num: "06",
-            name: "Wouri VI",
-            paroisses: "Paroisse Pentecôte de Nez Town Aéroport, Paroisse St François Xavier de Oyack, Paroisse Ste Trinité de Bilonguè, Paroisse St Thadée de Bobongo, Paroisse Toussaint de Soboum, Paroisse Ste Agnès de Madagascar, Paroisse Ste Agathe de Bois de Singe",
-            priest: "Abbé Pierre Lionnel SEMPEY",
-            color: "#ffa500",
-            colorName: "Orange",
-            colorText: "#fff"
-        }, {
-            num: "07",
-            name: "Wouri VII",
-            paroisses: "Paroisse Sacré-Coeur de Ndogpassi II, Paroisse St Jacques de Logbaba Plateau, Paroisse Ste Famille de la Zone de Recasement de Ndogpassi III, Paroisse Marie Reine des Apôtres de Ndogpassi II, Paroisse St Augustin de Yanka, Paroisse St Clément de Nyalla Kambo",
-            priest: "Abbé Christian PAM TCHAMENI",
-            color: "#800080",
-            colorName: "Violet",
-            colorText: "#fff"
-        }, {
-            num: "08",
-            name: "Wouri VIII",
-            paroisses: "Paroisse St Louis de Bonaberi, Paroisse Notre Dame de l'Amour de Ngwele, Paroisse St Grégoire de Ndobo, Paroisse St Joseph de Bonamdalè, Paroisse St Pierre de Grand Hangar, Paroisse Notre Dame du Rosaire de Mabanda, Paroisse St Gabriel Archange de Mpanjo, Paroisse St Philippe du Quartier Bilingue, Paroisse St Thimothée de SODIKO Ville, Communauté de la maison de Bonabéri, Paroisse St Bonaventure de Towoh, Communauté St Jean Baptiste de Japoma, Paroisse St Raphaël Archange de Bojongo, Paroisse St Kisito de Sodiko Village, Paroisse Ste Catherine de Minkwèlè, Paroisse Cœur Immaculé de Marie de Ndobo",
-            priest: "Abbé Merlin TABEULA",
-            color: "#800080",
-            colorName: "Violet",
-            colorText: "#fff"
-        }, {
-            num: "09",
-            name: "Wouri IX",
-            paroisses: "Paroisse St Marc de la Cité des Palmiers, Paroisse St Simon de Kondi, Paroisse St Michel de Nyalla, Paroisse St Jean Marie Vianney de Beedi, Paroisse St Mathieu de Ndog-Mbéé, Paroisse Notre Dame de Lourdes de Japoma, Paroisse St Corneille de Nkolmbong, Paroisse St Hyppolite de la Cité Chirac, Paroisse St Cyprien de Maetur Ngodi Bakoko, Paroisse St Justin de Yassa, Paroisse St Bernard de Nkembe, Paroisse St Jean XXIII de Pahianga et Cocotier",
-            priest: "Abbé Giresse Valère NOPIEGUE",
-            color: "#800080",
-            colorName: "Violet",
-            colorText: "#fff"
-        }, {
-            num: "10",
-            name: "Wouri X",
-            paroisses: "Paroisse Jésus le Bon Pasteur de Boko, Paroisse St Jude de Ngodi Bakoko, Paroisse Jésus Libérateur, Centre Xavier, Paroisse St Jean Paul II de Yansoki, Centre de Formation Spirituelle St Vincent de Paul de Ngodi Bakoko, Paroisse St Guido Maria Conforti, Paroisse St Irénée de Mbanga Pongo, Paroisse St Joseph de Boko, Paroisse St Jean Baptiste de Mbwang Bakoko",
-            priest: "Abbé Anicet LAMBA",
-            color: "#800080",
-            colorName: "Violet",
-            colorText: "#fff"
-        }];
+function openResponsableCarte(respKey) {
+    const resp = responsablesData[respKey];
+    if (!resp) return;
+    document.getElementById('respNom').innerText = resp.nom;
+    document.getElementById('respZone').innerText = resp.zone;
+    document.getElementById('respFonction').innerText = resp.fonction;
+    document.getElementById('respPhone').innerHTML = resp.telephone;
+    document.getElementById('respMessage').innerText = resp.messagePredef;
+    let waLink = "#";
+    if (resp.telephone && resp.telephone !== "À renseigner" && resp.telephone !== "+237 600 000 000") {
+        waLink = `https://wa.me/${resp.telephone.replace(/[^0-9+]/g, '')}?text=${encodeURIComponent(resp.messagePredef)}`;
+    }
+    document.getElementById('whatsappRespLink').href = waLink;
+    document.getElementById('responsableModal').classList.add('active');
+}
 
-        let currentLang = localStorage.getItem('lang') || 'fr';
-        let currentSearchTerm = '';
+// Gestion des clics
+document.addEventListener('click', (e) => {
+    const parishSpan = e.target.closest('.parish-link');
+    if (parishSpan) { e.preventDefault(); openParishModal(parishSpan.getAttribute('data-name')); return; }
+    const respLink = e.target.closest('.resp-link');
+    if (respLink && respLink.getAttribute('data-resp-key')) { e.preventDefault(); openResponsableCarte(respLink.getAttribute('data-resp-key')); return; }
+    if (e.target.closest('#closeModalBtn') || (e.target === document.getElementById('parishModal') && !e.target.closest('.modal-card'))) document.getElementById('parishModal').classList.remove('active');
+    if (e.target.closest('#closeResponsableModalBtn') || (e.target === document.getElementById('responsableModal') && !e.target.closest('.modal-card'))) document.getElementById('responsableModal').classList.remove('active');
+});
 
-        // ========== RENDU DU TABLEAU ==========
-        function renderZones(filterTerm = '') {
-            const container = document.getElementById('zonesContainer');
-            const filtered = zonesData.filter(zone => {
-                const searchLower = filterTerm.toLowerCase();
-                return zone.num.includes(searchLower) ||
-                    zone.name.toLowerCase().includes(searchLower) ||
-                    zone.paroisses.toLowerCase().includes(searchLower) ||
-                    zone.priest.toLowerCase().includes(searchLower) ||
-                    zone.colorName.toLowerCase().includes(searchLower);
-            });
-
-            document.getElementById('resultCount').textContent = filtered.length;
-
-            if (filtered.length === 0) {
-                container.innerHTML = `<div class="no-results"><i class="fas fa-search" style="font-size: 2rem; margin-bottom: 16px; display: block;"></i><span data-key="noResults">Aucune zone ne correspond à votre recherche.</span></div>`;
-                updateLanguageOnNoResults();
-                return;
-            }
-
-            container.innerHTML = '';
-            filtered.forEach(zone => {
-                const row = document.createElement('div');
-                row.className = 'zone-row';
-                row.innerHTML = `
-        <div class="z-cell z-num">${zone.num}</div>
-        <div class="z-cell z-name">${zone.name}</div>
-        <div class="z-cell z-left z-paroisses">${zone.paroisses}</div>
-        <div class="z-cell z-priest">${zone.priest}</div>
-        <div class="z-cell"><div class="color-box" style="background: ${zone.color}; color: ${zone.colorText};">${zone.colorName}</div></div>
-      `;
-                container.appendChild(row);
-            });
-        }
-
-        function updateLanguageOnNoResults() {
-            const noResultsEl = document.querySelector('.no-results span');
-            if (noResultsEl && noResultsEl.hasAttribute('data-key')) {
-                const key = noResultsEl.getAttribute('data-key');
-                if (translations[currentLang][key]) {
-                    noResultsEl.textContent = translations[currentLang][key];
-                }
-            }
-        }
-
-        // ========== MULTILINGUE ==========
-        const translations = {
-            fr: {
-                headerTitle: "ARCHIDIOCÈSE DE DOUALA",
-                headerSub: "Répertoire officiel des zones et paroisses",
-                nav1: "Accueil",
-                nav2: "Jeunesse",
-                nav3: "Formations",
-                nav4: "Projets",
-                pageTitle: "Cartographie Pastorale",
-                pageDesc: "Organisation par zones, paroisses rattachées et codes vestimentaires synodaux.",
-                searchPlaceholder: "🔍 Rechercher une zone, une paroisse ou un aumônier...",
-                resultsFound: "zones trouvées",
-                resetBtn: "⟳ Réinitialiser",
-                colZone: "Zone",
-                colParoisses: "Paroisses Rattachées",
-                colPriest: "Aumônier",
-                colColor: "Dress Color",
-                backLink: "Retourner à l'accueil principal",
-                footerText: "Aumônerie Diocésaine Jeunesse & Enfance – Douala",
-                noResults: "Aucune zone ne correspond à votre recherche."
-            },
-            en: {
-                headerTitle: "ARCHDIOCESE OF DOUALA",
-                headerSub: "Official directory of zones and parishes",
-                nav1: "Home",
-                nav2: "Youth",
-                nav3: "Trainings",
-                nav4: "Projects",
-                pageTitle: "Pastoral Cartography",
-                pageDesc: "Organization by zones, attached parishes and synodal dress codes.",
-                searchPlaceholder: "🔍 Search for a zone, parish or chaplain...",
-                resultsFound: "zones found",
-                resetBtn: "⟳ Reset",
-                colZone: "Zone",
-                colParoisses: "Attached Parishes",
-                colPriest: "Chaplain",
-                colColor: "Dress Color",
-                backLink: "Back to homepage",
-                footerText: "Diocesan Youth & Children's Chaplaincy – Douala",
-                noResults: "No zone matches your search."
-            }
-        };
-
-        function updateLanguage() {
-            const t = translations[currentLang];
-            document.querySelectorAll('[data-key]').forEach(el => {
-                const key = el.getAttribute('data-key');
-                if (t[key]) {
-                    if (el.tagName === 'INPUT') {
-                        el.placeholder = t[key];
-                    } else {
-                        el.textContent = t[key];
-                    }
-                }
-            });
-            localStorage.setItem('lang', currentLang);
-        }
-
-        document.getElementById('langToggle').addEventListener('click', () => {
-            currentLang = currentLang === 'fr' ? 'en' : 'fr';
-            updateLanguage();
-            renderZones(currentSearchTerm);
+// Navigation verticale, recherche, dark mode
+function buildVerticalNav() {
+    const linksContainer = document.getElementById('zoneLinks');
+    linksContainer.innerHTML = '';
+    zonesData.forEach(zone => {
+        const li = document.createElement('li');
+        const a = document.createElement('a');
+        a.href = `#zone-${zone.num}`;
+        a.textContent = zone.name;
+        a.addEventListener('click', (e) => {
+            e.preventDefault();
+            document.getElementById(`zone-${zone.num}`)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            document.querySelectorAll('.zone-links a').forEach(link => link.classList.remove('active'));
+            a.classList.add('active');
         });
+        li.appendChild(a);
+        linksContainer.appendChild(li);
+    });
+}
 
-        // ========== RECHERCHE ==========
-        const searchInput = document.getElementById('searchInput');
-        const resetBtn = document.getElementById('resetSearchBtn');
+const searchInput = document.getElementById('searchInput');
+const resetBtn = document.getElementById('resetSearchBtn');
+searchInput.addEventListener('input', (e) => renderZones(e.target.value.toLowerCase()));
+resetBtn.addEventListener('click', () => { searchInput.value = ''; renderZones(''); });
 
-        searchInput.addEventListener('input', (e) => {
-            currentSearchTerm = e.target.value;
-            renderZones(currentSearchTerm);
-        });
+function initDarkMode() {
+    const dark = localStorage.getItem('darkMode') === 'true';
+    if (dark) document.body.classList.add('dark-mode');
+    const toggle = document.getElementById('darkModeToggle');
+    toggle.addEventListener('click', () => {
+        document.body.classList.toggle('dark-mode');
+        localStorage.setItem('darkMode', document.body.classList.contains('dark-mode'));
+        toggle.querySelector('i').className = document.body.classList.contains('dark-mode') ? 'fas fa-sun' : 'fas fa-moon';
+    });
+    toggle.querySelector('i').className = dark ? 'fas fa-sun' : 'fas fa-moon';
+}
 
-        resetBtn.addEventListener('click', () => {
-            searchInput.value = '';
-            currentSearchTerm = '';
-            renderZones('');
-        });
+document.getElementById('langToggle').addEventListener('click', () => alert("Version française – Données 2025-2026. Modifiez les numéros et images dans l'objet 'parishesDetails'."));
 
-        // ========== MODE SOMBRE ==========
-        function initDarkMode() {
-            const darkMode = localStorage.getItem('darkMode') === 'true';
-            if (darkMode) document.body.classList.add('dark-mode');
-            const toggleBtn = document.getElementById('darkModeToggle');
-            toggleBtn.addEventListener('click', () => {
-                document.body.classList.toggle('dark-mode');
-                localStorage.setItem('darkMode', document.body.classList.contains('dark-mode'));
-                const icon = toggleBtn.querySelector('i');
-                icon.className = document.body.classList.contains('dark-mode') ? 'fas fa-sun' : 'fas fa-moon';
-            });
-            const icon = toggleBtn.querySelector('i');
-            icon.className = darkMode ? 'fas fa-sun' : 'fas fa-moon';
-        }
-
-        // ========== INITIALISATION ==========
-        renderZones();
-        initDarkMode();
-        updateLanguage();
-    </script>
-
+buildVerticalNav();
+renderZones('');
+initDarkMode();
+</script>
 </body>
-
 </html>

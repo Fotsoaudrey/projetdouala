@@ -1,170 +1,788 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Formation & Leadership – Aumônerie Douala</title>
-  <style>
-    /* --- STYLE DE BASE (CONSERVÉ) --- */
-    body { font-family: "Segoe UI", sans-serif; margin: 0; padding: 0; background: #f4f7f9; color: #333; line-height: 1.6; }
-    
-    header { background: linear-gradient(135deg, #045286, #0072a8); color: white; padding: 20px; text-align: center; }
-    
-    nav { background: #ffffff; padding: 10px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); position: sticky; top: 0; z-index: 10; }
-    nav ul { margin: 0; padding: 0; display: flex; list-style: none; justify-content: center; flex-wrap: wrap; }
-    nav li { margin: 10px 15px; }
-    nav a { color: #004a7c; font-weight: bold; text-decoration: none; transition: 0.3s; }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Formation & Leadership | Aumônerie Diocésaine Douala</title>
+    <meta name="description" content="Formation intégrale des jeunes et emploi dans la société – Programme de formation de l'Aumônerie Diocésaine de Douala : doctrine sociale, entrepreneuriat, art oratoire, éthique, compétences digitales, engagement civique.">
 
-    /* --- SECTION FORMATION & EMPLOI --- */
-    .banner-theme {
-      background: #7cfc00; color: #045286;
-      padding: 15px; text-align: center; font-weight: 800;
-      text-transform: uppercase; font-size: 0.85em; letter-spacing: 1px;
-    }
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-    .hero-formation {
-      background: linear-gradient(rgba(4, 82, 134, 0.85), rgba(4, 82, 134, 0.85)), url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=1400');
-      background-size: cover; background-position: center;
-      color: white; padding: 60px 20px; text-align: center;
-    }
+    <!-- Font Awesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
-    .container { max-width: 1200px; margin: 40px auto; padding: 0 20px; }
+    <!-- Swiper JS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
-    .synode-badge {
-      background: #0072a8; color: white; padding: 8px 20px;
-      border-radius: 50px; display: inline-block; margin-bottom: 20px;
-      font-weight: bold; border: 2px solid #7cfc00; font-size: 0.9em;
-    }
+    <!-- AOS Scroll Animation -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 
-    /* Grille de 06 éléments */
-    .grid-formation {
-      display: grid; 
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 25px; 
-      margin-top: 40px;
-    }
-
-    .formation-card {
-      background: white; border-radius: 15px; padding: 30px;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.05);
-      border-left: 6px solid #045286; transition: 0.3s;
-      display: flex; flex-direction: column;
-    }
-    .formation-card:hover { transform: translateY(-5px); border-left-color: #7cfc00; }
-
-    .formation-card h3 { color: #045286; margin-top: 0; display: flex; align-items: center; gap: 12px; font-size: 1.2em; }
-    
-    .icon-circle {
-      background: #f0f4f8; width: 45px; height: 45px; 
-      display: flex; align-items: center; justify-content: center;
-      border-radius: 50%; font-size: 1.3em; flex-shrink: 0;
-    }
-
-    /* Section Emploi */
-    .emploi-box {
-      background: white; border-radius: 20px; overflow: hidden;
-      display: flex; flex-wrap: wrap; margin-top: 60px;
-      box-shadow: 0 15px 40px rgba(0,0,0,0.1);
-    }
-    .emploi-content { flex: 1.2; padding: 45px; min-width: 320px; }
-    .emploi-image { 
-      flex: 0.8; min-width: 320px; 
-      background: url('https://images.unsplash.com/photo-1521737711867-e3b97375f902?q=80&w=800') center/cover;
-    }
-
-    .tag {
-      background: #045286; color: white; padding: 5px 15px;
-      border-radius: 5px; font-size: 0.8em; font-weight: bold;
-    }
-
-    footer { background: #01395c; color: white; padding: 30px; text-align: center; margin-top: 50px; }
-  </style>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+         :root {
+            --primary: #045286;
+            --primary-dark: #022b44;
+            --secondary: #2ecc71;
+            --secondary-dark: #27ae60;
+            --light: #f8fafc;
+            --dark: #0f1724;
+            --gray: #64748b;
+            --white: #ffffff;
+            --shadow: 0 20px 35px -10px rgba(0, 0, 0, 0.1);
+            --glass: rgba(255, 255, 255, 0.1);
+            --radius: 2rem;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--light);
+            color: var(--dark);
+            line-height: 1.5;
+            overflow-x: hidden;
+        }
+        
+        body.dark-mode {
+            background: var(--dark);
+            color: var(--light);
+        }
+        /* Conteneur */
+        
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        /* Mode sombre */
+        
+        body.dark-mode .glass-card,
+        body.dark-mode .testimonial-card,
+        body.dark-mode .step-card,
+        body.dark-mode .formation-card,
+        body.dark-mode .contact-form {
+            background: rgba(30, 41, 59, 0.8);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(46, 204, 113, 0.2);
+        }
+        /* Contrôles */
+        
+        .controls-bar {
+            position: fixed;
+            top: 1.5rem;
+            right: 1.5rem;
+            z-index: 1000;
+            display: flex;
+            gap: 0.75rem;
+        }
+        
+        .ctrl-btn {
+            background: rgba(255, 255, 255, 0.9);
+            border: none;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.2rem;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        
+        body.dark-mode .ctrl-btn {
+            background: #1e293b;
+            color: var(--light);
+        }
+        
+        .ctrl-btn:hover {
+            transform: scale(1.05);
+        }
+        /* Header & Navigation */
+        
+        header {
+            background: linear-gradient(135deg, #0a2e4a, var(--primary));
+            border-bottom: 3px solid var(--secondary);
+            padding: 1.5rem 0;
+            text-align: center;
+        }
+        
+        header h1 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            color: var(--secondary);
+        }
+        
+        @media (min-width: 768px) {
+            header h1 {
+                font-size: 2.2rem;
+            }
+        }
+        
+        nav {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(8px);
+            position: sticky;
+            top: 0;
+            z-index: 99;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+        
+        body.dark-mode nav {
+            background: rgba(15, 23, 36, 0.95);
+        }
+        
+        .nav-links {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            padding: 0.75rem 1rem;
+            list-style: none;
+        }
+        
+        .nav-links a {
+            padding: 0.6rem 1.2rem;
+            font-weight: 600;
+            text-decoration: none;
+            border-radius: 2rem;
+            transition: 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--dark);
+        }
+        
+        body.dark-mode .nav-links a {
+            color: var(--light);
+        }
+        
+        .nav-links a i {
+            color: var(--secondary);
+        }
+        
+        .nav-links a:hover {
+            background: var(--primary);
+            color: white;
+        }
+        
+        .nav-links a:hover i {
+            color: white;
+        }
+        /* Hero section avec effet de vague */
+        
+        .hero {
+            position: relative;
+            background: linear-gradient(135deg, var(--primary), #0072a8);
+            color: white;
+            padding: 5rem 0 8rem;
+            text-align: center;
+            clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+        }
+        
+        .hero .synode-badge {
+            background: var(--secondary);
+            color: #022b44;
+            display: inline-block;
+            padding: 0.3rem 1.2rem;
+            border-radius: 2rem;
+            font-weight: 700;
+            font-size: 0.8rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            font-family: 'Cormorant Garamond', serif;
+        }
+        
+        .hero p {
+            max-width: 600px;
+            margin: 1rem auto 0;
+            opacity: 0.9;
+        }
+        /* Theme banner */
+        
+        .theme-banner {
+            background: var(--secondary);
+            color: #022b44;
+            text-align: center;
+            padding: 0.75rem;
+            font-weight: 700;
+            font-size: 0.85rem;
+        }
+        /* Section formations – style cartes avec icônes et hover 3D */
+        
+        .section-title {
+            text-align: center;
+            font-size: 2rem;
+            font-weight: 700;
+            margin: 3rem 0 2rem;
+            color: var(--primary);
+        }
+        
+        body.dark-mode .section-title {
+            color: var(--secondary);
+        }
+        
+        .formations-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        
+        .formation-card {
+            background: white;
+            border-radius: 1.5rem;
+            padding: 2rem;
+            transition: all 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            text-align: center;
+        }
+        
+        .formation-card:hover {
+            transform: translateY(-12px) scale(1.02);
+            box-shadow: var(--shadow);
+            border-color: var(--secondary);
+        }
+        
+        .formation-card i {
+            font-size: 2.5rem;
+            color: var(--secondary);
+            margin-bottom: 1rem;
+        }
+        
+        .formation-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.75rem;
+            color: var(--primary);
+        }
+        
+        body.dark-mode .formation-card h3 {
+            color: var(--secondary);
+        }
+        
+        .formation-card p {
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+        /* Timeline – Parcours d'insertion */
+        
+        .timeline-section {
+            background: linear-gradient(to right, #f0f4f8, #ffffff);
+            border-radius: 2rem;
+            padding: 3rem 2rem;
+            margin: 4rem 0;
+        }
+        
+        body.dark-mode .timeline-section {
+            background: #111827;
+        }
+        
+        .timeline {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        
+        .step-card {
+            flex: 1;
+            min-width: 200px;
+            background: white;
+            border-radius: 1.5rem;
+            padding: 1.5rem;
+            text-align: center;
+            transition: 0.3s;
+            border-top: 4px solid var(--secondary);
+        }
+        
+        .step-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .step-number {
+            background: var(--secondary);
+            color: #022b44;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            margin: 0 auto 1rem;
+        }
+        
+        .step-card h4 {
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+        
+        .step-card p {
+            font-size: 0.85rem;
+            color: var(--gray);
+        }
+        /* Témoignages Swiper */
+        
+        .testimonials {
+            margin: 4rem 0;
+        }
+        
+        .testimonial-card {
+            background: white;
+            border-radius: 1.5rem;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: var(--shadow);
+        }
+        
+        .testimonial-card i {
+            font-size: 2rem;
+            color: var(--secondary);
+            margin-bottom: 1rem;
+        }
+        
+        .testimonial-card p {
+            font-style: italic;
+            margin-bottom: 1rem;
+        }
+        
+        .testimonial-card h4 {
+            font-weight: 700;
+            color: var(--primary);
+        }
+        
+        .swiper-pagination-bullet-active {
+            background: var(--secondary);
+        }
+        /* Formulaire d'inscription */
+        
+        .contact-form {
+            background: white;
+            border-radius: 2rem;
+            padding: 2.5rem;
+            margin: 4rem 0;
+            box-shadow: var(--shadow);
+            text-align: center;
+        }
+        
+        .form-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+        
+        .form-group input {
+            flex: 1;
+            padding: 0.8rem 1rem;
+            border: 1px solid #e2e8f0;
+            border-radius: 2rem;
+            font-family: inherit;
+        }
+        
+        body.dark-mode .form-group input {
+            background: #1e293b;
+            border-color: #334155;
+            color: white;
+        }
+        
+        .btn-submit {
+            background: var(--secondary);
+            color: #022b44;
+            border: none;
+            padding: 0.8rem 2rem;
+            border-radius: 2rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: 0.2s;
+            margin-top: 10px;
+        }
+        
+        .btn-submit:hover {
+            background: var(--primary);
+            color: white;
+        }
+        /* Back link */
+        
+        .back-link {
+            text-align: center;
+            margin: 2rem 0;
+        }
+        
+        .btn-back {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--primary);
+            color: white;
+            padding: 0.7rem 2rem;
+            border-radius: 2rem;
+            text-decoration: none;
+            font-weight: 600;
+            transition: 0.2s;
+        }
+        
+        .btn-back:hover {
+            background: var(--secondary);
+            transform: translateX(-5px);
+        }
+        
+        footer {
+            background: var(--primary-dark);
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 3rem;
+        }
+        
+        footer a {
+            color: var(--secondary);
+            text-decoration: none;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 1rem;
+            }
+            .hero h1 {
+                font-size: 2rem;
+            }
+            .timeline {
+                flex-direction: column;
+            }
+            .form-group {
+                flex-direction: column;
+            }
+        }
+    </style>
 </head>
+
 <body>
 
-<div class="banner-theme">
-  ✨ Thème : Formation intégrale des jeunes et emploi dans la société
-</div>
-
-<header>
-  <marquee><h1>Aumônerie Diocésaine Jeunesse & Enfance – Douala</h1></marquee>
-</header>
-
-<nav>
-  <ul>
-    <li><a href="index.html">Accueil</a></li>
-    <li><a href="index.html#apropos">À propos</a></li>
-    <li><a href="index.html#enfance">Enfance</a></li>
-    <li><a href="index.html#jeunesse">Jeunesse</a></li>
-    <li><a href="index.html#actus">Actualités</a></li>
-  </ul>
-</nav>
-
-<section class="hero-formation">
-  <div class="synode-badge">DEUXIEME ANNÉE DU SYNODE</div>
-  <h1>Leadership & Excellence</h1>
-  <p>Une formation intégrale pour briller dans l'Église et impacter la société.</p>
-</section>
-
-<div class="container">
-  
-  <div class="grid-formation">
-    <div class="formation-card">
-      <h3><div class="icon-circle">⚖️</div> Doctrine Sociale</h3>
-      <p>Étudier les principes de l'Église sur le travail, la justice et le bien commun pour agir en citoyen éclairé.</p>
+    <div class="controls-bar">
+        <button class="ctrl-btn" id="darkModeToggle" aria-label="Mode sombre"><i class="fas fa-moon"></i></button>
+        <button class="ctrl-btn" id="langToggle" aria-label="Changer de langue"><i class="fas fa-globe"></i></button>
     </div>
 
-    <div class="formation-card">
-      <h3><div class="icon-circle">🚀</div> Entrepreneuriat</h3>
-      <p>De l'idée au projet : outils pratiques pour créer des activités génératrices de revenus et d'emplois.</p>
+    <div class="theme-banner" data-key="themeBanner"> Thème : Formation intégrale des jeunes et emploi dans la société</div>
+
+    <header>
+        <div class="container">
+            <h1 data-key="headerTitle">Aumônerie Diocésaine Jeunesse & Enfance</h1>
+            <p data-key="headerSub">Douala – Cameroun</p>
+        </div>
+    </header>
+
+    <nav>
+        <div class="container">
+            <ul class="nav-links">
+                <li><a href="index.html"><i class="fas fa-home"></i> <span data-key="nav1">Accueil</span></a></li>
+                <li><a href="index.html#apropos"><i class="fas fa-church"></i> <span data-key="nav2">À propos</span></a></li>
+                <li><a href="index.html#enfance"><i class="fas fa-child"></i> <span data-key="nav3">Enfance</span></a></li>
+                <li><a href="index.html#jeunesse"><i class="fas fa-users"></i> <span data-key="nav4">Jeunesse</span></a></li>
+                <li><a href="index.html#actus"><i class="fas fa-newspaper"></i> <span data-key="nav5">Actualités</span></a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="container">
+            <div class="synode-badge" data-key="synodeBadge">DEUXIÈME ANNÉE DU SYNODE</div>
+            <h1 data-key="heroTitle">Leadership & Excellence</h1>
+            <p data-key="heroDesc">Une formation intégrale pour briller dans l'Église et impacter la société.</p>
+        </div>
+    </section>
+
+    <div class="container">
+        <!-- Section formations -->
+        <h2 class="section-title" data-key="formationsTitle">Nos modules de formation</h2>
+        <div class="formations-grid" data-aos="fade-up">
+            <div class="formation-card">
+                <i class="fas fa-balance-scale"></i>
+                <h3 data-key="card1Title">Doctrine Sociale</h3>
+                <p data-key="card1Desc">Étudier les principes de l'Église sur le travail, la justice et le bien commun pour agir en citoyen éclairé.</p>
+            </div>
+            <div class="formation-card">
+                <i class="fas fa-rocket"></i>
+                <h3 data-key="card2Title">Entrepreneuriat</h3>
+                <p data-key="card2Desc">De l'idée au projet : outils pratiques pour créer des activités génératrices de revenus et d'emplois.</p>
+            </div>
+            <div class="formation-card">
+                <i class="fas fa-microphone-alt"></i>
+                <h3 data-key="card3Title">Art Oratoire</h3>
+                <p data-key="card3Desc">Développer son charisme et sa capacité de persuasion pour porter la voix des jeunes avec assurance.</p>
+            </div>
+            <div class="formation-card">
+                <i class="fas fa-shield-alt"></i>
+                <h3 data-key="card4Title">Éthique Professionnelle</h3>
+                <p data-key="card4Desc">Apprendre à concilier foi et carrière, en luttant contre la corruption et en prônant l'intégrité au travail.</p>
+            </div>
+            <div class="formation-card">
+                <i class="fas fa-laptop-code"></i>
+                <h3 data-key="card5Title">Compétences Digitales</h3>
+                <p data-key="card5Desc">Maîtriser les outils numériques pour booster son employabilité et évangéliser sur les réseaux sociaux.</p>
+            </div>
+            <div class="formation-card">
+                <i class="fas fa-globe-africa"></i>
+                <h3 data-key="card6Title">Engagement Civique</h3>
+                <p data-key="card6Desc">Comprendre son rôle dans la nation pour participer activement au développement du Cameroun.</p>
+            </div>
+        </div>
+
+        <!-- Timeline d'insertion -->
+        <div class="timeline-section" data-aos="fade-up">
+            <h3 style="text-align:center; color:var(--primary);" data-key="timelineTitle">Parcours d'insertion professionnelle</h3>
+            <div class="timeline">
+                <div class="step-card">
+                    <div class="step-number">1</div>
+                    <h4 data-key="step1Title">Diagnostic</h4>
+                    <p data-key="step1Desc">Évaluation des compétences et orientation personnalisée.</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">2</div>
+                    <h4 data-key="step2Title">Formation</h4>
+                    <p data-key="step2Desc">Ateliers pratiques et mentorat par des experts.</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">3</div>
+                    <h4 data-key="step3Title">Mise en situation</h4>
+                    <p data-key="step3Desc">Stages en entreprise et projets concrets.</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">4</div>
+                    <h4 data-key="step4Title">Suivi post-insertion</h4>
+                    <p data-key="step4Desc">Accompagnement pendant les premiers mois.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Témoignages (carrousel) -->
+        <div class="testimonials" data-aos="fade-up">
+            <h2 class="section-title" data-key="testimonialsTitle">Ils témoignent</h2>
+            <div class="swiper testimonial-swiper">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <div class="testimonial-card"><i class="fas fa-quote-left"></i>
+                            <p data-key="testimonial1">"La formation en entrepreneuriat m'a permis de lancer ma propre activité."</p>
+                            <h4>— David M.</h4>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="testimonial-card"><i class="fas fa-quote-left"></i>
+                            <p data-key="testimonial2">"L'éthique professionnelle m'a aidé à décrocher un stage en entreprise."</p>
+                            <h4>— Sarah K.</h4>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="testimonial-card"><i class="fas fa-quote-left"></i>
+                            <p data-key="testimonial3">"Un accompagnement de qualité, je recommande vivement."</p>
+                            <h4>— Jean-Paul N.</h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-pagination"></div>
+            </div>
+        </div>
+
+        <!-- Formulaire d'inscription -->
+        <div class="contact-form" data-aos="fade-up">
+            <h3 data-key="formTitle">Inscrivez-vous à une session</h3>
+            <form id="inscriptionForm">
+                <div class="form-group">
+                    <input type="text" id="nom" placeholder="Nom complet" data-key="formName" required>
+                    <input type="email" id="email" placeholder="Email" required>
+                    <input type="tel" id="tel" placeholder="Téléphone" required>
+                </div>
+                <button type="submit" class="btn-submit" data-key="formBtn">Envoyer ma pré-inscription</button>
+            </form>
+        </div>
+
+        <div class="back-link">
+            <a href="index.html" class="btn-back"><i class="fas fa-arrow-left"></i> <span data-key="backBtn">Retour à l'accueil</span></a>
+        </div>
     </div>
 
-    <div class="formation-card">
-      <h3><div class="icon-circle">🎤</div> Art Oratoire</h3>
-      <p>Développer son charisme et sa capacité de persuasion pour porter la voix des jeunes avec assurance.</p>
-    </div>
+    <footer>
+        <p>© BIG DATA CENTER AI — <a href="https://www.youtube.com/@DominiqueSavio_Cyber-Ap%C3%B4tre3.0" target="_blank">Dominique Savio - Cyber Apôtre 3.0</a></p>
+        <p data-key="footerText">Aumônerie Diocésaine Jeunesse & Enfance – Douala</p>
+    </footer>
 
-    <div class="formation-card">
-      <h3><div class="icon-circle">🛡️</div> Éthique Professionnelle</h3>
-      <p>Apprendre à concilier foi et carrière, en luttant contre la corruption et en prônant l'intégrité au travail.</p>
-    </div>
+    <script>
+        AOS.init({
+            duration: 800,
+            once: true
+        });
 
-    <div class="formation-card">
-      <h3><div class="icon-circle">💻</div> Compétences Digitales</h3>
-      <p>Maîtriser les outils numériques pour booster son employabilité et évangéliser sur les réseaux sociaux.</p>
-    </div>
+        const swiper = new Swiper('.testimonial-swiper', {
+            loop: true,
+            autoplay: {
+                delay: 5000
+            },
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true
+            },
+            spaceBetween: 30,
+            slidesPerView: 1,
+            breakpoints: {
+                768: {
+                    slidesPerView: 2
+                }
+            }
+        });
 
-    <div class="formation-card">
-      <h3><div class="icon-circle">🌍</div> Engagement Civique</h3>
-      <p>Comprendre son rôle dans la nation pour participer activement au développement du Cameroun.</p>
-    </div>
-  </div>
+        document.getElementById('inscriptionForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('Merci ! Votre pré-inscription a été envoyée. Nous vous contacterons sous peu.');
+            e.target.reset();
+        });
 
-  <div class="emploi-box">
-    <div class="emploi-content">
-      <span class="tag">SYNODALITÉ & EMPLOI</span>
-      <h2 style="color: #045286; margin-top: 15px;">L'Insertion au Cœur du Synode</h2>
-      <p>En cette deuxième année synodale, l'Aumônerie de Douala accompagne chaque jeune vers l'autonomie. Notre formation ne s'arrête pas à la prière, elle prépare à la vie active.</p>
-      <ul style="padding-left: 20px;">
-        <li>Accompagnement personnalisé à la recherche d'emploi.</li>
-        <li>Réseautage avec des entrepreneurs et cadres chrétiens.</li>
-        <li>Mentorat pour le montage de projets innovants.</li>
-      </ul>
-      <button style="background: #7cfc00; border: none; padding: 12px 30px; border-radius: 50px; font-weight: bold; cursor: pointer; margin-top: 15px; color: #045286; transition: 0.3s;">
-        S'inscrire à une session
-      </button>
-    </div>
-    <div class="emploi-image"></div>
-  </div>
+        // Multilingue
+        let currentLang = localStorage.getItem('lang') || 'fr';
+        const translations = {
+            fr: {
+                themeBanner: "Thème : Formation intégrale des jeunes et emploi dans la société",
+                headerTitle: "Aumônerie Diocésaine Jeunesse & Enfance",
+                headerSub: "Douala – Cameroun",
+                nav1: "Accueil",
+                nav2: "À propos",
+                nav3: "Enfance",
+                nav4: "Jeunesse",
+                nav5: "Actualités",
+                synodeBadge: "DEUXIÈME ANNÉE DU SYNODE",
+                heroTitle: "Leadership & Excellence",
+                heroDesc: "Une formation intégrale pour briller dans l'Église et impacter la société.",
+                formationsTitle: "Nos modules de formation",
+                card1Title: "Doctrine Sociale",
+                card1Desc: "Étudier les principes de l'Église sur le travail, la justice et le bien commun pour agir en citoyen éclairé.",
+                card2Title: "Entrepreneuriat",
+                card2Desc: "De l'idée au projet : outils pratiques pour créer des activités génératrices de revenus et d'emplois.",
+                card3Title: "Art Oratoire",
+                card3Desc: "Développer son charisme et sa capacité de persuasion pour porter la voix des jeunes avec assurance.",
+                card4Title: "Éthique Professionnelle",
+                card4Desc: "Apprendre à concilier foi et carrière, en luttant contre la corruption et en prônant l'intégrité au travail.",
+                card5Title: "Compétences Digitales",
+                card5Desc: "Maîtriser les outils numériques pour booster son employabilité et évangéliser sur les réseaux sociaux.",
+                card6Title: "Engagement Civique",
+                card6Desc: "Comprendre son rôle dans la nation pour participer activement au développement du Cameroun.",
+                timelineTitle: "Parcours d'insertion professionnelle",
+                step1Title: "Diagnostic",
+                step1Desc: "Évaluation des compétences et orientation personnalisée.",
+                step2Title: "Formation",
+                step2Desc: "Ateliers pratiques et mentorat par des experts.",
+                step3Title: "Mise en situation",
+                step3Desc: "Stages en entreprise et projets concrets.",
+                step4Title: "Suivi post-insertion",
+                step4Desc: "Accompagnement pendant les premiers mois.",
+                testimonialsTitle: "Ils témoignent",
+                testimonial1: "La formation en entrepreneuriat m'a permis de lancer ma propre activité.",
+                testimonial2: "L'éthique professionnelle m'a aidé à décrocher un stage en entreprise.",
+                testimonial3: "Un accompagnement de qualité, je recommande vivement.",
+                formTitle: "Inscrivez-vous à une session",
+                formName: "Nom complet",
+                formBtn: "Envoyer ma pré-inscription",
+                backBtn: "Retour à l'accueil",
+                footerText: "Aumônerie Diocésaine Jeunesse & Enfance – Douala"
+            },
+            en: {
+                themeBanner: "Theme: Integral youth training and employment in society",
+                headerTitle: "Diocesan Youth & Children's Chaplaincy",
+                headerSub: "Douala – Cameroon",
+                nav1: "Home",
+                nav2: "About",
+                nav3: "Childhood",
+                nav4: "Youth",
+                nav5: "News",
+                synodeBadge: "SECOND YEAR OF THE SYNOD",
+                heroTitle: "Leadership & Excellence",
+                heroDesc: "Integral formation to shine in the Church and impact society.",
+                formationsTitle: "Our training modules",
+                card1Title: "Social Doctrine",
+                card1Desc: "Study the Church's principles on work, justice and the common good to act as an enlightened citizen.",
+                card2Title: "Entrepreneurship",
+                card2Desc: "From idea to project: practical tools to create income-generating activities and jobs.",
+                card3Title: "Public Speaking",
+                card3Desc: "Develop your charisma and persuasion skills to confidently speak for youth.",
+                card4Title: "Professional Ethics",
+                card4Desc: "Learn to reconcile faith and career, fighting corruption and promoting integrity at work.",
+                card5Title: "Digital Skills",
+                card5Desc: "Master digital tools to boost your employability and evangelize on social networks.",
+                card6Title: "Civic Engagement",
+                card6Desc: "Understand your role in the nation to actively participate in Cameroon's development.",
+                timelineTitle: "Professional integration pathway",
+                step1Title: "Assessment",
+                step1Desc: "Skills evaluation and personalized guidance.",
+                step2Title: "Training",
+                step2Desc: "Practical workshops and mentoring by experts.",
+                step3Title: "Work placement",
+                step3Desc: "Internships and concrete projects.",
+                step4Title: "Follow-up",
+                step4Desc: "Support during the first months.",
+                testimonialsTitle: "They testify",
+                testimonial1: "The entrepreneurship training allowed me to start my own business.",
+                testimonial2: "Professional ethics helped me get an internship.",
+                testimonial3: "Quality support, I highly recommend.",
+                formTitle: "Register for a session",
+                formName: "Full name",
+                formBtn: "Send my pre-registration",
+                backBtn: "Back to home",
+                footerText: "Diocesan Youth & Children's Chaplaincy – Douala"
+            }
+        };
 
-  <center style="margin-top: 50px;">
-    <a href="index.html" style="color: #045286; font-weight: bold; text-decoration: none;">← Retourner à l'accueil</a>
-  </center>
-</div>
+        function updateLanguage() {
+            const t = translations[currentLang];
+            document.querySelectorAll('[data-key]').forEach(el => {
+                const key = el.getAttribute('data-key');
+                if (t[key]) {
+                    if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
+                        el.placeholder = t[key];
+                    } else {
+                        el.textContent = t[key];
+                    }
+                }
+            });
+            localStorage.setItem('lang', currentLang);
+        }
+        document.getElementById('langToggle').addEventListener('click', () => {
+            currentLang = currentLang === 'fr' ? 'en' : 'fr';
+            updateLanguage();
+        });
 
-<footer>
-  <p>© BIG DATA CENTER AI By <a href="https://www.youtube.com/@DominiqueSavio_Cyber-Ap%C3%B4tre3.0">Dominique Savio - Cyber Apôtre 3.0 </a></br>Aumônerie Diocésaine Jeunesse & Enfance – Douala</p>
-</footer>
+        // Dark mode
+        function initDarkMode() {
+            const darkMode = localStorage.getItem('darkMode') === 'true';
+            if (darkMode) document.body.classList.add('dark-mode');
+            const toggleBtn = document.getElementById('darkModeToggle');
+            toggleBtn.addEventListener('click', () => {
+                document.body.classList.toggle('dark-mode');
+                localStorage.setItem('darkMode', document.body.classList.contains('dark-mode'));
+                const icon = toggleBtn.querySelector('i');
+                icon.className = document.body.classList.contains('dark-mode') ? 'fas fa-sun' : 'fas fa-moon';
+            });
+            const icon = toggleBtn.querySelector('i');
+            icon.className = darkMode ? 'fas fa-sun' : 'fas fa-moon';
+        }
 
+        initDarkMode();
+        updateLanguage();
+    </script>
 </body>
+
 </html>
