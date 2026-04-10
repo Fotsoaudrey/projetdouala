@@ -50,7 +50,8 @@
         }
         
         body.dark-mode .theme-banner,
-        body.dark-mode .message-card {
+        body.dark-mode .message-card,
+        body.dark-mode .book-section {
             background: #1e293b;
             border-color: #334155;
         }
@@ -78,6 +79,29 @@
         
         body.dark-mode .signature {
             border-top-color: #334155;
+        }
+        
+        body.dark-mode .modal-content {
+            background: #1e293b;
+        }
+        
+        body.dark-mode .modal-extrait {
+            background: #0f1724;
+        }
+        
+        body.dark-mode .image-viewer {
+            background: #0f1724;
+        }
+        
+        body.dark-mode .floating-buttons .btn {
+            background: #1e293b;
+            border-color: #334155;
+            color: #e2e8f0;
+        }
+        
+        body.dark-mode .floating-buttons .btn:hover {
+            background: #2ecc71;
+            color: #022b44;
         }
         
         .container {
@@ -344,6 +368,431 @@
         body.dark-mode .signature strong {
             color: #2ecc71;
         }
+        /* ========== SECTION OUVRAGE ========== */
+        
+        .book-section {
+            background: white;
+            border-radius: 28px;
+            padding: 50px;
+            margin: 50px 0;
+            border: 1px solid #e9edf2;
+            transition: all 0.3s;
+        }
+        
+        .book-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .book-header h2 {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #045286;
+            margin-bottom: 16px;
+            font-family: 'Cormorant Garamond', serif;
+        }
+        
+        body.dark-mode .book-header h2 {
+            color: #2ecc71;
+        }
+        
+        .book-header p {
+            color: #64748b;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .book-content {
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+        }
+        
+        @media (min-width: 768px) {
+            .book-content {
+                flex-direction: row;
+                align-items: flex-start;
+            }
+        }
+        
+        .book-cover {
+            flex: 0 0 200px;
+            text-align: center;
+            cursor: pointer;
+        }
+        
+        .book-cover img {
+            width: 100%;
+            max-width: 180px;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            transition: transform 0.3s;
+            cursor: pointer;
+        }
+        
+        .book-cover img:hover {
+            transform: translateY(-5px);
+        }
+        
+        .btn-book {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: #045286;
+            color: white;
+            padding: 12px 28px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.95rem;
+            transition: all 0.3s;
+            cursor: pointer;
+            border: none;
+            margin-top: 16px;
+        }
+        
+        .btn-book:hover {
+            background: #2ecc71;
+            color: #022b44;
+            transform: translateY(-3px);
+        }
+        
+        body.dark-mode .btn-book {
+            background: #2ecc71;
+            color: #022b44;
+        }
+        
+        body.dark-mode .btn-book:hover {
+            background: white;
+        }
+        /* ========== MODAL POUR DESCRIPTION DE L'OUVRAGE ========== */
+        
+        .desc-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.85);
+            z-index: 2000;
+            backdrop-filter: blur(8px);
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .desc-modal.active {
+            display: flex;
+        }
+        
+        .desc-modal-content {
+            max-width: 600px;
+            width: 90%;
+            background: white;
+            border-radius: 28px;
+            overflow: hidden;
+            animation: modalFadeIn 0.3s ease;
+            max-height: 80vh;
+            overflow-y: auto;
+        }
+        
+        @keyframes modalFadeIn {
+            from {
+                opacity: 0;
+                transform: scale(0.95);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+        
+        .desc-modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 24px;
+            background: #045286;
+            color: white;
+        }
+        
+        body.dark-mode .desc-modal-header {
+            background: #2ecc71;
+            color: #022b44;
+        }
+        
+        .desc-modal-header h3 {
+            font-size: 1.3rem;
+            font-weight: 700;
+        }
+        
+        .close-desc-modal {
+            background: none;
+            border: none;
+            font-size: 1.8rem;
+            color: white;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        
+        body.dark-mode .close-desc-modal {
+            color: #022b44;
+        }
+        
+        .close-desc-modal:hover {
+            transform: scale(1.1);
+        }
+        
+        .desc-modal-body {
+            padding: 28px;
+            text-align: justify;
+        }
+        
+        .desc-modal-body p {
+            margin-bottom: 16px;
+            line-height: 1.7;
+        }
+        
+        .desc-modal-body strong {
+            color: #045286;
+        }
+        
+        body.dark-mode .desc-modal-body strong {
+            color: #2ecc71;
+        }
+        /* ========== MODAL POUR EXTRAITS ========== */
+        
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 2000;
+            backdrop-filter: blur(8px);
+        }
+        
+        .modal-content {
+            position: relative;
+            max-width: 800px;
+            margin: 40px auto;
+            background: white;
+            border-radius: 28px;
+            overflow: hidden;
+            animation: modalFadeIn 0.3s ease;
+        }
+        
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 24px;
+            background: #045286;
+            color: white;
+        }
+        
+        body.dark-mode .modal-header {
+            background: #2ecc71;
+            color: #022b44;
+        }
+        
+        .modal-header h3 {
+            font-size: 1.3rem;
+            font-weight: 700;
+        }
+        
+        .close-modal {
+            background: none;
+            border: none;
+            font-size: 1.8rem;
+            color: white;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        
+        body.dark-mode .close-modal {
+            color: #022b44;
+        }
+        
+        .close-modal:hover {
+            transform: scale(1.1);
+        }
+        
+        .modal-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 16px;
+            padding: 24px;
+            max-height: 60vh;
+            overflow-y: auto;
+        }
+        
+        .modal-extrait {
+            text-align: center;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        
+        .modal-extrait:hover {
+            transform: translateY(-5px);
+        }
+        
+        .modal-extrait img {
+            width: 100%;
+            height: 140px;
+            object-fit: cover;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        
+        .modal-extrait p {
+            margin-top: 8px;
+            font-size: 0.75rem;
+            color: #64748b;
+        }
+        
+        body.dark-mode .modal-extrait p {
+            color: #94a3b8;
+        }
+        /* Visionneuse d'image (zoom sur l'extrait) */
+        
+        .image-viewer {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 2100;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+        
+        .image-viewer.active {
+            display: flex;
+        }
+        
+        .viewer-content {
+            max-width: 90%;
+            max-height: 80vh;
+            text-align: center;
+        }
+        
+        .viewer-content img {
+            max-width: 100%;
+            max-height: 70vh;
+            object-fit: contain;
+            border-radius: 12px;
+        }
+        
+        .viewer-content p {
+            margin-top: 16px;
+            color: white;
+            font-size: 1rem;
+        }
+        
+        .close-viewer {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            font-size: 2.5rem;
+            color: white;
+            cursor: pointer;
+            background: none;
+            border: none;
+            transition: 0.2s;
+        }
+        
+        .close-viewer:hover {
+            transform: scale(1.1);
+        }
+        
+        @media (max-width: 768px) {
+            .modal-content {
+                margin: 20px;
+            }
+            .modal-gallery {
+                grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+            }
+        }
+        /* ========== BOUTONS FLOTTANTS EN BAS ========== */
+        
+        .floating-buttons {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            z-index: 1000;
+        }
+        
+        .floating-buttons .btn {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 24px;
+            border-radius: 60px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            font-size: 0.9rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            border: none;
+        }
+        
+        .floating-buttons .btn i {
+            font-size: 1.2rem;
+        }
+        
+        .floating-buttons .btn-wa {
+            background: #25D366;
+            color: white;
+        }
+        
+        .floating-buttons .btn-wa:hover {
+            background: #128C7E;
+            transform: translateY(-3px);
+        }
+        
+        .floating-buttons .btn-call {
+            background: #045286;
+            color: white;
+            display: none;
+        }
+        
+        .floating-buttons .btn-call:hover {
+            background: #2ecc71;
+            color: #022b44;
+            transform: translateY(-3px);
+        }
+        /* Sur mobile/tablette, afficher les deux boutons */
+        
+        @media (max-width: 992px) {
+            .floating-buttons .btn-call {
+                display: flex;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .floating-buttons {
+                bottom: 16px;
+                right: 16px;
+                left: 16px;
+                flex-direction: row;
+                gap: 10px;
+            }
+            .floating-buttons .btn {
+                flex: 1;
+                justify-content: center;
+                padding: 12px 16px;
+                font-size: 0.85rem;
+            }
+        }
         /* BOUTON RETOUR */
         
         .bottom-nav {
@@ -422,6 +871,12 @@
             .container {
                 padding: 0 20px;
             }
+            .book-section {
+                padding: 30px 20px;
+            }
+            .book-header h2 {
+                font-size: 1.5rem;
+            }
         }
     </style>
 </head>
@@ -468,7 +923,7 @@
             <div class="message-content">
                 <div class="aumonier-intro">
                     <div class="aumonier-photo">
-                        <img src="aumonier.jpg" alt="Abbé Christopher GEH KUM" onerror="this.src='https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=90&h=90&fit=crop'">
+                        <img src="../image/aumonier/aumonier.jpg" alt="Abbé Christopher GEH KUM" onerror="this.src='https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=90&h=90&fit=crop'">
                     </div>
                     <div class="aumonier-info">
                         <strong data-key="aumonierName">Abbé Christopher GEH KUM</strong>
@@ -494,12 +949,77 @@
         </article>
     </div>
 
+    <!-- ========== SECTION OUVRAGE ========== -->
+    <div class="container">
+        <section class="book-section">
+            <div class="book-header">
+                <h2 data-key="bookTitle">📖 Découvrir l'ouvrage de l'aumônier</h2>
+                <p data-key="bookDesc">Un livre inspirant pour guider les jeunes sur le chemin de la foi, de l'espérance et de l'engagement.</p>
+            </div>
+
+            <div class="book-content">
+                <div class="book-cover">
+                    <img src="https://images.unsplash.com/photo-1544947950-fa07a98d237f?w=200&h=280&fit=crop" alt="Couverture de l'ouvrage" id="coverImage" onerror="this.src='https://placehold.co/200x280?text=Couverture'">
+                    <a href="#" class="btn-book" id="bookInfoBtn"><i class="fas fa-info-circle"></i> <span data-key="bookBtn">En savoir plus</span></a>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- MODAL POUR LA DESCRIPTION DE L'OUVRAGE -->
+    <div id="descModal" class="desc-modal">
+        <div class="desc-modal-content">
+            <div class="desc-modal-header">
+                <h3 data-key="modalDescTitle">📖 Description de l'ouvrage</h3>
+                <button class="close-desc-modal" id="closeDescModalBtn">&times;</button>
+            </div>
+            <div class="desc-modal-body">
+                <p><strong data-key="bookTitleStrong">« Jeunesse, foi et avenir : bâtir une société d'espérance »</strong></p>
+                <p data-key="bookDesc1">Cet ouvrage de l'Abbé Christopher GEH KUM est une véritable feuille de route spirituelle et pratique pour les jeunes de l'Archidiocèse de Douala. À travers 12 chapitres inspirants, l'auteur y partage sa vision d'une jeunesse épanouie,
+                    responsable et engagée.</p>
+                <p data-key="bookDesc2">L'ouvrage aborde des thèmes essentiels tels que la formation intégrale, l'emploi des jeunes, la spiritualité au quotidien, l'engagement citoyen et la mission numérique. Chaque chapitre est ponctué de témoignages, de méditations et de pistes
+                    d'action concrètes.</p>
+                <p data-key="bookDesc3"><strong>ISBN :</strong> 978-9956-XXX-XX-X | <strong>Éditions :</strong> Aumônerie Diocésaine | <strong>Prix :</strong> 5 000 FCFA</p>
+            </div>
+        </div>
+    </div>
+
     <!-- BOUTON RETOUR -->
     <div class="container">
         <div class="bottom-nav">
             <a href="index.html" class="btn-back">
                 <i class="fas fa-arrow-left"></i> <span data-key="backBtn">Retour à l'accueil du portail</span>
             </a>
+        </div>
+    </div>
+
+    <!-- BOUTONS FLOTTANTS EN BAS (WhatsApp + Appel) -->
+    <div class="floating-buttons">
+        <a href="https://wa.me/237680358969?text=Bonjour%20Monsieur%20l'Aumônier%2C%20je%20souhaite%20obtenir%20plus%20d'informations%20sur%20votre%20ouvrage." class="btn btn-wa" id="whatsappBtn">
+            <i class="fab fa-whatsapp"></i> <span data-key="contactWhatsapp">WhatsApp</span>
+        </a>
+        <a href="tel:+237680358969" class="btn btn-call" id="callBtn">
+            <i class="fas fa-phone-alt"></i> <span data-key="contactCall">Appeler</span>
+        </a>
+    </div>
+
+    <!-- MODAL POUR EXTRAITS DU LIVRE -->
+    <div id="extraitsModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 data-key="modalTitle">📖 Extraits de l'ouvrage</h3>
+                <button class="close-modal" id="closeModalBtn">&times;</button>
+            </div>
+            <div class="modal-gallery" id="modalGallery"></div>
+        </div>
+    </div>
+
+    <!-- VISIONNEUSE D'IMAGE (ZOOM) -->
+    <div id="imageViewer" class="image-viewer">
+        <button class="close-viewer" id="closeViewerBtn">&times;</button>
+        <div class="viewer-content">
+            <img id="viewerImage" src="" alt="Extrait agrandi">
+            <p id="viewerCaption"></p>
         </div>
     </div>
 
@@ -512,6 +1032,105 @@
     </footer>
 
     <script>
+        // ========== GÉNÉRATION DES EXTRAITS POUR MODAL ==========
+        const modalExtraits = [];
+        for (let i = 1; i <= 20; i++) {
+            modalExtraits.push({
+                img: `https://picsum.photos/id/${30 + i}/300/200`,
+                caption: `Extrait ${i} - Page ${20 + i}`
+            });
+        }
+
+        // Remplir la modal
+        const modalGallery = document.getElementById('modalGallery');
+
+        function renderModalExtraits() {
+            modalGallery.innerHTML = '';
+            modalExtraits.forEach((extrait, idx) => {
+                const div = document.createElement('div');
+                div.className = 'modal-extrait';
+                div.setAttribute('data-img', extrait.img);
+                div.setAttribute('data-caption', extrait.caption);
+                div.innerHTML = `
+                    <img src="${extrait.img}" alt="${extrait.caption}" loading="lazy">
+                    <p>${extrait.caption}</p>
+                `;
+                div.addEventListener('click', () => {
+                    openImageViewer(extrait.img, extrait.caption);
+                });
+                modalGallery.appendChild(div);
+            });
+        }
+        renderModalExtraits();
+
+        // Visionneuse d'image
+        const imageViewer = document.getElementById('imageViewer');
+        const viewerImage = document.getElementById('viewerImage');
+        const viewerCaption = document.getElementById('viewerCaption');
+        const closeViewerBtn = document.getElementById('closeViewerBtn');
+
+        function openImageViewer(imgSrc, caption) {
+            viewerImage.src = imgSrc;
+            viewerCaption.textContent = caption;
+            imageViewer.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeImageViewer() {
+            imageViewer.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        closeViewerBtn.addEventListener('click', closeImageViewer);
+        imageViewer.addEventListener('click', (e) => {
+            if (e.target === imageViewer) closeImageViewer();
+        });
+
+        // Modal extraits : ouverture au clic sur la couverture
+        const modal = document.getElementById('extraitsModal');
+        const coverImage = document.getElementById('coverImage');
+        const closeModalBtn = document.getElementById('closeModalBtn');
+
+        coverImage.addEventListener('click', () => {
+            modal.style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        });
+
+        closeModalBtn.addEventListener('click', () => {
+            modal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        });
+
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                modal.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }
+        });
+
+        // ========== MODAL DESCRIPTION ==========
+        const descModal = document.getElementById('descModal');
+        const bookInfoBtn = document.getElementById('bookInfoBtn');
+        const closeDescModalBtn = document.getElementById('closeDescModalBtn');
+
+        bookInfoBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            descModal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        });
+
+        closeDescModalBtn.addEventListener('click', () => {
+            descModal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        });
+
+        descModal.addEventListener('click', (e) => {
+            if (e.target === descModal) {
+                descModal.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            }
+        });
+
         // ========== MULTILINGUE ==========
         let currentLang = localStorage.getItem('lang') || 'fr';
 
@@ -533,6 +1152,17 @@
                 messageP4: "Rappelez-vous que chaque talent que vous développez est une offrande pour la gloire de Dieu et le service de vos frères.",
                 signatureText: "Que le Seigneur bénisse votre cheminement,",
                 signatureName: "Votre Aumônier.",
+                bookTitle: "📖 Découvrir l'ouvrage de l'aumônier",
+                bookDesc: "Un livre inspirant pour guider les jeunes sur le chemin de la foi, de l'espérance et de l'engagement.",
+                bookBtn: "En savoir plus",
+                modalDescTitle: "📖 Description de l'ouvrage",
+                bookTitleStrong: "« Jeunesse, foi et avenir : bâtir une société d'espérance »",
+                bookDesc1: "Cet ouvrage de l'Abbé Christopher GEH KUM est une véritable feuille de route spirituelle et pratique pour les jeunes de l'Archidiocèse de Douala. À travers 12 chapitres inspirants, l'auteur y partage sa vision d'une jeunesse épanouie, responsable et engagée.",
+                bookDesc2: "L'ouvrage aborde des thèmes essentiels tels que la formation intégrale, l'emploi des jeunes, la spiritualité au quotidien, l'engagement citoyen et la mission numérique. Chaque chapitre est ponctué de témoignages, de méditations et de pistes d'action concrètes.",
+                bookDesc3: "<strong>ISBN :</strong> 978-9956-XXX-XX-X | <strong>Éditions :</strong> Aumônerie Diocésaine | <strong>Prix :</strong> 5 000 FCFA",
+                contactWhatsapp: "WhatsApp",
+                contactCall: "Appeler",
+                modalTitle: "📖 Extraits de l'ouvrage",
                 backBtn: "Retour à l'accueil du portail",
                 footerText: "Aumônerie Diocésaine Jeunesse & Enfance – Douala"
             },
@@ -553,6 +1183,17 @@
                 messageP4: "Remember that every talent you develop is an offering for the glory of God and the service of your brothers and sisters.",
                 signatureText: "May the Lord bless your journey,",
                 signatureName: "Your Chaplain.",
+                bookTitle: "📖 Discover the chaplain's book",
+                bookDesc: "An inspiring book to guide young people on the path of faith, hope and commitment.",
+                bookBtn: "Learn more",
+                modalDescTitle: "📖 Book description",
+                bookTitleStrong: "« Youth, faith and future: building a society of hope »",
+                bookDesc1: "This book by Father Christopher GEH KUM is a true spiritual and practical roadmap for the youth of the Archdiocese of Douala. Through 12 inspiring chapters, the author shares his vision of a fulfilled, responsible and engaged youth.",
+                bookDesc2: "The book addresses essential themes such as integral formation, youth employment, daily spirituality, civic engagement and digital mission. Each chapter is punctuated with testimonies, meditations and concrete action plans.",
+                bookDesc3: "<strong>ISBN:</strong> 978-9956-XXX-XX-X | <strong>Publisher:</strong> Diocesan Chaplaincy | <strong>Price:</strong> 5,000 FCFA",
+                contactWhatsapp: "WhatsApp",
+                contactCall: "Call",
+                modalTitle: "📖 Book excerpts",
                 backBtn: "Back to homepage",
                 footerText: "Diocesan Youth & Children's Chaplaincy – Douala"
             }
@@ -566,8 +1207,7 @@
                     if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
                         el.placeholder = t[key];
                     } else {
-                        // Pour les éléments avec du HTML, on utilise innerHTML
-                        if (key === 'messageP2' || key === 'messageP3') {
+                        if (key === 'messageP2' || key === 'messageP3' || key === 'bookDesc3') {
                             el.innerHTML = t[key];
                         } else {
                             el.textContent = t[key];

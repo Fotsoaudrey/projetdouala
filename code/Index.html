@@ -27,6 +27,7 @@
             line-height: 1.5;
             scroll-behavior: smooth;
             transition: background 0.3s ease, color 0.3s ease;
+            overflow-x: hidden;
         }
         /* MODE SOMBRE */
         
@@ -37,14 +38,14 @@
         
         body.dark-mode .navbar,
         body.dark-mode .card-link,
-        body.dark-mode .actu-card,
+        body.dark-mode .vie-card,
         body.dark-mode .album-card {
             background: #1e293b;
             color: #e2e8f0;
             border-color: #334155;
         }
         
-        body.dark-mode .actus-section {
+        body.dark-mode .vie-section {
             background: #0a0f1a;
         }
         
@@ -68,75 +69,70 @@
             color: #2ecc71;
         }
         
-        .container-footer .container {
-            max-width: 1280px;
-            margin: 50px auto;
-            padding: 0 32px;
+        body.dark-mode .dropdown-menu {
+            background: #1e293b;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
         }
+        
+        body.dark-mode .dropdown-menu a {
+            color: #e2e8f0;
+        }
+        
+        body.dark-mode .dropdown-menu a:hover {
+            background: #2d3748;
+            color: #2ecc71;
+        }
+        /* CONTENEURS */
         
         .container {
             max-width: 1280px;
             margin: 0 auto;
-            padding: 0 32px;
+            padding: 0 24px;
         }
-        /* CONTROLES */
-        
-        .controls-bar {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            z-index: 1001;
-            display: flex;
-            gap: 12px;
-        }
-        
-        .ctrl-btn {
-            background: rgba(255, 255, 255, 0.95);
-            border: none;
-            width: 44px;
-            height: 44px;
-            border-radius: 50%;
-            cursor: pointer;
-            font-size: 1.2rem;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-            transition: 0.2s;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        body.dark-mode .ctrl-btn {
-            background: #2d3748;
-            color: #e2e8f0;
-        }
-        
-        .ctrl-btn:hover {
-            transform: scale(1.05);
-        }
-        /* BOUTON DON */
+        /* ========== CTA DON ========== */
         
         .don-float {
             position: fixed;
-            left: 24px;
-            bottom: 28px;
+            right: 24px;
+            bottom: 32px;
+            left: auto;
             z-index: 1000;
-            background: linear-gradient(135deg, #2ecc71, #27ae60);
+            background: #e74c3c;
             color: white;
-            padding: 14px 28px;
+            padding: 16px 32px;
             border-radius: 60px;
             text-decoration: none;
-            font-weight: 700;
-            font-size: 0.85rem;
+            font-weight: 800;
+            font-size: 0.95rem;
             display: flex;
             align-items: center;
             gap: 12px;
-            box-shadow: 0 10px 25px rgba(46, 204, 113, 0.35);
-            transition: all 0.3s;
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 8px 24px rgba(231, 76, 60, 0.4);
+            transition: all 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+            border: none;
+            letter-spacing: 0.5px;
+        }
+        
+        .don-float i {
+            font-size: 1.2rem;
         }
         
         .don-float:hover {
-            transform: translateY(-4px);
+            transform: translateY(-4px) scale(1.02);
+            background: #c0392b;
+            box-shadow: 0 12px 28px rgba(231, 76, 60, 0.5);
+        }
+        
+        @media (max-width: 768px) {
+            .don-float {
+                right: 16px;
+                bottom: 16px;
+                left: 16px;
+                justify-content: center;
+                padding: 14px 20px;
+                font-size: 0.85rem;
+                border-radius: 50px;
+            }
         }
         /* HEADER */
         
@@ -156,21 +152,33 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
-            gap: 24px;
+            gap: 20px;
             flex-wrap: wrap;
         }
         
         .logo {
-            width: 80px;
-            height: 80px;
+            width: 70px;
+            height: 70px;
             border-radius: 50%;
             object-fit: cover;
             border: 2px solid #2ecc71;
             background: white;
         }
         
+        @media (max-width: 768px) {
+            .logo {
+                width: 50px;
+                height: 50px;
+            }
+        }
+        
+        .site-title {
+            text-align: center;
+            flex: 1;
+        }
+        
         .site-title h1 {
-            font-size: 1.5rem;
+            font-size: 1.6rem;
             font-weight: 700;
             text-transform: uppercase;
         }
@@ -180,41 +188,80 @@
             opacity: 0.85;
         }
         
-        @media (min-width: 768px) {
+        @media (max-width: 768px) {
             .site-title h1 {
-                font-size: 1.9rem;
+                font-size: 1rem;
+            }
+            .site-title p {
+                font-size: 0.7rem;
             }
         }
-        /* NAVIGATION */
+        /* ========== NAVBAR AVEC DROPDOWN ========== */
         
         .navbar {
             background: white;
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.05);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
             position: sticky;
             top: 0;
             z-index: 99;
             transition: background 0.3s;
         }
         
+        .nav-container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+        }
+        /* Menu hamburger (mobile) - caché sur desktop */
+        
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.8rem;
+            color: #045286;
+            cursor: pointer;
+            padding: 12px;
+            transition: 0.2s;
+        }
+        
+        body.dark-mode .menu-toggle {
+            color: #2ecc71;
+        }
+        /* Liens de navigation */
+        
         .nav-links {
             display: flex;
             justify-content: center;
-            flex-wrap: wrap;
-            gap: 12px;
+            align-items: center;
+            gap: 8px;
             list-style: none;
-            padding: 14px 16px;
+            padding: 16px 0;
+            margin: 0;
+            flex: 1;
+        }
+        
+        .nav-links li {
+            margin: 0;
+            position: relative;
         }
         
         .nav-links a {
-            padding: 10px 24px;
+            padding: 10px 20px;
             font-weight: 600;
             color: #1a2c3e;
             text-decoration: none;
             border-radius: 40px;
-            transition: all 0.25s;
+            transition: all 0.25s ease;
             display: flex;
             align-items: center;
             gap: 8px;
+            font-size: 0.9rem;
+            letter-spacing: 0.3px;
         }
         
         body.dark-mode .nav-links a {
@@ -223,21 +270,253 @@
         
         .nav-links a i {
             color: #2ecc71;
+            font-size: 1rem;
+            transition: 0.2s;
         }
         
         .nav-links a:hover {
             background: #045286;
             color: white;
+            transform: translateY(-2px);
         }
         
         .nav-links a:hover i {
             color: white;
         }
-        /* HERO */
+        /* ========== DROPDOWN MENU ========== */
+        
+        .dropdown {
+            position: relative;
+        }
+        
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: white;
+            min-width: 200px;
+            border-radius: 16px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: all 0.3s ease;
+            z-index: 100;
+            padding: 8px 0;
+        }
+        
+        .dropdown:hover .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        
+        .dropdown-menu a {
+            display: block;
+            padding: 12px 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            border-radius: 0;
+            color: #1a2c3e;
+        }
+        
+        .dropdown-menu a:hover {
+            background: #f0f4fa;
+            transform: translateX(4px);
+        }
+        
+        body.dark-mode .dropdown-menu a:hover {
+            background: #2d3748;
+        }
+        /* Flèche indicatrice pour le dropdown */
+        
+        .dropdown>a i.fa-chevron-down {
+            font-size: 0.7rem;
+            transition: transform 0.3s;
+        }
+        
+        .dropdown:hover>a i.fa-chevron-down {
+            transform: rotate(180deg);
+        }
+        /* Éléments mobiles - cachés par défaut sur desktop */
+        
+        .mobile-only-elements {
+            display: none;
+        }
+        /* Boutons de contrôle dans la navbar (DESKTOP) */
+        
+        .nav-controls {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+            flex-shrink: 0;
+        }
+        
+        .nav-controls .ctrl-btn {
+            background: rgba(0, 0, 0, 0.08);
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.1rem;
+            color: #1a2c3e;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        body.dark-mode .nav-controls .ctrl-btn {
+            background: rgba(255, 255, 255, 0.15);
+            color: #e2e8f0;
+        }
+        
+        .nav-controls .ctrl-btn:hover {
+            background: #2ecc71;
+            color: #022b44;
+            transform: scale(1.05);
+        }
+        /* Menu overlay */
+        
+        .menu-overlay {
+            display: none;
+        }
+        /* ========== RESPONSIVE MOBILE ========== */
+        
+        @media (max-width: 992px) {
+            .nav-container {
+                justify-content: space-between;
+                padding: 12px 20px;
+            }
+            .menu-toggle {
+                display: block;
+            }
+            /* Cacher les boutons desktop sur mobile */
+            .nav-controls {
+                display: none;
+            }
+            /* Cacher les éléments mobiles par défaut */
+            .mobile-only-elements {
+                display: none;
+            }
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 280px;
+                height: 100vh;
+                background: white;
+                flex-direction: column;
+                justify-content: flex-start;
+                align-items: stretch;
+                padding: 70px 24px 30px;
+                gap: 8px;
+                transition: right 0.3s ease;
+                box-shadow: -4px 0 20px rgba(0, 0, 0, 0.1);
+                z-index: 100;
+                border-radius: 0;
+            }
+            body.dark-mode .nav-links {
+                background: #1e293b;
+            }
+            .nav-links.active {
+                right: 0;
+            }
+            /* Afficher les éléments mobiles quand le menu est ouvert */
+            .nav-links.active .mobile-only-elements {
+                display: flex;
+                flex-direction: column;
+                order: -1;
+                margin-bottom: 20px;
+            }
+            /* Style des contrôles mobiles */
+            .mobile-only-elements .mobile-controls {
+                display: flex;
+                gap: 16px;
+                justify-content: center;
+                margin-bottom: 10px;
+                padding-bottom: 16px;
+                border-bottom: 1px solid #e9edf2;
+            }
+            body.dark-mode .mobile-only-elements .mobile-controls {
+                border-bottom-color: #334155;
+            }
+            .mobile-only-elements .close-menu-btn {
+                position: absolute;
+                top: 16px;
+                right: 20px;
+                background: none;
+                border: none;
+                font-size: 1.5rem;
+                color: #045286;
+                cursor: pointer;
+                padding: 10px;
+                transition: 0.2s;
+                z-index: 102;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+            body.dark-mode .mobile-only-elements .close-menu-btn {
+                color: #2ecc71;
+            }
+            .mobile-only-elements .close-menu-btn:hover {
+                transform: scale(1.1);
+            }
+            .mobile-controls .ctrl-btn {
+                background: rgba(0, 0, 0, 0.05);
+                border: none;
+                width: 44px;
+                height: 44px;
+                border-radius: 50%;
+                cursor: pointer;
+                font-size: 1.2rem;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+            body.dark-mode .mobile-controls .ctrl-btn {
+                background: rgba(255, 255, 255, 0.1);
+                color: #e2e8f0;
+            }
+            .menu-overlay {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(0, 0, 0, 0.5);
+                z-index: 99;
+                display: none;
+            }
+            .menu-overlay.active {
+                display: block;
+            }
+            /* Sur mobile, le dropdown se transforme en section simple */
+            .dropdown .dropdown-menu {
+                position: static;
+                box-shadow: none;
+                opacity: 1;
+                visibility: visible;
+                transform: none;
+                padding-left: 20px;
+                background: transparent;
+                margin-top: -5px;
+                margin-bottom: 5px;
+            }
+            .dropdown .dropdown-menu a {
+                padding: 10px 16px;
+            }
+            .dropdown:hover .dropdown-menu {
+                transform: none;
+            }
+        }
+        /* ========== HERO ========== */
         
         .hero {
             background: linear-gradient(110deg, #022b44 0%, #045286 100%);
-            padding: 70px 0;
+            padding: 60px 0;
             position: relative;
         }
         
@@ -251,24 +530,64 @@
             align-items: center;
             justify-content: space-between;
             gap: 50px;
+            background-image: url("../image/img/pape.jpeg");
+            background-size: cover;
+            background-position: center 30%;
+            background-repeat: no-repeat;
+            border-radius: 32px;
+            padding: 60px;
+            position: relative;
+            isolation: isolate;
+            min-height: 500px;
+        }
+        
+        .hero-grid::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(2, 43, 68, 0.85) 0%, rgba(4, 82, 134, 0.75) 100%);
+            border-radius: 32px;
+            z-index: -1;
+        }
+        
+        @media (max-width: 768px) {
+            .hero-grid {
+                padding: 30px 24px;
+                flex-direction: column;
+                text-align: center;
+                gap: 30px;
+                background-position: center 20%;
+            }
+            .hero-content {
+                text-align: center;
+            }
         }
         
         .hero-content {
             flex: 1.4;
             color: white;
+            position: relative;
+            z-index: 1;
         }
         
         .hero-content h2 {
-            font-size: 2.7rem;
+            font-size: 2.5rem;
             font-weight: 800;
             margin-bottom: 20px;
+            line-height: 1.2;
+        }
+        
+        @media (max-width: 768px) {
+            .hero-content h2 {
+                font-size: 1.8rem;
+            }
         }
         
         .btn-primary {
             background: #2ecc71;
             color: #022b44;
             padding: 14px 36px;
-            margin-top: 10px;
+            margin-top: 16px;
             font-weight: 800;
             border-radius: 50px;
             text-decoration: none;
@@ -276,11 +595,14 @@
             align-items: center;
             gap: 12px;
             transition: 0.3s;
+            border: none;
+            cursor: pointer;
         }
         
         .btn-primary:hover {
-            transform: translateY(-5px);
+            transform: translateY(-4px);
             background: #27ae60;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
         }
         
         .hero-card {
@@ -289,13 +611,16 @@
             border-radius: 28px;
             overflow: hidden;
             box-shadow: 0 25px 40px rgba(0, 0, 0, 0.25);
+            position: relative;
+            z-index: 1;
         }
         
         .hero-card img {
             width: 100%;
-            height: 580px;
+            height: auto;
+            margin-top: auto;
+            /*max-height: 400px;*/
             object-fit: cover;
-            /* object-fit permet de contrôler le redimensionnement d'une image dans son conteneur. c-a-d : l'image remplit le conteneur sans déformer son aspect */
         }
         
         .hero-card-content {
@@ -323,6 +648,17 @@
             border-left: 5px solid #2ecc71;
             padding-left: 24px;
             transition: color 0.3s;
+        }
+        
+        @media (max-width: 768px) {
+            .section-title {
+                font-size: 1.5rem;
+                margin-bottom: 30px;
+                padding-left: 20px;
+            }
+            .section {
+                padding: 50px 0;
+            }
         }
         
         .grid-3 {
@@ -356,181 +692,121 @@
             transform: translateY(-6px);
             border-color: #2ecc71;
         }
-        /* ========== CARROUSEL ACTUALITÉS ANIMÉ ========== */
+        /* ========== NOUVELLE SECTION VIE DU DIOCÈSE ========== */
         
-        .actus-section {
+        .vie-section {
             background: #f0f4fa;
             padding: 70px 0;
             transition: background 0.3s;
         }
         
-        .actus-carousel-container {
-            position: relative;
-            max-width: 1200px;
+        .vie-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 40px;
+            max-width: 1000px;
             margin: 0 auto;
-            padding: 0 60px;
         }
         
-        .actus-carousel {
-            overflow: hidden;
-            border-radius: 24px;
-        }
-        
-        .actus-track {
-            display: flex;
-            transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-            gap: 28px;
-        }
-        
-        .actu-card {
-            flex: 0 0 calc(33.333% - 19px);
-            min-width: calc(33.333% - 19px);
+        .vie-card {
             background: white;
-            border-radius: 24px;
-            overflow: hidden;
+            border-radius: 28px;
+            padding: 40px 32px;
+            text-align: center;
             transition: all 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
-            opacity: 0;
-            transform: translateY(20px);
-            animation: cardFadeInUp 0.5s forwards;
-            animation-delay: calc(var(--index, 0) * 0.1s);
+            border: 1px solid #e9edf2;
         }
         
-        @keyframes cardFadeInUp {
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        .vie-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 35px rgba(0, 0, 0, 0.12);
+            border-color: #2ecc71;
         }
         
-        .actu-card:hover {
-            transform: translateY(-10px) scale(1.02);
-            box-shadow: 0 25px 40px rgba(0, 0, 0, 0.15);
+        .vie-icon {
+            width: 80px;
+            height: 80px;
+            background: #2ecc71;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 24px;
         }
         
-        .actu-card img {
-            width: 100%;
-            height: 220px;
-            object-fit: cover;
-            transition: transform 0.6s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+        .vie-icon i {
+            font-size: 2.2rem;
+            color: #022b44;
         }
         
-        .actu-card:hover img {
-            transform: scale(1.08);
-        }
-        
-        .actu-body {
-            padding: 24px;
-        }
-        
-        .actu-body h4 {
-            font-size: 1.2rem;
-            margin-bottom: 10px;
+        .vie-card h3 {
+            font-size: 1.6rem;
             font-weight: 700;
+            margin-bottom: 12px;
+            color: #045286;
         }
         
-        .actu-body p {
+        body.dark-mode .vie-card h3 {
+            color: #2ecc71;
+        }
+        
+        .vie-card p {
             color: #64748b;
-            margin-bottom: 16px;
-            line-height: 1.5;
+            margin-bottom: 24px;
+            line-height: 1.6;
         }
         
-        body.dark-mode .actu-body p {
+        body.dark-mode .vie-card p {
             color: #94a3b8;
         }
         
-        .actu-link {
+        .vie-btn {
             display: inline-flex;
             align-items: center;
-            gap: 8px;
-            font-weight: 700;
-            color: #045286;
-            text-decoration: none;
-            transition: all 0.3s ease;
-        }
-        
-        .actu-link:hover {
-            gap: 12px;
-            color: #2ecc71;
-        }
-        
-        body.dark-mode .actu-link {
-            color: #2ecc71;
-        }
-        /* FLÈCHES DE NAVIGATION ANIMÉES */
-        
-        .carousel-arrow {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 48px;
-            height: 48px;
-            background: white;
-            border: none;
-            border-radius: 50%;
-            cursor: pointer;
-            font-size: 1.3rem;
-            color: #045286;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
-            transition: all 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1);
-            z-index: 10;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        body.dark-mode .carousel-arrow {
-            background: #1e293b;
-            color: #2ecc71;
-        }
-        
-        .carousel-arrow:hover {
-            background: #2ecc71;
+            gap: 10px;
+            background: #045286;
             color: white;
-            transform: translateY(-50%) scale(1.15);
-            box-shadow: 0 8px 25px rgba(46, 204, 113, 0.4);
+            padding: 12px 28px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
         }
         
-        .carousel-arrow:active {
-            transform: translateY(-50%) scale(0.95);
-        }
-        
-        .carousel-arrow-left {
-            left: 0;
-        }
-        
-        .carousel-arrow-right {
-            right: 0;
-        }
-        /* INDICATEURS ANIMÉS */
-        
-        .carousel-dots {
-            display: flex;
-            justify-content: center;
-            gap: 12px;
-            margin-top: 35px;
-        }
-        
-        .dot {
-            width: 10px;
-            height: 10px;
-            border-radius: 50%;
-            background: #cbd5e1;
-            cursor: pointer;
-            transition: all 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
-        }
-        
-        .dot.active {
-            width: 28px;
-            border-radius: 20px;
+        .vie-btn:hover {
             background: #2ecc71;
+            color: #022b44;
+            transform: translateY(-3px);
+            gap: 14px;
         }
         
-        .dot:hover {
+        body.dark-mode .vie-btn {
             background: #2ecc71;
-            transform: scale(1.2);
+            color: #022b44;
         }
-        /* ========== CARROUSEL ALBUMS ANIMÉ ========== */
+        
+        body.dark-mode .vie-btn:hover {
+            background: white;
+        }
+        
+        @media (max-width: 768px) {
+            .vie-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+            .vie-card {
+                padding: 30px 24px;
+            }
+            .vie-card h3 {
+                font-size: 1.4rem;
+            }
+            .vie-btn {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+        /* PHOTOTHÈQUE */
         
         .phototheque-pro {
             background: #0a2a3b;
@@ -557,18 +833,13 @@
             height: 55px;
             border-radius: 50%;
             cursor: pointer;
-            transition: all 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+            transition: all 0.3s;
             backdrop-filter: blur(4px);
         }
         
         .album-btn:hover {
             background: #2ecc71;
-            transform: scale(1.15);
-            box-shadow: 0 0 20px rgba(46, 204, 113, 0.5);
-        }
-        
-        .album-btn:active {
-            transform: scale(0.95);
+            transform: scale(1.1);
         }
         
         .album-cards-wrapper {
@@ -589,47 +860,25 @@
             border-radius: 28px;
             overflow: hidden;
             cursor: pointer;
-            transition: all 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
-            opacity: 0;
-            transform: scale(0.95);
-            animation: albumScaleIn 0.5s forwards;
-            animation-delay: calc(var(--album-index, 0) * 0.1s);
-        }
-        
-        @keyframes albumScaleIn {
-            to {
-                opacity: 1;
-                transform: scale(1);
-            }
+            transition: all 0.4s;
         }
         
         .album-card:hover {
-            transform: translateY(-12px) scale(1.03);
+            transform: translateY(-12px) scale(1.02);
             box-shadow: 0 30px 50px rgba(0, 0, 0, 0.4);
-        }
-        
-        .album-card:hover .album-cover {
-            transform: scale(1.08);
-            filter: brightness(1.15);
         }
         
         .album-cover {
             width: 100%;
             height: 240px;
             object-fit: cover;
-            transition: transform 0.6s cubic-bezier(0.2, 0.9, 0.4, 1.1), filter 0.3s;
+            transition: transform 0.6s, filter 0.3s;
         }
         
         .album-info {
             padding: 20px;
             text-align: center;
-            transition: transform 0.3s;
         }
-        
-        .album-card:hover .album-info {
-            transform: translateY(-2px);
-        }
-        /* CARROUSEL PHOTOS INTERNE ANIMÉ */
         
         .photo-carousel-section {
             margin-top: 40px;
@@ -638,18 +887,6 @@
             padding: 30px 20px;
             display: none;
             backdrop-filter: blur(12px);
-            animation: fadeInScale 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
-        }
-        
-        @keyframes fadeInScale {
-            from {
-                opacity: 0;
-                transform: scale(0.95);
-            }
-            to {
-                opacity: 1;
-                transform: scale(1);
-            }
         }
         
         .photo-carousel-container {
@@ -668,17 +905,12 @@
             height: 50px;
             border-radius: 50%;
             cursor: pointer;
-            transition: all 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+            transition: all 0.3s;
         }
         
         .photo-btn:hover {
             background: white;
-            transform: scale(1.15);
-            box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
-        }
-        
-        .photo-btn:active {
-            transform: scale(0.95);
+            transform: scale(1.1);
         }
         
         .photo-display {
@@ -691,24 +923,6 @@
             max-height: 400px;
             border-radius: 24px;
             box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
-            transition: transform 0.3s, box-shadow 0.3s;
-            animation: imagePop 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
-        }
-        
-        @keyframes imagePop {
-            from {
-                opacity: 0;
-                transform: scale(0.9);
-            }
-            to {
-                opacity: 1;
-                transform: scale(1);
-            }
-        }
-        
-        .photo-display img:hover {
-            transform: scale(1.02);
-            box-shadow: 0 20px 45px rgba(0, 0, 0, 0.5);
         }
         
         .photo-counter {
@@ -732,75 +946,171 @@
         .close-photo:hover {
             background: #2ecc71;
             color: #022b44;
-            transform: translateY(-2px);
         }
+        /* FOOTER */
         
-        footer {
+        .main-footer {
             background: #022b44;
-            color: white;
-            padding: 48px 0 32px;
-            text-align: center;
+            color: #cbd5e1;
+            padding: 60px 0 30px;
             transition: background 0.3s;
         }
         
-        footer a {
-            color: #2ecc71;
-            text-decoration: none;
-            transition: all 0.3s;
+        body.dark-mode .main-footer {
+            background: #020617;
         }
         
-        footer a:hover {
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-col h3 {
+            color: white;
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 12px;
+        }
+        
+        .footer-col h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 3px;
+            background: #2ecc71;
+            border-radius: 2px;
+        }
+        
+        .footer-col p {
+            font-size: 0.85rem;
+            line-height: 1.6;
+            margin-bottom: 16px;
+        }
+        
+        .footer-col a {
+            color: #cbd5e1;
+            text-decoration: none;
+            transition: 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.85rem;
+        }
+        
+        .footer-col a:hover {
+            color: #2ecc71;
+            transform: translateX(4px);
+        }
+        
+        .footer-links {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+        
+        .footer-links a {
+            color: #cbd5e1;
+            text-decoration: none;
+            transition: 0.2s;
+            font-size: 0.85rem;
+        }
+        
+        .footer-links a:hover {
+            color: #2ecc71;
+            padding-left: 4px;
+        }
+        
+        .dev-names {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        
+        .dev-names span {
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 16px;
+            margin-top: 16px;
+        }
+        
+        .social-links a {
+            width: 38px;
+            height: 38px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: 0.3s;
+        }
+        
+        .social-links a:hover {
+            background: #2ecc71;
+            transform: translateY(-3px);
+        }
+        
+        .social-links a i {
+            font-size: 1.1rem;
             color: white;
         }
         
-        @media (max-width: 1024px) {
-            .actu-card {
-                flex: 0 0 calc(50% - 14px);
-                min-width: calc(50% - 14px);
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.75rem;
+        }
+        
+        @media (max-width: 992px) {
+            .footer-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 30px;
             }
+        }
+        
+        @media (max-width: 576px) {
+            .footer-grid {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            .footer-col h3::after {
+                left: 50%;
+                transform: translateX(-50%);
+            }
+            .social-links {
+                justify-content: center;
+            }
+        }
+        
+        @media (max-width: 1024px) {
             .album-card {
                 min-width: calc(50% - 12px);
             }
         }
         
         @media (max-width: 768px) {
-            .actu-card {
-                flex: 0 0 100%;
-                min-width: 100%;
-            }
             .album-card {
                 min-width: 100%;
-            }
-            .photo-display {
-                width: 90%;
-            }
-            .hero-content h2 {
-                font-size: 1.8rem;
-            }
-            .container {
-                padding: 0 20px;
-            }
-            .actus-carousel-container {
-                padding: 0 40px;
-            }
-            .carousel-arrow {
-                width: 36px;
-                height: 36px;
-                font-size: 1rem;
             }
             .album-btn {
                 width: 40px;
                 height: 40px;
                 font-size: 1.3rem;
             }
-            .controls-bar {
-                top: 10px;
-                right: 10px;
-            }
-            .ctrl-btn {
-                width: 36px;
-                height: 36px;
-                font-size: 1rem;
+            .photo-display {
+                width: 90%;
             }
         }
     </style>
@@ -808,14 +1118,10 @@
 
 <body>
 
-    <!-- CONTROLES -->
-    <div class="controls-bar">
-        <button class="ctrl-btn" id="darkModeToggle"><i class="fas fa-moon"></i></button>
-        <button class="ctrl-btn" id="langToggle"><i class="fas fa-globe"></i></button>
-    </div>
-
+    <!-- CTA DON -->
     <a href="don.html" class="don-float">
         <i class="fas fa-hand-holding-heart"></i> <span data-key="don">DON POUR LA CONSTRUCTION DU CENTRE DIOCÉSAIN</span>
+        <i class="fas fa-arrow-right"></i>
     </a>
 
     <!-- HEADER -->
@@ -830,18 +1136,53 @@
         </div>
     </header>
 
-    <!-- NAVIGATION -->
+    <!-- NAVIGATION AVEC DROPDOWN "VIE DU DIOCÈSE" -->
     <nav class="navbar">
-        <div class="container">
-            <ul class="nav-links">
+        <div class="nav-container">
+            <button class="menu-toggle" id="menuToggle">
+                <i class="fas fa-bars"></i>
+            </button>
+
+            <!-- Liens de navigation -->
+            <ul class="nav-links" id="navLinks">
                 <li><a href="#accueil"><i class="fas fa-home"></i> <span data-key="nav1">Accueil</span></a></li>
                 <li><a href="#apropos"><i class="fas fa-church"></i> <span data-key="nav2">À propos</span></a></li>
                 <li><a href="#enfance"><i class="fas fa-child"></i> <span data-key="nav3">Enfance</span></a></li>
                 <li><a href="#jeunesse"><i class="fas fa-users"></i> <span data-key="nav4">Jeunesse</span></a></li>
-                <li><a href="#actus"><i class="fas fa-newspaper"></i> <span data-key="nav5">Actualités</span></a></li>
+
+                <!-- Nouveau lien "Vie du Diocèse" avec dropdown -->
+                <li class="dropdown">
+                    <a href="#vie-diocese">
+                        <i class="fas fa-newspaper"></i> <span data-key="nav5">Vie du Diocèse</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </a>
+                    <div class="dropdown-menu">
+                        <a href="annonces.html"><i class="fas fa-bullhorn"></i> Annonces</a>
+                        <a href="communiques.html"><i class="fas fa-file-alt"></i> Communiqués</a>
+                    </div>
+                </li>
+
                 <li><a href="#phototheque"><i class="fas fa-images"></i> <span data-key="nav6">Galerie</span></a></li>
+
+                <!-- Éléments mobiles (cachés sur desktop, visibles dans le menu sur mobile) -->
+                <div class="mobile-only-elements">
+                    <div class="mobile-controls">
+                        <button class="ctrl-btn" id="darkModeToggleMobile"><i class="fas fa-moon"></i></button>
+                        <button class="ctrl-btn" id="langToggleMobile"><i class="fas fa-globe"></i></button>
+                    </div>
+                    <button class="close-menu-btn" id="closeMenuBtn">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
             </ul>
+
+            <!-- Boutons desktop (uniquement visibles sur desktop) -->
+            <div class="nav-controls">
+                <button class="ctrl-btn" id="darkModeToggleDesktop"><i class="fas fa-moon"></i></button>
+                <button class="ctrl-btn" id="langToggleDesktop"><i class="fas fa-globe"></i></button>
+            </div>
         </div>
+        <div class="menu-overlay" id="menuOverlay"></div>
     </nav>
 
     <!-- HERO -->
@@ -853,7 +1194,7 @@
                 <a href="https://bit.ly/NDJ2026" class="btn-primary"><i class="fas fa-calendar-check"></i> <span data-key="heroBtn">S'INSCRIRE AUX ACTIVITÉS</span></a>
             </div>
             <div class="hero-card">
-                <img src="../image/aumonier.jpg" alt="Aumônier Diocésain" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&h=400&fit=crop'">
+                <img src="../image/aumonier/aumonier.jpg" alt="Aumônier Diocésain" loading="lazy" onerror="this.src=">
                 <div class="hero-card-content">
                     <i class="fas fa-microphone-alt" style="color:#2ecc71; font-size:1.6rem;"></i>
                     <p><a href="mot.html"><span data-key="motAumonier">MOT DE L'AUMONIER DIOCÉSAIN</span> <i class="fas fa-arrow-right"></i></a></p>
@@ -898,30 +1239,42 @@
         </div>
     </section>
 
-    <!-- CARROUSEL ACTUALITÉS ANIMÉ -->
-    <section id="actus" class="actus-section">
+    <!-- ========== NOUVELLE SECTION : VIE DU DIOCÈSE ========== -->
+    <section id="vie-diocese" class="vie-section">
         <div class="container">
-            <h2 class="section-title" data-key="actusTitle">Actualités</h2>
-        </div>
-        <div class="actus-carousel-container">
-            <button class="carousel-arrow carousel-arrow-left" id="prevActuBtn">
-      <i class="fas fa-chevron-left"></i>
-    </button>
-            <div class="actus-carousel">
-                <div class="actus-track" id="actusTrack"></div>
+            <h2 class="section-title" data-key="vieTitle">Vie du Diocèse</h2>
+            <div class="vie-grid">
+                <!-- Carte Annonces -->
+                <div class="vie-card">
+                    <div class="vie-icon">
+                        <i class="fas fa-bullhorn"></i>
+                    </div>
+                    <h3 data-key="annoncesTitle">Annonces</h3>
+                    <p data-key="annoncesDesc">Restez informés des actualités, événements et communications importantes de l'Archidiocèse.</p>
+                    <a href="annonces.html" class="vie-btn" data-key="annoncesBtn">
+                        Voir les annonces <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+
+                <!-- Carte Communiqués -->
+                <div class="vie-card">
+                    <div class="vie-icon">
+                        <i class="fas fa-file-alt"></i>
+                    </div>
+                    <h3 data-key="communiquesTitle">Communiqués</h3>
+                    <p data-key="communiquesDesc">Découvrez les offres d'emploi, les formations et les communications officielles du diocèse.</p>
+                    <a href="communiques.html" class="vie-btn" data-key="communiquesBtn">
+                        Voir les communiqués <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
             </div>
-            <button class="carousel-arrow carousel-arrow-right" id="nextActuBtn">
-      <i class="fas fa-chevron-right"></i>
-    </button>
         </div>
-        <div class="carousel-dots" id="carouselDots"></div>
     </section>
 
-    <!-- PHOTOTHÈQUE AVEC CARROUSEL ALBUMS ANIMÉ -->
+    <!-- PHOTOTHÈQUE -->
     <section id="phototheque" class="phototheque-pro">
         <div class="container">
             <h2 class="section-title" style="color:white; border-left-color:#2ecc71;" data-key="galleryTitle">Galerie photo</h2>
-
             <div class="album-carousel-container">
                 <button class="album-btn" id="prevAlbumBtn"><i class="fas fa-chevron-left"></i></button>
                 <div class="album-cards-wrapper">
@@ -929,7 +1282,6 @@
                 </div>
                 <button class="album-btn" id="nextAlbumBtn"><i class="fas fa-chevron-right"></i></button>
             </div>
-
             <div id="photoCarouselSection" class="photo-carousel-section">
                 <div class="photo-carousel-container">
                     <button class="photo-btn" id="prevPhotoBtn"><i class="fas fa-chevron-left"></i></button>
@@ -946,310 +1298,147 @@
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer>
-        <div class="container-footer">
-            <div class="container">
-                <p>&copy; BIG DATA CENTER AI — <a href="https://www.youtube.com/@DominiqueSavio_Cyber-Ap%C3%B4tre3.0" target="_blank">Dominique Savio - Cyber Apôtre 3.0</a></p>
-                <p data-key="footerText">Aumônerie Diocésaine Jeunesse & Enfance – Douala</p>
+    <!-- FOOTER -->
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h3>Aumônerie Diocésaine</h3>
+                    <p>Accompagnement spirituel, formation et engagement des jeunes et enfants de l'Archidiocèse de Douala. Ensemble, bâtissons une jeunesse responsable et rayonnante.</p>
+                    <p><a href="https://aumonerie-diocesaine-jeunesse-enfance-douala.org/" target="_blank">aumonerie-diocesaine-jeunesse-enfance-douala.org <i class="fas fa-external-link-alt"></i></a></p>
+                </div>
+                <div class="footer-col">
+                    <h3>Liens rapides</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html"><i class="fas fa-home"></i> Accueil</a></li>
+                        <li><a href="MissionPastorale.html"><i class="fas fa-cross"></i> Mission Pastorale</a></li>
+                        <li><a href="Histoirefondements.html"><i class="fas fa-book-open"></i> Histoire & Fondements</a></li>
+                        <li><a href="Equipepastorale.html"><i class="fas fa-user-friends"></i> Équipe Diocésaine</a></li>
+                        <li><a href="mouvements.html"><i class="fas fa-flag-checkered"></i> Mouvements & Groupes</a></li>
+                        <li><a href="don.html"><i class="fas fa-hand-holding-heart"></i> Faire un don</a></li>
+                        <li><a href="mot.html"><i class="fas fa-microphone-alt"></i> Mot de l'Aumônier</a></li>
+                        <li><a href="pelerinage.html"><i class="fas fa-hiking"></i> Pèlerinages</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Équipe technique</h3>
+                    <div class="dev-names">
+                        <span><i class="fas fa-code"></i> KENMATIO Vicens</span>
+                        <span><i class="fas fa-palette"></i> FOTSO Audrey</span>
+                    </div>
+                    <div class="social-links">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                        <a href="#" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h3>Contact</h3>
+                    <p><i class="fas fa-envelope"></i> contact@aumonerie-douala.org</p>
+                    <p><i class="fas fa-phone-alt"></i> +237 697 408 284</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Archidiocèse de Douala, Cameroun</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Aumônerie Diocésaine Jeunesse & Enfance – Douala. Tous droits réservés.</p>
+                <p>Conçu avec <i class="fas fa-heart" style="color: #e74c3c;"></i> par BIG DATA CENTER AI — <a href="https://www.youtube.com/@DominiqueSavio_Cyber-Ap%C3%B4tre3.0" target="_blank">Dominique Savio - Cyber Apôtre 3.0</a></p>
             </div>
         </div>
     </footer>
 
     <script>
-        // ========== DONNÉES ACTUALITÉS ==========
-        const actuItems = [{
-            img: "../image/WhatsApp Image 2026-02-01 at 08.22.20.jpeg",
-            title: "Nuit des Jeunes 2026",
-            desc: "Préparez-vous pour une nuit de louange exceptionnelle avec des artistes invités.",
-            link: "actu01.html",
-            fallback: "https://images.unsplash.com/photo-1523580495863-d7d7b9e8a617?w=500&h=350&fit=crop"
-        }, {
-            img: "../image/zone.png",
-            title: "Zones Pastorales",
-            desc: "Découvrez votre zone et vos responsables de secteur pour mieux vous impliquer.",
-            link: "annonce2.html",
-            fallback: "https://images.unsplash.com/photo-1593113598332-cd288d649a58?w=500&h=350&fit=crop"
-        }, {
-            img: "../image/IMG-20260205-WA0033.jpg",
-            title: "Chemin de Carême",
-            desc: "Suivez notre programme spécial pour ces 40 jours de prière et de partage.",
-            link: "annonce3.html",
-            fallback: "https://images.unsplash.com/photo-1540420773420-3366772f4999?w=500&h=350&fit=crop"
-        }, {
-            img: "../image/CamScanner 2026-02-06 15.58_1 (1).jpg",
-            title: "Centre Diocésain des Jeunes",
-            desc: "Projet de construction d'un centre d'insertion et de professionnalisme.",
-            link: "don.html",
-            fallback: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=500&h=350&fit=crop"
-        }, {
-            img: "../image/jubile.jpg",
-            title: "Jubilé de Platine",
-            desc: "Notre Archidiocèse célèbrera sept décennies d'existence le 14 Mars 2026.",
-            link: "jubile.html",
-            fallback: "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=500&h=350&fit=crop"
-        }, {
-            img: "../image/Screenshot 2026-02-06 173106.png",
-            title: "Pèlerinage Annuel",
-            desc: "Inscriptions ouvertes pour le grand départ vers le sanctuaire marial.",
-            link: "pelerinage.html",
-            fallback: "https://images.unsplash.com/photo-1445251836269-d158eaa028a6?w=500&h=350&fit=crop"
-        }, {
-            img: "../image/WhatsApp Image 2026-02-06 at 13.06.47.jpeg",
-            title: "Bienheureux Carlos Acutis",
-            desc: "À la suite du jeune Carlos, nous nous mettons sur l'autoroute de l'Eucharistie.",
-            link: "carlos.html",
-            fallback: "https://images.unsplash.com/photo-1541428407462-6c7e75610e52?w=500&h=350&fit=crop"
-        }];
+        // ========== MENU HAMBURGER ==========
+        const menuToggle = document.getElementById('menuToggle');
+        const navLinks = document.getElementById('navLinks');
+        const menuOverlay = document.getElementById('menuOverlay');
+        const closeMenuBtn = document.getElementById('closeMenuBtn');
 
-        // ========== CARROUSEL ACTUALITÉS ANIMÉ ==========
-        let currentActuIndex = 0;
-        let itemsPerPage = 3;
-        let autoScrollInterval;
-        const track = document.getElementById("actusTrack");
-        const dotsContainer = document.getElementById("carouselDots");
-
-        function updateItemsPerPage() {
-            if (window.innerWidth < 768) itemsPerPage = 1;
-            else if (window.innerWidth < 1024) itemsPerPage = 2;
-            else itemsPerPage = 3;
-        }
-
-        function renderActuCarousel() {
-            updateItemsPerPage();
-            const totalPages = Math.ceil(actuItems.length / itemsPerPage);
-            const start = currentActuIndex * itemsPerPage;
-            const visibleItems = actuItems.slice(start, start + itemsPerPage);
-
-            track.innerHTML = "";
-            visibleItems.forEach((item, idx) => {
-                const card = document.createElement("div");
-                card.className = "actu-card";
-                card.style.setProperty('--index', idx);
-                card.innerHTML = `
-        <img src="${item.img}" alt="${item.title}" loading="lazy" onerror="this.src='${item.fallback}'">
-        <div class="actu-body">
-          <h4>${item.title}</h4>
-          <p>${item.desc}</p>
-          <a href="${item.link}" class="actu-link">Lire la suite <i class="fas fa-arrow-right"></i></a>
-        </div>
-      `;
-                track.appendChild(card);
-            });
-
-            dotsContainer.innerHTML = "";
-            for (let i = 0; i < totalPages; i++) {
-                const dot = document.createElement("div");
-                dot.className = `dot ${i === currentActuIndex ? "active" : ""}`;
-                dot.addEventListener("click", () => goToPage(i));
-                dotsContainer.appendChild(dot);
+        function closeMenu() {
+            navLinks.classList.remove('active');
+            if (menuOverlay) menuOverlay.classList.remove('active');
+            if (menuToggle && window.innerWidth <= 992) {
+                menuToggle.innerHTML = '<i class="fas fa-bars"></i>';
             }
         }
 
-        function goToPage(pageIndex) {
-            const totalPages = Math.ceil(actuItems.length / itemsPerPage);
-            currentActuIndex = Math.min(Math.max(0, pageIndex), totalPages - 1);
-            renderActuCarousel();
-            resetAutoScroll();
+        function openMenu() {
+            navLinks.classList.add('active');
+            if (menuOverlay) menuOverlay.classList.add('active');
+            if (menuToggle && window.innerWidth <= 992) {
+                menuToggle.innerHTML = '<i class="fas fa-times"></i>';
+            }
         }
 
-        function nextActuPage() {
-            const totalPages = Math.ceil(actuItems.length / itemsPerPage);
-            currentActuIndex = (currentActuIndex + 1) % totalPages;
-            renderActuCarousel();
-            resetAutoScroll();
+        function toggleMenu() {
+            if (navLinks.classList.contains('active')) {
+                closeMenu();
+            } else {
+                openMenu();
+            }
         }
 
-        function prevActuPage() {
-            const totalPages = Math.ceil(actuItems.length / itemsPerPage);
-            currentActuIndex = (currentActuIndex - 1 + totalPages) % totalPages;
-            renderActuCarousel();
-            resetAutoScroll();
+        if (menuToggle) {
+            menuToggle.addEventListener('click', toggleMenu);
         }
 
-        function startAutoScroll() {
-            autoScrollInterval = setInterval(() => nextActuPage(), 5000);
+        if (closeMenuBtn) {
+            closeMenuBtn.addEventListener('click', closeMenu);
         }
 
-        function resetAutoScroll() {
-            clearInterval(autoScrollInterval);
-            startAutoScroll();
+        if (menuOverlay) {
+            menuOverlay.addEventListener('click', closeMenu);
         }
 
-        function stopAutoScroll() {
-            clearInterval(autoScrollInterval);
-        }
-
-        document.getElementById("prevActuBtn").addEventListener("click", prevActuPage);
-        document.getElementById("nextActuBtn").addEventListener("click", nextActuPage);
-
-        const carouselContainer = document.querySelector(".actus-carousel-container");
-        if (carouselContainer) {
-            carouselContainer.addEventListener("mouseenter", stopAutoScroll);
-            carouselContainer.addEventListener("mouseleave", startAutoScroll);
-        }
-
-        window.addEventListener("resize", () => {
-            const oldPage = currentActuIndex;
-            renderActuCarousel();
-            const newTotalPages = Math.ceil(actuItems.length / itemsPerPage);
-            currentActuIndex = Math.min(oldPage, newTotalPages - 1);
-            renderActuCarousel();
+        // Fermer le menu lors du clic sur un lien
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', closeMenu);
         });
 
-        // ========== ALBUMS ==========
-        const albums = [{
-            title: {
-                fr: "Célébrations Eucharistiques",
-                en: "Eucharistic Celebrations"
-            },
-            desc: {
-                fr: "Messes et prières",
-                en: "Masses and prayers"
-            },
-            cover: "https://images.unsplash.com/photo-1438032005730-c779502df39b?w=400&h=300&fit=crop",
-            photos: [
-                "https://images.unsplash.com/photo-1507699622108-4be0abd1b71e?w=800&h=500&fit=crop",
-                "https://images.unsplash.com/photo-1441031422060-7093d70d6d9e?w=800&h=500&fit=crop",
-                "https://images.unsplash.com/photo-1489514354504-1653aa90e34e?w=800&h=500&fit=crop",
-                "https://images.unsplash.com/photo-1505761671935-60b3a7427bad?w=800&h=500&fit=crop"
-            ]
-        }, {
-            title: {
-                fr: "Retraites et Camps",
-                en: "Retreats and Camps"
-            },
-            desc: {
-                fr: "Moments forts en communauté",
-                en: "Community moments"
-            },
-            cover: "https://images.unsplash.com/photo-1470246973918-29a93221c455?w=400&h=300&fit=crop",
-            photos: [
-                "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&h=500&fit=crop",
-                "https://images.unsplash.com/photo-1511632765486-a01980e01a18?w=800&h=500&fit=crop",
-                "https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=800&h=500&fit=crop",
-                "https://images.unsplash.com/photo-1531482615713-2afd69097998?w=800&h=500&fit=crop"
-            ]
-        }, {
-            title: {
-                fr: "Actions Sociales",
-                en: "Social Actions"
-            },
-            desc: {
-                fr: "Charité et solidarité",
-                en: "Charity and solidarity"
-            },
-            cover: "https://images.unsplash.com/photo-1532629345422-7515f3d16bb6?w=400&h=300&fit=crop",
-            photos: [
-                "https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?w=800&h=500&fit=crop",
-                "https://images.unsplash.com/photo-1593113598332-cd288d649a58?w=800&h=500&fit=crop",
-                "https://images.unsplash.com/photo-1559027615-cd4628902d4a?w=800&h=500&fit=crop",
-                "https://images.unsplash.com/photo-1469571486292-0ba58a3f068b?w=800&h=500&fit=crop"
-            ]
-        }, {
-            title: {
-                fr: "Rencontres de Jeunes",
-                en: "Youth Meetings"
-            },
-            desc: {
-                fr: "Partage et fraternité",
-                en: "Sharing and fraternity"
-            },
-            cover: "https://images.unsplash.com/photo-1523580495863-d7d7b9e8a617?w=400&h=300&fit=crop",
-            photos: [
-                "https://images.unsplash.com/photo-1517457373958-b7bdd4587205?w=800&h=500&fit=crop",
-                "https://images.unsplash.com/photo-1529333166437-7750a6dd5a70?w=800&h=500&fit=crop",
-                "https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=800&h=500&fit=crop",
-                "https://images.unsplash.com/photo-1511632765486-a01980e01a18?w=800&h=500&fit=crop"
-            ]
-        }];
+        // Redimensionnement
+        window.addEventListener('resize', function() {
+            if (window.innerWidth > 992) {
+                closeMenu();
+            }
+        });
 
+        // ========== MODE SOMBRE (UNIFIÉ) ==========
+        function setDarkMode(isDark) {
+            if (isDark) {
+                document.body.classList.add('dark-mode');
+            } else {
+                document.body.classList.remove('dark-mode');
+            }
+            localStorage.setItem('darkMode', isDark);
+
+            const darkIcons = document.querySelectorAll('#darkModeToggleDesktop i, #darkModeToggleMobile i');
+            darkIcons.forEach(icon => {
+                icon.className = isDark ? 'fas fa-sun' : 'fas fa-moon';
+            });
+        }
+
+        function initDarkMode() {
+            const darkMode = localStorage.getItem('darkMode') === 'true';
+            setDarkMode(darkMode);
+
+            const desktopBtn = document.getElementById('darkModeToggleDesktop');
+            const mobileBtn = document.getElementById('darkModeToggleMobile');
+
+            if (desktopBtn) {
+                desktopBtn.addEventListener('click', () => {
+                    setDarkMode(!document.body.classList.contains('dark-mode'));
+                });
+            }
+            if (mobileBtn) {
+                mobileBtn.addEventListener('click', () => {
+                    setDarkMode(!document.body.classList.contains('dark-mode'));
+                });
+            }
+        }
+
+        // ========== MULTILINGUE (UNIFIÉ) ==========
         let currentLang = localStorage.getItem('lang') || 'fr';
-        let albumOffset = 0;
 
-        const albumContainer = document.getElementById("albumCards");
-
-        function renderAlbums() {
-            albumContainer.innerHTML = "";
-            albums.forEach((album, idx) => {
-                const card = document.createElement("div");
-                card.className = "album-card";
-                card.style.setProperty('--album-index', idx);
-                card.setAttribute("data-album-index", idx);
-                card.innerHTML = `
-        <img src="${album.cover}" class="album-cover" alt="${album.title.fr}" loading="lazy">
-        <div class="album-info">
-          <h3>${album.title[currentLang]}</h3>
-          <p>${album.desc[currentLang]}</p>
-          <i class="fas fa-images"></i> ${album.photos.length} photos
-        </div>
-      `;
-                card.addEventListener("click", () => openAlbumPhotos(idx));
-                albumContainer.appendChild(card);
-            });
-            updateAlbumCarousel();
-        }
-
-        function updateAlbumCarousel() {
-            const firstCard = document.querySelector(".album-card");
-            const cardWidth = firstCard ? firstCard.offsetWidth + 24 : 350;
-            albumContainer.style.transform = `translateX(-${albumOffset * cardWidth}px)`;
-        }
-
-        document.getElementById("prevAlbumBtn").addEventListener("click", () => {
-            if (albumOffset > 0) albumOffset--;
-            else albumOffset = Math.max(0, albums.length - 3);
-            updateAlbumCarousel();
-        });
-        document.getElementById("nextAlbumBtn").addEventListener("click", () => {
-            const maxOffset = Math.max(0, albums.length - 3);
-            if (albumOffset < maxOffset) albumOffset++;
-            else albumOffset = 0;
-            updateAlbumCarousel();
-        });
-
-        // CARROUSEL PHOTOS INTERNE
-        let currentAlbumIndex = 0;
-        let currentPhotoIndex = 0;
-        let currentAlbumPhotos = [];
-        const photoSection = document.getElementById("photoCarouselSection");
-        const currentPhotoImg = document.getElementById("currentPhotoImg");
-        const photoCounter = document.getElementById("photoCounter");
-
-        function openAlbumPhotos(albumIndex) {
-            currentAlbumIndex = albumIndex;
-            currentAlbumPhotos = albums[albumIndex].photos;
-            currentPhotoIndex = 0;
-            updatePhotoDisplay();
-            photoSection.style.display = "block";
-            photoSection.scrollIntoView({
-                behavior: "smooth",
-                block: "center"
-            });
-        }
-
-        function updatePhotoDisplay() {
-            if (currentAlbumPhotos.length > 0) {
-                currentPhotoImg.src = currentAlbumPhotos[currentPhotoIndex];
-                photoCounter.innerText = `Photo ${currentPhotoIndex + 1} / ${currentAlbumPhotos.length}`;
-            }
-        }
-
-        document.getElementById("prevPhotoBtn").addEventListener("click", () => {
-            if (currentAlbumPhotos.length === 0) return;
-            currentPhotoIndex = (currentPhotoIndex - 1 + currentAlbumPhotos.length) % currentAlbumPhotos.length;
-            updatePhotoDisplay();
-        });
-        document.getElementById("nextPhotoBtn").addEventListener("click", () => {
-            if (currentAlbumPhotos.length === 0) return;
-            currentPhotoIndex = (currentPhotoIndex + 1) % currentAlbumPhotos.length;
-            updatePhotoDisplay();
-        });
-        document.getElementById("closePhotoBtn").addEventListener("click", () => {
-            photoSection.style.display = "none";
-        });
-
-        // ========== MULTILINGUE ==========
         const translations = {
             fr: {
                 don: "DON POUR LA CONSTRUCTION DU CENTRE DIOCÉSAIN",
@@ -1259,7 +1448,7 @@
                 nav2: "À propos",
                 nav3: "Enfance",
                 nav4: "Jeunesse",
-                nav5: "Actualités",
+                nav5: "Vie du Diocèse",
                 nav6: "Galerie",
                 heroTitle: "Bienvenue sur le portail de l'Aumônerie des Jeunes",
                 heroTheme: "Thème :",
@@ -1278,10 +1467,15 @@
                 jeunesse1: "MOUVEMENTS & GROUPES",
                 jeunesse2: "FORMATION & LEADERSHIP",
                 jeunesse3: "PROJETS & ENGAGEMENTS",
-                actusTitle: "Actualités",
+                vieTitle: "Vie du Diocèse",
+                annoncesTitle: "Annonces",
+                annoncesDesc: "Restez informés des actualités, événements et communications importantes de l'Archidiocèse.",
+                annoncesBtn: "Voir les annonces",
+                communiquesTitle: "Communiqués",
+                communiquesDesc: "Découvrez les offres d'emploi, les formations et les communications officielles du diocèse.",
+                communiquesBtn: "Voir les communiqués",
                 galleryTitle: "Galerie photo",
-                closeGallery: "Fermer la galerie",
-                footerText: "Aumônerie Diocésaine Jeunesse & Enfance – Douala"
+                closeGallery: "Fermer la galerie"
             },
             en: {
                 don: "DONATION FOR THE CONSTRUCTION OF THE DIOCESAN CENTER",
@@ -1291,7 +1485,7 @@
                 nav2: "About",
                 nav3: "Childhood",
                 nav4: "Youth",
-                nav5: "News",
+                nav5: "Diocesan Life",
                 nav6: "Gallery",
                 heroTitle: "Welcome to the Youth Chaplaincy Portal",
                 heroTheme: "Theme:",
@@ -1307,13 +1501,18 @@
                 enfance2: "CATECHESIS & GROUPS",
                 enfance3: "ANNUAL CALENDAR",
                 jeunesseTitle: "Youth Ministry",
-                jeunesse1: "MOVEMENTS & GROUPS",
+                jeunesse1: "MOVEMENTS & GROUPES",
                 jeunesse2: "TRAINING & LEADERSHIP",
                 jeunesse3: "PROJECTS & COMMITMENTS",
-                actusTitle: "News",
+                vieTitle: "Diocesan Life",
+                annoncesTitle: "Announcements",
+                annoncesDesc: "Stay informed about news, events and important communications from the Archdiocese.",
+                annoncesBtn: "View announcements",
+                communiquesTitle: "Official Statements",
+                communiquesDesc: "Discover job offers, training courses and official communications from the diocese.",
+                communiquesBtn: "View statements",
                 galleryTitle: "Photo Gallery",
-                closeGallery: "Close gallery",
-                footerText: "Diocesan Youth & Children's Chaplaincy – Douala"
+                closeGallery: "Close gallery"
             }
         };
 
@@ -1323,46 +1522,245 @@
                 const key = el.getAttribute('data-key');
                 if (t[key]) el.textContent = t[key];
             });
-            document.querySelectorAll('.album-card').forEach((card, idx) => {
-                const titleEl = card.querySelector('h3');
-                const descEl = card.querySelector('p');
-                if (titleEl) titleEl.textContent = albums[idx].title[currentLang];
-                if (descEl) descEl.textContent = albums[idx].desc[currentLang];
-            });
             localStorage.setItem('lang', currentLang);
         }
 
-        document.getElementById('langToggle').addEventListener('click', () => {
-            currentLang = currentLang === 'fr' ? 'en' : 'fr';
-            updateLanguage();
-        });
+        function initLanguage() {
+            const desktopBtn = document.getElementById('langToggleDesktop');
+            const mobileBtn = document.getElementById('langToggleMobile');
 
-        // ========== MODE SOMBRE ==========
-        function initDarkMode() {
-            const darkMode = localStorage.getItem('darkMode') === 'true';
-            if (darkMode) document.body.classList.add('dark-mode');
-            const toggleBtn = document.getElementById('darkModeToggle');
-            toggleBtn.addEventListener('click', () => {
-                document.body.classList.toggle('dark-mode');
-                localStorage.setItem('darkMode', document.body.classList.contains('dark-mode'));
-                const icon = toggleBtn.querySelector('i');
-                icon.className = document.body.classList.contains('dark-mode') ? 'fas fa-sun' : 'fas fa-moon';
-            });
-            const icon = toggleBtn.querySelector('i');
-            icon.className = darkMode ? 'fas fa-sun' : 'fas fa-moon';
+            if (desktopBtn) {
+                desktopBtn.addEventListener('click', () => {
+                    currentLang = currentLang === 'fr' ? 'en' : 'fr';
+                    updateLanguage();
+                });
+            }
+            if (mobileBtn) {
+                mobileBtn.addEventListener('click', () => {
+                    currentLang = currentLang === 'fr' ? 'en' : 'fr';
+                    updateLanguage();
+                });
+            }
+            updateLanguage();
         }
 
-        // ========== INITIALISATION ==========
-        window.addEventListener('resize', () => {
+        // ========== ALBUMS ==========
+        const albums = [{
+                title: {
+                    fr: "Célébrations Eucharistiques",
+                    en: "Eucharistic Celebrations"
+                },
+                desc: {
+                    fr: "Messes et prières",
+                    en: "Masses and prayers"
+                },
+                cover: "https://images.unsplash.com/photo-1438032005730-c779502df39b?w=400&h=300&fit=crop",
+                photos: ["../image/celebrations/IMG-20230518-WA0137.jpg", "../image/celebrations/97739.jpg", "../image/celebrations/97756.jpg", "../image/celebrations/97768.jpg", "../image/celebrations/97758.jpg"]
+            }, {
+                title: {
+                    fr: "Retraites et Camps",
+                    en: "Retreats and Camps"
+                },
+                desc: {
+                    fr: "Moments forts en communauté",
+                    en: "Community moments"
+                },
+                cover: "https://images.unsplash.com/photo-1470246973918-29a93221c455?w=400&h=300&fit=crop",
+                photos: ["../image/retraites/r1.jpg", "../image/retraites/r4.jpg", "../image/retraites/r5.jpg", "../image/retraites/r6.jpg", "../image/retraites/r7.jpg", ]
+            }, {
+                title: {
+                    fr: "Rencontres de Jeunes",
+                    en: "Youth Meetings"
+                },
+                desc: {
+                    fr: "Partage et fraternité",
+                    en: "Sharing and fraternity"
+                },
+                cover: "../image/jeunes/IMG-20250929-WA0034.jpg",
+                photos: ["../image/jeunes/IMG-20250929-WA0031.jpg", "../image/jeunes/IMG-20250929-WA0034.jpg", "../image/jeunes/j1.jpg", "../image/jeunes/j2.jpg", "../image/jeunes/j3.jpg", "../image/jeunes/j4.jpg", "../image/jeunes/j5.jpg", "../image/jeunes/j6.jpg", "../image/jeunes/j7.jpg", "../image/jeunes/j8.jpg", "../image/jeunes/j9.jpg"]
+            },
+
+
+            {
+                title: {
+                    fr: "actualités et événements",
+                    en: " News and Events"
+                },
+                desc: {
+                    fr: " actualités, événements et moments forts de la vie du diocèse",
+                    en: " News, events and highlights of diocesan life"
+                },
+                cover: "../image/actualite/a4.jpg",
+                photos: ["../image/actualite/a1.jpg", "../image/actualite/a2.jpg", "../image/actualite/a3.jpg", "../image/actualite/pagne_pape.jpg", "../image/actualite/arrive_pape.jpg", "../image/actualite/priere_arrive_pape.jpg", "../image/actualite/arrive_pape1.jpg", "../image/actualite/rtvc.jpg"]
+            }, {
+                title: {
+                    fr: "Grandes Périodes Liturgiques",
+                    en: "Great Liturgical Seasons"
+                },
+                desc: {
+                    fr: "Découvrez en images les moments forts de l'année chrétienne : Carême, Semaine Sainte, Passion du Christ, Pâques, Avent et Noël dans notre Archidiocèse.",
+                    en: "Discover in pictures the highlights of the Christian year: Lent, Holy Week, Passion of Christ, Easter, Advent and Christmas in our Archdiocese."
+                },
+                cover: "../image/liturgie/chapelle.jpg",
+                photos: [
+                    // Carême
+                    "../image/liturgie/careme1.jpg",
+                    "../image/liturgie/careme2.jpg",
+                    "../image/liturgie/careme3.jpg",
+                    // Passion du Christ
+                    "../image/liturgie/passion1.jpg",
+                    "../image/liturgie/passion2.jpg",
+                    "../image/liturgie/passion3.jpg",
+                    // Semaine Sainte
+                    "../image/liturgie/semaine-sainte1.jpg",
+                    "../image/liturgie/semaine-sainte2.jpg",
+                    // Pâques
+                    "../image/liturgie/paques1.jpg",
+                    "../image/liturgie/paques2.jpg",
+                    // Avent & Noël
+                    "../image/liturgie/avent1.jpg",
+                    "../image/liturgie/noel1.jpg",
+                    "../image/liturgie/noel2.jpg"
+                ]
+            }, {
+                title: {
+                    fr: "Événements spéciaux animés par les jeunes",
+                    en: "Special events led by the youth"
+                },
+                desc: {
+                    fr: "Moments de partage, de fête et de témoignage où les jeunes prennent la parole et animent des célébrations uniques dans l'Archidiocèse.",
+                    en: "Moments of sharing, celebration and testimony where young people speak and lead unique celebrations in the Archdiocese."
+                },
+                cover: "../image/passion/p1.jpg",
+                photos: ["../image/passion/p2.jpg", "../image/passion/p3.jpg", "../image/passion/p4.jpg", "../image/passion/p5.jpg", "../image/passion/p6.jpg"]
+            },
+
+            {
+                title: {
+                    fr: "Arts Sacrés",
+                    en: "Sacred Arts"
+                },
+                desc: {
+                    fr: "Découvrez l'expression artistique de la foi à travers la musique, la peinture, la sculpture et les arts liturgiques dans notre Archidiocèse.",
+                    en: "Discover the artistic expression of faith through music, painting, sculpture and liturgical arts in our Archdiocese."
+                },
+                cover: "../image/arts/ar1.jpg",
+                photos: [
+                    "../image/arts/ar1.jpg",
+                    "../image/arts/ar2.jpg",
+                    "../image/arts/ar3.jpg",
+                    "../image/arts/ar4.jpg",
+                    "../image/arts/ar5.jpg",
+                    "../image/arts/ar6.jpg",
+                    "../image/arts/ar7.jpg",
+                    "../image/arts/ar8.jpg",
+                    "../image/arts/ar9.jpg",
+                    "../image/arts/ar10.jpg",
+                    "../image/arts/ar11.jpg",
+                    "../image/arts/ar12.jpg",
+                    "../image/arts/ar13.jpg",
+                    "../image/arts/ar14.jpg"
+                ]
+            }, {
+                title: {
+                    fr: "Anciens Aumôniers",
+                    en: "Former Chaplains"
+                },
+                desc: {
+                    fr: "Nos prédécesseurs dans la pastorale des jeunes",
+                    en: "Our predecessors in youth ministry"
+                },
+                cover: "https://images.unsplash.com/photo-1532629345422-7515f3d16bb6?w=400&h=300&fit=crop",
+                photos: ["https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?w=800&h=500&fit=crop", "https://images.unsplash.com/photo-1593113598332-cd288d649a58?w=800&h=500&fit=crop"]
+            }
+        ];
+
+        let albumOffset = 0;
+        const albumContainer = document.getElementById("albumCards");
+
+        function renderAlbums() {
+            if (!albumContainer) return;
+            albumContainer.innerHTML = "";
+            albums.forEach((album, idx) => {
+                const card = document.createElement("div");
+                card.className = "album-card";
+                card.setAttribute("data-album-index", idx);
+                card.innerHTML = `
+                    <img src="${album.cover}" class="album-cover" alt="${album.title.en}" loading="lazy">
+                    <div class="album-info">
+                        <h3>${album.title[currentLang]}</h3>
+                        <p>${album.desc[currentLang]}</p>
+                        <i class="fas fa-images"></i> ${album.photos.length} photos
+                    </div>
+                `;
+                card.addEventListener("click", () => openAlbumPhotos(idx));
+                albumContainer.appendChild(card);
+            });
             updateAlbumCarousel();
-            renderActuCarousel();
+        }
+
+        function updateAlbumCarousel() {
+            const firstCard = document.querySelector(".album-card");
+            const cardWidth = firstCard ? firstCard.offsetWidth + 24 : 350;
+            albumContainer.style.transform = `translateX(-${albumOffset * cardWidth}px)`;
+        }
+
+        document.getElementById("prevAlbumBtn").addEventListener("click", () => {
+            const visibleCount = window.innerWidth < 640 ? 1 : (window.innerWidth < 992 ? 2 : 3);
+            const maxOffset = Math.max(0, albums.length - visibleCount);
+            if (albumOffset > 0) albumOffset--;
+            else albumOffset = maxOffset;
+            updateAlbumCarousel();
+        });
+        document.getElementById("nextAlbumBtn").addEventListener("click", () => {
+            const visibleCount = window.innerWidth < 640 ? 1 : (window.innerWidth < 992 ? 2 : 3);
+            const maxOffset = Math.max(0, albums.length - visibleCount);
+            if (albumOffset < maxOffset) albumOffset++;
+            else albumOffset = 0;
+            updateAlbumCarousel();
         });
 
-        renderActuCarousel();
-        startAutoScroll();
+        // CARROUSEL PHOTOS INTERNE
+        let currentAlbumPhotos = [];
+        let currentPhotoIndex = 0;
+        const photoSection = document.getElementById("photoCarouselSection");
+        const currentPhotoImg = document.getElementById("currentPhotoImg");
+        const photoCounter = document.getElementById("photoCounter");
+
+        function openAlbumPhotos(albumIndex) {
+            currentAlbumPhotos = albums[albumIndex].photos;
+            currentPhotoIndex = 0;
+            if (currentAlbumPhotos.length > 0) {
+                currentPhotoImg.src = currentAlbumPhotos[currentPhotoIndex];
+                photoCounter.innerText = `Photo ${currentPhotoIndex + 1} / ${currentAlbumPhotos.length}`;
+                photoSection.style.display = "block";
+                photoSection.scrollIntoView({
+                    behavior: "smooth",
+                    block: "center"
+                });
+            }
+        }
+
+        document.getElementById("prevPhotoBtn").addEventListener("click", () => {
+            if (currentAlbumPhotos.length === 0) return;
+            currentPhotoIndex = (currentPhotoIndex - 1 + currentAlbumPhotos.length) % currentAlbumPhotos.length;
+            currentPhotoImg.src = currentAlbumPhotos[currentPhotoIndex];
+            photoCounter.innerText = `Photo ${currentPhotoIndex + 1} / ${currentAlbumPhotos.length}`;
+        });
+        document.getElementById("nextPhotoBtn").addEventListener("click", () => {
+            if (currentAlbumPhotos.length === 0) return;
+            currentPhotoIndex = (currentPhotoIndex + 1) % currentAlbumPhotos.length;
+            currentPhotoImg.src = currentAlbumPhotos[currentPhotoIndex];
+            photoCounter.innerText = `Photo ${currentPhotoIndex + 1} / ${currentAlbumPhotos.length}`;
+        });
+        document.getElementById("closePhotoBtn").addEventListener("click", () => {
+            photoSection.style.display = "none";
+        });
+
+        // ========== INITIALISATION ==========
         renderAlbums();
         initDarkMode();
-        updateLanguage();
+        initLanguage();
     </script>
 
 </body>

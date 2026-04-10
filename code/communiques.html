@@ -1,0 +1,1303 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Communiqués | Aumônerie Diocésaine Douala</title>
+    <meta name="description" content="Offres d'emploi et offres de formation de l'Archidiocèse de Douala - Opportunités professionnelles et spirituelles pour la jeunesse.">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background: #f5f7fb;
+            color: #1a2c3e;
+            line-height: 1.5;
+            scroll-behavior: smooth;
+            transition: background 0.3s ease, color 0.3s ease;
+            overflow-x: hidden;
+        }
+        /* MODE SOMBRE */
+        
+        body.dark-mode {
+            background: #0f1724;
+            color: #e2e8f0;
+        }
+        
+        body.dark-mode .navbar,
+        body.dark-mode .offre-card {
+            background: #1e293b;
+            border-color: #334155;
+        }
+        
+        body.dark-mode .offre-card p,
+        body.dark-mode .offre-card li {
+            color: #94a3b8;
+        }
+        
+        body.dark-mode .carousel-arrow {
+            background: #1e293b;
+            color: #2ecc71;
+        }
+        
+        body.dark-mode footer {
+            background: #020617;
+        }
+        /* CONTENEURS */
+        
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+        /* CONTROLES (mode sombre + langue) */
+        
+        .controls-bar {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1001;
+            display: flex;
+            gap: 12px;
+        }
+        
+        .ctrl-btn {
+            background: rgba(255, 255, 255, 0.95);
+            border: none;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.2rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            transition: 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        body.dark-mode .ctrl-btn {
+            background: #2d3748;
+            color: #e2e8f0;
+        }
+        
+        .ctrl-btn:hover {
+            transform: scale(1.05);
+        }
+        /* HEADER */
+        
+        .top-bar {
+            background: linear-gradient(135deg, #0a2e4a, #045286);
+            color: white;
+            padding: 20px 0;
+            border-bottom: 3px solid #2ecc71;
+            transition: background 0.3s;
+        }
+        
+        body.dark-mode .top-bar {
+            background: linear-gradient(135deg, #020617, #0f1724);
+        }
+        
+        .header-flex {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .logo {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid #2ecc71;
+            background: white;
+        }
+        
+        @media (max-width: 768px) {
+            .logo {
+                width: 50px;
+                height: 50px;
+            }
+        }
+        
+        .site-title {
+            text-align: center;
+            flex: 1;
+        }
+        
+        .site-title h1 {
+            font-size: 1.6rem;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+        
+        .site-title p {
+            font-size: 0.85rem;
+            opacity: 0.85;
+        }
+        
+        @media (max-width: 768px) {
+            .site-title h1 {
+                font-size: 1rem;
+            }
+            .site-title p {
+                font-size: 0.7rem;
+            }
+        }
+        /* NAVIGATION */
+        
+        .navbar {
+            background: white;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+            position: sticky;
+            top: 0;
+            z-index: 99;
+            transition: background 0.3s;
+        }
+        
+        .nav-container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+        }
+        
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.8rem;
+            color: #045286;
+            cursor: pointer;
+            padding: 12px;
+            transition: 0.2s;
+        }
+        
+        body.dark-mode .menu-toggle {
+            color: #2ecc71;
+        }
+        
+        .nav-links {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 8px;
+            list-style: none;
+            padding: 16px 0;
+            margin: 0;
+            flex: 1;
+        }
+        
+        .nav-links li {
+            margin: 0;
+            position: relative;
+        }
+        
+        .nav-links a {
+            padding: 10px 20px;
+            font-weight: 600;
+            color: #1a2c3e;
+            text-decoration: none;
+            border-radius: 40px;
+            transition: all 0.25s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.9rem;
+            letter-spacing: 0.3px;
+        }
+        
+        body.dark-mode .nav-links a {
+            color: #e2e8f0;
+        }
+        
+        .nav-links a i {
+            color: #2ecc71;
+            font-size: 1rem;
+        }
+        
+        .nav-links a:hover {
+            background: #045286;
+            color: white;
+            transform: translateY(-2px);
+        }
+        
+        .nav-links a:hover i {
+            color: white;
+        }
+        /* Dropdown */
+        
+        .dropdown {
+            position: relative;
+        }
+        
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: white;
+            min-width: 200px;
+            border-radius: 16px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: all 0.3s ease;
+            z-index: 100;
+            padding: 8px 0;
+        }
+        
+        .dropdown:hover .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        
+        .dropdown-menu a {
+            display: block;
+            padding: 12px 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            border-radius: 0;
+        }
+        
+        .dropdown-menu a:hover {
+            background: #f0f4fa;
+            transform: translateX(4px);
+        }
+        
+        body.dark-mode .dropdown-menu {
+            background: #1e293b;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+        }
+        
+        body.dark-mode .dropdown-menu a {
+            color: #e2e8f0;
+        }
+        
+        body.dark-mode .dropdown-menu a:hover {
+            background: #2d3748;
+        }
+        
+        .dropdown>a i.fa-chevron-down {
+            font-size: 0.7rem;
+            transition: transform 0.3s;
+        }
+        
+        .dropdown:hover>a i.fa-chevron-down {
+            transform: rotate(180deg);
+        }
+        /* Boutons de contrôle */
+        
+        .nav-controls {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+            flex-shrink: 0;
+        }
+        
+        .nav-controls .ctrl-btn {
+            background: rgba(0, 0, 0, 0.08);
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.1rem;
+            color: #1a2c3e;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        body.dark-mode .nav-controls .ctrl-btn {
+            background: rgba(255, 255, 255, 0.15);
+            color: #e2e8f0;
+        }
+        
+        .nav-controls .ctrl-btn:hover {
+            background: #2ecc71;
+            color: #022b44;
+            transform: scale(1.05);
+        }
+        /* Éléments mobiles */
+        
+        .mobile-only-elements {
+            display: none;
+        }
+        
+        .menu-overlay {
+            display: none;
+        }
+        
+        @media (max-width: 992px) {
+            .nav-container {
+                justify-content: space-between;
+                padding: 12px 20px;
+            }
+            .menu-toggle {
+                display: block;
+            }
+            .nav-controls {
+                display: none;
+            }
+            .mobile-only-elements {
+                display: none;
+            }
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 280px;
+                height: 100vh;
+                background: white;
+                flex-direction: column;
+                justify-content: flex-start;
+                align-items: stretch;
+                padding: 70px 24px 30px;
+                gap: 8px;
+                transition: right 0.3s ease;
+                box-shadow: -4px 0 20px rgba(0, 0, 0, 0.1);
+                z-index: 100;
+                border-radius: 0;
+            }
+            body.dark-mode .nav-links {
+                background: #1e293b;
+            }
+            .nav-links.active {
+                right: 0;
+            }
+            .nav-links.active .mobile-only-elements {
+                display: flex;
+                flex-direction: column;
+                order: -1;
+                margin-bottom: 20px;
+            }
+            .mobile-only-elements .mobile-controls {
+                display: flex;
+                gap: 16px;
+                justify-content: center;
+                margin-bottom: 10px;
+                padding-bottom: 16px;
+                border-bottom: 1px solid #e9edf2;
+            }
+            body.dark-mode .mobile-only-elements .mobile-controls {
+                border-bottom-color: #334155;
+            }
+            .mobile-only-elements .close-menu-btn {
+                position: absolute;
+                top: 16px;
+                right: 20px;
+                background: none;
+                border: none;
+                font-size: 1.5rem;
+                color: #045286;
+                cursor: pointer;
+                padding: 10px;
+                transition: 0.2s;
+                z-index: 102;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+            body.dark-mode .mobile-only-elements .close-menu-btn {
+                color: #2ecc71;
+            }
+            .mobile-controls .ctrl-btn {
+                background: rgba(0, 0, 0, 0.05);
+                border: none;
+                width: 44px;
+                height: 44px;
+                border-radius: 50%;
+                cursor: pointer;
+                font-size: 1.2rem;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+            body.dark-mode .mobile-controls .ctrl-btn {
+                background: rgba(255, 255, 255, 0.1);
+                color: #e2e8f0;
+            }
+            .menu-overlay {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(0, 0, 0, 0.5);
+                z-index: 99;
+                display: none;
+            }
+            .menu-overlay.active {
+                display: block;
+            }
+            .dropdown .dropdown-menu {
+                position: static;
+                box-shadow: none;
+                opacity: 1;
+                visibility: visible;
+                transform: none;
+                padding-left: 20px;
+                background: transparent;
+                margin-top: -5px;
+                margin-bottom: 5px;
+            }
+            .dropdown .dropdown-menu a {
+                padding: 10px 16px;
+            }
+        }
+        /* ========== PAGE COMMUNIQUÉS ========== */
+        
+        .page-header {
+            background: linear-gradient(135deg, #045286, #0072a8);
+            color: white;
+            padding: 60px 0 40px;
+            text-align: center;
+        }
+        
+        .page-header h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 16px;
+        }
+        
+        .page-header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        @media (max-width: 768px) {
+            .page-header h1 {
+                font-size: 1.8rem;
+            }
+        }
+        /* ========== CARROUSEL GÉNÉRIQUE ========== */
+        
+        .carousel-section {
+            padding: 60px 0 40px;
+        }
+        
+        .section-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #045286;
+            margin-bottom: 32px;
+            border-left: 5px solid #2ecc71;
+            padding-left: 20px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        body.dark-mode .section-title {
+            color: #2ecc71;
+        }
+        
+        .section-title i {
+            font-size: 1.8rem;
+            color: #2ecc71;
+        }
+        
+        .carousel-wrapper {
+            position: relative;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 50px;
+        }
+        
+        .carousel-container {
+            overflow: hidden;
+            border-radius: 24px;
+        }
+        
+        .carousel-track {
+            display: flex;
+            transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            gap: 28px;
+        }
+        
+        .offre-card {
+            flex: 0 0 calc(33.333% - 19px);
+            min-width: calc(33.333% - 19px);
+            background: white;
+            border-radius: 24px;
+            overflow: hidden;
+            transition: all 0.4s;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+            border: 1px solid #e9edf2;
+        }
+        
+        .offre-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 35px rgba(0, 0, 0, 0.12);
+            border-color: #2ecc71;
+        }
+        
+        .offre-header {
+            background: #045286;
+            color: white;
+            padding: 20px 24px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        body.dark-mode .offre-header {
+            background: #2ecc71;
+            color: #022b44;
+        }
+        
+        .offre-header i {
+            font-size: 1.8rem;
+        }
+        
+        .offre-header h3 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin: 0;
+        }
+        
+        .offre-body {
+            padding: 24px;
+        }
+        
+        .offre-meta {
+            display: flex;
+            gap: 16px;
+            margin-bottom: 16px;
+            font-size: 0.8rem;
+            color: #2ecc71;
+            flex-wrap: wrap;
+        }
+        
+        .offre-meta span {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        
+        .offre-body p {
+            color: #64748b;
+            margin-bottom: 16px;
+            line-height: 1.6;
+            font-size: 0.9rem;
+        }
+        
+        body.dark-mode .offre-body p {
+            color: #94a3b8;
+        }
+        
+        .offre-body ul {
+            margin: 12px 0 16px;
+            padding-left: 20px;
+            color: #64748b;
+            font-size: 0.85rem;
+        }
+        
+        body.dark-mode .offre-body ul {
+            color: #94a3b8;
+        }
+        
+        .offre-body li {
+            margin-bottom: 6px;
+        }
+        
+        .offre-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: #045286;
+            color: white;
+            padding: 8px 20px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.85rem;
+            transition: all 0.3s;
+            margin-top: 8px;
+        }
+        
+        .offre-btn:hover {
+            background: #2ecc71;
+            color: #022b44;
+            transform: translateY(-3px);
+            gap: 12px;
+        }
+        
+        body.dark-mode .offre-btn {
+            background: #2ecc71;
+            color: #022b44;
+        }
+        
+        body.dark-mode .offre-btn:hover {
+            background: white;
+            color: #022b44;
+        }
+        /* FLÈCHES CARROUSEL */
+        
+        .carousel-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 44px;
+            height: 44px;
+            background: white;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.2rem;
+            color: #045286;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            transition: all 0.3s;
+            z-index: 10;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .carousel-arrow:hover {
+            background: #2ecc71;
+            color: white;
+            transform: translateY(-50%) scale(1.1);
+        }
+        
+        .carousel-arrow-left {
+            left: 0;
+        }
+        
+        .carousel-arrow-right {
+            right: 0;
+        }
+        /* DOTS */
+        
+        .carousel-dots {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-top: 30px;
+        }
+        
+        .dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: #cbd5e1;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .dot.active {
+            width: 28px;
+            border-radius: 20px;
+            background: #2ecc71;
+        }
+        /* BOUTON RETOUR */
+        
+        .back-container {
+            text-align: center;
+            margin: 20px 0 60px;
+        }
+        
+        .btn-back {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: #045286;
+            color: white;
+            padding: 14px 32px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        
+        .btn-back:hover {
+            background: #2ecc71;
+            color: #022b44;
+            transform: translateX(-5px);
+        }
+        
+        body.dark-mode .btn-back {
+            background: #2ecc71;
+            color: #022b44;
+        }
+        
+        body.dark-mode .btn-back:hover {
+            background: white;
+        }
+        /* FOOTER */
+        
+        footer {
+            background: #022b44;
+            color: white;
+            padding: 40px 0;
+            text-align: center;
+            transition: background 0.3s;
+            margin-top: 60px;
+        }
+        
+        footer a {
+            color: #2ecc71;
+            text-decoration: none;
+        }
+        /* RESPONSIVE CARROUSEL */
+        
+        @media (max-width: 1024px) {
+            .offre-card {
+                flex: 0 0 calc(50% - 14px);
+                min-width: calc(50% - 14px);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .offre-card {
+                flex: 0 0 100%;
+                min-width: 100%;
+            }
+            .carousel-wrapper {
+                padding: 0 40px;
+            }
+            .carousel-arrow {
+                width: 36px;
+                height: 36px;
+                font-size: 1rem;
+            }
+            .section-title {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- CONTROLES -->
+    <!-- <div class="controls-bar">
+        <button class="ctrl-btn" id="darkModeToggleDesktop"><i class="fas fa-moon"></i></button>
+        <button class="ctrl-btn" id="langToggleDesktop"><i class="fas fa-globe"></i></button>
+    </div> -->
+
+    <!-- HEADER -->
+    <header class="top-bar">
+        <div class="container header-flex">
+            <img src="../image/logo formation.jpeg" alt="Logo Aumônerie" class="logo" onerror="this.src='https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=100&h=100&fit=crop'">
+            <div class="site-title">
+                <h1 data-key="title">Aumônerie Diocésaine Jeunesse & Enfance</h1>
+                <p data-key="subtitle">Archidiocèse de Douala – Cameroun</p>
+            </div>
+            <img src="../image/logo nj.jpeg" alt="Logo NJ" class="logo" onerror="this.src='https://images.unsplash.com/photo-1504051771394-dd2f66b2e08f?w=100&h=100&fit=crop'">
+        </div>
+    </header>
+
+    <!-- NAVIGATION -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <button class="menu-toggle" id="menuToggle">
+                <i class="fas fa-bars"></i>
+            </button>
+
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html"><i class="fas fa-home"></i> <span data-key="nav1">Accueil</span></a></li>
+                <li><a href="index.html#apropos"><i class="fas fa-church"></i> <span data-key="nav2">À propos</span></a></li>
+                <li><a href="index.html#enfance"><i class="fas fa-child"></i> <span data-key="nav3">Enfance</span></a></li>
+                <li><a href="index.html#jeunesse"><i class="fas fa-users"></i> <span data-key="nav4">Jeunesse</span></a></li>
+                <li class="dropdown">
+                    <a href="index.html#vie-diocese">
+                        <i class="fas fa-newspaper"></i> <span data-key="nav5">Vie du Diocèse</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </a>
+                    <div class="dropdown-menu">
+                        <a href="annonces.html"><i class="fas fa-bullhorn"></i> Annonces</a>
+                        <a href="communiques.html"><i class="fas fa-file-alt"></i> Communiqués</a>
+                    </div>
+                </li>
+                <li><a href="index.html#phototheque"><i class="fas fa-images"></i> <span data-key="nav6">Galerie</span></a></li>
+
+                <div class="mobile-only-elements">
+                    <div class="mobile-controls">
+                        <button class="ctrl-btn" id="darkModeToggleMobile"><i class="fas fa-moon"></i></button>
+                        <button class="ctrl-btn" id="langToggleMobile"><i class="fas fa-globe"></i></button>
+                    </div>
+                    <button class="close-menu-btn" id="closeMenuBtn">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+            </ul>
+
+            <div class="nav-controls">
+                <button class="ctrl-btn" id="darkModeToggleDesktop2"><i class="fas fa-moon"></i></button>
+                <button class="ctrl-btn" id="langToggleDesktop2"><i class="fas fa-globe"></i></button>
+            </div>
+        </div>
+        <div class="menu-overlay" id="menuOverlay"></div>
+    </nav>
+
+    <!-- PAGE HEADER -->
+    <section class="page-header">
+        <div class="container">
+            <h1 data-key="pageTitle">Communiqués</h1>
+            <p data-key="pageDesc">Découvrez les offres d'emploi, les formations et les communications officielles du diocèse.</p>
+        </div>
+    </section>
+
+    <!-- SECTION OFFRES D'EMPLOI (CARROUSEL) -->
+    <section class="carousel-section">
+        <div class="container">
+            <h2 class="section-title">
+                <i class="fas fa-briefcase"></i> <span data-key="emploisTitle">Offres d'emploi</span>
+            </h2>
+            <div class="carousel-wrapper">
+                <button class="carousel-arrow carousel-arrow-left" data-carousel="emplois"><i class="fas fa-chevron-left"></i></button>
+                <div class="carousel-container">
+                    <div class="carousel-track" id="emploisTrack"></div>
+                </div>
+                <button class="carousel-arrow carousel-arrow-right" data-carousel="emplois"><i class="fas fa-chevron-right"></i></button>
+            </div>
+            <div class="carousel-dots" id="emploisDots"></div>
+        </div>
+    </section>
+
+    <!-- SECTION OFFRES DE FORMATION (CARROUSEL) -->
+    <section class="carousel-section">
+        <div class="container">
+            <h2 class="section-title">
+                <i class="fas fa-graduation-cap"></i> <span data-key="formationsTitle">Offres de formation</span>
+            </h2>
+            <div class="carousel-wrapper">
+                <button class="carousel-arrow carousel-arrow-left" data-carousel="formations"><i class="fas fa-chevron-left"></i></button>
+                <div class="carousel-container">
+                    <div class="carousel-track" id="formationsTrack"></div>
+                </div>
+                <button class="carousel-arrow carousel-arrow-right" data-carousel="formations"><i class="fas fa-chevron-right"></i></button>
+            </div>
+            <div class="carousel-dots" id="formationsDots"></div>
+        </div>
+    </section>
+
+    <!-- SECTION ARRIVÉE DU PAPE (EXEMPLE - AJOUTEZ FACILEMENT D'AUTRES SECTIONS) -->
+    <!-- 
+    <section class="carousel-section">
+        <div class="container">
+            <h2 class="section-title">
+                <i class="fas fa-pope"></i> Arrivée du Pape
+            </h2>
+            <div class="carousel-wrapper">
+                <button class="carousel-arrow carousel-arrow-left" data-carousel="pape"><i class="fas fa-chevron-left"></i></button>
+                <div class="carousel-container">
+                    <div class="carousel-track" id="papeTrack"></div>
+                </div>
+                <button class="carousel-arrow carousel-arrow-right" data-carousel="pape"><i class="fas fa-chevron-right"></i></button>
+            </div>
+            <div class="carousel-dots" id="papeDots"></div>
+        </div>
+    </section>
+    -->
+
+    <!-- BOUTON RETOUR -->
+    <div class="container">
+        <div class="back-container">
+            <a href="index.html" class="btn-back">
+                <i class="fas fa-arrow-left"></i> <span data-key="backBtn">Retour à l'accueil</span>
+            </a>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <p>© BIG DATA CENTER AI — <a href="https://www.youtube.com/@DominiqueSavio_Cyber-Ap%C3%B4tre3.0" target="_blank">Dominique Savio - Cyber Apôtre 3.0</a></p>
+            <p data-key="footerText">Aumônerie Diocésaine Jeunesse & Enfance – Douala</p>
+        </div>
+    </footer>
+
+    <script>
+        // ========== MENU HAMBURGER ==========
+        const menuToggle = document.getElementById('menuToggle');
+        const navLinks = document.getElementById('navLinks');
+        const menuOverlay = document.getElementById('menuOverlay');
+        const closeMenuBtn = document.getElementById('closeMenuBtn');
+
+        function closeMenu() {
+            navLinks.classList.remove('active');
+            if (menuOverlay) menuOverlay.classList.remove('active');
+            if (menuToggle && window.innerWidth <= 992) {
+                menuToggle.innerHTML = '<i class="fas fa-bars"></i>';
+            }
+        }
+
+        function openMenu() {
+            navLinks.classList.add('active');
+            if (menuOverlay) menuOverlay.classList.add('active');
+            if (menuToggle && window.innerWidth <= 992) {
+                menuToggle.innerHTML = '<i class="fas fa-times"></i>';
+            }
+        }
+
+        function toggleMenu() {
+            if (navLinks.classList.contains('active')) {
+                closeMenu();
+            } else {
+                openMenu();
+            }
+        }
+
+        if (menuToggle) {
+            menuToggle.addEventListener('click', toggleMenu);
+        }
+
+        if (closeMenuBtn) {
+            closeMenuBtn.addEventListener('click', closeMenu);
+        }
+
+        if (menuOverlay) {
+            menuOverlay.addEventListener('click', closeMenu);
+        }
+
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', closeMenu);
+        });
+
+        window.addEventListener('resize', function() {
+            if (window.innerWidth > 992) {
+                closeMenu();
+            }
+        });
+
+        // ========== DONNÉES ==========
+        const emploisOffres = [{
+            title: "Animateur pastoral",
+            type: "CDI - Temps plein",
+            location: "Douala",
+            deadline: "30 Mai 2026",
+            desc: "L'Archidiocèse de Douala recherche un animateur pastoral pour coordonner les activités de la pastorale des jeunes.",
+            requirements: ["Bac+3 en théologie ou sciences humaines", "Expérience en animation de groupe", "Maîtrise des outils numériques"],
+            contact: "recrutement@aumonerie-douala.org"
+        }, {
+            title: "Responsable communication",
+            type: "CDD - 12 mois",
+            location: "Douala",
+            deadline: "15 Mai 2026",
+            desc: "Nous recrutons un responsable communication pour gérer les réseaux sociaux et la communication institutionnelle.",
+            requirements: ["Bac+5 en communication", "Expérience en gestion de communauté", "Maîtrise des outils de création graphique"],
+            contact: "communication@aumonerie-douala.org"
+        }, {
+            title: "Assistant administratif",
+            type: "Stage - 6 mois",
+            location: "Douala",
+            deadline: "10 Juin 2026",
+            desc: "Stage au secrétariat de l'Aumônerie pour assister l'équipe administrative.",
+            requirements: ["Bac+2 en administration", "Maîtrise des outils bureautiques", "Rigueur et organisation"],
+            contact: "administration@aumonerie-douala.org"
+        }, {
+            title: "Coordinateur des mouvements",
+            type: "CDI - Temps plein",
+            location: "Douala",
+            deadline: "20 Juin 2026",
+            desc: "Coordination des mouvements et communautés de jeunesse de l'Archidiocèse.",
+            requirements: ["Bac+4 en sciences sociales", "Expérience en encadrement de jeunes", "Connaissance de la pastorale"],
+            contact: "coordination@aumonerie-douala.org"
+        }];
+
+        const formationsOffres = [{
+            title: "Leadership chrétien",
+            type: "Formation certifiante",
+            duration: "3 mois",
+            startDate: "15 Juin 2026",
+            desc: "Formation au leadership pour les jeunes animateurs et responsables de mouvements.",
+            modules: ["Gestion d'équipe", "Prise de parole", "Gestion de conflits", "Spiritualité du leader"],
+            registration: "inscriptions@aumonerie-douala.org"
+        }, {
+            title: "Initiation à la gestion associative",
+            type: "Atelier pratique",
+            duration: "2 jours",
+            startDate: "22 Mai 2026",
+            desc: "Apprenez les bases de la gestion d'une association ou d'un mouvement de jeunesse.",
+            modules: ["Statuts et règlements", "Gestion financière", "Recherche de financement", "Communication associative"],
+            registration: "formation@aumonerie-douala.org"
+        }, {
+            title: "Secourisme et premiers secours",
+            type: "Certificat",
+            duration: "2 jours",
+            startDate: "5 Juin 2026",
+            desc: "Formation aux gestes de premiers secours pour les animateurs et encadrants.",
+            modules: ["Gestes qui sauvent", "Prévention des risques", "Gestion des situations d'urgence"],
+            registration: "securite@aumonerie-douala.org"
+        }, {
+            title: "Utilisation des outils numériques",
+            type: "Formation en ligne",
+            duration: "1 mois",
+            startDate: "1 Juillet 2026",
+            desc: "Apprenez à utiliser les réseaux sociaux et les outils numériques pour la pastorale.",
+            modules: ["Réseaux sociaux", "Création de contenu", "Gestion de site web", "Communication digitale"],
+            registration: "numerique@aumonerie-douala.org"
+        }];
+
+        // ========== FONCTION CARROUSEL GÉNÉRIQUE ==========
+        class Carousel {
+            constructor(trackId, items, type, itemsPerPage = 3) {
+                this.track = document.getElementById(trackId);
+                this.items = items;
+                this.type = type;
+                this.itemsPerPage = itemsPerPage;
+                this.currentIndex = 0;
+                this.autoScrollInterval = null;
+
+                this.init();
+            }
+
+            updateItemsPerPage() {
+                if (window.innerWidth < 768) this.itemsPerPage = 1;
+                else if (window.innerWidth < 1024) this.itemsPerPage = 2;
+                else this.itemsPerPage = 3;
+            }
+
+            render() {
+                    this.updateItemsPerPage();
+                    const totalPages = Math.ceil(this.items.length / this.itemsPerPage);
+                    const start = this.currentIndex * this.itemsPerPage;
+                    const visibleItems = this.items.slice(start, start + this.itemsPerPage);
+
+                    this.track.innerHTML = "";
+                    visibleItems.forEach(offre => {
+                                const card = document.createElement("div");
+                                card.className = "offre-card";
+                                card.innerHTML = `
+                        <div class="offre-header">
+                            <i class="${this.type === 'emploi' ? 'fas fa-briefcase' : 'fas fa-graduation-cap'}"></i>
+                            <h3>${offre.title}</h3>
+                        </div>
+                        <div class="offre-body">
+                            <div class="offre-meta">
+                                <span><i class="fas fa-tag"></i> ${offre.type || offre.duration}</span>
+                                ${offre.location ? `<span><i class="fas fa-map-marker-alt"></i> ${offre.location}</span>` : ''}
+                                ${offre.deadline ? `<span><i class="fas fa-calendar-alt"></i> Candidature avant : ${offre.deadline}</span>` : ''}
+                                ${offre.startDate ? `<span><i class="fas fa-calendar-alt"></i> Début : ${offre.startDate}</span>` : ''}
+                            </div>
+                            <p>${offre.desc}</p>
+                            ${offre.requirements ? `
+                                <ul>
+                                    ${offre.requirements.map(req => `<li><i class="fas fa-check-circle" style="color:#2ecc71; margin-right:8px;"></i> ${req}</li>`).join('')}
+                                </ul>
+                            ` : ''}
+                            ${offre.modules ? `
+                                <ul>
+                                    ${offre.modules.map(mod => `<li><i class="fas fa-check-circle" style="color:#2ecc71; margin-right:8px;"></i> ${mod}</li>`).join('')}
+                                </ul>
+                            ` : ''}
+                            <a href="#" class="offre-btn" onclick="alert('Merci de votre intérêt ! Veuillez envoyer votre candidature à ${offre.contact || offre.registration}'); return false;">
+                                ${this.type === 'emploi' ? 'Postuler' : "S'inscrire"} <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    `;
+                    this.track.appendChild(card);
+                });
+
+                this.updateDots(totalPages);
+            }
+
+            updateDots(totalPages) {
+                const dotsContainer = document.getElementById(`${this.type === 'emploi' ? 'emploisDots' : 'formationsDots'}`);
+                if (!dotsContainer) return;
+                dotsContainer.innerHTML = "";
+                for (let i = 0; i < totalPages; i++) {
+                    const dot = document.createElement("div");
+                    dot.className = `dot ${i === this.currentIndex ? "active" : ""}`;
+                    dot.addEventListener("click", () => this.goToPage(i));
+                    dotsContainer.appendChild(dot);
+                }
+            }
+
+            goToPage(pageIndex) {
+                const totalPages = Math.ceil(this.items.length / this.itemsPerPage);
+                this.currentIndex = Math.min(Math.max(0, pageIndex), totalPages - 1);
+                this.render();
+                this.resetAutoScroll();
+            }
+
+            next() {
+                const totalPages = Math.ceil(this.items.length / this.itemsPerPage);
+                this.currentIndex = (this.currentIndex + 1) % totalPages;
+                this.render();
+                this.resetAutoScroll();
+            }
+
+            prev() {
+                const totalPages = Math.ceil(this.items.length / this.itemsPerPage);
+                this.currentIndex = (this.currentIndex - 1 + totalPages) % totalPages;
+                this.render();
+                this.resetAutoScroll();
+            }
+
+            startAutoScroll() {
+                this.autoScrollInterval = setInterval(() => this.next(), 6000);
+            }
+
+            resetAutoScroll() {
+                clearInterval(this.autoScrollInterval);
+                this.startAutoScroll();
+            }
+
+            stopAutoScroll() {
+                clearInterval(this.autoScrollInterval);
+            }
+
+            init() {
+                this.render();
+                this.startAutoScroll();
+
+                // Écouteurs pour les flèches
+                const prevBtn = document.querySelector(`[data-carousel="${this.type === 'emploi' ? 'emplois' : 'formations'}"].carousel-arrow-left`);
+                const nextBtn = document.querySelector(`[data-carousel="${this.type === 'emploi' ? 'emplois' : 'formations'}"].carousel-arrow-right`);
+                const wrapper = document.querySelector(`.carousel-wrapper`);
+
+                if (prevBtn) prevBtn.addEventListener("click", () => this.prev());
+                if (nextBtn) nextBtn.addEventListener("click", () => this.next());
+                if (wrapper) {
+                    wrapper.addEventListener("mouseenter", () => this.stopAutoScroll());
+                    wrapper.addEventListener("mouseleave", () => this.startAutoScroll());
+                }
+
+                window.addEventListener("resize", () => {
+                    const oldPage = this.currentIndex;
+                    this.render();
+                    const newTotalPages = Math.ceil(this.items.length / this.itemsPerPage);
+                    this.currentIndex = Math.min(oldPage, newTotalPages - 1);
+                    this.render();
+                });
+            }
+        }
+
+        // Initialisation des carrousels
+        const emploisCarousel = new Carousel("emploisTrack", emploisOffres, "emploi");
+        const formationsCarousel = new Carousel("formationsTrack", formationsOffres, "formation");
+
+        // ========== MODE SOMBRE ET MULTILINGUE ==========
+        let currentLang = localStorage.getItem('lang') || 'fr';
+
+        const translations = {
+            fr: {
+                title: "Aumônerie Diocésaine Jeunesse & Enfance",
+                subtitle: "Archidiocèse de Douala – Cameroun",
+                nav1: "Accueil", nav2: "À propos", nav3: "Enfance", nav4: "Jeunesse", nav5: "Vie du Diocèse", nav6: "Galerie",
+                pageTitle: "Communiqués",
+                pageDesc: "Découvrez les offres d'emploi, les formations et les communications officielles du diocèse.",
+                emploisTitle: "Offres d'emploi",
+                formationsTitle: "Offres de formation",
+                backBtn: "Retour à l'accueil",
+                footerText: "Aumônerie Diocésaine Jeunesse & Enfance – Douala"
+            },
+            en: {
+                title: "Diocesan Youth & Children's Chaplaincy",
+                subtitle: "Archdiocese of Douala – Cameroon",
+                nav1: "Home", nav2: "About", nav3: "Childhood", nav4: "Youth", nav5: "Diocesan Life", nav6: "Gallery",
+                pageTitle: "Official Statements",
+                pageDesc: "Discover job offers, training courses and official communications from the diocese.",
+                emploisTitle: "Job offers",
+                formationsTitle: "Training offers",
+                backBtn: "Back to homepage",
+                footerText: "Diocesan Youth & Children's Chaplaincy – Douala"
+            }
+        };
+
+        function updateLanguage() {
+            const t = translations[currentLang];
+            document.querySelectorAll('[data-key]').forEach(el => {
+                const key = el.getAttribute('data-key');
+                if (t[key]) el.textContent = t[key];
+            });
+            localStorage.setItem('lang', currentLang);
+        }
+
+        function initLanguage() {
+            const desktopBtns = document.querySelectorAll('#langToggleDesktop, #langToggleDesktop2');
+            const mobileBtns = document.querySelectorAll('#langToggleMobile');
+
+            desktopBtns.forEach(btn => {
+                if (btn) {
+                    btn.addEventListener('click', () => {
+                        currentLang = currentLang === 'fr' ? 'en' : 'fr';
+                        updateLanguage();
+                    });
+                }
+            });
+            mobileBtns.forEach(btn => {
+                if (btn) {
+                    btn.addEventListener('click', () => {
+                        currentLang = currentLang === 'fr' ? 'en' : 'fr';
+                        updateLanguage();
+                    });
+                }
+            });
+            updateLanguage();
+        }
+
+        function initDarkMode() {
+            const darkMode = localStorage.getItem('darkMode') === 'true';
+            if (darkMode) document.body.classList.add('dark-mode');
+
+            const desktopBtns = document.querySelectorAll('#darkModeToggleDesktop, #darkModeToggleDesktop2');
+            const mobileBtns = document.querySelectorAll('#darkModeToggleMobile');
+
+            function setDarkMode(isDark) {
+                if (isDark) {
+                    document.body.classList.add('dark-mode');
+                } else {
+                    document.body.classList.remove('dark-mode');
+                }
+                localStorage.setItem('darkMode', isDark);
+
+                const icons = document.querySelectorAll('#darkModeToggleDesktop i, #darkModeToggleDesktop2 i, #darkModeToggleMobile i');
+                icons.forEach(icon => {
+                    icon.className = isDark ? 'fas fa-sun' : 'fas fa-moon';
+                });
+            }
+
+            desktopBtns.forEach(btn => {
+                if (btn) {
+                    btn.addEventListener('click', () => {
+                        setDarkMode(!document.body.classList.contains('dark-mode'));
+                    });
+                }
+            });
+            mobileBtns.forEach(btn => {
+                if (btn) {
+                    btn.addEventListener('click', () => {
+                        setDarkMode(!document.body.classList.contains('dark-mode'));
+                    });
+                }
+            });
+
+            const icons = document.querySelectorAll('#darkModeToggleDesktop i, #darkModeToggleDesktop2 i, #darkModeToggleMobile i');
+            icons.forEach(icon => {
+                icon.className = darkMode ? 'fas fa-sun' : 'fas fa-moon';
+            });
+        }
+
+        initDarkMode();
+        initLanguage();
+    </script>
+
+</body>
+
+</html>
