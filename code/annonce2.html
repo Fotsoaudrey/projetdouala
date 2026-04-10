@@ -157,7 +157,7 @@
 // ============================================================
 const zonesData = [
     { num: "01", name: "Wouri I", paroissesList: ["Cathédrale Saints-Pierre et Paul de Douala","Paroisse Holy Trinity","Paroisse Notre-Dame du Mont Carmel","Paroisse Saint-Dominique Savio de Bonaparte","Paroisse Sainte-Anne de Nkongmondo","Paroisse Saint-André de Manoka","Paroisse Saint-Ignace d'Antioche de Youpouè","Paroisse Saint Barnabé de Bois de Singe"], priest: "Abbé Jean Bernard E.NWIND ", color: "#ffffff", colorName: "Blanc/Or", colorText: "#000" },
-    { num: "02", name: "Wouri II", paroissesList: ["Paroisse Notre-Dame des Victoires de New-Bell I","Paroisse Saint-Paul de Nylon","Paroisse Sacré-Cœur de New-Bell II","Paroisse Notre-Dame des Sept Douleurs de New Bell III","Paroisse Saint-Luc de New Bell"], priest: "Père Arthus NDOMAS NDOGBIA""", color: "#ff0000", colorName: "Rouge", colorText: "#fff" },
+    { num: "02", name: "Wouri II", paroissesList: ["Paroisse Notre-Dame des Victoires de New-Bell I","Paroisse Saint-Paul de Nylon","Paroisse Sacré-Cœur de New-Bell II","Paroisse Notre-Dame des Sept Douleurs de New Bell III","Paroisse Saint-Luc de New Bell"], priest: "Père Arthus NDOMAS NDOGBIA", color: "#ff0000", colorName: "Rouge", colorText: "#fff" },
     { num: "03", name: "Wouri III", paroissesList: ["Paroisse Saint-Sacrement de Ndogbong","Paroisse Christ-Roi de la Cité-Sic","Paroisse Saint-Esprit de Bépanda","Paroisse Saint-Charles Lwanga de Makèpè Yonyong","Paroisse Saint-Mathias de Petit Wouri Bonamousongo","Paroisse universitaire Saint-Thomas d'Aquin"], priest: "Abbé Etienne Gilson CHAMABE MOUKOUE", color: "#0000ff", colorName: "Bleu Royal", colorText: "#fff" },
     { num: "04", name: "Wouri IV", paroissesList: ["Paroisse Sainte-Monique de Cite-Sic Makepé","Paroisse Saint-Jean de Deido","Paroisse Saint-Ambroise de Sable (Bonamoussadi)","Paroisse Notre-Dame de l'Annonciation de Bonamoussadi","Paroisse Saint-François d'Assise de Kotto","Paroisse Christ Sauveur de Banguè","Paroisse Saint-Barthélémy de LOGBESSOU","Paroisse Saint-Basile de Logpom","Paroisse Sainte-Marie Madeleine de Logpom plateau","Paroisse Sainte-Marthe de Lendi"], priest: "Abbé Gaetan KAPTUE", color: "#ffff00", colorName: "Jaune", colorText: "#000" },
     { num: "05", name: "Wouri V", paroissesList: ["Paroisse Saint-Pie X de PK 14","Paroisse Saint-Victor de Sodikombo","Paroisse saint-Thomas de PK 10","Paroisse Sainte-Thérèse de l'Enfant Jésus de Mbengue City","Paroisse Epiphanie de PK 21","Paroisse Saint-Benoît de Dallas et Nsape","Paroisse Saint-Étienne de Mandjab","Paroisse Saint-Samuel de NGONJO","Paroisse Saint-Athanase de PK 17 – PK 18","Paroisse Saint-Laurent de PAPAS","Paroisse Sainte-Cécile de MOUTONGO","Paroisse Saint-Paul VI de BONAMOUTONGO"], priest: "Abbé Maxim SIEWE", color: "#008000", colorName: "Vert", colorText: "#fff" },
@@ -1234,12 +1234,7 @@ const parishesDetails = {
 // ============================================================
 // 3. RESPONSABLES (AUMÔNIERS ET LAÏCS) - MODIFIABLE
 // ============================================================
-// ============================================================
-// RESPONSABLES (AUMÔNIERS ET LAÏCS) – VRAIS NUMÉROS DES AUMÔNIERS
-// ============================================================
-const responsablesData = {};
-
-// Mapping des vrais numéros par zone (d'après votre tableau)
+// Vrais numéros des aumôniers (vicaires épiscopaux) par zone
 const vraisNumerosAumoniers = {
     "Wouri I": "699912804",
     "Wouri II": "682809466",
@@ -1247,19 +1242,35 @@ const vraisNumerosAumoniers = {
     "Wouri IV": "677012649",
     "Wouri V": "697837405",
     "Wouri VI": "693485333",
-    "Wouri VII": "652653538",   // sans espace
+    "Wouri VII": "652653538",
     "Wouri VIII": "690500531",
     "Wouri IX": "674711170",
     "Wouri X": "693492714"
 };
 
+// Vrais noms et numéros des coordinateurs laïcs (responsables laïcs) – À personnaliser avec vos vraies données
+const vraisResponsablesLaics = {
+    "Wouri I": { nom: "Jean Toto", telephone: "+237 699 123 456", message: "Bonjour, je suis le coordinateur laïc de Wouri I. En quoi puis-je vous aider ?" },
+    "Wouri II": { nom: "Marie Ndongo", telephone: "+237 677 987 654", message: "Bonjour, je suis la coordonnatrice laïc de Wouri II." },
+    "Wouri III": { nom: "Paul Ebogo", telephone: "+237 693 456 789", message: "Bonjour, je suis le coordinateur laïc de Wouri III." },
+    "Wouri IV": { nom: "Claire Ngo", telephone: "+237 650 321 987", message: "Bonjour, je suis la coordonnatrice laïc de Wouri IV." },
+    "Wouri V": { nom: "Joseph Manga", telephone: "+237 698 765 432", message: "Bonjour, je suis le coordinateur laïc de Wouri V." },
+    "Wouri VI": { nom: "Anne Tchoffo", telephone: "+237 690 111 222", message: "Bonjour, je suis la coordonnatrice laïc de Wouri VI." },
+    "Wouri VII": { nom: "Michel Nkoulou", telephone: "+237 677 333 444", message: "Bonjour, je suis le coordinateur laïc de Wouri VII." },
+    "Wouri VIII": { nom: "Lucie Kengne", telephone: "+237 699 555 666", message: "Bonjour, je suis la coordonnatrice laïc de Wouri VIII." },
+    "Wouri IX": { nom: "David Mbarga", telephone: "+237 693 777 888", message: "Bonjour, je suis le coordinateur laïc de Wouri IX." },
+    "Wouri X": { nom: "Martine Ngo", telephone: "+237 690 999 000", message: "Bonjour, je suis la coordonnatrice laïc de Wouri X." }
+};
+
+const responsablesData = {};
+
 // Remplissage pour chaque zone
 zonesData.forEach(zone => {
     const zoneName = zone.name;
     const vraiNumero = vraisNumerosAumoniers[zoneName];
-    // Format avec +237
     const telAumonier = vraiNumero ? `+237 ${vraiNumero}` : "+237 600 000 000";
 
+    // Aumônier (Vicaire épiscopal)
     responsablesData[`aumonier-${zoneName}`] = {
         nom: zone.priest,   // nom du vicaire épiscopal (issu du PDF)
         zone: zoneName,
@@ -1268,15 +1279,28 @@ zonesData.forEach(zone => {
         fonction: "Vicaire épiscopal / Curé de zone"
     };
 
-    // Responsable laïc (pas de numéro fourni, on garde un placeholder)
-    responsablesData[`laic-${zoneName}`] = {
-        nom: `Responsable laïc de ${zoneName}`,
-        zone: zoneName,
-        telephone: "+237 600 900 001",
-        messagePredef: `Bonjour, je suis membre de la zone ${zoneName}.`,
-        fonction: "Coordinateur laïc"
-    };
+    // Responsable laïc (coordinateur) – utilisation des vraies données
+    const laic = vraisResponsablesLaics[zoneName];
+    if (laic) {
+        responsablesData[`laic-${zoneName}`] = {
+            nom: laic.nom,
+            zone: zoneName,
+            telephone: laic.telephone,
+            messagePredef: laic.message,
+            fonction: "Coordinateur laïc"
+        };
+    } else {
+        // Fallback au cas où une zone serait oubliée (à éviter)
+        responsablesData[`laic-${zoneName}`] = {
+            nom: `Responsable laïc de ${zoneName}`,
+            zone: zoneName,
+            telephone: "+237 600 900 001",
+            messagePredef: `Bonjour, je suis membre de la zone ${zoneName}.`,
+            fonction: "Coordinateur laïc"
+        };
+    }
 });
+
 // ============================================================
 // 4. RENDU DU TABLEAU ET MODALES (NE PAS MODIFIER)
 // ============================================================
