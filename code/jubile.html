@@ -8,7 +8,7 @@
     <meta name="description" content="Célébration des 70 ans de l'Archidiocèse de Douala (Jubilé de Platine) et des jubilés d'argent (25 ans) et d'émeraude (40 ans) de Mgr Samuel KLEDA – Samedi 14 mars 2026.">
 
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&display=swap" rel="stylesheet">
 
     <!-- Font Awesome 6 -->
@@ -20,20 +20,41 @@
             padding: 0;
             box-sizing: border-box;
         }
+        /* Variables pour la cohérence */
+        
+         :root {
+            --primary-bg: #045286;
+            --primary-dark: #022b44;
+            --accent: #2ecc71;
+            --accent-dark: #27ae60;
+            --accent-light: rgba(46, 204, 113, 0.15);
+            --text-dark: #1e293b;
+            --text-light: #f8fafc;
+            --gray-500: #64748b;
+            --gray-300: #cbd5e1;
+            --white: #ffffff;
+            --shadow-sm: 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 10px 25px -5px rgba(0, 0, 0, 0.08);
+            --shadow-lg: 0 20px 40px -12px rgba(0, 0, 0, 0.15);
+            --radius-lg: 28px;
+            --radius-md: 20px;
+            --radius-sm: 12px;
+            --transition: all 0.25s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+        }
         
         body {
-            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-family: 'Inter', sans-serif;
             background: #f5f7fb;
-            color: #1a2c3e;
+            color: var(--text-dark);
             line-height: 1.5;
             scroll-behavior: smooth;
             transition: background 0.3s ease, color 0.3s ease;
         }
-        /* MODE SOMBRE */
+        /* MODE SOMBRE (respect des contrastes WCAG) */
         
         body.dark-mode {
+            --text-dark: #e2e8f0;
             background: #0f1724;
-            color: #e2e8f0;
         }
         
         body.dark-mode header,
@@ -46,17 +67,13 @@
             background: #1e293b;
         }
         
-        body.dark-mode nav a {
-            color: #e2e8f0;
-        }
-        
         body.dark-mode .main-grid {
             background: #1e293b;
         }
         
         body.dark-mode .badge-card {
             background: #0f1724;
-            border-color: #2ecc71;
+            border-color: var(--accent);
         }
         
         body.dark-mode .badge-card span {
@@ -65,6 +82,7 @@
         
         body.dark-mode .info-bar {
             background: #0f1724;
+            border: 1px solid var(--accent);
         }
         
         body.dark-mode .live-section {
@@ -73,7 +91,7 @@
         }
         
         body.dark-mode .bishop-name {
-            color: #2ecc71;
+            color: var(--accent);
         }
         
         body.dark-mode .bishop-title {
@@ -81,14 +99,19 @@
         }
         
         body.dark-mode .btn-back {
-            background: #2ecc71;
+            background: var(--accent);
             color: #022b44;
-            border-color: #2ecc71;
+            border-color: var(--accent);
         }
         
         body.dark-mode .btn-back:hover {
             background: transparent;
-            color: #2ecc71;
+            color: var(--accent);
+        }
+        
+        body.dark-mode .content-frame p,
+        body.dark-mode .jubilee-desc {
+            color: #94a3b8;
         }
         
         .container {
@@ -96,7 +119,7 @@
             margin: 0 auto;
             padding: 0 32px;
         }
-        /* CONTROLES */
+        /* CONTROLES (accessibilité : focus visible) */
         
         .controls-bar {
             position: fixed;
@@ -115,11 +138,16 @@
             border-radius: 50%;
             cursor: pointer;
             font-size: 1.2rem;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-            transition: 0.2s;
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
             display: flex;
             align-items: center;
             justify-content: center;
+        }
+        
+        .ctrl-btn:focus-visible {
+            outline: 2px solid var(--accent);
+            outline-offset: 2px;
         }
         
         body.dark-mode .ctrl-btn {
@@ -133,37 +161,38 @@
         /* HEADER */
         
         header {
-            background: linear-gradient(135deg, #0a2e4a, #045286);
+            background: linear-gradient(135deg, #0a2e4a, var(--primary-bg));
             color: white;
-            padding: 20px 0;
-            border-bottom: 3px solid #c5a021;
+            padding: 24px 0;
+            border-bottom: 3px solid var(--accent);
             transition: background 0.3s;
             text-align: center;
         }
         
         header h1 {
-            font-size: 1.5rem;
+            font-size: 1.6rem;
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 2px;
-            color: #c5a021;
+            color: var(--accent);
         }
         
         header p {
-            font-size: 0.85rem;
+            font-size: 0.9rem;
             opacity: 0.85;
+            margin-top: 8px;
         }
         
         @media (min-width: 768px) {
             header h1 {
-                font-size: 1.9rem;
+                font-size: 2rem;
             }
         }
-        /* NAVIGATION */
+        /* NAVIGATION (sticky avec ombre légère) */
         
         nav {
             background: white;
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.05);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
             position: sticky;
             top: 0;
             z-index: 99;
@@ -174,56 +203,52 @@
             display: flex;
             justify-content: center;
             flex-wrap: wrap;
-            gap: 12px;
+            gap: 8px;
             list-style: none;
-            padding: 14px 16px;
+            padding: 12px 16px;
         }
         
         .nav-links a {
-            padding: 10px 24px;
+            padding: 10px 20px;
             font-weight: 600;
-            color: #1a2c3e;
+            color: var(--text-dark);
             text-decoration: none;
             border-radius: 40px;
-            transition: all 0.25s;
+            transition: var(--transition);
             display: flex;
             align-items: center;
             gap: 8px;
-        }
-        
-        body.dark-mode .nav-links a {
-            color: #e2e8f0;
+            font-size: 0.9rem;
         }
         
         .nav-links a i {
-            color: #c5a021;
+            color: var(--accent);
         }
         
-        .nav-links a:hover {
-            background: #045286;
+        .nav-links a:hover,
+        .nav-links a:focus-visible {
+            background: var(--primary-bg);
             color: white;
+            outline: none;
         }
         
-        .nav-links a:hover i {
+        .nav-links a:hover i,
+        .nav-links a:focus-visible i {
             color: white;
         }
-        /* HERO BANNER */
+        /* HERO BANNER (espacement aéré) */
         
         .hero-banner {
             background: linear-gradient(135deg, #f8fafc, #ffffff);
             text-align: center;
-            padding: 80px 0;
-            border-bottom: 1px solid #e9edf2;
-        }
-        
-        body.dark-mode .hero-banner {
-            background: linear-gradient(135deg, #0f1724, #1e293b);
+            padding: 64px 0;
+            border-bottom: 1px solid var(--gray-300);
         }
         
         .jubilee-subtitle {
-            font-size: 1rem;
+            font-size: 0.85rem;
             letter-spacing: 4px;
-            color: #c5a021;
+            color: var(--accent);
             text-transform: uppercase;
             font-weight: 600;
             margin-bottom: 16px;
@@ -232,35 +257,33 @@
         .jubilee-title {
             font-size: 3rem;
             font-weight: 800;
-            color: #045286;
+            color: var(--primary-bg);
             margin-bottom: 20px;
             font-family: 'Cormorant Garamond', serif;
-        }
-        
-        body.dark-mode .jubilee-title {
-            color: #2ecc71;
+            line-height: 1.2;
         }
         
         .jubilee-desc {
             max-width: 600px;
             margin: 0 auto;
-            color: #64748b;
+            color: var(--gray-500);
+            font-size: 1rem;
         }
-        
-        body.dark-mode .jubilee-desc {
-            color: #94a3b8;
-        }
-        /* MAIN GRID */
+        /* MAIN GRID (meilleure hiérarchie) */
         
         .main-grid {
             display: grid;
             grid-template-columns: 1fr 1.1fr;
-            gap: 50px;
+            gap: 48px;
             background: white;
-            border-radius: 28px;
+            border-radius: var(--radius-lg);
             overflow: hidden;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
-            margin: 60px 0;
+            box-shadow: var(--shadow-lg);
+            margin: 64px 0;
+        }
+        
+        .image-frame {
+            min-height: 100%;
         }
         
         .image-frame img {
@@ -268,6 +291,11 @@
             height: 100%;
             object-fit: cover;
             display: block;
+            transition: transform 0.4s ease;
+        }
+        
+        .image-frame:hover img {
+            transform: scale(1.02);
         }
         
         .content-frame {
@@ -277,61 +305,56 @@
         .bishop-name {
             font-size: 2rem;
             font-weight: 800;
-            color: #045286;
+            color: var(--primary-bg);
             margin-bottom: 8px;
             font-family: 'Cormorant Garamond', serif;
         }
         
         .bishop-title {
-            color: #64748b;
+            color: var(--gray-500);
             font-style: italic;
-            margin-bottom: 20px;
+            margin-bottom: 24px;
             display: block;
+            font-size: 0.95rem;
         }
         
         .content-frame p {
             color: #475569;
-            margin-bottom: 25px;
+            margin-bottom: 28px;
             line-height: 1.7;
+            font-size: 1rem;
         }
-        
-        body.dark-mode .content-frame p {
-            color: #94a3b8;
-        }
-        /* BADGES */
+        /* BADGES (UX : feedback au survol, lisibilité) */
         
         .badges {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 20px;
-            margin: 30px 0;
+            gap: 24px;
+            margin: 32px 0;
         }
         
         .badge-card {
-            padding: 25px 15px;
-            border: 2px solid #c5a021;
+            padding: 28px 16px;
+            border: 2px solid var(--accent);
             text-align: center;
-            background: #fffcf2;
-            border-radius: 20px;
-            transition: all 0.3s;
+            background: var(--white);
+            border-radius: var(--radius-md);
+            transition: var(--transition);
+            cursor: default;
         }
         
         .badge-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-            border-color: #045286;
-        }
-        
-        body.dark-mode .badge-card:hover {
-            border-color: #2ecc71;
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-md);
+            border-color: var(--primary-bg);
         }
         
         .badge-card strong {
             display: block;
             font-size: 2.2rem;
             font-weight: 800;
-            color: #c5a021;
-            margin-bottom: 8px;
+            color: var(--accent);
+            margin-bottom: 12px;
         }
         
         .badge-card span {
@@ -339,35 +362,26 @@
             text-transform: uppercase;
             letter-spacing: 1px;
             font-weight: 600;
-            color: #045286;
+            color: var(--primary-bg);
             line-height: 1.4;
         }
-        
-        body.dark-mode .badge-card span {
-            color: #e2e8f0;
-        }
-        /* INFO BAR (compteur intégré) */
+        /* INFO BAR (données clés) */
         
         .info-bar {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            background: #045286;
+            background: var(--primary-bg);
             color: white;
-            padding: 25px;
-            border-radius: 20px;
+            padding: 24px;
+            border-radius: var(--radius-md);
             text-align: center;
-            margin-top: 30px;
+            margin-top: 32px;
             transition: background 0.3s;
-        }
-        
-        body.dark-mode .info-bar {
-            background: #0f1724;
-            border: 1px solid #2ecc71;
         }
         
         .info-bar div small {
             display: block;
-            font-size: 0.75rem;
+            font-size: 0.7rem;
             opacity: 0.8;
             margin-bottom: 8px;
             text-transform: uppercase;
@@ -375,47 +389,66 @@
         }
         
         .info-bar div b {
-            font-size: 1.2rem;
-            color: #c5a021;
+            font-size: 1.1rem;
+            color: var(--accent);
+            font-weight: 700;
+        }
+        /* COMPTEUR (mise en avant) */
+        
+        .countdown-card {
+            background: var(--accent);
+            color: #022b44;
+            border-radius: var(--radius-md);
+            padding: 24px;
+            text-align: center;
+            margin-top: 20px;
+            transition: var(--transition);
+        }
+        
+        .countdown-card small {
+            display: block;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 600;
+            margin-bottom: 8px;
         }
         
         .countdown-number {
-            font-size: 1.5rem;
+            font-size: 2rem;
             font-weight: 800;
-            color: #c5a021;
+            line-height: 1.2;
         }
         /* LIVE SECTION */
         
         .live-section {
             text-align: center;
-            margin-top: 35px;
-            padding-top: 25px;
-            border-top: 1px solid #e9edf2;
-            font-size: 0.9rem;
-            color: #64748b;
+            margin-top: 32px;
+            padding-top: 24px;
+            border-top: 1px solid var(--gray-300);
+            font-size: 0.85rem;
+            color: var(--gray-500);
         }
         
         .live-icons {
             margin-top: 12px;
             display: flex;
             justify-content: center;
-            gap: 20px;
+            flex-wrap: wrap;
+            gap: 24px;
             font-weight: 700;
-            color: #045286;
-        }
-        
-        body.dark-mode .live-icons {
-            color: #c5a021;
+            color: var(--primary-bg);
         }
         
         .live-icons i {
-            margin-right: 6px;
+            margin-right: 8px;
+            color: var(--accent);
         }
-        /* BOUTON RETOUR */
+        /* BOUTON RETOUR (UX : feedback au clic) */
         
         .bottom-nav {
             text-align: center;
-            margin: 40px 0 60px;
+            margin: 48px 0 64px;
         }
         
         .btn-back {
@@ -423,24 +456,31 @@
             align-items: center;
             gap: 10px;
             text-decoration: none;
-            background: #045286;
+            background: var(--primary-bg);
             color: white;
             padding: 14px 36px;
-            border-radius: 50px;
+            border-radius: 60px;
             font-weight: 700;
-            transition: all 0.3s;
-            border: 2px solid #045286;
+            transition: var(--transition);
+            border: 2px solid var(--primary-bg);
         }
         
-        .btn-back:hover {
+        .btn-back:hover,
+        .btn-back:focus-visible {
             background: transparent;
-            color: #045286;
+            color: var(--primary-bg);
             transform: translateX(-5px);
+            outline: none;
+        }
+        
+        body.dark-mode .btn-back:hover {
+            color: var(--accent);
+            border-color: var(--accent);
         }
         /* FOOTER */
         
         footer {
-            background: #022b44;
+            background: var(--primary-dark);
             color: white;
             padding: 40px 0;
             text-align: center;
@@ -448,20 +488,23 @@
         }
         
         footer a {
-            color: #c5a021;
+            color: var(--accent);
             text-decoration: none;
+            transition: var(--transition);
         }
         
         footer a:hover {
             color: white;
         }
+        /* RESPONSIVE (UX : adaptatif) */
         
         @media (max-width: 1024px) {
             .main-grid {
                 grid-template-columns: 1fr;
+                gap: 0;
             }
             .content-frame {
-                padding: 30px;
+                padding: 32px;
             }
             .image-frame img {
                 max-height: 400px;
@@ -471,21 +514,50 @@
         }
         
         @media (max-width: 768px) {
-            .jubilee-title {
-                font-size: 2rem;
-            }
-            .badges {
-                grid-template-columns: 1fr;
-            }
-            .info-bar {
-                grid-template-columns: 1fr;
-                gap: 15px;
-            }
             .container {
                 padding: 0 20px;
             }
+            .jubilee-title {
+                font-size: 2rem;
+            }
             .hero-banner {
-                padding: 50px 0;
+                padding: 48px 0;
+            }
+            .badges {
+                grid-template-columns: 1fr;
+                gap: 16px;
+            }
+            .info-bar {
+                grid-template-columns: 1fr;
+                gap: 16px;
+            }
+            .countdown-number {
+                font-size: 1.6rem;
+            }
+            .nav-links a {
+                padding: 6px 14px;
+                font-size: 0.8rem;
+            }
+            .controls-bar {
+                top: 12px;
+                right: 12px;
+            }
+            .ctrl-btn {
+                width: 38px;
+                height: 38px;
+                font-size: 1rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .jubilee-title {
+                font-size: 1.6rem;
+            }
+            .bishop-name {
+                font-size: 1.6rem;
+            }
+            .badge-card strong {
+                font-size: 1.8rem;
             }
         }
     </style>
@@ -495,8 +567,8 @@
 
     <!-- CONTROLES -->
     <div class="controls-bar">
-        <button class="ctrl-btn" id="darkModeToggle"><i class="fas fa-moon"></i></button>
-        <button class="ctrl-btn" id="langToggle"><i class="fas fa-globe"></i></button>
+        <button class="ctrl-btn" id="darkModeToggle" aria-label="Mode sombre"><i class="fas fa-moon"></i></button>
+        <button class="ctrl-btn" id="langToggle" aria-label="Changer de langue"><i class="fas fa-globe"></i></button>
     </div>
 
     <!-- HEADER -->
@@ -532,7 +604,7 @@
     <div class="container">
         <div class="main-grid">
             <div class="image-frame">
-                <img src="jubile.jpg" alt="Mgr Samuel KLEDA" onerror="this.src='https://images.unsplash.com/photo-1541428407462-6c7e75610e52?w=600&fit=crop'">
+                <img src="../image/Mgr.png" alt="Mgr Samuel KLEDA" loading="lazy">
             </div>
             <div class="content-frame">
                 <h2 class="bishop-name" data-key="bishopName">Mgr Samuel KLEDA</h2>
@@ -566,11 +638,9 @@
                 </div>
 
                 <!-- COMPTEUR AVANT LE JUBILÉ -->
-                <div class="info-bar" style="background: #c5a021; color: #022b44; margin-top: 20px;">
-                    <div style="grid-column: span 3;">
-                        <small data-key="countdownLabel">Jours avant la célébration</small>
-                        <div class="countdown-number" id="countdownDays">0</div>
-                    </div>
+                <div class="countdown-card">
+                    <small data-key="countdownLabel">Jours avant la célébration</small>
+                    <div class="countdown-number" id="countdownDays">0</div>
                 </div>
 
                 <div class="live-section">
@@ -593,7 +663,7 @@
     <!-- FOOTER -->
     <footer>
         <div class="container">
-            <p>© BIG DATA CENTER AI — <a href="https://www.youtube.com/@DominiqueSavio_Cyber-Ap%C3%B4tre3.0" target="_blank">Dominique Savio - Cyber Apôtre 3.0</a></p>
+            <p>&copy; BIG DATA CENTER AI — <a href="https://www.youtube.com/@DominiqueSavio_Cyber-Ap%C3%B4tre3.0" target="_blank">Dominique Savio - Cyber Apôtre 3.0</a></p>
             <p data-key="footerText">Aumônerie Diocésaine Jeunesse & Enfance – Douala</p>
         </div>
     </footer>
@@ -610,7 +680,7 @@
         }
         updateCountdown();
 
-        // ========== MULTILINGUE ==========
+        // ========== MULTILINGUE (UX : persistance) ==========
         let currentLang = localStorage.getItem('lang') || 'fr';
 
         const translations = {
@@ -675,15 +745,10 @@
             document.querySelectorAll('[data-key]').forEach(el => {
                 const key = el.getAttribute('data-key');
                 if (t[key]) {
-                    if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
-                        el.placeholder = t[key];
+                    if (key === 'badge1' || key === 'badge2') {
+                        el.innerHTML = t[key];
                     } else {
-                        // Pour les éléments avec HTML (badges)
-                        if (key === 'badge1' || key === 'badge2') {
-                            el.innerHTML = t[key];
-                        } else {
-                            el.textContent = t[key];
-                        }
+                        el.textContent = t[key];
                     }
                 }
             });
@@ -695,7 +760,7 @@
             updateLanguage();
         });
 
-        // ========== MODE SOMBRE ==========
+        // ========== MODE SOMBRE (UX : mémorisation) ==========
         function initDarkMode() {
             const darkMode = localStorage.getItem('darkMode') === 'true';
             if (darkMode) document.body.classList.add('dark-mode');
