@@ -123,7 +123,16 @@
     <button class="ctrl-btn" id="langToggle"><i class="fas fa-globe"></i></button>
 </div>
 <header><div class="container"><h1>ARCHIDIOCÈSE DE DOUALA</h1><p>Placement 2025-2026 – Données complètes et modifiables</p></div></header>
-<nav><div class="container"><ul class="nav-links"><li><a href="#"><i class="fas fa-home"></i> Accueil</a></li><li><a href="#"><i class="fas fa-users"></i> Jeunesse</a></li><li><a href="#"><i class="fas fa-graduation-cap"></i> Formation</a></li><li><a href="#"><i class="fas fa-church"></i> Projet</a></li></ul></div></nav>
+<nav>
+    <div class="container">
+        <ul class="nav-links">
+            <li><a href="index.html"><i class="fas fa-home"></i> Accueil</a></li
+                ><li><a href="index.html#jeunesse"><i class="fas fa-users"></i> Jeunesse</a></li>
+                <li><a href="formations.html"><i class="fas fa-graduation-cap"></i> Formation</a></li>
+                <li><a href="engagements.html"><i class="fas fa-church"></i> Projet</a></li>
+        </ul>
+    </div>
+</nav>
 
 <div class="main-layout">
     <aside class="vertical-nav"><h3><i class="fas fa-map-marker-alt"></i> Zones</h3><ul class="zone-links" id="zoneLinks"></ul></aside>
@@ -147,16 +156,16 @@
 // 1. DONNÉES DES ZONES (Wouri I à X) - LISTE DES PAROISSES PAR ZONE
 // ============================================================
 const zonesData = [
-    { num: "01", name: "Wouri I", paroissesList: ["Cathédrale Saints-Pierre et Paul de Douala","Paroisse Holy Trinity","Paroisse Notre-Dame du Mont Carmel","Paroisse Saint-Dominique Savio de Bonaparte","Paroisse Sainte-Anne de Nkongmondo","Paroisse Saint-André de Manoka","Paroisse Saint-Ignace d'Antioche de Youpouè","Paroisse Saint Barnabé de Bois de Singe"], priest: "Abbé Valéry MELONE", color: "#ffffff", colorName: "Blanc/Or", colorText: "#000" },
-    { num: "02", name: "Wouri II", paroissesList: ["Paroisse Notre-Dame des Victoires de New-Bell I","Paroisse Saint-Paul de Nylon","Paroisse Sacré-Cœur de New-Bell II","Paroisse Notre-Dame des Sept Douleurs de New Bell III","Paroisse Saint-Luc de New Bell"], priest: "Abbé Florindo D'EMIDIO", color: "#ff0000", colorName: "Rouge", colorText: "#fff" },
-    { num: "03", name: "Wouri III", paroissesList: ["Paroisse Saint-Sacrement de Ndogbong","Paroisse Christ-Roi de la Cité-Sic","Paroisse Saint-Esprit de Bépanda","Paroisse Saint-Charles Lwanga de Makèpè Yonyong","Paroisse Saint-Mathias de Petit Wouri Bonamousongo","Paroisse universitaire Saint-Thomas d'Aquin"], priest: "Abbé Sébastien MONGO BEHON", color: "#0000ff", colorName: "Bleu Royal", colorText: "#fff" },
-    { num: "04", name: "Wouri IV", paroissesList: ["Paroisse Sainte-Monique de Cite-Sic Makepé","Paroisse Saint-Jean de Deido","Paroisse Saint-Ambroise de Sable (Bonamoussadi)","Paroisse Notre-Dame de l'Annonciation de Bonamoussadi","Paroisse Saint-François d'Assise de Kotto","Paroisse Christ Sauveur de Banguè","Paroisse Saint-Barthélémy de LOGBESSOU","Paroisse Saint-Basile de Logpom","Paroisse Sainte-Marie Madeleine de Logpom plateau","Paroisse Sainte-Marthe de Lendi"], priest: "Abbé Dieudonné BAYEMEG", color: "#ffff00", colorName: "Jaune", colorText: "#000" },
-    { num: "05", name: "Wouri V", paroissesList: ["Paroisse Saint-Pie X de PK 14","Paroisse Saint-Victor de Sodikombo","Paroisse saint-Thomas de PK 10","Paroisse Sainte-Thérèse de l'Enfant Jésus de Mbengue City","Paroisse Epiphanie de PK 21","Paroisse Saint-Benoît de Dallas et Nsape","Paroisse Saint-Étienne de Mandjab","Paroisse Saint-Samuel de NGONJO","Paroisse Saint-Athanase de PK 17 – PK 18","Paroisse Saint-Laurent de PAPAS","Paroisse Sainte-Cécile de MOUTONGO","Paroisse Saint-Paul VI de BONAMOUTONGO"], priest: "Abbé Dieudonné Laurent TONYE", color: "#008000", colorName: "Vert", colorText: "#fff" },
-    { num: "06", name: "Wouri VI", paroissesList: ["Paroisse Pentecôte de New Town Aéroport","Paroisse Saint-François-Xavier d'Oyack","Paroisse Sainte Trinité de Bllongué","Paroisse Saint-Thaddée de Bobongo","Paroisse Toussaint de Soboum","Paroisse Sainte-Agnès de Madagascar","Paroisse Sainte-Agathe de Bois de Singe"], priest: "P. Charles Marie HOUNGBO, FI", color: "#ffa500", colorName: "Orange", colorText: "#fff" },
-    { num: "07", name: "Wouri VII", paroissesList: ["Paroisse Sacré-Cœur de NdogPassi II","Paroisse Saint-Jacques de Logbaba Plateau","Paroisse Sainte-Famille de la Zone de recasement de NdogPassi III","Paroisse Marie Reine des Apôtres de Ndogpassi II","Paroisse Saint-Augustin de Yanka (Ndogpassi II)","Paroisse Saint-Clément de Nyalla Kambo"], priest: "Abbé Cyrille NANA", color: "#800080", colorName: "Violet", colorText: "#fff" },
-    { num: "08", name: "Wouri VIII", paroissesList: ["Paroisse Saint-Louis de Bonabéri","Paroisse Notre-Dame de l'Amour de Ngwele","Paroisse Saint-Grégoire de Ndobo","Paroisse Saint-Joseph de Bonandalè","Paroisse Saint-Pierre Grand Hangar","Paroisse Notre-Dame du Rosaire de Mambanda","Paroisse Saint-Gabriel Archange de Mpanjo - Bonaminkano","Paroisse Saint-Philippe du Quartier Bilingue","Paroisse Saint-Timothée de SODIKO VILLE","Paroisse Saint-Bonaventure de TOWOH","Paroisse Saint-Raphaël Archange de Bojongo","Paroisse Saint-Kisito de Sodiko Village","Paroisse Sainte Catherine de Sienne de Minkwele","Paroisse Cœur Immaculée de Marie de Ndobo"], priest: "Abbé Michel TCHOUMBOU", color: "#800080", colorName: "Violet", colorText: "#fff" },
-    { num: "09", name: "Wouri IX", paroissesList: ["Paroisse Saint-Marc de la Cite des Palmiers","Paroisse Saint-Simon de Kondi","Paroisse Saint-Michel Archange de Nyalla","Paroisse Saint-Jean Marie Vianney de Beedi","Paroisse Saint-Matthieu de Ndog-Mbèè","Paroisse Notre Dame de Lourdes de Japoma","Paroisse Saint-Corneille de NKOLMBONG","Paroisse Saint-Hippolyte de la Cité Chirac","Paroisse Saint-Cyprien de Maetur Ngodi Bakoko","Paroisse Saint-Justin de Yassa","Paroisse Saint-Bernard de NKEMBE","Paroisse Saint-Jean XXIII de Pahianga et Cocotier de Japoma"], priest: "Abbé Bernard HONA TONYE", color: "#800080", colorName: "Violet", colorText: "#fff" },
-    { num: "10", name: "Wouri X", paroissesList: ["Paroisse Jésus Bon Pasteur de Mboko","Paroisse Saint-Jude de Ngodi Bakoko","Paroisse Jésus Libérateur","Paroisse Saint-Jean Paul II de Yansoki","Paroisse Saint-Guido Maria CONFORTI","Paroisse Saint-Irénée de MBANGA-PONGO","Paroisse Saint-Joseph de BOKO","Paroisse Saint Jean-Baptiste de Bwang BAKOKO"], priest: "Abbé Serge TSAFACK", color: "#800080", colorName: "Violet", colorText: "#fff" }
+    { num: "01", name: "Wouri I", paroissesList: ["Cathédrale Saints-Pierre et Paul de Douala","Paroisse Holy Trinity","Paroisse Notre-Dame du Mont Carmel","Paroisse Saint-Dominique Savio de Bonaparte","Paroisse Sainte-Anne de Nkongmondo","Paroisse Saint-André de Manoka","Paroisse Saint-Ignace d'Antioche de Youpouè","Paroisse Saint Barnabé de Bois de Singe"], priest: "Abbé Jean Bernard E.NWIND ", color: "#ffffff", colorName: "Blanc/Or", colorText: "#000" },
+    { num: "02", name: "Wouri II", paroissesList: ["Paroisse Notre-Dame des Victoires de New-Bell I","Paroisse Saint-Paul de Nylon","Paroisse Sacré-Cœur de New-Bell II","Paroisse Notre-Dame des Sept Douleurs de New Bell III","Paroisse Saint-Luc de New Bell"], priest: "Père Arthus NDOMAS NDOGBIA", color: "#ff0000", colorName: "Rouge", colorText: "#fff" },
+    { num: "03", name: "Wouri III", paroissesList: ["Paroisse Saint-Sacrement de Ndogbong","Paroisse Christ-Roi de la Cité-Sic","Paroisse Saint-Esprit de Bépanda","Paroisse Saint-Charles Lwanga de Makèpè Yonyong","Paroisse Saint-Mathias de Petit Wouri Bonamousongo","Paroisse universitaire Saint-Thomas d'Aquin"], priest: "Abbé Etienne Gilson CHAMABE MOUKOUE", color: "#0000ff", colorName: "Bleu Royal", colorText: "#fff" },
+    { num: "04", name: "Wouri IV", paroissesList: ["Paroisse Sainte-Monique de Cite-Sic Makepé","Paroisse Saint-Jean de Deido","Paroisse Saint-Ambroise de Sable (Bonamoussadi)","Paroisse Notre-Dame de l'Annonciation de Bonamoussadi","Paroisse Saint-François d'Assise de Kotto","Paroisse Christ Sauveur de Banguè","Paroisse Saint-Barthélémy de LOGBESSOU","Paroisse Saint-Basile de Logpom","Paroisse Sainte-Marie Madeleine de Logpom plateau","Paroisse Sainte-Marthe de Lendi"], priest: "Abbé Gaetan KAPTUE", color: "#ffff00", colorName: "Jaune", colorText: "#000" },
+    { num: "05", name: "Wouri V", paroissesList: ["Paroisse Saint-Pie X de PK 14","Paroisse Saint-Victor de Sodikombo","Paroisse saint-Thomas de PK 10","Paroisse Sainte-Thérèse de l'Enfant Jésus de Mbengue City","Paroisse Epiphanie de PK 21","Paroisse Saint-Benoît de Dallas et Nsape","Paroisse Saint-Étienne de Mandjab","Paroisse Saint-Samuel de NGONJO","Paroisse Saint-Athanase de PK 17 – PK 18","Paroisse Saint-Laurent de PAPAS","Paroisse Sainte-Cécile de MOUTONGO","Paroisse Saint-Paul VI de BONAMOUTONGO"], priest: "Abbé Maxim SIEWE", color: "#008000", colorName: "Vert", colorText: "#fff" },
+    { num: "06", name: "Wouri VI", paroissesList: ["Paroisse Pentecôte de New Town Aéroport","Paroisse Saint-François-Xavier d'Oyack","Paroisse Sainte Trinité de Bllongué","Paroisse Saint-Thaddée de Bobongo","Paroisse Toussaint de Soboum","Paroisse Sainte-Agnès de Madagascar","Paroisse Sainte-Agathe de Bois de Singe"], priest: "Abbé Anicet LAMBA", color: "#ffa500", colorName: "Orange", colorText: "#fff" },
+    { num: "07", name: "Wouri VII", paroissesList: ["Paroisse Sacré-Cœur de NdogPassi II","Paroisse Saint-Jacques de Logbaba Plateau","Paroisse Sainte-Famille de la Zone de recasement de NdogPassi III","Paroisse Marie Reine des Apôtres de Ndogpassi II","Paroisse Saint-Augustin de Yanka (Ndogpassi II)","Paroisse Saint-Clément de Nyalla Kambo"], priest: "Pére Richard MBOCK BONG", color: "#800080", colorName: "Violet", colorText: "#fff" },
+    { num: "08", name: "Wouri VIII", paroissesList: ["Paroisse Saint-Louis de Bonabéri","Paroisse Notre-Dame de l'Amour de Ngwele","Paroisse Saint-Grégoire de Ndobo","Paroisse Saint-Joseph de Bonandalè","Paroisse Saint-Pierre Grand Hangar","Paroisse Notre-Dame du Rosaire de Mambanda","Paroisse Saint-Gabriel Archange de Mpanjo - Bonaminkano","Paroisse Saint-Philippe du Quartier Bilingue","Paroisse Saint-Timothée de SODIKO VILLE","Paroisse Saint-Bonaventure de TOWOH","Paroisse Saint-Raphaël Archange de Bojongo","Paroisse Saint-Kisito de Sodiko Village","Paroisse Sainte Catherine de Sienne de Minkwele","Paroisse Cœur Immaculée de Marie de Ndobo"], priest: "Père Fabrice Bernard NKOH", color: "#800080", colorName: "Violet", colorText: "#fff" },
+    { num: "09", name: "Wouri IX", paroissesList: ["Paroisse Saint-Marc de la Cite des Palmiers","Paroisse Saint-Simon de Kondi","Paroisse Saint-Michel Archange de Nyalla","Paroisse Saint-Jean Marie Vianney de Beedi","Paroisse Saint-Matthieu de Ndog-Mbèè","Paroisse Notre Dame de Lourdes de Japoma","Paroisse Saint-Corneille de NKOLMBONG","Paroisse Saint-Hippolyte de la Cité Chirac","Paroisse Saint-Cyprien de Maetur Ngodi Bakoko","Paroisse Saint-Justin de Yassa","Paroisse Saint-Bernard de NKEMBE","Paroisse Saint-Jean XXIII de Pahianga et Cocotier de Japoma"], priest: "Abbé Arnaud YAMB", color: "#800080", colorName: "Violet", colorText: "#fff" },
+    { num: "10", name: "Wouri X", paroissesList: ["Paroisse Jésus Bon Pasteur de Mboko","Paroisse Saint-Jude de Ngodi Bakoko","Paroisse Jésus Libérateur","Paroisse Saint-Jean Paul II de Yansoki","Paroisse Saint-Guido Maria CONFORTI","Paroisse Saint-Irénée de MBANGA-PONGO","Paroisse Saint-Joseph de BOKO","Paroisse Saint Jean-Baptiste de Bwang BAKOKO"], priest: "Abbé Moise d'Assise ABOULE", color: "#800080", colorName: "Violet", colorText: "#fff" }
 ];
 
 // ============================================================
@@ -1225,24 +1234,49 @@ const parishesDetails = {
 // ============================================================
 // 3. RESPONSABLES (AUMÔNIERS ET LAÏCS) - MODIFIABLE
 // ============================================================
+// ============================================================
+// RESPONSABLES (AUMÔNIERS ET LAÏCS) – VRAIS NUMÉROS DES AUMÔNIERS
+// ============================================================
 const responsablesData = {};
+
+// Mapping des vrais numéros par zone (d'après votre tableau)
+const vraisNumerosAumoniers = {
+    "Wouri I": "699912804",
+    "Wouri II": "682809466",
+    "Wouri III": "699666608",
+    "Wouri IV": "677012649",
+    "Wouri V": "697837405",
+    "Wouri VI": "693485333",
+    "Wouri VII": "652653538",   // sans espace
+    "Wouri VIII": "690500531",
+    "Wouri IX": "674711170",
+    "Wouri X": "693492714"
+};
+
+// Remplissage pour chaque zone
 zonesData.forEach(zone => {
-    responsablesData[`aumonier-${zone.name}`] = {
-        nom: zone.priest,
-        zone: zone.name,
-        telephone: "+237 600 000 000",   // ← Remplacez par le vrai numéro
-        messagePredef: `Bonjour Père, je vous contacte depuis l'annuaire pastoral. Zone ${zone.name}.`,
+    const zoneName = zone.name;
+    const vraiNumero = vraisNumerosAumoniers[zoneName];
+    // Format avec +237
+    const telAumonier = vraiNumero ? `+237 ${vraiNumero}` : "+237 600 000 000";
+
+    responsablesData[`aumonier-${zoneName}`] = {
+        nom: zone.priest,   // nom du vicaire épiscopal (issu du PDF)
+        zone: zoneName,
+        telephone: telAumonier,
+        messagePredef: `Bonjour Père, je vous contacte depuis l'annuaire pastoral. Zone ${zoneName}.`,
         fonction: "Vicaire épiscopal / Curé de zone"
     };
-    responsablesData[`laic-${zone.name}`] = {
-        nom: `Responsable laïc de ${zone.name}`,
-        zone: zone.name,
-        telephone: "+237 600 000 001",   // ← Remplacez par le vrai numéro
-        messagePredef: `Bonjour, je suis membre de la zone ${zone.name}.`,
+
+    // Responsable laïc (pas de numéro fourni, on garde un placeholder)
+    responsablesData[`laic-${zoneName}`] = {
+        nom: `Responsable laïc de ${zoneName}`,
+        zone: zoneName,
+        telephone: "+237 600 900 001",
+        messagePredef: `Bonjour, je suis membre de la zone ${zoneName}.`,
         fonction: "Coordinateur laïc"
     };
 });
-
 // ============================================================
 // 4. RENDU DU TABLEAU ET MODALES (NE PAS MODIFIER)
 // ============================================================
