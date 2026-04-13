@@ -4,12 +4,7 @@ function initDarkMode() {
     if (darkMode) {
         document.body.classList.add('dark-mode');
     }
-
-    // Appliquer l'icône correcte à tous les boutons dark mode
-    const darkIcons = document.querySelectorAll('#darkModeToggleDesktop i, #darkModeToggleMobile i, #darkModeToggle i');
-    darkIcons.forEach(icon => {
-        icon.className = darkMode ? 'fas fa-sun' : 'fas fa-moon';
-    });
+    updateDarkModeIcons();
 }
 
 function setDarkMode(isDark) {
@@ -19,8 +14,11 @@ function setDarkMode(isDark) {
         document.body.classList.remove('dark-mode');
     }
     localStorage.setItem('darkMode', isDark);
+    updateDarkModeIcons();
+}
 
-    // Mettre à jour toutes les icônes
+function updateDarkModeIcons() {
+    const isDark = document.body.classList.contains('dark-mode');
     const darkIcons = document.querySelectorAll('#darkModeToggleDesktop i, #darkModeToggleMobile i, #darkModeToggle i');
     darkIcons.forEach(icon => {
         icon.className = isDark ? 'fas fa-sun' : 'fas fa-moon';
@@ -33,19 +31,19 @@ function setupDarkModeToggles() {
     const pageBtn = document.getElementById('darkModeToggle');
 
     if (desktopBtn) {
-        desktopBtn.addEventListener('click', () => {
-            setDarkMode(!document.body.classList.contains('dark-mode'));
-        });
+        desktopBtn.removeEventListener('click', setupDarkModeToggles.clickHandler);
+        setupDarkModeToggles.clickHandler = () => setDarkMode(!document.body.classList.contains('dark-mode'));
+        desktopBtn.addEventListener('click', setupDarkModeToggles.clickHandler);
     }
     if (mobileBtn) {
-        mobileBtn.addEventListener('click', () => {
-            setDarkMode(!document.body.classList.contains('dark-mode'));
-        });
+        mobileBtn.removeEventListener('click', setupDarkModeToggles.clickHandler2);
+        setupDarkModeToggles.clickHandler2 = () => setDarkMode(!document.body.classList.contains('dark-mode'));
+        mobileBtn.addEventListener('click', setupDarkModeToggles.clickHandler2);
     }
     if (pageBtn) {
-        pageBtn.addEventListener('click', () => {
-            setDarkMode(!document.body.classList.contains('dark-mode'));
-        });
+        pageBtn.removeEventListener('click', setupDarkModeToggles.clickHandler3);
+        setupDarkModeToggles.clickHandler3 = () => setDarkMode(!document.body.classList.contains('dark-mode'));
+        pageBtn.addEventListener('click', setupDarkModeToggles.clickHandler3);
     }
 }
 
@@ -107,7 +105,7 @@ const commonTranslations = {
         enfance2: "CATECHESIS & GROUPS",
         enfance3: "ANNUAL CALENDAR",
         jeunesseTitle: "Youth Ministry",
-        jeunesse1: "MOVEMENTS & GROUPS",
+        jeunesse1: "MOVEMENTS & GROUPES",
         jeunesse2: "TRAINING & LEADERSHIP",
         jeunesse3: "PROJECTS & COMMITMENTS",
         vieTitle: "Diocesan Life",
@@ -186,22 +184,17 @@ const pageTranslations = {
     }
 };
 
-// Fusionner les traductions (communes + spécifiques à la page)
+// Fusionner les traductions
 function getFullTranslations() {
-    // Vérifier si on est sur la page "Nuit des Jeunes" (présence d'un élément spécifique)
     const isNuitPage = document.querySelector('.hero-swiper') !== null;
-
     if (isNuitPage) {
-        // Fusionner les traductions communes avec celles de la page
-        const full = {...commonTranslations[currentLang], ...pageTranslations[currentLang] };
-        return full;
+        return {...commonTranslations[currentLang], ...pageTranslations[currentLang] };
     }
     return commonTranslations[currentLang];
 }
 
 function updateLanguage() {
     const t = getFullTranslations();
-
     document.querySelectorAll('[data-key]').forEach(el => {
         const key = el.getAttribute('data-key');
         if (t[key]) {
@@ -212,7 +205,6 @@ function updateLanguage() {
             }
         }
     });
-
     localStorage.setItem('lang', currentLang);
 }
 
@@ -226,9 +218,18 @@ function setupLanguageToggles() {
         updateLanguage();
     };
 
-    if (desktopBtn) desktopBtn.addEventListener('click', toggleLang);
-    if (mobileBtn) mobileBtn.addEventListener('click', toggleLang);
-    if (pageBtn) pageBtn.addEventListener('click', toggleLang);
+    if (desktopBtn) {
+        desktopBtn.removeEventListener('click', toggleLang);
+        desktopBtn.addEventListener('click', toggleLang);
+    }
+    if (mobileBtn) {
+        mobileBtn.removeEventListener('click', toggleLang);
+        mobileBtn.addEventListener('click', toggleLang);
+    }
+    if (pageBtn) {
+        pageBtn.removeEventListener('click', toggleLang);
+        pageBtn.addEventListener('click', toggleLang);
+    }
 }
 
 // ========== INITIALISATION ==========
@@ -239,9 +240,40 @@ function initPage() {
     updateLanguage();
 }
 
-// Lancer l'initialisation quand le DOM est chargé
+// Observer les changements dans le DOM pour détecter l'arrivée de la navbar
+function waitForNavbar() {
+    const observer = new MutationObserver(function(mutations) {
+        const desktopBtn = document.getElementById('darkModeToggleDesktop');
+        const langBtn = document.getElementById('langToggleDesktop');
+
+        if (desktopBtn && langBtn) {
+            // Les boutons sont maintenant dans le DOM
+            setupDarkModeToggles();
+            setupLanguageToggles();
+            updateDarkModeIcons();
+            observer.disconnect(); // Arrêter d'observer
+        }
+    });
+
+    // Commencer à observer le body
+    observer.observe(document.body, { childList: true, subtree: true });
+
+    // Vérifier une première fois
+    if (document.getElementById('darkModeToggleDesktop')) {
+        observer.disconnect();
+        setupDarkModeToggles();
+        setupLanguageToggles();
+        updateDarkModeIcons();
+    }
+}
+
+// Lancer l'initialisation
 if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initPage);
+    document.addEventListener('DOMContentLoaded', () => {
+        initPage();
+        waitForNavbar();
+    });
 } else {
     initPage();
+    waitForNavbar();
 }
