@@ -4,8 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>Histoire & Fondements | Aumônerie Douala</title>
-    <meta name="description" content="Découvrez l'histoire et les fondements spirituels de l'Aumônerie Diocésaine de Douala : de sa création à aujourd'hui, ses valeurs et ses missions.">
+    <title>Documentation | Ressources - Aumônerie Diocésaine Douala</title>
+    <meta name="description" content="Documentation et ressources de l'Aumônerie Diocésaine Jeunesse & Enfance de Douala. Textes officiels, documents pastoraux, guides de formation et ressources pédagogiques.">
 
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -29,6 +29,7 @@
             transition: background 0.3s ease, color 0.3s ease;
             overflow-x: hidden;
         }
+        /* MODE SOMBRE */
         
         body.dark-mode {
             background: #0f1724;
@@ -39,25 +40,13 @@
             background: #1e293b;
         }
         
-        body.dark-mode .intro-box,
-        body.dark-mode .timeline-item .content,
-        body.dark-mode .fondement-card {
+        body.dark-mode .doc-card,
+        body.dark-mode .category-card {
             background: #1e293b;
+            border-color: #334155;
         }
         
-        body.dark-mode .intro-box p {
-            color: #94a3b8;
-        }
-        
-        body.dark-mode .timeline::before {
-            background: #2ecc71;
-        }
-        
-        body.dark-mode .fondement-card {
-            border-color: rgba(46, 204, 113, 0.3);
-        }
-        
-        body.dark-mode .fondement-card h4 {
+        body.dark-mode .section-title {
             color: #2ecc71;
         }
         
@@ -146,7 +135,7 @@
                 font-size: 0.7rem;
             }
         }
-        /* NAVBAR */
+        /* ========== NAVBAR ========== */
         
         .navbar {
             background: white;
@@ -330,6 +319,7 @@
         .menu-overlay {
             display: none;
         }
+        /* RESPONSIVE MOBILE */
         
         @media (max-width: 992px) {
             .nav-container {
@@ -436,7 +426,7 @@
             background: linear-gradient(135deg, #0f1724, #020617);
         }
         
-        .page-header h1 {
+        .page-header h2 {
             font-size: 2.5rem;
             font-weight: 800;
             margin-bottom: 16px;
@@ -450,309 +440,276 @@
         }
         
         @media (max-width: 768px) {
-            .page-header h1 {
+            .page-header h2 {
                 font-size: 1.8rem;
             }
+            .page-header p {
+                font-size: 0.9rem;
+            }
         }
-        /* INTRO BOX */
+        /* SECTION TITRE */
         
-        .intro-box {
-            background: white;
-            padding: 48px;
-            border-radius: 24px;
-            text-align: center;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
-            margin: 60px 0;
-            border-top: 5px solid #2ecc71;
-        }
-        
-        body.dark-mode .intro-box {
-            background: #1e293b;
-        }
-        
-        .intro-box h2 {
+        .section-title {
             font-size: 2rem;
-            font-weight: 800;
+            font-weight: 700;
             color: #045286;
-            margin-bottom: 16px;
-        }
-        
-        body.dark-mode .intro-box h2 {
-            color: #2ecc71;
-        }
-        
-        .intro-box p {
-            color: #64748b;
-            max-width: 700px;
-            margin: 0 auto;
-            font-size: 1rem;
-        }
-        
-        body.dark-mode .intro-box p {
-            color: #94a3b8;
+            margin-bottom: 48px;
+            border-left: 5px solid #2ecc71;
+            padding-left: 24px;
         }
         
         @media (max-width: 768px) {
-            .intro-box {
-                padding: 30px 20px;
-                margin: 40px 0;
-            }
-            .intro-box h2 {
+            .section-title {
                 font-size: 1.5rem;
+                margin-bottom: 30px;
+                padding-left: 20px;
             }
         }
-        /* TIMELINE */
+        /* CATEGORIES */
         
-        .timeline {
-            position: relative;
-            padding: 40px 0;
-            margin: 40px 0;
+        .categories-section {
+            padding: 60px 0;
         }
         
-        .timeline::before {
-            content: '';
-            position: absolute;
-            left: 50%;
-            top: 0;
-            width: 4px;
-            height: 100%;
-            background: #045286;
-            transform: translateX(-50%);
-            border-radius: 2px;
+        .categories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
         }
         
-        .timeline-item {
-            margin-bottom: 48px;
-            position: relative;
-            width: 50%;
-            padding: 0 32px;
+        .category-card {
+            background: white;
+            border-radius: 20px;
+            padding: 30px 20px;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 1px solid #e9edf2;
+            cursor: pointer;
         }
         
-        .left {
-            left: 0;
-            text-align: right;
-        }
-        
-        .right {
-            left: 50%;
-            text-align: left;
-        }
-        
-        .timeline-item::after {
-            content: '';
-            position: absolute;
-            width: 20px;
-            height: 20px;
-            background: #2ecc71;
-            border: 4px solid #045286;
-            border-radius: 50%;
-            top: 24px;
-            z-index: 1;
-            transition: all 0.3s;
-        }
-        
-        .timeline-item:hover::after {
-            transform: scale(1.3);
-            background: #045286;
+        .category-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
             border-color: #2ecc71;
         }
         
-        .left::after {
-            right: -14px;
+        .category-icon {
+            width: 70px;
+            height: 70px;
+            background: #2ecc71;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
         }
         
-        .right::after {
-            left: -14px;
-        }
-        
-        .timeline-item .content {
-            background: white;
-            padding: 24px;
-            border-radius: 16px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            transition: all 0.3s;
-        }
-        
-        .timeline-item .content:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
-        }
-        
-        body.dark-mode .timeline-item .content {
-            background: #1e293b;
-        }
-        
-        .timeline-item .content i {
+        .category-icon i {
             font-size: 2rem;
-            color: #2ecc71;
-            margin-bottom: 16px;
+            color: #022b44;
         }
         
-        .timeline-item .content .date {
-            font-weight: 700;
-            color: #2ecc71;
-            font-size: 0.85rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            display: block;
-            margin-bottom: 8px;
-        }
-        
-        .timeline-item .content h3 {
+        .category-card h3 {
             font-size: 1.3rem;
-            margin-bottom: 12px;
+            margin-bottom: 10px;
             color: #045286;
         }
         
-        body.dark-mode .timeline-item .content h3 {
+        body.dark-mode .category-card h3 {
             color: #2ecc71;
         }
         
-        .timeline-item .content p {
+        .category-card p {
             color: #64748b;
             font-size: 0.9rem;
-            line-height: 1.6;
+            margin-bottom: 15px;
         }
         
-        body.dark-mode .timeline-item .content p {
+        body.dark-mode .category-card p {
             color: #94a3b8;
         }
         
-        @media (max-width: 768px) {
-            .timeline::before {
-                left: 30px;
-            }
-            .timeline-item {
-                width: 100%;
-                padding-left: 70px;
-                padding-right: 16px;
-                text-align: left;
-            }
-            .left,
-            .right {
-                left: 0;
-            }
-            .timeline-item::after {
-                left: 16px;
-                right: auto;
-            }
-        }
-        /* FONDEMENTS */
-        
-        .fondements {
-            background: linear-gradient(135deg, #045286, #0a2e4a);
-            border-radius: 28px;
-            padding: 48px 40px;
-            text-align: center;
-            margin: 60px 0;
-        }
-        
-        body.dark-mode .fondements {
-            background: linear-gradient(135deg, #0f1724, #020617);
-        }
-        
-        .fondements h2 {
-            font-size: 1.8rem;
-            margin-bottom: 16px;
-            color: white;
-        }
-        
-        body.dark-mode .fondements h2 {
+        .category-count {
+            display: inline-block;
+            background: #e8f5e9;
             color: #2ecc71;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
         }
         
-        .fondements>p {
-            color: rgba(255, 255, 255, 0.85);
-            margin-bottom: 32px;
+        body.dark-mode .category-count {
+            background: #2d3748;
+        }
+        /* DOCUMENTS GRID */
+        
+        .documents-section {
+            padding: 40px 0 60px;
         }
         
-        .grid-fondements {
+        .documents-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-            gap: 24px;
-            margin-top: 24px;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 25px;
         }
         
-        .fondement-card {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(4px);
-            padding: 24px;
+        .doc-card {
+            background: white;
             border-radius: 16px;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            transition: all 0.3s;
+            padding: 20px;
+            transition: all 0.3s ease;
+            border: 1px solid #e9edf2;
+            display: flex;
+            gap: 15px;
+            align-items: flex-start;
         }
         
-        .fondement-card:hover {
-            transform: translateY(-5px);
-            background: rgba(255, 255, 255, 0.2);
+        .doc-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+            border-color: #2ecc71;
         }
         
-        .fondement-card i {
-            font-size: 2rem;
+        .doc-icon {
+            width: 50px;
+            height: 50px;
+            background: #e8f5e9;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+        
+        body.dark-mode .doc-icon {
+            background: #2d3748;
+        }
+        
+        .doc-icon i {
+            font-size: 1.5rem;
             color: #2ecc71;
-            margin-bottom: 16px;
         }
         
-        .fondement-card h4 {
-            font-size: 1.2rem;
+        .doc-info {
+            flex: 1;
+        }
+        
+        .doc-info h4 {
+            font-size: 1rem;
             margin-bottom: 8px;
-            color: white;
+            color: #045286;
         }
         
-        body.dark-mode .fondement-card h4 {
-            color: #2ecc71;
+        body.dark-mode .doc-info h4 {
+            color: #e2e8f0;
         }
         
-        .fondement-card p {
-            font-size: 0.85rem;
-            color: rgba(255, 255, 255, 0.85);
+        .doc-info p {
+            font-size: 0.8rem;
+            color: #64748b;
+            margin-bottom: 10px;
+            line-height: 1.4;
         }
         
-        @media (max-width: 768px) {
-            .fondements {
-                padding: 32px 24px;
-            }
-            .fondements h2 {
-                font-size: 1.4rem;
-            }
-            .grid-fondements {
-                grid-template-columns: 1fr;
-            }
-        }
-        /* BACK BUTTON */
-        
-        .back-container {
-            text-align: center;
-            margin: 40px 0 60px;
+        body.dark-mode .doc-info p {
+            color: #94a3b8;
         }
         
-        .btn-back {
+        .doc-meta {
+            display: flex;
+            gap: 15px;
+            font-size: 0.7rem;
+            color: #94a3b8;
+            margin-bottom: 12px;
+        }
+        
+        .doc-meta i {
+            margin-right: 4px;
+        }
+        
+        .doc-link {
             display: inline-flex;
             align-items: center;
-            gap: 10px;
-            background: #045286;
-            color: white;
-            padding: 12px 32px;
-            border-radius: 50px;
+            gap: 8px;
+            color: #2ecc71;
             text-decoration: none;
+            font-size: 0.8rem;
             font-weight: 600;
             transition: all 0.3s;
         }
         
-        .btn-back:hover {
-            background: #2ecc71;
-            color: #022b44;
-            transform: translateX(-5px);
+        .doc-link:hover {
+            gap: 12px;
+            color: #045286;
         }
         
-        body.dark-mode .btn-back {
-            background: #2ecc71;
-            color: #022b44;
+        body.dark-mode .doc-link:hover {
+            color: #2ecc71;
+        }
+        /* SEARCH BAR */
+        
+        .search-section {
+            padding: 30px 0;
+            background: #f0f4fa;
         }
         
-        body.dark-mode .btn-back:hover {
+        body.dark-mode .search-section {
+            background: #0a0f1a;
+        }
+        
+        .search-container {
+            max-width: 600px;
+            margin: 0 auto;
+            position: relative;
+        }
+        
+        .search-container i {
+            position: absolute;
+            left: 18px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #94a3b8;
+        }
+        
+        .search-container input {
+            width: 100%;
+            padding: 16px 20px 16px 50px;
+            border: 2px solid #e9edf2;
+            border-radius: 50px;
+            font-family: inherit;
+            font-size: 1rem;
+            transition: all 0.3s;
             background: white;
-            color: #022b44;
+        }
+        
+        body.dark-mode .search-container input {
+            background: #1e293b;
+            border-color: #334155;
+            color: #e2e8f0;
+        }
+        
+        .search-container input:focus {
+            outline: none;
+            border-color: #2ecc71;
+            box-shadow: 0 0 0 3px rgba(46, 204, 113, 0.2);
+        }
+        /* ACTIVE CATEGORY */
+        
+        .category-card.active {
+            border-color: #2ecc71;
+            box-shadow: 0 10px 25px rgba(46, 204, 113, 0.15);
+        }
+        
+        .no-results {
+            text-align: center;
+            padding: 50px;
+            color: #64748b;
+        }
+        
+        body.dark-mode .no-results {
+            color: #94a3b8;
         }
         /* FOOTER */
         
@@ -761,7 +718,6 @@
             color: #cbd5e1;
             padding: 60px 0 30px;
             transition: background 0.3s;
-            margin-top: 60px;
         }
         
         body.dark-mode .main-footer {
@@ -900,6 +856,13 @@
             .social-links {
                 justify-content: center;
             }
+            .doc-card {
+                flex-direction: column;
+                text-align: center;
+            }
+            .doc-icon {
+                margin: 0 auto;
+            }
         }
     </style>
 </head>
@@ -911,8 +874,8 @@
         <div class="container header-flex">
             <img src="../image/logo formation.jpeg" alt="Logo Aumônerie" class="logo" onerror="this.src='https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=100&h=100&fit=crop'">
             <div class="site-title">
-                <h1 data-key="siteTitle">Aumônerie Diocésaine Jeunesse & Enfance</h1>
-                <p data-key="siteSubtitle">Archidiocèse de Douala – Cameroun</p>
+                <h1>Aumônerie Diocésaine Jeunesse & Enfance</h1>
+                <p>Archidiocèse de Douala – Cameroun</p>
             </div>
             <img src="../image/logo nj.jpeg" alt="Logo NJ" class="logo" onerror="this.src='https://images.unsplash.com/photo-1504051771394-dd2f66b2e08f?w=100&h=100&fit=crop'">
         </div>
@@ -926,29 +889,29 @@
             </button>
 
             <ul class="nav-links" id="navLinks">
-                <li><a href="index.html"><i class="fas fa-home"></i> <span data-key="nav1">Accueil</span></a></li>
-                <li><a href="MissionPastorale.html"><i class="fas fa-church"></i> <span data-key="nav2">À propos</span></a></li>
-                <li><a href="index.html#enfance"><i class="fas fa-child"></i> <span data-key="nav3">Enfance</span></a></li>
-                <li><a href="index.html#jeunesse"><i class="fas fa-users"></i> <span data-key="nav4">Jeunesse</span></a></li>
+                <li><a href="index.html"><i class="fas fa-home"></i> Accueil</a></li>
+                <li><a href="index.html#apropos"><i class="fas fa-church"></i> À propos</a></li>
+                <li><a href="index.html#enfance"><i class="fas fa-child"></i> Enfance</a></li>
+                <li><a href="index.html#jeunesse"><i class="fas fa-users"></i> Jeunesse</a></li>
 
                 <li class="dropdown" id="dropdownMenu">
                     <a href="javascript:void(0)" id="dropdownToggle">
-                        <i class="fas fa-newspaper"></i> <span data-key="nav5">Vie du Diocèse</span>
+                        <i class="fas fa-newspaper"></i> Vie du Diocèse
                         <i class="fas fa-chevron-down"></i>
                     </a>
                     <ul class="dropdown-menu">
-                        <li><a href="annonces.html"><i class="fas fa-bullhorn"></i> <span data-key="dropdown1">Annonces</span></a></li>
-                        <li><a href="communiques.html"><i class="fas fa-file-alt"></i> <span data-key="dropdown2">Communiqués</span></a></li>
-                        <li><a href="radio_television.html"><i class="fas fa-broadcast-tower"></i> <span data-key="dropdown3">Radio & Télévision</span></a></li>
-                        <li><a href="documentation.html"><i class="fas fa-book"></i> <span data-key="dropdown4">Documentation</span></a></li>
-                        <li><a href="evenements_pastoraux.html"><i class="fas fa-calendar-alt"></i> <span data-key="dropdown5">Événements Pastoraux</span></a></li>
-                        <li><a href="pelerinage.html"><i class="fas fa-hiking"></i> <span data-key="dropdown6">Pèlerinages</span></a></li>
-                        <li><a href="retraites.html"><i class="fas fa-pray"></i> <span data-key="dropdown7">Retraites spirituelles</span></a></li>
-                        <li><a href="formations_bibliques.html"><i class="fas fa-chalkboard-user"></i> <span data-key="dropdown8">Formations bibliques</span></a></li>
+                        <li><a href="annonces.html"><i class="fas fa-bullhorn"></i> Annonces</a></li>
+                        <li><a href="communiques.html"><i class="fas fa-file-alt"></i> Communiqués</a></li>
+                        <li><a href="radio_television.html"><i class="fas fa-broadcast-tower"></i> Radio & Télévision</a></li>
+                        <li><a href="documentation.html"><i class="fas fa-book"></i> Documentation</a></li>
+                        <li><a href="evenements_pastoraux.html"><i class="fas fa-calendar-alt"></i> Événements Pastoraux</a></li>
+                        <li><a href="pelerinage.html"><i class="fas fa-hiking"></i> Pèlerinages</a></li>
+                        <li><a href="retraites.html"><i class="fas fa-pray"></i> Retraites spirituelles</a></li>
+                        <li><a href="formations.html"><i class="fas fa-chalkboard-user"></i> Formations bibliques</a></li>
                     </ul>
                 </li>
 
-                <li><a href="index.html#phototheque"><i class="fas fa-images"></i> <span data-key="nav6">Galerie</span></a></li>
+                <li><a href="index.html#phototheque"><i class="fas fa-images"></i> Galerie</a></li>
 
                 <div class="mobile-only-elements">
                     <div class="mobile-controls">
@@ -972,107 +935,90 @@
     <!-- PAGE HEADER -->
     <section class="page-header">
         <div class="container">
-            <h1 data-key="pageTitle">Histoire & Fondements</h1>
-            <p data-key="pageDesc">Depuis sa création, l'Aumônerie de Douala s'est donnée pour mission de bâtir une jeunesse forte dans la foi et engagée dans la cité.</p>
+            <h2>Documentation & Ressources</h2>
+            <p>Textes officiels, documents pastoraux, guides de formation et ressources pédagogiques de l'Aumônerie Diocésaine</p>
         </div>
     </section>
 
-    <!-- INTRO BOX -->
-    <div class="container">
-        <div class="intro-box">
-            <h2 data-key="introTitle">Histoire et fondement</h2>
-            <p data-key="introDesc">Depuis sa création, l'Aumônerie de Douala s'est donnée pour mission de bâtir une jeunesse forte dans la foi et engagée dans la cité. Découvrez le chemin parcouru.</p>
-        </div>
-    </div>
-
-    <!-- TIMELINE -->
-    <div class="container">
-        <div class="timeline">
-            <div class="timeline-item left">
-                <div class="content">
-                    <i class="fas fa-church"></i>
-                    <span class="date" data-key="date1">Les Débuts</span>
-                    <h3 data-key="title1">L'Éveil de la Pastorale</h3>
-                    <p data-key="desc1">Organisation des premiers rassemblements de jeunes au niveau diocésain pour structurer les mouvements d'action catholique.</p>
-                </div>
-            </div>
-
-            <div class="timeline-item right">
-                <div class="content">
-                    <i class="fas fa-map-marked-alt"></i>
-                    <span class="date" data-key="date2">Expansion</span>
-                    <h3 data-key="title2">Structuration en Zones</h3>
-                    <p data-key="desc2">Découpage de l'Archidiocèse en zones pastorales pour être plus proche des réalités de chaque quartier de Douala.</p>
-                </div>
-            </div>
-
-            <div class="timeline-item left">
-                <div class="content">
-                    <i class="fas fa-laptop-code"></i>
-                    <span class="date" data-key="date3">Aujourd'hui</span>
-                    <h3 data-key="title3">Ère Digitale & Innovation</h3>
-                    <p data-key="desc3">Lancement de nouvelles initiatives comme la "Nuit des Jeunes" et l'intégration des outils numériques pour l'évangélisation.</p>
-                </div>
+    <!-- SEARCH SECTION -->
+    <section class="search-section">
+        <div class="container">
+            <div class="search-container">
+                <i class="fas fa-search"></i>
+                <input type="text" id="searchInput" placeholder="Rechercher un document...">
             </div>
         </div>
-    </div>
+    </section>
 
-    <!-- FONDEMENTS -->
-    <div class="container">
-        <div class="fondements">
-            <h2 data-key="fondTitle">Nos Fondements Spirituels</h2>
-            <p data-key="fondDesc">Ce qui guide chacune de nos actions au quotidien :</p>
-            <div class="grid-fondements">
-                <div class="fondement-card">
-                    <i class="fas fa-bible"></i>
-                    <h4 data-key="fond1Title">La Parole</h4>
-                    <p data-key="fond1Desc">Source de toute sagesse et guide de nos projets.</p>
+    <!-- CATEGORIES -->
+    <section class="categories-section">
+        <div class="container">
+            <div class="categories-grid" id="categoriesGrid">
+                <div class="category-card" data-category="all">
+                    <div class="category-icon"><i class="fas fa-folder-open"></i></div>
+                    <h3>Tous les documents</h3>
+                    <p>Toute la documentation disponible</p>
+                    <span class="category-count">24 documents</span>
                 </div>
-                <div class="fondement-card">
-                    <i class="fas fa-hands-helping"></i>
-                    <h4 data-key="fond2Title">Le Service</h4>
-                    <p data-key="fond2Desc">Se donner gratuitement pour le bien de la communauté.</p>
+                <div class="category-card" data-category="pastoral">
+                    <div class="category-icon"><i class="fas fa-church"></i></div>
+                    <h3>Pastoraux</h3>
+                    <p>Textes et orientations pastorales</p>
+                    <span class="category-count">8 documents</span>
                 </div>
-                <div class="fondement-card">
-                    <i class="fas fa-handshake"></i>
-                    <h4 data-key="fond3Title">La Fraternité</h4>
-                    <p data-key="fond3Desc">Unir les jeunes au-delà des différences sociales.</p>
+                <div class="category-card" data-category="formation">
+                    <div class="category-icon"><i class="fas fa-graduation-cap"></i></div>
+                    <h3>Formation</h3>
+                    <p>Guides et supports pédagogiques</p>
+                    <span class="category-count">6 documents</span>
+                </div>
+                <div class="category-card" data-category="officiel">
+                    <div class="category-icon"><i class="fas fa-file-alt"></i></div>
+                    <h3>Officiels</h3>
+                    <p>Communiqués et documents officiels</p>
+                    <span class="category-count">5 documents</span>
+                </div>
+                <div class="category-card" data-category="jeunesse">
+                    <div class="category-icon"><i class="fas fa-users"></i></div>
+                    <h3>Jeunesse</h3>
+                    <p>Ressources pour les jeunes</p>
+                    <span class="category-count">5 documents</span>
                 </div>
             </div>
         </div>
-    </div>
+    </section>
 
-    <!-- BACK BUTTON -->
-    <div class="container back-container">
-        <a href="index.html" class="btn-back">
-            <i class="fas fa-arrow-left"></i> <span data-key="backBtn">Retour à l'accueil</span>
-        </a>
-    </div>
+    <!-- DOCUMENTS SECTION -->
+    <section class="documents-section">
+        <div class="container">
+            <div class="documents-grid" id="documentsGrid"></div>
+        </div>
+    </section>
 
     <!-- FOOTER -->
     <footer class="main-footer">
         <div class="container">
             <div class="footer-grid">
                 <div class="footer-col">
-                    <h3 data-key="footerTitle1">Aumônerie Diocésaine</h3>
-                    <p data-key="footerDesc">Accompagnement spirituel, formation et engagement des jeunes et enfants de l'Archidiocèse de Douala. Ensemble, bâtissons une jeunesse responsable et rayonnante.</p>
+                    <h3>Aumônerie Diocésaine</h3>
+                    <p>Accompagnement spirituel, formation et engagement des jeunes et enfants de l'Archidiocèse de Douala. Ensemble, bâtissons une jeunesse responsable et rayonnante.</p>
                     <p><a href="https://aumonerie-diocesaine-jeunesse-enfance-douala.org/" target="_blank">aumonerie-diocesaine-jeunesse-enfance-douala.org <i class="fas fa-external-link-alt"></i></a></p>
                 </div>
                 <div class="footer-col">
-                    <h3 data-key="footerTitle2">Liens rapides</h3>
+                    <h3>Liens rapides</h3>
                     <ul class="footer-links">
-                        <li><a href="index.html"><i class="fas fa-home"></i> <span data-key="footerLink1">Accueil</span></a></li>
-                        <li><a href="MissionPastorale.html"><i class="fas fa-cross"></i> <span data-key="footerLink2">Mission Pastorale</span></a></li>
-                        <li><a href="Histoirefondements.html"><i class="fas fa-book-open"></i> <span data-key="footerLink3">Histoire & Fondements</span></a></li>
-                        <li><a href="Equipepastorale.html"><i class="fas fa-user-friends"></i> <span data-key="footerLink4">Équipe Diocésaine</span></a></li>
-                        <li><a href="mouvements.html"><i class="fas fa-flag-checkered"></i> <span data-key="footerLink5">Mouvements & Groupes</span></a></li>
-                        <li><a href="don.html"><i class="fas fa-hand-holding-heart"></i> <span data-key="footerLink6">Faire un don</span></a></li>
-                        <li><a href="mot.html"><i class="fas fa-microphone-alt"></i> <span data-key="footerLink7">Mot de l'Aumônier</span></a></li>
-                        <li><a href="pelerinage.html"><i class="fas fa-hiking"></i> <span data-key="footerLink8">Pèlerinages</span></a></li>
+                        <li><a href="index.html"><i class="fas fa-home"></i> Accueil</a></li>
+                        <li><a href="MissionPastorale.html"><i class="fas fa-cross"></i> Mission Pastorale</a></li>
+                        <li><a href="Histoirefondements.html"><i class="fas fa-book-open"></i> Histoire & Fondements</a></li>
+                        <li><a href="Equipepastorale.html"><i class="fas fa-user-friends"></i> Équipe Diocésaine</a></li>
+                        <li><a href="mouvements.html"><i class="fas fa-flag-checkered"></i> Mouvements & Groupes</a></li>
+                        <li><a href="don.html"><i class="fas fa-hand-holding-heart"></i> Faire un don</a></li>
+                        <li><a href="mot.html"><i class="fas fa-microphone-alt"></i> Mot de l'Aumônier</a></li>
+                        <li><a href="pelerinage.html"><i class="fas fa-hiking"></i> Pèlerinages</a></li>
                     </ul>
                 </div>
                 <div class="footer-col">
-                    <h3 data-key="footerTitle3">Équipe technique</h3>
+                    <h3>Équipe technique</h3>
                     <div class="dev-names">
                         <span><i class="fas fa-code"></i> KENMATIO Vicens</span>
                         <span><i class="fas fa-palette"></i> FOTSO Audrey</span>
@@ -1085,20 +1031,207 @@
                     </div>
                 </div>
                 <div class="footer-col">
-                    <h3 data-key="footerTitle4">Contact</h3>
+                    <h3>Contact</h3>
                     <p><i class="fas fa-envelope"></i> contact@aumonerie-douala.org</p>
                     <p><i class="fas fa-phone-alt"></i> +237 697 408 284</p>
-                    <p><i class="fas fa-map-marker-alt"></i> <span data-key="footerAddress">Archidiocèse de Douala, Cameroun</span></p>
+                    <p><i class="fas fa-map-marker-alt"></i> Archidiocèse de Douala, Cameroun</p>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2026 Aumônerie Diocésaine Jeunesse & Enfance – Douala. <span data-key="footerRights">Tous droits réservés.</span></p>
+                <p>&copy; 2026 Aumônerie Diocésaine Jeunesse & Enfance – Douala. Tous droits réservés.</p>
                 <p>Conçu avec <i class="fas fa-heart" style="color: #e74c3c;"></i> par BIG DATA CENTER AI — <a href="https://www.youtube.com/@DominiqueSavio_Cyber-Ap%C3%B4tre3.0" target="_blank">Dominique Savio - Cyber Apôtre 3.0</a></p>
             </div>
         </div>
     </footer>
 
     <script>
+        // ========== DOCUMENTS DATA ==========
+        const documents = [
+            // Pastoraux
+            {
+                title: "Directoire pastoral 2024-2025",
+                description: "Orientations et objectifs pastoraux pour l'année 2024-2025 de l'Archidiocèse de Douala.",
+                category: "pastoral",
+                type: "pdf",
+                date: "Janvier 2024",
+                icon: "fas fa-church"
+            }, {
+                title: "Lettre pastorale de l'Archevêque",
+                description: "Message de l'Archevêque pour le Carême 2024.",
+                category: "pastoral",
+                type: "pdf",
+                date: "Février 2024",
+                icon: "fas fa-envelope"
+            }, {
+                title: "Plan d'action diocésain",
+                description: "Plan stratégique de développement pastoral 2024-2028.",
+                category: "pastoral",
+                type: "pdf",
+                date: "Décembre 2023",
+                icon: "fas fa-chart-line"
+            }, {
+                title: "Directoire liturgique",
+                description: "Guide pour les célébrations liturgiques dans l'Archidiocèse.",
+                category: "pastoral",
+                type: "pdf",
+                date: "2023",
+                icon: "fas fa-pray"
+            },
+
+            // Formation
+            {
+                title: "Guide du catéchiste",
+                description: "Manuel de formation pour les catéchistes de l'Enfance et de la Jeunesse.",
+                category: "formation",
+                type: "pdf",
+                date: "2024",
+                icon: "fas fa-chalkboard-user"
+            }, {
+                title: "Formation à la vie spirituelle",
+                description: "Cahier d'exercices et de réflexion pour les jeunes.",
+                category: "formation",
+                type: "pdf",
+                date: "2023",
+                icon: "fas fa-book"
+            }, {
+                title: "Leadership chrétien",
+                description: "Module de formation au leadership pour les animateurs.",
+                category: "formation",
+                type: "pdf",
+                date: "2024",
+                icon: "fas fa-hand-sparkles"
+            },
+
+            // Officiels
+            {
+                title: "Statuts de l'Aumônerie",
+                description: "Statuts et règlement intérieur de l'Aumônerie Diocésaine.",
+                category: "officiel",
+                type: "pdf",
+                date: "2022",
+                icon: "fas fa-file-contract"
+            }, {
+                title: "Calendrier diocésain 2024",
+                description: "Calendrier des célébrations et événements de l'année.",
+                category: "officiel",
+                type: "pdf",
+                date: "2024",
+                icon: "fas fa-calendar-alt"
+            }, {
+                title: "Rapport d'activités 2023",
+                description: "Bilan des activités pastorales de l'année 2023.",
+                category: "officiel",
+                type: "pdf",
+                date: "Janvier 2024",
+                icon: "fas fa-chart-simple"
+            },
+
+            // Jeunesse
+            {
+                title: "Guide du jeune leader",
+                description: "Manuel pour les jeunes leaders et animateurs de groupes.",
+                category: "jeunesse",
+                type: "pdf",
+                date: "2024",
+                icon: "fas fa-flag-checkered"
+            }, {
+                title: "Cahier de prière des jeunes",
+                description: "Recueil de prières et méditations pour les jeunes.",
+                category: "jeunesse",
+                type: "pdf",
+                date: "2023",
+                icon: "fas fa-praying-hands"
+            }, {
+                title: "Projets et engagements",
+                description: "Guide pour l'élaboration et le suivi de projets paroissiaux.",
+                category: "jeunesse",
+                type: "pdf",
+                date: "2024",
+                icon: "fas fa-project-diagram"
+            }
+        ];
+
+        let currentCategory = "all";
+        let searchTerm = "";
+
+        // Render documents
+        function renderDocuments() {
+            const grid = document.getElementById("documentsGrid");
+            if (!grid) return;
+
+            let filteredDocs = documents;
+
+            // Filter by category
+            if (currentCategory !== "all") {
+                filteredDocs = filteredDocs.filter(doc => doc.category === currentCategory);
+            }
+
+            // Filter by search term
+            if (searchTerm) {
+                const term = searchTerm.toLowerCase();
+                filteredDocs = filteredDocs.filter(doc =>
+                    doc.title.toLowerCase().includes(term) ||
+                    doc.description.toLowerCase().includes(term)
+                );
+            }
+
+            if (filteredDocs.length === 0) {
+                grid.innerHTML = `<div class="no-results"><i class="fas fa-folder-open" style="font-size: 3rem; margin-bottom: 1rem; display: block;"></i><p>Aucun document trouvé correspondant à votre recherche.</p></div>`;
+                return;
+            }
+
+            grid.innerHTML = filteredDocs.map(doc => `
+                <div class="doc-card" data-category="${doc.category}">
+                    <div class="doc-icon"><i class="${doc.icon}"></i></div>
+                    <div class="doc-info">
+                        <h4>${doc.title}</h4>
+                        <p>${doc.description}</p>
+                        <div class="doc-meta">
+                            <span><i class="fas fa-calendar-alt"></i> ${doc.date}</span>
+                            <span><i class="fas fa-file-pdf"></i> ${doc.type.toUpperCase()}</span>
+                        </div>
+                        <a href="#" class="doc-link" data-doc="${doc.title}"><i class="fas fa-download"></i> Télécharger</a>
+                    </div>
+                </div>
+            `).join("");
+
+            // Add download event listeners
+            document.querySelectorAll('.doc-link').forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const docTitle = link.getAttribute('data-doc');
+                    alert(`Téléchargement de "${docTitle}" - Fonctionnalité disponible prochainement.`);
+                });
+            });
+        }
+
+        // Initialize categories
+        function initCategories() {
+            const categories = document.querySelectorAll('.category-card');
+            categories.forEach(cat => {
+                cat.addEventListener('click', () => {
+                    categories.forEach(c => c.classList.remove('active'));
+                    cat.classList.add('active');
+                    currentCategory = cat.getAttribute('data-category');
+                    renderDocuments();
+                });
+            });
+            // Set "all" as active by default
+            const allCategory = document.querySelector('.category-card[data-category="all"]');
+            if (allCategory) allCategory.classList.add('active');
+        }
+
+        // Search functionality
+        function initSearch() {
+            const searchInput = document.getElementById('searchInput');
+            if (searchInput) {
+                searchInput.addEventListener('input', (e) => {
+                    searchTerm = e.target.value;
+                    renderDocuments();
+                });
+            }
+        }
+
         // ========== MENU HAMBURGER ==========
         const menuToggle = document.getElementById('menuToggle');
         const navLinks = document.getElementById('navLinks');
@@ -1123,20 +1256,30 @@
 
         if (menuToggle) {
             menuToggle.addEventListener('click', () => {
-                if (navLinks.classList.contains('active')) closeMenu();
-                else openMenu();
+                if (navLinks.classList.contains('active')) {
+                    closeMenu();
+                } else {
+                    openMenu();
+                }
             });
         }
 
-        if (closeMenuBtn) closeMenuBtn.addEventListener('click', closeMenu);
-        if (menuOverlay) menuOverlay.addEventListener('click', closeMenu);
+        if (closeMenuBtn) {
+            closeMenuBtn.addEventListener('click', closeMenu);
+        }
+
+        if (menuOverlay) {
+            menuOverlay.addEventListener('click', closeMenu);
+        }
 
         document.querySelectorAll('.nav-links a:not(#dropdownToggle)').forEach(link => {
             link.addEventListener('click', closeMenu);
         });
 
         window.addEventListener('resize', () => {
-            if (window.innerWidth > 992) closeMenu();
+            if (window.innerWidth > 992) {
+                closeMenu();
+            }
         });
 
         // ========== DROPDOWN ==========
@@ -1157,151 +1300,6 @@
                 dropdown.classList.remove('open');
             }
         });
-
-        // ========== MULTILINGUE ==========
-        let currentLang = localStorage.getItem('lang') || 'fr';
-
-        const translations = {
-            fr: {
-                siteTitle: "Aumônerie Diocésaine Jeunesse & Enfance",
-                siteSubtitle: "Archidiocèse de Douala – Cameroun",
-                nav1: "Accueil",
-                nav2: "À propos",
-                nav3: "Enfance",
-                nav4: "Jeunesse",
-                nav5: "Vie du Diocèse",
-                nav6: "Galerie",
-                dropdown1: "Annonces",
-                dropdown2: "Communiqués",
-                dropdown3: "Radio & Télévision",
-                dropdown4: "Documentation",
-                dropdown5: "Événements Pastoraux",
-                dropdown6: "Pèlerinages",
-                dropdown7: "Retraites spirituelles",
-                dropdown8: "Formations bibliques",
-                pageTitle: "Histoire & Fondements",
-                pageDesc: "Depuis sa création, l'Aumônerie de Douala s'est donnée pour mission de bâtir une jeunesse forte dans la foi et engagée dans la cité.",
-                introTitle: "Histoire et fondement",
-                introDesc: "Depuis sa création, l'Aumônerie de Douala s'est donnée pour mission de bâtir une jeunesse forte dans la foi et engagée dans la cité. Découvrez le chemin parcouru.",
-                date1: "Les Débuts",
-                title1: "L'Éveil de la Pastorale",
-                desc1: "Organisation des premiers rassemblements de jeunes au niveau diocésain pour structurer les mouvements d'action catholique.",
-                date2: "Expansion",
-                title2: "Structuration en Zones",
-                desc2: "Découpage de l'Archidiocèse en zones pastorales pour être plus proche des réalités de chaque quartier de Douala.",
-                date3: "Aujourd'hui",
-                title3: "Ère Digitale & Innovation",
-                desc3: "Lancement de nouvelles initiatives comme la 'Nuit des Jeunes' et l'intégration des outils numériques pour l'évangélisation.",
-                fondTitle: "Nos Fondements Spirituels",
-                fondDesc: "Ce qui guide chacune de nos actions au quotidien :",
-                fond1Title: "La Parole",
-                fond1Desc: "Source de toute sagesse et guide de nos projets.",
-                fond2Title: "Le Service",
-                fond2Desc: "Se donner gratuitement pour le bien de la communauté.",
-                fond3Title: "La Fraternité",
-                fond3Desc: "Unir les jeunes au-delà des différences sociales.",
-                backBtn: "Retour à l'accueil",
-                footerTitle1: "Aumônerie Diocésaine",
-                footerTitle2: "Liens rapides",
-                footerTitle3: "Équipe technique",
-                footerTitle4: "Contact",
-                footerDesc: "Accompagnement spirituel, formation et engagement des jeunes et enfants de l'Archidiocèse de Douala. Ensemble, bâtissons une jeunesse responsable et rayonnante.",
-                footerLink1: "Accueil",
-                footerLink2: "Mission Pastorale",
-                footerLink3: "Histoire & Fondements",
-                footerLink4: "Équipe Diocésaine",
-                footerLink5: "Mouvements & Groupes",
-                footerLink6: "Faire un don",
-                footerLink7: "Mot de l'Aumônier",
-                footerLink8: "Pèlerinages",
-                footerAddress: "Archidiocèse de Douala, Cameroun",
-                footerRights: "Tous droits réservés."
-            },
-            en: {
-                siteTitle: "Diocesan Youth & Children's Chaplaincy",
-                siteSubtitle: "Archdiocese of Douala – Cameroon",
-                nav1: "Home",
-                nav2: "About",
-                nav3: "Childhood",
-                nav4: "Youth",
-                nav5: "Diocesan Life",
-                nav6: "Gallery",
-                dropdown1: "Announcements",
-                dropdown2: "Official Statements",
-                dropdown3: "Radio & Television",
-                dropdown4: "Documentation",
-                dropdown5: "Pastoral Events",
-                dropdown6: "Pilgrimages",
-                dropdown7: "Spiritual Retreats",
-                dropdown8: "Biblical Training",
-                pageTitle: "History & Foundations",
-                pageDesc: "Since its creation, the Douala Chaplaincy has set itself the mission of building a youth strong in faith and committed to the city.",
-                introTitle: "History & Foundation",
-                introDesc: "Since its creation, the Douala Chaplaincy has set itself the mission of building a youth strong in faith and committed to the city. Discover the journey.",
-                date1: "The Beginnings",
-                title1: "The Awakening of Pastoral Care",
-                desc1: "Organization of the first youth gatherings at the diocesan level to structure Catholic action movements.",
-                date2: "Expansion",
-                title2: "Zonal Structuring",
-                desc2: "Division of the Archdiocese into pastoral zones to be closer to the realities of each district of Douala.",
-                date3: "Today",
-                title3: "Digital Era & Innovation",
-                desc3: "Launch of new initiatives such as 'Youth Night' and the integration of digital tools for evangelization.",
-                fondTitle: "Our Spiritual Foundations",
-                fondDesc: "What guides each of our daily actions:",
-                fond1Title: "The Word",
-                fond1Desc: "Source of all wisdom and guide for our projects.",
-                fond2Title: "Service",
-                fond2Desc: "Giving freely for the good of the community.",
-                fond3Title: "Fraternity",
-                fond3Desc: "Uniting young people beyond social differences.",
-                backBtn: "Back to home",
-                footerTitle1: "Diocesan Chaplaincy",
-                footerTitle2: "Quick links",
-                footerTitle3: "Technical Team",
-                footerTitle4: "Contact",
-                footerDesc: "Spiritual accompaniment, training and commitment of young people and children of the Archdiocese of Douala. Together, let's build a responsible and radiant youth.",
-                footerLink1: "Home",
-                footerLink2: "Pastoral Mission",
-                footerLink3: "History & Foundations",
-                footerLink4: "Diocesan Team",
-                footerLink5: "Movements & Groups",
-                footerLink6: "Donate",
-                footerLink7: "Chaplain's Message",
-                footerLink8: "Pilgrimages",
-                footerAddress: "Archdiocese of Douala, Cameroon",
-                footerRights: "All rights reserved."
-            }
-        };
-
-        function updateLanguage() {
-            const t = translations[currentLang];
-            document.querySelectorAll('[data-key]').forEach(el => {
-                const key = el.getAttribute('data-key');
-                if (t[key]) {
-                    if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
-                        el.placeholder = t[key];
-                    } else {
-                        el.textContent = t[key];
-                    }
-                }
-            });
-            localStorage.setItem('lang', currentLang);
-        }
-
-        function initLanguage() {
-            const desktopBtn = document.getElementById('langToggleDesktop');
-            const mobileBtn = document.getElementById('langToggleMobile');
-
-            function toggleLanguage() {
-                currentLang = currentLang === 'fr' ? 'en' : 'fr';
-                updateLanguage();
-            }
-
-            if (desktopBtn) desktopBtn.addEventListener('click', toggleLanguage);
-            if (mobileBtn) mobileBtn.addEventListener('click', toggleLanguage);
-            updateLanguage();
-        }
 
         // ========== MODE SOMBRE ==========
         function initDarkMode() {
@@ -1331,8 +1329,11 @@
             }
         }
 
+        // ========== INITIALIZATION ==========
+        renderDocuments();
+        initCategories();
+        initSearch();
         initDarkMode();
-        initLanguage();
     </script>
 </body>
 

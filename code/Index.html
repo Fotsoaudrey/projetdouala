@@ -4,8 +4,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>Aumônerie Diocésaine | Jeunesse & Enfance - Douala</title>
-    <meta name="description" content="Aumônerie Diocésaine de la Jeunesse et de l'Enfance de Douala - Formation intégrale, emploi, pastorale.">
+    <title>Aumônerie Diocésaine Jeunesse & Enfance Douala | Archidiocèse de Douala</title>
+    <meta name="description" content="Aumônerie Diocésaine de la Jeunesse et de l'Enfance de l'Archidiocèse de Douala. Formation intégrale, catéchèse, mouvements jeunes, éveil à la foi et pastorale à Douala, Cameroun.">
+    <meta name="keywords" content="aumônerie douala, jeunesse catholique douala, enfance catholique douala, pastorale jeunesse douala, archidiocèse douala, formation jeunes cameroun">
+    <meta name="author" content="Aumônerie Diocésaine Jeunesse & Enfance - Douala">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://aumonerie-diocesaine-jeunesse-enfance-douala.org/">
+
+    <!-- Open Graph / Social -->
+    <meta property="og:title" content="Aumônerie Diocésaine Jeunesse & Enfance Douala">
+    <meta property="og:description" content="Formation spirituelle, accompagnement et engagements des jeunes et enfants de l'Archidiocèse de Douala.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://aumonerie-diocesaine-jeunesse-enfance-douala.org/">
+    <meta property="og:image" content="../image/img/pape.jpeg">
+    <meta property="og:locale" content="fr_FR">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Aumônerie Diocésaine Jeunesse & Enfance Douala">
+    <meta name="twitter:description" content="Pastorale des jeunes et enfants - Archidiocèse de Douala">
 
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -196,7 +213,7 @@
                 font-size: 0.7rem;
             }
         }
-        /* ========== NAVBAR AVEC DROPDOWN ========== */
+        /* ========== NAVBAR ========== */
         
         .navbar {
             background: white;
@@ -216,7 +233,7 @@
             justify-content: space-between;
             gap: 16px;
         }
-        /* Menu hamburger (mobile) - caché sur desktop */
+        /* Menu hamburger (mobile) */
         
         .menu-toggle {
             display: none;
@@ -289,61 +306,110 @@
             position: relative;
         }
         
-        .dropdown-menu {
-            position: absolute;
-            top: 100%;
-            left: 0;
-            background: white;
-            min-width: 200px;
-            border-radius: 16px;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-            opacity: 0;
-            visibility: hidden;
-            transform: translateY(-10px);
-            transition: all 0.3s ease;
-            z-index: 100;
-            padding: 8px 0;
+        .dropdown>a {
+            position: relative;
+            cursor: pointer;
         }
-        
-        .dropdown:hover .dropdown-menu {
-            opacity: 1;
-            visibility: visible;
-            transform: translateY(0);
-        }
-        
-        .dropdown-menu a {
-            display: block;
-            padding: 12px 20px;
-            font-size: 0.85rem;
-            font-weight: 500;
-            border-radius: 0;
-            color: #1a2c3e;
-        }
-        
-        .dropdown-menu a:hover {
-            background: #f0f4fa;
-            transform: translateX(4px);
-        }
-        
-        body.dark-mode .dropdown-menu a:hover {
-            background: #2d3748;
-        }
-        /* Flèche indicatrice pour le dropdown */
         
         .dropdown>a i.fa-chevron-down {
             font-size: 0.7rem;
             transition: transform 0.3s;
         }
         
-        .dropdown:hover>a i.fa-chevron-down {
+        .dropdown.open>a i.fa-chevron-down {
             transform: rotate(180deg);
         }
-        /* Éléments mobiles - cachés par défaut sur desktop */
+        
+        .dropdown-menu {
+            position: absolute;
+            top: calc(100% + 8px);
+            left: 0;
+            background: white;
+            min-width: 240px;
+            border-radius: 16px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: all 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+            z-index: 100;
+            padding: 12px 8px;
+            list-style: none;
+        }
+        
+        .dropdown.open .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        
+        .dropdown-menu li {
+            margin: 0;
+        }
+        
+        .dropdown-menu a {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 16px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            border-radius: 12px;
+            color: #1a2c3e;
+            transition: all 0.2s;
+        }
+        
+        .dropdown-menu a i {
+            width: 24px;
+            text-align: center;
+            font-size: 1rem;
+            color: #2ecc71;
+        }
+        
+        .dropdown-menu a:hover {
+            background: #f0f4fa;
+            transform: translateX(6px);
+            color: #045286;
+        }
+        
+        .dropdown-menu a:hover i {
+            color: #045286;
+        }
+        
+        body.dark-mode .dropdown-menu a:hover {
+            background: #2d3748;
+            color: #2ecc71;
+        }
+        
+        body.dark-mode .dropdown-menu a:hover i {
+            color: #2ecc71;
+        }
+        /* Desktop hover effect */
+        
+        @media (min-width: 993px) {
+            .dropdown:hover>a i.fa-chevron-down {
+                transform: rotate(180deg);
+            }
+            .dropdown:hover .dropdown-menu {
+                opacity: 1;
+                visibility: visible;
+                transform: translateY(0);
+            }
+            .dropdown.open .dropdown-menu {
+                opacity: 0;
+                visibility: hidden;
+            }
+            .dropdown:hover .dropdown-menu {
+                opacity: 1 !important;
+                visibility: visible !important;
+            }
+        }
+        /* Éléments mobiles */
         
         .mobile-only-elements {
             display: none;
         }
-        /* Boutons de contrôle dans la navbar (DESKTOP) */
+        /* Boutons de contrôle desktop */
         
         .nav-controls {
             display: flex;
@@ -377,7 +443,6 @@
             color: #022b44;
             transform: scale(1.05);
         }
-        /* Menu overlay */
         
         .menu-overlay {
             display: none;
@@ -392,11 +457,9 @@
             .menu-toggle {
                 display: block;
             }
-            /* Cacher les boutons desktop sur mobile */
             .nav-controls {
                 display: none;
             }
-            /* Cacher les éléments mobiles par défaut */
             .mobile-only-elements {
                 display: none;
             }
@@ -416,6 +479,7 @@
                 box-shadow: -4px 0 20px rgba(0, 0, 0, 0.1);
                 z-index: 100;
                 border-radius: 0;
+                overflow-y: auto;
             }
             body.dark-mode .nav-links {
                 background: #1e293b;
@@ -423,14 +487,12 @@
             .nav-links.active {
                 right: 0;
             }
-            /* Afficher les éléments mobiles quand le menu est ouvert */
             .nav-links.active .mobile-only-elements {
                 display: flex;
                 flex-direction: column;
                 order: -1;
                 margin-bottom: 20px;
             }
-            /* Style des contrôles mobiles */
             .mobile-only-elements .mobile-controls {
                 display: flex;
                 gap: 16px;
@@ -493,26 +555,33 @@
             .menu-overlay.active {
                 display: block;
             }
-            /* Sur mobile, le dropdown se transforme en section simple */
+            /* Correction dropdown mobile */
             .dropdown .dropdown-menu {
                 position: static;
-                box-shadow: none;
                 opacity: 1;
                 visibility: visible;
                 transform: none;
+                box-shadow: none;
                 padding-left: 20px;
                 background: transparent;
-                margin-top: -5px;
+                margin-top: 5px;
                 margin-bottom: 5px;
+                display: none;
             }
-            .dropdown .dropdown-menu a {
+            .dropdown.open .dropdown-menu {
+                display: block;
+            }
+            .dropdown-menu a {
                 padding: 10px 16px;
             }
-            .dropdown:hover .dropdown-menu {
-                transform: none;
+        }
+        
+        @media (max-width: 480px) {
+            .dropdown-menu a {
+                font-size: 0.8rem;
             }
         }
-        /* ========== HERO ========== */
+        /* HERO SECTION */
         
         .hero {
             background: linear-gradient(110deg, #022b44 0%, #045286 100%);
@@ -618,8 +687,6 @@
         .hero-card img {
             width: 100%;
             height: auto;
-            margin-top: auto;
-            /*max-height: 400px;*/
             object-fit: cover;
         }
         
@@ -692,7 +759,7 @@
             transform: translateY(-6px);
             border-color: #2ecc71;
         }
-        /* ========== NOUVELLE SECTION VIE DU DIOCÈSE ========== */
+        /* VIE SECTION */
         
         .vie-section {
             background: #f0f4fa;
@@ -1136,38 +1203,40 @@
         </div>
     </header>
 
-    <!-- NAVIGATION AVEC DROPDOWN "VIE DU DIOCÈSE" -->
+    <!-- NAVIGATION -->
     <nav class="navbar">
         <div class="nav-container">
             <button class="menu-toggle" id="menuToggle">
                 <i class="fas fa-bars"></i>
             </button>
 
-            <!-- Liens de navigation -->
             <ul class="nav-links" id="navLinks">
                 <li><a href="#accueil"><i class="fas fa-home"></i> <span data-key="nav1">Accueil</span></a></li>
                 <li><a href="#apropos"><i class="fas fa-church"></i> <span data-key="nav2">À propos</span></a></li>
                 <li><a href="#enfance"><i class="fas fa-child"></i> <span data-key="nav3">Enfance</span></a></li>
                 <li><a href="#jeunesse"><i class="fas fa-users"></i> <span data-key="nav4">Jeunesse</span></a></li>
 
-                <!-- Nouveau lien "Vie du Diocèse" avec dropdown -->
-                <li class="dropdown">
-                    <a href="#vie-diocese">
+                <!-- DROPDOWN "Vie du Diocèse" -->
+                <li class="dropdown" id="dropdownMenu">
+                    <a href="javascript:void(0)" id="dropdownToggle">
                         <i class="fas fa-newspaper"></i> <span data-key="nav5">Vie du Diocèse</span>
                         <i class="fas fa-chevron-down"></i>
                     </a>
-                    <div class="dropdown-menu">
-                        <a href="annonces.html"><i class="fas fa-bullhorn"></i> Annonces</a>
-                        <a href="communiques.html"><i class="fas fa-file-alt"></i> Communiqués</a>
-                        <a href="radio_television.html"><i class="fas fa-file-alt"></i> Radio & Télévision</a>
-                        <a href="documenetation.html"><i class="fas fa-file-alt"></i> Documentation</a>
-                        <a href="evenements_pastoraux.html"><i class="fas fa-file-alt"></i> Evenements Pastoraux</a>
-                    </div>
+                    <ul class="dropdown-menu">
+                        <li><a href="annonces.html"><i class="fas fa-bullhorn"></i> Annonces</a></li>
+                        <li><a href="communiques.html"><i class="fas fa-file-alt"></i> Communiqués</a></li>
+                        <li><a href="radio_television.html"><i class="fas fa-broadcast-tower"></i> Radio & Télévision</a></li>
+                        <li><a href="documentation.html"><i class="fas fa-book"></i> Documentation</a></li>
+                        <li><a href="evenements_pastoraux.html"><i class="fas fa-calendar-alt"></i> Événements Pastoraux</a></li>
+                        <li><a href="pelerinage.html"><i class="fas fa-hiking"></i> Pèlerinages</a></li>
+                        <li><a href="retraites.html"><i class="fas fa-pray"></i> Retraites spirituelles</a></li>
+                        <li><a href="formations.html"><i class="fas fa-chalkboard-user"></i> Formations bibliques</a></li>
+                        <li><a href="annonce2.html"><i class="fas fa-chalkboard-user"></i> Zones Pastorales</a></li>
+                    </ul>
                 </li>
 
                 <li><a href="#phototheque"><i class="fas fa-images"></i> <span data-key="nav6">Galerie</span></a></li>
 
-                <!-- Éléments mobiles (cachés sur desktop, visibles dans le menu sur mobile) -->
                 <div class="mobile-only-elements">
                     <div class="mobile-controls">
                         <button class="ctrl-btn" id="darkModeToggleMobile"><i class="fas fa-moon"></i></button>
@@ -1179,7 +1248,6 @@
                 </div>
             </ul>
 
-            <!-- Boutons desktop (uniquement visibles sur desktop) -->
             <div class="nav-controls">
                 <button class="ctrl-btn" id="darkModeToggleDesktop"><i class="fas fa-moon"></i></button>
                 <button class="ctrl-btn" id="langToggleDesktop"><i class="fas fa-globe"></i></button>
@@ -1197,7 +1265,7 @@
                 <a href="https://bit.ly/NDJ2026" class="btn-primary"><i class="fas fa-calendar-check"></i> <span data-key="heroBtn">S'INSCRIRE AUX ACTIVITÉS</span></a>
             </div>
             <div class="hero-card">
-                <img src="../image/aumonier/aumonier.jpg" alt="Aumônier Diocésain" loading="lazy" onerror="this.src=">
+                <img src="../image/aumonier/aumonier.jpg" alt="Aumônier Diocésain" loading="lazy">
                 <div class="hero-card-content">
                     <i class="fas fa-microphone-alt" style="color:#2ecc71; font-size:1.6rem;"></i>
                     <p><a href="mot.html"><span data-key="motAumonier">MOT DE L'AUMONIER DIOCÉSAIN</span> <i class="fas fa-arrow-right"></i></a></p>
@@ -1242,33 +1310,22 @@
         </div>
     </section>
 
-    <!-- ========== NOUVELLE SECTION : VIE DU DIOCÈSE ========== -->
+    <!-- SECTION VIE DU DIOCÈSE -->
     <section id="vie-diocese" class="vie-section">
         <div class="container">
             <h2 class="section-title" data-key="vieTitle">Vie du Diocèse</h2>
             <div class="vie-grid">
-                <!-- Carte Annonces -->
                 <div class="vie-card">
-                    <div class="vie-icon">
-                        <i class="fas fa-bullhorn"></i>
-                    </div>
+                    <div class="vie-icon"><i class="fas fa-bullhorn"></i></div>
                     <h3 data-key="annoncesTitle">Annonces</h3>
                     <p data-key="annoncesDesc">Restez informés des actualités, événements et communications importantes de l'Archidiocèse.</p>
-                    <a href="annonces.html" class="vie-btn" data-key="annoncesBtn">
-                        Voir les annonces <i class="fas fa-arrow-right"></i>
-                    </a>
+                    <a href="annonces.html" class="vie-btn" data-key="annoncesBtn">Voir les annonces <i class="fas fa-arrow-right"></i></a>
                 </div>
-
-                <!-- Carte Communiqués -->
                 <div class="vie-card">
-                    <div class="vie-icon">
-                        <i class="fas fa-file-alt"></i>
-                    </div>
+                    <div class="vie-icon"><i class="fas fa-file-alt"></i></div>
                     <h3 data-key="communiquesTitle">Communiqués</h3>
                     <p data-key="communiquesDesc">Découvrez les offres d'emploi, les formations et les communications officielles du diocèse.</p>
-                    <a href="communiques.html" class="vie-btn" data-key="communiquesBtn">
-                        Voir les communiqués <i class="fas fa-arrow-right"></i>
-                    </a>
+                    <a href="communiques.html" class="vie-btn" data-key="communiquesBtn">Voir les communiqués <i class="fas fa-arrow-right"></i></a>
                 </div>
             </div>
         </div>
@@ -1350,6 +1407,37 @@
         </div>
     </footer>
 
+
+
+    <!-- SCHEMA.ORG JSON-LD pour SEO local et organisation -->
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "Organization",
+            "name": "Aumônerie Diocésaine Jeunesse & Enfance",
+            "url": "https://aumonerie-diocesaine-jeunesse-enfance-douala.org",
+            "logo": "../image/logo formation.jpeg",
+            "description": "Aumônerie catholique dédiée à la formation intégrale des jeunes et enfants de l'Archidiocèse de Douala, Cameroun.",
+            "address": {
+                "@type": "PostalAddress",
+                "addressLocality": "Douala",
+                "addressRegion": "Littoral",
+                "addressCountry": "CM"
+            },
+            "contactPoint": {
+                "@type": "ContactPoint",
+                "telephone": "+237697408284",
+                "contactType": "customer service"
+            },
+            "sameAs": [
+                "https://www.facebook.com/",
+                "https://www.youtube.com/@DominiqueSavio_Cyber-Ap%C3%B4tre3.0"
+            ]
+        }
+    </script>
+
+
+    <!--  -->
     <script>
         // ========== MENU HAMBURGER ==========
         const menuToggle = document.getElementById('menuToggle');
@@ -1393,8 +1481,8 @@
             menuOverlay.addEventListener('click', closeMenu);
         }
 
-        // Fermer le menu lors du clic sur un lien
-        document.querySelectorAll('.nav-links a').forEach(link => {
+        // Fermer le menu en cliquant sur un lien (sauf le dropdown toggle)
+        document.querySelectorAll('.nav-links a:not(#dropdownToggle)').forEach(link => {
             link.addEventListener('click', closeMenu);
         });
 
@@ -1402,10 +1490,37 @@
         window.addEventListener('resize', function() {
             if (window.innerWidth > 992) {
                 closeMenu();
+                // Si on repasse en desktop, enlever la classe open du dropdown
+                if (dropdown) dropdown.classList.remove('open');
             }
         });
 
-        // ========== MODE SOMBRE (UNIFIÉ) ==========
+        // ========== DROPDOWN MOBILE ==========
+        const dropdown = document.getElementById('dropdownMenu');
+        const dropdownToggle = document.getElementById('dropdownToggle');
+
+        if (dropdown && dropdownToggle) {
+            dropdownToggle.addEventListener('click', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+
+                // Vérifier si on est sur mobile/tablette (<=992px)
+                if (window.innerWidth <= 992) {
+                    dropdown.classList.toggle('open');
+                }
+            });
+        }
+
+        // Fermer le dropdown si on clique ailleurs sur mobile
+        document.addEventListener('click', function(e) {
+            if (window.innerWidth <= 992) {
+                if (dropdown && !dropdown.contains(e.target)) {
+                    dropdown.classList.remove('open');
+                }
+            }
+        });
+
+        // ========== MODE SOMBRE ==========
         function setDarkMode(isDark) {
             if (isDark) {
                 document.body.classList.add('dark-mode');
@@ -1439,7 +1554,7 @@
             }
         }
 
-        // ========== MULTILINGUE (UNIFIÉ) ==========
+        // ========== MULTILINGUE ==========
         let currentLang = localStorage.getItem('lang') || 'fr';
 
         const translations = {
@@ -1504,7 +1619,7 @@
                 enfance2: "CATECHESIS & GROUPS",
                 enfance3: "ANNUAL CALENDAR",
                 jeunesseTitle: "Youth Ministry",
-                jeunesse1: "MOVEMENTS & GROUPES",
+                jeunesse1: "MOVEMENTS & GROUPS",
                 jeunesse2: "TRAINING & LEADERSHIP",
                 jeunesse3: "PROJECTS & COMMITMENTS",
                 vieTitle: "Diocesan Life",
@@ -1549,134 +1664,94 @@
 
         // ========== ALBUMS ==========
         const albums = [{
-                title: {
-                    fr: "Célébrations Eucharistiques",
-                    en: "Eucharistic Celebrations"
-                },
-                desc: {
-                    fr: "Messes et prières",
-                    en: "Masses and prayers"
-                },
-                cover: "https://images.unsplash.com/photo-1438032005730-c779502df39b?w=400&h=300&fit=crop",
-                photos: ["../image/celebrations/IMG-20230518-WA0137.jpg", "../image/celebrations/97739.jpg", "../image/celebrations/97756.jpg", "../image/celebrations/97768.jpg", "../image/celebrations/97758.jpg"]
-            }, {
-                title: {
-                    fr: "Retraites et Camps",
-                    en: "Retreats and Camps"
-                },
-                desc: {
-                    fr: "Moments forts en communauté",
-                    en: "Community moments"
-                },
-                cover: "https://images.unsplash.com/photo-1470246973918-29a93221c455?w=400&h=300&fit=crop",
-                photos: ["../image/retraites/r1.jpg", "../image/retraites/r4.jpg", "../image/retraites/r5.jpg", "../image/retraites/r6.jpg", "../image/retraites/r7.jpg", ]
-            }, {
-                title: {
-                    fr: "Rencontres de Jeunes",
-                    en: "Youth Meetings"
-                },
-                desc: {
-                    fr: "Partage et fraternité",
-                    en: "Sharing and fraternity"
-                },
-                cover: "../image/jeunes/IMG-20250929-WA0034.jpg",
-                photos: ["../image/jeunes/IMG-20250929-WA0031.jpg", "../image/jeunes/IMG-20250929-WA0034.jpg", "../image/jeunes/j1.jpg", "../image/jeunes/j2.jpg", "../image/jeunes/j3.jpg", "../image/jeunes/j4.jpg", "../image/jeunes/j5.jpg", "../image/jeunes/j6.jpg", "../image/jeunes/j7.jpg", "../image/jeunes/j8.jpg", "../image/jeunes/j9.jpg"]
+            title: {
+                fr: "Célébrations Eucharistiques",
+                en: "Eucharistic Celebrations"
             },
-
-
-            {
-                title: {
-                    fr: "actualités et événements",
-                    en: " News and Events"
-                },
-                desc: {
-                    fr: " actualités, événements et moments forts de la vie du diocèse",
-                    en: " News, events and highlights of diocesan life"
-                },
-                cover: "../image/actualite/a4.jpg",
-                photos: ["../image/actualite/a1.jpg", "../image/actualite/a2.jpg", "../image/actualite/a3.jpg", "../image/actualite/pagne_pape.jpg", "../image/actualite/arrive_pape.jpg", "../image/actualite/priere_arrive_pape.jpg", "../image/actualite/arrive_pape1.jpg", "../image/actualite/rtvc.jpg"]
-            }, {
-                title: {
-                    fr: "Grandes Périodes Liturgiques",
-                    en: "Great Liturgical Seasons"
-                },
-                desc: {
-                    fr: "Découvrez en images les moments forts de l'année chrétienne : Carême, Semaine Sainte, Passion du Christ, Pâques, Avent et Noël dans notre Archidiocèse.",
-                    en: "Discover in pictures the highlights of the Christian year: Lent, Holy Week, Passion of Christ, Easter, Advent and Christmas in our Archdiocese."
-                },
-                cover: "../image/liturgie/chapelle.jpg",
-                photos: [
-                    // Carême
-                    "../image/liturgie/careme1.jpg",
-                    "../image/liturgie/careme2.jpg",
-                    "../image/liturgie/careme3.jpg",
-                    // Passion du Christ
-                    "../image/liturgie/passion1.jpg",
-                    "../image/liturgie/passion2.jpg",
-                    "../image/liturgie/passion3.jpg",
-                    // Semaine Sainte
-                    "../image/liturgie/semaine-sainte1.jpg",
-                    "../image/liturgie/semaine-sainte2.jpg",
-                    // Pâques
-                    "../image/liturgie/paques1.jpg",
-                    "../image/liturgie/paques2.jpg",
-                    // Avent & Noël
-                    "../image/liturgie/avent1.jpg",
-                    "../image/liturgie/noel1.jpg",
-                    "../image/liturgie/noel2.jpg"
-                ]
-            }, {
-                title: {
-                    fr: "Événements spéciaux animés par les jeunes",
-                    en: "Special events led by the youth"
-                },
-                desc: {
-                    fr: "Moments de partage, de fête et de témoignage où les jeunes prennent la parole et animent des célébrations uniques dans l'Archidiocèse.",
-                    en: "Moments of sharing, celebration and testimony where young people speak and lead unique celebrations in the Archdiocese."
-                },
-                cover: "../image/passion/p1.jpg",
-                photos: ["../image/passion/p2.jpg", "../image/passion/p3.jpg", "../image/passion/p4.jpg", "../image/passion/p5.jpg", "../image/passion/p6.jpg"]
+            desc: {
+                fr: "Messes et prières",
+                en: "Masses and prayers"
             },
-
-            {
-                title: {
-                    fr: "Arts Sacrés",
-                    en: "Sacred Arts"
-                },
-                desc: {
-                    fr: "Découvrez l'expression artistique de la foi à travers la musique, la peinture, la sculpture et les arts liturgiques dans notre Archidiocèse.",
-                    en: "Discover the artistic expression of faith through music, painting, sculpture and liturgical arts in our Archdiocese."
-                },
-                cover: "../image/arts/ar1.jpg",
-                photos: [
-                    "../image/arts/ar1.jpg",
-                    "../image/arts/ar2.jpg",
-                    "../image/arts/ar3.jpg",
-                    "../image/arts/ar4.jpg",
-                    "../image/arts/ar5.jpg",
-                    "../image/arts/ar6.jpg",
-                    "../image/arts/ar7.jpg",
-                    "../image/arts/ar8.jpg",
-                    "../image/arts/ar9.jpg",
-                    "../image/arts/ar10.jpg",
-                    "../image/arts/ar11.jpg",
-                    "../image/arts/ar12.jpg",
-                    "../image/arts/ar13.jpg",
-                    "../image/arts/ar14.jpg"
-                ]
-            }, {
-                title: {
-                    fr: "Anciens Aumôniers",
-                    en: "Former Chaplains"
-                },
-                desc: {
-                    fr: "Nos prédécesseurs dans la pastorale des jeunes",
-                    en: "Our predecessors in youth ministry"
-                },
-                cover: "https://images.unsplash.com/photo-1532629345422-7515f3d16bb6?w=400&h=300&fit=crop",
-                photos: ["https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?w=800&h=500&fit=crop", "https://images.unsplash.com/photo-1593113598332-cd288d649a58?w=800&h=500&fit=crop"]
-            }
-        ];
+            cover: "https://images.unsplash.com/photo-1438032005730-c779502df39b?w=400&h=300&fit=crop",
+            photos: ["../image/celebrations/IMG-20230518-WA0137.jpg", "../image/celebrations/97739.jpg", "../image/celebrations/97756.jpg", "../image/celebrations/97768.jpg", "../image/celebrations/97758.jpg"]
+        }, {
+            title: {
+                fr: "Retraites et Camps",
+                en: "Retreats and Camps"
+            },
+            desc: {
+                fr: "Moments forts en communauté",
+                en: "Community moments"
+            },
+            cover: "https://images.unsplash.com/photo-1470246973918-29a93221c455?w=400&h=300&fit=crop",
+            photos: ["../image/retraites/r1.jpg", "../image/retraites/r4.jpg", "../image/retraites/r5.jpg", "../image/retraites/r6.jpg", "../image/retraites/r7.jpg"]
+        }, {
+            title: {
+                fr: "Rencontres de Jeunes",
+                en: "Youth Meetings"
+            },
+            desc: {
+                fr: "Partage et fraternité",
+                en: "Sharing and fraternity"
+            },
+            cover: "../image/jeunes/IMG-20250929-WA0034.jpg",
+            photos: ["../image/jeunes/IMG-20250929-WA0031.jpg", "../image/jeunes/IMG-20250929-WA0034.jpg", "../image/jeunes/j1.jpg", "../image/jeunes/j2.jpg", "../image/jeunes/j3.jpg", "../image/jeunes/j4.jpg", "../image/jeunes/j5.jpg", "../image/jeunes/j6.jpg", "../image/jeunes/j7.jpg", "../image/jeunes/j8.jpg", "../image/jeunes/j9.jpg"]
+        }, {
+            title: {
+                fr: "Actualités et événements",
+                en: "News and Events"
+            },
+            desc: {
+                fr: "Actualités, événements et moments forts de la vie du diocèse",
+                en: "News, events and highlights of diocesan life"
+            },
+            cover: "../image/actualite/a4.jpg",
+            photos: ["../image/actualite/a1.jpg", "../image/actualite/a2.jpg", "../image/actualite/a3.jpg", "../image/actualite/pagne_pape.jpg", "../image/actualite/arrive_pape.jpg", "../image/actualite/priere_arrive_pape.jpg", "../image/actualite/arrive_pape1.jpg", "../image/actualite/rtvc.jpg"]
+        }, {
+            title: {
+                fr: "Grandes Périodes Liturgiques",
+                en: "Great Liturgical Seasons"
+            },
+            desc: {
+                fr: "Découvrez en images les moments forts de l'année chrétienne",
+                en: "Discover the highlights of the Christian year in pictures"
+            },
+            cover: "../image/liturgie/chapelle.jpg",
+            photos: ["../image/liturgie/careme1.jpg", "../image/liturgie/careme2.jpg", "../image/liturgie/chapelle.jpg"]
+        }, {
+            title: {
+                fr: "Événements spéciaux animés par les jeunes",
+                en: "Special events led by the youth"
+            },
+            desc: {
+                fr: "Moments de partage où les jeunes animent des célébrations uniques",
+                en: "Sharing moments where young people lead unique celebrations"
+            },
+            cover: "../image/passion/p1.jpg",
+            photos: ["../image/passion/p2.jpg", "../image/passion/p3.jpg", "../image/passion/p4.jpg", "../image/passion/p1.jpg"]
+        }, {
+            title: {
+                fr: "Arts Sacrés",
+                en: "Sacred Arts"
+            },
+            desc: {
+                fr: "Expression artistique de la foi",
+                en: "Artistic expression of faith"
+            },
+            cover: "../image/arts/ar1.jpg",
+            photos: ["../image/arts/ar1.jpg", "../image/arts/ar2.jpg", "../image/arts/ar3.jpg", "../image/arts/ar4.jpg", "../image/arts/ar5.jpg", "../image/arts/ar6.jpg", "../image/arts/ar7.jpg", "../image/arts/ar8.jpg", "../image/arts/ar9.jpg", "../image/arts/ar10.jpg", "../image/arts/ar11.jpg", "../image/arts/ar12.jpg", "../image/arts/ar13.jpg", "../image/arts/ar14.jpg"]
+        }, {
+            title: {
+                fr: "Anciens Aumôniers",
+                en: "Former Chaplains"
+            },
+            desc: {
+                fr: "Nos prédécesseurs dans la pastorale des jeunes",
+                en: "Our predecessors in youth ministry"
+            },
+            cover: "https://images.unsplash.com/photo-1532629345422-7515f3d16bb6?w=400&h=300&fit=crop",
+            photos: ["https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?w=800&h=500&fit=crop", "https://images.unsplash.com/photo-1593113598332-cd288d649a58?w=800&h=500&fit=crop"]
+        }];
 
         let albumOffset = 0;
         const albumContainer = document.getElementById("albumCards");
@@ -1708,22 +1783,26 @@
             albumContainer.style.transform = `translateX(-${albumOffset * cardWidth}px)`;
         }
 
-        document.getElementById("prevAlbumBtn").addEventListener("click", () => {
-            const visibleCount = window.innerWidth < 640 ? 1 : (window.innerWidth < 992 ? 2 : 3);
-            const maxOffset = Math.max(0, albums.length - visibleCount);
-            if (albumOffset > 0) albumOffset--;
-            else albumOffset = maxOffset;
-            updateAlbumCarousel();
-        });
-        document.getElementById("nextAlbumBtn").addEventListener("click", () => {
-            const visibleCount = window.innerWidth < 640 ? 1 : (window.innerWidth < 992 ? 2 : 3);
-            const maxOffset = Math.max(0, albums.length - visibleCount);
-            if (albumOffset < maxOffset) albumOffset++;
-            else albumOffset = 0;
-            updateAlbumCarousel();
-        });
+        if (document.getElementById("prevAlbumBtn")) {
+            document.getElementById("prevAlbumBtn").addEventListener("click", () => {
+                const visibleCount = window.innerWidth < 640 ? 1 : (window.innerWidth < 992 ? 2 : 3);
+                const maxOffset = Math.max(0, albums.length - visibleCount);
+                if (albumOffset > 0) albumOffset--;
+                else albumOffset = maxOffset;
+                updateAlbumCarousel();
+            });
+        }
 
-        // CARROUSEL PHOTOS INTERNE
+        if (document.getElementById("nextAlbumBtn")) {
+            document.getElementById("nextAlbumBtn").addEventListener("click", () => {
+                const visibleCount = window.innerWidth < 640 ? 1 : (window.innerWidth < 992 ? 2 : 3);
+                const maxOffset = Math.max(0, albums.length - visibleCount);
+                if (albumOffset < maxOffset) albumOffset++;
+                else albumOffset = 0;
+                updateAlbumCarousel();
+            });
+        }
+
         let currentAlbumPhotos = [];
         let currentPhotoIndex = 0;
         const photoSection = document.getElementById("photoCarouselSection");
@@ -1744,28 +1823,35 @@
             }
         }
 
-        document.getElementById("prevPhotoBtn").addEventListener("click", () => {
-            if (currentAlbumPhotos.length === 0) return;
-            currentPhotoIndex = (currentPhotoIndex - 1 + currentAlbumPhotos.length) % currentAlbumPhotos.length;
-            currentPhotoImg.src = currentAlbumPhotos[currentPhotoIndex];
-            photoCounter.innerText = `Photo ${currentPhotoIndex + 1} / ${currentAlbumPhotos.length}`;
-        });
-        document.getElementById("nextPhotoBtn").addEventListener("click", () => {
-            if (currentAlbumPhotos.length === 0) return;
-            currentPhotoIndex = (currentPhotoIndex + 1) % currentAlbumPhotos.length;
-            currentPhotoImg.src = currentAlbumPhotos[currentPhotoIndex];
-            photoCounter.innerText = `Photo ${currentPhotoIndex + 1} / ${currentAlbumPhotos.length}`;
-        });
-        document.getElementById("closePhotoBtn").addEventListener("click", () => {
-            photoSection.style.display = "none";
-        });
+        if (document.getElementById("prevPhotoBtn")) {
+            document.getElementById("prevPhotoBtn").addEventListener("click", () => {
+                if (currentAlbumPhotos.length === 0) return;
+                currentPhotoIndex = (currentPhotoIndex - 1 + currentAlbumPhotos.length) % currentAlbumPhotos.length;
+                currentPhotoImg.src = currentAlbumPhotos[currentPhotoIndex];
+                photoCounter.innerText = `Photo ${currentPhotoIndex + 1} / ${currentAlbumPhotos.length}`;
+            });
+        }
+
+        if (document.getElementById("nextPhotoBtn")) {
+            document.getElementById("nextPhotoBtn").addEventListener("click", () => {
+                if (currentAlbumPhotos.length === 0) return;
+                currentPhotoIndex = (currentPhotoIndex + 1) % currentAlbumPhotos.length;
+                currentPhotoImg.src = currentAlbumPhotos[currentPhotoIndex];
+                photoCounter.innerText = `Photo ${currentPhotoIndex + 1} / ${currentAlbumPhotos.length}`;
+            });
+        }
+
+        if (document.getElementById("closePhotoBtn")) {
+            document.getElementById("closePhotoBtn").addEventListener("click", () => {
+                photoSection.style.display = "none";
+            });
+        }
 
         // ========== INITIALISATION ==========
         renderAlbums();
         initDarkMode();
         initLanguage();
     </script>
-
 </body>
 
 </html>

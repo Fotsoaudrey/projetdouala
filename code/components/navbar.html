@@ -1,0 +1,51 @@
+<!-- NAVIGATION -->
+<nav class="navbar">
+    <div class="nav-container">
+        <button class="menu-toggle" id="menuToggle">
+            <i class="fas fa-bars"></i>
+        </button>
+
+        <ul class="nav-links" id="navLinks">
+            <li><a href="index.html#accueil"><i class="fas fa-home"></i> <span data-key="nav1">Accueil</span></a></li>
+            <li><a href="index.html#apropos"><i class="fas fa-church"></i> <span data-key="nav2">À propos</span></a></li>
+            <li><a href="index.html#enfance"><i class="fas fa-child"></i> <span data-key="nav3">Enfance</span></a></li>
+            <li><a href="index.html#jeunesse"><i class="fas fa-users"></i> <span data-key="nav4">Jeunesse</span></a></li>
+
+            <!-- DROPDOWN "Vie du Diocèse" -->
+            <li class="dropdown" id="dropdownMenu">
+                <a href="javascript:void(0)" id="dropdownToggle">
+                    <i class="fas fa-newspaper"></i> <span data-key="nav5">Vie du Diocèse</span>
+                    <i class="fas fa-chevron-down"></i>
+                </a>
+                <ul class="dropdown-menu">
+                    <li><a href="annonces.html"><i class="fas fa-bullhorn"></i> Annonces</a></li>
+                    <li><a href="communiques.html"><i class="fas fa-file-alt"></i> Communiqués</a></li>
+                    <li><a href="radio_television.html"><i class="fas fa-broadcast-tower"></i> Radio & Télévision</a></li>
+                    <li><a href="documentation.html"><i class="fas fa-book"></i> Documentation</a></li>
+                    <li><a href="evenements_pastoraux.html"><i class="fas fa-calendar-alt"></i> Événements Pastoraux</a></li>
+                    <li><a href="pelerinage.html"><i class="fas fa-hiking"></i> Pèlerinages</a></li>
+                    <li><a href="retraites.html"><i class="fas fa-pray"></i> Retraites spirituelles</a></li>
+                    <li><a href="formations.html"><i class="fas fa-chalkboard-user"></i> Formations bibliques</a></li>
+                </ul>
+            </li>
+
+            <li><a href="index.html#phototheque"><i class="fas fa-images"></i> <span data-key="nav6">Galerie</span></a></li>
+
+            <div class="mobile-only-elements">
+                <div class="mobile-controls">
+                    <button class="ctrl-btn" id="darkModeToggleMobile"><i class="fas fa-moon"></i></button>
+                    <button class="ctrl-btn" id="langToggleMobile"><i class="fas fa-globe"></i></button>
+                </div>
+                <button class="close-menu-btn" id="closeMenuBtn">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+        </ul>
+
+        <div class="nav-controls">
+            <button class="ctrl-btn" id="darkModeToggleDesktop"><i class="fas fa-moon"></i></button>
+            <button class="ctrl-btn" id="langToggleDesktop"><i class="fas fa-globe"></i></button>
+        </div>
+    </div>
+    <div class="menu-overlay" id="menuOverlay"></div>
+</nav>
