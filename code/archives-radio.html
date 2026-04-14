@@ -1,0 +1,894 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Archives Radio RTVC - Calendrier des émissions</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background: transparent;
+            color: #1a2c3e;
+            line-height: 1.5;
+        }
+        
+        body.dark-mode {
+            background: transparent;
+            color: #e2e8f0;
+        }
+        /* Mode sombre */
+        
+        body.dark-mode .year-accordion {
+            background: #1e293b;
+        }
+        
+        body.dark-mode .year-header {
+            background: linear-gradient(135deg, #0f1724, #020617);
+        }
+        
+        body.dark-mode .month-header {
+            background: #0f1724;
+            color: #2ecc71;
+        }
+        
+        body.dark-mode .month-header:hover {
+            background: #2d3748;
+        }
+        
+        body.dark-mode .calendar-day {
+            background: #0f1724;
+            border-color: #334155;
+        }
+        
+        body.dark-mode .day-number {
+            color: #2ecc71;
+            background: rgba(46, 204, 113, 0.2);
+        }
+        
+        body.dark-mode .filter-select {
+            background: #0f1724;
+            border-color: #334155;
+            color: #e2e8f0;
+        }
+        
+        body.dark-mode .event-badge.jeunes-et-vie {
+            background: #1a3a2a;
+            color: #2ecc71;
+        }
+        
+        body.dark-mode .event-badge.synode {
+            background: #3a1a1a;
+            color: #e74c3c;
+        }
+        
+        body.dark-mode .event-badge.messe {
+            background: #1a2a3a;
+            color: #2196f3;
+        }
+        
+        body.dark-mode .event-badge.chapelet {
+            background: #3a2a1a;
+            color: #ff9800;
+        }
+        
+        body.dark-mode .event-badge.catechese {
+            background: #2a1a3a;
+            color: #9c27b0;
+        }
+        
+        body.dark-mode .event-badge.temoignage {
+            background: #1a3a3a;
+            color: #00bcd4;
+        }
+        /* Container */
+        
+        .archives-wrapper {
+            padding: 8px;
+        }
+        /* Barre de filtres */
+        
+        .filter-bar {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 24px;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 12px 20px;
+            border-radius: 60px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            border: 1px solid rgba(46, 204, 113, 0.2);
+        }
+        
+        body.dark-mode .filter-bar {
+            background: rgba(30, 41, 59, 0.95);
+        }
+        
+        .filter-group {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+        
+        .filter-select {
+            padding: 8px 18px;
+            border-radius: 40px;
+            border: 1px solid #e2e8f0;
+            background: white;
+            font-family: inherit;
+            cursor: pointer;
+            font-size: 0.8rem;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+        
+        .filter-select:hover {
+            border-color: #2ecc71;
+            transform: translateY(-2px);
+        }
+        
+        .stats-badge {
+            background: rgba(46, 204, 113, 0.15);
+            padding: 6px 16px;
+            border-radius: 30px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: #2ecc71;
+        }
+        /* Scrollbar */
+        
+        .archives-container {
+            max-height: 580px;
+            overflow-y: auto;
+            padding-right: 5px;
+        }
+        
+        .archives-container::-webkit-scrollbar {
+            width: 6px;
+        }
+        
+        .archives-container::-webkit-scrollbar-track {
+            background: #e9edf2;
+            border-radius: 10px;
+        }
+        
+        .archives-container::-webkit-scrollbar-thumb {
+            background: #2ecc71;
+            border-radius: 10px;
+        }
+        /* Accordéon années */
+        
+        .year-accordion {
+            background: white;
+            border-radius: 20px;
+            margin-bottom: 16px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s;
+        }
+        
+        .year-accordion:hover {
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .year-header {
+            background: linear-gradient(135deg, #045286, #0a2e4a);
+            color: white;
+            padding: 16px 24px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+        }
+        
+        .year-header:hover {
+            background: linear-gradient(135deg, #2ecc71, #27ae60);
+            color: #022b44;
+        }
+        
+        .year-header i {
+            transition: transform 0.3s;
+        }
+        
+        .year-header.open i {
+            transform: rotate(180deg);
+        }
+        
+        .year-stats {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 5px 14px;
+            border-radius: 30px;
+            font-size: 0.75rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .year-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease-out;
+        }
+        
+        .year-content.open {
+            max-height: 3000px;
+            transition: max-height 0.6s ease-in;
+        }
+        /* Grille des mois */
+        
+        .months-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(420px, 1fr));
+            gap: 20px;
+            padding: 20px;
+        }
+        
+        .month-card {
+            background: #f8fafc;
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid #e9edf2;
+            transition: all 0.3s;
+        }
+        
+        body.dark-mode .month-card {
+            background: #0f1724;
+            border-color: #334155;
+        }
+        
+        .month-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+        }
+        
+        .month-header {
+            background: #f0f4fa;
+            padding: 14px 18px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-weight: 600;
+            color: #045286;
+            font-size: 0.95rem;
+            transition: all 0.3s;
+        }
+        
+        .month-header:hover {
+            background: #e2e8f0;
+        }
+        
+        .month-header i {
+            transition: transform 0.3s;
+        }
+        
+        .month-header.open i {
+            transform: rotate(180deg);
+        }
+        
+        .month-badge {
+            background: #2ecc71;
+            color: #022b44;
+            padding: 4px 12px;
+            border-radius: 30px;
+            font-size: 0.7rem;
+            font-weight: 600;
+        }
+        
+        .month-days {
+            display: none;
+            padding: 16px;
+        }
+        
+        .month-days.open {
+            display: block;
+            animation: fadeIn 0.3s ease;
+        }
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        /* Calendrier */
+        
+        .weekdays {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            background: #e9edf2;
+            padding: 10px;
+            text-align: center;
+            font-weight: 700;
+            font-size: 0.7rem;
+            color: #045286;
+            border-radius: 12px;
+            margin-bottom: 10px;
+        }
+        
+        body.dark-mode .weekdays {
+            background: #1e293b;
+            color: #2ecc71;
+        }
+        
+        .calendar-days {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 8px;
+        }
+        
+        .calendar-day {
+            min-height: 95px;
+            background: white;
+            border-radius: 12px;
+            padding: 8px;
+            border: 1px solid #e9edf2;
+            transition: all 0.2s;
+        }
+        
+        .calendar-day.empty {
+            background: transparent;
+            border: 1px dashed #e2e8f0;
+            min-height: auto;
+        }
+        
+        .calendar-day:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(46, 204, 113, 0.15);
+            border-color: #2ecc71;
+        }
+        
+        .day-number {
+            font-weight: 800;
+            font-size: 0.8rem;
+            margin-bottom: 8px;
+            color: #045286;
+            display: inline-block;
+            background: rgba(46, 204, 113, 0.15);
+            padding: 3px 8px;
+            border-radius: 20px;
+        }
+        
+        .day-events {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+        /* Badges des émissions */
+        
+        .event-badge {
+            padding: 6px 8px;
+            border-radius: 10px;
+            font-size: 0.65rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            position: relative;
+        }
+        
+        .event-badge.jeunes-et-vie {
+            background: #e8f5e9;
+            color: #2ecc71;
+            border-left: 3px solid #2ecc71;
+        }
+        
+        .event-badge.synode {
+            background: #fdeaea;
+            color: #e74c3c;
+            border-left: 3px solid #e74c3c;
+        }
+        
+        .event-badge.messe {
+            background: #e3f2fd;
+            color: #2196f3;
+            border-left: 3px solid #2196f3;
+        }
+        
+        .event-badge.chapelet {
+            background: #fff3e0;
+            color: #ff9800;
+            border-left: 3px solid #ff9800;
+        }
+        
+        .event-badge.catechese {
+            background: #f3e5f5;
+            color: #9c27b0;
+            border-left: 3px solid #9c27b0;
+        }
+        
+        .event-badge.temoignage {
+            background: #e0f7fa;
+            color: #00bcd4;
+            border-left: 3px solid #00bcd4;
+        }
+        
+        .event-badge:hover {
+            transform: scale(1.02);
+            filter: brightness(0.95);
+        }
+        
+        .event-badge i {
+            font-size: 0.7rem;
+        }
+        
+        .event-theme {
+            font-size: 0.6rem;
+            opacity: 0.8;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            max-width: 70px;
+        }
+        
+        .event-badge .tooltip {
+            visibility: hidden;
+            position: absolute;
+            bottom: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #1a2c3e;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 8px;
+            font-size: 0.65rem;
+            white-space: nowrap;
+            z-index: 100;
+            opacity: 0;
+            transition: opacity 0.3s;
+            pointer-events: none;
+            margin-bottom: 6px;
+        }
+        
+        .event-badge:hover .tooltip {
+            visibility: visible;
+            opacity: 1;
+        }
+        
+        .loading-spinner {
+            text-align: center;
+            padding: 60px;
+        }
+        
+        .loading-spinner i {
+            font-size: 2.5rem;
+            color: #2ecc71;
+            animation: spin 1s linear infinite;
+        }
+        
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+        
+        .no-data {
+            text-align: center;
+            padding: 60px;
+            color: #64748b;
+        }
+        /* Responsive */
+        
+        @media (max-width: 768px) {
+            .months-grid {
+                grid-template-columns: 1fr;
+            }
+            .calendar-day {
+                min-height: 75px;
+                padding: 6px;
+            }
+            .day-number {
+                font-size: 0.7rem;
+            }
+            .event-badge {
+                font-size: 0.55rem;
+                padding: 4px 6px;
+            }
+            .event-theme {
+                display: none;
+            }
+            .weekdays {
+                font-size: 0.6rem;
+                padding: 8px;
+            }
+            .filter-bar {
+                flex-direction: column;
+                align-items: stretch;
+                border-radius: 24px;
+            }
+            .filter-group {
+                justify-content: center;
+            }
+            .year-header {
+                padding: 12px 18px;
+                font-size: 1rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .event-badge span:not(.event-theme) {
+                display: none;
+            }
+            .event-badge i {
+                margin: 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="archives-wrapper">
+        <div class="filter-bar">
+            <div class="filter-group">
+                <select id="filterYear" class="filter-select">
+                    <option value="all">📅 Toutes les années</option>
+                    <option value="2026">2026</option>
+                    <option value="2025">2025</option>
+                    <option value="2024">2024</option>
+                    <option value="2023">2023</option>
+                    <option value="2022">2022</option>
+                    <option value="2021">2021</option>
+                    <option value="2020">2020</option>
+                </select>
+                <select id="filterType" class="filter-select">
+                    <option value="all">📻 Toutes les émissions</option>
+                    <option value="Jeunes et Vie">👥 Jeunes & Vie (Mercredi)</option>
+                    <option value="Synode">⛪ Synode (Samedi)</option>
+                    <option value="Messe">🕊️ Messe (Dimanche)</option>
+                    <option value="Chapelet">📿 Chapelet</option>
+                    <option value="Catéchèse">📖 Catéchèse (Jeudi)</option>
+                    <option value="Témoignage">🎤 Témoignage (Vendredi)</option>
+                </select>
+            </div>
+            <div class="stats-badge" id="statsBadge">
+                <i class="fas fa-radio"></i> <span id="emissionCount">0</span> émissions
+            </div>
+        </div>
+        <div id="archivesContainer" class="archives-container">
+            <div class="loading-spinner">
+                <i class="fas fa-spinner fa-spin"></i>
+                <p style="margin-top: 12px;">Chargement du calendrier...</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // ========== CONFIGURATION DES ÉMISSIONS ==========
+        const themesData = {
+            'Jeunes et Vie': [
+                'La foi au quotidien', 'Vocation et engagement', 'Réseaux sociaux et foi',
+                'Prière et action', 'Amour et amitié', 'Service du prochain'
+            ],
+            'Synode': [
+                'L\'Église en marche', 'La synodalité expliquée', 'Témoignages de jeunes',
+                'Le Carême, temps de conversion', 'Les sacrements', 'Mission et évangélisation'
+            ],
+            'Messe': [
+                'Messe dominicale', 'Messe de l\'Avent', 'Messe de Noël', 'Messe de Pâques'
+            ],
+            'Chapelet': [
+                'Chapelet des mystères joyeux', 'Chapelet des mystères lumineux',
+                'Chapelet des mystères douloureux', 'Chapelet des mystères glorieux'
+            ],
+            'Catéchèse': [
+                'Le Credo expliqué', 'Les sacrements', 'La vie de Jésus', 'Les commandements'
+            ],
+            'Témoignage': [
+                'Témoignage de conversion', 'Témoignage vocationnel', 'Témoignage missionnaire'
+            ]
+        };
+
+        // Génération des données (2020-2026)
+        let archivesData = {};
+        const moisOrdre = ["Janvier", "Février", "Mars", "Avril", "Mai", "Juin",
+            "Juillet", "Août", "Septembre", "Octobre", "Novembre", "Décembre"
+        ];
+        const joursSemaine = ['Lun', 'Mar', 'Mer', 'Jeu', 'Ven', 'Sam', 'Dim'];
+
+        for (let annee = 2020; annee <= 2026; annee++) {
+            archivesData[annee] = {};
+            for (let mois = 0; mois < 12; mois++) {
+                const moisNom = moisOrdre[mois];
+                archivesData[annee][moisNom] = {};
+                const joursDansMois = new Date(annee, mois + 1, 0).getDate();
+
+                for (let jour = 1; jour <= joursDansMois; jour++) {
+                    const date = new Date(annee, mois, jour);
+                    const jourSemaine = date.getDay();
+                    let emissionsDuJour = [];
+
+                    if (jourSemaine === 3) {
+                        emissionsDuJour.push({
+                            date: `${annee}-${String(mois+1).padStart(2,'0')}-${String(jour).padStart(2,'0')}`,
+                            name: "Jeunes et Vie",
+                            theme: themesData['Jeunes et Vie'][Math.floor(Math.random() * themesData['Jeunes et Vie'].length)],
+                            audioUrl: `https://drive.google.com/uc?export=download&id=jeunes_vie_${annee}_${mois+1}_${jour}`
+                        });
+                    }
+                    if (jourSemaine === 6) {
+                        emissionsDuJour.push({
+                            date: `${annee}-${String(mois+1).padStart(2,'0')}-${String(jour).padStart(2,'0')}`,
+                            name: "Synode",
+                            theme: themesData['Synode'][Math.floor(Math.random() * themesData['Synode'].length)],
+                            audioUrl: `https://drive.google.com/uc?export=download&id=synode_${annee}_${mois+1}_${jour}`
+                        });
+                    }
+                    if (jourSemaine === 0) {
+                        emissionsDuJour.push({
+                            date: `${annee}-${String(mois+1).padStart(2,'0')}-${String(jour).padStart(2,'0')}`,
+                            name: "Messe",
+                            theme: themesData['Messe'][Math.floor(Math.random() * themesData['Messe'].length)],
+                            audioUrl: `https://drive.google.com/uc?export=download&id=messe_${annee}_${mois+1}_${jour}`
+                        });
+                    }
+                    if (jourSemaine === 4) {
+                        emissionsDuJour.push({
+                            date: `${annee}-${String(mois+1).padStart(2,'0')}-${String(jour).padStart(2,'0')}`,
+                            name: "Catéchèse",
+                            theme: themesData['Catéchèse'][Math.floor(Math.random() * themesData['Catéchèse'].length)],
+                            audioUrl: `https://drive.google.com/uc?export=download&id=catechese_${annee}_${mois+1}_${jour}`
+                        });
+                    }
+                    if (jourSemaine === 5) {
+                        emissionsDuJour.push({
+                            date: `${annee}-${String(mois+1).padStart(2,'0')}-${String(jour).padStart(2,'0')}`,
+                            name: "Témoignage",
+                            theme: themesData['Témoignage'][Math.floor(Math.random() * themesData['Témoignage'].length)],
+                            audioUrl: `https://drive.google.com/uc?export=download&id=temoignage_${annee}_${mois+1}_${jour}`
+                        });
+                    }
+                    if ((jourSemaine === 1 || jourSemaine === 2) && Math.random() < 0.4) {
+                        emissionsDuJour.push({
+                            date: `${annee}-${String(mois+1).padStart(2,'0')}-${String(jour).padStart(2,'0')}`,
+                            name: "Chapelet",
+                            theme: themesData['Chapelet'][Math.floor(Math.random() * themesData['Chapelet'].length)],
+                            audioUrl: `https://drive.google.com/uc?export=download&id=chapelet_${annee}_${mois+1}_${jour}`
+                        });
+                    }
+                    if (emissionsDuJour.length > 0) {
+                        archivesData[annee][moisNom][jour] = emissionsDuJour;
+                    }
+                }
+            }
+        }
+
+        let currentYearFilter = 'all';
+        let currentTypeFilter = 'all';
+
+        function getPremierJourMois(annee, moisIndex) {
+            const premierJour = new Date(parseInt(annee), moisIndex, 1);
+            const jourSemaine = premierJour.getDay();
+            return jourSemaine === 0 ? 6 : jourSemaine - 1;
+        }
+
+        function getJoursDansMois(annee, moisIndex) {
+            return new Date(parseInt(annee), moisIndex + 1, 0).getDate();
+        }
+
+        function formatDate(dateStr) {
+            const date = new Date(dateStr);
+            return date.toLocaleDateString('fr-FR', {
+                day: 'numeric',
+                month: 'long',
+                year: 'numeric'
+            });
+        }
+
+        function renderMonth(annee, moisIndex, moisNom, donneesMois) {
+            const premierJourOffset = getPremierJourMois(annee, moisIndex);
+            const joursDansMois = getJoursDansMois(annee, moisIndex);
+            let totalEmissionsMois = 0;
+            let htmlJours = '';
+
+            for (let i = 0; i < premierJourOffset; i++) {
+                htmlJours += `<div class="calendar-day empty"></div>`;
+            }
+
+            for (let jour = 1; jour <= joursDansMois; jour++) {
+                let emissionsJour = donneesMois[jour] || [];
+                if (currentTypeFilter !== 'all') {
+                    emissionsJour = emissionsJour.filter(e => e.name === currentTypeFilter);
+                }
+                totalEmissionsMois += emissionsJour.length;
+
+                let classeEvent = '';
+                const htmlEvenements = emissionsJour.map(emission => {
+                    switch (emission.name) {
+                        case 'Jeunes et Vie':
+                            classeEvent = 'jeunes-et-vie';
+                            break;
+                        case 'Synode':
+                            classeEvent = 'synode';
+                            break;
+                        case 'Messe':
+                            classeEvent = 'messe';
+                            break;
+                        case 'Chapelet':
+                            classeEvent = 'chapelet';
+                            break;
+                        case 'Catéchèse':
+                            classeEvent = 'catechese';
+                            break;
+                        case 'Témoignage':
+                            classeEvent = 'temoignage';
+                            break;
+                        default:
+                            classeEvent = 'jeunes-et-vie';
+                    }
+                    return `
+                        <div class="event-badge ${classeEvent}" onclick="playAudio('${emission.audioUrl}', '${emission.name} - ${formatDate(emission.date)}')">
+                            <i class="fas ${emission.name === 'Jeunes et Vie' ? 'fa-users' : emission.name === 'Synode' ? 'fa-church' : emission.name === 'Messe' ? 'fa-church' : emission.name === 'Chapelet' ? 'fa-pray' : emission.name === 'Catéchèse' ? 'fa-book' : 'fa-microphone-alt'}"></i>
+                            <span>${emission.name}</span>
+                            <span class="event-theme">${emission.theme}</span>
+                            <div class="tooltip">Cliquez pour écouter</div>
+                        </div>
+                    `;
+                }).join('');
+
+                htmlJours += `
+                    <div class="calendar-day">
+                        <div class="day-number">${jour}</div>
+                        <div class="day-events">${htmlEvenements}</div>
+                    </div>
+                `;
+            }
+
+            const totalCellules = Math.ceil((premierJourOffset + joursDansMois) / 7) * 7;
+            const cellulesRestantes = totalCellules - (premierJourOffset + joursDansMois);
+            for (let i = 0; i < cellulesRestantes; i++) {
+                htmlJours += `<div class="calendar-day empty"></div>`;
+            }
+            return {
+                html: htmlJours,
+                totalEmissionsMois
+            };
+        }
+
+        let totalGlobalEmissions = 0;
+
+        function renderArchives() {
+            const container = document.getElementById('archivesContainer');
+            if (!container) return;
+
+            let filteredData = {};
+            if (currentYearFilter === 'all') {
+                filteredData = archivesData;
+            } else {
+                filteredData = archivesData[currentYearFilter] ? {
+                    [currentYearFilter]: archivesData[currentYearFilter]
+                } : {};
+            }
+
+            let html = '';
+            const annees = Object.keys(filteredData).sort().reverse();
+            totalGlobalEmissions = 0;
+
+            for (const annee of annees) {
+                const donneesAnnee = filteredData[annee];
+                let totalEmissionsAnnee = 0;
+                let monthsHtml = '';
+
+                for (let moisIndex = 0; moisIndex < 12; moisIndex++) {
+                    const moisNom = moisOrdre[moisIndex];
+                    const donneesMois = donneesAnnee[moisNom] || {};
+                    const {
+                        html: htmlJours,
+                        totalEmissionsMois
+                    } = renderMonth(annee, moisIndex, moisNom, donneesMois);
+                    totalEmissionsAnnee += totalEmissionsMois;
+                    if (totalEmissionsMois === 0 && currentTypeFilter !== 'all') continue;
+
+                    monthsHtml += `
+                        <div class="month-card">
+                            <div class="month-header" onclick="toggleMonth(this)">
+                                <span><i class="fas fa-calendar-alt"></i> ${moisNom}</span>
+                                <span class="month-badge">${totalEmissionsMois} émission(s)</span>
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                            <div class="month-days">
+                                <div class="weekdays">${joursSemaine.map(j => `<div>${j}</div>`).join('')}</div>
+                                <div class="calendar-days">${htmlJours}</div>
+                            </div>
+                        </div>
+                    `;
+                }
+                
+                if (monthsHtml === '') continue;
+                totalGlobalEmissions += totalEmissionsAnnee;
+                
+                html += `
+                    <div class="year-accordion" data-year="${annee}">
+                        <div class="year-header" onclick="toggleYear(this)">
+                            <span><i class="fas fa-calendar-alt"></i> ${annee}</span>
+                            <span class="year-stats"><i class="fas fa-radio"></i> ${totalEmissionsAnnee} émission${totalEmissionsAnnee > 1 ? 's' : ''}</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="year-content"><div class="months-grid">${monthsHtml}</div></div>
+                    </div>
+                `;
+            }
+            
+            // Mettre à jour le compteur global
+            const statsSpan = document.getElementById('emissionCount');
+            if (statsSpan) statsSpan.textContent = totalGlobalEmissions;
+            
+            if (html === '') {
+                container.innerHTML = `<div class="no-data"><i class="fas fa-microphone-slash"></i><p>Aucune archive trouvée</p></div>`;
+            } else {
+                container.innerHTML = html;
+            }
+        }
+
+        function toggleYear(element) {
+            const yearAccordion = element.closest('.year-accordion');
+            const content = yearAccordion.querySelector('.year-content');
+            const icon = element.querySelector('i:last-child');
+            content.classList.toggle('open');
+            element.classList.toggle('open');
+            icon.style.transform = content.classList.contains('open') ? 'rotate(180deg)' : 'rotate(0deg)';
+        }
+
+        function toggleMonth(element) {
+            const monthCard = element.closest('.month-card');
+            const content = monthCard.querySelector('.month-days');
+            const icon = element.querySelector('i:last-child');
+            content.classList.toggle('open');
+            element.classList.toggle('open');
+            icon.style.transform = content.classList.contains('open') ? 'rotate(180deg)' : 'rotate(0deg)';
+        }
+
+        function playAudio(audioUrl, title) {
+            if (window.parent && window.parent !== window) {
+                window.parent.postMessage({ type: 'playAudio', url: audioUrl, title: title }, '*');
+            } else {
+                alert(`Lecture : ${title}\nLien audio : ${audioUrl}`);
+            }
+        }
+
+        function initFilters() {
+            const yearFilter = document.getElementById('filterYear');
+            const typeFilter = document.getElementById('filterType');
+            if (yearFilter) yearFilter.addEventListener('change', () => { currentYearFilter = yearFilter.value; renderArchives(); });
+            if (typeFilter) typeFilter.addEventListener('change', () => { currentTypeFilter = typeFilter.value; renderArchives(); });
+        }
+
+        function detectDarkMode() {
+            try {
+                if (window.parent.document.body.classList.contains('dark-mode')) document.body.classList.add('dark-mode');
+            } catch(e) {}
+        }
+
+        renderArchives();
+        initFilters();
+        detectDarkMode();
+
+        window.toggleYear = toggleYear;
+        window.toggleMonth = toggleMonth;
+        window.playAudio = playAudio;
+    </script>
+</body>
+
+</html>
