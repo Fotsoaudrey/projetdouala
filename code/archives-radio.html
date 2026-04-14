@@ -8,6 +8,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
+        /* ========== STYLES (CONSERVÉS) ========== */
+        
         * {
             margin: 0;
             padding: 0;
@@ -490,6 +492,59 @@
             padding: 60px;
             color: #64748b;
         }
+        /* Modal audio Google Drive */
+        
+        .audio-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .audio-modal.active {
+            display: flex;
+        }
+        
+        .audio-modal-content {
+            background: white;
+            border-radius: 24px;
+            max-width: 500px;
+            width: 90%;
+            padding: 25px;
+            text-align: center;
+            position: relative;
+        }
+        
+        body.dark-mode .audio-modal-content {
+            background: #1e293b;
+        }
+        
+        .close-audio-modal {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        .audio-iframe {
+            width: 100%;
+            height: 80px;
+            border: none;
+            margin: 20px 0;
+        }
+        
+        .audio-message {
+            color: var(--gray);
+            font-size: 0.8rem;
+            margin-top: 10px;
+        }
         /* Responsive */
         
         @media (max-width: 768px) {
@@ -575,8 +630,31 @@
         </div>
     </div>
 
+    <!-- Modal pour la lecture audio Google Drive -->
+    <div id="audioModal" class="audio-modal">
+        <div class="audio-modal-content">
+            <span class="close-audio-modal" id="closeAudioModal">&times;</span>
+            <i class="fas fa-headphones" style="font-size: 2rem; color: #2ecc71;"></i>
+            <h3 id="audioModalTitle" style="margin: 10px 0;">Lecture audio</h3>
+            <iframe id="audioIframe" class="audio-iframe" src="" allow="autoplay"></iframe>
+            <p class="audio-message">🎧 Cliquez sur lecture pour écouter l'émission</p>
+        </div>
+    </div>
+
     <script>
-        // ========== CONFIGURATION DES ÉMISSIONS ==========
+        // ========== 1. DONNÉES RÉELLES (À COMPLÉTER) ==========
+        // Format: https://drive.google.com/file/d/ID_ICI/preview
+        const realEmissions = [{
+                date: "2026-03-18",
+                name: "Jeunes et Vie",
+                theme: "Émission du 18 mars 2026",
+                // Lien de prévisualisation Google Drive (fonctionne en iframe)
+                audioUrl: "https://drive.google.com/file/d/1yoAWJCn3JNtyFWl7vZvG76sa3LAgt1pQ/preview"
+            }
+            // Ajoutez d'autres fichiers réels ici au même format
+        ];
+
+        // ========== 2. CONFIGURATION DES THÈMES POUR DONNÉES GÉNÉRÉES ==========
         const themesData = {
             'Jeunes et Vie': [
                 'La foi au quotidien', 'Vocation et engagement', 'Réseaux sociaux et foi',
@@ -601,73 +679,94 @@
             ]
         };
 
-        // Génération des données (2020-2026)
+        // ========== 3. GÉNÉRATION DES DONNÉES FICTIVES (2020-2026) ==========
         let archivesData = {};
         const moisOrdre = ["Janvier", "Février", "Mars", "Avril", "Mai", "Juin",
             "Juillet", "Août", "Septembre", "Octobre", "Novembre", "Décembre"
         ];
         const joursSemaine = ['Lun', 'Mar', 'Mer', 'Jeu', 'Ven', 'Sam', 'Dim'];
 
+        // Initialiser les données avec les émissions réelles
         for (let annee = 2020; annee <= 2026; annee++) {
             archivesData[annee] = {};
             for (let mois = 0; mois < 12; mois++) {
                 const moisNom = moisOrdre[mois];
                 archivesData[annee][moisNom] = {};
+            }
+        }
+
+        // Ajouter les émissions réelles
+        realEmissions.forEach(emission => {
+            const [annee, mois, jour] = emission.date.split('-');
+            const moisNom = moisOrdre[parseInt(mois) - 1];
+            if (!archivesData[annee][moisNom][parseInt(jour)]) {
+                archivesData[annee][moisNom][parseInt(jour)] = [];
+            }
+            archivesData[annee][moisNom][parseInt(jour)].push(emission);
+        });
+
+        // Générer les données fictives pour compléter
+        for (let annee = 2020; annee <= 2026; annee++) {
+            for (let mois = 0; mois < 12; mois++) {
+                const moisNom = moisOrdre[mois];
                 const joursDansMois = new Date(annee, mois + 1, 0).getDate();
 
                 for (let jour = 1; jour <= joursDansMois; jour++) {
                     const date = new Date(annee, mois, jour);
                     const jourSemaine = date.getDay();
-                    let emissionsDuJour = [];
+                    let emissionsDuJour = archivesData[annee][moisNom][jour] || [];
 
-                    if (jourSemaine === 3) {
-                        emissionsDuJour.push({
-                            date: `${annee}-${String(mois+1).padStart(2,'0')}-${String(jour).padStart(2,'0')}`,
-                            name: "Jeunes et Vie",
-                            theme: themesData['Jeunes et Vie'][Math.floor(Math.random() * themesData['Jeunes et Vie'].length)],
-                            audioUrl: `https://drive.google.com/uc?export=download&id=jeunes_vie_${annee}_${mois+1}_${jour}`
-                        });
+                    if (emissionsDuJour.length === 0) {
+                        if (jourSemaine === 3) {
+                            emissionsDuJour.push({
+                                date: `${annee}-${String(mois+1).padStart(2,'0')}-${String(jour).padStart(2,'0')}`,
+                                name: "Jeunes et Vie",
+                                theme: themesData['Jeunes et Vie'][Math.floor(Math.random() * themesData['Jeunes et Vie'].length)],
+                                audioUrl: `#`
+                            });
+                        }
+                        if (jourSemaine === 6) {
+                            emissionsDuJour.push({
+                                date: `${annee}-${String(mois+1).padStart(2,'0')}-${String(jour).padStart(2,'0')}`,
+                                name: "Synode",
+                                theme: themesData['Synode'][Math.floor(Math.random() * themesData['Synode'].length)],
+                                audioUrl: `#`
+                            });
+                        }
+                        if (jourSemaine === 0) {
+                            emissionsDuJour.push({
+                                date: `${annee}-${String(mois+1).padStart(2,'0')}-${String(jour).padStart(2,'0')}`,
+                                name: "Messe",
+                                theme: themesData['Messe'][Math.floor(Math.random() * themesData['Messe'].length)],
+                                audioUrl: `#`
+                            });
+                        }
+                        if (jourSemaine === 4) {
+                            emissionsDuJour.push({
+                                date: `${annee}-${String(mois+1).padStart(2,'0')}-${String(jour).padStart(2,'0')}`,
+                                name: "Catéchèse",
+                                theme: themesData['Catéchèse'][Math.floor(Math.random() * themesData['Catéchèse'].length)],
+                                audioUrl: `#`
+                            });
+                        }
+                        if (jourSemaine === 5) {
+                            emissionsDuJour.push({
+                                date: `${annee}-${String(mois+1).padStart(2,'0')}-${String(jour).padStart(2,'0')}`,
+                                name: "Témoignage",
+                                theme: themesData['Témoignage'][Math.floor(Math.random() * themesData['Témoignage'].length)],
+                                audioUrl: `#`
+                            });
+                        }
+                        if ((jourSemaine === 1 || jourSemaine === 2) && Math.random() < 0.4) {
+                            emissionsDuJour.push({
+                                date: `${annee}-${String(mois+1).padStart(2,'0')}-${String(jour).padStart(2,'0')}`,
+                                name: "Chapelet",
+                                theme: themesData['Chapelet'][Math.floor(Math.random() * themesData['Chapelet'].length)],
+                                audioUrl: `#`
+                            });
+                        }
                     }
-                    if (jourSemaine === 6) {
-                        emissionsDuJour.push({
-                            date: `${annee}-${String(mois+1).padStart(2,'0')}-${String(jour).padStart(2,'0')}`,
-                            name: "Synode",
-                            theme: themesData['Synode'][Math.floor(Math.random() * themesData['Synode'].length)],
-                            audioUrl: `https://drive.google.com/uc?export=download&id=synode_${annee}_${mois+1}_${jour}`
-                        });
-                    }
-                    if (jourSemaine === 0) {
-                        emissionsDuJour.push({
-                            date: `${annee}-${String(mois+1).padStart(2,'0')}-${String(jour).padStart(2,'0')}`,
-                            name: "Messe",
-                            theme: themesData['Messe'][Math.floor(Math.random() * themesData['Messe'].length)],
-                            audioUrl: `https://drive.google.com/uc?export=download&id=messe_${annee}_${mois+1}_${jour}`
-                        });
-                    }
-                    if (jourSemaine === 4) {
-                        emissionsDuJour.push({
-                            date: `${annee}-${String(mois+1).padStart(2,'0')}-${String(jour).padStart(2,'0')}`,
-                            name: "Catéchèse",
-                            theme: themesData['Catéchèse'][Math.floor(Math.random() * themesData['Catéchèse'].length)],
-                            audioUrl: `https://drive.google.com/uc?export=download&id=catechese_${annee}_${mois+1}_${jour}`
-                        });
-                    }
-                    if (jourSemaine === 5) {
-                        emissionsDuJour.push({
-                            date: `${annee}-${String(mois+1).padStart(2,'0')}-${String(jour).padStart(2,'0')}`,
-                            name: "Témoignage",
-                            theme: themesData['Témoignage'][Math.floor(Math.random() * themesData['Témoignage'].length)],
-                            audioUrl: `https://drive.google.com/uc?export=download&id=temoignage_${annee}_${mois+1}_${jour}`
-                        });
-                    }
-                    if ((jourSemaine === 1 || jourSemaine === 2) && Math.random() < 0.4) {
-                        emissionsDuJour.push({
-                            date: `${annee}-${String(mois+1).padStart(2,'0')}-${String(jour).padStart(2,'0')}`,
-                            name: "Chapelet",
-                            theme: themesData['Chapelet'][Math.floor(Math.random() * themesData['Chapelet'].length)],
-                            audioUrl: `https://drive.google.com/uc?export=download&id=chapelet_${annee}_${mois+1}_${jour}`
-                        });
-                    }
+
                     if (emissionsDuJour.length > 0) {
                         archivesData[annee][moisNom][jour] = emissionsDuJour;
                     }
@@ -675,6 +774,7 @@
             }
         }
 
+        // ========== 4. FONCTIONS D'AFFICHAGE ==========
         let currentYearFilter = 'all';
         let currentTypeFilter = 'all';
 
@@ -739,7 +839,7 @@
                             classeEvent = 'jeunes-et-vie';
                     }
                     return `
-                        <div class="event-badge ${classeEvent}" onclick="playAudio('${emission.audioUrl}', '${emission.name} - ${formatDate(emission.date)}')">
+                        <div class="event-badge ${classeEvent}" onclick="playAudio('${emission.audioUrl}', '${emission.name} - ${formatDate(emission.date)}', '${emission.date}')">
                             <i class="fas ${emission.name === 'Jeunes et Vie' ? 'fa-users' : emission.name === 'Synode' ? 'fa-church' : emission.name === 'Messe' ? 'fa-church' : emission.name === 'Chapelet' ? 'fa-pray' : emission.name === 'Catéchèse' ? 'fa-book' : 'fa-microphone-alt'}"></i>
                             <span>${emission.name}</span>
                             <span class="event-theme">${emission.theme}</span>
@@ -831,7 +931,6 @@
                 `;
             }
             
-            // Mettre à jour le compteur global
             const statsSpan = document.getElementById('emissionCount');
             if (statsSpan) statsSpan.textContent = totalGlobalEmissions;
             
@@ -842,6 +941,7 @@
             }
         }
 
+        // ========== 5. FONCTIONS D'INTERACTION ==========
         function toggleYear(element) {
             const yearAccordion = element.closest('.year-accordion');
             const content = yearAccordion.querySelector('.year-content');
@@ -860,13 +960,35 @@
             icon.style.transform = content.classList.contains('open') ? 'rotate(180deg)' : 'rotate(0deg)';
         }
 
-        function playAudio(audioUrl, title) {
-            if (window.parent && window.parent !== window) {
-                window.parent.postMessage({ type: 'playAudio', url: audioUrl, title: title }, '*');
-            } else {
-                alert(`Lecture : ${title}\nLien audio : ${audioUrl}`);
+        // Lecture audio avec modal iframe Google Drive
+        const audioModal = document.getElementById('audioModal');
+        const audioIframe = document.getElementById('audioIframe');
+        const audioModalTitle = document.getElementById('audioModalTitle');
+        const closeAudioModal = document.getElementById('closeAudioModal');
+
+        function playAudio(audioUrl, title, date) {
+            if (audioUrl === '#') {
+                alert(`L'émission "${title}" sera bientôt disponible.`);
+                return;
             }
+            
+            // Afficher le modal
+            audioModalTitle.textContent = title;
+            audioIframe.src = audioUrl;
+            audioModal.classList.add('active');
+            document.body.style.overflow = 'hidden';
         }
+
+        function closeAudioModalFn() {
+            audioModal.classList.remove('active');
+            audioIframe.src = '';
+            document.body.style.overflow = '';
+        }
+
+        closeAudioModal.addEventListener('click', closeAudioModalFn);
+        audioModal.addEventListener('click', (e) => {
+            if (e.target === audioModal) closeAudioModalFn();
+        });
 
         function initFilters() {
             const yearFilter = document.getElementById('filterYear');
