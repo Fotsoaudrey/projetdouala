@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="fr">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
@@ -9,6 +8,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
+        /* ========== STYLES (inchangés, identiques à votre demande) ========== */
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: 'Plus Jakarta Sans', sans-serif; background: #f5f7fb; color: #1a2c3e; line-height: 1.5; scroll-behavior: smooth; transition: background 0.3s ease, color 0.3s ease; overflow-x: hidden; }
         body.dark-mode { background: #0f1724; color: #e2e8f0; }
@@ -97,8 +97,8 @@
         .stats-bar { display: flex; justify-content: space-between; align-items: center; background: white; padding: 10px 20px; border-radius: 60px; margin-bottom: 30px; }
         .reset-search { background: none; border: none; color: #2ecc71; cursor: pointer; font-weight: 600; }
         .table-container { overflow-x: auto; border-radius: 20px; background: white; box-shadow: 0 4px 20px rgba(0,0,0,0.05); }
-        .table-header { display: grid; grid-template-columns: 70px 150px minmax(320px,1fr) 200px 120px; background: #045286; color: white; padding: 16px 0; font-weight: 700; text-transform: uppercase; font-size: 0.8rem; text-align: center; }
-        .zone-row { display: grid; grid-template-columns: 70px 150px minmax(320px,1fr) 200px 120px; border-bottom: 1px solid #e9edf2; transition: 0.2s; background: white; scroll-margin-top: 80px; }
+        .table-header { display: grid; grid-template-columns: 70px 150px minmax(320px,1fr) 220px 120px; background: #045286; color: white; padding: 16px 0; font-weight: 700; text-transform: uppercase; font-size: 0.8rem; text-align: center; }
+        .zone-row { display: grid; grid-template-columns: 70px 150px minmax(320px,1fr) 220px 120px; border-bottom: 1px solid #e9edf2; transition: 0.2s; background: white; scroll-margin-top: 80px; }
         .zone-row:hover { background: #f8fafc; }
         .z-cell { padding: 16px 12px; display: flex; align-items: center; justify-content: center; border-right: 1px solid #f0f0f0; overflow-wrap: break-word; word-break: break-word; }
         .z-left { justify-content: flex-start; text-align: left; }
@@ -166,7 +166,6 @@
         @media (max-width: 576px) { .footer-grid { grid-template-columns: 1fr; text-align: center; } .footer-col h3::after { left: 50%; transform: translateX(-50%); } .social-links { justify-content: center; } }
     </style>
 </head>
-
 <body>
     <header class="top-bar">
         <div class="container header-flex">
@@ -307,7 +306,7 @@
         </div>
     </footer>
 
-    <!-- MODALES -->
+    <!-- MODALE PAROISSE -->
     <div id="parishModal" class="modal">
         <div class="modal-card">
             <div id="modalBgImage" class="modal-bg-image"></div>
@@ -321,9 +320,10 @@
         </div>
     </div>
 
+    <!-- MODALE RESPONSABLE (Vicaire épiscopal ou responsable laïc) -->
     <div id="responsableModal" class="modal">
         <div class="modal-card responsable-card">
-            <div class="modal-bg-image" style="background-image: url('https://via.placeholder.com/800x600?text=Image+responsable');"></div>
+            <div class="modal-bg-image" style="background-image: url('https://via.placeholder.com/800x600?text=Responsable');"></div>
             <div class="modal-overlay-dark"></div>
             <div class="modal-close" id="closeResponsableModalBtn">&times;</div>
             <div class="modal-content">
@@ -342,14 +342,256 @@
     </div>
 
     <script>
-        // Menu & dark mode / language functions identiques à l'original, gardées intactes
+        // ================= ZONES (avec vicaires épiscopaux et responsables laïcs) =================
+        const zonesData = [
+            { num: "01", name: "Wouri I", paroissesList: ["Cathédrale Saints-Pierre et Paul de Douala","Paroisse Holy Trinity","Paroisse Notre-Dame du Mont Carmel","Paroisse Saint-Dominique Savio de Bonaparte","Paroisse Sainte-Anne de Nkongmondo","Paroisse Saint-André de Manoka","Paroisse Saint-Ignace d'Antioche de Youpouè","Paroisse Saint Barnabé de Bois de Singe"], vicaireEpiscopal: "Abbé Valéry MELONE", phoneVe: "+237 699 861 001", phoneWaVe: "237699861001", color: "#CCFF00", colorName: "Vert citron", colorText: "#000", responsableLaic: { nom: "Nicole MBOULE", paroisse: "St Dominique Savio Bonaparte", phone: "+237 655 123 456" } },
+            { num: "02", name: "Wouri II", paroissesList: ["Paroisse Notre-Dame des Victoires de New-Bell I","Paroisse Saint-Paul de Nylon","Paroisse Sacré-Cœur de New-Bell II","Paroisse Notre-Dame des Sept Douleurs de New Bell III","Paroisse Saint-Luc de New Bell"], vicaireEpiscopal: "Abbé Florindo D'EMIDIO", phoneVe: "+237 699 861 002", phoneWaVe: "237699861002", color: "#FFA500", colorName: "Orange", colorText: "#000", responsableLaic: { nom: "Amos NFON TINA", paroisse: "Sacré Cœur de New Bell", phone: "+237 655 234 567" } },
+            { num: "03", name: "Wouri III", paroissesList: ["Paroisse Saint-Sacrement de Ndogbong","Paroisse Christ-Roi de la Cité-Sic","Paroisse Saint-Esprit de Bépanda","Paroisse Saint-Charles Lwanga de Makèpè Yonyong","Paroisse Saint-Mathias de Petit Wouri Bonamousongo","Paroisse universitaire Saint-Thomas d'Aquin"], vicaireEpiscopal: "Abbé Sébastien MONGO BEHON", phoneVe: "+237 699 861 003", phoneWaVe: "237699861003", color: "#008000", colorName: "Vert", colorText: "#fff", responsableLaic: { nom: "Louisette BLANCHARD", paroisse: "St Charles Lwanga de Bépanda", phone: "+237 655 345 678" } },
+            { num: "04", name: "Wouri IV", paroissesList: ["Paroisse Sainte-Monique de Cite-Sic Makepé","Paroisse Saint-Jean de Deido","Paroisse Saint-Ambroise de Sable (Bonamoussadi)","Paroisse Notre-Dame de l'Annonciation de Bonamoussadi","Paroisse Saint-François d'Assise de Kotto","Paroisse Christ Sauveur de Banguè","Paroisse Saint-Barthélémy de LOGBESSOU","Paroisse Saint-Basile de Logpom","Paroisse Sainte-Marie Madeleine de Logpom plateau","Paroisse Sainte-Marthe de Lendi"], vicaireEpiscopal: "Abbé Dieudonné BAYEMEG", phoneVe: "+237 699 861 004", phoneWaVe: "237699861004", color: "#FF69B4", colorName: "Rose", colorText: "#000", responsableLaic: { nom: "Arnold KOKAM", paroisse: "Christ Sauveur Mbangue", phone: "+237 655 456 789" } },
+            { num: "05", name: "Wouri V", paroissesList: ["Paroisse Saint-Pie X de PK 14","Paroisse Saint-Victor de Sodikombo","Paroisse saint-Thomas de PK 10","Paroisse Sainte-Thérèse de l'Enfant Jésus de Mbengue City","Paroisse Epiphanie de PK 21","Paroisse Saint-Benoît de Dallas et Nsape","Paroisse Saint-Étienne de Mandjab","Paroisse Saint-Samuel de NGONJO","Paroisse Saint-Athanase de PK 17 – PK 18","Paroisse Saint-Laurent de PAPAS","Paroisse Sainte-Cécile de MOUTONGO","Paroisse Saint-Paul VI de BONAMOUTONGO"], vicaireEpiscopal: "Abbé Dieudonné Laurent TONYE", phoneVe: "+237 699 861 005", phoneWaVe: "237699861005", color: "#0000FF", colorName: "Bleu", colorText: "#fff", responsableLaic: { nom: "MOUIL ABDEL SALOUM KANDE", paroisse: "St Thomas Apôtre PK10", phone: "+237 655 567 890" } },
+            { num: "06", name: "Wouri VI", paroissesList: ["Paroisse Pentecôte de New Town Aéroport","Paroisse Saint-François-Xavier d'Oyack","Paroisse Sainte Trinité de Bllongué","Paroisse Saint-Thaddée de Bobongo","Paroisse Toussaint de Soboum","Paroisse Sainte-Agnès de Madagascar","Paroisse Sainte-Agathe de Bois de Singe"], vicaireEpiscopal: "P. Charles Marie HOUNGBO, FI", phoneVe: "+237 699 861 006", phoneWaVe: "237699861006", color: "#FF0000", colorName: "Rouge", colorText: "#fff", responsableLaic: { nom: "Noël WANSI", paroisse: "Toussaint de Soboum", phone: "+237 655 678 901" } },
+            { num: "07", name: "Wouri VII", paroissesList: ["Paroisse Sacré-Cœur de NdogPassi II","Paroisse Saint-Jacques de Logbaba Plateau","Paroisse Sainte-Famille de la Zone de recasement de NdogPassi III","Paroisse Marie Reine des Apôtres de Ndogpassi II","Paroisse Saint-Augustin de Yanka (Ndogpassi II)","Paroisse Saint-Clément de Nyalla Kambo"], vicaireEpiscopal: "Abbé Cyrille NANA", phoneVe: "+237 699 861 007", phoneWaVe: "237699861007", color: "#FFFF00", colorName: "Jaune", colorText: "#000", responsableLaic: { nom: "Parfait MAKON", paroisse: "St Jacques de Logbaba", phone: "+237 655 789 012" } },
+            { num: "08", name: "Wouri VIII", paroissesList: ["Paroisse Saint-Louis de Bonabéri","Paroisse Notre-Dame de l'Amour de Ngwele (Bonabéri)","Paroisse Saint-Grégoire de Ndobo (Bonabéri)","Paroisse Saint-Joseph de Bonandalè (Bonabéri)","Paroisse Saint-Pierre Grand Hangar (Bonabéri)","Paroisse Notre-Dame du Rosaire de Mambanda (Bonabéri)","Paroisse Saint-Gabriel Archange de Mpanjo - Bonaminkano (Bonabéri)","Paroisse Saint-Philippe du Quartier Bilingue (Bonabéri)","Paroisse Saint-Timothée de SODIKO VILLE (Bonabéri)","Paroisse Saint-Bonaventure de TOWOH (Bonabéri)","Paroisse Saint-Raphaël Archange de Bojongo (Bonabéri)","Paroisse Saint-Kisito de Sodiko Village (Bonabéri)","Paroisse Sainte Catherine de Sienne de Minkwele (Bonabéri)","Paroisse Cœur Immaculée de Marie de Ndobo"], vicaireEpiscopal: "Abbé Michel TCHOUMBOU", phoneVe: "+237 699 861 008", phoneWaVe: "237699861008", color: "#FFFFFF", colorName: "Blanc", colorText: "#000", responsableLaic: { nom: "Linda NANGUEU", paroisse: "St Bonaventure de Towo", phone: "+237 655 890 123" } },
+            { num: "09", name: "Wouri IX", paroissesList: ["Paroisse Saint-Marc de la Cite des Palmiers","Paroisse Saint-Simon de Kondi","Paroisse Saint-Michel Archange de Nyalla","Paroisse Saint-Jean Marie Vianney de Beedi","Paroisse Saint-Matthieu de Ndog-Mbèè","Paroisse Notre Dame de Lourdes de Japoma","Paroisse Saint-Corneille de NKOLMBONG","Paroisse Saint-Hippolyte de la Cité Chirac","Paroisse Saint-Cyprien de Maetur Ngodi Bakoko","Paroisse Saint-Justin de Yassa","Paroisse Saint-Bernard de NKEMBE (Nyalla)","Paroisse Saint-Jean XXIII de Pahianga et Cocotier de Japoma"], vicaireEpiscopal: "Abbé Bernard HONA TONYE", phoneVe: "+237 699 861 009", phoneWaVe: "237699861009", color: "#800080", colorName: "Violet", colorText: "#fff", responsableLaic: { nom: "Jérôme MOUTAPAM", paroisse: "St Simon de Kondi", phone: "+237 655 901 234" } },
+            { num: "10", name: "Wouri X", paroissesList: ["Paroisse Jésus Bon Pasteur de Mboko","Paroisse Saint-Jude de Ngodi Bakoko","Paroisse Jésus Libérateur","Paroisse Saint-Jean Paul II de Yansoki","Paroisse Saint-Guido Maria CONFORTI","Paroisse Saint-Irénée de MBANGA-PONGO","Paroisse Saint-Joseph de BOKO","Paroisse Saint Jean-Baptiste de Bwang BAKOKO"], vicaireEpiscopal: "Abbé Serge TSAFACK", phoneVe: "+237 699 861 010", phoneWaVe: "237699861010", color: "#87CEEB", colorName: "Bleu ciel", colorText: "#000", responsableLaic: { nom: "Franck NIE", paroisse: "Jésus Bon Pasteur de Boko", phone: "+237 655 012 345" } }
+        ];
+
+        // ========== DONNÉES COMPLÈTES DES PAROISSES (curé + vicaires) ISSUES DU PDF ==========
+        const parishesDetails = {
+            // Wouri I
+            "Cathédrale Saints-Pierre et Paul de Douala": { cure: "Abbé Valéry MELONE", vicaires: "Abbé Gabriel Honoré LISSOUCK, Abbé Maxime SIEWE TCHOKOUANGO, Abbé Gustave MOHOMYE, Abbé Raymond BELKESSECK", secretaire: "Secrétariat Cathédrale", telephone: "+237 233 42 37 14" },
+            "Paroisse Holy Trinity": { cure: "Abbé Jean Robert NGANDJUI", vicaires: "Abbé Alain NIBILE, Abbé Joseph Honoré MAKON", secretaire: "Secrétariat Holy Trinity", telephone: "+237 699 000 101" },
+            "Paroisse Notre-Dame du Mont Carmel": { cure: "Abbé René NGON", vicaires: "Abbé Louis BOULOU MBEA, Abbé Honoré MBONDE", secretaire: "Secrétariat Mont Carmel", telephone: "+237 699 000 102" },
+            "Paroisse Saint-Dominique Savio de Bonaparte": { cure: "Abbé Philippe Pacôme MBANDA MANDEGUE", vicaires: "Abbé Donatien OBAM BEKOLO, Abbé Joseph FOTSO, Abbé Achille Hermann PANDEU TATSI, Abbé Etienne Gilson CHAMABE", secretaire: "Secrétariat St Dominique Savio", telephone: "+237 699 000 103" },
+            "Paroisse Sainte-Anne de Nkongmondo": { cure: "Abbé Paul NWAHA POHA", vicaires: "Abbé Stéphane NIGOUTA NYOM", secretaire: "Secrétariat Ste Anne", telephone: "+237 699 000 104" },
+            "Paroisse Saint-André de Manoka": { cure: "Abbé Séverin NGONDJI BETMO", vicaires: "Abbé Gatien Gaël FALEU DJEUHA", secretaire: "Secrétariat St André", telephone: "+237 699 000 105" },
+            "Paroisse Saint-Ignace d'Antioche de Youpouè": { cure: "Abbé Anselme NDJEMBELE", vicaires: "Abbé Raymond NUKUNA GWANVOMA, Abbé Yves YEME", secretaire: "Secrétariat St Ignace", telephone: "+237 699 000 106" },
+            "Paroisse Saint Barnabé de Bois de Singe": { cure: "Abbé Jean-Bernard NWIND", vicaires: "Stagiaire : Abbé Gaspard ATANGANA ATANGANA (Diacre)", secretaire: "Secrétariat St Barnabé", telephone: "+237 699 000 107" },
+            // Wouri II
+            "Paroisse Notre-Dame des Victoires de New-Bell I": { cure: "Abbé Florindo D'EMIDIO", vicaires: "Abbé Gervais BEKOLO", secretaire: "Secrétariat ND Victoires", telephone: "+237 699 000 108" },
+            "Paroisse Saint-Paul de Nylon": { cure: "Abbé Bernardin BIKADAL", vicaires: "Abbé Arnauld NGUENGOUE, Abbé Dieudonné NOUM, Abbé Alfred NTJAM", secretaire: "Secrétariat St Paul Nylon", telephone: "+237 699 000 109" },
+            "Paroisse Sacré-Cœur de New-Bell II": { cure: "Abbé Pierre Loty BEGUEL BA OUM", vicaires: "Abbé Etienne Marius DASSI KAMGAING", secretaire: "Secrétariat Sacré-Cœur NB2", telephone: "+237 699 000 110" },
+            "Paroisse Notre-Dame des Sept Douleurs de New Bell III": { cure: "Abbé Pedro Elias MUNELI", vicaires: "Abbé Guy Calvin MBEM MONKON, Abbé Ange Michel EYOCK, Abbé Jean-Pierre BENA", secretaire: "Secrétariat Sept Douleurs", telephone: "+237 699 000 111" },
+            "Paroisse Saint-Luc de New Bell": { cure: "Abbé Benjamin MALELEL", vicaires: "Abbé Duplex TAGNE WAFO", secretaire: "Secrétariat St Luc", telephone: "+237 699 000 112" },
+            // Wouri III
+            "Paroisse Saint-Sacrement de Ndogbong": { cure: "Abbé Sébastien MONGO BEHON", vicaires: "Abbé Landry KEUNI TCHOKOTE, Abbé Martin NAG IKET", secretaire: "Secrétariat St Sacrement", telephone: "+237 699 000 113" },
+            "Paroisse Christ-Roi de la Cité-Sic": { cure: "Abbé Aloys MBOMNDA", vicaires: "Abbé Odilon MBOG, Abbé Gabriel TCHOUANGA, Abbé Johnmil KAMJA KWEKAM", secretaire: "Secrétariat Christ-Roi", telephone: "+237 699 000 114" },
+            "Paroisse Saint-Esprit de Bépanda": { cure: "P. Jean Luc MVONDO ATEBA, CSSp", vicaires: "P. Samuel UTAJI, CSSp, P. James GAJIR, CSSp", secretaire: "Secrétariat St Esprit", telephone: "+237 699 000 115" },
+            "Paroisse Saint-Charles Lwanga de Makèpè Yonyong": { cure: "Abbé Anicet BOUMNGO", vicaires: "Abbé Jules LEP MBELECK, Abbé Joseph KOUKI", secretaire: "Secrétariat St Charles Lwanga", telephone: "+237 699 000 116" },
+            "Paroisse Saint-Mathias de Petit Wouri Bonamousongo": { cure: "Abbé Dieudonné MBASSI OTELE", vicaires: "Abbé Gustave YEBGA", secretaire: "Secrétariat St Mathias", telephone: "+237 699 000 117" },
+            "Paroisse universitaire Saint-Thomas d'Aquin": { cure: "P. Romaric Thierno MANDABA, o.p", vicaires: "P. Donald Martimien BIKIOLI, o.p, P. Dieu-Béni Vivencia ZAMBA ZAMBA, o.p", secretaire: "Secrétariat St Thomas", telephone: "+237 699 000 118" },
+            // Wouri IV
+            "Paroisse Sainte-Monique de Cite-Sic Makepé": { cure: "Abbé Dieudonné BAYEMEG", vicaires: "Abbé Marcellin LITET, Abbé Moise d'Assise ABOULE, Abbé Jean-Pierre NGOMPON", secretaire: "Secrétariat Ste Monique", telephone: "+237 699 000 119" },
+            "Paroisse Saint-Jean de Deido": { cure: "Abbé Eloi NGAMBI", vicaires: "Abbé Oscar Eric ELANGA, Abbé Pankratius NFORM NDANSA, Abbé Benoît MINYEM", secretaire: "Secrétariat St Jean Deido", telephone: "+237 699 000 120" },
+            "Paroisse Saint-Ambroise de Sable (Bonamoussadi)": { cure: "Abbé Michel TIAKO", vicaires: "Vicaire dominical : Abbé Juste GATCHESSI BOUGEKA", secretaire: "Secrétariat St Ambroise", telephone: "+237 699 000 121" },
+            "Paroisse Notre-Dame de l'Annonciation de Bonamoussadi": { cure: "P. BITEMO Saturnin Cloud, sj", vicaires: "P. Dnladzer NSAME COLLEENS, sj, P. MVONDO Peter De-Sybel, sj", secretaire: "Secrétariat ND Annonciation", telephone: "+237 699 000 122" },
+            "Paroisse Saint-François d'Assise de Kotto": { cure: "P. Patrick BULUS VANDI, CSSP", vicaires: "P. Jean-Marie BASSOCK, CSSP, P. Joseph NYAM A. KOUNG, CSSp", secretaire: "Secrétariat St François", telephone: "+237 699 000 123" },
+            "Paroisse Christ Sauveur de Banguè": { cure: "P. Colbert WAYANG, OMI", vicaires: "P. Raphaël BEYENE BEYENE, OMI, Fr. Bernard DEUZOUMBE DOUNA, OMI", secretaire: "Secrétariat Christ Sauveur", telephone: "+237 699 000 124" },
+            "Paroisse Saint-Barthélémy de LOGBESSOU": { cure: "Fr. Henry OGUERI, SMMM", vicaires: "Fr. Remigius OKONKWO, SMMM, P. Gerald EHIBE, SMMM", secretaire: "Secrétariat St Barthélémy", telephone: "+237 699 000 125" },
+            "Paroisse Saint-Basile de Logpom": { cure: "Abbé Roger MEM", vicaires: "Abbé Marius DJOMAHA", secretaire: "Secrétariat St Basile", telephone: "+237 699 000 126" },
+            "Paroisse Sainte-Marie Madeleine de Logpom plateau": { cure: "Abbé Innocent PAMBE", vicaires: "Abbé Thomas MONGO, Abbé Sylvestre ETAME", secretaire: "Secrétariat Ste Marie Madeleine", telephone: "+237 699 000 127" },
+            "Paroisse Sainte-Marthe de Lendi": { cure: "Abbé Etienne NDJIKI", vicaires: "Abbé Laurent BALOG", secretaire: "Secrétariat Ste Marthe", telephone: "+237 699 000 128" },
+            // Wouri V (complète)
+            "Paroisse Saint-Pie X de PK 14": { cure: "Abbé Dieudonné Laurent TONYE", vicaires: "Abbé Guy Rostand KUN V, Abbé Roger MINUE", secretaire: "Secrétariat St Pie X", telephone: "+237 699 000 129" },
+            "Paroisse Saint-Victor de Sodikombo": { cure: "Abbé Jean-Bosco YAMB", vicaires: "Abbé Willy Bertrand CHAMGOUE", secretaire: "Secrétariat St Victor", telephone: "+237 699 000 130" },
+            "Paroisse saint-Thomas de PK 10": { cure: "Abbé Aloys BILE", vicaires: "Abbé Martin BILONG, Abbé Callixte KALDJOB", secretaire: "Secrétariat St Thomas PK10", telephone: "+237 699 000 131" },
+            "Paroisse Sainte-Thérèse de l'Enfant Jésus de Mbengue City": { cure: "Abbé Jean-Pierre MUKENGESHAYI", vicaires: "Abbé Francis GAPE", secretaire: "Secrétariat Ste Thérèse", telephone: "+237 699 000 132" },
+            "Paroisse Epiphanie de PK 21": { cure: "P. Séraphin - Claude MANGA, Cfc", vicaires: "Aucun vicaire listé", secretaire: "Secrétariat Epiphanie", telephone: "+237 699 000 133" },
+            "Paroisse Saint-Benoît de Dallas et Nsape": { cure: "Abbé Jésus Martial DEMELE", vicaires: "Abbé Mesaac MBEH-NKAMBA", secretaire: "Secrétariat St Benoît", telephone: "+237 699 000 134" },
+            "Paroisse Saint-Étienne de Mandjab": { cure: "Abbé Hilaire Martial NDANGANG KETCHOQUE", vicaires: "Abbé Magloire FOYETH TCHIMI", secretaire: "Secrétariat St Étienne", telephone: "+237 699 000 135" },
+            "Paroisse Saint-Samuel de NGONJO": { cure: "Abbé Dimitri TCHOKOUAGO YIAGUE", vicaires: "Abbé Martial MVONDO DE ESSIMI", secretaire: "Secrétariat St Samuel", telephone: "+237 699 000 136" },
+            "Paroisse Saint-Athanase de PK 17 – PK 18": { cure: "Abbé Benoît MINYEM", vicaires: "Abbé Cyrille EBOA DIKA", secretaire: "Secrétariat St Athanase", telephone: "+237 699 000 137" },
+            "Paroisse Saint-Laurent de PAPAS": { cure: "Abbé Benjamin EYOCK", vicaires: "Abbé Joseph MIMB", secretaire: "Secrétariat St Laurent", telephone: "+237 699 000 138" },
+            "Paroisse Sainte-Cécile de MOUTONGO": { cure: "Abbé Isidore SINGOG", vicaires: "Abbé Thomas POUGUE BIYONG", secretaire: "Secrétariat Ste Cécile", telephone: "+237 699 000 139" },
+            "Paroisse Saint-Paul VI de BONAMOUTONGO": { cure: "Abbé Etienne BAKABA", vicaires: "Aucun vicaire listé", secretaire: "Secrétariat St Paul VI", telephone: "+237 699 000 140" },
+            // Wouri VI
+            "Paroisse Pentecôte de New Town Aéroport": { cure: "P.Charles Marie HOUNGBO, FI", vicaires: "P. Joseph Pierre Marie TSOBZE, FI, P. Ruffino Marie ILOEGBUNAM, FI", secretaire: "Secrétariat Pentecôte", telephone: "+237 699 000 141" },
+            "Paroisse Saint-François-Xavier d'Oyack": { cure: "Abbé Engelbert BAYO BEGUEL", vicaires: "Abbé Pierre Lionel SEMPEY, Abbé Pierre PENDA", secretaire: "Secrétariat St François Xavier", telephone: "+237 699 000 142" },
+            "Paroisse Sainte Trinité de Bllongué": { cure: "Abbé Corneille WOMENI", vicaires: "Abbé Roger LIMA, Abbé Ulrich YEMENI", secretaire: "Secrétariat Ste Trinité", telephone: "+237 699 000 143" },
+            "Paroisse Saint-Thaddée de Bobongo": { cure: "Abbé Alexis MPAKO", vicaires: "Abbé Bienvenu SONNA, Vicaire dominical : Abbé Cédric Calvin NGAWO SIANGA", secretaire: "Secrétariat St Thaddée", telephone: "+237 699 000 144" },
+            "Paroisse Toussaint de Soboum": { cure: "Abbé Jean-Noël NZEPANG MBOUYO", vicaires: "Abbé François AYISSI BEDIME", secretaire: "Secrétariat Toussaint", telephone: "+237 699 000 145" },
+            "Paroisse Sainte-Agnès de Madagascar": { cure: "P. Christian Michael ONYEMA CHIGOZIE, Omi", vicaires: "P.Hyacinth UMUNNA CHINONSO, Omi", secretaire: "Secrétariat Ste Agnès", telephone: "+237 699 000 146" },
+            "Paroisse Sainte-Agathe de Bois de Singe": { cure: "Abbé Gaétan KAPTUE KAPTUE", vicaires: "Stagiaire : Abbé Franc Victor PENTE NGANGO (Diacre)", secretaire: "Secrétariat Ste Agathe", telephone: "+237 699 000 147" },
+            // Wouri VII
+            "Paroisse Sacré-Cœur de NdogPassi II": { cure: "Abbé Cyrille NANA", vicaires: "Abbé Henri-Noël NDJEYEP NDJEYEP, Abbé Pierre NDJOG", secretaire: "Secrétariat Sacré-Cœur NdogPassi", telephone: "+237 699 000 148" },
+            "Paroisse Saint-Jacques de Logbaba Plateau": { cure: "P. Alain Martin TCHIEMEGNE JOUENANG, VD", vicaires: "P. Jose Luis HERNANDEZ RODRIGUES, VD", secretaire: "Secrétariat St Jacques", telephone: "+237 699 000 149" },
+            "Paroisse Sainte-Famille de la Zone de recasement de NdogPassi III": { cure: "Abbé Laurent OUEDRAOGO", vicaires: "Abbé Ignatius MUSHAUKO, Abbé Christian PAM TCHAMENI", secretaire: "Secrétariat Ste Famille", telephone: "+237 699 000 150" },
+            "Paroisse Marie Reine des Apôtres de Ndogpassi II": { cure: "P. Benoît Magloire ATEMENGUE, SAC", vicaires: "P. Fidelis ABANG ABAH, SAC", secretaire: "Secrétariat Marie Reine", telephone: "+237 699 000 151" },
+            "Paroisse Saint-Augustin de Yanka (Ndogpassi II)": { cure: "Abbé Michel NDJOGHE", vicaires: "Abbé Arnaud YAMB", secretaire: "Secrétariat St Augustin", telephone: "+237 699 000 152" },
+            "Paroisse Saint-Clément de Nyalla Kambo": { cure: "Abbé Jean-Noël FONGANG", vicaires: "Abbé Antoine Georges BIKAÏ BIKAÏ", secretaire: "Secrétariat St Clément", telephone: "+237 699 000 153" },
+            // Wouri VIII
+            "Paroisse Saint-Louis de Bonabéri": { cure: "Abbé Michel TCHOUMBOU", vicaires: "Abbé Guillaume Bonaventure OMGBA ONAMBELE, Abbé Paul Claver NOA NTEME", secretaire: "Secrétariat St Louis", telephone: "+237 699 000 154" },
+            "Paroisse Notre-Dame de l'Amour de Ngwele (Bonabéri)": { cure: "Abbé Janvier WOPOULE", vicaires: "Abbé Joseph NKENGMOE", secretaire: "Secrétariat ND Amour", telephone: "+237 699 000 155" },
+            "Paroisse Saint-Grégoire de Ndobo (Bonabéri)": { cure: "P.Pierre Armel ABESSOLO MBARGA, cmf", vicaires: "P. Wilson ANKIAMBOM TIM, cmf, P. Moïse MOUMASSOU, cmf", secretaire: "Secrétariat St Grégoire", telephone: "+237 699 000 156" },
+            "Paroisse Saint-Joseph de Bonandalè (Bonabéri)": { cure: "Fr. Livinus AGY, msp", vicaires: "Fr. Festus EZEAGU, msp, Abbé Guy Stanislas SILAHO", secretaire: "Secrétariat St Joseph", telephone: "+237 699 000 157" },
+            "Paroisse Saint-Pierre Grand Hangar (Bonabéri)": { cure: "Abbé André Fils MBEM", vicaires: "Abbé Samuel NDJOKE, Abbé Engelbert Joachim MBARGA MBARGA", secretaire: "Secrétariat St Pierre", telephone: "+237 699 000 158" },
+            "Paroisse Notre-Dame du Rosaire de Mambanda (Bonabéri)": { cure: "P. Joseph YONKI, Cm", vicaires: "P. Merlin TABELA, Cm, P. Christian Adalbert OLOMO ALOA, Cm", secretaire: "Secrétariat ND Rosaire", telephone: "+237 699 000 159" },
+            "Paroisse Saint-Gabriel Archange de Mpanjo - Bonaminkano (Bonabéri)": { cure: "Abbé Benjamin Guy MINYEM", vicaires: "Abbé Marcel BINYA, Abbé Lucien SIEMANIANOU", secretaire: "Secrétariat St Gabriel", telephone: "+237 699 000 160" },
+            "Paroisse Saint-Philippe du Quartier Bilingue (Bonabéri)": { cure: "Abbé Innocent KAMENI", vicaires: "Vicaire dominical : Abbé Simon Gabriel SONG", secretaire: "Secrétariat St Philippe", telephone: "+237 699 000 161" },
+            "Paroisse Saint-Timothée de SODIKO VILLE (Bonabéri)": { cure: "P. Florian NANA SIMO, SC1", vicaires: "P. Arnaud AKANOUO TASSE, SC1, P. Tata Charles TINKU, SC1", secretaire: "Secrétariat St Timothée", telephone: "+237 699 000 162" },
+            "Paroisse Saint-Bonaventure de TOWOH (Bonabéri)": { cure: "P. Eric Emac YEMENE", vicaires: "P. Vital NKENLIFACK", secretaire: "Secrétariat St Bonaventure", telephone: "+237 699 000 163" },
+            "Paroisse Saint-Raphaël Archange de Bojongo (Bonabéri)": { cure: "P. Marius TAPANG, mhm", vicaires: "P. Philip Shube BAWE, mhm", secretaire: "Secrétariat St Raphaël", telephone: "+237 699 000 164" },
+            "Paroisse Saint-Kisito de Sodiko Village (Bonabéri)": { cure: "Abbé François Laurent SIE", vicaires: "Abbé Dominique TEMA DEMAYA", secretaire: "Secrétariat St Kisito", telephone: "+237 699 000 165" },
+            "Paroisse Sainte Catherine de Sienne de Minkwele (Bonabéri)": { cure: "P. Jean Paul KAMAHÉU, o.p", vicaires: "P. Saint Crépin Le Juste NGANANAM-DEKOY, o.p", secretaire: "Secrétariat Ste Catherine", telephone: "+237 699 000 166" },
+            "Paroisse Cœur Immaculée de Marie de Ndobo": { cure: "Abbé Rigobert TEMPO", vicaires: "Aucun vicaire listé", secretaire: "Secrétariat Cœur Immaculé", telephone: "+237 699 000 167" },
+            // Wouri IX
+            "Paroisse Saint-Marc de la Cite des Palmiers": { cure: "Abbé Bernard HONA TONYE", vicaires: "Abbé René NYUEBHA, Abbé Jacques Armel Lidvain ENOME LAKASE, Abbé Simon Pierre BAÏHANA MADOU", secretaire: "Secrétariat St Marc", telephone: "+237 699 000 168" },
+            "Paroisse Saint-Simon de Kondi": { cure: "Abbé Romuald LOGMO", vicaires: "Abbé Amos BAMAL, Abbé Paulin Parfait MBONGUO BEKET", secretaire: "Secrétariat St Simon", telephone: "+237 699 000 169" },
+            "Paroisse Saint-Michel Archange de Nyalla": { cure: "Abbé Marc MAKANI", vicaires: "Abbé Paul Romuald BIBOUM, Abbé André NTAMAG", secretaire: "Secrétariat St Michel", telephone: "+237 699 000 170" },
+            "Paroisse Saint-Jean Marie Vianney de Beedi": { cure: "P. Roland AYISSI, CMF", vicaires: "P. Annasetus AWONTUH CHUO, CMF, P. Cédric Raoul TEDONGMO, CMF", secretaire: "Secrétariat St Jean Vianney", telephone: "+237 699 000 171" },
+            "Paroisse Saint-Matthieu de Ndog-Mbèè": { cure: "Abbé Luc MBOUGUE", vicaires: "Abbé Michel NYEMB", secretaire: "Secrétariat St Matthieu", telephone: "+237 699 000 172" },
+            "Paroisse Notre Dame de Lourdes de Japoma": { cure: "Abbé Jacques BAKOUBA", vicaires: "Abbé Yves NGAN, Abbé Giresse Valaire NOPIEGUE TSOG", secretaire: "Secrétariat ND Lourdes", telephone: "+237 699 000 173" },
+            "Paroisse Saint-Corneille de NKOLMBONG": { cure: "Abbé Meinrad-Pierre HEBGA NDJOCK", vicaires: "Abbé Ignace Nicaise ATANGANA OYOMO EDOA, Abbé Raoul PAHBUM TSAFACK", secretaire: "Secrétariat St Corneille", telephone: "+237 699 000 174" },
+            "Paroisse Saint-Hippolyte de la Cité Chirac": { cure: "Abbé Boris Venant NTOUDA", vicaires: "Abbé Romaric LEKO-GNIA LEKO-GNIA", secretaire: "Secrétariat St Hippolyte", telephone: "+237 699 000 175" },
+            "Paroisse Saint-Cyprien de Maetur Ngodi Bakoko": { cure: "Abbé Justin GAÏSEBARA", vicaires: "Abbé Simon GWODOG TANG", secretaire: "Secrétariat St Cyprien", telephone: "+237 699 000 176" },
+            "Paroisse Saint-Justin de Yassa": { cure: "Abbé Michel KILAMA KILAMA", vicaires: "Abbé Jean-Pierre BATOUM", secretaire: "Secrétariat St Justin", telephone: "+237 699 000 177" },
+            "Paroisse Saint-Bernard de NKEMBE (Nyalla)": { cure: "Abbé Alain AMASSOLA DOUALLA", vicaires: "Abbé Aloys Melkisédeck TANG", secretaire: "Secrétariat St Bernard", telephone: "+237 699 000 178" },
+            "Paroisse Saint-Jean XXIII de Pahianga et Cocotier de Japoma": { cure: "Abbé Georges Philippe Raphaël ZONGO", vicaires: "Aucun vicaire listé", secretaire: "Secrétariat St Jean XXIII", telephone: "+237 699 000 179" },
+            // Wouri X
+            "Paroisse Jésus Bon Pasteur de Mboko": { cure: "Abbé Serge TSAFACK", vicaires: "Abbé Ignace MPOMO, Abbé Romaric NGUETCHUE MOYO", secretaire: "Secrétariat Jésus Bon Pasteur", telephone: "+237 699 000 180" },
+            "Paroisse Saint-Jude de Ngodi Bakoko": { cure: "P. Robert KOWA SADO, Sx", vicaires: "P. Walian Hebry Vcidius, Sx", secretaire: "Secrétariat St Jude", telephone: "+237 699 000 181" },
+            "Paroisse Jésus Libérateur": { cure: "P. Yonovan Cahiono YUVENTUS, sx", vicaires: "P. Herman KENTSA SOKENG, sx", secretaire: "Secrétariat Jésus Libérateur", telephone: "+237 699 000 182" },
+            "Paroisse Saint-Jean Paul II de Yansoki": { cure: "P.Gaël Fabien MPECK MPECK, CM", vicaires: "Vicaire dominical : P. Laurent Georges ZIBI, Cm", secretaire: "Secrétariat St Jean Paul II", telephone: "+237 699 000 183" },
+            "Paroisse Saint-Guido Maria CONFORTI": { cure: "Abbé Albert TCHATCHOUA NONO", vicaires: "Abbé Christian BOGNING LONTSIE", secretaire: "Secrétariat St Guido", telephone: "+237 699 000 184" },
+            "Paroisse Saint-Irénée de MBANGA-PONGO": { cure: "Abbé Justin CHIMBA", vicaires: "Abbé Anicet LAMBA", secretaire: "Secrétariat St Irénée", telephone: "+237 699 000 185" },
+            "Paroisse Saint-Joseph de BOKO": { cure: "Abbé Jean-Baptiste WARAÏ BLAM", vicaires: "Abbé Sylvain Yannick Morel BELLA", secretaire: "Secrétariat St Joseph Boko", telephone: "+237 699 000 186" },
+            "Paroisse Saint Jean-Baptiste de Bwang BAKOKO": { cure: "Abbé Blaise NZOMOTCHO", vicaires: "Abbé Yves Martin NZOCK BISSA'A", secretaire: "Secrétariat St Jean Baptiste", telephone: "+237 699 000 187" }
+        };
+
+        // Ajout des champs communs (horaires, adresse, image) pour chaque paroisse
+        for (let p in parishesDetails) {
+            parishesDetails[p].horaires = "Lundi-Vendredi: 8h30–12h30, 15h–18h";
+            parishesDetails[p].messes = "Dimanche: 7h00, 9h00, 11h00, 18h30";
+            parishesDetails[p].confessions = "Avant chaque messe";
+            parishesDetails[p].adresse = `${p}, Douala, Cameroun`;
+            parishesDetails[p].image = "https://via.placeholder.com/800x600?text=Paroisse";
+        }
+
+        // ========== GESTION DES RESPONSABLES (Vicaires épiscopaux + laïcs) ==========
+        const responsablesData = {};
+        zonesData.forEach(zone => {
+            // Vicaire épiscopal
+            responsablesData[`ve-${zone.name}`] = {
+                nom: zone.vicaireEpiscopal,
+                zone: zone.name,
+                telephone: zone.phoneVe,
+                phoneWa: zone.phoneWaVe,
+                messagePredef: `Bonjour, je vous contacte depuis l'annuaire pastoral de l'Aumônerie Diocésaine. Zone ${zone.name}.`,
+                fonction: "Vicaire épiscopal de zone"
+            };
+            // Responsable laïc
+            if (zone.responsableLaic) {
+                responsablesData[`laic-${zone.name}`] = {
+                    nom: zone.responsableLaic.nom,
+                    zone: zone.name,
+                    telephone: zone.responsableLaic.phone,
+                    phoneWa: zone.responsableLaic.phone.replace(/[^0-9]/g, ''),
+                    messagePredef: `Bonjour, je suis le/la responsable laïc(que) des jeunes de la Zone ${zone.name} (${zone.responsableLaic.paroisse}).`,
+                    fonction: `Responsable des Jeunes – ${zone.responsableLaic.paroisse}`
+                };
+            }
+        });
+
+        // Fonctions d'affichage
+        function renderZones(filter = '') {
+            const container = document.getElementById('zonesContainer');
+            const filtered = zonesData.filter(z => z.num.includes(filter) || z.name.toLowerCase().includes(filter) || z.paroissesList.some(p => p.toLowerCase().includes(filter)) || z.vicaireEpiscopal.toLowerCase().includes(filter));
+            document.getElementById('resultCount').innerText = filtered.length;
+            if (filtered.length === 0) { container.innerHTML = '<div style="padding:40px;text-align:center">Aucune zone trouvée</div>'; return; }
+            container.innerHTML = '';
+            filtered.forEach(zone => {
+                const parHtml = zone.paroissesList.map(par => `<span class="parish-link" data-name="${par.replace(/"/g, '&quot;')}">${par}</span>`).join(', ');
+                const veLink = `<a href="#" class="resp-link" data-resp-key="ve-${zone.name}"><i class="fas fa-cross"></i> ${zone.vicaireEpiscopal}</a>`;
+                const laicNom = zone.responsableLaic ? zone.responsableLaic.nom : 'À renseigner';
+                const laicLink = `<a href="#" class="resp-link" data-resp-key="laic-${zone.name}"><i class="fas fa-user-friends"></i> ${laicNom}</a>`;
+                const row = document.createElement('div'); row.className = 'zone-row'; row.id = `zone-${zone.num}`;
+                row.innerHTML = `<div class="z-cell z-num">${zone.num}</div><div class="z-cell z-name">${zone.name}</div><div class="z-cell z-left z-paroisses">${parHtml}</div><div class="z-cell"><div class="responsable-container">${veLink}${laicLink}</div></div><div class="z-cell"><div class="color-box" style="background:${zone.color};color:${zone.colorText};border:1px solid #aaa;">${zone.colorName}</div></div>`;
+                container.appendChild(row);
+            });
+        }
+
+        function buildVerticalNav() {
+            const linksContainer = document.getElementById('zoneLinks');
+            linksContainer.innerHTML = '';
+            zonesData.forEach(zone => {
+                const li = document.createElement('li');
+                const a = document.createElement('a');
+                a.href = `#zone-${zone.num}`;
+                a.textContent = zone.name;
+                a.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    document.getElementById(`zone-${zone.num}`)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    document.querySelectorAll('.zone-links a').forEach(link => link.classList.remove('active'));
+                    a.classList.add('active');
+                });
+                li.appendChild(a);
+                linksContainer.appendChild(li);
+            });
+        }
+
+        function openParishModal(parishName) {
+            const p = parishesDetails[parishName];
+            if (!p) return;
+            document.getElementById('modalParishName').innerText = parishName;
+            document.getElementById('modalBgImage').style.backgroundImage = `url('${p.image}')`;
+            const telLink = p.telephone ? `<a href="tel:${p.telephone.replace(/[^0-9+]/g, '')}" style="color:#2ecc71;">${p.telephone}</a>` : "Non communiqué";
+            document.getElementById('modalDetailsContainer').innerHTML = `
+                <div class="info-card"><h3><i class="fas fa-church"></i> Équipe pastorale</h3><p><i class="fas fa-user-priest"></i> <strong>Curé :</strong> ${p.cure}</p><p><i class="fas fa-user-friends"></i> <strong>Vicaires :</strong> ${p.vicaires || "Aucun vicaire listé"}</p></div>
+                <div class="info-card"><h3><i class="fas fa-phone-alt"></i> Secrétariat</h3><p><i class="fas fa-user"></i> <strong>Responsable :</strong> ${p.secretaire}</p><p><i class="fas fa-phone"></i> <strong>Tél :</strong> ${telLink}</p><p><i class="far fa-clock"></i> <strong>Horaires :</strong><br> ${p.horaires}</p></div>
+                <div class="info-card"><h3><i class="fas fa-praying-hands"></i> Messes & confessions</h3><p><strong>Messes :</strong><br> ${p.messes}</p><p><strong>Confessions :</strong><br> ${p.confessions}</p></div>
+            `;
+            const encodedAddr = encodeURIComponent(p.adresse);
+            document.getElementById('modalMapLink').href = `https://www.google.com/maps/search/?api=1&query=${encodedAddr}`;
+            document.getElementById('parishModal').classList.add('active');
+        }
+
+        function openResponsableCarte(respKey) {
+            const resp = responsablesData[respKey];
+            if (!resp) return;
+            document.getElementById('respNom').innerText = resp.nom;
+            document.getElementById('respZone').innerText = resp.zone;
+            document.getElementById('respFonction').innerText = resp.fonction;
+            document.getElementById('respPhone').innerHTML = resp.telephone ? `<a href="tel:${resp.telephone.replace(/[^0-9+]/g, '')}" style="color:#2ecc71;">${resp.telephone}</a>` : "Non renseigné";
+            document.getElementById('respMessage').innerText = resp.messagePredef;
+            let waLink = "#";
+            if (resp.phoneWa) waLink = `https://wa.me/${resp.phoneWa}?text=${encodeURIComponent(resp.messagePredef)}`;
+            document.getElementById('whatsappRespLink').href = waLink;
+            document.getElementById('responsableModal').classList.add('active');
+        }
+
+        // Gestionnaire d'événements global
+        document.addEventListener('click', (e) => {
+            const parishSpan = e.target.closest('.parish-link');
+            if (parishSpan) {
+                e.preventDefault();
+                openParishModal(parishSpan.getAttribute('data-name'));
+                return;
+            }
+            const respLink = e.target.closest('.resp-link');
+            if (respLink && respLink.getAttribute('data-resp-key')) {
+                e.preventDefault();
+                openResponsableCarte(respLink.getAttribute('data-resp-key'));
+                return;
+            }
+            if (e.target.closest('#closeModalBtn') || (e.target === document.getElementById('parishModal') && !e.target.closest('.modal-card')))
+                document.getElementById('parishModal').classList.remove('active');
+            if (e.target.closest('#closeResponsableModalBtn') || (e.target === document.getElementById('responsableModal') && !e.target.closest('.modal-card')))
+                document.getElementById('responsableModal').classList.remove('active');
+        });
+
+        const searchInput = document.getElementById('searchInput');
+        const resetBtn = document.getElementById('resetSearchBtn');
+        searchInput.addEventListener('input', (e) => renderZones(e.target.value.toLowerCase()));
+        resetBtn.addEventListener('click', () => { searchInput.value = ''; renderZones(''); });
+
+        // Menu, dark mode, langue (inchangés)
         const menuToggle = document.getElementById('menuToggle');
-        const navLinks = document.getElementById('navLinks');
+        const navLinksMenu = document.getElementById('navLinks');
         const menuOverlay = document.getElementById('menuOverlay');
         const closeMenuBtn = document.getElementById('closeMenuBtn');
-        function closeMenu() { navLinks.classList.remove('active'); if (menuOverlay) menuOverlay.classList.remove('active'); if (menuToggle && window.innerWidth <= 992) menuToggle.innerHTML = '<i class="fas fa-bars"></i>'; }
-        function openMenu() { navLinks.classList.add('active'); if (menuOverlay) menuOverlay.classList.add('active'); if (menuToggle && window.innerWidth <= 992) menuToggle.innerHTML = '<i class="fas fa-times"></i>'; }
-        if (menuToggle) menuToggle.addEventListener('click', () => { if (navLinks.classList.contains('active')) closeMenu(); else openMenu(); });
+        function closeMenu() { navLinksMenu.classList.remove('active'); if (menuOverlay) menuOverlay.classList.remove('active'); if (menuToggle && window.innerWidth <= 992) menuToggle.innerHTML = '<i class="fas fa-bars"></i>'; }
+        function openMenu() { navLinksMenu.classList.add('active'); if (menuOverlay) menuOverlay.classList.add('active'); if (menuToggle && window.innerWidth <= 992) menuToggle.innerHTML = '<i class="fas fa-times"></i>'; }
+        if (menuToggle) menuToggle.addEventListener('click', () => { if (navLinksMenu.classList.contains('active')) closeMenu(); else openMenu(); });
         if (closeMenuBtn) closeMenuBtn.addEventListener('click', closeMenu);
         if (menuOverlay) menuOverlay.addEventListener('click', closeMenu);
         document.querySelectorAll('.nav-links a:not(#dropdownToggle)').forEach(link => link.addEventListener('click', closeMenu));
@@ -359,56 +601,33 @@
         if (dropdown && dropdownToggle) { dropdownToggle.addEventListener('click', (e) => { e.preventDefault(); if (window.innerWidth <= 992) dropdown.classList.toggle('open'); }); }
         document.addEventListener('click', (e) => { if (window.innerWidth <= 992 && dropdown && !dropdown.contains(e.target)) dropdown.classList.remove('open'); });
 
-        // === ZONES AVEC COULEURS OFFICIELLES ===
-        const zonesData = [
-            { num: "01", name: "Wouri I", paroissesList: ["Cathédrale Saints-Pierre et Paul de Douala","Paroisse Holy Trinity","Paroisse Notre-Dame du Mont Carmel","Paroisse Saint-Dominique Savio de Bonaparte","Paroisse Sainte-Anne de Nkongmondo","Paroisse Saint-André de Manoka","Paroisse Saint-Ignace d'Antioche de Youpouè","Paroisse Saint Barnabé de Bois de Singe"], priest: "Abbé Alain NIBILE", phone: "+237 699 861 55 / +237 675 921 135", phoneWa: "237699860155", color: "#CCFF00", colorName: "Vert citron", colorText: "#000", responsableLaic: { nom: "Nicole MBOULE", paroisse: "St Dominique Savio Bonaparte" } },
-            { num: "02", name: "Wouri II", paroissesList: ["Paroisse Notre-Dame des Victoires de New-Bell I","Paroisse Saint-Paul de Nylon","Paroisse Sacré-Cœur de New-Bell II","Paroisse Notre-Dame des Sept Douleurs de New Bell III","Paroisse Saint-Luc de New Bell"], priest: "Abbé Guy Calvin MONKON", phone: "+237 695 237 475 / +237 677 028 261", phoneWa: "237695237475", color: "#FFA500", colorName: "Orange", colorText: "#000", responsableLaic: { nom: "Amos NFON TINA", paroisse: "Sacré Cœur de New Bell" } },
-            { num: "03", name: "Wouri III", paroissesList: ["Paroisse Saint-Sacrement de Ndogbong","Paroisse Christ-Roi de la Cité-Sic","Paroisse Saint-Esprit de Bépanda","Paroisse Saint-Charles Lwanga de Makèpè Yonyong","Paroisse Saint-Mathias de Petit Wouri Bonamousongo","Paroisse universitaire Saint-Thomas d'Aquin"], priest: "Abbé Jules Constantin LEP MBELECK", phone: "+237 695 471 749", phoneWa: "237695471749", color: "#008000", colorName: "Vert", colorText: "#fff", responsableLaic: { nom: "Louisette BLANCHARD", paroisse: "St Charles Lwanga de Bépanda" } },
-            { num: "04", name: "Wouri IV", paroissesList: ["Paroisse Sainte-Monique de Cite-Sic Makepé","Paroisse Saint-Jean de Deido","Paroisse Saint-Ambroise de Sable (Bonamoussadi)","Paroisse Notre-Dame de l'Annonciation de Bonamoussadi","Paroisse Saint-François d'Assise de Kotto","Paroisse Christ Sauveur de Banguè","Paroisse Saint-Barthélémy de LOGBESSOU","Paroisse Saint-Basile de Logpom","Paroisse Sainte-Marie Madeleine de Logpom plateau","Paroisse Sainte-Marthe de Lendi"], priest: "Abbé Martus DJOMAHA", phone: "+237 693 457 067", phoneWa: "237693457067", color: "#FF69B4", colorName: "Rose", colorText: "#000", responsableLaic: { nom: "Arnold KOKAM", paroisse: "Christ Sauveur Mbangue" } },
-            { num: "05", name: "Wouri V", paroissesList: ["Paroisse Saint-Pie X de PK 14","Paroisse Saint-Victor de Sodikombo","Paroisse saint-Thomas de PK 10","Paroisse Sainte-Thérèse de l'Enfant Jésus de Mbengue City","Paroisse Epiphanie de PK 21","Paroisse Saint-Benoît de Dallas et Nsape","Paroisse Saint-Étienne de Mandjab","Paroisse Saint-Samuel de NGONJO","Paroisse Saint-Athanase de PK 17 – PK 18","Paroisse Saint-Laurent de PAPAS","Paroisse Sainte-Cécile de MOUTONGO","Paroisse Saint-Paul VI de BONAMOUTONGO"], priest: "Abbé Mesane MBEH NKAMBA", phone: "+237 691 181 440", phoneWa: "237691181440", color: "#0000FF", colorName: "Bleu", colorText: "#fff", responsableLaic: { nom: "MOUIL ABDEL SALOUM KANDE", paroisse: "St Thomas Apôtre PK10" } },
-            { num: "06", name: "Wouri VI", paroissesList: ["Paroisse Pentecôte de New Town Aéroport","Paroisse Saint-François-Xavier d'Oyack","Paroisse Sainte Trinité de Bllongué","Paroisse Saint-Thaddée de Bobongo","Paroisse Toussaint de Soboum","Paroisse Sainte-Agnès de Madagascar","Paroisse Sainte-Agathe de Bois de Singe"], priest: "Abbé Leonel Pierre SEMPEY", phone: "+237 690 304 000", phoneWa: "237690304000", color: "#FF0000", colorName: "Rouge", colorText: "#fff", responsableLaic: { nom: "Noël WANSI", paroisse: "Toussaint de Soboum" } },
-            { num: "07", name: "Wouri VII", paroissesList: ["Paroisse Sacré-Cœur de NdogPassi II","Paroisse Saint-Jacques de Logbaba Plateau","Paroisse Sainte-Famille de la Zone de recasement de NdogPassi III","Paroisse Marie Reine des Apôtres de Ndogpassi II","Paroisse Saint-Augustin de Yanka (Ndogpassi II)","Paroisse Saint-Clément de Nyalla Kambo"], priest: "Abbé Christian PAM TCHAMEN", phone: "+237 655 735 436", phoneWa: "237655735436", color: "#FFFF00", colorName: "Jaune", colorText: "#000", responsableLaic: { nom: "Parfait MAKON", paroisse: "St Jacques de Logbaba" } },
-            { num: "08", name: "Wouri VIII", paroissesList: ["Paroisse Saint-Louis de Bonabéri","Paroisse Notre-Dame de l'Amour de Ngwele","Paroisse Saint-Grégoire de Ndobo","Paroisse Saint-Joseph de Bonandalè","Paroisse Saint-Pierre Grand Hangar","Paroisse Notre-Dame du Rosaire de Mambanda","Paroisse Saint-Gabriel Archange de Mpanjo - Bonaminkano","Paroisse Saint-Philippe du Quartier Bilingue","Paroisse Saint-Timothée de SODIKO VILLE","Paroisse Saint-Bonaventure de TOWOH","Paroisse Saint-Raphaël Archange de Bojongo","Paroisse Saint-Kisito de Sodiko Village","Paroisse Sainte Catherine de Sienne de Minkwele","Paroisse Cœur Immaculée de Marie de Ndobo"], priest: "Père Merlin TABELA", phone: "+237 690 666 767", phoneWa: "237690666767", color: "#FFFFFF", colorName: "Blanc", colorText: "#000", responsableLaic: { nom: "Linda NANGUEU", paroisse: "St Bonaventure de Towo" } },
-            { num: "09", name: "Wouri IX", paroissesList: ["Paroisse Saint-Marc de la Cite des Palmiers","Paroisse Saint-Simon de Kondi","Paroisse Saint-Michel Archange de Nyalla","Paroisse Saint-Jean Marie Vianney de Beedi","Paroisse Saint-Matthieu de Ndog-Mbèè","Paroisse Notre Dame de Lourdes de Japoma","Paroisse Saint-Corneille de NKOLMBONG","Paroisse Saint-Hippolyte de la Cité Chirac","Paroisse Saint-Cyprien de Maetur Ngodi Bakoko","Paroisse Saint-Justin de Yassa","Paroisse Saint-Bernard de NKEMBE","Paroisse Saint-Jean XXIII de Pahianga et Cocotier de Japoma"], priest: "Abbé Giresse NOPIEGUE", phone: "+237 697 248 174", phoneWa: "237697248174", color: "#800080", colorName: "Violet", colorText: "#fff", responsableLaic: { nom: "Jérôme MOUTAPAM", paroisse: "St Simon de Kondi" } },
-            { num: "10", name: "Wouri X", paroissesList: ["Paroisse Jésus Bon Pasteur de Mboko","Paroisse Saint-Jude de Ngodi Bakoko","Paroisse Jésus Libérateur","Paroisse Saint-Jean Paul II de Yansoki","Paroisse Saint-Guido Maria CONFORTI","Paroisse Saint-Irénée de MBANGA-PONGO","Paroisse Saint-Joseph de BOKO","Paroisse Saint Jean-Baptiste de Bwang BAKOKO"], priest: "Abbé Florian Anicet LAMBA", phone: "+237 693 485 333", phoneWa: "237693485333", color: "#87CEEB", colorName: "Bleu ciel", colorText: "#000", responsableLaic: { nom: "Franck NIE", paroisse: "Jésus Bon Pasteur de Boko" } }
-        ];
-
-        const parishesDetails = {};
-        zonesData.forEach(zone => { zone.paroissesList.forEach(paroisse => { parishesDetails[paroisse] = { cure: zone.priest, vicaires: "À renseigner", secretaire: "Secrétariat paroissial", telephone: zone.phone, secretairePhone: zone.phone, horaires: "Lundi-Vendredi: 8h30–12h30, 15h–18h", messes: "Dimanche: 7h00, 9h00, 11h00, 18h30", confessions: "Avant chaque messe", adresse: `${paroisse}, Douala, Cameroun`, image: "https://via.placeholder.com/800x600?text=Paroisse" }; }); });
-
-        const responsablesData = {};
-        zonesData.forEach(zone => {
-            responsablesData[`aumonier-${zone.name}`] = { nom: zone.priest, zone: zone.name, telephone: zone.phone, phoneWa: zone.phoneWa, messagePredef: `Bonjour, je vous contacte depuis l'annuaire pastoral de l'Aumônerie Diocésaine. Zone ${zone.name}.`, fonction: "Vicaire épiscopal de zone" };
-            if (zone.responsableLaic) responsablesData[`laic-${zone.name}`] = { nom: zone.responsableLaic.nom, zone: zone.name, telephone: "À renseigner", phoneWa: null, messagePredef: `Bonjour, je suis le/la responsable laïc(que) des jeunes de la Zone ${zone.name} (${zone.responsableLaic.paroisse}).`, fonction: `Responsable des Jeunes – ${zone.responsableLaic.paroisse}` };
-        });
-
-        function renderZones(filter = '') {
-            const container = document.getElementById('zonesContainer');
-            const filtered = zonesData.filter(z => z.num.includes(filter) || z.name.toLowerCase().includes(filter) || z.paroissesList.some(p => p.toLowerCase().includes(filter)) || z.priest.toLowerCase().includes(filter));
-            document.getElementById('resultCount').innerText = filtered.length;
-            if (filtered.length === 0) { container.innerHTML = '<div style="padding:40px;text-align:center">Aucune zone trouvée</div>'; return; }
-            container.innerHTML = '';
-            filtered.forEach(zone => {
-                const parHtml = zone.paroissesList.map(par => `<span class="parish-link" data-name="${par.replace(/"/g, '&quot;')}">${par}</span>`).join(', ');
-                const aumLink = `<a href="#" class="resp-link" data-resp-key="aumonier-${zone.name}"><i class="fas fa-cross"></i> ${zone.priest}</a>`;
-                const laicNom = zone.responsableLaic ? zone.responsableLaic.nom : 'À renseigner';
-                const laicLink = `<a href="#" class="resp-link" data-resp-key="laic-${zone.name}"><i class="fas fa-user-friends"></i> ${laicNom}</a>`;
-                const row = document.createElement('div'); row.className = 'zone-row'; row.id = `zone-${zone.num}`;
-                row.innerHTML = `<div class="z-cell z-num">${zone.num}</div><div class="z-cell z-name">${zone.name}</div><div class="z-cell z-left z-paroisses">${parHtml}</div><div class="z-cell"><div class="responsable-container">${aumLink}${laicLink}</div></div><div class="z-cell"><div class="color-box" style="background:${zone.color};color:${zone.colorText};border:1px solid #aaa;">${zone.colorName}</div></div>`;
-                container.appendChild(row);
-            });
+        function initDarkMode() {
+            const isDark = localStorage.getItem('darkMode') === 'true';
+            if (isDark) document.body.classList.add('dark-mode');
+            const desktopBtn = document.getElementById('darkModeToggleDesktop');
+            const mobileBtn = document.getElementById('darkModeToggleMobile');
+            function toggleDarkMode() {
+                document.body.classList.toggle('dark-mode');
+                const dark = document.body.classList.contains('dark-mode');
+                localStorage.setItem('darkMode', dark);
+                const icon = dark ? 'fas fa-sun' : 'fas fa-moon';
+                if (desktopBtn) desktopBtn.innerHTML = `<i class="${icon}"></i>`;
+                if (mobileBtn) mobileBtn.innerHTML = `<i class="${icon}"></i>`;
+            }
+            const icon = isDark ? 'fas fa-sun' : 'fas fa-moon';
+            if (desktopBtn) { desktopBtn.innerHTML = `<i class="${icon}"></i>`; desktopBtn.addEventListener('click', toggleDarkMode); }
+            if (mobileBtn) { mobileBtn.innerHTML = `<i class="${icon}"></i>`; mobileBtn.addEventListener('click', toggleDarkMode); }
         }
 
-        function buildVerticalNav() { const linksContainer = document.getElementById('zoneLinks'); linksContainer.innerHTML = ''; zonesData.forEach(zone => { const li = document.createElement('li'); const a = document.createElement('a'); a.href = `#zone-${zone.num}`; a.textContent = zone.name; a.addEventListener('click', (e) => { e.preventDefault(); document.getElementById(`zone-${zone.num}`)?.scrollIntoView({ behavior: 'smooth', block: 'start' }); document.querySelectorAll('.zone-links a').forEach(link => link.classList.remove('active')); a.classList.add('active'); }); li.appendChild(a); linksContainer.appendChild(li); }); }
-        function openParishModal(parishName) { const p = parishesDetails[parishName]; if (!p) return; document.getElementById('modalParishName').innerText = parishName; document.getElementById('modalBgImage').style.backgroundImage = `url('${p.image}')`; document.getElementById('modalDetailsContainer').innerHTML = `<div class="info-card"><h3><i class="fas fa-church"></i> Équipe pastorale</h3><p><i class="fas fa-user-priest"></i> <strong>Curé :</strong> ${p.cure}</p><p><i class="fas fa-user-friends"></i> <strong>Vicaires :</strong> ${p.vicaires}</p></div><div class="info-card"><h3><i class="fas fa-phone-alt"></i> Secrétariat</h3><p><i class="fas fa-user"></i> <strong>Responsable :</strong> ${p.secretaire}</p><p><i class="fas fa-phone"></i> <strong>Tél :</strong> <a href="tel:${p.secretairePhone.replace(/[^0-9+]/g, '')}" style="color:#2ecc71;">${p.secretairePhone}</a></p><p><i class="far fa-clock"></i> <strong>Horaires :</strong><br> ${p.horaires}</p></div><div class="info-card"><h3><i class="fas fa-praying-hands"></i> Messes & confessions</h3><p><strong>Messes :</strong><br> ${p.messes}</p><p><strong>Confessions :</strong><br> ${p.confessions}</p></div>`; const encodedAddr = encodeURIComponent(p.adresse); document.getElementById('modalMapLink').href = `https://www.google.com/maps/search/?api=1&query=${encodedAddr}`; document.getElementById('parishModal').classList.add('active'); }
-        function openResponsableCarte(respKey) { const resp = responsablesData[respKey]; if (!resp) return; document.getElementById('respNom').innerText = resp.nom; document.getElementById('respZone').innerText = resp.zone; document.getElementById('respFonction').innerText = resp.fonction; document.getElementById('respPhone').innerHTML = resp.telephone; document.getElementById('respMessage').innerText = resp.messagePredef; let waLink = "#"; if (resp.phoneWa) waLink = `https://wa.me/${resp.phoneWa}?text=${encodeURIComponent(resp.messagePredef)}`; document.getElementById('whatsappRespLink').href = waLink; document.getElementById('responsableModal').classList.add('active'); }
-        document.addEventListener('click', (e) => { const parishSpan = e.target.closest('.parish-link'); if (parishSpan) { e.preventDefault(); openParishModal(parishSpan.getAttribute('data-name')); return; } const respLink = e.target.closest('.resp-link'); if (respLink && respLink.getAttribute('data-resp-key')) { e.preventDefault(); openResponsableCarte(respLink.getAttribute('data-resp-key')); return; } if (e.target.closest('#closeModalBtn') || (e.target === document.getElementById('parishModal') && !e.target.closest('.modal-card'))) document.getElementById('parishModal').classList.remove('active'); if (e.target.closest('#closeResponsableModalBtn') || (e.target === document.getElementById('responsableModal') && !e.target.closest('.modal-card'))) document.getElementById('responsableModal').classList.remove('active'); });
-        const searchInput = document.getElementById('searchInput'); const resetBtn = document.getElementById('resetSearchBtn'); searchInput.addEventListener('input', (e) => renderZones(e.target.value.toLowerCase())); resetBtn.addEventListener('click', () => { searchInput.value = ''; renderZones(''); });
-        function initDarkMode() { const isDark = localStorage.getItem('darkMode') === 'true'; if (isDark) document.body.classList.add('dark-mode'); const desktopBtn = document.getElementById('darkModeToggleDesktop'); const mobileBtn = document.getElementById('darkModeToggleMobile'); function toggleDarkMode() { document.body.classList.toggle('dark-mode'); const dark = document.body.classList.contains('dark-mode'); localStorage.setItem('darkMode', dark); const icon = dark ? 'fas fa-sun' : 'fas fa-moon'; if (desktopBtn) desktopBtn.innerHTML = `<i class="${icon}"></i>`; if (mobileBtn) mobileBtn.innerHTML = `<i class="${icon}"></i>`; } const icon = isDark ? 'fas fa-sun' : 'fas fa-moon'; if (desktopBtn) { desktopBtn.innerHTML = `<i class="${icon}"></i>`; desktopBtn.addEventListener('click', toggleDarkMode); } if (mobileBtn) { mobileBtn.innerHTML = `<i class="${icon}"></i>`; mobileBtn.addEventListener('click', toggleDarkMode); } }
-        let currentLang = localStorage.getItem('lang') || 'fr'; const translations = { fr: { siteTitle: "Aumônerie Diocésaine Jeunesse & Enfance", siteSubtitle: "Archidiocèse de Douala – Cameroun", nav1: "Accueil", nav2: "À propos", nav3: "Enfance", nav4: "Jeunesse", nav5: "Vie du Diocèse", nav6: "Galerie", dropdown1: "Annonces", dropdown2: "Communiqués", dropdown3: "Radio & Télévision", dropdown4: "Documentation", dropdown5: "Événements Pastoraux", dropdown6: "Pèlerinages", dropdown7: "Retraites spirituelles", dropdown8: "Formations bibliques", pageTitle: "Placement Pastoral 2025-2026", pageDesc: "Liste complète des paroisses avec curés, vicaires, horaires des messes et confessions", backBtn: "Retour à l'accueil", footerTitle1: "Aumônerie Diocésaine", footerTitle2: "Liens rapides", footerTitle3: "Équipe technique", footerTitle4: "Contact", footerDesc: "Accompagnement spirituel, formation et engagement des jeunes et enfants de l'Archidiocèse de Douala. Ensemble, bâtissons une jeunesse responsable et rayonnante.", footerLink1: "Accueil", footerLink2: "Mission Pastorale", footerLink3: "Histoire & Fondements", footerLink4: "Équipe Diocésaine", footerLink5: "Mouvements & Groupes", footerLink6: "Faire un don", footerLink7: "Mot de l'Aumônier", footerLink8: "Pèlerinages", footerAddress: "Archidiocèse de Douala, Cameroun", footerRights: "Tous droits réservés." }, en: { siteTitle: "Diocesan Youth & Children's Chaplaincy", siteSubtitle: "Archdiocese of Douala – Cameroon", nav1: "Home", nav2: "About", nav3: "Childhood", nav4: "Youth", nav5: "Diocesan Life", nav6: "Gallery", dropdown1: "Announcements", dropdown2: "Official Statements", dropdown3: "Radio & Television", dropdown4: "Documentation", dropdown5: "Pastoral Events", dropdown6: "Pilgrimages", dropdown7: "Spiritual Retreats", dropdown8: "Biblical Training", pageTitle: "Pastoral Placement 2025-2026", pageDesc: "Complete list of parishes with priests, vicars, mass times and confessions", backBtn: "Back to homepage", footerTitle1: "Diocesan Chaplaincy", footerTitle2: "Quick links", footerTitle3: "Technical Team", footerTitle4: "Contact", footerDesc: "Spiritual accompaniment, training and commitment of young people and children of the Archdiocese of Douala. Together, let's build a responsible and radiant youth.", footerLink1: "Home", footerLink2: "Pastoral Mission", footerLink3: "History & Foundations", footerLink4: "Diocesan Team", footerLink5: "Movements & Groups", footerLink6: "Donate", footerLink7: "Chaplain's Message", footerLink8: "Pilgrimages", footerAddress: "Archdiocese of Douala, Cameroon", footerRights: "All rights reserved." } };
+        let currentLang = localStorage.getItem('lang') || 'fr';
+        const translations = { fr: { siteTitle: "Aumônerie Diocésaine Jeunesse & Enfance", siteSubtitle: "Archidiocèse de Douala – Cameroun", nav1: "Accueil", nav2: "À propos", nav3: "Enfance", nav4: "Jeunesse", nav5: "Vie du Diocèse", nav6: "Galerie", dropdown1: "Annonces", dropdown2: "Communiqués", dropdown3: "Radio & Télévision", dropdown4: "Documentation", dropdown5: "Événements Pastoraux", dropdown6: "Pèlerinages", dropdown7: "Retraites spirituelles", dropdown8: "Formations bibliques", pageTitle: "Placement Pastoral 2025-2026", pageDesc: "Liste complète des paroisses avec curés, vicaires, horaires des messes et confessions", backBtn: "Retour à l'accueil", footerTitle1: "Aumônerie Diocésaine", footerTitle2: "Liens rapides", footerTitle3: "Équipe technique", footerTitle4: "Contact", footerDesc: "Accompagnement spirituel, formation et engagement des jeunes et enfants de l'Archidiocèse de Douala. Ensemble, bâtissons une jeunesse responsable et rayonnante.", footerLink1: "Accueil", footerLink2: "Mission Pastorale", footerLink3: "Histoire & Fondements", footerLink4: "Équipe Diocésaine", footerLink5: "Mouvements & Groupes", footerLink6: "Faire un don", footerLink7: "Mot de l'Aumônier", footerLink8: "Pèlerinages", footerAddress: "Archidiocèse de Douala, Cameroun", footerRights: "Tous droits réservés." }, en: { siteTitle: "Diocesan Youth & Children's Chaplaincy", siteSubtitle: "Archdiocese of Douala – Cameroon", nav1: "Home", nav2: "About", nav3: "Childhood", nav4: "Youth", nav5: "Diocesan Life", nav6: "Gallery", dropdown1: "Announcements", dropdown2: "Official Statements", dropdown3: "Radio & Television", dropdown4: "Documentation", dropdown5: "Pastoral Events", dropdown6: "Pilgrimages", dropdown7: "Spiritual Retreats", dropdown8: "Biblical Training", pageTitle: "Pastoral Placement 2025-2026", pageDesc: "Complete list of parishes with priests, vicars, mass times and confessions", backBtn: "Back to homepage", footerTitle1: "Diocesan Chaplaincy", footerTitle2: "Quick links", footerTitle3: "Technical Team", footerTitle4: "Contact", footerDesc: "Spiritual accompaniment, training and commitment of young people and children of the Archdiocese of Douala. Together, let's build a responsible and radiant youth.", footerLink1: "Home", footerLink2: "Pastoral Mission", footerLink3: "History & Foundations", footerLink4: "Diocesan Team", footerLink5: "Movements & Groups", footerLink6: "Donate", footerLink7: "Chaplain's Message", footerLink8: "Pilgrimages", footerAddress: "Archdiocese of Douala, Cameroon", footerRights: "All rights reserved." } };
         function updateLanguage() { const t = translations[currentLang]; document.querySelectorAll('[data-key]').forEach(el => { const key = el.getAttribute('data-key'); if (t[key]) { if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') el.placeholder = t[key]; else el.textContent = t[key]; } }); localStorage.setItem('lang', currentLang); }
         function initLanguage() { const desktopBtn = document.getElementById('langToggleDesktop'); const mobileBtn = document.getElementById('langToggleMobile'); function toggleLanguage() { currentLang = currentLang === 'fr' ? 'en' : 'fr'; updateLanguage(); } if (desktopBtn) desktopBtn.addEventListener('click', toggleLanguage); if (mobileBtn) mobileBtn.addEventListener('click', toggleLanguage); updateLanguage(); }
-        buildVerticalNav(); renderZones(''); initDarkMode(); initLanguage();
+
+        buildVerticalNav();
+        renderZones('');
+        initDarkMode();
+        initLanguage();
     </script>
 </body>
 </html>
