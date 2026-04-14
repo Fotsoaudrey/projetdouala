@@ -7,17 +7,11 @@
     <title>Documentation | Ressources - Aumônerie Diocésaine Douala</title>
     <meta name="description" content="Documentation et ressources de l'Aumônerie Diocésaine Jeunesse & Enfance de Douala. Textes officiels, documents pastoraux, guides de formation et ressources pédagogiques.">
 
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Google Fonts (optimisé : une seule police, fallback system) -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
     <!-- Font Awesome 6 -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-
-    <!-- PDF.js -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.min.js"></script>
-    <script>
-        pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.worker.min.js';
-    </script>
 
     <style>
         * {
@@ -47,7 +41,7 @@
         }
         
         body {
-            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-family: 'Inter', sans-serif;
             background: var(--light);
             color: #1a2c3e;
             line-height: 1.5;
@@ -110,12 +104,21 @@
             color: var(--gray-light);
         }
         
+        body.dark-mode .modal-header {
+            border-bottom-color: #334155;
+        }
+        
+        body.dark-mode .toast-notification {
+            background: var(--accent);
+            color: var(--primary-dark);
+        }
+        
         .container {
             max-width: 1280px;
             margin: 0 auto;
             padding: 0 24px;
         }
-        /* HEADER */
+        /* ===== HEADER ===== */
         
         .top-bar {
             background: linear-gradient(135deg, #0a2e4a, var(--primary));
@@ -176,7 +179,7 @@
                 font-size: 0.7rem;
             }
         }
-        /* NAVBAR */
+        /* ===== NAVBAR ===== */
         
         .navbar {
             background: white;
@@ -279,7 +282,7 @@
             top: calc(100% + 8px);
             left: 0;
             background: white;
-            min-width: 220px;
+            min-width: 240px;
             border-radius: var(--radius-md);
             box-shadow: var(--shadow-lg);
             opacity: 0;
@@ -298,9 +301,6 @@
         }
         
         .dropdown-menu a {
-            display: flex;
-            align-items: center;
-            gap: 12px;
             padding: 10px 16px;
             font-size: 0.85rem;
             border-radius: var(--radius-sm);
@@ -437,7 +437,7 @@
                 display: block;
             }
         }
-        /* PAGE HEADER */
+        /* ===== PAGE HEADER ===== */
         
         .page-header {
             background: linear-gradient(135deg, var(--primary), #0a2e4a);
@@ -471,7 +471,7 @@
                 font-size: 0.9rem;
             }
         }
-        /* SECTION TITRE */
+        /* ===== SECTION TITLE ===== */
         
         .section-title {
             font-size: 2rem;
@@ -489,7 +489,7 @@
                 padding-left: 20px;
             }
         }
-        /* CATEGORIES */
+        /* ===== CATEGORIES ===== */
         
         .categories-section {
             padding: 60px 0;
@@ -569,7 +569,7 @@
         body.dark-mode .category-count {
             background: #2d3748;
         }
-        /* SEARCH BAR */
+        /* ===== SEARCH BAR ===== */
         
         .search-section {
             padding: 30px 0;
@@ -610,7 +610,7 @@
             border-color: var(--accent);
             box-shadow: 0 0 0 3px rgba(46, 204, 113, 0.2);
         }
-        /* DOCUMENTS GRID */
+        /* ===== DOCUMENTS GRID ===== */
         
         .documents-section {
             padding: 40px 0 60px;
@@ -755,7 +755,7 @@
             padding: 50px;
             color: var(--gray);
         }
-        /* MODAL PDF */
+        /* ===== MODAL PDF (Solution fiable avec iframe Google Drive) ===== */
         
         .modal-pdf {
             display: none;
@@ -859,32 +859,72 @@
             padding: 20px;
             display: flex;
             justify-content: center;
+            align-items: center;
             background: #525659;
+            min-height: 400px;
+        }
+        /* Google Drive Embed iframe */
+        
+        .pdf-iframe {
+            width: 100%;
+            height: 70vh;
+            border: none;
+            border-radius: 12px;
+            background: white;
         }
         
-        .pdf-container canvas {
-            box-shadow: var(--shadow-md);
-            max-width: 100%;
-            height: auto;
+        .loading-spinner {
+            text-align: center;
+            padding: 50px;
         }
         
-        .download-modal-btn {
+        .loading-spinner i {
+            font-size: 2rem;
+            color: var(--accent);
+            animation: spin 1s linear infinite;
+        }
+        
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+        /* ===== TOAST NOTIFICATION ===== */
+        
+        .toast-notification {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
             background: var(--accent);
             color: var(--primary-dark);
-            border: none;
-            padding: 8px 16px;
-            border-radius: 30px;
+            padding: 12px 24px;
+            border-radius: 50px;
             font-weight: 600;
-            cursor: pointer;
-            transition: var(--transition);
+            font-size: 0.85rem;
+            z-index: 1000;
+            animation: slideIn 0.3s ease;
+            box-shadow: var(--shadow-md);
         }
         
-        .download-modal-btn:hover {
-            background: var(--primary);
-            color: white;
-            transform: translateY(-2px);
+        body.dark-mode .toast-notification {
+            background: var(--accent);
+            color: var(--primary-dark);
         }
-        /* FOOTER */
+        
+        @keyframes slideIn {
+            from {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+        /* ===== FOOTER ===== */
         
         .main-footer {
             background: var(--primary-dark);
@@ -905,63 +945,34 @@
         
         .footer-col h3 {
             color: white;
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             margin-bottom: 20px;
-            position: relative;
             padding-bottom: 12px;
-        }
-        
-        .footer-col h3::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 40px;
-            height: 3px;
-            background: var(--accent);
-            border-radius: 2px;
-        }
-        
-        .footer-col p {
-            font-size: 0.85rem;
-            line-height: 1.6;
-            margin-bottom: 16px;
-        }
-        
-        .footer-col a {
-            color: #cbd5e1;
-            text-decoration: none;
-            transition: 0.2s;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            font-size: 0.85rem;
-        }
-        
-        .footer-col a:hover {
-            color: var(--accent);
-            transform: translateX(4px);
+            border-bottom: 2px solid var(--accent);
+            display: inline-block;
         }
         
         .footer-links {
             list-style: none;
-            padding: 0;
         }
         
         .footer-links li {
-            margin-bottom: 12px;
+            margin-bottom: 10px;
         }
         
         .footer-links a {
             color: #cbd5e1;
             text-decoration: none;
             transition: 0.2s;
-            font-size: 0.85rem;
+            font-size: 0.8rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
         }
         
         .footer-links a:hover {
             color: var(--accent);
-            padding-left: 4px;
+            transform: translateX(4px);
         }
         
         .dev-names {
@@ -971,7 +982,7 @@
         }
         
         .dev-names span {
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             font-weight: 500;
         }
         
@@ -982,8 +993,8 @@
         }
         
         .social-links a {
-            width: 38px;
-            height: 38px;
+            width: 36px;
+            height: 36px;
             background: rgba(255, 255, 255, 0.1);
             border-radius: 50%;
             display: flex;
@@ -998,7 +1009,7 @@
         }
         
         .social-links a i {
-            font-size: 1.1rem;
+            font-size: 1rem;
             color: white;
         }
         
@@ -1006,7 +1017,7 @@
             text-align: center;
             padding-top: 30px;
             border-top: 1px solid rgba(255, 255, 255, 0.1);
-            font-size: 0.75rem;
+            font-size: 0.7rem;
         }
         
         @media (max-width: 992px) {
@@ -1016,14 +1027,23 @@
             }
         }
         
+        @media (max-width: 768px) {
+            .documents-grid {
+                grid-template-columns: 1fr;
+            }
+            .pdf-iframe {
+                height: 50vh;
+            }
+        }
+        
         @media (max-width: 576px) {
             .footer-grid {
                 grid-template-columns: 1fr;
                 text-align: center;
             }
-            .footer-col h3::after {
-                left: 50%;
-                transform: translateX(-50%);
+            .footer-col h3 {
+                display: block;
+                text-align: center;
             }
             .social-links {
                 justify-content: center;
@@ -1050,26 +1070,26 @@
     <!-- HEADER -->
     <header class="top-bar">
         <div class="container header-flex">
-            <img src="../image/logo formation.jpeg" alt="Logo Aumônerie" class="logo" onerror="this.src='https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=100&h=100&fit=crop'">
+            <img src="../image/logo%20formation.jpeg" alt="Logo Aumônerie" class="logo" onerror="this.src='https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=100&h=100&fit=crop'">
             <div class="site-title">
                 <h1>Aumônerie Diocésaine Jeunesse & Enfance</h1>
                 <p>Archidiocèse de Douala – Cameroun</p>
             </div>
-            <img src="../image/logo nj.jpeg" alt="Logo NJ" class="logo" onerror="this.src='https://images.unsplash.com/photo-1504051771394-dd2f66b2e08f?w=100&h=100&fit=crop'">
+            <img src="../image/logo%20nj.jpeg" alt="Logo NJ" class="logo" onerror="this.src='https://images.unsplash.com/photo-1504051771394-dd2f66b2e08f?w=100&h=100&fit=crop'">
         </div>
     </header>
 
     <!-- NAVIGATION -->
     <nav class="navbar">
         <div class="nav-container">
-            <button class="menu-toggle" id="menuToggle"><i class="fas fa-bars"></i></button>
+            <button class="menu-toggle" id="menuToggle" aria-label="Menu principal"><i class="fas fa-bars"></i></button>
             <ul class="nav-links" id="navLinks">
                 <li><a href="index.html"><i class="fas fa-home"></i> Accueil</a></li>
                 <li><a href="index.html#apropos"><i class="fas fa-church"></i> À propos</a></li>
                 <li><a href="index.html#enfance"><i class="fas fa-child"></i> Enfance</a></li>
                 <li><a href="index.html#jeunesse"><i class="fas fa-users"></i> Jeunesse</a></li>
                 <li class="dropdown" id="dropdownMenu">
-                    <a href="javascript:void(0)" id="dropdownToggle">
+                    <a href="javascript:void(0)" id="dropdownToggle" aria-expanded="false">
                         <i class="fas fa-newspaper"></i> Vie du Diocèse
                         <i class="fas fa-chevron-down"></i>
                     </a>
@@ -1087,15 +1107,15 @@
                 <li><a href="index.html#phototheque"><i class="fas fa-images"></i> Galerie</a></li>
                 <div class="mobile-only-elements">
                     <div class="mobile-controls">
-                        <button class="ctrl-btn" id="darkModeToggleMobile"><i class="fas fa-moon"></i></button>
-                        <button class="ctrl-btn" id="langToggleMobile"><i class="fas fa-globe"></i></button>
+                        <button class="ctrl-btn" id="darkModeToggleMobile" aria-label="Mode sombre"><i class="fas fa-moon"></i></button>
+                        <button class="ctrl-btn" id="langToggleMobile" aria-label="Changer de langue"><i class="fas fa-globe"></i></button>
                     </div>
-                    <button class="close-menu-btn" id="closeMenuBtn"><i class="fas fa-times"></i></button>
+                    <button class="close-menu-btn" id="closeMenuBtn" aria-label="Fermer"><i class="fas fa-times"></i></button>
                 </div>
             </ul>
             <div class="nav-controls">
-                <button class="ctrl-btn" id="darkModeToggleDesktop"><i class="fas fa-moon"></i></button>
-                <button class="ctrl-btn" id="langToggleDesktop"><i class="fas fa-globe"></i></button>
+                <button class="ctrl-btn" id="darkModeToggleDesktop" aria-label="Mode sombre"><i class="fas fa-moon"></i></button>
+                <button class="ctrl-btn" id="langToggleDesktop" aria-label="Changer de langue"><i class="fas fa-globe"></i></button>
             </div>
         </div>
         <div class="menu-overlay" id="menuOverlay"></div>
@@ -1133,23 +1153,22 @@
         </div>
     </section>
 
-    <!-- MODAL PDF -->
+    <!-- MODAL PDF (Solution fiable : iframe Google Drive Embed) -->
     <div id="pdfModal" class="modal-pdf">
         <div class="modal-content">
             <div class="modal-header">
                 <h3 id="pdfTitle">Document</h3>
-                <button class="close-modal" id="closePdfModal">&times;</button>
-            </div>
-            <div class="pdf-toolbar">
-                <button class="toolbar-btn" id="prevPage"><i class="fas fa-chevron-left"></i> Précédent</button>
-                <span class="page-info">Page <span id="pageNum">1</span> / <span id="pageCount">1</span></span>
-                <button class="toolbar-btn" id="nextPage">Suivant <i class="fas fa-chevron-right"></i></button>
-                <button class="toolbar-btn" id="zoomOut"><i class="fas fa-search-minus"></i></button>
-                <button class="toolbar-btn" id="zoomIn"><i class="fas fa-search-plus"></i></button>
-                <button class="download-modal-btn" id="modalDownloadBtn"><i class="fas fa-download"></i> Télécharger</button>
+                <button class="close-modal" id="closePdfModal" aria-label="Fermer">&times;</button>
             </div>
             <div class="pdf-container" id="pdfContainer">
-                <canvas id="pdfCanvas"></canvas>
+                <div class="loading-spinner" id="pdfLoader">
+                    <i class="fas fa-spinner fa-spin"></i>
+                    <p style="margin-top: 10px;">Chargement du document...</p>
+                </div>
+                <iframe id="pdfIframe" class="pdf-iframe" style="display: none;" title="Visualisation PDF" allow="autoplay"></iframe>
+            </div>
+            <div class="pdf-toolbar">
+                <button class="toolbar-btn" id="downloadPdfBtn"><i class="fas fa-download"></i> Télécharger le PDF</button>
             </div>
         </div>
     </div>
@@ -1160,20 +1179,14 @@
             <div class="footer-grid">
                 <div class="footer-col">
                     <h3>Aumônerie Diocésaine</h3>
-                    <p>Accompagnement spirituel, formation et engagement des jeunes et enfants de l'Archidiocèse de Douala. Ensemble, bâtissons une jeunesse responsable et rayonnante.</p>
-                    <p><a href="https://aumonerie-diocesaine-jeunesse-enfance-douala.org/" target="_blank">aumonerie-diocesaine-jeunesse-enfance-douala.org <i class="fas fa-external-link-alt"></i></a></p>
+                    <p>Accompagnement spirituel, formation et engagement des jeunes et enfants de l'Archidiocèse de Douala.</p>
                 </div>
                 <div class="footer-col">
                     <h3>Liens rapides</h3>
                     <ul class="footer-links">
                         <li><a href="index.html"><i class="fas fa-home"></i> Accueil</a></li>
-                        <li><a href="MissionPastorale.html"><i class="fas fa-cross"></i> Mission Pastorale</a></li>
-                        <li><a href="Histoirefondements.html"><i class="fas fa-book-open"></i> Histoire & Fondements</a></li>
-                        <li><a href="Equipepastorale.html"><i class="fas fa-user-friends"></i> Équipe Diocésaine</a></li>
-                        <li><a href="mouvements.html"><i class="fas fa-flag-checkered"></i> Mouvements & Groupes</a></li>
                         <li><a href="don.html"><i class="fas fa-hand-holding-heart"></i> Faire un don</a></li>
                         <li><a href="mot.html"><i class="fas fa-microphone-alt"></i> Mot de l'Aumônier</a></li>
-                        <li><a href="pelerinage.html"><i class="fas fa-hiking"></i> Pèlerinages</a></li>
                     </ul>
                 </div>
                 <div class="footer-col">
@@ -1184,7 +1197,6 @@
                     </div>
                     <div class="social-links">
                         <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
                         <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
                         <a href="#" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
                     </div>
@@ -1193,19 +1205,57 @@
                     <h3>Contact</h3>
                     <p><i class="fas fa-envelope"></i> contact@aumonerie-douala.org</p>
                     <p><i class="fas fa-phone-alt"></i> +237 697 408 284</p>
-                    <p><i class="fas fa-map-marker-alt"></i> Archidiocèse de Douala, Cameroun</p>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2026 Aumônerie Diocésaine Jeunesse & Enfance – Douala. Tous droits réservés.</p>
-                <p>Conçu avec <i class="fas fa-heart" style="color: #e74c3c;"></i> par BIG DATA CENTER AI — <a href="https://www.youtube.com/@DominiqueSavio_Cyber-Ap%C3%B4tre3.0" target="_blank">Dominique Savio - Cyber Apôtre 3.0</a></p>
+                <p>&copy; 2026 Aumônerie Diocésaine Jeunesse & Enfance – Douala</p>
             </div>
         </div>
     </footer>
 
     <script>
+        // ========== CONVERSION LIEN GOOGLE DRIVE ==========
+        function convertGoogleDriveUrl(url) {
+            if (!url) return null;
+
+            // Si c'est un dossier Google Drive
+            if (url.includes('drive.google.com/drive/folders/')) {
+                return null;
+            }
+
+            // Si c'est un fichier Google Drive (vue) - extraire l'ID
+            const fileMatch = url.match(/drive\.google\.com\/file\/d\/([^\/]+)/);
+            if (fileMatch) {
+                const fileId = fileMatch[1];
+                return {
+                    downloadUrl: `https://drive.google.com/uc?export=download&id=${fileId}`,
+                    embedUrl: `https://drive.google.com/file/d/${fileId}/preview`
+                };
+            }
+
+            // Si c'est déjà un lien direct de téléchargement
+            if (url.includes('drive.google.com/uc?export=download')) {
+                const idMatch = url.match(/id=([^&]+)/);
+                if (idMatch) {
+                    return {
+                        downloadUrl: url,
+                        embedUrl: `https://drive.google.com/file/d/${idMatch[1]}/preview`
+                    };
+                }
+                return {
+                    downloadUrl: url,
+                    embedUrl: url
+                };
+            }
+
+            // Pour les URLs classiques (serveur local ou autre)
+            return {
+                downloadUrl: url,
+                embedUrl: url
+            };
+        }
+
         // ========== DONNÉES DES DOCUMENTS ==========
-        // Structure extensible : chaque document a une URL PDF réelle (à remplacer par vos vrais fichiers)
         const documents = [
             // Pastoraux
             {
@@ -1214,7 +1264,7 @@
                 category: "pastoral",
                 date: "Janvier 2024",
                 icon: "fas fa-church",
-                pdfUrl: "https://drive.google.com/drive/u/1/folders/1WphHTae6c9mzKze6GwOl34-ye_DnuZTS"
+                pdfUrl: "https://drive.google.com/file/d/1WphHTae6c9mzKze6GwOl34-ye_DnuZTS/view"
             }, {
                 title: "Lettre pastorale de l'Archevêque",
                 description: "Message de l'Archevêque pour le Carême 2024.",
@@ -1311,11 +1361,17 @@
         // État de l'application
         let currentCategory = "all";
         let searchTerm = "";
-        let currentPdfDoc = null;
-        let currentPageNum = 1;
-        let currentScale = 1.5;
-        let currentPdfUrl = "";
         let currentDownloadUrl = "";
+        let currentEmbedUrl = "";
+
+        // ========== NOTIFICATION TOAST ==========
+        function showNotification(message, type = "success") {
+            const notification = document.createElement('div');
+            notification.className = 'toast-notification';
+            notification.innerHTML = `<i class="fas ${type === 'success' ? 'fa-check-circle' : 'fa-info-circle'}"></i> ${message}`;
+            document.body.appendChild(notification);
+            setTimeout(() => notification.remove(), 3000);
+        }
 
         // ========== RENDU DES CATÉGORIES ==========
         function renderCategories() {
@@ -1363,7 +1419,6 @@
                 </div>
             `).join("");
 
-            // Ajouter les événements
             document.querySelectorAll('.category-card').forEach(card => {
                 card.addEventListener('click', () => {
                     currentCategory = card.getAttribute('data-category');
@@ -1392,127 +1447,121 @@
                 return;
             }
 
-            grid.innerHTML = filtered.map(doc => `
-                <div class="doc-card" data-category="${doc.category}">
-                    <div class="doc-icon"><i class="${doc.icon}"></i></div>
-                    <div class="doc-info">
-                        <h4>${escapeHtml(doc.title)}</h4>
-                        <p>${escapeHtml(doc.description)}</p>
-                        <div class="doc-meta">
-                            <span><i class="fas fa-calendar-alt"></i> ${doc.date}</span>
-                            <span><i class="fas fa-file-pdf"></i> PDF</span>
-                        </div>
-                        <div class="doc-actions">
-                            <button class="btn-preview" data-url="${doc.pdfUrl}" data-title="${escapeHtml(doc.title)}" data-download="${doc.pdfUrl}">
-                                <i class="fas fa-eye"></i> Aperçu
-                            </button>
-                            <a class="btn-download" href="${doc.pdfUrl}" download="${doc.title.replace(/[^a-z0-9]/gi, '_')}.pdf">
-                                <i class="fas fa-download"></i> Télécharger
-                            </a>
+            grid.innerHTML = filtered.map((doc, index) => {
+                const urls = convertGoogleDriveUrl(doc.pdfUrl);
+                const downloadUrl = urls ? urls.downloadUrl : doc.pdfUrl;
+                return `
+                    <div class="doc-card" data-category="${doc.category}" style="animation-delay: ${index * 0.05}s">
+                        <div class="doc-icon"><i class="${doc.icon}"></i></div>
+                        <div class="doc-info">
+                            <h4>${escapeHtml(doc.title)}</h4>
+                            <p>${escapeHtml(doc.description)}</p>
+                            <div class="doc-meta">
+                                <span><i class="fas fa-calendar-alt"></i> ${doc.date}</span>
+                                <span><i class="fas fa-file-pdf"></i> PDF</span>
+                            </div>
+                            <div class="doc-actions">
+                                <button class="btn-preview" data-url="${doc.pdfUrl}" data-title="${escapeHtml(doc.title)}">
+                                    <i class="fas fa-eye"></i> Aperçu
+                                </button>
+                                <button class="btn-download" data-url="${downloadUrl}" data-title="${escapeHtml(doc.title)}">
+                                    <i class="fas fa-download"></i> Télécharger
+                                </button>
+                            </div>
                         </div>
                     </div>
-                </div>
-            `).join("");
+                `;
+            }).join("");
 
-            // Ajouter les événements d'aperçu
             document.querySelectorAll('.btn-preview').forEach(btn => {
                 btn.addEventListener('click', (e) => {
                     e.preventDefault();
                     const url = btn.getAttribute('data-url');
                     const title = btn.getAttribute('data-title');
-                    const downloadUrl = btn.getAttribute('data-download');
-                    openPdfModal(url, title, downloadUrl);
+                    openPdfModal(url, title);
+                });
+            });
+
+            document.querySelectorAll('.btn-download').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const url = btn.getAttribute('data-url');
+                    const title = btn.getAttribute('data-title');
+                    downloadFile(url, title);
                 });
             });
         }
 
-        // ========== FONCTIONS PDF.JS ==========
-        async function openPdfModal(pdfUrl, title, downloadUrl) {
-            currentPdfUrl = pdfUrl;
-            currentDownloadUrl = downloadUrl;
+        // ========== TÉLÉCHARGEMENT DIRECT ==========
+        async function downloadFile(url, filename) {
+            try {
+                showNotification("Téléchargement en cours...", "info");
+                const response = await fetch(url);
+                if (!response.ok) throw new Error('Téléchargement échoué');
+                const blob = await response.blob();
+                const link = document.createElement('a');
+                link.href = URL.createObjectURL(blob);
+                link.download = `${filename.replace(/[^a-z0-9]/gi, '_')}.pdf`;
+                link.click();
+                URL.revokeObjectURL(link.href);
+                showNotification("Téléchargement terminé !", "success");
+            } catch (error) {
+                console.error("Erreur de téléchargement:", error);
+                // Fallback : ouvrir dans un nouvel onglet
+                window.open(url, '_blank');
+                showNotification("Ouverture du document dans un nouvel onglet", "info");
+            }
+        }
+
+        // ========== OUVERTURE MODAL PDF (Solution iframe Google Drive) ==========
+        function openPdfModal(pdfUrl, title) {
+            const urls = convertGoogleDriveUrl(pdfUrl);
+
+            if (!urls || !urls.embedUrl) {
+                showNotification("Impossible d'afficher l'aperçu du document", "error");
+                return;
+            }
+
+            currentDownloadUrl = urls.downloadUrl;
+            currentEmbedUrl = urls.embedUrl;
+
             document.getElementById('pdfTitle').textContent = title;
             document.getElementById('pdfModal').classList.add('active');
             document.body.style.overflow = 'hidden';
 
-            // Afficher un loader
-            const canvas = document.getElementById('pdfCanvas');
-            const container = document.getElementById('pdfContainer');
-            container.innerHTML = '<div class="loading-spinner" style="text-align:center; padding:50px;"><i class="fas fa-spinner fa-spin" style="font-size:2rem;"></i><p style="margin-top:10px;">Chargement du document...</p></div>';
+            const loader = document.getElementById('pdfLoader');
+            const iframe = document.getElementById('pdfIframe');
 
-            try {
-                const loadingTask = pdfjsLib.getDocument(pdfUrl);
-                currentPdfDoc = await loadingTask.promise;
-                currentPageNum = 1;
-                currentScale = 1.5;
-                document.getElementById('pageCount').textContent = currentPdfDoc.numPages;
-                renderPdfPage();
-            } catch (error) {
-                console.error('Erreur de chargement PDF:', error);
-                container.innerHTML = '<div style="text-align:center; padding:50px;"><i class="fas fa-exclamation-triangle" style="font-size:2rem; color:#e74c3c;"></i><p style="margin-top:10px;">Erreur lors du chargement du document</p></div>';
-            }
-        }
+            loader.style.display = 'flex';
+            iframe.style.display = 'none';
+            iframe.src = '';
 
-        async function renderPdfPage() {
-            if (!currentPdfDoc) return;
-
-            const page = await currentPdfDoc.getPage(currentPageNum);
-            const viewport = page.getViewport({
-                scale: currentScale
-            });
-            const canvas = document.getElementById('pdfCanvas');
-            const context = canvas.getContext('2d');
-            canvas.height = viewport.height;
-            canvas.width = viewport.width;
-
-            const renderContext = {
-                canvasContext: context,
-                viewport: viewport
-            };
-            await page.render(renderContext).promise;
-            document.getElementById('pageNum').textContent = currentPageNum;
+            // Charger l'iframe avec l'embed Google Drive
+            setTimeout(() => {
+                iframe.src = currentEmbedUrl;
+                iframe.onload = () => {
+                    loader.style.display = 'none';
+                    iframe.style.display = 'block';
+                };
+                iframe.onerror = () => {
+                    loader.innerHTML = '<div style="text-align:center; padding:50px;"><i class="fas fa-exclamation-triangle" style="font-size:2rem; color:#e74c3c;"></i><p style="margin-top:10px;">Erreur lors du chargement du document.<br>Vous pouvez le télécharger ci-dessous.</p></div>';
+                };
+            }, 100);
         }
 
         function closePdfModal() {
             document.getElementById('pdfModal').classList.remove('active');
             document.body.style.overflow = '';
-            currentPdfDoc = null;
-            const canvas = document.getElementById('pdfCanvas');
-            const ctx = canvas.getContext('2d');
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            const iframe = document.getElementById('pdfIframe');
+            iframe.src = '';
+            iframe.style.display = 'none';
+            document.getElementById('pdfLoader').style.display = 'flex';
+            document.getElementById('pdfLoader').innerHTML = '<div class="loading-spinner"><i class="fas fa-spinner fa-spin"></i><p style="margin-top:10px;">Chargement du document...</p></div>';
         }
 
-        function prevPage() {
-            if (currentPdfDoc && currentPageNum > 1) {
-                currentPageNum--;
-                renderPdfPage();
-            }
-        }
-
-        function nextPage() {
-            if (currentPdfDoc && currentPageNum < currentPdfDoc.numPages) {
-                currentPageNum++;
-                renderPdfPage();
-            }
-        }
-
-        function zoomIn() {
-            currentScale += 0.25;
-            renderPdfPage();
-        }
-
-        function zoomOut() {
-            if (currentScale > 0.5) {
-                currentScale -= 0.25;
-                renderPdfPage();
-            }
-        }
-
-        function modalDownload() {
+        function downloadCurrentPdf() {
             if (currentDownloadUrl) {
-                const link = document.createElement('a');
-                link.href = currentDownloadUrl;
-                link.download = 'document.pdf';
-                link.click();
+                downloadFile(currentDownloadUrl, document.getElementById('pdfTitle').textContent);
             }
         }
 
@@ -1534,9 +1583,7 @@
             if (menuToggle && window.innerWidth <= 992) menuToggle.innerHTML = '<i class="fas fa-times"></i>';
         }
 
-        if (menuToggle) {
-            menuToggle.addEventListener('click', () => navLinks.classList.contains('active') ? closeMenu() : openMenu());
-        }
+        if (menuToggle) menuToggle.addEventListener('click', () => navLinks.classList.contains('active') ? closeMenu() : openMenu());
         if (closeMenuBtn) closeMenuBtn.addEventListener('click', closeMenu);
         if (menuOverlay) menuOverlay.addEventListener('click', closeMenu);
         document.querySelectorAll('.nav-links a:not(#dropdownToggle)').forEach(link => link.addEventListener('click', closeMenu));
@@ -1544,7 +1591,7 @@
             if (window.innerWidth > 992) closeMenu();
         });
 
-        // ========== DROPDOWN ==========
+        // Dropdown
         const dropdown = document.getElementById('dropdownMenu');
         const dropdownToggle = document.getElementById('dropdownToggle');
         if (dropdown && dropdownToggle) {
@@ -1557,7 +1604,7 @@
             if (window.innerWidth <= 992 && dropdown && !dropdown.contains(e.target)) dropdown.classList.remove('open');
         });
 
-        // ========== RECHERCHE ==========
+        // Recherche
         function initSearch() {
             const searchInput = document.getElementById('searchInput');
             if (searchInput) {
@@ -1568,7 +1615,7 @@
             }
         }
 
-        // ========== MODE SOMBRE ==========
+        // Mode sombre
         function initDarkMode() {
             const isDark = localStorage.getItem('darkMode') === 'true';
             if (isDark) document.body.classList.add('dark-mode');
@@ -1594,7 +1641,6 @@
             }
         }
 
-        // ========== INITIALISATION ==========
         function escapeHtml(str) {
             return str.replace(/[&<>]/g, function(m) {
                 if (m === '&') return '&amp;';
@@ -1604,17 +1650,14 @@
             });
         }
 
-        // Configuration des événements du modal
+        // Événements modal
         document.getElementById('closePdfModal').addEventListener('click', closePdfModal);
-        document.getElementById('prevPage').addEventListener('click', prevPage);
-        document.getElementById('nextPage').addEventListener('click', nextPage);
-        document.getElementById('zoomIn').addEventListener('click', zoomIn);
-        document.getElementById('zoomOut').addEventListener('click', zoomOut);
-        document.getElementById('modalDownloadBtn').addEventListener('click', modalDownload);
+        document.getElementById('downloadPdfBtn').addEventListener('click', downloadCurrentPdf);
         document.getElementById('pdfModal').addEventListener('click', (e) => {
             if (e.target === document.getElementById('pdfModal')) closePdfModal();
         });
 
+        // Initialisation
         renderCategories();
         renderDocuments();
         initSearch();

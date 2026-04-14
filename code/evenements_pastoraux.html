@@ -66,6 +66,11 @@
             color: #2ecc71;
         }
         
+        body.dark-mode .padlet-card {
+            background: #1e293b;
+            border-color: #334155;
+        }
+        
         .container {
             max-width: 1280px;
             margin: 0 auto;
@@ -460,6 +465,126 @@
                 font-size: 1.5rem;
                 margin-bottom: 30px;
                 padding-left: 20px;
+            }
+        }
+        /* BARBILLARD PADLET */
+        
+        .padlet-section {
+            padding: 60px 0;
+            background: #f0f4fa;
+        }
+        
+        body.dark-mode .padlet-section {
+            background: #0a0f1a;
+        }
+        
+        .padlet-card {
+            background: white;
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s;
+            border: 1px solid #e9edf2;
+        }
+        
+        .padlet-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 35px rgba(0, 0, 0, 0.1);
+            border-color: #2ecc71;
+        }
+        
+        .padlet-header {
+            background: linear-gradient(135deg, #045286, #0a2e4a);
+            color: white;
+            padding: 20px 30px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+        
+        body.dark-mode .padlet-header {
+            background: linear-gradient(135deg, #0f1724, #020617);
+        }
+        
+        .padlet-header h3 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .padlet-header h3 i {
+            color: #2ecc71;
+        }
+        
+        .padlet-badge {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 6px 15px;
+            border-radius: 30px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+        
+        .padlet-container {
+            position: relative;
+            width: 100%;
+            height: 600px;
+            overflow: hidden;
+        }
+        
+        .padlet-iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        
+        .padlet-fallback {
+            display: none;
+            text-align: center;
+            padding: 50px;
+            background: #f8fafc;
+        }
+        
+        body.dark-mode .padlet-fallback {
+            background: #0f1724;
+        }
+        
+        .padlet-fallback i {
+            font-size: 3rem;
+            color: #2ecc71;
+            margin-bottom: 15px;
+        }
+        
+        .btn-padlet {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: #2ecc71;
+            color: #022b44;
+            padding: 12px 28px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            margin-top: 20px;
+            transition: all 0.3s;
+        }
+        
+        .btn-padlet:hover {
+            background: #045286;
+            color: white;
+            transform: translateY(-2px);
+        }
+        
+        @media (max-width: 768px) {
+            .padlet-container {
+                height: 500px;
+            }
+            .padlet-header {
+                flex-direction: column;
+                text-align: center;
             }
         }
         /* FILTRES */
@@ -905,6 +1030,33 @@
         </div>
     </section>
 
+    <!-- ========== BARBILLARD PADLET (AJOUTÉ) ========== -->
+    <section class="padlet-section">
+        <div class="container">
+            <div class="padlet-card">
+                <div class="padlet-header">
+                    <h3>
+                        <i class="fas fa-chalkboard"></i> Tableau d'affichage - Aumônerie Diocésaine
+                    </h3>
+                    <span class="padlet-badge">
+                        <i class="fas fa-sync-alt"></i> Actualisé en temps réel
+                    </span>
+                </div>
+                <div class="padlet-container">
+                    <iframe class="padlet-iframe" src="https://padlet.com/bigdatacenterinfos/aum-nerie-dioc-saine-96kaxecn4z4xjbge" title="Barbillard Aumônerie Diocésaine" loading="lazy" allow="autoplay">
+                    </iframe>
+                </div>
+                <div class="padlet-fallback" id="padletFallback">
+                    <i class="fas fa-exclamation-triangle"></i>
+                    <p>Le tableau d'affichage n'a pas pu être chargé.</p>
+                    <a href="https://padlet.com/bigdatacenterinfos/aum-nerie-dioc-saine-96kaxecn4z4xjbge" target="_blank" rel="noopener noreferrer" class="btn-padlet">
+                        <i class="fas fa-external-link-alt"></i> Ouvrir dans un nouvel onglet
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- FILTRES -->
     <section class="filters-section">
         <div class="container">
@@ -1023,7 +1175,6 @@
                 categoryLabel: "Messe & Célébration",
                 categoryColor: "#2ecc71"
             },
-
             // Retraites & Camps
             {
                 id: 5,
@@ -1059,7 +1210,6 @@
                 categoryLabel: "Retraite & Camp",
                 categoryColor: "#3498db"
             },
-
             // Formations & Ateliers
             {
                 id: 8,
@@ -1095,7 +1245,6 @@
                 categoryLabel: "Formation & Atelier",
                 categoryColor: "#e67e22"
             },
-
             // Événements Jeunesse
             {
                 id: 11,
@@ -1157,6 +1306,32 @@
                 monthShort: shortMonths[date.getMonth()],
                 year: date.getFullYear()
             };
+        }
+
+        // Gestion du fallback Padlet (si l'iframe ne charge pas)
+        const padletIframe = document.querySelector('.padlet-iframe');
+        const padletFallback = document.getElementById('padletFallback');
+
+        if (padletIframe) {
+            padletIframe.onerror = function() {
+                padletIframe.style.display = 'none';
+                padletFallback.style.display = 'block';
+            };
+
+            // Timeout pour détecter si le chargement prend trop de temps
+            setTimeout(() => {
+                try {
+                    if (padletIframe && padletIframe.contentWindow) {
+                        const iframeDoc = padletIframe.contentDocument || padletIframe.contentWindow.document;
+                        if (!iframeDoc || iframeDoc.readyState !== 'complete') {
+                            padletIframe.style.display = 'none';
+                            padletFallback.style.display = 'block';
+                        }
+                    }
+                } catch (e) {
+                    // Cross-origin, on ignore
+                }
+            }, 8000);
         }
 
         // Rendu des événements

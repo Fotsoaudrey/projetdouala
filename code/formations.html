@@ -8,7 +8,8 @@
     <meta name="description" content="Formation intégrale des jeunes et emploi dans la société – Programme de formation de l'Aumônerie Diocésaine de Douala : doctrine sociale, entrepreneuriat, art oratoire, éthique, compétences digitales, engagement civique.">
 
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&display=swap" rel="stylesheet">
 
     <!-- Font Awesome 6 -->
@@ -23,451 +24,947 @@
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 
     <style>
+        /* ===== VARIABLES ===== */
+        
+         :root {
+            --primary: #045286;
+            --primary-dark: #022b44;
+            --primary-light: #0a6eb5;
+            --accent: #2ecc71;
+            --accent-dark: #27ae60;
+            --light: #f5f7fb;
+            --dark: #0f1724;
+            --gray: #64748b;
+            --gray-light: #e2e8f0;
+            --white: #ffffff;
+            --shadow-sm: 0 4px 12px rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.08);
+            --shadow-lg: 0 16px 40px rgba(0, 0, 0, 0.12);
+            --shadow-xl: 0 24px 60px rgba(0, 0, 0, 0.15);
+            --radius-sm: 0.75rem;
+            --radius-md: 1rem;
+            --radius-lg: 1.5rem;
+            --radius-xl: 2rem;
+            --transition: all 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+        }
+        
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
         
-         :root {
-            --primary: #045286;
-            --primary-dark: #022b44;
-            --secondary: #2ecc71;
-            --secondary-dark: #27ae60;
-            --light: #f8fafc;
-            --dark: #0f1724;
-            --gray: #64748b;
-            --white: #ffffff;
-            --shadow: 0 20px 35px -10px rgba(0, 0, 0, 0.1);
-            --glass: rgba(255, 255, 255, 0.1);
-            --radius: 2rem;
-        }
-        
         body {
             font-family: 'Inter', sans-serif;
             background: var(--light);
-            color: var(--dark);
+            color: #1a2c3e;
             line-height: 1.5;
+            scroll-behavior: smooth;
+            transition: background 0.3s ease, color 0.3s ease;
             overflow-x: hidden;
         }
         
         body.dark-mode {
             background: var(--dark);
-            color: var(--light);
+            color: var(--gray-light);
         }
-        /* Conteneur */
+        
+        body.dark-mode .navbar {
+            background: #1e293b;
+        }
+        
+        body.dark-mode .formation-card,
+        body.dark-mode .step-card,
+        body.dark-mode .testimonial-card,
+        body.dark-mode .contact-form {
+            background: #1e293b;
+            border-color: #334155;
+        }
+        
+        body.dark-mode .section-title {
+            color: var(--accent);
+        }
+        
+        body.dark-mode .formation-card h3 {
+            color: var(--accent);
+        }
+        
+        body.dark-mode .step-card h4 {
+            color: var(--accent);
+        }
+        
+        body.dark-mode .testimonial-card h4 {
+            color: var(--accent);
+        }
+        
+        body.dark-mode footer {
+            background: #020617;
+        }
+        
+        body.dark-mode .dropdown-menu {
+            background: #1e293b;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+        }
+        
+        body.dark-mode .dropdown-menu a {
+            color: var(--gray-light);
+        }
+        
+        body.dark-mode .dropdown-menu a:hover {
+            background: #2d3748;
+            color: var(--accent);
+        }
+        
+        body.dark-mode .form-group input {
+            background: #0f1724;
+            border-color: #334155;
+            color: var(--gray-light);
+        }
         
         .container {
             max-width: 1280px;
             margin: 0 auto;
-            padding: 0 2rem;
+            padding: 0 24px;
         }
-        /* Mode sombre */
+        /* ===== HEADER ===== */
         
-        body.dark-mode .glass-card,
-        body.dark-mode .testimonial-card,
-        body.dark-mode .step-card,
-        body.dark-mode .formation-card,
-        body.dark-mode .contact-form {
-            background: rgba(30, 41, 59, 0.8);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(46, 204, 113, 0.2);
-        }
-        /* Contrôles */
-        
-        .controls-bar {
-            position: fixed;
-            top: 1.5rem;
-            right: 1.5rem;
-            z-index: 1000;
-            display: flex;
-            gap: 0.75rem;
+        .top-bar {
+            background: linear-gradient(135deg, #0a2e4a, var(--primary));
+            color: white;
+            padding: 20px 0;
+            border-bottom: 3px solid var(--accent);
         }
         
-        .ctrl-btn {
-            background: rgba(255, 255, 255, 0.9);
-            border: none;
-            width: 44px;
-            height: 44px;
-            border-radius: 50%;
-            cursor: pointer;
-            font-size: 1.2rem;
-            transition: all 0.2s;
+        body.dark-mode .top-bar {
+            background: linear-gradient(135deg, #020617, #0f1724);
+        }
+        
+        .header-flex {
             display: flex;
             align-items: center;
-            justify-content: center;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            justify-content: space-between;
+            gap: 20px;
+            flex-wrap: wrap;
         }
         
-        body.dark-mode .ctrl-btn {
-            background: #1e293b;
-            color: var(--light);
+        .logo {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid var(--accent);
+            background: white;
         }
         
-        .ctrl-btn:hover {
-            transform: scale(1.05);
-        }
-        /* Header & Navigation */
-        
-        header {
-            background: linear-gradient(135deg, #0a2e4a, var(--primary));
-            border-bottom: 3px solid var(--secondary);
-            padding: 1.5rem 0;
-            text-align: center;
-        }
-        
-        header h1 {
-            font-size: 1.8rem;
-            font-weight: 700;
-            letter-spacing: 2px;
-            color: var(--secondary);
-        }
-        
-        @media (min-width: 768px) {
-            header h1 {
-                font-size: 2.2rem;
+        @media (max-width: 768px) {
+            .logo {
+                width: 50px;
+                height: 50px;
             }
         }
         
-        nav {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(8px);
+        .site-title {
+            text-align: center;
+            flex: 1;
+        }
+        
+        .site-title h1 {
+            font-size: 1.6rem;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+        
+        .site-title p {
+            font-size: 0.85rem;
+            opacity: 0.85;
+        }
+        
+        @media (max-width: 768px) {
+            .site-title h1 {
+                font-size: 1rem;
+            }
+            .site-title p {
+                font-size: 0.7rem;
+            }
+        }
+        /* ===== NAVBAR ===== */
+        
+        .navbar {
+            background: white;
+            box-shadow: var(--shadow-sm);
             position: sticky;
             top: 0;
             z-index: 99;
-            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+            transition: background 0.3s;
         }
         
-        body.dark-mode nav {
-            background: rgba(15, 23, 36, 0.95);
+        body.dark-mode .navbar {
+            background: #1e293b;
+        }
+        
+        .nav-container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+        }
+        
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.8rem;
+            color: var(--primary);
+            cursor: pointer;
+            padding: 12px;
+        }
+        
+        body.dark-mode .menu-toggle {
+            color: var(--accent);
         }
         
         .nav-links {
             display: flex;
             justify-content: center;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-            padding: 0.75rem 1rem;
+            align-items: center;
+            gap: 8px;
             list-style: none;
+            padding: 16px 0;
+            margin: 0;
+            flex: 1;
         }
         
         .nav-links a {
-            padding: 0.6rem 1.2rem;
+            padding: 10px 20px;
             font-weight: 600;
+            color: #1a2c3e;
             text-decoration: none;
-            border-radius: 2rem;
-            transition: 0.2s;
+            border-radius: 40px;
+            transition: all 0.25s;
             display: flex;
             align-items: center;
-            gap: 0.5rem;
-            color: var(--dark);
+            gap: 8px;
+            font-size: 0.9rem;
         }
         
         body.dark-mode .nav-links a {
-            color: var(--light);
+            color: var(--gray-light);
         }
         
         .nav-links a i {
-            color: var(--secondary);
+            color: var(--accent);
         }
         
         .nav-links a:hover {
             background: var(--primary);
             color: white;
+            transform: translateY(-2px);
         }
         
         .nav-links a:hover i {
             color: white;
         }
-        /* Hero section avec effet de vague */
+        
+        .dropdown {
+            position: relative;
+        }
+        
+        .dropdown>a {
+            cursor: pointer;
+        }
+        
+        .dropdown>a i.fa-chevron-down {
+            font-size: 0.7rem;
+            transition: transform 0.3s;
+        }
+        
+        .dropdown.open>a i.fa-chevron-down {
+            transform: rotate(180deg);
+        }
+        
+        .dropdown-menu {
+            position: absolute;
+            top: calc(100% + 8px);
+            left: 0;
+            background: white;
+            min-width: 240px;
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-lg);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: all 0.3s;
+            z-index: 100;
+            padding: 12px 8px;
+            list-style: none;
+        }
+        
+        .dropdown.open .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        
+        .dropdown-menu a {
+            padding: 10px 16px;
+            font-size: 0.85rem;
+            border-radius: var(--radius-sm);
+        }
+        
+        @media (min-width: 993px) {
+            .dropdown:hover .dropdown-menu {
+                opacity: 1;
+                visibility: visible;
+                transform: translateY(0);
+            }
+            .dropdown:hover>a i.fa-chevron-down {
+                transform: rotate(180deg);
+            }
+        }
+        
+        .mobile-only-elements {
+            display: none;
+        }
+        
+        .nav-controls {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+            flex-shrink: 0;
+        }
+        
+        .ctrl-btn {
+            background: rgba(0, 0, 0, 0.08);
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.1rem;
+            color: #1a2c3e;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        body.dark-mode .ctrl-btn {
+            background: rgba(255, 255, 255, 0.15);
+            color: var(--gray-light);
+        }
+        
+        .ctrl-btn:hover {
+            background: var(--accent);
+            color: var(--primary-dark);
+            transform: scale(1.05);
+        }
+        
+        .menu-overlay {
+            display: none;
+        }
+        
+        @media (max-width: 992px) {
+            .menu-toggle {
+                display: block;
+            }
+            .nav-controls {
+                display: none;
+            }
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 280px;
+                height: 100vh;
+                background: white;
+                flex-direction: column;
+                align-items: stretch;
+                padding: 70px 24px 30px;
+                transition: right 0.3s ease;
+                z-index: 100;
+            }
+            body.dark-mode .nav-links {
+                background: #1e293b;
+            }
+            .nav-links.active {
+                right: 0;
+            }
+            .nav-links.active .mobile-only-elements {
+                display: flex;
+                flex-direction: column;
+                order: -1;
+                margin-bottom: 20px;
+            }
+            .mobile-controls {
+                display: flex;
+                gap: 16px;
+                justify-content: center;
+                padding-bottom: 16px;
+                border-bottom: 1px solid #e9edf2;
+            }
+            .close-menu-btn {
+                position: absolute;
+                top: 16px;
+                right: 20px;
+                background: none;
+                border: none;
+                font-size: 1.5rem;
+                color: var(--primary);
+                cursor: pointer;
+            }
+            body.dark-mode .close-menu-btn {
+                color: var(--accent);
+            }
+            .menu-overlay {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(0, 0, 0, 0.5);
+                z-index: 99;
+                display: none;
+            }
+            .menu-overlay.active {
+                display: block;
+            }
+            .dropdown .dropdown-menu {
+                position: static;
+                opacity: 1;
+                visibility: visible;
+                transform: none;
+                box-shadow: none;
+                padding-left: 20px;
+                background: transparent;
+                display: none;
+            }
+            .dropdown.open .dropdown-menu {
+                display: block;
+            }
+        }
+        /* ===== HERO SECTION ===== */
         
         .hero {
             position: relative;
-            background: linear-gradient(135deg, var(--primary), #0072a8);
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
             color: white;
-            padding: 5rem 0 8rem;
+            padding: 80px 0 100px;
             text-align: center;
-            clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" opacity="0.05"><path fill="white" d="M50,0 L61.8,38.2 L100,38.2 L69.1,61.8 L80.9,100 L50,75.4 L19.1,100 L30.9,61.8 L0,38.2 L38.2,38.2 Z"/></svg>') repeat;
+            opacity: 0.1;
         }
         
         .hero .synode-badge {
-            background: var(--secondary);
-            color: #022b44;
+            background: var(--accent);
+            color: var(--primary-dark);
             display: inline-block;
-            padding: 0.3rem 1.2rem;
-            border-radius: 2rem;
+            padding: 6px 18px;
+            border-radius: 40px;
             font-weight: 700;
-            font-size: 0.8rem;
-            margin-bottom: 1.5rem;
+            font-size: 0.75rem;
+            margin-bottom: 20px;
+            letter-spacing: 1px;
         }
         
         .hero h1 {
             font-size: 3rem;
             font-weight: 800;
             font-family: 'Cormorant Garamond', serif;
+            margin-bottom: 16px;
         }
         
         .hero p {
             max-width: 600px;
-            margin: 1rem auto 0;
+            margin: 0 auto;
             opacity: 0.9;
+            font-size: 1rem;
         }
-        /* Theme banner */
         
-        .theme-banner {
-            background: var(--secondary);
-            color: #022b44;
-            text-align: center;
-            padding: 0.75rem;
-            font-weight: 700;
-            font-size: 0.85rem;
+        @media (max-width: 768px) {
+            .hero {
+                padding: 60px 0 80px;
+            }
+            .hero h1 {
+                font-size: 2rem;
+            }
         }
-        /* Section formations – style cartes avec icônes et hover 3D */
+        /* ===== SECTION TITLE ===== */
         
         .section-title {
             text-align: center;
-            font-size: 2rem;
+            font-size: 1.8rem;
             font-weight: 700;
-            margin: 3rem 0 2rem;
             color: var(--primary);
+            margin: 60px 0 40px;
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 3px;
+            background: var(--accent);
+            margin: 12px auto 0;
+            border-radius: 2px;
         }
         
         body.dark-mode .section-title {
-            color: var(--secondary);
+            color: var(--accent);
         }
+        
+        @media (max-width: 768px) {
+            .section-title {
+                font-size: 1.5rem;
+                margin: 40px 0 30px;
+            }
+        }
+        /* ===== FORMATIONS GRID ===== */
         
         .formations-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin: 2rem 0;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+            margin: 40px 0;
         }
         
         .formation-card {
             background: white;
-            border-radius: 1.5rem;
-            padding: 2rem;
-            transition: all 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
-            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05);
-            border: 1px solid rgba(0, 0, 0, 0.05);
+            border-radius: 24px;
+            padding: 32px 24px;
+            transition: var(--transition);
+            border: 1px solid var(--gray-light);
+            box-shadow: var(--shadow-sm);
             text-align: center;
         }
         
         .formation-card:hover {
-            transform: translateY(-12px) scale(1.02);
-            box-shadow: var(--shadow);
-            border-color: var(--secondary);
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--accent);
         }
         
-        .formation-card i {
-            font-size: 2.5rem;
-            color: var(--secondary);
-            margin-bottom: 1rem;
+        .formation-card .card-icon {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, var(--accent), var(--accent-dark));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+        }
+        
+        .formation-card .card-icon i {
+            font-size: 2rem;
+            color: white;
         }
         
         .formation-card h3 {
             font-size: 1.3rem;
-            margin-bottom: 0.75rem;
+            margin-bottom: 12px;
             color: var(--primary);
-        }
-        
-        body.dark-mode .formation-card h3 {
-            color: var(--secondary);
         }
         
         .formation-card p {
             color: var(--gray);
-            font-size: 0.9rem;
+            font-size: 0.85rem;
+            line-height: 1.6;
         }
-        /* Timeline – Parcours d'insertion */
+        /* ===== TIMELINE ===== */
         
         .timeline-section {
-            background: linear-gradient(to right, #f0f4f8, #ffffff);
-            border-radius: 2rem;
-            padding: 3rem 2rem;
-            margin: 4rem 0;
+            background: linear-gradient(135deg, #f0f4fa, #ffffff);
+            border-radius: 32px;
+            padding: 50px 40px;
+            margin: 50px 0;
         }
         
         body.dark-mode .timeline-section {
-            background: #111827;
+            background: #0a0f1a;
+        }
+        
+        .timeline-section h3 {
+            text-align: center;
+            font-size: 1.5rem;
+            color: var(--primary);
+            margin-bottom: 40px;
+        }
+        
+        body.dark-mode .timeline-section h3 {
+            color: var(--accent);
         }
         
         .timeline {
             display: flex;
             flex-wrap: wrap;
-            justify-content: space-between;
-            gap: 1.5rem;
-            margin-top: 2rem;
+            justify-content: center;
+            gap: 30px;
         }
         
         .step-card {
             flex: 1;
             min-width: 200px;
             background: white;
-            border-radius: 1.5rem;
-            padding: 1.5rem;
+            border-radius: 20px;
+            padding: 28px 20px;
             text-align: center;
-            transition: 0.3s;
-            border-top: 4px solid var(--secondary);
+            transition: var(--transition);
+            border: 1px solid var(--gray-light);
+            position: relative;
         }
         
         .step-card:hover {
             transform: translateY(-5px);
+            box-shadow: var(--shadow-md);
+            border-color: var(--accent);
         }
         
         .step-number {
-            background: var(--secondary);
-            color: #022b44;
-            width: 40px;
-            height: 40px;
+            background: var(--accent);
+            color: var(--primary-dark);
+            width: 48px;
+            height: 48px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             font-weight: 800;
-            margin: 0 auto 1rem;
+            font-size: 1.2rem;
+            margin: 0 auto 16px;
         }
         
         .step-card h4 {
             font-weight: 700;
-            margin-bottom: 0.5rem;
+            margin-bottom: 10px;
+            color: var(--primary);
         }
         
         .step-card p {
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             color: var(--gray);
+            line-height: 1.5;
         }
-        /* Témoignages Swiper */
+        
+        @media (max-width: 768px) {
+            .timeline-section {
+                padding: 30px 20px;
+            }
+            .timeline {
+                flex-direction: column;
+            }
+            .step-card {
+                min-width: auto;
+            }
+        }
+        /* ===== TESTIMONIALS SWIPER ===== */
         
         .testimonials {
-            margin: 4rem 0;
+            margin: 50px 0;
+        }
+        
+        .testimonial-swiper {
+            padding: 20px 10px 40px;
         }
         
         .testimonial-card {
             background: white;
-            border-radius: 1.5rem;
-            padding: 2rem;
+            border-radius: 24px;
+            padding: 32px;
             text-align: center;
-            box-shadow: var(--shadow);
+            box-shadow: var(--shadow-md);
+            border: 1px solid var(--gray-light);
+            transition: var(--transition);
+        }
+        
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
         }
         
         .testimonial-card i {
             font-size: 2rem;
-            color: var(--secondary);
-            margin-bottom: 1rem;
+            color: var(--accent);
+            margin-bottom: 16px;
+            opacity: 0.7;
         }
         
         .testimonial-card p {
             font-style: italic;
-            margin-bottom: 1rem;
+            margin-bottom: 16px;
+            font-size: 0.95rem;
+            line-height: 1.6;
         }
         
         .testimonial-card h4 {
             font-weight: 700;
             color: var(--primary);
+            font-size: 0.9rem;
         }
         
         .swiper-pagination-bullet-active {
-            background: var(--secondary);
+            background: var(--accent);
         }
-        /* Formulaire d'inscription */
+        /* ===== CONTACT FORM ===== */
         
         .contact-form {
             background: white;
-            border-radius: 2rem;
-            padding: 2.5rem;
-            margin: 4rem 0;
-            box-shadow: var(--shadow);
+            border-radius: 32px;
+            padding: 40px;
+            margin: 50px 0;
+            box-shadow: var(--shadow-md);
             text-align: center;
+            border: 1px solid var(--gray-light);
+        }
+        
+        .contact-form h3 {
+            font-size: 1.5rem;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+        
+        body.dark-mode .contact-form h3 {
+            color: var(--accent);
+        }
+        
+        .contact-form p {
+            color: var(--gray);
+            margin-bottom: 24px;
+            font-size: 0.85rem;
         }
         
         .form-group {
             display: flex;
             flex-wrap: wrap;
-            gap: 1rem;
-            margin-top: 1.5rem;
+            gap: 16px;
+            margin-bottom: 20px;
         }
         
         .form-group input {
             flex: 1;
-            padding: 0.8rem 1rem;
-            border: 1px solid #e2e8f0;
-            border-radius: 2rem;
+            padding: 14px 20px;
+            border: 1px solid var(--gray-light);
+            border-radius: 50px;
             font-family: inherit;
+            font-size: 0.9rem;
+            transition: var(--transition);
         }
         
-        body.dark-mode .form-group input {
-            background: #1e293b;
-            border-color: #334155;
-            color: white;
+        .form-group input:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px rgba(46, 204, 113, 0.2);
         }
         
         .btn-submit {
-            background: var(--secondary);
-            color: #022b44;
+            background: var(--accent);
+            color: var(--primary-dark);
             border: none;
-            padding: 0.8rem 2rem;
-            border-radius: 2rem;
+            padding: 14px 36px;
+            border-radius: 50px;
             font-weight: 700;
+            font-size: 1rem;
             cursor: pointer;
-            transition: 0.2s;
-            margin-top: 10px;
+            transition: var(--transition);
         }
         
         .btn-submit:hover {
             background: var(--primary);
             color: white;
+            transform: translateY(-3px);
         }
-        /* Back link */
+        /* ===== BACK BUTTON ===== */
         
-        .back-link {
+        .back-container {
             text-align: center;
-            margin: 2rem 0;
+            margin: 40px 0 60px;
         }
         
         .btn-back {
             display: inline-flex;
             align-items: center;
-            gap: 0.5rem;
+            gap: 10px;
             background: var(--primary);
             color: white;
-            padding: 0.7rem 2rem;
-            border-radius: 2rem;
+            padding: 12px 32px;
+            border-radius: 50px;
             text-decoration: none;
             font-weight: 600;
-            transition: 0.2s;
+            transition: var(--transition);
         }
         
         .btn-back:hover {
-            background: var(--secondary);
+            background: var(--accent);
+            color: var(--primary-dark);
             transform: translateX(-5px);
         }
         
-        footer {
+        body.dark-mode .btn-back {
+            background: var(--accent);
+            color: var(--primary-dark);
+        }
+        
+        body.dark-mode .btn-back:hover {
+            background: white;
+            color: var(--primary-dark);
+        }
+        /* ===== FOOTER ===== */
+        
+        .main-footer {
             background: var(--primary-dark);
+            color: #cbd5e1;
+            padding: 60px 0 30px;
+        }
+        
+        body.dark-mode .main-footer {
+            background: #020617;
+        }
+        
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-col h3 {
             color: white;
-            text-align: center;
-            padding: 2rem;
-            margin-top: 3rem;
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+            padding-bottom: 12px;
+            border-bottom: 2px solid var(--accent);
+            display: inline-block;
         }
         
-        footer a {
-            color: var(--secondary);
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links a {
+            color: #cbd5e1;
             text-decoration: none;
+            transition: 0.2s;
+            font-size: 0.8rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
         }
         
-        @media (max-width: 768px) {
-            .container {
-                padding: 0 1rem;
+        .footer-links a:hover {
+            color: var(--accent);
+            transform: translateX(4px);
+        }
+        
+        .dev-names {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        
+        .dev-names span {
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 16px;
+            margin-top: 16px;
+        }
+        
+        .social-links a {
+            width: 36px;
+            height: 36px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: 0.3s;
+        }
+        
+        .social-links a:hover {
+            background: var(--accent);
+            transform: translateY(-3px);
+        }
+        
+        .social-links a i {
+            font-size: 1rem;
+            color: white;
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.7rem;
+        }
+        
+        @media (max-width: 992px) {
+            .footer-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 30px;
             }
-            .hero h1 {
-                font-size: 2rem;
+        }
+        
+        @media (max-width: 576px) {
+            .footer-grid {
+                grid-template-columns: 1fr;
+                text-align: center;
             }
-            .timeline {
-                flex-direction: column;
+            .footer-col h3 {
+                display: block;
+                text-align: center;
+            }
+            .social-links {
+                justify-content: center;
             }
             .form-group {
                 flex-direction: column;
+            }
+        }
+        /* Toast Notification */
+        
+        .toast-notification {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: var(--accent);
+            color: var(--primary-dark);
+            padding: 12px 24px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.85rem;
+            z-index: 1000;
+            animation: slideIn 0.3s ease;
+            box-shadow: var(--shadow-md);
+        }
+        
+        @keyframes slideIn {
+            from {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
             }
         }
     </style>
@@ -475,124 +972,172 @@
 
 <body>
 
-    <div class="controls-bar">
-        <button class="ctrl-btn" id="darkModeToggle" aria-label="Mode sombre"><i class="fas fa-moon"></i></button>
-        <button class="ctrl-btn" id="langToggle" aria-label="Changer de langue"><i class="fas fa-globe"></i></button>
-    </div>
-
-    <div class="theme-banner" data-key="themeBanner"> Thème : Formation intégrale des jeunes et emploi dans la société</div>
-
-    <header>
-        <div class="container">
-            <h1 data-key="headerTitle">Aumônerie Diocésaine Jeunesse & Enfance</h1>
-            <p data-key="headerSub">Douala – Cameroun</p>
+    <!-- HEADER -->
+    <header class="top-bar">
+        <div class="container header-flex">
+            <img src="../image/logo formation.jpeg" alt="Logo Aumônerie" class="logo" onerror="this.src='https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=100&h=100&fit=crop'">
+            <div class="site-title">
+                <h1>Aumônerie Diocésaine Jeunesse & Enfance</h1>
+                <p>Archidiocèse de Douala – Cameroun</p>
+            </div>
+            <img src="../image/logo nj.jpeg" alt="Logo NJ" class="logo" onerror="this.src='https://images.unsplash.com/photo-1504051771394-dd2f66b2e08f?w=100&h=100&fit=crop'">
         </div>
     </header>
 
-    <nav>
-        <div class="container">
-            <ul class="nav-links">
-                <li><a href="index.html"><i class="fas fa-home"></i> <span data-key="nav1">Accueil</span></a></li>
-                <li><a href="index.html#apropos"><i class="fas fa-church"></i> <span data-key="nav2">À propos</span></a></li>
-                <li><a href="index.html#enfance"><i class="fas fa-child"></i> <span data-key="nav3">Enfance</span></a></li>
-                <li><a href="index.html#jeunesse"><i class="fas fa-users"></i> <span data-key="nav4">Jeunesse</span></a></li>
-                <li><a href="index.html#actus"><i class="fas fa-newspaper"></i> <span data-key="nav5">Actualités</span></a></li>
+    <!-- NAVIGATION -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <button class="menu-toggle" id="menuToggle">
+                <i class="fas fa-bars"></i>
+            </button>
+
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html"><i class="fas fa-home"></i> Accueil</a></li>
+                <li><a href="index.html#apropos"><i class="fas fa-church"></i> À propos</a></li>
+                <li><a href="index.html#enfance"><i class="fas fa-child"></i> Enfance</a></li>
+                <li><a href="index.html#jeunesse"><i class="fas fa-users"></i> Jeunesse</a></li>
+
+                <li class="dropdown" id="dropdownMenu">
+                    <a href="javascript:void(0)" id="dropdownToggle">
+                        <i class="fas fa-newspaper"></i> Vie du Diocèse
+                        <i class="fas fa-chevron-down"></i>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="annonces.html"><i class="fas fa-bullhorn"></i> Annonces</a></li>
+                        <li><a href="communiques.html"><i class="fas fa-file-alt"></i> Communiqués</a></li>
+                        <li><a href="radio_television.html"><i class="fas fa-broadcast-tower"></i> Radio & Télévision</a></li>
+                        <li><a href="documentation.html"><i class="fas fa-book"></i> Documentation</a></li>
+                        <li><a href="evenements_pastoraux.html"><i class="fas fa-calendar-alt"></i> Événements Pastoraux</a></li>
+                        <li><a href="pelerinage.html"><i class="fas fa-hiking"></i> Pèlerinages</a></li>
+                        <li><a href="retraites.html"><i class="fas fa-pray"></i> Retraites spirituelles</a></li>
+                        <li><a href="formations_bibliques.html"><i class="fas fa-chalkboard-user"></i> Formations bibliques</a></li>
+                    </ul>
+                </li>
+
+                <li><a href="index.html#phototheque"><i class="fas fa-images"></i> Galerie</a></li>
+
+                <div class="mobile-only-elements">
+                    <div class="mobile-controls">
+                        <button class="ctrl-btn" id="darkModeToggleMobile"><i class="fas fa-moon"></i></button>
+                        <button class="ctrl-btn" id="langToggleMobile"><i class="fas fa-globe"></i></button>
+                    </div>
+                    <button class="close-menu-btn" id="closeMenuBtn">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
             </ul>
+
+            <div class="nav-controls">
+                <button class="ctrl-btn" id="darkModeToggleDesktop"><i class="fas fa-moon"></i></button>
+                <button class="ctrl-btn" id="langToggleDesktop"><i class="fas fa-globe"></i></button>
+            </div>
         </div>
+        <div class="menu-overlay" id="menuOverlay"></div>
     </nav>
 
+    <!-- HERO SECTION -->
     <section class="hero">
         <div class="container">
-            <div class="synode-badge" data-key="synodeBadge">DEUXIÈME ANNÉE DU SYNODE</div>
-            <h1 data-key="heroTitle">Leadership & Excellence</h1>
-            <p data-key="heroDesc">Une formation intégrale pour briller dans l'Église et impacter la société.</p>
+            <div class="synode-badge">DEUXIÈME ANNÉE DU SYNODE</div>
+            <h1>Leadership & Excellence</h1>
+            <p>Une formation intégrale pour briller dans l'Église et impacter la société.</p>
         </div>
     </section>
 
     <div class="container">
-        <!-- Section formations -->
-        <h2 class="section-title" data-key="formationsTitle">Nos modules de formation</h2>
+        <!-- FORMATIONS SECTION -->
+        <h2 class="section-title">Nos modules de formation</h2>
         <div class="formations-grid" data-aos="fade-up">
             <div class="formation-card">
-                <i class="fas fa-balance-scale"></i>
-                <h3 data-key="card1Title">Doctrine Sociale</h3>
-                <p data-key="card1Desc">Étudier les principes de l'Église sur le travail, la justice et le bien commun pour agir en citoyen éclairé.</p>
+                <div class="card-icon"><i class="fas fa-balance-scale"></i></div>
+                <h3>Doctrine Sociale</h3>
+                <p>Étudier les principes de l'Église sur le travail, la justice et le bien commun pour agir en citoyen éclairé.</p>
             </div>
             <div class="formation-card">
-                <i class="fas fa-rocket"></i>
-                <h3 data-key="card2Title">Entrepreneuriat</h3>
-                <p data-key="card2Desc">De l'idée au projet : outils pratiques pour créer des activités génératrices de revenus et d'emplois.</p>
+                <div class="card-icon"><i class="fas fa-rocket"></i></div>
+                <h3>Entrepreneuriat</h3>
+                <p>De l'idée au projet : outils pratiques pour créer des activités génératrices de revenus et d'emplois.</p>
             </div>
             <div class="formation-card">
-                <i class="fas fa-microphone-alt"></i>
-                <h3 data-key="card3Title">Art Oratoire</h3>
-                <p data-key="card3Desc">Développer son charisme et sa capacité de persuasion pour porter la voix des jeunes avec assurance.</p>
+                <div class="card-icon"><i class="fas fa-microphone-alt"></i></div>
+                <h3>Art Oratoire</h3>
+                <p>Développer son charisme et sa capacité de persuasion pour porter la voix des jeunes avec assurance.</p>
             </div>
             <div class="formation-card">
-                <i class="fas fa-shield-alt"></i>
-                <h3 data-key="card4Title">Éthique Professionnelle</h3>
-                <p data-key="card4Desc">Apprendre à concilier foi et carrière, en luttant contre la corruption et en prônant l'intégrité au travail.</p>
+                <div class="card-icon"><i class="fas fa-shield-alt"></i></div>
+                <h3>Éthique Professionnelle</h3>
+                <p>Apprendre à concilier foi et carrière, en luttant contre la corruption et en prônant l'intégrité.</p>
             </div>
             <div class="formation-card">
-                <i class="fas fa-laptop-code"></i>
-                <h3 data-key="card5Title">Compétences Digitales</h3>
-                <p data-key="card5Desc">Maîtriser les outils numériques pour booster son employabilité et évangéliser sur les réseaux sociaux.</p>
+                <div class="card-icon"><i class="fas fa-laptop-code"></i></div>
+                <h3>Compétences Digitales</h3>
+                <p>Maîtriser les outils numériques pour booster son employabilité et évangéliser sur les réseaux sociaux.</p>
             </div>
             <div class="formation-card">
-                <i class="fas fa-globe-africa"></i>
-                <h3 data-key="card6Title">Engagement Civique</h3>
-                <p data-key="card6Desc">Comprendre son rôle dans la nation pour participer activement au développement du Cameroun.</p>
+                <div class="card-icon"><i class="fas fa-globe-africa"></i></div>
+                <h3>Engagement Civique</h3>
+                <p>Comprendre son rôle dans la nation pour participer activement au développement du Cameroun.</p>
             </div>
         </div>
 
-        <!-- Timeline d'insertion -->
+        <!-- TIMELINE SECTION -->
         <div class="timeline-section" data-aos="fade-up">
-            <h3 style="text-align:center; color:var(--primary);" data-key="timelineTitle">Parcours d'insertion professionnelle</h3>
+            <h3><i class="fa-solid fa-thumbtack"></i> Parcours d'insertion professionnelle</h3>
             <div class="timeline">
                 <div class="step-card">
                     <div class="step-number">1</div>
-                    <h4 data-key="step1Title">Diagnostic</h4>
-                    <p data-key="step1Desc">Évaluation des compétences et orientation personnalisée.</p>
+                    <h4>Diagnostic</h4>
+                    <p>Évaluation des compétences et orientation personnalisée.</p>
                 </div>
                 <div class="step-card">
                     <div class="step-number">2</div>
-                    <h4 data-key="step2Title">Formation</h4>
-                    <p data-key="step2Desc">Ateliers pratiques et mentorat par des experts.</p>
+                    <h4>Formation</h4>
+                    <p>Ateliers pratiques et mentorat par des experts.</p>
                 </div>
                 <div class="step-card">
                     <div class="step-number">3</div>
-                    <h4 data-key="step3Title">Mise en situation</h4>
-                    <p data-key="step3Desc">Stages en entreprise et projets concrets.</p>
+                    <h4>Mise en situation</h4>
+                    <p>Stages en entreprise et projets concrets.</p>
                 </div>
                 <div class="step-card">
                     <div class="step-number">4</div>
-                    <h4 data-key="step4Title">Suivi post-insertion</h4>
-                    <p data-key="step4Desc">Accompagnement pendant les premiers mois.</p>
+                    <h4>Suivi post-insertion</h4>
+                    <p>Accompagnement pendant les premiers mois.</p>
                 </div>
             </div>
         </div>
 
-        <!-- Témoignages (carrousel) -->
+        <!-- TESTIMONIALS SECTION -->
         <div class="testimonials" data-aos="fade-up">
-            <h2 class="section-title" data-key="testimonialsTitle">Ils témoignent</h2>
+            <h2 class="section-title"><i class="fa-solid fa-quote-left"></i>Ils témoignent</h2>
             <div class="swiper testimonial-swiper">
                 <div class="swiper-wrapper">
                     <div class="swiper-slide">
-                        <div class="testimonial-card"><i class="fas fa-quote-left"></i>
-                            <p data-key="testimonial1">"La formation en entrepreneuriat m'a permis de lancer ma propre activité."</p>
+                        <div class="testimonial-card">
+                            <i class="fas fa-quote-left"></i>
+                            <p>"La formation en entrepreneuriat m'a permis de lancer ma propre activité."</p>
                             <h4>— David M.</h4>
                         </div>
                     </div>
                     <div class="swiper-slide">
-                        <div class="testimonial-card"><i class="fas fa-quote-left"></i>
-                            <p data-key="testimonial2">"L'éthique professionnelle m'a aidé à décrocher un stage en entreprise."</p>
+                        <div class="testimonial-card">
+                            <i class="fas fa-quote-left"></i>
+                            <p>"L'éthique professionnelle m'a aidé à décrocher un stage en entreprise."</p>
                             <h4>— Sarah K.</h4>
                         </div>
                     </div>
                     <div class="swiper-slide">
-                        <div class="testimonial-card"><i class="fas fa-quote-left"></i>
-                            <p data-key="testimonial3">"Un accompagnement de qualité, je recommande vivement."</p>
+                        <div class="testimonial-card">
+                            <i class="fas fa-quote-left"></i>
+                            <p>"Un accompagnement de qualité, je recommande vivement."</p>
                             <h4>— Jean-Paul N.</h4>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="testimonial-card">
+                            <i class="fas fa-quote-left"></i>
+                            <p>"Les compétences digitales m'ont ouvert de nouvelles opportunités professionnelles."</p>
+                            <h4>— Marie L.</h4>
                         </div>
                     </div>
                 </div>
@@ -600,39 +1145,139 @@
             </div>
         </div>
 
-        <!-- Formulaire d'inscription -->
+        <!-- CONTACT FORM -->
         <div class="contact-form" data-aos="fade-up">
-            <h3 data-key="formTitle">Inscrivez-vous à une session</h3>
+            <h3><i class="fa-solid fa-pen"></i> Inscrivez-vous à une session</h3>
+            <p>Remplissez le formulaire ci-dessous et nous vous contacterons pour la prochaine session.</p>
             <form id="inscriptionForm">
                 <div class="form-group">
-                    <input type="text" id="nom" placeholder="Nom complet" data-key="formName" required>
+                    <input type="text" id="nom" placeholder="Nom complet" required>
                     <input type="email" id="email" placeholder="Email" required>
                     <input type="tel" id="tel" placeholder="Téléphone" required>
                 </div>
-                <button type="submit" class="btn-submit" data-key="formBtn">Envoyer ma pré-inscription</button>
+                <button type="submit" class="btn-submit">Envoyer ma pré-inscription</button>
             </form>
         </div>
 
-        <div class="back-link">
-            <a href="index.html" class="btn-back"><i class="fas fa-arrow-left"></i> <span data-key="backBtn">Retour à l'accueil</span></a>
+        <!-- BACK BUTTON -->
+        <div class="back-container">
+            <a href="index.html" class="btn-back">
+                <i class="fas fa-arrow-left"></i> Retour à l'accueil
+            </a>
         </div>
     </div>
 
-    <footer>
-        <p>© BIG DATA CENTER AI — <a href="https://www.youtube.com/@DominiqueSavio_Cyber-Ap%C3%B4tre3.0" target="_blank">Dominique Savio - Cyber Apôtre 3.0</a></p>
-        <p data-key="footerText">Aumônerie Diocésaine Jeunesse & Enfance – Douala</p>
+    <!-- FOOTER -->
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h3>Aumônerie Diocésaine</h3>
+                    <p>Accompagnement spirituel, formation et engagement des jeunes et enfants de l'Archidiocèse de Douala. Ensemble, bâtissons une jeunesse responsable et rayonnante.</p>
+                    <p><a href="https://aumonerie-diocesaine-jeunesse-enfance-douala.org/" target="_blank">aumonerie-diocesaine-jeunesse-enfance-douala.org <i class="fas fa-external-link-alt"></i></a></p>
+                </div>
+                <div class="footer-col">
+                    <h3>Liens rapides</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html"><i class="fas fa-home"></i> Accueil</a></li>
+                        <li><a href="MissionPastorale.html"><i class="fas fa-cross"></i> Mission Pastorale</a></li>
+                        <li><a href="Histoirefondements.html"><i class="fas fa-book-open"></i> Histoire & Fondements</a></li>
+                        <li><a href="Equipepastorale.html"><i class="fas fa-user-friends"></i> Équipe Diocésaine</a></li>
+                        <li><a href="mouvements.html"><i class="fas fa-flag-checkered"></i> Mouvements & Groupes</a></li>
+                        <li><a href="don.html"><i class="fas fa-hand-holding-heart"></i> Faire un don</a></li>
+                        <li><a href="mot.html"><i class="fas fa-microphone-alt"></i> Mot de l'Aumônier</a></li>
+                        <li><a href="pelerinage.html"><i class="fas fa-hiking"></i> Pèlerinages</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Équipe technique</h3>
+                    <div class="dev-names">
+                        <span><i class="fas fa-code"></i> KENMATIO Vicens</span>
+                        <span><i class="fas fa-palette"></i> FOTSO Audrey</span>
+                    </div>
+                    <div class="social-links">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                        <a href="#" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h3>Contact</h3>
+                    <p><i class="fas fa-envelope"></i> contact@aumonerie-douala.org</p>
+                    <p><i class="fas fa-phone-alt"></i> +237 697 408 284</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Archidiocèse de Douala, Cameroun</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Aumônerie Diocésaine Jeunesse & Enfance – Douala. Tous droits réservés.</p>
+                <p>Conçu avec <i class="fas fa-heart" style="color: #e74c3c;"></i> par BIG DATA CENTER AI — <a href="https://www.youtube.com/@DominiqueSavio_Cyber-Ap%C3%B4tre3.0" target="_blank">Dominique Savio - Cyber Apôtre 3.0</a></p>
+            </div>
+        </div>
     </footer>
 
     <script>
+        // Initialisation AOS
         AOS.init({
             duration: 800,
-            once: true
+            once: true,
+            offset: 50
         });
 
-        const swiper = new Swiper('.testimonial-swiper', {
+        // ========== MENU HAMBURGER ==========
+        const menuToggle = document.getElementById('menuToggle');
+        const navLinks = document.getElementById('navLinks');
+        const menuOverlay = document.getElementById('menuOverlay');
+        const closeMenuBtn = document.getElementById('closeMenuBtn');
+
+        function closeMenu() {
+            navLinks.classList.remove('active');
+            if (menuOverlay) menuOverlay.classList.remove('active');
+            if (menuToggle && window.innerWidth <= 992) {
+                menuToggle.innerHTML = '<i class="fas fa-bars"></i>';
+            }
+        }
+
+        function openMenu() {
+            navLinks.classList.add('active');
+            if (menuOverlay) menuOverlay.classList.add('active');
+            if (menuToggle && window.innerWidth <= 992) {
+                menuToggle.innerHTML = '<i class="fas fa-times"></i>';
+            }
+        }
+
+        if (menuToggle) {
+            menuToggle.addEventListener('click', () => {
+                navLinks.classList.contains('active') ? closeMenu() : openMenu();
+            });
+        }
+
+        if (closeMenuBtn) closeMenuBtn.addEventListener('click', closeMenu);
+        if (menuOverlay) menuOverlay.addEventListener('click', closeMenu);
+        document.querySelectorAll('.nav-links a:not(#dropdownToggle)').forEach(link => link.addEventListener('click', closeMenu));
+        window.addEventListener('resize', () => {
+            if (window.innerWidth > 992) closeMenu();
+        });
+
+        // ========== DROPDOWN ==========
+        const dropdown = document.getElementById('dropdownMenu');
+        const dropdownToggle = document.getElementById('dropdownToggle');
+        if (dropdown && dropdownToggle) {
+            dropdownToggle.addEventListener('click', (e) => {
+                e.preventDefault();
+                if (window.innerWidth <= 992) dropdown.classList.toggle('open');
+            });
+        }
+        document.addEventListener('click', (e) => {
+            if (window.innerWidth <= 992 && dropdown && !dropdown.contains(e.target)) dropdown.classList.remove('open');
+        });
+
+        // ========== SWIPER TESTIMONIALS ==========
+        const testimonialSwiper = new Swiper('.testimonial-swiper', {
             loop: true,
             autoplay: {
-                delay: 5000
+                delay: 5000,
+                disableOnInteraction: false
             },
             pagination: {
                 el: '.swiper-pagination',
@@ -643,105 +1288,68 @@
             breakpoints: {
                 768: {
                     slidesPerView: 2
+                },
+                1024: {
+                    slidesPerView: 3
                 }
+            },
+            effect: 'slide',
+            speed: 800
+        });
+
+        // ========== FORMULAIRE D'INSCRIPTION ==========
+        const inscriptionForm = document.getElementById('inscriptionForm');
+
+        function showNotification(message) {
+            const notification = document.createElement('div');
+            notification.className = 'toast-notification';
+            notification.innerHTML = `<i class="fas fa-check-circle"></i> ${message}`;
+            document.body.appendChild(notification);
+            setTimeout(() => notification.remove(), 3000);
+        }
+
+        if (inscriptionForm) {
+            inscriptionForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const nom = document.getElementById('nom').value;
+                showNotification(`Merci ${nom} ! Votre pré-inscription a été envoyée. Nous vous contacterons sous peu.`);
+                inscriptionForm.reset();
+            });
+        }
+
+        // ========== MODE SOMBRE ==========
+        function initDarkMode() {
+            const isDark = localStorage.getItem('darkMode') === 'true';
+            if (isDark) document.body.classList.add('dark-mode');
+            const desktopBtn = document.getElementById('darkModeToggleDesktop');
+            const mobileBtn = document.getElementById('darkModeToggleMobile');
+
+            function toggleDarkMode() {
+                document.body.classList.toggle('dark-mode');
+                const dark = document.body.classList.contains('dark-mode');
+                localStorage.setItem('darkMode', dark);
+                const icon = dark ? 'fas fa-sun' : 'fas fa-moon';
+                if (desktopBtn) desktopBtn.innerHTML = `<i class="${icon}"></i>`;
+                if (mobileBtn) mobileBtn.innerHTML = `<i class="${icon}"></i>`;
             }
-        });
+            const icon = isDark ? 'fas fa-sun' : 'fas fa-moon';
+            if (desktopBtn) {
+                desktopBtn.innerHTML = `<i class="${icon}"></i>`;
+                desktopBtn.addEventListener('click', toggleDarkMode);
+            }
+            if (mobileBtn) {
+                mobileBtn.innerHTML = `<i class="${icon}"></i>`;
+                mobileBtn.addEventListener('click', toggleDarkMode);
+            }
+        }
 
-        document.getElementById('inscriptionForm').addEventListener('submit', (e) => {
-            e.preventDefault();
-            alert('Merci ! Votre pré-inscription a été envoyée. Nous vous contacterons sous peu.');
-            e.target.reset();
-        });
-
-        // Multilingue
+        // ========== MULTILINGUE ==========
         let currentLang = localStorage.getItem('lang') || 'fr';
         const translations = {
             fr: {
-                themeBanner: "Thème : Formation intégrale des jeunes et emploi dans la société",
-                headerTitle: "Aumônerie Diocésaine Jeunesse & Enfance",
-                headerSub: "Douala – Cameroun",
-                nav1: "Accueil",
-                nav2: "À propos",
-                nav3: "Enfance",
-                nav4: "Jeunesse",
-                nav5: "Actualités",
-                synodeBadge: "DEUXIÈME ANNÉE DU SYNODE",
-                heroTitle: "Leadership & Excellence",
-                heroDesc: "Une formation intégrale pour briller dans l'Église et impacter la société.",
-                formationsTitle: "Nos modules de formation",
-                card1Title: "Doctrine Sociale",
-                card1Desc: "Étudier les principes de l'Église sur le travail, la justice et le bien commun pour agir en citoyen éclairé.",
-                card2Title: "Entrepreneuriat",
-                card2Desc: "De l'idée au projet : outils pratiques pour créer des activités génératrices de revenus et d'emplois.",
-                card3Title: "Art Oratoire",
-                card3Desc: "Développer son charisme et sa capacité de persuasion pour porter la voix des jeunes avec assurance.",
-                card4Title: "Éthique Professionnelle",
-                card4Desc: "Apprendre à concilier foi et carrière, en luttant contre la corruption et en prônant l'intégrité au travail.",
-                card5Title: "Compétences Digitales",
-                card5Desc: "Maîtriser les outils numériques pour booster son employabilité et évangéliser sur les réseaux sociaux.",
-                card6Title: "Engagement Civique",
-                card6Desc: "Comprendre son rôle dans la nation pour participer activement au développement du Cameroun.",
-                timelineTitle: "Parcours d'insertion professionnelle",
-                step1Title: "Diagnostic",
-                step1Desc: "Évaluation des compétences et orientation personnalisée.",
-                step2Title: "Formation",
-                step2Desc: "Ateliers pratiques et mentorat par des experts.",
-                step3Title: "Mise en situation",
-                step3Desc: "Stages en entreprise et projets concrets.",
-                step4Title: "Suivi post-insertion",
-                step4Desc: "Accompagnement pendant les premiers mois.",
-                testimonialsTitle: "Ils témoignent",
-                testimonial1: "La formation en entrepreneuriat m'a permis de lancer ma propre activité.",
-                testimonial2: "L'éthique professionnelle m'a aidé à décrocher un stage en entreprise.",
-                testimonial3: "Un accompagnement de qualité, je recommande vivement.",
-                formTitle: "Inscrivez-vous à une session",
-                formName: "Nom complet",
-                formBtn: "Envoyer ma pré-inscription",
-                backBtn: "Retour à l'accueil",
                 footerText: "Aumônerie Diocésaine Jeunesse & Enfance – Douala"
             },
             en: {
-                themeBanner: "Theme: Integral youth training and employment in society",
-                headerTitle: "Diocesan Youth & Children's Chaplaincy",
-                headerSub: "Douala – Cameroon",
-                nav1: "Home",
-                nav2: "About",
-                nav3: "Childhood",
-                nav4: "Youth",
-                nav5: "News",
-                synodeBadge: "SECOND YEAR OF THE SYNOD",
-                heroTitle: "Leadership & Excellence",
-                heroDesc: "Integral formation to shine in the Church and impact society.",
-                formationsTitle: "Our training modules",
-                card1Title: "Social Doctrine",
-                card1Desc: "Study the Church's principles on work, justice and the common good to act as an enlightened citizen.",
-                card2Title: "Entrepreneurship",
-                card2Desc: "From idea to project: practical tools to create income-generating activities and jobs.",
-                card3Title: "Public Speaking",
-                card3Desc: "Develop your charisma and persuasion skills to confidently speak for youth.",
-                card4Title: "Professional Ethics",
-                card4Desc: "Learn to reconcile faith and career, fighting corruption and promoting integrity at work.",
-                card5Title: "Digital Skills",
-                card5Desc: "Master digital tools to boost your employability and evangelize on social networks.",
-                card6Title: "Civic Engagement",
-                card6Desc: "Understand your role in the nation to actively participate in Cameroon's development.",
-                timelineTitle: "Professional integration pathway",
-                step1Title: "Assessment",
-                step1Desc: "Skills evaluation and personalized guidance.",
-                step2Title: "Training",
-                step2Desc: "Practical workshops and mentoring by experts.",
-                step3Title: "Work placement",
-                step3Desc: "Internships and concrete projects.",
-                step4Title: "Follow-up",
-                step4Desc: "Support during the first months.",
-                testimonialsTitle: "They testify",
-                testimonial1: "The entrepreneurship training allowed me to start my own business.",
-                testimonial2: "Professional ethics helped me get an internship.",
-                testimonial3: "Quality support, I highly recommend.",
-                formTitle: "Register for a session",
-                formName: "Full name",
-                formBtn: "Send my pre-registration",
-                backBtn: "Back to home",
                 footerText: "Diocesan Youth & Children's Chaplaincy – Douala"
             }
         };
@@ -750,38 +1358,26 @@
             const t = translations[currentLang];
             document.querySelectorAll('[data-key]').forEach(el => {
                 const key = el.getAttribute('data-key');
-                if (t[key]) {
-                    if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
-                        el.placeholder = t[key];
-                    } else {
-                        el.textContent = t[key];
-                    }
-                }
+                if (t[key]) el.textContent = t[key];
             });
             localStorage.setItem('lang', currentLang);
         }
-        document.getElementById('langToggle').addEventListener('click', () => {
-            currentLang = currentLang === 'fr' ? 'en' : 'fr';
-            updateLanguage();
-        });
 
-        // Dark mode
-        function initDarkMode() {
-            const darkMode = localStorage.getItem('darkMode') === 'true';
-            if (darkMode) document.body.classList.add('dark-mode');
-            const toggleBtn = document.getElementById('darkModeToggle');
-            toggleBtn.addEventListener('click', () => {
-                document.body.classList.toggle('dark-mode');
-                localStorage.setItem('darkMode', document.body.classList.contains('dark-mode'));
-                const icon = toggleBtn.querySelector('i');
-                icon.className = document.body.classList.contains('dark-mode') ? 'fas fa-sun' : 'fas fa-moon';
-            });
-            const icon = toggleBtn.querySelector('i');
-            icon.className = darkMode ? 'fas fa-sun' : 'fas fa-moon';
+        function initLanguage() {
+            const desktopBtn = document.getElementById('langToggleDesktop');
+            const mobileBtn = document.getElementById('langToggleMobile');
+
+            function toggleLanguage() {
+                currentLang = currentLang === 'fr' ? 'en' : 'fr';
+                updateLanguage();
+            }
+            if (desktopBtn) desktopBtn.addEventListener('click', toggleLanguage);
+            if (mobileBtn) mobileBtn.addEventListener('click', toggleLanguage);
+            updateLanguage();
         }
 
         initDarkMode();
-        updateLanguage();
+        initLanguage();
     </script>
 </body>
 
