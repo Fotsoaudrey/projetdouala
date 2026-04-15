@@ -382,50 +382,54 @@
             background: #0f1724;
         }
         
-        /* BANDE D'ANNONCE STATIQUE */
+        /* ========== BANDE D'ANNONCE DÉFILANTE (SANS COULEUR DE FOND) ========== */
         .announcement-banner {
-            background: linear-gradient(95deg, #f39c12, #e67e22);
-            color: #1e2a3a;
-            padding: 12px 20px;
+            background: transparent !important; /* suppression totale de la couleur de fond */
+            color: #e67e22;  /* couleur du texte pour contraste sur fond blanc */
             font-weight: 600;
-            text-align: center;
             position: relative;
             z-index: 102;
-            transition: all 0.3s ease;
-            border-bottom: 2px solid #2ecc71;
+            overflow: hidden;
+            white-space: nowrap;
+            border-bottom: none; /* suppression de la bordure */
+            padding: 10px 0;
         }
         body.dark-mode .announcement-banner {
-            background: linear-gradient(95deg, #d35400, #e67e22);
-            color: #ffffff;
-            border-bottom-color: #2ecc71;
+            color: #f39c12; /* couleur adaptée mode sombre */
         }
-        .announcement-banner .container-banner {
-            max-width: 1280px;
-            margin: 0 auto;
+        .marquee-container {
+            width: 100%;
+            overflow: hidden;
+        }
+        .marquee-content {
+            display: inline-block;
+            white-space: nowrap;
+            animation: scrollAnnouncement 22s linear infinite;
+            padding-left: 20px; /* petit espace pour éviter le collage au bord */
+        }
+        /* Pause au survol (optionnel) */
+        .marquee-container:hover .marquee-content {
+            animation-play-state: paused;
+        }
+        @keyframes scrollAnnouncement {
+            0% {
+                transform: translateX(0%);
+            }
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+        /* Pour que le défilement soit continu avec double contenu (effet infini) */
+        .marquee-content {
             display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 12px;
+            gap: 48px;
+            animation: scrollAnnouncement 28s linear infinite;
         }
-        .announcement-content {
-            display: flex;
-            align-items: center;
-            gap: 16px;
-            flex-wrap: wrap;
-            justify-content: center;
-        }
-        .announcement-content i {
-            font-size: 1.4rem;
-            background: white;
-            color: #e67e22;
-            border-radius: 50%;
-            padding: 6px;
-            width: 34px;
-            height: 34px;
+        .marquee-item {
             display: inline-flex;
             align-items: center;
-            justify-content: center;
+            gap: 16px;
+            flex-shrink: 0;
         }
         .announcement-text {
             font-size: 0.95rem;
@@ -436,26 +440,47 @@
             text-transform: uppercase;
         }
         .announcement-link {
-            background: rgba(255,255,255,0.25);
+            background: rgba(0,0,0,0.08);
             padding: 6px 16px;
             border-radius: 40px;
             text-decoration: none;
-            color: #1e2a3a;
+            color: #e67e22;
             font-weight: 700;
             transition: 0.2s;
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            backdrop-filter: blur(2px);
         }
         body.dark-mode .announcement-link {
-            background: rgba(0,0,0,0.4);
-            color: #f1f1f1;
+            background: rgba(255,255,255,0.1);
+            color: #f39c12;
         }
         .announcement-link:hover {
             background: #2ecc71;
             color: #022b44;
             transform: translateY(-2px);
+        }
+        .announcement-banner i {
+            font-size: 1.2rem;
+            background: transparent;
+            color: inherit;
+            border-radius: 0;
+            padding: 0;
+            width: auto;
+            height: auto;
+        }
+        @media (max-width: 768px) {
+            .marquee-content {
+                gap: 24px;
+                animation-duration: 20s;
+            }
+            .announcement-text {
+                font-size: 0.8rem;
+            }
+            .announcement-link {
+                padding: 4px 12px;
+                font-size: 0.75rem;
+            }
         }
         
         /* HEADER */
@@ -1004,17 +1029,30 @@
         </div>
     </div>
 
-    <!-- BANDE D'ANNONCE STATIQUE -->
+    <!-- BANDE D'ANNONCE DÉFILANTE (sans couleur de fond) -->
     <div class="announcement-banner">
-        <div class="container-banner">
-            <div class="announcement-content">
-                <i class="fas fa-bullhorn"></i>
-                <span class="announcement-text">
-                    <strong>📢 Triduum de prière</strong> — Préparez-vous à la visite du Saint-Père Léon XIV. Suivez en direct chaque soir à 18h30 !
-                </span>
-                <a href="https://www.youtube.com/live/LsQggbxVVcw?si=joDZpckNQH01xqYw" target="_blank" class="announcement-link">
-                    Voir le direct <i class="fas fa-chevron-right"></i>
-                </a>
+        <div class="marquee-container">
+            <div class="marquee-content">
+                <!-- Premier bloc -->
+                <div class="marquee-item">
+                    <i class="fas fa-bullhorn"></i>
+                    <span class="announcement-text">
+                        <strong>📢 Triduum de prière</strong> — Préparez-vous à la visite du Saint-Père Léon XIV. Suivez en direct chaque soir à 18h30 !
+                    </span>
+                    <a href="https://www.youtube.com/live/LsQggbxVVcw?si=joDZpckNQH01xqYw" target="_blank" class="announcement-link">
+                        Voir le direct <i class="fas fa-chevron-right"></i>
+                    </a>
+                </div>
+                <!-- Second bloc identique pour un défilement continu sans fin -->
+                <div class="marquee-item">
+                    <i class="fas fa-bullhorn"></i>
+                    <span class="announcement-text">
+                        <strong>📢 Triduum de prière</strong> — Préparez-vous à la visite du Saint-Père Léon XIV. Suivez en direct chaque soir à 18h30 !
+                    </span>
+                    <a href="https://www.youtube.com/live/LsQggbxVVcw?si=joDZpckNQH01xqYw" target="_blank" class="announcement-link">
+                        Voir le direct <i class="fas fa-chevron-right"></i>
+                    </a>
+                </div>
             </div>
         </div>
     </div>
@@ -1529,7 +1567,6 @@
                 if (t[key]) el.textContent = t[key];
             });
             localStorage.setItem('lang', currentLang);
-            // Mettre à jour les titres des albums dans la galerie
             renderAlbums();
         }
 
@@ -1541,7 +1578,7 @@
             updateLanguage();
         }
         
-        // ========== ALBUMS (une seule constante) ==========
+        // ========== ALBUMS ==========
         const albums = [
             { title: { fr: "Célébrations Eucharistiques", en: "Eucharistic Celebrations" }, desc: { fr: "Messes et prières", en: "Masses and prayers" }, cover: "https://images.unsplash.com/photo-1438032005730-c779502df39b?w=400&h=300&fit=crop", photos: ["../image/celebrations/IMG-20230518-WA0137.jpg", "../image/celebrations/97739.jpg", "../image/celebrations/97756.jpg", "../image/celebrations/97768.jpg", "../image/celebrations/97758.jpg"] },
             { title: { fr: "Retraites et Camps", en: "Retreats and Camps" }, desc: { fr: "Moments forts en communauté", en: "Community moments" }, cover: "https://images.unsplash.com/photo-1470246973918-29a93221c455?w=400&h=300&fit=crop", photos: ["../image/retraites/r1.jpg", "../image/retraites/r4.jpg", "../image/retraites/r5.jpg", "../image/retraites/r6.jpg", "../image/retraites/r7.jpg"] },
