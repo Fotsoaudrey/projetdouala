@@ -4,12 +4,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>Radio & Télévision | Vie du Diocèse - Aumônerie Douala</title>
-    <meta name="description" content="Suivez les émissions, messes en direct et programmes catholiques sur nos radios et télévisions partenaires. Suivez la visite du Pape Léon XIV au Cameroun en direct et rejoignez la chaîne WhatsApp KTO.">
+    <title>Radio & Télévision | Suivez le Pape Léon XIV au Cameroun - Aumônerie Douala</title>
+    <meta name="description" content="Suivez en direct la visite du Pape Léon XIV au Cameroun du 15 au 18 avril 2026. Programme complet, messes, rencontres, et tous les événements sur KTO et RTVC.">
+    <meta name="keywords" content="Pape Léon XIV, Cameroun, visite papale, KTO, direct, Yaoundé, Douala, Bamenda, messe, pape 2026">
+    <meta name="author" content="Aumônerie Diocésaine Jeunesse & Enfance - Douala">
+    <meta name="robots" content="index, follow">
+
+    <!-- Open Graph / Social -->
+    <meta property="og:title" content="Visite du Pape Léon XIV au Cameroun - Suivez en direct sur KTO">
+    <meta property="og:description" content="Du 15 au 18 avril 2026, suivez toutes les étapes de la visite apostolique du Pape Léon XIV au Cameroun : Yaoundé, Bamenda, Douala. Messes, rencontres et célébrations en direct.">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="/image/img/pape.jpeg">
+    <meta property="og:locale" content="fr_FR">
+    <meta property="og:site_name" content="Aumônerie Diocésaine Jeunesse & Enfance Douala">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Pape Léon XIV au Cameroun - En direct sur KTO">
+    <meta name="twitter:description" content="Toutes les étapes de la visite papale au Cameroun du 15 au 18 avril 2026">
 
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&display=swap" rel="stylesheet">
 
     <!-- Font Awesome 6 -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
@@ -517,6 +534,163 @@
             margin: 0 auto;
             opacity: 0.9;
         }
+        
+        .papal-devise {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.15);
+            padding: 8px 24px;
+            border-radius: 50px;
+            margin-top: 20px;
+            font-size: 0.9rem;
+            font-style: italic;
+        }
+        /* Programme détaillé */
+        
+        .programme-detaille {
+            margin-top: 50px;
+        }
+        
+        .day-card {
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 24px;
+            margin-bottom: 30px;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            transition: var(--transition);
+        }
+        
+        .day-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--gold);
+        }
+        
+        .day-header {
+            background: linear-gradient(135deg, rgba(201, 160, 61, 0.2), rgba(201, 160, 61, 0.05));
+            padding: 18px 28px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 15px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .day-header h3 {
+            font-size: 1.4rem;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .day-header h3 i {
+            color: var(--gold);
+        }
+        
+        .day-date {
+            background: rgba(255, 255, 255, 0.15);
+            padding: 6px 16px;
+            border-radius: 30px;
+            font-size: 0.8rem;
+        }
+        
+        .event-list {
+            padding: 20px 28px;
+        }
+        
+        .event-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+            padding: 16px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .event-item:last-child {
+            border-bottom: none;
+        }
+        
+        .event-time {
+            min-width: 100px;
+            background: rgba(46, 204, 113, 0.2);
+            padding: 6px 12px;
+            border-radius: 30px;
+            text-align: center;
+            font-weight: 700;
+            color: var(--accent);
+            font-size: 0.85rem;
+        }
+        
+        .event-content {
+            flex: 1;
+        }
+        
+        .event-title {
+            font-weight: 700;
+            font-size: 1rem;
+            margin-bottom: 6px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        
+        .event-title i {
+            color: var(--gold);
+        }
+        
+        .live-tag {
+            background: #e74c3c;
+            color: white;
+            padding: 2px 10px;
+            border-radius: 20px;
+            font-size: 0.65rem;
+            font-weight: 600;
+            animation: pulse 1.5s infinite;
+        }
+        
+        @keyframes pulse {
+            0%,
+            100% {
+                opacity: 1;
+            }
+            50% {
+                opacity: 0.7;
+            }
+        }
+        
+        .event-desc {
+            font-size: 0.85rem;
+            opacity: 0.8;
+        }
+        
+        .event-watch-btn {
+            background: none;
+            border: 1px solid var(--accent);
+            color: var(--accent);
+            padding: 6px 16px;
+            border-radius: 30px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            margin-top: 8px;
+        }
+        
+        .event-watch-btn:hover {
+            background: var(--accent);
+            color: var(--primary-dark);
+        }
+        
+        @media (max-width: 768px) {
+            .event-item {
+                flex-direction: column;
+                gap: 10px;
+            }
+            .event-time {
+                align-self: flex-start;
+            }
+        }
         /* Grille des flux */
         
         .pape-grid {
@@ -573,29 +747,10 @@
             height: 0;
         }
         
-        .video-wrapper iframe,
-        .video-wrapper .fb-video {
+        .video-wrapper iframe {
             position: absolute;
             top: 0;
             left: 0;
-            width: 100%;
-            height: 100%;
-            border: none;
-        }
-        
-        .fb-video-container {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: #000;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        .fb-video-container iframe {
             width: 100%;
             height: 100%;
             border: none;
@@ -642,6 +797,88 @@
         .watch-btn:hover {
             background: white;
             transform: translateY(-2px);
+        }
+        /* Section des moments forts (vidéos Facebook) */
+        
+        .highlights-section {
+            padding: 60px 0;
+            background: linear-gradient(135deg, #0a2e4a, var(--primary));
+            color: white;
+        }
+        
+        body.dark-mode .highlights-section {
+            background: linear-gradient(135deg, #0a0f1a, #0f1724);
+        }
+        
+        .highlights-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .highlight-card {
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 24px;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            transition: var(--transition);
+        }
+        
+        .highlight-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--gold);
+        }
+        
+        .highlight-header {
+            background: linear-gradient(135deg, rgba(201, 160, 61, 0.2), rgba(201, 160, 61, 0.05));
+            padding: 16px 20px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .highlight-header i {
+            font-size: 1.5rem;
+            color: var(--gold);
+        }
+        
+        .highlight-header h3 {
+            font-size: 1rem;
+            font-weight: 600;
+        }
+        
+        .highlight-video {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+        }
+        
+        .highlight-video iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        
+        .highlight-footer {
+            padding: 12px 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .highlight-footer p {
+            font-size: 0.8rem;
+            opacity: 0.9;
+        }
+        
+        @media (max-width: 768px) {
+            .highlights-grid {
+                grid-template-columns: 1fr;
+            }
         }
         /* WhatsApp Channel Card */
         
@@ -722,95 +959,6 @@
         .btn-whatsapp-channel:hover {
             transform: translateY(-2px);
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-        }
-        
-        .qr-code {
-            background: white;
-            border-radius: 16px;
-            padding: 8px;
-            width: 70px;
-            height: 70px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            transition: var(--transition);
-        }
-        
-        .qr-code img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-        }
-        
-        .qr-code:hover {
-            transform: scale(1.05);
-        }
-        /* Section des événements */
-        
-        .events-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 20px;
-            margin-top: 30px;
-        }
-        
-        .event-card {
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 16px;
-            padding: 16px;
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            transition: var(--transition);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-        
-        .event-card:hover {
-            background: rgba(255, 255, 255, 0.1);
-            transform: translateX(5px);
-        }
-        
-        .event-icon {
-            width: 50px;
-            height: 50px;
-            background: rgba(201, 160, 61, 0.2);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        .event-icon i {
-            font-size: 1.5rem;
-            color: var(--gold);
-        }
-        
-        .event-info h4 {
-            font-size: 0.9rem;
-            margin-bottom: 4px;
-        }
-        
-        .event-info p {
-            font-size: 0.7rem;
-            opacity: 0.7;
-        }
-        
-        @media (max-width: 992px) {
-            .pape-grid {
-                grid-template-columns: 1fr;
-            }
-            .events-grid {
-                grid-template-columns: 1fr;
-            }
-            .whatsapp-channel-card {
-                flex-direction: column;
-                text-align: center;
-            }
-            .whatsapp-channel-info {
-                flex-direction: column;
-                text-align: center;
-            }
         }
         /* ===== SECTION TITLE ===== */
         
@@ -1101,18 +1249,6 @@
             font-weight: 700;
             margin-bottom: 20px;
             animation: pulse 1.5s infinite;
-        }
-        
-        @keyframes pulse {
-            0%,
-            100% {
-                opacity: 1;
-                transform: scale(1);
-            }
-            50% {
-                opacity: 0.8;
-                transform: scale(1.02);
-            }
         }
         
         .live-card h3 {
@@ -1410,110 +1546,274 @@
         /* ===== FOOTER ===== */
         
         .main-footer {
-            background: var(--primary-dark);
+            background: linear-gradient(135deg, #022b44 0%, #011a2b 100%);
             color: #cbd5e1;
-            padding: 60px 0 30px;
+            padding: 70px 0 0;
+            position: relative;
+            overflow: hidden;
         }
+        /* Effet de lumière subtil en haut du footer */
+        
+        .main-footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #2ecc71, #c9a03d, #2ecc71);
+        }
+        /* Mode sombre */
         
         body.dark-mode .main-footer {
-            background: #020617;
+            background: linear-gradient(135deg, #020617 0%, #00010a 100%);
         }
         
         .footer-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
-            gap: 40px;
-            margin-bottom: 40px;
+            gap: 50px;
+            margin-bottom: 50px;
+            position: relative;
+            z-index: 1;
+        }
+        /* Cartes footer */
+        
+        .footer-col {
+            transition: transform 0.3s ease;
+        }
+        
+        .footer-col:hover {
+            transform: translateY(-5px);
         }
         
         .footer-col h3 {
             color: white;
-            font-size: 1rem;
-            margin-bottom: 20px;
-            padding-bottom: 12px;
-            border-bottom: 2px solid var(--accent);
-            display: inline-block;
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 25px;
+            position: relative;
+            padding-bottom: 14px;
+            letter-spacing: -0.3px;
         }
         
-        .footer-links {
-            list-style: none;
+        .footer-col h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: linear-gradient(90deg, #2ecc71, #c9a03d);
+            border-radius: 3px;
+            transition: width 0.3s ease;
         }
         
-        .footer-links li {
-            margin-bottom: 10px;
+        .footer-col:hover h3::after {
+            width: 80px;
+        }
+        /* Description */
+        
+        .footer-col p {
+            line-height: 1.7;
+            font-size: 0.85rem;
+            opacity: 0.85;
+            margin-bottom: 15px;
         }
         
-        .footer-links a {
+        .footer-col a {
             color: #cbd5e1;
             text-decoration: none;
-            transition: var(--transition);
-            font-size: 0.8rem;
+            transition: all 0.3s ease;
+            font-size: 0.85rem;
             display: inline-flex;
             align-items: center;
             gap: 8px;
         }
         
-        .footer-links a:hover {
-            color: var(--accent);
+        .footer-col a i {
+            font-size: 0.8rem;
+            transition: transform 0.3s ease;
+        }
+        
+        .footer-col a:hover {
+            color: #2ecc71;
+        }
+        
+        .footer-col a:hover i {
             transform: translateX(4px);
         }
+        /* Liens rapides */
+        
+        .footer-links {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+        
+        .footer-links a {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 4px 0;
+            transition: all 0.3s ease;
+        }
+        
+        .footer-links a i {
+            width: 20px;
+            color: #2ecc71;
+            font-size: 0.75rem;
+        }
+        
+        .footer-links a:hover {
+            color: #2ecc71;
+            transform: translateX(6px);
+        }
+        /* Équipe technique */
+        
+        .dev-names {
+            margin-bottom: 20px;
+        }
+        
+        .dev-names span {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 12px;
+            font-size: 0.85rem;
+            padding: 6px 0;
+            border-bottom: 1px dashed rgba(255, 255, 255, 0.1);
+        }
+        
+        .dev-names span:last-child {
+            border-bottom: none;
+        }
+        
+        .dev-names i {
+            width: 28px;
+            color: #2ecc71;
+            font-size: 1rem;
+        }
+        /* Réseaux sociaux */
         
         .social-links {
             display: flex;
-            gap: 16px;
-            margin-top: 16px;
+            gap: 14px;
+            margin-top: 20px;
+            flex-wrap: wrap;
         }
         
         .social-links a {
-            width: 38px;
-            height: 38px;
-            background: rgba(255, 255, 255, 0.1);
+            width: 42px;
+            height: 42px;
+            background: rgba(255, 255, 255, 0.08);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            transition: var(--transition);
-        }
-        
-        .social-links a:hover {
-            background: var(--accent);
-            transform: translateY(-3px);
+            transition: all 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
         
         .social-links a i {
-            font-size: 1rem;
+            font-size: 1.1rem;
             color: white;
+            transition: all 0.3s ease;
         }
+        
+        .social-links a:hover {
+            background: linear-gradient(135deg, #2ecc71, #27ae60);
+            transform: translateY(-4px);
+            border-color: transparent;
+            box-shadow: 0 8px 20px rgba(46, 204, 113, 0.3);
+        }
+        
+        .social-links a:hover i {
+            color: #022b44;
+            transform: scale(1.1);
+        }
+        /* Contact */
+        
+        .footer-col .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 15px;
+            font-size: 0.8rem;
+            line-height: 1.5;
+        }
+        
+        .footer-col .contact-item i {
+            width: 28px;
+            color: #2ecc71;
+            font-size: 1rem;
+        }
+        /* Lien du site */
+        
+        .footer-col .site-link {
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .footer-col .site-link a {
+            font-size: 0.75rem;
+            word-break: break-all;
+        }
+        /* Footer bottom */
         
         .footer-bottom {
             text-align: center;
-            padding-top: 30px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            font-size: 0.7rem;
+            padding: 30px 0 25px;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            font-size: 0.75rem;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
         }
         
+        .footer-bottom p {
+            opacity: 0.7;
+            transition: opacity 0.3s ease;
+        }
+        
+        .footer-bottom p:hover {
+            opacity: 1;
+        }
+        
+        .footer-bottom a {
+            color: #2ecc71;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .footer-bottom a:hover {
+            color: #c9a03d;
+            text-decoration: underline;
+        }
+        
+        .footer-bottom i {
+            margin: 0 2px;
+        }
+        /* RESPONSIVE */
+        
         @media (max-width: 992px) {
-            .rtvc-grid {
-                grid-template-columns: 1fr;
-            }
             .footer-grid {
                 grid-template-columns: repeat(2, 1fr);
-                gap: 30px;
+                gap: 40px;
             }
         }
         
         @media (max-width: 768px) {
-            .container {
-                padding: 0 20px;
+            .footer-grid {
+                gap: 35px;
             }
-            .rtvc-card {
-                padding: 24px;
-            }
-            .archives-iframe {
-                height: 450px;
-            }
-            .pape-header h2 {
-                font-size: 1.4rem;
+            .footer-col h3 {
+                font-size: 1.1rem;
             }
         }
         
@@ -1521,13 +1821,27 @@
             .footer-grid {
                 grid-template-columns: 1fr;
                 text-align: center;
+                gap: 35px;
             }
-            .footer-col h3 {
-                display: block;
-                text-align: center;
+            .footer-col h3::after {
+                left: 50%;
+                transform: translateX(-50%);
+            }
+            .footer-links a {
+                justify-content: center;
             }
             .social-links {
                 justify-content: center;
+            }
+            .footer-col .contact-item {
+                justify-content: center;
+            }
+            .dev-names span {
+                justify-content: center;
+            }
+            .footer-bottom {
+                flex-direction: column;
+                gap: 10px;
             }
         }
     </style>
@@ -1594,8 +1908,8 @@
     <!-- HERO SECTION -->
     <section class="hero-section">
         <div class="container">
-            <h2><i class="fas fa-broadcast-tower"></i> <span data-key="heroTitle">Radio & Télévision</span></h2>
-            <p><span data-key="heroDesc">Suivez les émissions, messes en direct et programmes catholiques sur nos radios et télévisions partenaires</span></p>
+            <h2><i class="fas fa-broadcast-tower"></i> Radio & Télévision</h2>
+            <p>Suivez les émissions, messes en direct et programmes catholiques sur nos radios et télévisions partenaires</p>
         </div>
     </section>
 
@@ -1605,309 +1919,528 @@
             <div class="pape-header">
                 <div class="pape-badge">
                     <i class="fas fa-crown"></i>
-                    <span data-key="liveBadge">EN DIRECT</span>
+                    <span>EN DIRECT</span>
                     <i class="fas fa-dove"></i>
                 </div>
-                <h2><i class="fas fa-church"></i> <span data-key="papeTitle">Visite du Pape Léon XIV au Cameroun</span> <i class="fas fa-pray"></i></h2>
-                <p><span data-key="papeDesc">Suivez en direct les moments forts de la visite apostolique du Saint-Père Léon XIV au Cameroun du 15 au 18 avril 2026</span></p>
+                <h2><i class="fas fa-church"></i> Visite du Pape Léon XIV au Cameroun <i class="fas fa-pray"></i></h2>
+                <p>Suivez en direct les moments forts de la visite apostolique du Saint-Père Léon XIV au Cameroun du 15 au 18 avril 2026</p>
+                <div class="papal-devise">
+                    <i class="fas fa-quote-left"></i> « En celui qui est un, soyons un » <i class="fas fa-quote-right"></i> — Devise papale
+                </div>
             </div>
 
-            <div class="pape-grid">
+            <!-- Programme détaillé -->
+            <div class="programme-detaille">
+                <h3 style="text-align: center; margin-bottom: 30px; font-size: 1.5rem;"><i class="fas fa-calendar-alt"></i> Programme complet des célébrations</h3>
+
+                <!-- Mercredi 15 avril - YAOUNDÉ -->
+                <div class="day-card">
+                    <div class="day-header">
+                        <h3><i class="fas fa-map-marker-alt"></i> Mercredi 15 avril 2026 - Yaoundé</h3>
+                        <span class="day-date"><i class="fas fa-clock"></i> Fuseau UTC+2</span>
+                    </div>
+                    <div class="event-list">
+                        <div class="event-item">
+                            <div class="event-time">16h15</div>
+                            <div class="event-content">
+                                <div class="event-title">
+                                    <i class="fas fa-plane"></i> Arrivée à l'Aéroport International de Yaoundé-Nsimalen
+                                    <span class="live-tag"><i class="fas fa-circle"></i> EN DIRECT</span>
+                                </div>
+                                <div class="event-desc">Cérémonie de bienvenue du Saint-Père Léon XIV à son arrivée au Cameroun.</div>
+                                <button class="event-watch-btn" onclick="openVideoPlayer('https://www.youtube.com/embed/live_stream?channel=UCBULVVDP2gEP90CL6vwqkRg&autoplay=1', 'Arrivée du Pape à Yaoundé')">
+                                    <i class="fas fa-play"></i> Regarder le direct
+                                </button>
+                            </div>
+                        </div>
+                        <div class="event-item">
+                            <div class="event-time">17h15</div>
+                            <div class="event-content">
+                                <div class="event-title">
+                                    <i class="fas fa-handshake"></i> Visite de courtoisie au Président de la République
+                                    <span class="live-tag"><i class="fas fa-circle"></i> EN DIRECT</span>
+                                </div>
+                                <div class="event-desc">Visite de courtoisie du Pape Léon XIV au Président Paul Biya au Palais de l'Unité.</div>
+                                <button class="event-watch-btn" onclick="openVideoPlayer('https://www.youtube.com/embed/live_stream?channel=UCBULVVDP2gEP90CL6vwqkRg&autoplay=1', 'Visite au Président - Pape Léon XIV')">
+                                    <i class="fas fa-play"></i> Regarder le direct
+                                </button>
+                            </div>
+                        </div>
+                        <div class="event-item">
+                            <div class="event-time">18h00</div>
+                            <div class="event-content">
+                                <div class="event-title">
+                                    <i class="fas fa-users"></i> Rencontre avec les autorités et le corps diplomatique
+                                    <span class="live-tag"><i class="fas fa-circle"></i> EN DIRECT</span>
+                                </div>
+                                <div class="event-desc">Premier discours du Pape Léon XIV aux autorités camerounaises, représentants de la société civile et corps diplomatique.</div>
+                                <button class="event-watch-btn" onclick="openVideoPlayer('https://www.youtube.com/embed/live_stream?channel=UCBULVVDP2gEP90CL6vwqkRg&autoplay=1', 'Discours du Pape aux autorités')">
+                                    <i class="fas fa-play"></i> Regarder le direct
+                                </button>
+                            </div>
+                        </div>
+                        <div class="event-item">
+                            <div class="event-time">18h40</div>
+                            <div class="event-content">
+                                <div class="event-title">
+                                    <i class="fas fa-child"></i> Visite à l'orphelinat Ngul Zamba
+                                    <span class="live-tag"><i class="fas fa-circle"></i> EN DIRECT</span>
+                                </div>
+                                <div class="event-desc">Visite du Saint-Père à l'orphelinat Ngul Zamba de Yaoundé, rencontre avec les enfants.</div>
+                                <button class="event-watch-btn" onclick="openVideoPlayer('https://www.youtube.com/embed/live_stream?channel=UCBULVVDP2gEP90CL6vwqkRg&autoplay=1', 'Visite à l\'orphelinat Ngul Zamba')">
+                                    <i class="fas fa-play"></i> Regarder le direct
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Jeudi 16 avril - BAMENDA -->
+                <div class="day-card">
+                    <div class="day-header">
+                        <h3><i class="fas fa-map-marker-alt"></i> Jeudi 16 avril 2026 - Bamenda</h3>
+                        <span class="day-date"><i class="fas fa-clock"></i> Fuseau UTC+2</span>
+                    </div>
+                    <div class="event-list">
+                        <div class="event-item">
+                            <div class="event-time">12h25</div>
+                            <div class="event-content">
+                                <div class="event-title">
+                                    <i class="fas fa-handshake"></i> Rencontre pour la paix
+                                    <span class="live-tag"><i class="fas fa-circle"></i> EN DIRECT</span>
+                                </div>
+                                <div class="event-desc">Rencontre pour la paix avec la communauté de Bamenda en la Cathédrale Saint-Joseph. Le Pape apporte un message de réconciliation dans cette région marquée par un conflit séparatiste.</div>
+                                <button class="event-watch-btn" onclick="openVideoPlayer('https://www.youtube.com/embed/live_stream?channel=UCBULVVDP2gEP90CL6vwqkRg&autoplay=1', 'Rencontre pour la paix - Pape à Bamenda')">
+                                    <i class="fas fa-play"></i> Regarder le direct
+                                </button>
+                            </div>
+                        </div>
+                        <div class="event-item">
+                            <div class="event-time">16h00</div>
+                            <div class="event-content">
+                                <div class="event-title">
+                                    <i class="fas fa-church"></i> Messe à l'Aéroport International de Bamenda
+                                    <span class="live-tag"><i class="fas fa-circle"></i> EN DIRECT</span>
+                                </div>
+                                <div class="event-desc">Messe présidée par le Pape Léon XIV à l'aéroport de Bamenda, rassemblant des milliers de fidèles de la région anglophone.</div>
+                                <button class="event-watch-btn" onclick="openVideoPlayer('https://www.youtube.com/embed/live_stream?channel=UCBULVVDP2gEP90CL6vwqkRg&autoplay=1', 'Messe à Bamenda - Pape Léon XIV')">
+                                    <i class="fas fa-play"></i> Regarder le direct
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Vendredi 17 avril - DOUALA -->
+                <div class="day-card">
+                    <div class="day-header">
+                        <h3><i class="fas fa-map-marker-alt"></i> Vendredi 17 avril 2026 - Douala</h3>
+                        <span class="day-date"><i class="fas fa-clock"></i> Fuseau UTC+2</span>
+                    </div>
+                    <div class="event-list">
+                        <div class="event-item">
+                            <div class="event-time">11h40</div>
+                            <div class="event-content">
+                                <div class="event-title">
+                                    <i class="fas fa-church"></i> Messe au Stade Japoma de Douala
+                                    <span class="live-tag"><i class="fas fa-circle"></i> EN DIRECT</span>
+                                </div>
+                                <div class="event-desc">Grande messe pontificale au stade Japoma de Douala, la capitale économique du Cameroun. Rassemblement de plusieurs centaines de milliers de fidèles.</div>
+                                <button class="event-watch-btn" onclick="openVideoPlayer('https://www.youtube.com/embed/live_stream?channel=UCBULVVDP2gEP90CL6vwqkRg&autoplay=1', 'Messe au Stade Japoma - Pape Léon XIV')">
+                                    <i class="fas fa-play"></i> Regarder le direct
+                                </button>
+                            </div>
+                        </div>
+                        <div class="event-item">
+                            <div class="event-time">18h25</div>
+                            <div class="event-content">
+                                <div class="event-title">
+                                    <i class="fas fa-university"></i> Rencontre avec le monde universitaire
+                                    <span class="live-tag"><i class="fas fa-circle"></i> EN DIRECT</span>
+                                </div>
+                                <div class="event-desc">Rencontre avec le monde universitaire à l'Université Catholique d'Afrique Centrale (UCAC) de Douala. Discours du Pape aux étudiants et enseignants.</div>
+                                <button class="event-watch-btn" onclick="openVideoPlayer('https://www.youtube.com/embed/live_stream?channel=UCBULVVDP2gEP90CL6vwqkRg&autoplay=1', 'Rencontre avec le monde universitaire - Pape Léon XIV')">
+                                    <i class="fas fa-play"></i> Regarder le direct
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Samedi 18 avril - YAOUNDÉ (départ) -->
+                <div class="day-card">
+                    <div class="day-header">
+                        <h3><i class="fas fa-map-marker-alt"></i> Samedi 18 avril 2026 - Yaoundé</h3>
+                        <span class="day-date"><i class="fas fa-clock"></i> Fuseau UTC+2</span>
+                    </div>
+                    <div class="event-list">
+                        <div class="event-item">
+                            <div class="event-time">10h00</div>
+                            <div class="event-content">
+                                <div class="event-title">
+                                    <i class="fas fa-church"></i> Messe à l'Aéroport de Yaoundé-Ville
+                                    <span class="live-tag"><i class="fas fa-circle"></i> EN DIRECT</span>
+                                </div>
+                                <div class="event-desc">Messe de départ présidée par le Pape Léon XIV à l'aéroport de Yaoundé-Ville, avant son départ pour l'Angola, prochaine étape de son voyage africain.</div>
+                                <button class="event-watch-btn" onclick="openVideoPlayer('https://www.youtube.com/embed/live_stream?channel=UCBULVVDP2gEP90CL6vwqkRg&autoplay=1', 'Messe de départ - Pape Léon XIV à Yaoundé')">
+                                    <i class="fas fa-play"></i> Regarder le direct
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ========== MOMENTS FORTS - VIDÉOS FACEBOOK ========== -->
+            <div class="highlights-section" style="margin-top: 50px; background: transparent; padding: 0;">
+                <div class="container" style="padding: 0;">
+                    <h3 style="text-align: center; margin-bottom: 30px; font-size: 1.5rem;"><i class="fas fa-star"></i> Moments forts de la visite papale</h3>
+                    <div class="highlights-grid">
+
+
+                        <!-- Arrivée du Pape à l'aéroport de Yaoundé-Nsimalen -->
+                        <div class="highlight-card">
+                            <div class="highlight-header">
+                                <i class="fas fa-plane"></i>
+                                <h3>Arrivée du Pape Léon XIV à l'aéroport de Yaoundé-Nsimalen</h3>
+                            </div>
+                            <div class="highlight-video">
+                                <iframe src="https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2F100045540472744%2Fvideos%2F1325107299669529%2F&show_text=0&width=560&autoplay=0" frameborder="0" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
+                                    allowfullscreen="true">
+        </iframe>
+                            </div>
+                            <div class="highlight-footer">
+                                <p><i class="fas fa-calendar-alt"></i> Mercredi 15 avril 2026 | Aéroport International de Yaoundé-Nsimalen</p>
+                                <p>Cérémonie d'accueil du Saint-Père Léon XIV à son arrivée au Cameroun.</p>
+                            </div>
+                        </div>
+                        <!-- Premier discours du Pape aux autorités -->
+                        <div class="highlight-card">
+                            <div class="highlight-header">
+                                <i class="fas fa-microphone-alt"></i>
+                                <h3>Premier discours de Léon XIV au Cameroun</h3>
+                            </div>
+                            <div class="highlight-video">
+                                <iframe src="https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2FKTOtv%2Fvideos%2F2102815430515048%2F&show_text=0&width=560&autoplay=0"></iframe>
+                            </div>
+                            <div class="highlight-footer">
+                                <p>Le Pape s'adresse aux autorités, aux représentants de la société civile et au corps diplomatique.</p>
+                            </div>
+                        </div>
+
+                        <!-- Discours du Pape aux autorités (second lien) -->
+                        <div class="highlight-card">
+                            <div class="highlight-header">
+                                <i class="fas fa-microphone-alt"></i>
+                                <h3>Discours du Pape Léon XIV</h3>
+                            </div>
+                            <div class="highlight-video">
+                                <iframe src="https://www.youtube.com/embed/Ig7j4YmuByU?autoplay=0&mute=0&controls=1&rel=0&modestbranding=1&playsinline=1" frameborder="0" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" allowfullscreen="true"></iframe>
+                            </div>
+                            <div class="highlight-footer">
+                                <p>Suite du discours du Saint-Père aux autorités camerounaises.</p>
+                            </div>
+                        </div>
+
+                        <!-- Enfants de l'orphelinat Ngul Zamba -->
+                        <div class="highlight-card">
+                            <div class="highlight-header">
+                                <i class="fas fa-child"></i>
+                                <h3>Les enfants de l'orphelinat Ngul Zamba chantent pour le pape</h3>
+                            </div>
+                            <div class="highlight-video">
+                                <iframe src="https://www.youtube.com/embed/Ig7j4YmuByU?autoplay=0&mute=0&controls=1&rel=0&modestbranding=1&playsinline=1" frameborder="0" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" allowfullscreen="true"></iframe>
+                            </div>
+                            <div class="highlight-footer ">
+                                <p>Un moment d'émotion : les enfants de l'orphelinat Ngul Zamba chantent pour le Saint-Père.</p>
+                            </div>
+                        </div>
+
+                        <!-- Visite de courtoisie au Président -->
+                        <div class="highlight-card ">
+                            <div class="highlight-header ">
+                                <i class="fas fa-handshake "></i>
+                                <h3>Visite de courtoisie du Pape au Président de la République</h3>
+                            </div>
+                            <div class="highlight-video ">
+                                <iframe src="https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fweb.facebook.com%2F100045540472744%2Fvideos%2F798446492985885%2F&show_text=0&width=560&autoplay=0" frameborder="0 " allow="autoplay; clipboard-write; encrypted-media;
+                                    picture-in-picture; web-share " allowfullscreen="true "></iframe>
+                            </div>
+                            <div class="highlight-footer ">
+                                <p>VISITE APOSTOLIQUE DU PAPE LEON XIV AU CAMEROUN - Visite de courtoisie du Pape Léon XIV au Président de la République.</p>
+                            </div>
+                        </div>
+
+                        <!-- Visiter le Cameroun avec moi -->
+                        <div class="highlight-card ">
+                            <div class="highlight-header ">
+                                <i class="fas fa-map-marked-alt "></i>
+                                <h3>Visiter le Cameroun avec le Pape</h3>
+                            </div>
+                            <div class="highlight-video ">
+                                <iframe src="https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fweb.facebook.com%2Fshare%2Fv%2F181Fz4bKWb%2F&show_text=0&width=560&autoplay=0 " frameborder="0 " allow="autoplay; clipboard-write; encrypted-media;
+                                    picture-in-picture; web-share " allowfullscreen="true "></iframe>
+                            </div>
+                            <div class="highlight-footer ">
+                                <p>Découvrez les lieux emblématiques de la visite papale au Cameroun.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Grille des flux en direct -->
+            <h3 style="text-align: center; margin: 50px 0 30px; "><i class="fas fa-satellite-dish "></i> Flux en direct</h3>
+            <div class="pape-grid ">
                 <!-- RTVC - Facebook Live -->
-                <div class="pape-card">
-                    <div class="pape-card-header">
-                        <i class="fab fa-facebook"></i>
-                        <h3>RTVC - <span data-key="rtvcLiveLabel">Facebook Live</span></h3>
-                        <span data-key="liveSpan">Direct</span>
+                <div class="pape-card ">
+                    <div class="pape-card-header ">
+                        <i class="fab fa-facebook "></i>
+                        <h3>RTVC - Facebook Live</h3>
+                        <span>Direct</span>
                     </div>
-                    <div class="video-wrapper">
-                        <iframe src="https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2F100045540472744%2Fvideos%2F1325107299669529%2F&show_text=0&width=560&autoplay=1" frameborder="0" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
-                            allowfullscreen="true"></iframe>
+                    <div class="video-wrapper ">
+                        <iframe src="https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2F100045540472744%2Fvideos%2F1325107299669529%2F&show_text=0&width=560&autoplay=1 " frameborder="0 " allow="autoplay; clipboard-write;
+                                    encrypted-media; picture-in-picture; web-share " allowfullscreen="true "></iframe>
                     </div>
-                    <div class="pape-card-footer">
-                        <span class="live-badge-small"><i class="fas fa-circle"></i> <span data-key="liveSmall">EN DIRECT</span></span>
-                        <button class="watch-btn" onclick="openVideoPlayer('https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2F100045540472744%2Fvideos%2F1325107299669529%2F&autoplay=1', 'RTVC - Visite du Pape')">
-                            <i class="fas fa-expand"></i> <span data-key="fullscreenBtn">Plein écran</span>
+                    <div class="pape-card-footer ">
+                        <span class="live-badge-small "><i class="fas fa-circle "></i> EN DIRECT</span>
+                        <button class="watch-btn " onclick="openVideoPlayer( 'https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2F100045540472744%2Fvideos%2F1325107299669529%2F&autoplay=1', 'RTVC - Visite du Pape') ">
+                            <i class="fas fa-expand "></i> Plein écran
                         </button>
                     </div>
                 </div>
 
+                <!-- ÉQUINOXE TV - YouTube Live (Bamenda) -->
+                <div class="pape-card">
+                    <div class="pape-card-header">
+                        <i class="fab fa-youtube"></i>
+                        <h3>ÉQUINOXE TV - <span data-key="equinoxeLiveLabel">YouTube Live</span></h3>
+                        <span data-key="liveSpan">Direct</span>
+                    </div>
+                    <div class="video-wrapper">
+                        <iframe src="https://www.youtube.com/embed/nfK5VPN1xNk?autoplay=1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+        </iframe>
+                    </div>
+                    <div class="pape-card-footer">
+                        <span class="live-badge-small"><i class="fas fa-circle"></i> <span data-key="liveSmall">EN DIRECT</span></span>
+                        <button class="watch-btn" onclick="openVideoPlayer('https://www.youtube.com/embed/nfK5VPN1xNk?autoplay=1', 'ÉQUINOXE TV - Visite du Pape à Bamenda')">
+            <i class="fas fa-expand"></i> <span data-key="fullscreenBtn">Plein écran</span>
+        </button>
+                    </div>
+                </div>
+
+                <!-- AC14 - YouTube Live (Bamenda) -->
+                <div class="pape-card">
+                    <div class="pape-card-header">
+                        <i class="fab fa-youtube"></i>
+                        <h3>AC14 - <span>YouTube Live</span></h3>
+                        <span>Direct</span>
+                    </div>
+                    <div class="video-wrapper">
+                        <iframe src="https://www.youtube.com/embed/1CIrA75jtnA?autoplay=1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+        </iframe>
+                    </div>
+                    <div class="pape-card-footer">
+                        <span class="live-badge-small"><i class="fas fa-circle"></i> EN DIRECT</span>
+                        <button class="watch-btn" onclick="openVideoPlayer('https://www.youtube.com/embed/1CIrA75jtnA?autoplay=1', 'AC14 - Pape Léon XIV à Bamenda')">
+            <i class="fas fa-expand"></i> Plein écran
+        </button>
+                    </div>
+                </div>
                 <!-- KTO - YouTube Live -->
-                <div class="pape-card">
-                    <div class="pape-card-header">
-                        <i class="fab fa-youtube"></i>
-                        <h3>KTO - <span data-key="ktoLiveLabel">YouTube Live</span></h3>
-                        <span data-key="liveSpan">Direct</span>
+                <!-- <div class="pape-card ">
+                    <div class="pape-card-header ">
+                        <i class="fab fa-youtube "></i>
+                        <h3>KTO - YouTube Live</h3>
+                        <span>Direct</span>
                     </div>
-                    <div class="video-wrapper">
-                        <iframe src="https://www.youtube.com/embed/p3lLTSUKeUo?autoplay=1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <div class="video-wrapper ">
+                        <iframe src="https://www.youtube.com/embed/live_stream?channel=UCBULVVDP2gEP90CL6vwqkRg&autoplay=1 " frameborder="0 " allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture " allowfullscreen></iframe>
                     </div>
-                    <div class="pape-card-footer">
-                        <span class="live-badge-small"><i class="fas fa-circle"></i> <span data-key="liveSmall">EN DIRECT</span></span>
-                        <button class="watch-btn" onclick="openVideoPlayer('https://www.youtube.com/embed/p3lLTSUKeUo?autoplay=1', 'KTO - Visite du Pape')">
-                            <i class="fas fa-expand"></i> <span data-key="fullscreenBtn">Plein écran</span>
+                    <div class="pape-card-footer ">
+                        <span class="live-badge-small "><i class="fas fa-circle "></i> EN DIRECT</span>
+                        <button class="watch-btn " onclick="openVideoPlayer( 'https://www.youtube.com/embed/live_stream?channel=UCBULVVDP2gEP90CL6vwqkRg&autoplay=1', 'KTO - Visite du Pape') ">
+                            <i class="fas fa-expand "></i> Plein écran
                         </button>
                     </div>
-                </div>
-
-                <!-- CRTVweb - Facebook Live -->
-                <div class="pape-card">
-                    <div class="pape-card-header">
-                        <i class="fab fa-facebook"></i>
-                        <h3>CRTVweb - <span data-key="crtvLiveLabel">Facebook Live</span></h3>
-                        <span data-key="liveSpan">Direct</span>
-                    </div>
-                    <div class="video-wrapper">
-                        <iframe src="https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2FCRTVweb%2Fvideos%2F957307363330700%2F&show_text=0&width=560&autoplay=1" frameborder="0" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
-                            allowfullscreen="true"></iframe>
-                    </div>
-                    <div class="pape-card-footer">
-                        <span class="live-badge-small"><i class="fas fa-circle"></i> <span data-key="liveSmall">EN DIRECT</span></span>
-                        <button class="watch-btn" onclick="openVideoPlayer('https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2FCRTVweb%2Fvideos%2F957307363330700%2F&autoplay=1', 'CRTVweb - Visite du Pape')">
-                            <i class="fas fa-expand"></i> <span data-key="fullscreenBtn">Plein écran</span>
-                        </button>
-                    </div>
-                </div>
-
-                <!-- DRM - YouTube Live -->
-                <div class="pape-card">
-                    <div class="pape-card-header">
-                        <i class="fab fa-youtube"></i>
-                        <h3>DRM News - <span data-key="drmLiveLabel">YouTube Live</span></h3>
-                        <span data-key="liveSpan">Direct</span>
-                    </div>
-                    <div class="video-wrapper">
-                        <iframe src="https://www.youtube.com/embed/gvu0lgdR224?autoplay=1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                    </div>
-                    <div class="pape-card-footer">
-                        <span class="live-badge-small"><i class="fas fa-circle"></i> <span data-key="liveSmall">EN DIRECT</span></span>
-                        <button class="watch-btn" onclick="openVideoPlayer('https://www.youtube.com/embed/gvu0lgdR224?autoplay=1', 'DRM News - Visite du Pape')">
-                            <i class="fas fa-expand"></i> <span data-key="fullscreenBtn">Plein écran</span>
-                        </button>
-                    </div>
-                </div>
+                </div> -->
             </div>
 
-            <!-- WhatsApp Channel - Suivre le Pape -->
-            <div class="whatsapp-channel-card">
-                <div class="whatsapp-channel-info">
-                    <div class="whatsapp-icon-large">
-                        <i class="fab fa-whatsapp"></i>
+            <!-- WhatsApp Channel -->
+            <div class="whatsapp-channel-card ">
+                <div class="whatsapp-channel-info ">
+                    <div class="whatsapp-icon-large ">
+                        <i class="fab fa-whatsapp "></i>
                     </div>
-                    <div class="whatsapp-channel-text">
-                        <h3>📱 <span data-key="whatsappTitle">Chaîne WhatsApp "Léon XIV en Afrique avec KTO"</span></h3>
-                        <p><span data-key="whatsappDesc">Recevez toutes les informations sur les étapes du voyage du Pape en Afrique du 13 au 23 avril 2026 en français.</span></p>
+                    <div class="whatsapp-channel-text ">
+                        <h3>📱 Chaîne WhatsApp "Léon XIV en Afrique avec KTO "</h3>
+                        <p>Recevez toutes les informations sur les étapes du voyage du Pape en Afrique du 13 au 23 avril 2026 en français.</p>
                     </div>
                 </div>
-                <div class="whatsapp-channel-actions">
-                    <a href="https://whatsapp.com/channel/0029Vb7CYYlDJ6H7TEDlDg1W" target="_blank" class="btn-whatsapp-channel">
-                        <i class="fab fa-whatsapp"></i> <span data-key="whatsappBtn">Rejoindre la chaîne</span>
+                <div class="whatsapp-channel-actions ">
+                    <a href="https://whatsapp.com/channel/0029Vb7CYYlDJ6H7TEDlDg1W " target="_blank " class="btn-whatsapp-channel ">
+                        <i class="fab fa-whatsapp "></i> Rejoindre la chaîne
                     </a>
-                    <div class="qr-code" id="qrCodeBtn">
-                        <img src="../image/visite_pape/qr.png" alt="QR Code WhatsApp Pape Léon XIV" onerror="this.src='https://placehold.co/70x70?text=QR'">
-                    </div>
-                </div>
-            </div>
-
-            <!-- Événements à venir -->
-            <div class="events-grid">
-                <div class="event-card">
-                    <div class="event-icon">
-                        <i class="fas fa-church"></i>
-                    </div>
-                    <div class="event-info">
-                        <h4><span data-key="event1Title">Messe Pontificale à Yaoundé</span></h4>
-                        <p><span data-key="event1Desc">Base Aérienne - Samedi 18 avril 2026 à 9h30</span></p>
-                    </div>
-                    <button class="watch-btn" style="margin-left: auto;" onclick="openVideoPlayer('https://www.youtube.com/embed/live_stream?channel=UCBULVVDP2gEP90CL6vwqkRg&autoplay=1', 'Messe Pontificale')">
-                        <i class="fas fa-bell"></i> <span data-key="reminderBtn">Rappel</span>
-                    </button>
-                </div>
-                <div class="event-card">
-                    <div class="event-icon">
-                        <i class="fas fa-users"></i>
-                    </div>
-                    <div class="event-info">
-                        <h4><span data-key="event2Title">Rencontre avec les Jeunes</span></h4>
-                        <p><span data-key="event2Desc">Stade de Japoma, Douala - Vendredi 17 avril 2026 à 15h00</span></p>
-                    </div>
-                    <button class="watch-btn" style="margin-left: auto;" onclick="openVideoPlayer('https://www.youtube.com/embed/live_stream?channel=UCBULVVDP2gEP90CL6vwqkRg&autoplay=1', 'Rencontre avec les Jeunes')">
-                        <i class="fas fa-bell"></i> <span data-key="reminderBtn">Rappel</span>
-                    </button>
-                </div>
-                <!-- Nouvel événement : Rencontre avec le Président Biya -->
-                <div class="event-card">
-                    <div class="event-icon">
-                        <i class="fas fa-handshake"></i>
-                    </div>
-                    <div class="event-info">
-                        <h4><span data-key="event3Title">Rencontre avec le Président Paul Biya</span></h4>
-                        <p><span data-key="event3Desc">Palais de l'Unité, Yaoundé - Jeudi 15 avril 2026 à 17h15 (UTC+2)</span></p>
-                    </div>
-                    <button class="watch-btn" style="margin-left: auto;" onclick="openVideoPlayer('https://www.youtube.com/embed/live_stream?channel=UCBULVVDP2gEP90CL6vwqkRg&autoplay=1', 'Rencontre avec le Président')">
-                        <i class="fas fa-bell"></i> <span data-key="reminderBtn">Rappel</span>
-                    </button>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- RTVC SECTION -->
-    <section class="rtvc-section">
-        <div class="container">
-            <div class="rtvc-grid">
+    <section class="rtvc-section ">
+        <div class="container ">
+            <div class="rtvc-grid ">
                 <!-- RADIO RTVC -->
-                <div class="rtvc-card" data-aos="fade-up">
-                    <div class="card-header-icon">
-                        <i class="fas fa-microphone-alt"></i>
+                <div class="rtvc-card " data-aos="fade-up ">
+                    <div class="card-header-icon ">
+                        <i class="fas fa-microphone-alt "></i>
                     </div>
                     <h3>Radio RTVC</h3>
-                    <div class="frequency-badge">
-                        <i class="fas fa-signal"></i> 96.9 FM
+                    <div class="frequency-badge ">
+                        <i class="fas fa-signal "></i> 96.9 FM
                     </div>
                     <p>Suivez les émissions en direct : messes, enseignements, témoignages, débats et programmes spirituels de l'Aumônerie.</p>
-                    <div class="program-list">
-                        <strong><i class="fas fa-calendar-alt"></i> <span data-key="programsLabel">Programmes phares</span></strong>
+                    <div class="program-list ">
+                        <strong><i class="fas fa-calendar-alt "></i> Programmes phares</strong>
                         <ul>
-                            <li><i class="fas fa-church"></i> <span data-key="prog1">Messe dominicale : Dimanche 9h00</span></li>
-                            <li><i class="fas fa-pray"></i> <span data-key="prog2">Chapelet en direct : Samedi 18h00</span></li>
-                            <li><i class="fas fa-users"></i> <span data-key="prog3">Émission "Jeunes & Vie" : Mercredi 15h00</span></li>
-                            <li><i class="fas fa-book"></i> <span data-key="prog4">Enseignement biblique : Jeudi 20h00</span></li>
-                            <li><i class="fas fa-comments"></i> <span data-key="prog5">Synode : Samedi 20h00</span></li>
+                            <li><i class="fas fa-church "></i> Messe dominicale : Dimanche 9h00</li>
+                            <li><i class="fas fa-pray "></i> Chapelet en direct : Samedi 18h00</li>
+                            <li><i class="fas fa-users "></i> Émission "Jeunes & Vie " : Mercredi 15h00</li>
+                            <li><i class="fas fa-book "></i> Enseignement biblique : Jeudi 20h00</li>
+                            <li><i class="fas fa-comments "></i> Synode : Samedi 20h00</li>
                         </ul>
                     </div>
-                    <button class="btn-listen" data-stream="https://share.theonestopradio.com/RGo9" data-name="RTVC Radio">
-                        <i class="fas fa-headphones"></i> <span data-key="listenBtn">Écouter en direct</span>
+                    <button class="btn-listen " data-stream="https://share.theonestopradio.com/RGo9 " data-name="RTVC Radio ">
+                        <i class="fas fa-headphones "></i> Écouter en direct
                     </button>
 
-                    <div class="archives-wrapper">
-                        <div class="archives-header">
-                            <div class="archives-title">
-                                <i class="fas fa-calendar-week"></i>
-                                <span data-key="archivesTitle">Archives 2020-2026</span>
+                    <div class="archives-wrapper ">
+                        <div class="archives-header ">
+                            <div class="archives-title ">
+                                <i class="fas fa-calendar-week "></i> Archives 2020-2026
                             </div>
                         </div>
-                        <iframe class="archives-iframe" src="archives-radio.html" title="Archives Radio RTVC" loading="lazy"></iframe>
+                        <iframe class="archives-iframe " src="archives-radio.html " title="Archives Radio RTVC " loading="lazy "></iframe>
                     </div>
                 </div>
 
                 <!-- TV RTVC -->
-                <div class="rtvc-card" data-aos="fade-up" data-aos-delay="100">
-                    <div class="card-header-icon">
-                        <i class="fas fa-tv"></i>
+                <div class="rtvc-card " data-aos="fade-up " data-aos-delay="100 ">
+                    <div class="card-header-icon ">
+                        <i class="fas fa-tv "></i>
                     </div>
                     <h3>TV RTVC</h3>
-                    <div class="frequency-badge">
-                        <i class="fas fa-satellite-dish"></i> Canal+ 732
-                        <span style="margin-left: 8px;"><i class="fas fa-wifi"></i> Web TV</span>
+                    <div class="frequency-badge ">
+                        <i class="fas fa-satellite-dish "></i> Canal+ 732
+                        <span style="margin-left: 8px; "><i class="fas fa-wifi "></i> Web TV</span>
                     </div>
                     <p>La chaîne de télévision de l'Aumônerie. Retrouvez les célébrations, émissions éducatives et documentaires spirituels.</p>
-                    <div class="program-list">
-                        <strong><i class="fas fa-calendar-alt"></i> <span data-key="programsLabel">Programmes phares</span></strong>
+                    <div class="program-list ">
+                        <strong><i class="fas fa-calendar-alt "></i> Programmes phares</strong>
                         <ul>
-                            <li><i class="fas fa-video"></i> <span data-key="tvProg1">Messe en direct : Dimanche 9h00</span></li>
-                            <li><i class="fas fa-chalkboard-user"></i> <span data-key="tvProg2">Catéchèse enfants : Samedi 10h00</span></li>
-                            <li><i class="fas fa-hand-sparkles"></i> <span data-key="tvProg3">Témoignages jeunes : Vendredi 19h00</span></li>
-                            <li><i class="fas fa-music"></i> <span data-key="tvProg4">Chants liturgiques : Lundi 20h00</span></li>
+                            <li><i class="fas fa-video "></i> Messe en direct : Dimanche 9h00</li>
+                            <li><i class="fas fa-chalkboard-user "></i> Catéchèse enfants : Samedi 10h00</li>
+                            <li><i class="fas fa-hand-sparkles "></i> Témoignages jeunes : Vendredi 19h00</li>
+                            <li><i class="fas fa-music "></i> Chants liturgiques : Lundi 20h00</li>
                         </ul>
                     </div>
-                    <button class="btn-watch" data-video="https://www.youtube.com/embed/live_stream?channel=UCBULVVDP2gEP90CL6vwqkRg&autoplay=1" data-name="TV RTVC">
-                        <i class="fas fa-play-circle"></i> <span data-key="watchBtn">Regarder en direct</span>
+                    <button class="btn-watch " data-video="https://www.youtube.com/embed/live_stream?channel=UCBULVVDP2gEP90CL6vwqkRg&autoplay=1 " data-name="TV RTVC ">
+                        <i class="fas fa-play-circle "></i> Regarder en direct
                     </button>
 
-                    <div class="archives-wrapper">
-                        <div class="archives-header">
-                            <div class="archives-title">
-                                <i class="fab fa-youtube"></i>
-                                <span data-key="replayTitle">Replay des émissions</span>
+                    <div class="archives-wrapper ">
+                        <div class="archives-header ">
+                            <div class="archives-title ">
+                                <i class="fab fa-youtube "></i> Replay des émissions
                             </div>
                         </div>
-                        <iframe class="archives-iframe" src="tv-iframe.html" title="Replay TV RTVC" loading="lazy"></iframe>
+                        <iframe class="archives-iframe " src="tv-iframe.html " title="Replay TV RTVC " loading="lazy "></iframe>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- MESSE EN DIRECT (SECTION MISE EN AVANT) -->
-    <section class="live-section">
-        <div class="container">
-            <div class="live-card" data-aos="zoom-in">
-                <div class="live-badge">
-                    <i class="fas fa-circle"></i> <span data-key="liveBadgeMass">EN DIRECT</span>
+    <!-- MESSE EN DIRECT -->
+    <section class="live-section ">
+        <div class="container ">
+            <div class="live-card " data-aos="zoom-in ">
+                <div class="live-badge ">
+                    <i class="fas fa-circle "></i> EN DIRECT
                 </div>
                 <h3>
-                    <i class="fas fa-church"></i> <span data-key="massTitle">Messe en Direct</span>
-                    <i class="fas fa-video"></i>
+                    <i class="fas fa-church "></i> Messe en Direct
+                    <i class="fas fa-video "></i>
                 </h3>
-                <p><i class="fas fa-map-marker-alt"></i> <span data-key="massLocation">Cathédrale Saint-Pierre-et-Paul de Douala</span></p>
+                <p><i class="fas fa-map-marker-alt "></i> Cathédrale Saint-Pierre-et-Paul de Douala</p>
 
-                <div class="schedule">
+                <div class="schedule ">
                     <p>
-                        <span><i class="fas fa-calendar-alt"></i> <strong data-key="massDay1">Dimanche à 9h00</strong></span>
-                        <span><i class="fas fa-calendar-alt"></i> <strong data-key="massDay2">Samedi à 18h00</strong></span>
+                        <span><i class="fas fa-calendar-alt "></i> <strong>Dimanche à 9h00</strong></span>
+                        <span><i class="fas fa-calendar-alt "></i> <strong>Samedi à 18h00</strong></span>
                     </p>
                 </div>
 
-                <div class="video-container" id="liveVideoContainer">
-                    <iframe id="youtubeIframe" src="https://www.youtube.com/embed/live_stream?channel=UCBULVVDP2gEP90CL6vwqkRg&autoplay=1" title="RTVC - Messe en direct" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                        allowfullscreen></iframe>
+                <div class="video-container " id="liveVideoContainer ">
+                    <iframe id="youtubeIframe " src="https://www.youtube.com/embed/live_stream?channel=UCBULVVDP2gEP90CL6vwqkRg&autoplay=1 " title="RTVC - Messe en direct " frameborder="0 " allow="accelerometer; autoplay; clipboard-write; encrypted-media;
+                                    gyroscope; picture-in-picture; web-share " allowfullscreen></iframe>
                 </div>
 
-                <div class="info-box">
-                    <i class="fas fa-info-circle"></i>
-                    <p><span data-key="infoText">RTVC est un média catholique, chaîne de télévision et site Internet, créé en 2013. La chaîne est accessible <strong>7j/7</strong> et <strong>24h/24</strong>.</span></p>
+                <div class="info-box ">
+                    <i class="fas fa-info-circle "></i>
+                    <p>RTVC est un média catholique, chaîne de télévision et site Internet, créé en 2013. La chaîne est accessible <strong>7j/7</strong> et <strong>24h/24</strong>.</p>
                 </div>
 
-                <button class="btn-live" id="watchLiveBtn">
-                    <i class="fas fa-play-circle"></i> <span data-key="refreshBtn">Rafraîchir le direct</span>
-                    <i class="fas fa-sync-alt"></i>
+                <button class="btn-live " id="watchLiveBtn ">
+                    <i class="fas fa-play-circle "></i> Rafraîchir le direct
+                    <i class="fas fa-sync-alt "></i>
                 </button>
             </div>
         </div>
     </section>
 
     <!-- RADIOS PARTENAIRES -->
-    <section class="partners-section">
-        <div class="container">
-            <h2 class="section-title"><i class="fas fa-headphones"></i> <span data-key="partnerRadioTitle">Radios Partenaires</span></h2>
-            <div class="partners-grid">
-                <div class="partner-card" data-aos="fade-up">
-                    <div class="partner-header">
-                        <i class="fas fa-microphone-alt"></i>
+    <section class="partners-section ">
+        <div class="container ">
+            <h2 class="section-title "><i class="fas fa-headphones "></i> Radios Partenaires</h2>
+            <div class="partners-grid ">
+                <div class="partner-card " data-aos="fade-up ">
+                    <div class="partner-header ">
+                        <i class="fas fa-microphone-alt "></i>
                         <h3>Radio Bonne Nouvelle</h3>
                     </div>
-                    <div class="partner-body">
-                        <span class="frequency"><i class="fas fa-signal"></i> 88.5 FM</span>
-                        <p><span data-key="radioBnDesc">La radio officielle de l'Archidiocèse de Douala. Suivez les messes, enseignements et émissions spirituelles en direct.</span></p>
-                        <button class="btn-listen" data-stream="https://stream.radiobonnenouvelle.cm:8000/live.mp3" data-name="Radio Bonne Nouvelle">
-                            <i class="fas fa-headphones"></i> <span data-key="listenBtn">Écouter</span>
+                    <div class="partner-body ">
+                        <span class="frequency "><i class="fas fa-signal "></i> 88.5 FM</span>
+                        <p>La radio officielle de l'Archidiocèse de Douala. Suivez les messes, enseignements et émissions spirituelles en direct.</p>
+                        <button class="btn-listen " data-stream="https://stream.radiobonnenouvelle.cm:8000/live.mp3 " data-name="Radio Bonne Nouvelle ">
+                            <i class="fas fa-headphones "></i> Écouter
                         </button>
                     </div>
                 </div>
-                <div class="partner-card" data-aos="fade-up" data-aos-delay="100">
-                    <div class="partner-header">
-                        <i class="fas fa-church"></i>
+                <div class="partner-card " data-aos="fade-up " data-aos-delay="100 ">
+                    <div class="partner-header ">
+                        <i class="fas fa-church "></i>
                         <h3>Radio Espoir</h3>
                     </div>
-                    <div class="partner-body">
-                        <span class="frequency"><i class="fas fa-signal"></i> 95.2 FM</span>
-                        <p><span data-key="radioEspoirDesc">Programmes variés : débats, enseignements bibliques, témoignages et musique chrétienne.</span></p>
-                        <button class="btn-listen" data-stream="https://stream.radioespoir.cm:8000/live.mp3" data-name="Radio Espoir">
-                            <i class="fas fa-headphones"></i> <span data-key="listenBtn">Écouter</span>
+                    <div class="partner-body ">
+                        <span class="frequency "><i class="fas fa-signal "></i> 95.2 FM</span>
+                        <p>Programmes variés : débats, enseignements bibliques, témoignages et musique chrétienne.</p>
+                        <button class="btn-listen " data-stream="https://stream.radioespoir.cm:8000/live.mp3 " data-name="Radio Espoir ">
+                            <i class="fas fa-headphones "></i> Écouter
                         </button>
                     </div>
                 </div>
-                <div class="partner-card" data-aos="fade-up" data-aos-delay="200">
-                    <div class="partner-header">
-                        <i class="fas fa-pray"></i>
+                <div class="partner-card " data-aos="fade-up " data-aos-delay="200 ">
+                    <div class="partner-header ">
+                        <i class="fas fa-pray "></i>
                         <h3>Radio Lumière</h3>
                     </div>
-                    <div class="partner-body">
-                        <span class="frequency"><i class="fas fa-signal"></i> 101.3 FM</span>
-                        <p><span data-key="radioLumiereDesc">Émissions destinées aux jeunes, catéchèses et prières en communauté.</span></p>
-                        <button class="btn-listen" data-stream="https://stream.radiolumiere.cm:8000/live.mp3" data-name="Radio Lumière">
-                            <i class="fas fa-headphones"></i> <span data-key="listenBtn">Écouter</span>
+                    <div class="partner-body ">
+                        <span class="frequency "><i class="fas fa-signal "></i> 101.3 FM</span>
+                        <p>Émissions destinées aux jeunes, catéchèses et prières en communauté.</p>
+                        <button class="btn-listen " data-stream="https://stream.radiolumiere.cm:8000/live.mp3 " data-name="Radio Lumière ">
+                            <i class="fas fa-headphones "></i> Écouter
                         </button>
                     </div>
                 </div>
@@ -1916,43 +2449,43 @@
     </section>
 
     <!-- TÉLÉVISIONS PARTENAIRES -->
-    <section class="partners-section">
-        <div class="container">
-            <h2 class="section-title"><i class="fas fa-tv"></i> <span data-key="partnerTvTitle">Télévisions Partenaires</span></h2>
-            <div class="partners-grid">
-                <div class="partner-card" data-aos="fade-up">
-                    <div class="partner-header">
-                        <i class="fas fa-tv"></i>
+    <section class="partners-section ">
+        <div class="container ">
+            <h2 class="section-title "><i class="fas fa-tv "></i> Télévisions Partenaires</h2>
+            <div class="partners-grid ">
+                <div class="partner-card " data-aos="fade-up ">
+                    <div class="partner-header ">
+                        <i class="fas fa-tv "></i>
                         <h3>TV Bonne Nouvelle</h3>
                     </div>
-                    <div class="partner-body">
-                        <p><span data-key="tvBnDesc">La chaîne catholique de référence. Retrouvez les messes, enseignements et documentaires spirituels.</span></p>
-                        <button class="btn-watch" data-video="https://www.youtube.com/embed/live_stream?channel=UCBULVVDP2gEP90CL6vwqkRg&autoplay=1" data-name="TV Bonne Nouvelle">
-                            <i class="fas fa-play-circle"></i> <span data-key="watchBtn">Regarder</span>
+                    <div class="partner-body ">
+                        <p>La chaîne catholique de référence. Retrouvez les messes, enseignements et documentaires spirituels.</p>
+                        <button class="btn-watch " data-video="https://www.youtube.com/embed/live_stream?channel=UCBULVVDP2gEP90CL6vwqkRg&autoplay=1 " data-name="TV Bonne Nouvelle ">
+                            <i class="fas fa-play-circle "></i> Regarder
                         </button>
                     </div>
                 </div>
-                <div class="partner-card" data-aos="fade-up" data-aos-delay="100">
-                    <div class="partner-header">
-                        <i class="fas fa-church"></i>
+                <div class="partner-card " data-aos="fade-up " data-aos-delay="100 ">
+                    <div class="partner-header ">
+                        <i class="fas fa-church "></i>
                         <h3>KTO Cameroun</h3>
                     </div>
-                    <div class="partner-body">
-                        <p><span data-key="tvKtoDesc">Programmes catholiques, émissions éducatives et couverture des événements diocésains.</span></p>
-                        <button class="btn-watch" data-video="https://www.youtube.com/embed/M2WZlLYdl1E?autoplay=1" data-name="KTO Cameroun">
-                            <i class="fas fa-play-circle"></i> <span data-key="watchBtn">Regarder</span>
+                    <div class="partner-body ">
+                        <p>Programmes catholiques, émissions éducatives et couverture des événements diocésains.</p>
+                        <button class="btn-watch " data-video="https://www.youtube.com/embed/live_stream?channel=UCBULVVDP2gEP90CL6vwqkRg&autoplay=1 " data-name="KTO Cameroun ">
+                            <i class="fas fa-play-circle "></i> Regarder
                         </button>
                     </div>
                 </div>
-                <div class="partner-card" data-aos="fade-up" data-aos-delay="200">
-                    <div class="partner-header">
-                        <i class="fas fa-newspaper"></i>
+                <div class="partner-card " data-aos="fade-up " data-aos-delay="200 ">
+                    <div class="partner-header ">
+                        <i class="fas fa-newspaper "></i>
                         <h3>CRTV</h3>
                     </div>
-                    <div class="partner-body">
-                        <p><span data-key="tvCrtvDesc">Émissions religieuses le dimanche matin et couverture des grands événements catholiques.</span></p>
-                        <button class="btn-watch" data-video="https://www.youtube.com/embed/live_stream?channel=UCBULVVDP2gEP90CL6vwqkRg&autoplay=1" data-name="CRTV">
-                            <i class="fas fa-play-circle"></i> <span data-key="watchBtn">Regarder</span>
+                    <div class="partner-body ">
+                        <p>Émissions religieuses le dimanche matin et couverture des grands événements catholiques.</p>
+                        <button class="btn-watch " data-video="https://www.youtube.com/embed/live_stream?channel=UCBULVVDP2gEP90CL6vwqkRg&autoplay=1 " data-name="CRTV ">
+                            <i class="fas fa-play-circle "></i> Regarder
                         </button>
                     </div>
                 </div>
@@ -1961,76 +2494,74 @@
     </section>
 
     <!-- MODAL PLAYER -->
-    <div id="playerModal" class="modal-player">
-        <div class="modal-content">
-            <span class="close-modal" id="closeModal">&times;</span>
-            <h3 id="modalTitle">Lecteur</h3>
-            <div id="playerContainer"></div>
+    <div id="playerModal " class="modal-player ">
+        <div class="modal-content ">
+            <span class="close-modal " id="closeModal ">&times;</span>
+            <h3 id="modalTitle ">Lecteur</h3>
+            <div id="playerContainer "></div>
         </div>
     </div>
 
-    <!-- FOOTER -->
+    <!-- FOOTER (unique) -->
     <footer class="main-footer">
         <div class="container">
             <div class="footer-grid">
                 <div class="footer-col">
-                    <h3 data-key="footerTitle1">Aumônerie Diocésaine</h3>
-                    <p data-key="footerDesc">Accompagnement spirituel, formation et engagement des jeunes et enfants de l'Archidiocèse de Douala.</p>
+                    <h3>Aumônerie Diocésaine</h3>
+                    <p>Accompagnement spirituel, formation et engagement des jeunes et enfants de l'Archidiocèse de Douala. Ensemble, bâtissons une jeunesse responsable et rayonnante.</p>
+                    <p><a href="https://aumonerie-diocesaine-jeunesse-enfance-douala.org/" target="_blank">aumonerie-diocesaine-jeunesse-enfance-douala.org <i class="fas fa-external-link-alt"></i></a></p>
                 </div>
                 <div class="footer-col">
-                    <h3 data-key="footerTitle2">Liens rapides</h3>
+                    <h3>Liens rapides</h3>
                     <ul class="footer-links">
-                        <li><a href="index.html"><i class="fas fa-home"></i> <span data-key="footerLink1">Accueil</span></a></li>
-                        <li><a href="don.html"><i class="fas fa-hand-holding-heart"></i> <span data-key="footerLink2">Faire un don</span></a></li>
-                        <li><a href="mot.html"><i class="fas fa-microphone-alt"></i> <span data-key="footerLink3">Mot de l'Aumônier</span></a></li>
+                        <li><a href="index.html"><i class="fas fa-home"></i> Accueil</a></li>
+                        <li><a href="MissionPastorale.html"><i class="fas fa-cross"></i> Mission Pastorale</a></li>
+                        <li><a href="Histoirefondements.html"><i class="fas fa-book-open"></i> Histoire & Fondements</a></li>
+                        <li><a href="Equipepastorale.html"><i class="fas fa-user-friends"></i> Équipe Diocésaine</a></li>
+                        <li><a href="mouvements.html"><i class="fas fa-flag-checkered"></i> Mouvements & Groupes</a></li>
+                        <li><a href="don.html"><i class="fas fa-hand-holding-heart"></i> Faire un don</a></li>
+                        <li><a href="mot.html"><i class="fas fa-microphone-alt"></i> Mot de l'Aumônier</a></li>
+                        <li><a href="pelerinage.html"><i class="fas fa-hiking"></i> Pèlerinages</a></li>
                     </ul>
                 </div>
                 <div class="footer-col">
-                    <h3 data-key="footerTitle3">Équipe technique</h3>
+                    <h3>Équipe technique</h3>
                     <div class="dev-names">
                         <span><i class="fas fa-code"></i> KENMATIO Vicens</span>
                         <span><i class="fas fa-palette"></i> FOTSO Audrey</span>
                     </div>
                     <div class="social-links">
-                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                        <a href="https://web.facebook.com/communicationspastoralesofficielles" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="https://youtube.com/@veritastelevision7891?si=9tx8TPT3pNzgL0jW" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
                         <a href="#" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
                     </div>
                 </div>
                 <div class="footer-col">
-                    <h3 data-key="footerTitle4">Contact</h3>
-                    <p><i class="fas fa-envelope"></i> contact@aumonerie-douala.org</p>
+                    <h3>Contact</h3>
+                    <a href="mailto:dominiquesavio@aumonerie-diocesaine-jeunesse-enfance-douala.org"><i class="fas fa-envelope"></i> Equipe développement du site web</a><br>
+                    <a href="mailto:infos@aumonerie-diocesaine-jeunesse-enfance-douala.org"><i class="fas fa-envelope"></i> Informations et annonces de l'Aumônerie</a><br>
+                    <a href="mailto:secretariat@aumonerie-diocesaine-jeunesse-enfance-douala.org"><i class="fas fa-envelope"></i> Secrétariat de l'Aumônerie</a><br>
                     <p><i class="fas fa-phone-alt"></i> +237 697 408 284</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Archidiocèse de Douala, Cameroun</p>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2026 Aumônerie Diocésaine Jeunesse & Enfance – Douala</p>
+                <p>&copy; 2026 Aumônerie Diocésaine Jeunesse & Enfance – Douala. Tous droits réservés.</p>
+                <p>Conçu avec <i class="fas fa-heart" style="color: #e74c3c;"></i> par BIG DATA CENTER AI — <a href="https://www.youtube.com/@DominiqueSavio_Cyber-Ap%C3%B4tre3.0" target="_blank">Dominique Savio - Cyber Apôtre 3.0</a></p>
             </div>
         </div>
     </footer>
 
-    <!-- Scripts -->
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js "></script>
     <script>
-        // Initialisation AOS
         AOS.init({
             duration: 800,
             once: true,
             offset: 50
         });
 
-        // ========== QR CODE MODAL ==========
-        const qrCodeBtn = document.getElementById('qrCodeBtn');
-        if (qrCodeBtn) {
-            qrCodeBtn.addEventListener('click', function() {
-                const qrImage = this.querySelector('img');
-                if (qrImage) {
-                    openVideoPlayer(qrImage.src, 'QR Code - Chaîne WhatsApp Pape Léon XIV');
-                }
-            });
-        }
-
-        // ========== MENU HAMBURGER ==========
+        // Menu hamburger
         const menuToggle = document.getElementById('menuToggle');
         const navLinks = document.getElementById('navLinks');
         const menuOverlay = document.getElementById('menuOverlay');
@@ -2039,25 +2570,16 @@
         function closeMenu() {
             navLinks.classList.remove('active');
             if (menuOverlay) menuOverlay.classList.remove('active');
-            if (menuToggle && window.innerWidth <= 992) {
-                menuToggle.innerHTML = '<i class="fas fa-bars"></i>';
-            }
+            if (menuToggle && window.innerWidth <= 992) menuToggle.innerHTML = '<i class="fas fa-bars "></i>';
         }
 
         function openMenu() {
             navLinks.classList.add('active');
             if (menuOverlay) menuOverlay.classList.add('active');
-            if (menuToggle && window.innerWidth <= 992) {
-                menuToggle.innerHTML = '<i class="fas fa-times"></i>';
-            }
+            if (menuToggle && window.innerWidth <= 992) menuToggle.innerHTML = '<i class="fas fa-times "></i>';
         }
 
-        if (menuToggle) {
-            menuToggle.addEventListener('click', () => {
-                navLinks.classList.contains('active') ? closeMenu() : openMenu();
-            });
-        }
-
+        if (menuToggle) menuToggle.addEventListener('click', () => navLinks.classList.contains('active') ? closeMenu() : openMenu());
         if (closeMenuBtn) closeMenuBtn.addEventListener('click', closeMenu);
         if (menuOverlay) menuOverlay.addEventListener('click', closeMenu);
         document.querySelectorAll('.nav-links a:not(#dropdownToggle)').forEach(link => link.addEventListener('click', closeMenu));
@@ -2073,27 +2595,28 @@
                 e.preventDefault();
                 if (window.innerWidth <= 992) dropdown.classList.toggle('open');
             });
+            document.addEventListener('click', (e) => {
+                if (window.innerWidth <= 992 && dropdown && !dropdown.contains(e.target)) dropdown.classList.remove('open');
+            });
         }
-        document.addEventListener('click', (e) => {
-            if (window.innerWidth <= 992 && dropdown && !dropdown.contains(e.target)) dropdown.classList.remove('open');
-        });
 
-        // ========== MODAL PLAYER ==========
+        // Modal player
         const modal = document.getElementById('playerModal');
         const closeModal = document.getElementById('closeModal');
         const modalTitle = document.getElementById('modalTitle');
         const playerContainer = document.getElementById('playerContainer');
 
-        function openRadioPlayer(streamUrl, stationName) {
-            modalTitle.textContent = stationName;
-            playerContainer.innerHTML = `<div class="radio-player"><audio controls autoplay><source src="${streamUrl}" type="audio/mpeg">Votre navigateur ne supporte pas la lecture audio.</audio><p style="margin-top: 15px; color: var(--gray);">En écoute : ${stationName}</p></div>`;
+        window.openVideoPlayer = function(videoUrl, title) {
+            modalTitle.textContent = title;
+            playerContainer.innerHTML = `<div class="video-container " style="position:relative;padding-bottom:56.25%;height:0; "><iframe src="${videoUrl} " style="position:absolute;top:0;left:0;width:100%;height:100%;border:none;border-radius:12px;
+                                    " frameborder="0 " allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture " allowfullscreen></iframe></div>`;
             modal.classList.add('active');
             document.body.style.overflow = 'hidden';
         }
 
-        function openVideoPlayer(videoUrl, channelName) {
-            modalTitle.textContent = channelName;
-            playerContainer.innerHTML = `<div class="video-container" style="position:relative;padding-bottom:56.25%;height:0;"><iframe src="${videoUrl}" style="position:absolute;top:0;left:0;width:100%;height:100%;border:none;border-radius:12px;" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>`;
+        function openRadioPlayer(streamUrl, stationName) {
+            modalTitle.textContent = stationName;
+            playerContainer.innerHTML = `<div class="radio-player "><audio controls autoplay><source src="${streamUrl} " type="audio/mpeg ">Votre navigateur ne supporte pas la lecture audio.</audio><p style="margin-top: 15px; ">En écoute : ${stationName}</p></div>`;
             modal.classList.add('active');
             document.body.style.overflow = 'hidden';
         }
@@ -2109,7 +2632,7 @@
                 const streamUrl = btn.getAttribute('data-stream');
                 const stationName = btn.getAttribute('data-name');
                 if (streamUrl && streamUrl !== '#') openRadioPlayer(streamUrl, stationName);
-                else alert(`Le stream de "${stationName}" sera bientôt disponible.`);
+                else alert(`Le stream de "${stationName} " sera bientôt disponible.`);
             });
         });
 
@@ -2118,108 +2641,60 @@
                 const videoUrl = btn.getAttribute('data-video');
                 const channelName = btn.getAttribute('data-name') || 'Messe en Direct';
                 if (videoUrl && videoUrl !== '#') openVideoPlayer(videoUrl, channelName);
-                else alert(`Le flux vidéo de "${channelName}" sera bientôt disponible.`);
+                else alert(`Le flux vidéo de "${channelName} " sera bientôt disponible.`);
             });
         });
 
-        closeModal.addEventListener('click', closePlayerModal);
-        modal.addEventListener('click', (e) => {
+        if (closeModal) closeModal.addEventListener('click', closePlayerModal);
+        if (modal) modal.addEventListener('click', (e) => {
             if (e.target === modal) closePlayerModal();
         });
 
-        // Communication avec iframes
-        window.addEventListener('message', (event) => {
-            if (event.data && event.data.type === 'playAudio') {
-                openRadioPlayer(event.data.url, event.data.title);
-            }
-            if (event.data && event.data.type === 'playVideo') {
-                openVideoPlayer(event.data.url, event.data.title);
-            }
-        });
-
-        // ========== GESTION LIVE AVEC FALLBACK SUR PLAYLIST ==========
+        // Live fallback
         const CHANNEL_ID = 'UCBULVVDP2gEP90CL6vwqkRg';
         const PLAYLIST_ID = 'UUBULVVDP2gEP90CL6vwqkRg';
         const liveIframe = document.getElementById('youtubeIframe');
         const watchLiveBtn = document.getElementById('watchLiveBtn');
-        const videoContainer = document.getElementById('liveVideoContainer');
-
+        const videoContainerLive = document.getElementById('liveVideoContainer');
         let fallbackOverlay = null;
-        let isLiveActive = false;
 
         function showFallbackOverlay() {
             if (fallbackOverlay) return;
             fallbackOverlay = document.createElement('div');
             fallbackOverlay.className = 'live-fallback-overlay';
-            fallbackOverlay.innerHTML = `
-                <i class="fas fa-church"></i>
-                <h4>📺 Aucune célébration en direct</h4>
-                <p>La messe en direct n'est pas disponible pour le moment.<br>Découvrez les dernières célébrations de notre chaîne.</p>
-                <button id="loadPlaylistBtn">
-                    <i class="fab fa-youtube"></i> Voir les dernières messes
-                </button>
-            `;
-            videoContainer.style.position = 'relative';
-            videoContainer.appendChild(fallbackOverlay);
-            document.getElementById('loadPlaylistBtn').addEventListener('click', () => {
-                loadPlaylist();
-            });
-        }
-
-        function hideFallbackOverlay() {
-            if (fallbackOverlay) {
-                fallbackOverlay.remove();
-                fallbackOverlay = null;
+            fallbackOverlay.innerHTML = `<i class="fas fa-church "></i><h4>📺 Aucune célébration en direct</h4><p>La messe en direct n'est pas disponible pour le moment.<br>Découvrez les dernières célébrations de notre chaîne.</p><button id="loadPlaylistBtn
+                                    "><i class="fab fa-youtube "></i> Voir les dernières messes</button>`;
+            if (videoContainerLive) {
+                videoContainerLive.style.position = 'relative';
+                videoContainerLive.appendChild(fallbackOverlay);
+                document.getElementById('loadPlaylistBtn').addEventListener('click', () => {
+                    const playlistUrl = `https://www.youtube.com/embed/videoseries?list=${PLAYLIST_ID}&autoplay=1`;
+                    if (liveIframe) liveIframe.src = playlistUrl;
+                    if (fallbackOverlay) {
+                        fallbackOverlay.remove();
+                        fallbackOverlay = null;
+                    }
+                });
             }
-        }
-
-        function loadPlaylist() {
-            const playlistUrl = `https://www.youtube.com/embed/videoseries?list=${PLAYLIST_ID}&autoplay=1`;
-            liveIframe.src = playlistUrl;
-            hideFallbackOverlay();
-            showNotification('📺 Chargement des dernières célébrations');
-        }
-
-        function tryLoadLive() {
-            const liveUrl = `https://www.youtube.com/embed/live_stream?channel=${CHANNEL_ID}&autoplay=1`;
-            liveIframe.src = liveUrl;
-            hideFallbackOverlay();
-            setTimeout(() => {
-                if (liveIframe.src.includes('live_stream') && !isLiveActive) {
-                    showFallbackOverlay();
-                }
-            }, 8000);
         }
 
         if (watchLiveBtn) {
             watchLiveBtn.addEventListener('click', () => {
-                tryLoadLive();
-                showNotification('🔄 Tentative de connexion au direct...');
+                const liveUrl = `https://www.youtube.com/embed/live_stream?channel=${CHANNEL_ID}&autoplay=1`;
+                if (liveIframe) liveIframe.src = liveUrl;
+                if (fallbackOverlay) {
+                    fallbackOverlay.remove();
+                    fallbackOverlay = null;
+                }
             });
         }
 
-        async function checkLiveStatus() {
-            try {
-                const response = await fetch(`https://www.youtube.com/oembed?url=https://www.youtube.com/channel/${CHANNEL_ID}/live&format=json`);
-                if (response.ok) {
-                    isLiveActive = true;
-                    hideFallbackOverlay();
-                } else {
-                    isLiveActive = false;
-                    if (liveIframe.src.includes('live_stream')) {
-                        showFallbackOverlay();
-                    }
-                }
-            } catch (e) {}
-        }
+        setTimeout(() => {
+            if (liveIframe && liveIframe.src.includes('live_stream')) showFallbackOverlay();
+        }, 8000);
+        if (liveIframe) liveIframe.addEventListener('error', () => showFallbackOverlay());
 
-        tryLoadLive();
-        setInterval(checkLiveStatus, 120000);
-        liveIframe.addEventListener('error', () => {
-            showFallbackOverlay();
-        });
-
-        // ========== MODE SOMBRE ==========
+        // Dark mode
         function initDarkMode() {
             const isDark = localStorage.getItem('darkMode') === 'true';
             if (isDark) document.body.classList.add('dark-mode');
@@ -2231,238 +2706,20 @@
                 const dark = document.body.classList.contains('dark-mode');
                 localStorage.setItem('darkMode', dark);
                 const icon = dark ? 'fas fa-sun' : 'fas fa-moon';
-                if (desktopBtn) desktopBtn.innerHTML = `<i class="${icon}"></i>`;
-                if (mobileBtn) mobileBtn.innerHTML = `<i class="${icon}"></i>`;
-                const iframes = document.querySelectorAll('iframe');
-                iframes.forEach(iframe => {
-                    try {
-                        iframe.contentWindow.postMessage({
-                            type: 'darkMode',
-                            isDark: dark
-                        }, '*');
-                    } catch (e) {}
-                });
+                if (desktopBtn) desktopBtn.innerHTML = `<i class="${icon} "></i>`;
+                if (mobileBtn) mobileBtn.innerHTML = `<i class="${icon} "></i>`;
             }
             const icon = isDark ? 'fas fa-sun' : 'fas fa-moon';
             if (desktopBtn) {
-                desktopBtn.innerHTML = `<i class="${icon}"></i>`;
+                desktopBtn.innerHTML = `<i class="${icon} "></i>`;
                 desktopBtn.addEventListener('click', toggleDarkMode);
             }
             if (mobileBtn) {
-                mobileBtn.innerHTML = `<i class="${icon}"></i>`;
+                mobileBtn.innerHTML = `<i class="${icon} "></i>`;
                 mobileBtn.addEventListener('click', toggleDarkMode);
             }
         }
-
-        // ========== MULTILINGUE COMPLET ==========
-        let currentLang = localStorage.getItem('lang') || 'fr';
-
-        const translations = {
-            fr: {
-                nav1: "Accueil",
-                nav2: "À propos",
-                nav3: "Enfance",
-                nav4: "Jeunesse",
-                nav5: "Vie du Diocèse",
-                nav6: "Galerie",
-                dropdown1: "Annonces",
-                dropdown2: "Communiqués",
-                dropdown3: "Radio & Télévision",
-                dropdown4: "Documentation",
-                dropdown5: "Événements Pastoraux",
-                dropdown6: "Pèlerinages",
-                dropdown7: "Retraites spirituelles",
-                dropdown8: "Formations bibliques",
-                heroTitle: "Radio & Télévision",
-                heroDesc: "Suivez les émissions, messes en direct et programmes catholiques sur nos radios et télévisions partenaires",
-                liveBadge: "EN DIRECT",
-                papeTitle: "Visite du Pape Léon XIV au Cameroun",
-                papeDesc: "Suivez en direct les moments forts de la visite apostolique du Saint-Père Léon XIV au Cameroun du 15 au 18 avril 2026",
-                rtvcLiveLabel: "Facebook Live",
-                ktoLiveLabel: "YouTube Live",
-                crtvLiveLabel: "Facebook Live",
-                drmLiveLabel: "YouTube Live",
-                liveSpan: "Direct",
-                liveSmall: "EN DIRECT",
-                fullscreenBtn: "Plein écran",
-                whatsappTitle: "Chaîne WhatsApp \"Léon XIV en Afrique avec KTO\"",
-                whatsappDesc: "Recevez toutes les informations sur les étapes du voyage du Pape en Afrique du 13 au 23 avril 2026 en français.",
-                whatsappBtn: "Rejoindre la chaîne",
-                event1Title: "Messe Pontificale à Yaoundé",
-                event1Desc: "Base Aérienne - Samedi 18 avril 2026 à 9h30",
-                event2Title: "Rencontre avec les Jeunes",
-                event2Desc: "Stade de Japoma, Douala - Vendredi 17 avril 2026 à 15h00",
-                event3Title: "Rencontre avec le Président Paul Biya",
-                event3Desc: "Palais de l'Unité, Yaoundé - Jeudi 15 avril 2026 à 17h15 (UTC+2)",
-                reminderBtn: "Rappel",
-                programsLabel: "Programmes phares",
-                prog1: "Messe dominicale : Dimanche 9h00",
-                prog2: "Chapelet en direct : Samedi 18h00",
-                prog3: "Émission \"Jeunes & Vie\" : Mercredi 15h00",
-                prog4: "Enseignement biblique : Jeudi 20h00",
-                prog5: "Synode : Samedi 20h00",
-                listenBtn: "Écouter en direct",
-                archivesTitle: "Archives 2020-2026",
-                watchBtn: "Regarder en direct",
-                replayTitle: "Replay des émissions",
-                tvProg1: "Messe en direct : Dimanche 9h00",
-                tvProg2: "Catéchèse enfants : Samedi 10h00",
-                tvProg3: "Témoignages jeunes : Vendredi 19h00",
-                tvProg4: "Chants liturgiques : Lundi 20h00",
-                liveBadgeMass: "EN DIRECT",
-                massTitle: "Messe en Direct",
-                massLocation: "Cathédrale Saint-Pierre-et-Paul de Douala",
-                massDay1: "Dimanche à 9h00",
-                massDay2: "Samedi à 18h00",
-                infoText: "RTVC est un média catholique, chaîne de télévision et site Internet, créé en 2013. La chaîne est accessible 7j/7 et 24h/24.",
-                refreshBtn: "Rafraîchir le direct",
-                partnerRadioTitle: "Radios Partenaires",
-                partnerTvTitle: "Télévisions Partenaires",
-                radioBnDesc: "La radio officielle de l'Archidiocèse de Douala. Suivez les messes, enseignements et émissions spirituelles en direct.",
-                radioEspoirDesc: "Programmes variés : débats, enseignements bibliques, témoignages et musique chrétienne.",
-                radioLumiereDesc: "Émissions destinées aux jeunes, catéchèses et prières en communauté.",
-                tvBnDesc: "La chaîne catholique de référence. Retrouvez les messes, enseignements et documentaires spirituels.",
-                tvKtoDesc: "Programmes catholiques, émissions éducatives et couverture des événements diocésains.",
-                tvCrtvDesc: "Émissions religieuses le dimanche matin et couverture des grands événements catholiques.",
-                footerTitle1: "Aumônerie Diocésaine",
-                footerTitle2: "Liens rapides",
-                footerTitle3: "Équipe technique",
-                footerTitle4: "Contact",
-                footerDesc: "Accompagnement spirituel, formation et engagement des jeunes et enfants de l'Archidiocèse de Douala.",
-                footerLink1: "Accueil",
-                footerLink2: "Faire un don",
-                footerLink3: "Mot de l'Aumônier"
-            },
-            en: {
-                nav1: "Home",
-                nav2: "About",
-                nav3: "Childhood",
-                nav4: "Youth",
-                nav5: "Diocesan Life",
-                nav6: "Gallery",
-                dropdown1: "Announcements",
-                dropdown2: "Official Statements",
-                dropdown3: "Radio & Television",
-                dropdown4: "Documentation",
-                dropdown5: "Pastoral Events",
-                dropdown6: "Pilgrimages",
-                dropdown7: "Spiritual Retreats",
-                dropdown8: "Biblical Training",
-                heroTitle: "Radio & Television",
-                heroDesc: "Follow live broadcasts, Masses, and Catholic programs on our partner radios and televisions",
-                liveBadge: "LIVE",
-                papeTitle: "Pope Léon XIV's Visit to Cameroon",
-                papeDesc: "Follow live the highlights of the Apostolic Journey of His Holiness Pope Léon XIV to Cameroon from April 15 to 18, 2026",
-                rtvcLiveLabel: "Facebook Live",
-                ktoLiveLabel: "YouTube Live",
-                crtvLiveLabel: "Facebook Live",
-                drmLiveLabel: "YouTube Live",
-                liveSpan: "Live",
-                liveSmall: "LIVE",
-                fullscreenBtn: "Fullscreen",
-                whatsappTitle: "WhatsApp Channel \"Léon XIV in Africa with KTO\"",
-                whatsappDesc: "Receive all the information about the Pope's journey in Africa from April 13 to 23, 2026 in French.",
-                whatsappBtn: "Join the channel",
-                event1Title: "Pontifical Mass in Yaoundé",
-                event1Desc: "Air Base - Saturday, April 18, 2026 at 9:30 AM",
-                event2Title: "Meeting with the Youth",
-                event2Desc: "Japoma Stadium, Douala - Friday, April 17, 2026 at 3:00 PM",
-                event3Title: "Meeting with President Paul Biya",
-                event3Desc: "Unity Palace, Yaoundé - Thursday, April 15, 2026 at 5:15 PM (UTC+2)",
-                reminderBtn: "Reminder",
-                programsLabel: "Flagship Programs",
-                prog1: "Sunday Mass: Sunday 9:00 AM",
-                prog2: "Live Rosary: Saturday 6:00 PM",
-                prog3: "\"Youth & Life\" Show: Wednesday 3:00 PM",
-                prog4: "Biblical Teaching: Thursday 8:00 PM",
-                prog5: "Synod: Saturday 8:00 PM",
-                listenBtn: "Listen live",
-                archivesTitle: "Archives 2020-2026",
-                watchBtn: "Watch live",
-                replayTitle: "Show Replays",
-                tvProg1: "Live Mass: Sunday 9:00 AM",
-                tvProg2: "Children's Catechism: Saturday 10:00 AM",
-                tvProg3: "Youth Testimonies: Friday 7:00 PM",
-                tvProg4: "Liturgical Chants: Monday 8:00 PM",
-                liveBadgeMass: "LIVE",
-                massTitle: "Live Mass",
-                massLocation: "Sts Peter & Paul Cathedral, Douala",
-                massDay1: "Sunday at 9:00 AM",
-                massDay2: "Saturday at 6:00 PM",
-                infoText: "RTVC is a Catholic media outlet, a television channel and website, created in 2013. The channel is accessible 7 days a week and 24 hours a day.",
-                refreshBtn: "Refresh live stream",
-                partnerRadioTitle: "Partner Radios",
-                partnerTvTitle: "Partner Televisions",
-                radioBnDesc: "The official radio of the Archdiocese of Douala. Follow live Masses, teachings, and spiritual programs.",
-                radioEspoirDesc: "Varied programs: debates, biblical teachings, testimonies, and Christian music.",
-                radioLumiereDesc: "Programs for youth, catechesis, and community prayers.",
-                tvBnDesc: "The reference Catholic channel. Find Masses, teachings, and spiritual documentaries.",
-                tvKtoDesc: "Catholic programs, educational shows, and coverage of diocesan events.",
-                tvCrtvDesc: "Religious broadcasts on Sunday mornings and coverage of major Catholic events.",
-                footerTitle1: "Diocesan Chaplaincy",
-                footerTitle2: "Quick links",
-                footerTitle3: "Technical Team",
-                footerTitle4: "Contact",
-                footerDesc: "Spiritual accompaniment, training, and commitment for the youth and children of the Archdiocese of Douala.",
-                footerLink1: "Home",
-                footerLink2: "Donate",
-                footerLink3: "Chaplain's Message"
-            }
-        };
-
-        function updateLanguage() {
-            const t = translations[currentLang];
-            document.querySelectorAll('[data-key]').forEach(el => {
-                const key = el.getAttribute('data-key');
-                if (t[key]) {
-                    if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
-                        el.placeholder = t[key];
-                    } else {
-                        el.textContent = t[key];
-                    }
-                }
-            });
-            localStorage.setItem('lang', currentLang);
-        }
-
-        function initLanguage() {
-            const desktopBtn = document.getElementById('langToggleDesktop');
-            const mobileBtn = document.getElementById('langToggleMobile');
-
-            function toggleLanguage() {
-                currentLang = currentLang === 'fr' ? 'en' : 'fr';
-                updateLanguage();
-            }
-
-            if (desktopBtn) desktopBtn.addEventListener('click', toggleLanguage);
-            if (mobileBtn) mobileBtn.addEventListener('click', toggleLanguage);
-            updateLanguage();
-        }
-
-        function showNotification(message) {
-            const notification = document.createElement('div');
-            notification.style.cssText = `
-                position: fixed;
-                bottom: 20px;
-                left: 50%;
-                transform: translateX(-50%);
-                background: var(--accent);
-                color: var(--primary-dark);
-                padding: 12px 24px;
-                border-radius: 50px;
-                font-size: 14px;
-                font-weight: 600;
-                z-index: 1000;
-                animation: fadeInOut 3s ease-in-out;
-                box-shadow: var(--shadow-md);
-            `;
-            notification.innerHTML = `<i class="fas fa-info-circle"></i> ${message}`;
-            document.body.appendChild(notification);
-            setTimeout(() => notification.remove(), 3000);
-        }
-
         initDarkMode();
-        initLanguage();
     </script>
 </body>
 
