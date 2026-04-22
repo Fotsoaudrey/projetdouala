@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Navbar - Aumônerie</title>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <!-- CSS commun -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <style>
+        /* Styles spécifiques à la page de test */
+        
+        .test-content {
+            max-width: 1200px;
+            margin: 4rem auto;
+            padding: 2rem;
+            text-align: center;
+            background: white;
+            border-radius: 1rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        body.dark-mode .test-content {
+            background: #1e293b;
+            color: #e2e8f0;
+        }
+        
+        .test-content h1 {
+            color: #045286;
+            margin-bottom: 1rem;
+        }
+        
+        body.dark-mode .test-content h1 {
+            color: #2ecc71;
+        }
+        
+        .test-card {
+            display: inline-block;
+            background: #f0f4fa;
+            padding: 2rem;
+            margin: 1rem;
+            border-radius: 1rem;
+            width: 250px;
+        }
+        
+        body.dark-mode .test-card {
+            background: #0f1724;
+        }
+        
+        .test-card i {
+            font-size: 2rem;
+            color: #2ecc71;
+            margin-bottom: 1rem;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- HEADER -->
+    <header class="top-bar">
+        <div class="container header-flex">
+            <img src="https://via.placeholder.com/70x70?text=Logo" alt="Logo" class="logo">
+            <div class="site-title">
+                <h1 data-key="title">Aumônerie Diocésaine Jeunesse & Enfance</h1>
+                <p data-key="subtitle">Archidiocèse de Douala – Cameroun</p>
+            </div>
+            <img src="https://via.placeholder.com/70x70?text=NJ" alt="Logo NJ" class="logo">
+        </div>
+    </header>
+
+    <!-- NAVBAR (chargée dynamiquement) -->
+    <div id="navbar"></div>
+
+    <!-- CONTENU PRINCIPAL -->
+    <div class="test-content">
+        <h1>🧪 Page de test</h1>
+        <p>Teste les boutons :</p>
+        <ul style="list-style: none; padding: 1rem;">
+            <li>🌙 Mode sombre → change l'apparence</li>
+            <li>🌐 Langue → bascule Français/Anglais</li>
+            <li>📱 Menu hamburger → sur mobile</li>
+        </ul>
+
+        <div>
+            <div class="test-card">
+                <i class="fas fa-church"></i>
+                <h3>Test 1</h3>
+                <p>Le mode sombre fonctionne</p>
+            </div>
+            <div class="test-card">
+                <i class="fas fa-globe"></i>
+                <h3>Test 2</h3>
+                <p>La traduction fonctionne</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- FOOTER (chargé dynamiquement) -->
+    <div id="footer"></div>
+
+    <!-- SCRIPTS -->
+    <script>
+        // Chargement de la navbar et du footer
+        Promise.all([
+            fetch('components/navbar.html').then(r => r.text()),
+            fetch('components/footer.html').then(r => r.text())
+        ]).then(([navbarHtml, footerHtml]) => {
+            document.getElementById('navbar').innerHTML = navbarHtml;
+            document.getElementById('footer').innerHTML = footerHtml;
+
+            // Après chargement, réinitialiser les événements si nécessaire
+            if (typeof window.reinitToggles === 'function') {
+                window.reinitToggles();
+            }
+        }).catch(error => console.error('Erreur chargement:', error));
+    </script>
+    <script src="js/main.js"></script>
+</body>
+
+</html>

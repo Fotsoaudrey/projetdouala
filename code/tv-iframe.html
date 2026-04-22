@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Replay TV RTVC - Archives vidéo</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background: transparent;
+            padding: 16px;
+        }
+        /* Mode sombre */
+        
+        body.dark-mode {
+            background: transparent;
+        }
+        /* ===== FILTRES MODERNES ===== */
+        
+        .filter-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 16px;
+            margin-bottom: 28px;
+            padding: 12px 20px;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 60px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            border: 1px solid rgba(46, 204, 113, 0.2);
+        }
+        
+        body.dark-mode .filter-bar {
+            background: rgba(30, 41, 59, 0.95);
+            border-color: rgba(46, 204, 113, 0.3);
+        }
+        
+        .filter-group {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+        
+        .filter-select {
+            padding: 8px 18px;
+            border-radius: 40px;
+            border: 1px solid #e2e8f0;
+            background: white;
+            font-family: inherit;
+            cursor: pointer;
+            font-size: 0.8rem;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+        
+        .filter-select:hover {
+            border-color: #2ecc71;
+            transform: translateY(-2px);
+        }
+        
+        body.dark-mode .filter-select {
+            background: #0f1724;
+            border-color: #334155;
+            color: #e2e8f0;
+        }
+        
+        .stats-badge {
+            background: rgba(46, 204, 113, 0.15);
+            padding: 6px 14px;
+            border-radius: 30px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: #2ecc71;
+        }
+        
+        body.dark-mode .stats-badge {
+            background: rgba(46, 204, 113, 0.2);
+        }
+        /* ===== GRILLE VIDÉOS ===== */
+        
+        .videos-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 24px;
+        }
+        /* ===== CARTE VIDÉO ===== */
+        
+        .video-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            border: 1px solid #e9edf2;
+            position: relative;
+        }
+        
+        body.dark-mode .video-card {
+            background: #1e293b;
+            border-color: #334155;
+        }
+        
+        .video-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 35px rgba(0, 0, 0, 0.15);
+            border-color: #2ecc71;
+        }
+        /* Badge plateforme */
+        
+        .platform-badge {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(4px);
+            padding: 5px 10px;
+            border-radius: 30px;
+            font-size: 0.65rem;
+            font-weight: 600;
+            color: white;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            z-index: 2;
+        }
+        
+        .platform-badge.youtube {
+            background: linear-gradient(135deg, #ff0000, #cc0000);
+        }
+        
+        .platform-badge.facebook {
+            background: linear-gradient(135deg, #1877f2, #0d65d9);
+        }
+        /* Thumbnail */
+        
+        .video-thumb {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            background: linear-gradient(135deg, #0a2e4a, #045286);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            transition: transform 0.5s;
+        }
+        
+        .video-card:hover .video-thumb {
+            transform: scale(1.02);
+        }
+        
+        .video-thumb i {
+            font-size: 3.5rem;
+            color: white;
+            opacity: 0.9;
+            transition: all 0.3s;
+        }
+        
+        .video-card:hover .video-thumb i {
+            transform: scale(1.1);
+            opacity: 1;
+        }
+        
+        .play-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        
+        .video-card:hover .play-overlay {
+            opacity: 1;
+        }
+        
+        .play-overlay i {
+            font-size: 3rem;
+            color: white;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+        /* Informations vidéo */
+        
+        .video-info {
+            padding: 16px;
+        }
+        
+        .video-title {
+            font-weight: 700;
+            font-size: 0.9rem;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #1a2c3e;
+            line-height: 1.4;
+        }
+        
+        body.dark-mode .video-title {
+            color: #e2e8f0;
+        }
+        
+        .video-title i {
+            color: #2ecc71;
+            font-size: 0.8rem;
+            flex-shrink: 0;
+        }
+        
+        .video-date {
+            font-size: 0.7rem;
+            color: #2ecc71;
+            font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(46, 204, 113, 0.1);
+            padding: 4px 10px;
+            border-radius: 20px;
+        }
+        
+        .video-meta {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 12px;
+            padding-top: 10px;
+            border-top: 1px solid #e9edf2;
+        }
+        
+        body.dark-mode .video-meta {
+            border-top-color: #334155;
+        }
+        
+        .video-platform {
+            font-size: 0.65rem;
+            color: #64748b;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        
+        body.dark-mode .video-platform {
+            color: #94a3b8;
+        }
+        
+        .btn-watch-archive {
+            background: none;
+            border: none;
+            color: #2ecc71;
+            font-size: 0.7rem;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            transition: all 0.3s;
+            padding: 5px 10px;
+            border-radius: 30px;
+        }
+        
+        .btn-watch-archive:hover {
+            background: rgba(46, 204, 113, 0.1);
+            transform: translateX(3px);
+        }
+        /* État vide */
+        
+        .empty-state {
+            text-align: center;
+            padding: 60px 20px;
+            background: white;
+            border-radius: 24px;
+            border: 1px solid #e9edf2;
+        }
+        
+        body.dark-mode .empty-state {
+            background: #1e293b;
+            border-color: #334155;
+        }
+        
+        .empty-state i {
+            font-size: 3rem;
+            color: #2ecc71;
+            margin-bottom: 16px;
+            opacity: 0.6;
+        }
+        
+        .empty-state p {
+            color: #64748b;
+            font-size: 0.9rem;
+        }
+        /* Loading */
+        
+        .loading-spinner {
+            text-align: center;
+            padding: 60px;
+        }
+        
+        .loading-spinner i {
+            font-size: 2.5rem;
+            color: #2ecc71;
+            animation: spin 1s linear infinite;
+        }
+        
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+        /* Tooltip */
+        
+        .video-card {
+            position: relative;
+        }
+        /* Responsive */
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 12px;
+            }
+            .filter-bar {
+                flex-direction: column;
+                align-items: stretch;
+                border-radius: 24px;
+            }
+            .filter-group {
+                justify-content: center;
+            }
+            .stats-badge {
+                text-align: center;
+            }
+            .videos-grid {
+                gap: 16px;
+            }
+            .video-thumb {
+                height: 160px;
+            }
+            .video-title {
+                font-size: 0.8rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .video-meta {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .btn-watch-archive {
+                width: 100%;
+                justify-content: center;
+                background: rgba(46, 204, 113, 0.1);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="filter-bar">
+        <div class="filter-group">
+            <select id="platformFilter" class="filter-select">
+                <option value="all"><i class="fas fa-tv"></i> Toutes les plateformes</option>
+                <option value="youtube"><i class="fab fa-youtube"></i> YouTube</option>
+                <option value="facebook"><i class="fab fa-facebook"></i> Facebook</option>
+            </select>
+            <select id="yearFilter" class="filter-select">
+                <option value="all"><i class="fas fa-calendar-alt"></i> Toutes les années</option>
+                <option value="2026">2026</option>
+                <option value="2025">2025</option>
+                <option value="2024">2024</option>
+                <option value="2023">2023</option>
+                <option value="2022">2022</option>
+            </select>
+        </div>
+        <div class="stats-badge" id="statsBadge">
+            <i class="fas fa-film"></i> <span id="videoCount">0</span> vidéos
+        </div>
+    </div>
+
+    <div id="videosContainer" class="videos-grid">
+        <div class="loading-spinner">
+            <i class="fas fa-spinner fa-spin"></i>
+            <p style="margin-top: 12px;">Chargement des vidéos...</p>
+        </div>
+    </div>
+
+    <script>
+        // ========== DONNÉES DES VIDÉOS (SIMULATION GOOGLE DRIVE) ==========
+        const videosData = [{
+            id: 1,
+            title: "Messe de clôture de l'année pastorale 2024",
+            date: "2024-12-15",
+            platform: "youtube",
+            embedUrl: "https://www.youtube.com/embed/LsQggbxVVcw?autoplay=1",
+            duration: "1h 45min",
+            views: "2.3k"
+        }, {
+            id: 2,
+            title: "Synode des jeunes - Session spéciale avec Mgr l'Archevêque",
+            date: "2024-11-20",
+            platform: "youtube",
+            embedUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1",
+            duration: "2h 15min",
+            views: "1.8k"
+        }, {
+            id: 3,
+            title: "Émission Jeunes & Vie - La foi au quotidien",
+            date: "2025-01-08",
+            platform: "facebook",
+            embedUrl: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/example/video1&autoplay=1",
+            duration: "55min",
+            views: "856"
+        }, {
+            id: 4,
+            title: "Carême 2025 - Enseignement biblique du Père Martin",
+            date: "2025-03-05",
+            platform: "youtube",
+            embedUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1",
+            duration: "1h 10min",
+            views: "1.2k"
+        }, {
+            id: 5,
+            title: "Témoignages de jeunes convertis - Soirée de partage",
+            date: "2024-10-12",
+            platform: "facebook",
+            embedUrl: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/example/video2&autoplay=1",
+            duration: "48min",
+            views: "2.1k"
+        }, {
+            id: 6,
+            title: "Pèlerinage diocésain 2024 - 120km de marche",
+            date: "2024-08-25",
+            platform: "youtube",
+            embedUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1",
+            duration: "3h 20min",
+            views: "3.5k"
+        }, {
+            id: 7,
+            title: "Noël 2024 - Veillée de prière et messe de minuit",
+            date: "2024-12-24",
+            platform: "facebook",
+            embedUrl: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/example/video3&autoplay=1",
+            duration: "2h 05min",
+            views: "4.2k"
+        }, {
+            id: 8,
+            title: "Retraite spirituelle des jeunes - Thème 'Appelés à la sainteté'",
+            date: "2025-02-15",
+            platform: "youtube",
+            embedUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1",
+            duration: "1h 30min",
+            views: "967"
+        }, {
+            id: 9,
+            title: "Conférence sur la synodalité - Cardinal Ambongo",
+            date: "2025-01-22",
+            platform: "youtube",
+            embedUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1",
+            duration: "2h 45min",
+            views: "3.1k"
+        }, {
+            id: 10,
+            title: "Chapelet en direct pour la paix au Cameroun",
+            date: "2025-03-18",
+            platform: "facebook",
+            embedUrl: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/example/video4&autoplay=1",
+            duration: "35min",
+            views: "1.5k"
+        }, {
+            id: 11,
+            title: "Messe d'ouverture de l'année pastorale 2025",
+            date: "2025-09-15",
+            platform: "youtube",
+            embedUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1",
+            duration: "1h 50min",
+            views: "5.2k"
+        }, {
+            id: 12,
+            title: "Témoignage de vocation - Prêtre, pourquoi ?",
+            date: "2025-10-05",
+            platform: "youtube",
+            embedUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1",
+            duration: "52min",
+            views: "2.8k"
+        }];
+
+        // Trier par date décroissante
+        videosData.sort((a, b) => new Date(b.date) - new Date(a.date));
+
+        let currentPlatform = 'all';
+        let currentYear = 'all';
+
+        function formatDate(dateStr) {
+            const date = new Date(dateStr);
+            return date.toLocaleDateString('fr-FR', {
+                day: 'numeric',
+                month: 'long',
+                year: 'numeric'
+            });
+        }
+
+        function renderVideos() {
+            const container = document.getElementById('videosContainer');
+            const statsSpan = document.getElementById('videoCount');
+
+            let filtered = [...videosData];
+
+            // Filtre par plateforme
+            if (currentPlatform !== 'all') {
+                filtered = filtered.filter(v => v.platform === currentPlatform);
+            }
+
+            // Filtre par année
+            if (currentYear !== 'all') {
+                filtered = filtered.filter(v => v.date.startsWith(currentYear));
+            }
+
+            // Mettre à jour le compteur
+            if (statsSpan) statsSpan.textContent = filtered.length;
+
+            if (filtered.length === 0) {
+                container.innerHTML = `
+                    <div class="empty-state">
+                        <i class="fas fa-video-slash"></i>
+                        <p>Aucune vidéo trouvée pour cette sélection</p>
+                        <p style="font-size: 0.75rem; margin-top: 8px;">Essayez de modifier les filtres</p>
+                    </div>
+                `;
+                return;
+            }
+
+            container.innerHTML = filtered.map(video => {
+                const platformClass = video.platform === 'youtube' ? 'youtube' : 'facebook';
+                const platformIcon = video.platform === 'youtube' ? 'fa-youtube' : 'fa-facebook';
+                const platformName = video.platform === 'youtube' ? 'YouTube' : 'Facebook Watch';
+
+                return `
+                    <div class="video-card" onclick="playVideo('${video.embedUrl}', '${video.title.replace(/'/g, "\\'")}')">
+                        <div class="platform-badge ${platformClass}">
+                            <i class="fab ${platformIcon}"></i>
+                            ${platformName}
+                        </div>
+                        <div class="video-thumb">
+                            <i class="fab ${platformIcon}"></i>
+                            <div class="play-overlay">
+                                <i class="fas fa-play-circle"></i>
+                            </div>
+                        </div>
+                        <div class="video-info">
+                            <div class="video-title">
+                                <i class="fas fa-play-circle"></i>
+                                ${video.title}
+                            </div>
+                            <div class="video-meta">
+                                <div class="video-date">
+                                    <i class="far fa-calendar-alt"></i> ${formatDate(video.date)}
+                                </div>
+                                <div class="video-platform">
+                                    <i class="fab ${platformIcon}"></i>
+                                    ${platformName}
+                                </div>
+                            </div>
+                            <div style="margin-top: 10px; display: flex; justify-content: flex-end;">
+                                <button class="btn-watch-archive" onclick="event.stopPropagation(); playVideo('${video.embedUrl}', '${video.title.replace(/'/g, "\\'")}')">
+                                    <i class="fas fa-play-circle"></i> Regarder
+                                    <i class="fas fa-arrow-right"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        function playVideo(embedUrl, title) {
+            if (window.parent && window.parent !== window) {
+                window.parent.postMessage({
+                    type: 'playVideo',
+                    url: embedUrl,
+                    title: title
+                }, '*');
+            } else {
+                window.open(embedUrl, '_blank');
+            }
+        }
+
+        function initFilters() {
+            const platformFilter = document.getElementById('platformFilter');
+            const yearFilter = document.getElementById('yearFilter');
+
+            if (platformFilter) {
+                platformFilter.addEventListener('change', (e) => {
+                    currentPlatform = e.target.value;
+                    renderVideos();
+                });
+            }
+            if (yearFilter) {
+                yearFilter.addEventListener('change', (e) => {
+                    currentYear = e.target.value;
+                    renderVideos();
+                });
+            }
+        }
+
+        // Mode sombre (hérité du parent)
+        window.addEventListener('message', (event) => {
+            if (event.data && event.data.type === 'darkMode') {
+                if (event.data.isDark) document.body.classList.add('dark-mode');
+                else document.body.classList.remove('dark-mode');
+            }
+        });
+
+        // Détecter le mode sombre du parent au chargement
+        function detectDarkMode() {
+            try {
+                const isDark = window.parent.document.body.classList.contains('dark-mode');
+                if (isDark) document.body.classList.add('dark-mode');
+            } catch (e) {}
+        }
+
+        // Initialisation
+        initFilters();
+        detectDarkMode();
+        renderVideos();
+
+        window.playVideo = playVideo;
+    </script>
+</body>
+
+</html>

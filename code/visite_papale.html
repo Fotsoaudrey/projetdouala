@@ -4,22 +4,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>Engagements & Projets | Aumônerie Douala</title>
-    <meta name="description" content="Découvrez les projets et engagements de l'Aumônerie Diocésaine de Douala : solidarité, écologie, soutien scolaire, accompagnement des malades, emploi des jeunes.">
+    <title>Visite du Pape Léon XIV au Cameroun | Aumônerie Douala</title>
+    <meta name="description" content="Accueil et programme de la visite historique du Pape Léon XIV au Cameroun. Suivez les événements, messes et rencontres du Saint-Père.">
 
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&display=swap" rel="stylesheet">
 
     <!-- Font Awesome 6 -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <!-- Swiper JS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
     <!-- AOS Scroll Animation -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 
     <style>
-        /* ===== VARIABLES ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
         
          :root {
             --primary: #045286;
@@ -27,6 +36,8 @@
             --primary-light: #0a6eb5;
             --accent: #2ecc71;
             --accent-dark: #27ae60;
+            --gold: #c9a03d;
+            --gold-light: #f0d675;
             --light: #f5f7fb;
             --dark: #0f1724;
             --gray: #64748b;
@@ -42,19 +53,12 @@
             --transition: all 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1);
         }
         
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
         body {
             font-family: 'Inter', sans-serif;
             background: var(--light);
             color: #1a2c3e;
             line-height: 1.5;
             scroll-behavior: smooth;
-            transition: background 0.3s ease, color 0.3s ease;
             overflow-x: hidden;
         }
         
@@ -63,57 +67,20 @@
             color: var(--gray-light);
         }
         
-        body.dark-mode .navbar {
-            background: #1e293b;
-        }
-        
-        body.dark-mode .project-card,
-        body.dark-mode .volunteer-banner {
+        body.dark-mode .navbar,
+        body.dark-mode .schedule-card,
+        body.dark-mode .info-card,
+        body.dark-mode .message-card {
             background: #1e293b;
             border-color: #334155;
-        }
-        
-        body.dark-mode .project-content p {
-            color: #94a3b8;
-        }
-        
-        body.dark-mode .project-status {
-            background: var(--accent);
-            color: var(--primary-dark);
-        }
-        
-        body.dark-mode .progress-bar {
-            background: #334155;
         }
         
         body.dark-mode .section-title {
             color: var(--accent);
         }
         
-        body.dark-mode .intro-text h2 {
-            color: var(--accent);
-        }
-        
-        body.dark-mode .project-content h3 {
-            color: var(--accent);
-        }
-        
         body.dark-mode footer {
             background: #020617;
-        }
-        
-        body.dark-mode .dropdown-menu {
-            background: #1e293b;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
-        }
-        
-        body.dark-mode .dropdown-menu a {
-            color: var(--gray-light);
-        }
-        
-        body.dark-mode .dropdown-menu a:hover {
-            background: #2d3748;
-            color: var(--accent);
         }
         
         .container {
@@ -126,7 +93,7 @@
         .top-bar {
             background: linear-gradient(135deg, #0a2e4a, var(--primary));
             color: white;
-            padding: 20px 0;
+            padding: 16px 0;
             border-bottom: 3px solid var(--accent);
         }
         
@@ -138,23 +105,29 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
-            gap: 20px;
+            gap: 16px;
             flex-wrap: wrap;
         }
         
         .logo {
-            width: 70px;
-            height: 70px;
+            width: 60px;
+            height: 60px;
             border-radius: 50%;
             object-fit: cover;
             border: 2px solid var(--accent);
             background: white;
+            transition: var(--transition);
+        }
+        
+        .logo:hover {
+            transform: scale(1.05);
+            border-color: white;
         }
         
         @media (max-width: 768px) {
             .logo {
-                width: 50px;
-                height: 50px;
+                width: 45px;
+                height: 45px;
             }
         }
         
@@ -164,37 +137,38 @@
         }
         
         .site-title h1 {
-            font-size: 1.6rem;
+            font-size: 1.3rem;
             font-weight: 700;
-            text-transform: uppercase;
+            letter-spacing: -0.3px;
         }
         
         .site-title p {
-            font-size: 0.85rem;
+            font-size: 0.75rem;
             opacity: 0.85;
         }
         
         @media (max-width: 768px) {
             .site-title h1 {
-                font-size: 1rem;
+                font-size: 0.9rem;
             }
             .site-title p {
-                font-size: 0.7rem;
+                font-size: 0.65rem;
             }
         }
         /* ===== NAVBAR ===== */
         
         .navbar {
-            background: white;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
             box-shadow: var(--shadow-sm);
             position: sticky;
             top: 0;
             z-index: 99;
-            transition: background 0.3s;
+            transition: var(--transition);
         }
         
         body.dark-mode .navbar {
-            background: #1e293b;
+            background: rgba(30, 41, 59, 0.95);
         }
         
         .nav-container {
@@ -211,10 +185,10 @@
             display: none;
             background: none;
             border: none;
-            font-size: 1.8rem;
+            font-size: 1.6rem;
             color: var(--primary);
             cursor: pointer;
-            padding: 12px;
+            padding: 10px;
         }
         
         body.dark-mode .menu-toggle {
@@ -225,24 +199,24 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            gap: 8px;
+            gap: 4px;
             list-style: none;
-            padding: 16px 0;
+            padding: 12px 0;
             margin: 0;
             flex: 1;
         }
         
         .nav-links a {
-            padding: 10px 20px;
+            padding: 8px 18px;
             font-weight: 600;
             color: #1a2c3e;
             text-decoration: none;
             border-radius: 40px;
-            transition: all 0.25s;
+            transition: var(--transition);
             display: flex;
             align-items: center;
             gap: 8px;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
         }
         
         body.dark-mode .nav-links a {
@@ -285,15 +259,15 @@
             top: calc(100% + 8px);
             left: 0;
             background: white;
-            min-width: 240px;
+            min-width: 230px;
             border-radius: var(--radius-md);
             box-shadow: var(--shadow-lg);
             opacity: 0;
             visibility: hidden;
             transform: translateY(-10px);
-            transition: all 0.3s;
+            transition: var(--transition);
             z-index: 100;
-            padding: 12px 8px;
+            padding: 10px 6px;
             list-style: none;
         }
         
@@ -304,8 +278,8 @@
         }
         
         .dropdown-menu a {
-            padding: 10px 16px;
-            font-size: 0.85rem;
+            padding: 10px 14px;
+            font-size: 0.8rem;
             border-radius: var(--radius-sm);
         }
         
@@ -326,28 +300,28 @@
         
         .nav-controls {
             display: flex;
-            gap: 12px;
+            gap: 10px;
             align-items: center;
             flex-shrink: 0;
         }
         
         .ctrl-btn {
-            background: rgba(0, 0, 0, 0.08);
+            background: rgba(0, 0, 0, 0.06);
             border: none;
-            width: 40px;
-            height: 40px;
+            width: 38px;
+            height: 38px;
             border-radius: 50%;
             cursor: pointer;
-            font-size: 1.1rem;
+            font-size: 1rem;
             color: #1a2c3e;
-            transition: all 0.2s;
+            transition: var(--transition);
             display: flex;
             align-items: center;
             justify-content: center;
         }
         
         body.dark-mode .ctrl-btn {
-            background: rgba(255, 255, 255, 0.15);
+            background: rgba(255, 255, 255, 0.1);
             color: var(--gray-light);
         }
         
@@ -377,9 +351,10 @@
                 background: white;
                 flex-direction: column;
                 align-items: stretch;
-                padding: 70px 24px 30px;
+                padding: 70px 20px 30px;
                 transition: right 0.3s ease;
                 z-index: 100;
+                box-shadow: -5px 0 20px rgba(0, 0, 0, 0.1);
             }
             body.dark-mode .nav-links {
                 background: #1e293b;
@@ -406,7 +381,7 @@
                 right: 20px;
                 background: none;
                 border: none;
-                font-size: 1.5rem;
+                font-size: 1.4rem;
                 color: var(--primary);
                 cursor: pointer;
             }
@@ -440,10 +415,10 @@
                 display: block;
             }
         }
-        /* ===== HERO SECTION ===== */
+        /* ===== HERO SECTION PAPAL ===== */
         
-        .hero-projets {
-            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+        .papal-hero {
+            background: linear-gradient(135deg, var(--primary-dark), var(--primary));
             color: white;
             text-align: center;
             padding: 80px 0;
@@ -451,38 +426,143 @@
             overflow: hidden;
         }
         
-        .hero-projets::before {
+        .papal-hero::before {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
             right: 0;
             bottom: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" opacity="0.05"><path fill="white" d="M50,0 L61.8,38.2 L100,38.2 L69.1,61.8 L80.9,100 L50,75.4 L19.1,100 L30.9,61.8 L0,38.2 L38.2,38.2 Z"/></svg>') repeat;
-            opacity: 0.1;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" opacity="0.08"><path fill="white" d="M50,0 L61.8,38.2 L100,38.2 L69.1,61.8 L80.9,100 L50,75.4 L19.1,100 L30.9,61.8 L0,38.2 L38.2,38.2 Z"/></svg>') repeat;
         }
         
-        .hero-projets h1 {
-            font-size: 2.5rem;
-            font-weight: 800;
-            margin-bottom: 16px;
+        .papal-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--gold);
+            color: var(--primary-dark);
+            padding: 8px 24px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 0.8rem;
+            margin-bottom: 30px;
             position: relative;
         }
         
-        .hero-projets p {
+        .papal-badge i {
+            font-size: 1rem;
+        }
+        
+        .papal-hero h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            font-family: 'Cormorant Garamond', serif;
+            margin-bottom: 20px;
+            position: relative;
+        }
+        
+        .papal-hero h1 i {
+            color: var(--gold);
+            font-size: 2rem;
+        }
+        
+        .papal-hero p {
             font-size: 1.1rem;
             opacity: 0.9;
-            max-width: 600px;
+            max-width: 700px;
             margin: 0 auto;
             position: relative;
         }
         
+        .papal-dates {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-top: 40px;
+            flex-wrap: wrap;
+            position: relative;
+        }
+        
+        .papal-dates span {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(255, 255, 255, 0.15);
+            padding: 10px 24px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+        
         @media (max-width: 768px) {
-            .hero-projets {
-                padding: 60px 0;
+            .papal-hero {
+                padding: 50px 0;
             }
-            .hero-projets h1 {
+            .papal-hero h1 {
                 font-size: 1.8rem;
+            }
+            .papal-dates {
+                gap: 15px;
+            }
+            .papal-dates span {
+                font-size: 0.7rem;
+                padding: 6px 15px;
+            }
+        }
+        /* ===== COUNTDOWN ===== */
+        
+        .countdown-section {
+            padding: 40px 0;
+            background: linear-gradient(135deg, var(--gold), var(--gold-light));
+            color: var(--primary-dark);
+            text-align: center;
+        }
+        
+        .countdown-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+        
+        .countdown {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+        
+        .countdown-item {
+            text-align: center;
+            min-width: 80px;
+        }
+        
+        .countdown-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            background: rgba(0, 0, 0, 0.1);
+            padding: 10px 20px;
+            border-radius: 16px;
+            font-family: monospace;
+        }
+        
+        .countdown-label {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            margin-top: 8px;
+            font-weight: 600;
+        }
+        
+        @media (max-width: 768px) {
+            .countdown {
+                gap: 15px;
+            }
+            .countdown-item {
+                min-width: 60px;
+            }
+            .countdown-number {
+                font-size: 1.5rem;
+                padding: 6px 12px;
             }
         }
         /* ===== SECTION TITLE ===== */
@@ -501,7 +581,7 @@
             display: block;
             width: 60px;
             height: 3px;
-            background: var(--accent);
+            background: var(--gold);
             margin: 12px auto 0;
             border-radius: 2px;
         }
@@ -509,169 +589,237 @@
         body.dark-mode .section-title {
             color: var(--accent);
         }
+        /* ===== CARROUSEL IMAGES ===== */
         
-        @media (max-width: 768px) {
-            .section-title {
-                font-size: 1.5rem;
-                margin: 40px 0 30px;
-            }
-        }
-        /* ===== INTRO TEXT ===== */
-        
-        .intro-text {
-            text-align: center;
-            max-width: 800px;
-            margin: 50px auto 30px;
+        .gallery-section {
+            padding: 20px 0 60px;
         }
         
-        .intro-text h2 {
-            font-size: 1.8rem;
-            font-weight: 700;
-            color: var(--primary);
-            margin-bottom: 16px;
+        .papal-swiper {
+            padding: 20px 0;
         }
         
-        body.dark-mode .intro-text h2 {
-            color: var(--accent);
-        }
-        
-        .intro-text p {
-            color: var(--gray);
-            font-size: 1rem;
-            line-height: 1.6;
-        }
-        /* ===== PROJECTS GRID ===== */
-        
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 30px;
-            margin: 40px 0;
-        }
-        
-        .project-card {
-            background: white;
-            border-radius: var(--radius-lg);
+        .papal-swiper .swiper-slide {
+            border-radius: 24px;
             overflow: hidden;
-            transition: var(--transition);
-            box-shadow: var(--shadow-sm);
-            border: 1px solid var(--gray-light);
-        }
-        
-        .project-card:hover {
-            transform: translateY(-8px);
             box-shadow: var(--shadow-lg);
-            border-color: var(--accent);
+            transition: var(--transition);
         }
         
-        .project-img {
-            height: 220px;
-            background-size: cover;
-            background-position: center;
-            position: relative;
+        .papal-swiper .swiper-slide:hover {
+            transform: scale(1.02);
         }
         
-        .project-status {
-            position: absolute;
-            top: 16px;
-            right: 16px;
-            background: var(--accent);
-            color: var(--primary-dark);
-            padding: 4px 14px;
-            border-radius: 30px;
-            font-size: 0.7rem;
-            font-weight: 700;
-            letter-spacing: 0.5px;
+        .papal-swiper img {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            display: block;
         }
         
-        .project-content {
-            padding: 24px;
-        }
-        
-        .project-content h3 {
-            font-size: 1.3rem;
-            margin-bottom: 12px;
-            color: var(--primary);
-        }
-        
-        .project-content p {
-            color: var(--gray);
-            font-size: 0.85rem;
-            line-height: 1.6;
-            margin-bottom: 20px;
-        }
-        
-        .progress-bar {
-            height: 6px;
-            background: var(--gray-light);
-            border-radius: 10px;
-            overflow: hidden;
-        }
-        
-        .progress-fill {
-            height: 100%;
-            background: var(--accent);
-            border-radius: 10px;
-        }
-        /* ===== VOLUNTEER BANNER ===== */
-        
-        .volunteer-banner {
-            background: linear-gradient(135deg, var(--primary), var(--primary-light));
-            color: white;
-            padding: 50px 40px;
-            border-radius: var(--radius-xl);
-            text-align: center;
-            margin: 50px 0;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .volunteer-banner::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            right: -20%;
-            width: 300px;
-            height: 300px;
-            background: radial-gradient(circle, rgba(46, 204, 113, 0.1) 0%, transparent 70%);
+        .swiper-button-next,
+        .swiper-button-prev {
+            color: var(--gold);
+            background: rgba(0, 0, 0, 0.5);
+            width: 50px;
+            height: 50px;
             border-radius: 50%;
         }
         
-        .volunteer-banner h2 {
-            font-size: 1.8rem;
-            margin-bottom: 16px;
-            position: relative;
+        .swiper-button-next:after,
+        .swiper-button-prev:after {
+            font-size: 1.2rem;
         }
         
-        .volunteer-banner p {
-            opacity: 0.9;
-            margin-bottom: 24px;
-            max-width: 500px;
-            margin-left: auto;
-            margin-right: auto;
-            position: relative;
+        .swiper-pagination-bullet-active {
+            background: var(--gold);
         }
         
-        .btn-action {
-            display: inline-flex;
-            align-items: center;
-            gap: 12px;
-            background: var(--accent);
-            color: var(--primary-dark);
-            padding: 14px 32px;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 700;
-            transition: var(--transition);
-            position: relative;
+        @media (max-width: 768px) {
+            .papal-swiper img {
+                height: 250px;
+            }
+        }
+        /* ===== PROGRAMME ===== */
+        
+        .programme-section {
+            padding: 20px 0 60px;
         }
         
-        .btn-action:hover {
-            transform: translateY(-3px);
+        .programme-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+        }
+        
+        .schedule-card {
             background: white;
+            border-radius: 24px;
+            padding: 28px;
+            transition: var(--transition);
+            border: 1px solid var(--gray-light);
+            box-shadow: var(--shadow-sm);
+        }
+        
+        .schedule-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--gold);
+        }
+        
+        .schedule-date {
+            background: var(--gold);
+            color: var(--primary-dark);
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 30px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+        
+        .schedule-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
             color: var(--primary);
         }
-        /* ===== BACK BUTTON ===== */
+        
+        body.dark-mode .schedule-card h3 {
+            color: var(--accent);
+        }
+        
+        .schedule-time {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin: 15px 0;
+            color: var(--gold);
+            font-weight: 600;
+        }
+        
+        .schedule-card p {
+            color: var(--gray);
+            line-height: 1.6;
+        }
+        
+        body.dark-mode .schedule-card p {
+            color: #94a3b8;
+        }
+        /* ===== INFOS PRATIQUES ===== */
+        
+        .info-section {
+            padding: 20px 0 60px;
+            background: #f0f4fa;
+        }
+        
+        body.dark-mode .info-section {
+            background: #0a0f1a;
+        }
+        
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+        
+        .info-card {
+            background: white;
+            border-radius: 20px;
+            padding: 28px;
+            text-align: center;
+            transition: var(--transition);
+            border: 1px solid var(--gray-light);
+        }
+        
+        .info-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-md);
+        }
+        
+        .info-card i {
+            font-size: 2.5rem;
+            color: var(--gold);
+            margin-bottom: 15px;
+        }
+        
+        .info-card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            color: var(--primary);
+        }
+        
+        body.dark-mode .info-card h3 {
+            color: var(--accent);
+        }
+        
+        .info-card p {
+            color: var(--gray);
+            font-size: 0.85rem;
+            line-height: 1.6;
+        }
+        /* ===== MESSAGE PAPAL ===== */
+        
+        .message-section {
+            padding: 60px 0;
+        }
+        
+        .message-card {
+            background: white;
+            border-radius: 28px;
+            padding: 48px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid var(--gray-light);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .message-card::before {
+            content: "“";
+            position: absolute;
+            top: 20px;
+            left: 30px;
+            font-size: 8rem;
+            color: rgba(201, 160, 61, 0.1);
+            font-family: serif;
+        }
+        
+        .message-card::after {
+            content: "”";
+            position: absolute;
+            bottom: 20px;
+            right: 30px;
+            font-size: 8rem;
+            color: rgba(201, 160, 61, 0.1);
+            font-family: serif;
+        }
+        
+        .message-card i {
+            font-size: 2rem;
+            color: var(--gold);
+            margin-bottom: 20px;
+        }
+        
+        .message-card p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            font-style: italic;
+            color: var(--gray);
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+        }
+        
+        body.dark-mode .message-card p {
+            color: #94a3b8;
+        }
+        
+        .message-author {
+            margin-top: 30px;
+            font-weight: 700;
+            color: var(--primary);
+        }
+        /* ===== BOUTON RETOUR ===== */
         
         .back-container {
             text-align: center;
@@ -696,26 +844,12 @@
             color: var(--primary-dark);
             transform: translateX(-5px);
         }
-        
-        body.dark-mode .btn-back {
-            background: var(--accent);
-            color: var(--primary-dark);
-        }
-        
-        body.dark-mode .btn-back:hover {
-            background: white;
-            color: var(--primary-dark);
-        }
         /* ===== FOOTER ===== */
         
         .main-footer {
             background: var(--primary-dark);
             color: #cbd5e1;
             padding: 60px 0 30px;
-        }
-        
-        body.dark-mode .main-footer {
-            background: #020617;
         }
         
         .footer-grid {
@@ -727,7 +861,7 @@
         
         .footer-col h3 {
             color: white;
-            font-size: 1.1rem;
+            font-size: 1rem;
             margin-bottom: 20px;
             padding-bottom: 12px;
             border-bottom: 2px solid var(--accent);
@@ -809,18 +943,6 @@
             }
         }
         
-        @media (max-width: 768px) {
-            .projects-grid {
-                grid-template-columns: 1fr;
-            }
-            .volunteer-banner {
-                padding: 30px 20px;
-            }
-            .volunteer-banner h2 {
-                font-size: 1.4rem;
-            }
-        }
-        
         @media (max-width: 576px) {
             .footer-grid {
                 grid-template-columns: 1fr;
@@ -832,6 +954,12 @@
             }
             .social-links {
                 justify-content: center;
+            }
+            .message-card {
+                padding: 30px 20px;
+            }
+            .message-card p {
+                font-size: 0.9rem;
             }
         }
     </style>
@@ -854,16 +982,12 @@
     <!-- NAVIGATION -->
     <nav class="navbar">
         <div class="nav-container">
-            <button class="menu-toggle" id="menuToggle">
-                <i class="fas fa-bars"></i>
-            </button>
-
+            <button class="menu-toggle" id="menuToggle"><i class="fas fa-bars"></i></button>
             <ul class="nav-links" id="navLinks">
                 <li><a href="index.html"><i class="fas fa-home"></i> Accueil</a></li>
                 <li><a href="index.html#apropos"><i class="fas fa-church"></i> À propos</a></li>
                 <li><a href="index.html#enfance"><i class="fas fa-child"></i> Enfance</a></li>
                 <li><a href="index.html#jeunesse"><i class="fas fa-users"></i> Jeunesse</a></li>
-
                 <li class="dropdown" id="dropdownMenu">
                     <a href="javascript:void(0)" id="dropdownToggle">
                         <i class="fas fa-newspaper"></i> Vie du Diocèse
@@ -877,23 +1001,18 @@
                         <li><a href="evenements_pastoraux.html"><i class="fas fa-calendar-alt"></i> Événements Pastoraux</a></li>
                         <li><a href="pelerinage.html"><i class="fas fa-hiking"></i> Pèlerinages</a></li>
                         <li><a href="retraites.html"><i class="fas fa-pray"></i> Retraites spirituelles</a></li>
-                        <li><a href="formations_bibliques.html"><i class="fas fa-chalkboard-user"></i> Formations bibliques</a></li>
+                        <li><a href="formations.html"><i class="fas fa-chalkboard-user"></i> Formations bibliques</a></li>
                     </ul>
                 </li>
-
                 <li><a href="index.html#phototheque"><i class="fas fa-images"></i> Galerie</a></li>
-
                 <div class="mobile-only-elements">
                     <div class="mobile-controls">
                         <button class="ctrl-btn" id="darkModeToggleMobile"><i class="fas fa-moon"></i></button>
                         <button class="ctrl-btn" id="langToggleMobile"><i class="fas fa-globe"></i></button>
                     </div>
-                    <button class="close-menu-btn" id="closeMenuBtn">
-                        <i class="fas fa-times"></i>
-                    </button>
+                    <button class="close-menu-btn" id="closeMenuBtn"><i class="fas fa-times"></i></button>
                 </div>
             </ul>
-
             <div class="nav-controls">
                 <button class="ctrl-btn" id="darkModeToggleDesktop"><i class="fas fa-moon"></i></button>
                 <button class="ctrl-btn" id="langToggleDesktop"><i class="fas fa-globe"></i></button>
@@ -902,124 +1021,155 @@
         <div class="menu-overlay" id="menuOverlay"></div>
     </nav>
 
-    <!-- HERO SECTION -->
-    <section class="hero-projets">
+    <!-- PAPAL HERO -->
+    <section class="papal-hero">
         <div class="container">
-            <h1>Engagements & Impact Social</h1>
-            <p>Parce que notre foi s'exprime par nos œuvres au service des autres.</p>
+            <div class="papal-badge">
+                <i class="fas fa-crown"></i>
+                <span>VISITE APOSTOLIQUE</span>
+                <i class="fas fa-dove"></i>
+            </div>
+            <h1>
+                <i class="fas fa-church"></i> Bienvenue au Pape Léon XIV
+                <i class="fas fa-pray"></i>
+            </h1>
+            <p>Le Saint-Père effectue son premier voyage apostolique en Afrique. Une visite historique au Cameroun pour porter un message de paix, d'espérance et de fraternité.</p>
+            <div class="papal-dates">
+                <span><i class="fas fa-calendar-alt"></i> 15 - 18 Mai 2026</span>
+                <span><i class="fas fa-map-marker-alt"></i> Yaoundé - Douala - Garoua</span>
+                <span><i class="fas fa-users"></i> Rencontre avec les jeunes</span>
+            </div>
         </div>
     </section>
 
-    <div class="container">
-        <!-- INTRO TEXT -->
-        <div class="intro-text" data-aos="fade-up">
-            <h2>📋 Nos Projets Phares</h2>
-            <p>La jeunesse de l'Archidiocèse de Douala se mobilise pour le développement spirituel, social et environnemental de notre cité.</p>
-        </div>
-
-        <!-- PROJECTS GRID -->
-        <div class="projects-grid" data-aos="fade-up">
-            <!-- Projet 1 - Solidarité Carême -->
-            <div class="project-card">
-                <div class="project-img" style="background-image: url('https://images.unsplash.com/photo-1593113598332-cd288d649433?q=80&w=800');">
-                    <span class="project-status">🕊️ En cours</span>
-                </div>
-                <div class="project-content">
-                    <h3>Solidarité Carême</h3>
-                    <p>Collecte de denrées et de vêtements pour les orphelinats et les familles démunies des zones périphériques de Douala.</p>
-                    <div class="progress-bar">
-                        <div class="progress-fill" style="width: 75%;"></div>
-                    </div>
-                </div>
+    <!-- COUNTDOWN -->
+    <section class="countdown-section">
+        <div class="container">
+            <div class="countdown-title">
+                <i class="fas fa-hourglass-half"></i> JOUR J DANS
             </div>
-
-            <!-- Projet 2 - Eco-Paroisse -->
-            <div class="project-card">
-                <div class="project-img" style="background-image: url('https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?q=80&w=800');">
-                    <span class="project-status">🌿 Annuel</span>
+            <div class="countdown" id="countdown">
+                <div class="countdown-item">
+                    <div class="countdown-number" id="days">00</div>
+                    <div class="countdown-label">Jours</div>
                 </div>
-                <div class="project-content">
-                    <h3>Eco-Paroisse</h3>
-                    <p>Campagne de salubrité et de reboisement dans les paroisses pour répondre à l'appel de "Laudato Si" sur la sauvegarde de notre maison commune.</p>
-                    <div class="progress-bar">
-                        <div class="progress-fill" style="width: 100%;"></div>
-                    </div>
+                <div class="countdown-item">
+                    <div class="countdown-number" id="hours">00</div>
+                    <div class="countdown-label">Heures</div>
                 </div>
-            </div>
-
-            <!-- Projet 3 - Soutien Scolaire Gratuit -->
-            <div class="project-card">
-                <div class="project-img" style="background-image: url('https://images.unsplash.com/photo-1509062522246-3755977927d7?q=80&w=800');">
-                    <span class="project-status">📚 Nouveau</span>
+                <div class="countdown-item">
+                    <div class="countdown-number" id="minutes">00</div>
+                    <div class="countdown-label">Minutes</div>
                 </div>
-                <div class="project-content">
-                    <h3>Soutien Scolaire Gratuit</h3>
-                    <p>Les étudiants de l'aumônerie offrent des cours de répétition aux élèves en classe d'examen (BEPC, BAC) dans les zones rurales.</p>
-                    <div class="progress-bar">
-                        <div class="progress-fill" style="width: 40%;"></div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Projet 4 - Visite aux Malades -->
-            <div class="project-card">
-                <div class="project-img" style="background-image: url('https://images.unsplash.com/photo-1516533076085-503d245844a4?q=80&w=800');">
-                    <span class="project-status">🏥 Permanent</span>
-                </div>
-                <div class="project-content">
-                    <h3>Visite aux Malades</h3>
-                    <p>Une présence régulière des jeunes dans les hôpitaux pour apporter réconfort, prière et écoute aux personnes souffrantes.</p>
-                    <div class="progress-bar">
-                        <div class="progress-fill" style="width: 90%;"></div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Projet 5 - Forum Jeunesse & Emploi -->
-            <div class="project-card">
-                <div class="project-img" style="background-image: url('https://images.unsplash.com/photo-1526628953301-3e589a6a8b74?q=80&w=800');">
-                    <span class="project-status">💼 Synode</span>
-                </div>
-                <div class="project-content">
-                    <h3>Forum Jeunesse & Emploi</h3>
-                    <p>Mise en relation des jeunes diplômés avec des chefs d'entreprises chrétiens pour faciliter l'insertion professionnelle.</p>
-                    <div class="progress-bar">
-                        <div class="progress-fill" style="width: 60%;"></div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Projet 6 - Village de la Nuit des Jeunes -->
-            <div class="project-card">
-                <div class="project-img" style="background-image: url('https://images.unsplash.com/photo-1523240795612-9a054b0db644?q=80&w=800');">
-                    <span class="project-status">🎪 En préparation</span>
-                </div>
-                <div class="project-content">
-                    <h3>Village de la Nuit des Jeunes</h3>
-                    <p>Installation d'un espace d'exposition pour valoriser le savoir-faire et les talents des jeunes entrepreneurs catholiques.</p>
-                    <div class="progress-bar">
-                        <div class="progress-fill" style="width: 20%;"></div>
-                    </div>
+                <div class="countdown-item">
+                    <div class="countdown-number" id="seconds">00</div>
+                    <div class="countdown-label">Secondes</div>
                 </div>
             </div>
         </div>
+    </section>
 
-        <!-- VOLUNTEER BANNER -->
-        <div class="volunteer-banner" data-aos="fade-up">
-            <h2>🤝 Un projet te tient à cœur ?</h2>
-            <p>Rejoins l'un des comités de projet ou propose une initiative pour ta zone pastorale.</p>
-            <a href="https://bit.ly/NDJ2026" class="btn-action" target="_blank">
-                <i class="fas fa-hand-peace"></i> Je m'engage maintenant
-                <i class="fas fa-arrow-right"></i>
-            </a>
+    <!-- GALERIE PHOTOS CARROUSEL -->
+    <section class="gallery-section">
+        <div class="container">
+            <h2 class="section-title">📸 Moments forts de la visite</h2>
+            <div class="swiper papal-swiper">
+                <div class="swiper-wrapper" id="gallerySwiper">
+                    <!-- Les images seront chargées dynamiquement -->
+                </div>
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-pagination"></div>
+            </div>
         </div>
+    </section>
 
-        <!-- BACK BUTTON -->
-        <div class="back-container">
-            <a href="index.html" class="btn-back">
-                <i class="fas fa-arrow-left"></i> Retour à l'accueil
-            </a>
+    <!-- PROGRAMME -->
+    <section class="programme-section">
+        <div class="container">
+            <h2 class="section-title">📅 Programme de la visite</h2>
+            <div class="programme-grid" data-aos="fade-up">
+                <div class="schedule-card">
+                    <div class="schedule-date">Vendredi 15 Mai 2026</div>
+                    <h3>Arrivée au Cameroun</h3>
+                    <div class="schedule-time"><i class="fas fa-clock"></i> 10h00 - Accueil à l'aéroport</div>
+                    <p>Cérémonie d'accueil officielle à l'aéroport international de Yaoundé-Nsimalen. Rencontre avec les autorités civiles et religieuses.</p>
+                    <div class="schedule-time"><i class="fas fa-clock"></i> 16h00 - Rencontre interreligieuse</div>
+                    <p>Dialogue avec les représentants des différentes confessions chrétiennes et musulmanes.</p>
+                </div>
+                <div class="schedule-card">
+                    <div class="schedule-date">Samedi 16 Mai 2026</div>
+                    <h3>Journée à Yaoundé</h3>
+                    <div class="schedule-time"><i class="fas fa-clock"></i> 9h00 - Messe à la Cathédrale</div>
+                    <p>Messe solennelle en la Cathédrale Notre-Dame des Victoires de Yaoundé.</p>
+                    <div class="schedule-time"><i class="fas fa-clock"></i> 15h00 - Rencontre avec les jeunes</div>
+                    <p>Échange avec les jeunes de l'Archidiocèse sur le thème de l'espérance et de l'engagement.</p>
+                </div>
+                <div class="schedule-card">
+                    <div class="schedule-date">Dimanche 17 Mai 2026</div>
+                    <h3>Journée à Douala</h3>
+                    <div class="schedule-time"><i class="fas fa-clock"></i> 10h00 - Messe au Stade de Japoma</div>
+                    <p>Grande célébration eucharistique avec les fidèles de l'Archidiocèse de Douala.</p>
+                    <div class="schedule-time"><i class="fas fa-clock"></i> 16h00 - Visite de l'Aumônerie</div>
+                    <p>Rencontre privée avec les jeunes de l'Aumônerie Diocésaine Jeunesse & Enfance.</p>
+                </div>
+                <div class="schedule-card">
+                    <div class="schedule-date">Lundi 18 Mai 2026</div>
+                    <h3>Départ pour Rome</h3>
+                    <div class="schedule-time"><i class="fas fa-clock"></i> 8h00 - Messe privée</div>
+                    <p>Célébration avec les évêques du Cameroun.</p>
+                    <div class="schedule-time"><i class="fas fa-clock"></i> 11h00 - Cérémonie de départ</div>
+                    <p>Départ du Saint-Père pour Rome après une visite historique.</p>
+                </div>
+            </div>
         </div>
+    </section>
+
+    <!-- INFOS PRATIQUES -->
+    <section class="info-section">
+        <div class="container">
+            <h2 class="section-title">ℹ️ Infos pratiques</h2>
+            <div class="info-grid" data-aos="fade-up">
+                <div class="info-card">
+                    <i class="fas fa-map-marked-alt"></i>
+                    <h3>Accès aux sites</h3>
+                    <p>Transports gratuits organisés depuis les paroisses. Inscription obligatoire auprès de votre paroisse.</p>
+                </div>
+                <div class="info-card">
+                    <i class="fas fa-ticket-alt"></i>
+                    <h3>Billets et invitations</h3>
+                    <p>Les invitations sont gratuites et distribuées via les paroisses et mouvements d'action catholique.</p>
+                </div>
+                <div class="info-card">
+                    <i class="fas fa-hand-holding-heart"></i>
+                    <h3>Collecte pour les pauvres</h3>
+                    <p>Une collecte spéciale est organisée pour soutenir les œuvres caritatives du Saint-Père au Cameroun.</p>
+                </div>
+                <div class="info-card">
+                    <i class="fas fa-tv"></i>
+                    <h3>Diffusion en direct</h3>
+                    <p>Toutes les célébrations seront diffusées en direct sur RTVC, les radios partenaires et notre site web.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MESSAGE PAPAL -->
+    <section class="message-section">
+        <div class="container">
+            <div class="message-card" data-aos="zoom-in">
+                <i class="fas fa-quote-left"></i>
+                <p>"Je viens au Cameroun en pèlerin de paix et d'espérance. Je viens rencontrer la jeunesse camerounaise, cette jeunesse qui est l'avenir de l'Afrique et de l'Église. Ne perdez jamais la joie de l'Évangile !"</p>
+                <div class="message-author">— Pape Léon XIV</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- BOUTON RETOUR -->
+    <div class="back-container">
+        <a href="index.html" class="btn-back">
+            <i class="fas fa-arrow-left"></i> Retour à l'accueil
+        </a>
     </div>
 
     <!-- FOOTER -->
@@ -1028,20 +1178,14 @@
             <div class="footer-grid">
                 <div class="footer-col">
                     <h3>Aumônerie Diocésaine</h3>
-                    <p>Accompagnement spirituel, formation et engagement des jeunes et enfants de l'Archidiocèse de Douala. Ensemble, bâtissons une jeunesse responsable et rayonnante.</p>
-                    <p><a href="https://aumonerie-diocesaine-jeunesse-enfance-douala.org/" target="_blank">aumonerie-diocesaine-jeunesse-enfance-douala.org <i class="fas fa-external-link-alt"></i></a></p>
+                    <p>Accompagnement spirituel, formation et engagement des jeunes et enfants de l'Archidiocèse de Douala.</p>
                 </div>
                 <div class="footer-col">
                     <h3>Liens rapides</h3>
                     <ul class="footer-links">
                         <li><a href="index.html"><i class="fas fa-home"></i> Accueil</a></li>
-                        <li><a href="MissionPastorale.html"><i class="fas fa-cross"></i> Mission Pastorale</a></li>
-                        <li><a href="Histoirefondements.html"><i class="fas fa-book-open"></i> Histoire & Fondements</a></li>
-                        <li><a href="Equipepastorale.html"><i class="fas fa-user-friends"></i> Équipe Diocésaine</a></li>
-                        <li><a href="mouvements.html"><i class="fas fa-flag-checkered"></i> Mouvements & Groupes</a></li>
                         <li><a href="don.html"><i class="fas fa-hand-holding-heart"></i> Faire un don</a></li>
                         <li><a href="mot.html"><i class="fas fa-microphone-alt"></i> Mot de l'Aumônier</a></li>
-                        <li><a href="pelerinage.html"><i class="fas fa-hiking"></i> Pèlerinages</a></li>
                     </ul>
                 </div>
                 <div class="footer-col">
@@ -1051,22 +1195,19 @@
                         <span><i class="fas fa-palette"></i> FOTSO Audrey</span>
                     </div>
                     <div class="social-links">
-                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-                        <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
-                        <a href="#" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                        <a href="#"><i class="fab fa-whatsapp"></i></a>
                     </div>
                 </div>
                 <div class="footer-col">
                     <h3>Contact</h3>
                     <p><i class="fas fa-envelope"></i> contact@aumonerie-douala.org</p>
                     <p><i class="fas fa-phone-alt"></i> +237 697 408 284</p>
-                    <p><i class="fas fa-map-marker-alt"></i> Archidiocèse de Douala, Cameroun</p>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2026 Aumônerie Diocésaine Jeunesse & Enfance – Douala. Tous droits réservés.</p>
-                <p>Conçu avec <i class="fas fa-heart" style="color: #e74c3c;"></i> par BIG DATA CENTER AI — <a href="https://www.youtube.com/@DominiqueSavio_Cyber-Ap%C3%B4tre3.0" target="_blank">Dominique Savio - Cyber Apôtre 3.0</a></p>
+                <p>&copy; 2026 Aumônerie Diocésaine Jeunesse & Enfance – Douala</p>
             </div>
         </div>
     </footer>
@@ -1088,25 +1229,18 @@
         function closeMenu() {
             navLinks.classList.remove('active');
             if (menuOverlay) menuOverlay.classList.remove('active');
-            if (menuToggle && window.innerWidth <= 992) {
-                menuToggle.innerHTML = '<i class="fas fa-bars"></i>';
-            }
+            if (menuToggle && window.innerWidth <= 992) menuToggle.innerHTML = '<i class="fas fa-bars"></i>';
         }
 
         function openMenu() {
             navLinks.classList.add('active');
             if (menuOverlay) menuOverlay.classList.add('active');
-            if (menuToggle && window.innerWidth <= 992) {
-                menuToggle.innerHTML = '<i class="fas fa-times"></i>';
-            }
+            if (menuToggle && window.innerWidth <= 992) menuToggle.innerHTML = '<i class="fas fa-times"></i>';
         }
 
         if (menuToggle) {
-            menuToggle.addEventListener('click', () => {
-                navLinks.classList.contains('active') ? closeMenu() : openMenu();
-            });
+            menuToggle.addEventListener('click', () => navLinks.classList.contains('active') ? closeMenu() : openMenu());
         }
-
         if (closeMenuBtn) closeMenuBtn.addEventListener('click', closeMenu);
         if (menuOverlay) menuOverlay.addEventListener('click', closeMenu);
         document.querySelectorAll('.nav-links a:not(#dropdownToggle)').forEach(link => link.addEventListener('click', closeMenu));
@@ -1114,7 +1248,7 @@
             if (window.innerWidth > 992) closeMenu();
         });
 
-        // ========== DROPDOWN ==========
+        // Dropdown
         const dropdown = document.getElementById('dropdownMenu');
         const dropdownToggle = document.getElementById('dropdownToggle');
         if (dropdown && dropdownToggle) {
@@ -1126,6 +1260,98 @@
         document.addEventListener('click', (e) => {
             if (window.innerWidth <= 992 && dropdown && !dropdown.contains(e.target)) dropdown.classList.remove('open');
         });
+
+        // ========== COUNTDOWN ==========
+        function updateCountdown() {
+            const targetDate = new Date(2026, 4, 15, 0, 0, 0); // 15 Mai 2026
+            const now = new Date();
+            const diff = targetDate - now;
+
+            if (diff <= 0) {
+                document.getElementById('days').textContent = '00';
+                document.getElementById('hours').textContent = '00';
+                document.getElementById('minutes').textContent = '00';
+                document.getElementById('seconds').textContent = '00';
+                return;
+            }
+
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((diff % (86400000)) / (1000 * 60 * 60));
+            const minutes = Math.floor((diff % (3600000)) / (1000 * 60));
+            const seconds = Math.floor((diff % (60000)) / 1000);
+
+            document.getElementById('days').textContent = days.toString().padStart(2, '0');
+            document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
+            document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
+            document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
+        }
+
+        updateCountdown();
+        setInterval(updateCountdown, 1000);
+
+        // ========== GALERIE PHOTOS (carrousel) ==========
+        // Images de la visite papale (remplacez par vos vraies images)
+        const galleryImages = [{
+            url: "https://images.unsplash.com/photo-1507699622108-4be0b1f55b2e?w=800&h=500&fit=crop",
+            caption: "Bienvenue au Pape"
+        }, {
+            url: "https://images.unsplash.com/photo-1511671782779-c97d50d27f2c?w=800&h=500&fit=crop",
+            caption: "Messe en plein air"
+        }, {
+            url: "https://images.unsplash.com/photo-1545987796-200677ee1011?w=800&h=500&fit=crop",
+            caption: "Rencontre avec les jeunes"
+        }, {
+            url: "https://images.unsplash.com/photo-1541746972996-4e0b0f43e02a?w=800&h=500&fit=crop",
+            caption: "Cérémonie d'accueil"
+        }, {
+            url: "https://images.unsplash.com/photo-1494290719818-7f682c1ef4f6?w=800&h=500&fit=crop",
+            caption: "Bénédiction papale"
+        }, {
+            url: "https://images.unsplash.com/photo-1541976844346-f18aeac57b06?w=800&h=500&fit=crop",
+            caption: "Foule en liesse"
+        }];
+
+        function initGallery() {
+            const swiperWrapper = document.getElementById('gallerySwiper');
+            if (swiperWrapper) {
+                swiperWrapper.innerHTML = galleryImages.map(img => `
+                    <div class="swiper-slide">
+                        <img src="${img.url}" alt="${img.caption}" loading="lazy">
+                        <div style="padding: 15px; text-align: center; background: white; color: var(--primary); font-weight: 500;">${img.caption}</div>
+                    </div>
+                `).join('');
+            }
+
+            new Swiper('.papal-swiper', {
+                loop: true,
+                autoplay: {
+                    delay: 4000,
+                    disableOnInteraction: false
+                },
+                pagination: {
+                    el: '.swiper-pagination',
+                    clickable: true
+                },
+                navigation: {
+                    nextEl: '.swiper-button-next',
+                    prevEl: '.swiper-button-prev'
+                },
+                effect: 'slide',
+                speed: 800,
+                spaceBetween: 30,
+                slidesPerView: 1,
+                breakpoints: {
+                    768: {
+                        slidesPerView: 2
+                    },
+                    1024: {
+                        slidesPerView: 3
+                    }
+                }
+            });
+        }
+
+        initGallery();
 
         // ========== MODE SOMBRE ==========
         function initDarkMode() {

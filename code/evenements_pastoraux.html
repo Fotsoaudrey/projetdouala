@@ -4,8 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>Équipe Diocésaine | Aumônerie Douala</title>
-    <meta name="description" content="Équipe diocésaine de l'Aumônerie Jeunesse & Enfance de Douala : aumôniers, coordinateurs, commissions, mouvements et responsables de zones.">
+    <title>Événements Pastoraux | Vie du Diocèse - Aumônerie Douala</title>
+    <meta name="description" content="Calendrier des événements pastoraux de l'Archidiocèse de Douala. Messes, célébrations, retraites, formations et activités de l'Aumônerie Jeunesse & Enfance.">
 
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -39,9 +39,9 @@
             background: #1e293b;
         }
         
-        body.dark-mode .member-card,
-        body.dark-mode .commission-card {
+        body.dark-mode .event-card {
             background: #1e293b;
+            border-color: #334155;
         }
         
         body.dark-mode .section-title {
@@ -66,22 +66,9 @@
             color: #2ecc71;
         }
         
-        body.dark-mode .pastoral-table {
-            background: #1e293b;
-        }
-        
-        body.dark-mode .pastoral-table td {
-            border-bottom-color: #334155;
-        }
-        
-        body.dark-mode .alt-section {
-            background: #0f1724;
-        }
-        
-        body.dark-mode .search-wrapper input {
+        body.dark-mode .padlet-card {
             background: #1e293b;
             border-color: #334155;
-            color: #e2e8f0;
         }
         
         .container {
@@ -480,313 +467,346 @@
                 padding-left: 20px;
             }
         }
-        /* SEARCH */
+        /* BARBILLARD PADLET */
         
-        .search-section {
+        .padlet-section {
+            padding: 60px 0;
+            background: #f0f4fa;
+        }
+        
+        body.dark-mode .padlet-section {
+            background: #0a0f1a;
+        }
+        
+        .padlet-card {
+            background: white;
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s;
+            border: 1px solid #e9edf2;
+        }
+        
+        .padlet-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 35px rgba(0, 0, 0, 0.1);
+            border-color: #2ecc71;
+        }
+        
+        .padlet-header {
+            background: linear-gradient(135deg, #045286, #0a2e4a);
+            color: white;
+            padding: 20px 30px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+        
+        body.dark-mode .padlet-header {
+            background: linear-gradient(135deg, #0f1724, #020617);
+        }
+        
+        .padlet-header h3 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .padlet-header h3 i {
+            color: #2ecc71;
+        }
+        
+        .padlet-badge {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 6px 15px;
+            border-radius: 30px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+        
+        .padlet-container {
+            position: relative;
+            width: 100%;
+            height: 600px;
+            overflow: hidden;
+        }
+        
+        .padlet-iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        
+        .padlet-fallback {
+            display: none;
+            text-align: center;
+            padding: 50px;
+            background: #f8fafc;
+        }
+        
+        body.dark-mode .padlet-fallback {
+            background: #0f1724;
+        }
+        
+        .padlet-fallback i {
+            font-size: 3rem;
+            color: #2ecc71;
+            margin-bottom: 15px;
+        }
+        
+        .btn-padlet {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: #2ecc71;
+            color: #022b44;
+            padding: 12px 28px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            margin-top: 20px;
+            transition: all 0.3s;
+        }
+        
+        .btn-padlet:hover {
+            background: #045286;
+            color: white;
+            transform: translateY(-2px);
+        }
+        
+        @media (max-width: 768px) {
+            .padlet-container {
+                height: 500px;
+            }
+            .padlet-header {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+        /* FILTRES */
+        
+        .filters-section {
             padding: 30px 0;
             background: #f0f4fa;
         }
         
-        body.dark-mode .search-section {
+        body.dark-mode .filters-section {
             background: #0a0f1a;
         }
         
-        .search-container {
-            max-width: 500px;
-            margin: 0 auto;
-            position: relative;
+        .filters-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
         }
         
-        .search-container i {
-            position: absolute;
-            left: 18px;
-            top: 50%;
-            transform: translateY(-50%);
-            color: #94a3b8;
-        }
-        
-        .search-container input {
-            width: 100%;
-            padding: 14px 20px 14px 50px;
-            border: 2px solid #e9edf2;
-            border-radius: 50px;
-            font-family: inherit;
-            font-size: 1rem;
-            transition: all 0.3s;
+        .filter-btn {
             background: white;
+            border: none;
+            padding: 10px 24px;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-family: inherit;
+            font-size: 0.9rem;
+            color: #1a2c3e;
         }
         
-        body.dark-mode .search-container input {
+        body.dark-mode .filter-btn {
             background: #1e293b;
-            border-color: #334155;
             color: #e2e8f0;
         }
         
-        .search-container input:focus {
-            outline: none;
-            border-color: #2ecc71;
-            box-shadow: 0 0 0 3px rgba(46, 204, 113, 0.2);
-        }
-        /* TEAM GRID */
-        
-        .team-section {
-            padding: 40px 0;
+        .filter-btn.active {
+            background: #2ecc71;
+            color: #022b44;
         }
         
-        .team-grid {
+        .filter-btn:hover {
+            background: #2ecc71;
+            color: #022b44;
+            transform: translateY(-2px);
+        }
+        /* CALENDRIER GRID */
+        
+        .calendar-section {
+            padding: 60px 0;
+        }
+        
+        .calendar-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
             gap: 30px;
         }
         
-        .member-card {
+        .event-card {
             background: white;
-            border-radius: 20px;
+            border-radius: 24px;
             overflow: hidden;
             transition: all 0.3s ease;
             border: 1px solid #e9edf2;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
         }
         
-        .member-card:hover {
+        .event-card:hover {
             transform: translateY(-5px);
             box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
             border-color: #2ecc71;
         }
         
-        .member-photo {
+        .event-date {
             background: linear-gradient(135deg, #2ecc71, #27ae60);
-            padding: 30px;
-            text-align: center;
-        }
-        
-        .member-photo i {
-            font-size: 3.5rem;
             color: white;
+            padding: 15px 20px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
         }
         
-        .member-info {
-            padding: 20px;
-            text-align: center;
-        }
-        
-        .member-name {
-            font-size: 1.2rem;
+        .event-date .day {
+            font-size: 2rem;
             font-weight: 800;
-            color: #045286;
-            margin-bottom: 5px;
+            line-height: 1;
         }
         
-        body.dark-mode .member-name {
-            color: #2ecc71;
+        .event-date .month {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
         
-        .member-role {
+        .event-date .time {
+            margin-left: auto;
+            font-size: 0.85rem;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 5px 12px;
+            border-radius: 20px;
+        }
+        
+        .event-content {
+            padding: 20px;
+        }
+        
+        .event-category {
             display: inline-block;
-            background: #e8f5e9;
-            color: #2ecc71;
             padding: 4px 12px;
             border-radius: 20px;
             font-size: 0.7rem;
             font-weight: 600;
-            margin: 10px 0;
+            margin-bottom: 12px;
         }
         
-        body.dark-mode .member-role {
-            background: #2d3748;
-        }
-        
-        .member-contact {
-            border-top: 1px solid #e9edf2;
-            padding-top: 15px;
-            margin-top: 10px;
-            font-size: 0.85rem;
-        }
-        
-        body.dark-mode .member-contact {
-            border-top-color: #334155;
-        }
-        
-        .member-contact a {
-            color: #2ecc71;
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            margin: 5px;
-        }
-        
-        .member-contact a:hover {
-            color: #045286;
-        }
-        /* COMMISSIONS */
-        
-        .commissions-section {
-            padding: 40px 0;
-        }
-        
-        .commissions-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 25px;
-        }
-        
-        .commission-card {
-            background: white;
-            border-radius: 16px;
-            padding: 20px;
-            transition: all 0.3s ease;
-            border: 1px solid #e9edf2;
-            border-left: 4px solid #2ecc71;
-        }
-        
-        .commission-card:hover {
-            transform: translateX(5px);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
-        }
-        
-        .commission-card h3 {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            font-size: 1.1rem;
+        .event-content h3 {
+            font-size: 1.2rem;
             margin-bottom: 10px;
             color: #045286;
         }
         
-        body.dark-mode .commission-card h3 {
+        body.dark-mode .event-content h3 {
             color: #2ecc71;
         }
         
-        .commission-card h3 i {
-            color: #2ecc71;
-        }
-        
-        .commission-card p {
+        .event-content p {
             color: #64748b;
             font-size: 0.85rem;
+            margin-bottom: 15px;
             line-height: 1.5;
         }
         
-        body.dark-mode .commission-card p {
+        body.dark-mode .event-content p {
             color: #94a3b8;
         }
-        /* TABLE STYLES */
         
-        .alt-section {
-            padding: 40px 0;
-            background: #f8fafc;
-            margin: 20px 0;
-            border-radius: 24px;
-        }
-        
-        body.dark-mode .alt-section {
-            background: #0f1724;
-        }
-        
-        .section-description {
-            text-align: center;
+        .event-location {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.8rem;
             color: #64748b;
-            font-size: 0.9rem;
-            margin-bottom: 30px;
-            max-width: 750px;
-            margin-left: auto;
-            margin-right: auto;
+            margin-bottom: 15px;
         }
         
-        body.dark-mode .section-description {
+        body.dark-mode .event-location {
             color: #94a3b8;
         }
         
-        .table-responsive {
-            overflow-x: auto;
+        .event-location i {
+            color: #2ecc71;
+            width: 20px;
         }
         
-        .pastoral-table {
-            width: 100%;
-            border-collapse: collapse;
-            background: white;
-            border-radius: 16px;
-            overflow: hidden;
+        .event-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid #e9edf2;
         }
         
-        body.dark-mode .pastoral-table {
-            background: #1e293b;
+        body.dark-mode .event-footer {
+            border-top-color: #334155;
         }
         
-        .pastoral-table th {
-            background: #045286;
-            color: white;
-            padding: 12px 15px;
-            text-align: left;
-            font-weight: 600;
-            font-size: 0.85rem;
-        }
-        
-        body.dark-mode .pastoral-table th {
+        .btn-event {
             background: #2ecc71;
             color: #022b44;
-        }
-        
-        .pastoral-table td {
-            padding: 12px 15px;
-            border-bottom: 1px solid #e9edf2;
-        }
-        
-        body.dark-mode .pastoral-table td {
-            border-bottom-color: #334155;
-        }
-        
-        .pastoral-table tr:hover td {
-            background: #e8f5e9;
-        }
-        
-        body.dark-mode .pastoral-table tr:hover td {
-            background: #2d3748;
-        }
-        
-        .table-contact {
-            color: #2ecc71;
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            gap: 5px;
-            font-size: 0.85rem;
-        }
-        
-        .table-contact:hover {
-            color: #045286;
-        }
-        
-        .no-results {
-            text-align: center;
-            padding: 50px;
-            color: #64748b;
-        }
-        /* BUTTON */
-        
-        .back-container {
-            text-align: center;
-            margin: 40px 0;
-        }
-        
-        .btn-back {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            background: #045286;
-            color: white;
-            padding: 12px 32px;
+            padding: 8px 20px;
             border-radius: 50px;
             text-decoration: none;
             font-weight: 600;
+            font-size: 0.8rem;
             transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            border: none;
+            cursor: pointer;
         }
         
-        .btn-back:hover {
-            background: #2ecc71;
-            color: #022b44;
-            transform: translateX(-5px);
+        .btn-event:hover {
+            background: #045286;
+            color: white;
+            transform: translateY(-2px);
+        }
+        
+        .event-share {
+            display: flex;
+            gap: 12px;
+        }
+        
+        .event-share a {
+            color: #64748b;
+            transition: 0.3s;
+        }
+        
+        .event-share a:hover {
+            color: #2ecc71;
+        }
+        
+        .no-results {
+            grid-column: 1 / -1;
+            text-align: center;
+            padding: 50px;
+        }
+        
+        .no-results i {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            display: block;
+            color: #64748b;
+        }
+        
+        @media (max-width: 768px) {
+            .calendar-grid {
+                grid-template-columns: 1fr;
+            }
         }
         /* FOOTER */
         
@@ -933,11 +953,6 @@
             .social-links {
                 justify-content: center;
             }
-            .pastoral-table th,
-            .pastoral-table td {
-                padding: 8px 10px;
-                font-size: 0.75rem;
-            }
         }
     </style>
 </head>
@@ -965,7 +980,7 @@
 
             <ul class="nav-links" id="navLinks">
                 <li><a href="index.html"><i class="fas fa-home"></i> Accueil</a></li>
-                <li><a href="MissionPastorale.html"><i class="fas fa-church"></i> À propos</a></li>
+                <li><a href="index.html#apropos"><i class="fas fa-church"></i> À propos</a></li>
                 <li><a href="index.html#enfance"><i class="fas fa-child"></i> Enfance</a></li>
                 <li><a href="index.html#jeunesse"><i class="fas fa-users"></i> Jeunesse</a></li>
 
@@ -982,7 +997,7 @@
                         <li><a href="evenements_pastoraux.html"><i class="fas fa-calendar-alt"></i> Événements Pastoraux</a></li>
                         <li><a href="pelerinage.html"><i class="fas fa-hiking"></i> Pèlerinages</a></li>
                         <li><a href="retraites.html"><i class="fas fa-pray"></i> Retraites spirituelles</a></li>
-                        <li><a href="formations_bibliques.html"><i class="fas fa-chalkboard-user"></i> Formations bibliques</a></li>
+                        <li><a href="formations.html"><i class="fas fa-chalkboard-user"></i> Formations bibliques</a></li>
                     </ul>
                 </li>
 
@@ -1010,30 +1025,57 @@
     <!-- PAGE HEADER -->
     <section class="page-header">
         <div class="container">
-            <h2>Équipe Diocésaine</h2>
-            <p>Ceux qui travaillent quotidiennement pour animer la pastorale de l'enfance et de la jeunesse dans l'Archidiocèse de Douala</p>
+            <h2>Événements Pastoraux</h2>
+            <p>Calendrier des célébrations, messes, retraites et activités de l'Aumônerie Diocésaine Jeunesse & Enfance</p>
         </div>
     </section>
 
-    <!-- SEARCH -->
-    <section class="search-section">
+    <!-- ========== BARBILLARD PADLET (AJOUTÉ) ========== -->
+    <section class="padlet-section">
         <div class="container">
-            <div class="search-container">
-                <i class="fas fa-search"></i>
-                <input type="text" id="searchInput" placeholder="Rechercher un nom, un rôle, une zone...">
+            <div class="padlet-card">
+                <div class="padlet-header">
+                    <h3>
+                        <i class="fas fa-chalkboard"></i> Tableau d'affichage - Aumônerie Diocésaine
+                    </h3>
+                    <span class="padlet-badge">
+                        <i class="fas fa-sync-alt"></i> Actualisé en temps réel
+                    </span>
+                </div>
+                <div class="padlet-container">
+                    <iframe class="padlet-iframe" src="https://padlet.com/bigdatacenterinfos/aum-nerie-dioc-saine-96kaxecn4z4xjbge" title="Barbillard Aumônerie Diocésaine" loading="lazy" allow="autoplay">
+                    </iframe>
+                </div>
+                <div class="padlet-fallback" id="padletFallback">
+                    <i class="fas fa-exclamation-triangle"></i>
+                    <p>Le tableau d'affichage n'a pas pu être chargé.</p>
+                    <a href="https://padlet.com/bigdatacenterinfos/aum-nerie-dioc-saine-96kaxecn4z4xjbge" target="_blank" rel="noopener noreferrer" class="btn-padlet">
+                        <i class="fas fa-external-link-alt"></i> Ouvrir dans un nouvel onglet
+                    </a>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- DYNAMIC CONTENT -->
-    <div class="container" id="dynamicContent"></div>
+    <!-- FILTRES -->
+    <section class="filters-section">
+        <div class="container">
+            <div class="filters-container">
+                <button class="filter-btn active" data-filter="all">Tous</button>
+                <button class="filter-btn" data-filter="messe">Messes & Célébrations</button>
+                <button class="filter-btn" data-filter="retraite">Retraites & Camps</button>
+                <button class="filter-btn" data-filter="formation">Formations & Ateliers</button>
+                <button class="filter-btn" data-filter="jeunesse">Événements Jeunesse</button>
+            </div>
+        </div>
+    </section>
 
-    <!-- BACK BUTTON -->
-    <div class="container back-container">
-        <a href="index.html" class="btn-back">
-            <i class="fas fa-arrow-left"></i> Retour à l'accueil
-        </a>
-    </div>
+    <!-- CALENDRIER GRID -->
+    <section class="calendar-section">
+        <div class="container">
+            <div class="calendar-grid" id="eventsGrid"></div>
+        </div>
+    </section>
 
     <!-- FOOTER -->
     <footer class="main-footer">
@@ -1085,411 +1127,294 @@
     </footer>
 
     <script>
-        // ========== DONNÉES COMPLÈTES ==========
-        const bureauData = [{
-            name: "Abbé Christopher GEH KUM",
-            role: "Aumônier Diocésain de la Jeunesse et de l'Enfance",
-            phone: ""
-        }, {
-            name: "Abbé Guy Calvin MBEM MONKOM",
-            role: "Aumônier Diocésain Adjoint",
-            phone: ""
-        }, {
-            name: "Junior SINGOUE",
-            role: "Coordinateur Diocésain",
-            phone: "6741 95 36 26 / 657 09 75 81"
-        }, {
-            name: "Dieudonné BIANGAB",
-            role: "1er Vice Coordinateur",
-            phone: "697 11 12 18"
-        }, {
-            name: "Chamboli MOABE ETUKE",
-            role: "2ème Vice Coordinateur",
-            phone: "675 56 63 39"
-        }, {
-            name: "Laurette NGANKAM",
-            role: "Responsable Coordination Enfance",
-            phone: "677 55 12 57"
-        }, {
-            name: "Marcelle Eugène MENOMBA",
-            role: "Vice Responsable Enfance",
-            phone: "691 83 83 85 / 679 27 17 85"
-        }, {
-            name: "Stallone TEFFO",
-            role: "Secrétaire Général",
-            phone: "699 32 91 52"
-        }, {
-            name: "Parfait EVINA",
-            role: "Secrétaire Général Adjoint",
-            phone: "697 49 53 11"
-        }, {
-            name: "Marie Sandra",
-            role: "Secrétaire Générale Adjointe",
-            phone: "671 53 24 24"
-        }, {
-            name: "Yannick MENE",
-            role: "Chargé de Communication",
-            phone: "696 10 92 03"
-        }, {
-            name: "Nicodemus AMUKA",
-            role: "Chargé de Communication",
-            phone: "677 37 76 34"
-        }, {
-            name: "Pacome TSOPMENE",
-            role: "Chargé de Communication",
-            phone: "693 48 89 76"
-        }, {
-            name: "Marie André PIPPA",
-            role: "Chargé des Finances",
-            phone: "694 54 85 95"
-        }, {
-            name: "Cyrille MBELE",
-            role: "Chargé des Finances",
-            phone: "696 79 51 81"
-        }, {
-            name: "Hervé ATANGANA",
-            role: "Chargé Relations Publiques",
-            phone: "698 41 73 31"
-        }, {
-            name: "Thierry PRIDE",
-            role: "Chargé Relations Publiques",
-            phone: "652 41 49 45"
-        }, {
-            name: "Noel WANSI",
-            role: "Chargé de la Culture",
-            phone: "675 92 73 07"
-        }, {
-            name: "William FORNUNKONG",
-            role: "Chargé de la Culture",
-            phone: "673 33 07 29"
-        }, {
-            name: "Pierre NDJOMO",
-            role: "Chargé des Sports",
-            phone: "674 36 44 34"
-        }, {
-            name: "Annick NGUIKOUA",
-            role: "Chargée Formation",
-            phone: "674 05 01 26"
-        }];
-
-        const commissionsData = [{
-            title: "Commission Construction",
-            desc: "Mgr Samuel KLEDA, L'Aumônier Diocésain, Les Vicaires Épiscopaux, Les Curés.",
-            icon: "fas fa-building"
-        }, {
-            title: "Commission Formation Scolaire",
-            desc: "Responsable : Abbé Guy Calvin MBEM MONKOM.",
-            icon: "fas fa-graduation-cap"
-        }, {
-            title: "Commission Animation Enfants",
-            desc: "Responsables : Abbé Guy Calvin MBEM MONKOM, Abbé Guillaume OMGBA, Abbé Raymond NUKUNA.",
-            icon: "fas fa-child"
-        }, {
-            title: "Commission Liturgique",
-            desc: "Responsable : Abbé Anicet LAMBA.",
-            icon: "fas fa-church"
-        }, {
-            title: "Commission Concours Biblique",
-            desc: "Responsables : Abbé Michael TCHOUMBOU, Abbé Joseph NDOUM.",
-            icon: "fas fa-bible"
-        }, {
-            title: "Commission Communication & WEB",
-            desc: "Responsables : Pacome TSOPMENE, Franklin NOTEGNO, DOMINIQUE SAVIO.",
-            icon: "fas fa-globe"
-        }, {
-            title: "Commission Travaux & Logistique",
-            desc: "Responsable : Gilles YOUMBI et le Scout.",
-            icon: "fas fa-tools"
-        }, {
-            title: "Commission Synode",
-            desc: "Mgr Samuel KLEDA, Abbé Christopher GEH KUM, Abbé Engelbert MBARGA.",
-            icon: "fas fa-synagogue"
-        }];
-
-        const mouvementsEnfantsData = [{
-            name: "Lucrèce TUKAM",
-            contact: "698.228.727",
-            mouvement: "ACE COP MONDE"
-        }, {
-            name: "Laurette NGAKAM / Marcelle Eugène",
-            contact: "677.55.03.41 / 677.55.05.67",
-            mouvement: "LES AMIS DE JÉSUS"
-        }, {
-            name: "James Serges SONG",
-            contact: "652.414.945",
-            mouvement: "CADETS OF MARY"
-        }, {
-            name: "Sebastien POUOSSI / Jérôme OLOA",
-            contact: "698.78.12.40 / 691.64.20.07",
-            mouvement: "FOCOLARE"
-        }, {
-            name: "Pacome TSOPMENE",
-            contact: "693.48.89.76",
-            mouvement: "ENFANTS DE CHŒURS"
-        }];
-
-        const coordinateursData = [{
-            name: "Sylla AMINATA",
-            contact: "698.97.71.45",
-            mouvement: "MEJ"
-        }, {
-            name: "Landry TSATSOP / Crescence BANACK",
-            contact: "683.75.88.34 / 696.04.34.74",
-            mouvement: "JEC"
-        }, {
-            name: "Yannick SONICE / NOUMSON",
-            contact: "655.89.19.44",
-            mouvement: "PJACJ"
-        }, {
-            name: "SOCRATE",
-            contact: "699.61.50.94",
-            mouvement: "JM"
-        }, {
-            name: "Estelle NGONO",
-            contact: "694.476.674",
-            mouvement: "LÉGION DE MARIE"
-        }, {
-            name: "Valery",
-            contact: "677.542.857",
-            mouvement: "JOC"
-        }, {
-            name: "Michael TANKOUA",
-            contact: "671.027.716",
-            mouvement: "BON SAMARITAIN"
-        }, {
-            name: "Chamboli MOABE ETUKE",
-            contact: "675.566.339",
-            mouvement: "CANDYM"
-        }, {
-            name: "Liboire EPOUNE",
-            contact: "690.929.070",
-            mouvement: "DT DIOCÉSAIN"
-        }];
-
-        const responsablesJeunesData = [{
-            name: "Nicole MBOULE",
-            zone: "Wouri I",
-            paroisse: "ST DOMINIQUE SAVIO"
-        }, {
-            name: "Amos NFON TINA",
-            zone: "Wouri II",
-            paroisse: "SACRÉ CŒUR DE NEW BELL"
-        }, {
-            name: "Louisette BLANCHARD",
-            zone: "Wouri III",
-            paroisse: "ST CHARLES LWANGA"
-        }, {
-            name: "Arnold KOKAM",
-            zone: "Wouri IV",
-            paroisse: "CHRIST SAUVEUR"
-        }, {
-            name: "MOUIL ABDEL SALOUM KANDE",
-            zone: "Wouri V",
-            paroisse: "ST THOMAS APÔTRE"
-        }, {
-            name: "Noël WANSI",
-            zone: "Wouri VI",
-            paroisse: "TOUSSAINT DE SOBOUM"
-        }, {
-            name: "Parfait MAKON",
-            zone: "Wouri VII",
-            paroisse: "ST JACQUES DE LOGBABA"
-        }, {
-            name: "Linda NANGUEU",
-            zone: "Wouri VIII",
-            paroisse: "ST BONAVENTURE"
-        }, {
-            name: "Jérôme MOUTAPAM",
-            zone: "Wouri IX",
-            paroisse: "ST SIMON DE KONDI"
-        }, {
-            name: "Franck NIE",
-            zone: "Wouri X",
-            paroisse: "JÉSUS BON PASTEUR"
-        }];
-
-        const aumoniersZoneData = [{
-            name: "Abbé Alain NIBILE",
-            contact: "699.86.1.55",
-            zone: "Wouri I",
-            paroisse: "Holy Trinity"
-        }, {
-            name: "Abbé Guy Calvin MBEM MONKON",
-            contact: "695.23.74.75",
-            zone: "Wouri II",
-            paroisse: "Notre Dame des Sept Douleurs"
-        }, {
-            name: "Abbé Jules Constantin LEP MBELECK",
-            contact: "695.47.17.49",
-            zone: "Wouri III",
-            paroisse: "St Charles Lwanga"
-        }, {
-            name: "Abbé Marius DJOMAHA",
-            contact: "693.45.70.67",
-            zone: "Wouri IV",
-            paroisse: "St Basile de LOGPOM"
-        }, {
-            name: "Abbé Mesaac MBEH NKAMBA",
-            contact: "691.18.14.40",
-            zone: "Wouri V",
-            paroisse: "St Benoît de DALLAS"
-        }, {
-            name: "Abbé Leonel Pierre SEMPEY",
-            contact: "690.30.40.00",
-            zone: "Wouri VI",
-            paroisse: "St François Xavier"
-        }, {
-            name: "Abbé Christian PAM TCHAMENI",
-            contact: "655.73.54.36",
-            zone: "Wouri VII",
-            paroisse: "Ste Famille"
-        }, {
-            name: "Père Merlin TABELA",
-            contact: "690.66.67.67",
-            zone: "Wouri VIII",
-            paroisse: "Notre Dame du Rosaire"
-        }, {
-            name: "Abbé Giresse NOPIEGUE",
-            contact: "697.24.81.74",
-            zone: "Wouri IX",
-            paroisse: "Notre Dame de Lourdes"
-        }, {
-            name: "Abbé Florian Anicet LAMBA",
-            contact: "693.48.53.33",
-            zone: "Wouri X",
-            paroisse: "St Iréné"
-        }];
-
-        let currentFilter = "";
-
-        function cleanPhone(phone) {
-            if (!phone) return '';
-            return phone.replace(/[^0-9]/g, '');
-        }
-
-        function renderBureau() {
-            const filtered = bureauData.filter(m =>
-                m.name.toLowerCase().includes(currentFilter) ||
-                m.role.toLowerCase().includes(currentFilter)
-            );
-            if (filtered.length === 0) return '';
-            return `
-                <div class="team-section">
-                    <h2 class="section-title"><i class="fas fa-building"></i> Bureau Diocésain</h2>
-                    <p class="section-description">L'équipe de coordination générale de la pastorale des jeunes et de l'enfance.</p>
-                    <div class="team-grid">
-                        ${filtered.map(m => `
-                            <div class="member-card">
-                                <div class="member-photo">
-                                    <i class="fas fa-user-circle"></i>
-                                </div>
-                                <div class="member-info">
-                                    <div class="member-name">${m.name}</div>
-                                    <div class="member-role">${m.role}</div>
-                                    <div class="member-contact">
-                                        ${m.phone ? `
-                                            <a href="tel:${cleanPhone(m.phone)}"><i class="fas fa-phone-alt"></i> ${m.phone}</a>
-                                            <a href="https://wa.me/237${cleanPhone(m.phone)}?text=Bonjour%20${encodeURIComponent(m.name)}" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp</a>
-                                        ` : '<p><i class="fas fa-phone-alt"></i> Contact non disponible</p>'}
-                                    </div>
-                                </div>
-                            </div>
-                        `).join('')}
-                    </div>
-                </div>
-            `;
-        }
-
-        function renderCommissions() {
-            const filtered = commissionsData.filter(c => 
-                c.title.toLowerCase().includes(currentFilter) || 
-                c.desc.toLowerCase().includes(currentFilter)
-            );
-            if (filtered.length === 0) return '';
-            return `
-                <div class="commissions-section">
-                    <h2 class="section-title"><i class="fas fa-tasks"></i> Commissions</h2>
-                    <p class="section-description">Groupes de travail spécialisés pour des missions pastorales spécifiques.</p>
-                    <div class="commissions-grid">
-                        ${filtered.map(c => `
-                            <div class="commission-card">
-                                <h3><i class="${c.icon}"></i> ${c.title}</h3>
-                                <p>${c.desc}</p>
-                            </div>
-                        `).join('')}
-                    </div>
-                </div>
-            `;
-        }
-
-        function renderTable(title, data, columns, description) {
-            const filtered = data.filter(row => 
-                Object.values(row).some(val => String(val).toLowerCase().includes(currentFilter))
-            );
-            if (filtered.length === 0) return '';
-            
-            return `
-                <div class="alt-section">
-                    <h2 class="section-title"><i class="fas fa-users"></i> ${title}</h2>
-                    <p class="section-description">${description}</p>
-                    <div class="table-responsive">
-                        <table class="pastoral-table">
-                            <thead><tr>${columns.map(col => `<th>${col}</th>`).join('')}</thead>
-                            <tbody>
-                                ${filtered.map(row => {
-                                    // Extraire les valeurs en fonction des colonnes
-                                    const nom = row.name || '';
-                                    const contact = row.contact || '';
-                                    const mouvement = row.mouvement || '';
-                                    const zone = row.zone || '';
-                                    const paroisse = row.paroisse || '';
-                                    const clean = cleanPhone(contact);
-                                    
-                                    return `
-                                        <tr>
-                                            ${columns.map(col => {
-                                                if (col === 'Nom') return `<td>${nom}</td>`;
-                                                if (col === 'Contact') {
-                                                    if (!contact || !clean) return `<td>Contact non disponible</td>`;
-                                                    return `<td>
-                                                        <a href="tel:${clean}" class="table-contact"><i class="fas fa-phone-alt"></i> Appeler</a>
-                                                        <a href="https://wa.me/237${clean}?text=Bonjour" class="table-contact" style="margin-left:10px;" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp</a>
-                                                    </td>`;
-                                                }
-                                                if (col === 'Mouvement') return `<td>${mouvement}</td>`;
-                                                if (col === 'Zone') return `<td>${zone}</td>`;
-                                                if (col === 'Paroisse') return `<td>${paroisse}</td>`;
-                                                return `<td>-</td>`;
-                                            }).join('')}
-                                        </tr>
-                                    `;
-                                }).join('')}
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            `;
-        }
-
-        function renderAll() {
-            const container = document.getElementById('dynamicContent');
-            if (!container) return;
-            
-            const bureauHtml = renderBureau();
-            const commissionsHtml = renderCommissions();
-            const mouvementsHtml = renderTable('Responsables des Mouvements (Enfants)', mouvementsEnfantsData, ['Nom', 'Contact', 'Mouvement'], 'Liste des responsables qui animent les mouvements pour les enfants.');
-            const coordinateursHtml = renderTable('Coordinateurs des Mouvements', coordinateursData, ['Nom', 'Contact', 'Mouvement'], 'Les coordinateurs assurent la liaison entre les différents mouvements.');
-            const responsablesHtml = renderTable('Responsables de Jeunes par Zone', responsablesJeunesData, ['Nom', 'Zone', 'Paroisse'], 'Responsables pastoraux pour la jeunesse dans chaque zone.');
-            const aumoniersHtml = renderTable('Aumôniers de Zone', aumoniersZoneData, ['Nom', 'Contact', 'Zone', 'Paroisse'], 'Prêtres responsables de l\'accompagnement spirituel dans chaque zone.');
-            
-            const allContent = [bureauHtml, commissionsHtml, mouvementsHtml, coordinateursHtml, responsablesHtml, aumoniersHtml].filter(Boolean).join('');
-            
-            if (!allContent) {
-                container.innerHTML = `<div class="no-results"><i class="fas fa-search" style="font-size: 3rem; margin-bottom: 1rem; display: block;"></i><p>Aucun résultat trouvé pour "${currentFilter}"</p></div>`;
-            } else {
-                container.innerHTML = allContent;
+        // ========== DONNÉES DES ÉVÉNEMENTS ==========
+        const eventsData = [
+            // Messes & Célébrations
+            {
+                id: 1,
+                title: "Messe d'ouverture de l'année pastorale",
+                description: "Célébration eucharistique pour le lancement de l'année pastorale 2025-2026.",
+                date: "2025-09-15",
+                time: "09:00",
+                location: "Cathédrale Saint-Pierre-et-Paul, Douala",
+                category: "messe",
+                icon: "fas fa-church",
+                categoryLabel: "Messe & Célébration",
+                categoryColor: "#2ecc71"
+            }, {
+                id: 2,
+                title: "Messe des Rameaux",
+                description: "Célébration des Rameaux avec la bénédiction des rameaux.",
+                date: "2025-04-13",
+                time: "08:00",
+                location: "Paroisse Notre-Dame de l'Assomption",
+                category: "messe",
+                icon: "fas fa-palm-tree",
+                categoryLabel: "Messe & Célébration",
+                categoryColor: "#2ecc71"
+            }, {
+                id: 3,
+                title: "Messe de Pâques",
+                description: "Célébration solennelle de la Résurrection du Christ.",
+                date: "2025-04-20",
+                time: "07:00",
+                location: "Cathédrale Saint-Pierre-et-Paul",
+                category: "messe",
+                icon: "fas fa-church",
+                categoryLabel: "Messe & Célébration",
+                categoryColor: "#2ecc71"
+            }, {
+                id: 4,
+                title: "Messe de Noël des Jeunes",
+                description: "Veillée de Noël spécialement animée par les jeunes de l'Aumônerie.",
+                date: "2025-12-24",
+                time: "20:00",
+                location: "Paroisse Saint-Joseph",
+                category: "messe",
+                icon: "fas fa-star",
+                categoryLabel: "Messe & Célébration",
+                categoryColor: "#2ecc71"
+            },
+            // Retraites & Camps
+            {
+                id: 5,
+                title: "Retraite spirituelle de Carême",
+                description: "3 jours de retraite pour se préparer à Pâques.",
+                date: "2025-03-10",
+                time: "08:00",
+                location: "Centre Spirituel de Ngoya",
+                category: "retraite",
+                icon: "fas fa-pray",
+                categoryLabel: "Retraite & Camp",
+                categoryColor: "#3498db"
+            }, {
+                id: 6,
+                title: "Camp des Jeunes Leaders",
+                description: "Camp de formation et de partage pour les jeunes leaders paroissiaux.",
+                date: "2025-07-15",
+                time: "14:00",
+                location: "Centre Diocésain de Logbaba",
+                category: "retraite",
+                icon: "fas fa-campground",
+                categoryLabel: "Retraite & Camp",
+                categoryColor: "#3498db"
+            }, {
+                id: 7,
+                title: "Retraite des Animateurs",
+                description: "Retraite annuelle des animateurs de l'Aumônerie.",
+                date: "2025-08-20",
+                time: "15:00",
+                location: "Maison d'accueil Saint-Paul",
+                category: "retraite",
+                icon: "fas fa-pray",
+                categoryLabel: "Retraite & Camp",
+                categoryColor: "#3498db"
+            },
+            // Formations & Ateliers
+            {
+                id: 8,
+                title: "Atelier sur le leadership chrétien",
+                description: "Formation pour développer les compétences de leadership.",
+                date: "2025-05-10",
+                time: "09:00",
+                location: "Salle polyvalente de l'Aumônerie",
+                category: "formation",
+                icon: "fas fa-chalkboard-user",
+                categoryLabel: "Formation & Atelier",
+                categoryColor: "#e67e22"
+            }, {
+                id: 9,
+                title: "Formation biblique",
+                description: "Cycle de formation à la lecture de la Bible.",
+                date: "2025-09-20",
+                time: "16:00",
+                location: "Centre biblique diocésain",
+                category: "formation",
+                icon: "fas fa-book",
+                categoryLabel: "Formation & Atelier",
+                categoryColor: "#e67e22"
+            }, {
+                id: 10,
+                title: "Atelier de chant liturgique",
+                description: "Formation pour les choristes et animateurs de chant.",
+                date: "2025-10-05",
+                time: "10:00",
+                location: "Chapelle de l'Aumônerie",
+                category: "formation",
+                icon: "fas fa-music",
+                categoryLabel: "Formation & Atelier",
+                categoryColor: "#e67e22"
+            },
+            // Événements Jeunesse
+            {
+                id: 11,
+                title: "Journée mondiale de la Jeunesse (JMJ)",
+                description: "Célébration diocésaine de la JMJ.",
+                date: "2025-11-23",
+                time: "08:00",
+                location: "Stade diocésain",
+                category: "jeunesse",
+                icon: "fas fa-globe",
+                categoryLabel: "Événement Jeunesse",
+                categoryColor: "#e74c3c"
+            }, {
+                id: 12,
+                title: "Soirée de prière des jeunes",
+                description: "Veillée de prière animée par les mouvements de jeunesse.",
+                date: "2025-03-28",
+                time: "19:00",
+                location: "Paroisse Saint-Michel",
+                category: "jeunesse",
+                icon: "fas fa-praying-hands",
+                categoryLabel: "Événement Jeunesse",
+                categoryColor: "#e74c3c"
+            }, {
+                id: 13,
+                title: "Pèlerinage des jeunes à Marienberg",
+                description: "Pèlerinage annuel des jeunes vers le sanctuaire Marial.",
+                date: "2025-08-15",
+                time: "06:00",
+                location: "Sanctuaire de Marienberg",
+                category: "jeunesse",
+                icon: "fas fa-hiking",
+                categoryLabel: "Événement Jeunesse",
+                categoryColor: "#e74c3c"
+            }, {
+                id: 14,
+                title: "Caravane de l'Espérance",
+                description: "Marche et animations dans les rues de Douala.",
+                date: "2025-12-08",
+                time: "09:00",
+                location: "Départ de la Cathédrale",
+                category: "jeunesse",
+                icon: "fas fa-people-arrows",
+                categoryLabel: "Événement Jeunesse",
+                categoryColor: "#e74c3c"
             }
+        ];
+
+        let currentFilter = "all";
+
+        // Fonction pour formater la date
+        function formatDate(dateString) {
+            const date = new Date(dateString);
+            const months = ["Janvier", "Février", "Mars", "Avril", "Mai", "Juin", "Juillet", "Août", "Septembre", "Octobre", "Novembre", "Décembre"];
+            const shortMonths = ["Jan", "Fév", "Mar", "Avr", "Mai", "Juin", "Juil", "Août", "Sep", "Oct", "Nov", "Déc"];
+            return {
+                day: date.getDate(),
+                month: months[date.getMonth()],
+                monthShort: shortMonths[date.getMonth()],
+                year: date.getFullYear()
+            };
         }
+
+        // Gestion du fallback Padlet (si l'iframe ne charge pas)
+        const padletIframe = document.querySelector('.padlet-iframe');
+        const padletFallback = document.getElementById('padletFallback');
+
+        if (padletIframe) {
+            padletIframe.onerror = function() {
+                padletIframe.style.display = 'none';
+                padletFallback.style.display = 'block';
+            };
+
+            // Timeout pour détecter si le chargement prend trop de temps
+            setTimeout(() => {
+                try {
+                    if (padletIframe && padletIframe.contentWindow) {
+                        const iframeDoc = padletIframe.contentDocument || padletIframe.contentWindow.document;
+                        if (!iframeDoc || iframeDoc.readyState !== 'complete') {
+                            padletIframe.style.display = 'none';
+                            padletFallback.style.display = 'block';
+                        }
+                    }
+                } catch (e) {
+                    // Cross-origin, on ignore
+                }
+            }, 8000);
+        }
+
+        // Rendu des événements
+        function renderEvents() {
+            const grid = document.getElementById("eventsGrid");
+            if (!grid) return;
+
+            let filteredEvents = eventsData;
+            if (currentFilter !== "all") {
+                filteredEvents = eventsData.filter(event => event.category === currentFilter);
+            }
+
+            // Trier par date (du plus proche au plus lointain)
+            filteredEvents.sort((a, b) => new Date(a.date) - new Date(b.date));
+
+            if (filteredEvents.length === 0) {
+                grid.innerHTML = `<div class="no-results"><i class="fas fa-calendar-times"></i><p>Aucun événement trouvé pour cette catégorie.</p></div>`;
+                return;
+            }
+
+            grid.innerHTML = filteredEvents.map(event => {
+                const dateInfo = formatDate(event.date);
+                return `
+                    <div class="event-card" data-category="${event.category}">
+                        <div class="event-date">
+                            <div>
+                                <div class="day">${dateInfo.day}</div>
+                                <div class="month">${dateInfo.monthShort.toUpperCase()}</div>
+                            </div>
+                            <div class="time"><i class="fas fa-clock"></i> ${event.time}</div>
+                        </div>
+                        <div class="event-content">
+                            <span class="event-category" style="background: ${event.categoryColor}20; color: ${event.categoryColor};">${event.categoryLabel}</span>
+                            <h3>${event.title}</h3>
+                            <p>${event.description}</p>
+                            <div class="event-location">
+                                <i class="${event.icon}"></i>
+                                <span>${event.location}</span>
+                            </div>
+                            <div class="event-footer">
+                                <button class="btn-event" data-event-id="${event.id}"><i class="fas fa-calendar-plus"></i> S'inscrire</button>
+                                <div class="event-share">
+                                    <a href="#" data-share="whatsapp" data-event-title="${event.title}" data-event-date="${dateInfo.day} ${dateInfo.month}" data-event-location="${event.location}"><i class="fab fa-whatsapp"></i></a>
+                                    <a href="#" data-share="facebook" data-event-title="${event.title}" data-event-date="${dateInfo.day} ${dateInfo.month}" data-event-location="${event.location}"><i class="fab fa-facebook-f"></i></a>
+                                    <a href="#" data-share="email" data-event-title="${event.title}" data-event-date="${dateInfo.day} ${dateInfo.month}" data-event-location="${event.location}"><i class="fas fa-envelope"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }).join("");
+
+            // Inscription
+            document.querySelectorAll('.btn-event').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const eventId = parseInt(btn.getAttribute('data-event-id'));
+                    const event = eventsData.find(e => e.id === eventId);
+                    alert(`Inscription pour "${event.title}"\n\nVous serez contacté par l'organisation pour confirmer votre participation.\n\nMerci pour votre inscription !`);
+                });
+            });
+
+            // Partage
+            document.querySelectorAll('.event-share a').forEach(shareBtn => {
+                shareBtn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const type = shareBtn.getAttribute('data-share');
+                    const title = shareBtn.getAttribute('data-event-title');
+                    const date = shareBtn.getAttribute('data-event-date');
+                    const location = shareBtn.getAttribute('data-event-location');
+                    const message = `📅 ${title}\n📆 ${date}\n📍 ${location}\n\nRejoignez-nous pour cet événement !`;
+
+                    if (type === 'whatsapp') {
+                        window.open(`https://wa.me/?text=${encodeURIComponent(message)}`, '_blank');
+                    } else if (type === 'facebook') {
+                        window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(window.location.href)}&quote=${encodeURIComponent(message)}`, '_blank');
+                    } else if (type === 'email') {
+                        window.location.href = `mailto:?subject=${encodeURIComponent(title)}&body=${encodeURIComponent(message)}`;
+                    }
+                });
+            });
+        }
+
         // ========== MENU HAMBURGER ==========
         const menuToggle = document.getElementById('menuToggle');
         const navLinks = document.getElementById('navLinks');
@@ -1549,14 +1474,16 @@
             }
         });
 
-        // ========== SEARCH ==========
-        const searchInput = document.getElementById('searchInput');
-        if (searchInput) {
-            searchInput.addEventListener('input', (e) => {
-                currentFilter = e.target.value.toLowerCase();
-                renderAll();
+        // ========== FILTRES ==========
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                filterBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                currentFilter = btn.getAttribute('data-filter');
+                renderEvents();
             });
-        }
+        });
 
         // ========== MODE SOMBRE ==========
         function initDarkMode() {
@@ -1586,9 +1513,8 @@
             }
         }
 
-        // ========== INITIALISATION ==========
-        renderAll();
         initDarkMode();
+        renderEvents();
     </script>
 </body>
 
